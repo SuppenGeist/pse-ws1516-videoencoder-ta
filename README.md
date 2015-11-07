@@ -3,11 +3,11 @@ Im Rahmen des PSE am KIT im Wintersemester 2015/16 entwickeln wir im Team ein To
 Vergleichen verschiedene Videoencoder.
 
 ## Phasen der Entwicklung
-1. [Pflichtenheft](Pflichtenheft/README.md)
-2. [Entwurf](Entwurf/README.md)
-3. [Implementierung](Implementierung/README.md)
-4. [Qualitätssicherung](Qualitätssicherung/README.md)
-5. [Präsentation](Präsentation/README.md)
+1. [Pflichtenheft](Pflichtenheft)
+2. [Entwurf](Entwurf)
+3. [Implementierung](Implementierung)
+4. [Qualitätssicherung](Qualitätssicherung)
+5. [Präsentation](Präsentation)
 
 ## Tipps und Tricks
 * [Tipps und Tricks zum PSE (pdf)](https://pp.info.uni-karlsruhe.de/lehre/WS201415/pse_lambda/tipps.pdf)
