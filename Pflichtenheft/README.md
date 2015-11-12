@@ -9,13 +9,9 @@
 5. Produktdaten
 6. Nichtfunktionale Anforderungen
 7. Globale Testfälle
-8. Systemmodelle
-    1. Szenarien
-    2. Anwendungsfälle
-    3. Benutzerschnittstelle
-    4. Dynamische Modelle?
-    5. Objektmodelle?
-9. Glossar
+8. Benutzeroberflähe
+9. Qualitätsbestimmung
+10. Globale Testfälle und Szenarien
 
 ### Pflichtenheft Vorlagen
 * [Pflichtenheft 1 aus SWT Vorlesung (pdf in ILIAS)](https://ilias.studium.kit.edu/ilias.php?ref_id=435203&cmd=sendfile&cmdClass=ilrepositorygui&cmdNode=ed&baseClass=ilRepositoryGUI)
