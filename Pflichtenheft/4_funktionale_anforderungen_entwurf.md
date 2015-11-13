@@ -1,4 +1,4 @@
-# 4. Nichtfunktionale Anforderungen
+# 4. Funktionale Anforderungen
 ## 4.1 Encoder auswählen
 #### /F010/ Encoder auswählen
 Der Benutzer kann mittels eines Dateiauswahldialogs eine ausführbare Datei (ELF32,ELF64) auswählen.
