@@ -2,7 +2,7 @@
 #### Phasenleiter: Sascha
 
 ### Gliederung
-1. Zielbestimmung
+1. Zielbestimmung ([hier](1_zielbestimmung_entwurf.md))
 2. Produkteinsatz
 3. Produktumgebung
 4. Funktionale Anforderung
