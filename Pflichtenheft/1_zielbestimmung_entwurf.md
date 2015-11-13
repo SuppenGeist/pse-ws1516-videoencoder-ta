@@ -10,9 +10,9 @@ verschiedene Videoencoder objektiv zu bewerten und mit einander zu vergleichen.
 ### 1.1.2 Video auswählen
 * Der Benutzer kann ein Video zum encodieren auswählen
 * Der Benutzer kann aus einer Liste kürzlich encodeder Videos auswählen
-* Der Benutzer kann aus einer Liste von Filtern einen einzigen Filter auswählen und diesen auf
+* Der Benutzer kann aus einer Liste von Filtern einen Filter auswählen und diesen auf
 das gesamte Video anwenden
-* Der Benutzer kann aus einer Liste von Artefakten ein einziges Artefakt auswählen und dieses
+* Der Benutzer kann aus einer Liste von Artefakten ein Artefakt auswählen und dieses
 in das gesamte Video einfügen
 * Der Benutzer bekommt vor dem Anwenden der Artefakte oder Filter eine Vorschau angezeigt
 * Nach dem Anwenden der Filter und Artefakte hat der Nutzer die Chance das Video komplett

@@ -5,7 +5,7 @@
 1. Zielbestimmung ([hier](1_zielbestimmung_entwurf.md))
 2. Produkteinsatz
 3. Produktumgebung
-4. Funktionale Anforderung
+4. Funktionale Anforderung ([hier](4_funktionale_anforderungen_entwurf.md))
 5. Produktdaten
 6. Nichtfunktionale Anforderungen
 7. Globale Testfälle
