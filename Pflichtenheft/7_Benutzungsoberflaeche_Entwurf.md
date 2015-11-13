@@ -23,59 +23,59 @@
 ### 7.2.1 1.Fenster(Encoderauswahl):
 ![Encoderauswahlfenster](GUI_Entwurf_1/GUI_1.png)
 
-*"Öffnen" öffnet einen "Datei öffnen Dialog"
+* "Öffnen" öffnet einen "Datei öffnen Dialog"
 
-*Alternativ kann der Dateipfad manuell in das Textfenster eingegeben werden
+* Alternativ kann der Dateipfad manuell in das Textfenster eingegeben werden
 
-*"Zuletzt verwendet" bietet eine Auswahl der kürzlich verwendeten Encoder
+* "Zuletzt verwendet" bietet eine Auswahl der kürzlich verwendeten Encoder
 
-*"Weiter" bestätigt die Auswahl und wechselt zur Videoauswahl
+* "Weiter" bestätigt die Auswahl und wechselt zur Videoauswahl
 
 
 ### 7.2.2 2.Fenster(Videoauswahl):
 ![Videoauswahlfenster](GUI_Entwurf_1/GUI_2.png)
 
-*"Öffnen" öffnet einen "Datei öffnen Dialog"
+* "Öffnen" öffnet einen "Datei öffnen Dialog"
 
-*Alternativ kann der Dateipfad manuell in das Textfenster eingegeben werden
+* Alternativ kann der Dateipfad manuell in das Textfenster eingegeben werden
 
-*"Zuletzt verwendet" bietet eine Auswahl der kürzlich verwendeten Videos
+* "Zuletzt verwendet" bietet eine Auswahl der kürzlich verwendeten Videos
 
-*"Weiter" bestätigt die Auswahl und wechselt zur Filter- und Musterauswahl
+* "Weiter" bestätigt die Auswahl und wechselt zur Filter- und Musterauswahl
 
-*"Zurück" wechselt zur Encoderauswahl
+* "Zurück" wechselt zur Encoderauswahl
 
 
 ### 7.2.3 3.Fenster(Filter/Muster):
 ![Filter/Muster](GUI_Entwurf_1/GUI_3.png)
 
-*"Filter/Muster" bietet die Möglichkeit mehrere Filter/Muster anzuwenden
+* "Filter/Muster" bietet die Möglichkeit mehrere Filter/Muster anzuwenden
 
-*"Vorschau" berechnet eine Vorschau für die ausgewählten Filter auf einem einzelnen Frame des Videos
+* "Vorschau" berechnet eine Vorschau für die ausgewählten Filter auf einem einzelnen Frame des Videos
 
-*"Video berechnen" wendet die ausgewählten Filter/Muster auf das gesamte Video an
+* "Video berechnen" wendet die ausgewählten Filter/Muster auf das gesamte Video an
 
-*"Weiter" bestätigt die Auswahl und wechselt zur Wiedergabe und Auswertung
+* "Weiter" bestätigt die Auswahl und wechselt zur Wiedergabe und Auswertung
 
-*"Zurück" wechselt zur Videoauswahl
+* "Zurück" wechselt zur Videoauswahl
 
 
 ### 7.2.4 4.Fenster(Wiedergabe und Auswertung):
 ![Wiedergabe und Auswertung](GUI_Entwurf_1/GUI_4.png)
 
-*"Play" Startet alle Videos
+* "Play" Startet alle Videos
 
-*"Pause" Pausiert alle Videos
+* "Pause" Pausiert alle Videos
 
-*"Restart" Startet alle Videos neu
+* "Restart" Startet alle Videos neu
 
-*"+Frame" Springt bei allen Videos einen Frame vorwärts
+* "+Frame" Springt bei allen Videos einen Frame vorwärts
 
-*"-Frame" Springt bei allen Videos einen Frame rückwärts
+* "-Frame" Springt bei allen Videos einen Frame rückwärts
 
-*"Zurück" Wechselt zur Filter- und Musterauswahl
+* "Zurück" Wechselt zur Filter- und Musterauswahl
 
-*"Encoder ändern" Wechselt zur Encoderauswahl
+* "Encoder ändern" Wechselt zur Encoderauswahl
 
-*"Weitere Informationen" kann Makroblöcke, Metadaten etc. enthalten
+* "Weitere Informationen" kann Makroblöcke, Metadaten etc. enthalten
 
