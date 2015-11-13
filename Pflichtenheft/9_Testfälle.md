@@ -51,7 +51,7 @@ Encoder, video, Filter und Artefakte wählen, encodieren, untere rechte Seite der
 Encoder, video, Filter und Artefakte wählen, encodieren, obere rechte Seite der Gui betrachten
 
 #### /T350/ Interressante Eigenschaften des encodierten Videos anzeigen
-Encoder, video, Filter und Artefakte wählen, encodieren, [fehlt]
+Encoder, video, Filter und Artefakte wählen, encodieren, im rechten, mittleren Menü jede Auswahl durchgehen
 
 
 
