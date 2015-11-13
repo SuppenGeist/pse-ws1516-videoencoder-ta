@@ -49,11 +49,17 @@
 ### 7.2.3 3.Fenster(Filter/Muster):
 ![Filter/Muster](GUI_Entwurf_1/GUI_3.png)
 
-* "Filter/Muster" bietet die Möglichkeit mehrere Filter/Muster anzuwenden
+* "Filter" bietet die Möglichkeit einen Filter auszuwählen
 
-* "Vorschau" berechnet eine Vorschau für die ausgewählten Filter auf einem einzelnen Frame des Videos
+* "Muster/Artefakte" bietet die Möglichkeit ein Muster oder ein Artefakt auszuwählen
+
+* "Vorschau" berechnet 5 Vorschau Frames
+
+* "<,>" bieten die Möglichkeit zwischen den Frames zu springen
 
 * "Video berechnen" wendet die ausgewählten Filter/Muster auf das gesamte Video an
+
+* "Play, Pause, Restart" bieten die Möglichkeit das berechnete Video abzuspielen
 
 * "Weiter" bestätigt die Auswahl und wechselt zur Wiedergabe und Auswertung
 
@@ -69,13 +75,15 @@
 
 * "Restart" Startet alle Videos neu
 
-* "+Frame" Springt bei allen Videos einen Frame vorwärts
+* "<" Springt bei allen Videos einen Frame rückwärts
 
-* "-Frame" Springt bei allen Videos einen Frame rückwärts
+* ">" Springt bei allen Videos einen Frame vorwärts
+
+* "x1.0" zeigt die aktuelle Wiedergabegeschwindigkeit und bietet die Möglichkeit diese zu ändern
 
 * "Zurück" Wechselt zur Filter- und Musterauswahl
 
-* "Encoder ändern" Wechselt zur Encoderauswahl
+* "Encoder ändern" öffnet einen "Datei öffnen Dialog" um den neuen Encoder zu wählen und wechselt dann zu Fenster 3 (alte Auswahl bleibt erhalten)
 
 * "Weitere Informationen" kann Makroblöcke, Metadaten etc. enthalten
 
