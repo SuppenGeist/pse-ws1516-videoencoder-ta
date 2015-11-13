@@ -4,4 +4,4 @@ Für die Software wird ein 64 Bit Betriebssystem benötigt, welches einen 64 Bit
 
 ## 3.2 Software
 64Bit Linux
-Qt Bibliothek
+Qt Bibliothek Version 5.6.0
