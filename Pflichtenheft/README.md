@@ -8,10 +8,9 @@
 4. Funktionale Anforderung ([hier](4_funktionale_anforderungen_entwurf.md))
 5. Produktdaten
 6. Nichtfunktionale Anforderungen
-7. Globale Testfälle
-8. Benutzeroberflähe
-9. Qualitätsbestimmung
-10. Globale Testfälle und Szenarien
+7. Benutzeroberflähe
+8. Qualitätsbestimmung
+9. Globale Testfälle und Szenarien
 
 ### Pflichtenheft Vorlagen
 * [Pflichtenheft 1 aus SWT Vorlesung (pdf in ILIAS)](https://ilias.studium.kit.edu/ilias.php?ref_id=435203&cmd=sendfile&cmdClass=ilrepositorygui&cmdNode=ed&baseClass=ilRepositoryGUI)
