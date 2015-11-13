@@ -81,9 +81,13 @@
 
 * "x1.0" zeigt die aktuelle Wiedergabegeschwindigkeit und bietet die Möglichkeit diese zu ändern
 
+* "Differenz" zeigt Differenz oder Makroblöcke in dem Bereich oben rechts
+
+* "Weitere Informationen" kann Metadaten etc. enthalten
+
 * "Zurück" Wechselt zur Filter- und Musterauswahl
 
 * "Encoder ändern" öffnet einen "Datei öffnen Dialog" um den neuen Encoder zu wählen und wechselt dann zu Fenster 3 (alte Auswahl bleibt erhalten)
 
-* "Weitere Informationen" kann Makroblöcke, Metadaten etc. enthalten
+
 
