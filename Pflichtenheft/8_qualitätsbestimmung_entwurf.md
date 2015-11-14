@@ -9,3 +9,6 @@
 |Effizienz              |             | x      |                |          |
 |Portierbarkeit         |             |        |  x             |          |
 |Kompatibilität         |             |        |  x             |          |
+|Modifizierbarkeit      |             |        |  x             |          |
+|Sicherheit             |             |        |                | x        |
+
