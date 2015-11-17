@@ -15,7 +15,7 @@ bookmarks=true,
 %TitlePage
 {\title{\fontsize{40}{48} \selectfont \textsc{Pflichtenheft-Entwurf}\\
 {\fontsize{18}{18} \selectfont Multimediatool zum Testen von Videoencodern}}}
-{\author{Carina, Ben, Johannes, Noel, Sascha, Simon}}
+{\author{Carina Weber, Jan Benedikt Schwarz, Johannes Werner, Noel Schuhmacher, Sascha Rapp, Simon Grafenhorst}}
 
 \begin{document}
 \maketitle
@@ -27,47 +27,50 @@ bookmarks=true,
 Mit dem Produkt sollen Firmen/Forschungsprojekte eine einfache Möglichkeit erhalten,
 verschiedene Videoencoder objektiv zu bewerten und mit einander zu vergleichen.
 \subsection{Musskriterien}
-\subsubsection{Encoder auswählen}
-\begin{itemize}
-\item Der Benutzer kann einen eigenen Encoder auswählen
-\item Der Benutzer kann aus einer Liste kürzlich benutzter Encoder auswählen
-\end{itemize}
 \subsubsection{Video Auswählen}
+Der Benutzer muss können:
 \begin{itemize}
-\item Der Benutzer kann ein Video zum encodieren auswählen
-\item Der Benutzer kann aus einer Liste kürzlich encodeder Videos auswählen
-\item Der Benutzer kann aus einer Liste von Filtern einen Filter auswählen und diesen auf
-das gesamte Video anwenden
-\item Der Benutzer kann aus einer Liste von Artefakten ein Artefakt auswählen und dieses
-in das gesamte Video einfügen
-\item Der Benutzer bekommt vor dem Anwenden der Artefakte oder Filter eine Vorschau angezeigt
-\item Nach dem Anwenden der Filter und Artefakte hat der Nutzer die Chance das Video komplett
-anzuschauen
+\item Video laden
+\item Aus einer Liste kürzlich geladener Videos auswählen
+\item Aus einer Liste von Filtern mehrere Filter auswählen und diese auf das gesamte Video anwenden
+\item Aus einer Liste von Artefakten ein Artefakt auswählen und dieses in das gesamte Video einfügen
+\item Anzeige einer Vorschau nach Auswahl der Filter und Artefakte
+\item Video abspeichern
 \end{itemize}
-\subsubsection{Codieren des Videos}
+\subsubsection{Veränder des Videos}
 \begin{itemize}
-\item Der Benutzer kann das ausgewählte und angepasste Video mit dem ausgewählten Encoder Codieren
+\item Video mithilfe von Filtern und Artefakten verändern
+\item Mindestens drei Filter gleichzeitig anwenden
+\item Zusätzlich zu den Filtern noch ein Artefakt auswählen
+\item Das veränderte Video abspeichern
 \end{itemize}
 \subsubsection{Bewerten des Encoders}
 \begin{itemize}
-\item Der Benutzer kann das Rohevideo und das encodierte Video synchron nebeneinander anschauen
-\item Der Benutzer kann die im vorigen Punkt genannten Videos in einstellbarer Geschwindigkeit
-Abspielen
-\item Der Benutzer kann sich berechnete Bewertungskriterien für den Encoder anzeigen lassen
-\item Der Benutzer kann sich Unterschiede zwischen Roh- und encodiertem Video anzeigen lassen
-\item Der Benutzer kann sich interressante (encoderspezifische) Eigenschaftem im encodiertem
-Video anzeigen lassen
+\item Rohvideo und das encodierte Video synchron nebeneinander anschauen
+\item Die im vorigen Punkt genannten Videos in einstellbarer Geschwindigkeit abspielen
+\item Berechnete Bewertungskriterien für den Encoder anzeigen
+\item Unterschiede zwischen rohem und encodiertem Video in einer Differenzanzeige anzeigen lassen
+\item Encoderspezifische Eigenschaften wie Makroblöcke und Bitrate anzeigen
+\item Histogramm anzeigen
 \end{itemize}
 \subsection{Wunschkriterien}
+Der Benutzer soll können:
 \begin{itemize}
-\item Bewertungen in Datenbank speichern
-\item Bewertungen aus Datenbank laden und neben der Bewertung des aktuell geladenen Encoders anzeigen
+\item Bewertungen speichern
+\item Bewertungen laden und neben der Bewertung des aktuell geladenen Encoders anzeigen
+\item Encoder auswählen und über die GUI starten
+\item Mehrere Artefakte gleichzeitig anwenden
+\end{itemize}
+\subsubsection{Projekte}
+\begin{itemize}
+\item Projekte anlegen
+\item Projekte speichern
 \end{itemize}
 \subsection{Abgrenzungskriterien}
 \begin{itemize}
-\item Es wird keine Dokumentation mitgeliefert
 \item Die Software ist ausschließlich in deutscher Sprache verfügbar
 \item Die GUI ist fest vorgegeben, d.h. Schriftart,-größe, etc. sind nicht veränderbar
+\item Audio wird nicht mit abgespielt oder verglichen
 \end{itemize}
 \newpage
 \section{Produkteinsatz}
@@ -95,21 +98,19 @@ Vergleich von Videoencodern für verschiedene Bedürfnisse
 \section{Produktumgebung}
 
 \subsection{Hardware}
-Für die Software wird ein 64 Bit Betriebssystem benötigt, welches einen 64 Bit Prozessor voraussetzt.
-
+\begin{itemize}
+\item 64 Bit Prozessor
+\item Intel: Prozessor der Core-i-Serie oder neuer, AMD: Athlon II, Phenom II oder neuer
+\item Mindestens 50 MB freier Speicher
+\item Mindestens 4 GB Arbeitsspeicher
+\end{itemize}
 \subsection{Software}
 \begin{itemize}
 \item 64Bit Linux
-\item Qt Bibliothek Version 5.6.0
+\item Qt Bibliothek Version 5.5.1
 \end{itemize}
 \newpage
 \section{Funktionale Anforderungen}
-\subsection{Encoder auswählen}
-Der Benutzer kann mittels eines Dateiauswahldialogs eine ausführbare Datei (ELF32,ELF64) auswählen.
-Das Programm muss ein über das Terminal gestartet werden können und das zu encodende Video als
-Argument übernehmen.
-Zudem hat der Benutzer die Möglichkeit, einen Encoder aus einer Liste zu wählen, in der die letzten 5 zuvor
-verwendeten Encoder stehen. Das Programm prüft vor dem Anzeigen der Encoder ob diese noch existieren.
 \subsection{Video auswählen}
 Der Benutzer kann mittels eines Dateiauswahldialogs ein Video auszuwählen. Dieses
 Video wird später encodiert. Der Benutzer hat die Möglichkeit ein Video aus einer Liste zu wählen, die die letzten 10 encodierten
@@ -188,19 +189,14 @@ Die 10 zuletzt verwendeten Videos werden abgespeichert, sodass diese über ein D
 \newpage
 \section{Nichtfunktionale Anforderungen}
 \begin{itemize}
-\item Jede Funktion des Programmes sollte mit maximal 3 Klicks erreichbar sein.
-\item Informieren des Benutzers, über aktuelle Aktion, falls für eine Aktion des Programmes längere Zeit gebraucht wird
+\item Informieren des Benutzers über aktuelle Aktion, falls für eine Aktion des Programmes längere Zeit gebraucht wird
 \end{itemize}
 \newpage
 \section{Benutzungsoberflächer}
 \subsection{Anforderungen}
-Die Bedienungsoberfläche ist auf Mausbedienung ausgelegt, eine Bedienung ohne Maus muss dennoch möglich sein
+Die Bedienungsoberfläche ist auf Mausbedienung ausgelegt, eine Bedienung ohne Maus muss dennoch möglich sein.
 \begin{itemize}
 \item DIN 66234, Teil 8 ist zu beachten
-\item Die Benutzungsoberfläche besteht aus mehreren aufeinander folgenden Fenstern
-\item Die Größe der Fenster ist vordefiniert und kann nicht verändert werden
-\item Die Benutzungsoberfläche führt den Benutzer Schritt für Schritt durch das Programm
-\item Die Benutzungsoberfläche bietet jederzeit die Möglichkeit zu einem früheren Schritt zu springen
 \item Die Benutzungsoberfläche wird aus Elementen des Qt Designer aufgebaut
 \end{itemize}
 \subsection{Beispieldesign}
@@ -266,6 +262,7 @@ Die Bedienungsoberfläche ist auf Mausbedienung ausgelegt, eine Bedienung ohne M
 \newpage
 \section{Qualitätsbestimmungen}
 \begin{tabular}{|c|c|c|c|c|}
+\hline & Sehr wichtig & Wichtig & Weniger wichtig & Unwichtig \\
 \hline Robustheit & • &  &  & \\ 
 \hline Zuverlässigkeit & • &  &  & \\ 
 \hline Korrektheit & • &  &  & \\ 
@@ -280,16 +277,11 @@ Die Bedienungsoberfläche ist auf Mausbedienung ausgelegt, eine Bedienung ohne M
 \newpage
 \section{Globale Testfälle und Szenarien}
 Folgende Funktionssequenzen sind zu überprüfen:
-\subsection{Encoder auswählen}
-\subsubsection{Encoder auswählen}
-Programm starten, "Öffnen" klicken, im Dateisystem den Encoder auswählen
-\subsubsection{Encoder aus Liste wählen}
-Programm starten, unter "Zuletzt verwendet" einen Encoder wählen
 \subsection{Video Auswählen}
 \subsubsection{Video wählen}
-Encoder wählen, "Öffnen" klicken, im Dateisystem das Video wählen
+"Öffnen" klicken, im Dateisystem das Video wählen
 \subsubsection{Video aus Liste wählen}
-Encoder wählen, unter "Zuletzt verwendet" ein Video wählen
+unter "Zuletzt verwendet" ein Video wählen
 \subsubsection{Filter auswählen}
 Encoder und Video wählen, einzelne Filter ankreuzen
 \subsubsection{Artefakte auswählen}
@@ -313,4 +305,9 @@ Encoder, video, Filter und Artefakte wählen, encodieren, untere rechte Seite de
 Encoder, video, Filter und Artefakte wählen, encodieren, obere rechte Seite der Gui betrachten
 \subsubsection{Interressante Eigenschaften des encodierten Videos anzeigen}
 Encoder, video, Filter und Artefakte wählen, encodieren, im rechten, mittleren Menü jede Auswahl durchgehen
+\section{Glossar}
+\begin{itemize}
+\item Artefakt: Form, Figur oder Muster
+\item Projekt: Ein Projekt beinhaltet die Pfade zu den geöffneten Videos sowie die eingestellten Filter und Artefakte
+\end{itemize}
 \end{document}
