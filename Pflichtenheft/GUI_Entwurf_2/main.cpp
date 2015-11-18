@@ -1,11 +1,14 @@
 #include <QApplication>
 #include "gui.h"
+#include "fileexplorer.h"
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    GUI w;
+    FileExplorer w;
     w.show();
+    GUI g;
+    g.show();
 
     return a.exec();
 }
