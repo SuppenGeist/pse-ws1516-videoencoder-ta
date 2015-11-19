@@ -1,13 +1,13 @@
 ### (Name änderbar)
-# Pflichtenheft zu Aletheia
+# Pflichtenheft zu Vive
 
 Carina Weber, Jan Bendeikt Schwarz, Johannes Werner, Noel Schuhmacher, Sasha Rapp, Simon
 Grafenhorst
 
 ## 0. Einleitung
-Aletheia ist ein Programm zum Testen verschiedener Videoencoder. Mann hat die Moeglichkeit ein
+Aletheia ist ein Programm zum Testen verschiedener Videoencoder. Man hat die Moeglichkeit ein
 Video (mit Filtern) zu bearbeiten welches dann von einem externen Encoder encodiert wird.
-Diese encodierte Video kann dann wieder in Aletheia geladen werden, und so komfortable
+Dieses encodierte Video kann dann wieder in Aletheia geladen werden, und so komfortabel
 mit graphischen Visualisierungen entschieden werden kann, wie gut der Encoder das Video
 encodiert hat.
 
@@ -21,13 +21,13 @@ Aletheia ist ein Multimedia-Framework zur Evaluation von Videoencodern.
 * Aus einer List von Artefakten mehrere Artefakte auswählen
 * Filter/Artefakte anpassen
 * Zuvor verwendete Konfigurationen (Filter/Artefakte) auswählen
-* Anzeigen einer Vorschau mit den angwandten Filtern/Artefakten
+* Anzeigen einer Vorschau mit den angewandten Filtern/Artefakten
 * Video abspeichern
 
 #### 1.1.2 Bewerten des Encoders
 * Mehrere encodierte Videos laden
 * Bewertungskriterien berrechnen
-* Unterschiede zwischen Roh- und encodiertem Video visualiesieren
+* Unterschiede zwischen Roh- und encodiertem Video visualisieren
 * Bewertungskriterien/Videoeigenschaften/Metadaten visualisieren
 * Roh- und encodierte(s) Video(s) nebeneinander synchron abspielen
 
@@ -53,7 +53,7 @@ Privatprojekt auswählen.
 
 ### 2.1 Anwendungsbereiche
 * Forschungsprojekte
-* Komerzielle Softwarentwiclung
+* Kommerzielle Softwarentwicklung
 * Privatprojekte
 
 ### 2.2 Zielgruppe
@@ -114,7 +114,7 @@ Videos.
 ##### /F0120/ Auswahl von Filtern
 Auswahl von einem oder mehreren Filter, die auf das Video gelegt werden.
 ##### /F0121/ Filter: Schwarzweiß
-Ein Schwarzweißfilter mit einstelbaren Eigenschaften:
+Ein Schwarzweißfilter mit einstellbaren Eigenschaften:
 * Helligkeit
 
 ##### /F0122/ Filter: Unschärfe
@@ -131,16 +131,23 @@ Ein Farbfilter mit folgenden einstellbaren Eigenschaften:
 ##### /F0124/ Fiter: Kontrast
 Ein Kontrastfilter mit den folgenden einstelbaren Eigenschften:
 * Helligkeit
-* Stärke des Kontrastest
+* Stärke des Kontrastes
 
 ##### /F0130/ Auswahl von Artefakten
 Auswahl von einem oder mehreren Artefakten, die auf das Video gelegt werden.
+
 ##### /F0131/ Artefakt: Gittermuster
 Ein Gittermuster mit den folgenden einstellbaren Eigenschaften:
 * Anzahl der vertikalen und horizontalen Linien
 * Farbe
 * Helligkeit
 * Dicke der Linien
+
+#### /F0132/ Artefakt: Schriftzug
+Ein Schriftzug mit fixer Position und folgenden Eigenschaften:
+* Schriftgröße
+* Farbe
+* Text
 
 ##### /F0140/ Anwendugsreihenfolge von Filtern/Artefakten
 Filter und Artefakte werden in der Reihenfolge angewendet, in der sie ausgewählt wurden.
@@ -154,13 +161,13 @@ Ausgewählte Filter/Artefakte können wieder entfernt werden.
 ##### /F0170/ Abspeichern einer Filter/Artefakte Konfiguration
 Abspeichern der Konfiguration von Filtern/Artefakten. Abgespeichert wird:
 * Welche Filter/Artefakte ausgewählt wurden
-* Reihenfolge in der die Filter/Artefakte angwendet werde sollen
-* Jeweiligen Zustad der einstellbaren Eigenschaften der Filter/Artefakte
+* Reihenfolge in der die Filter/Artefakte angewendet werden sollen
+* Jeweiligen Zustand der einstellbaren Eigenschaften der Filter/Artefakte
 
 ##### /F0180/ Anzeigen einer Vorschau
 Die Vorschau des ausgewählten Videos mit den ausgewählten Filtern und Artefakten besteht aus zwei Stufen:
 ##### /F0181/ 5 Frame Vorschau
-Jedes mal wenn der Benutzer etwas an den Artefakten/Filtern ändert werden 5 Frames aus dem Video sofort gerendet.
+Jedes mal, wenn der Benutzer etwas an den Artefakten/Filtern ändert, werden 5 Frames aus dem Video sofort gerendert.
 ##### /F0182/ Komplette Vorschau
 Nachdem der Nutzer auf ein entsprechenden Button geklickt hat, kann er das ausgewählte Video mit allen ausgewählten Filtern und Artefakten angeschauen. Steuerelemente wie in /F0000/.
 
