@@ -1,11 +1,13 @@
-## Pflichtenheft zu Aletheia (Name aenderbar)
+### (Name änderbar)
+# Pflichtenheft zu Aletheia
+
 Carina Weber, Jan Bendeikt Schwarz, Johannes Werner, Noel Schuhmacher, Sasha Rapp, Simon
 Grafenhorst
 
 ## 0. Einleitung
 Aletheia ist ein Programm zum Testen verschiedener Videoencoder. Mann hat die Moeglichkeit ein
 Video (mit Filtern) zu bearbeiten welches dann von einem externen Encoder encodiert wird.
-Diese encodierte Video kann dann wieder in Aletheia geladen werden, und komfortable
+Diese encodierte Video kann dann wieder in Aletheia geladen werden, und so komfortable
 mit graphischen Visualisierungen entschieden werden kann, wie gut der Encoder das Video
 encodiert hat.
 
@@ -22,20 +24,21 @@ Aletheia ist ein Multimedia-Framework zur Evaluation von Videoencodern.
 * Anzeigen einer Vorschau mit den angwandten Filtern/Artefakten
 * Video abspeichern
 
-### 1.1.2 Bewerten des Encoders
+#### 1.1.2 Bewerten des Encoders
 * Mehrere encodierte Videos laden
 * Bewertungskriterien berrechnen
 * Unterschiede zwischen Roh- und encodiertem Video visualiesieren
 * Bewertungskriterien/Videoeigenschaften/Metadaten visualisieren
 * Roh- und encodierte(s) Video(s) nebeneinander synchron abspielen
 
-### 1.1.3 Sonstiges
+#### 1.1.3 Sonstiges
 * Zustand des Programms als Projekt speichern
 * Projekt laden
 
 ### 1.2 Wunschkriterien
 * Encoder integrieren
 * Manuelles Bewertungssystem
+* Pluginsystem für Filter und Artefakte
 
 ### 1.3 Abgrenzungskriterien
 * Audio wird nicht beachtet
@@ -45,12 +48,12 @@ Aletheia ist ein Multimedia-Framework zur Evaluation von Videoencodern.
 Aletheia soll es Forschunkghseinrichtungen und Firmen ermöglichen Videoencoder einfach
 miteinander zu vergleichen. So kann schnell ein optimaler Encoder für den jeweiligen Zweck
 gefunden oder die Qualität eines vorhandenen geprüft werden. Aber auch Privatpersonen können
-mit diesem Produkt die Funktionsweise eines Encoders kennenlernen oder einen für ein
+mit diesem Produkt die Funktionsweise eines Encoders kennenlernen oder ein Encoder für ein
 Privatprojekt auswählen.
 
 ### 2.1 Anwendungsbereiche
 * Forschungsprojekte
-* Firmen
+* Komerzielle Softwarentwiclung
 * Privatprojekte
 
 ### 2.2 Zielgruppe
@@ -78,6 +81,91 @@ Die Betriebsbedingungen unterscheiden sich im wesentlichen nicht zu denen normal
 * Qt Bibliothek 5.5.1
 
 ## 4. Funktionale Anforderungen
+### 4.1 Musskriterien
+#### 4.1.0 Allgemein
+##### /F0000/ Steuerlemente für Videos
+Videos können mit folgenden Steuerelementen angeschaut werden:
+* Start/Pause-Button
+* Stop-Button
+* Timeline
+* Geschwindigkeitsauswahl:
+    * Frame by Frame
+    * 0.25x
+    * 0.5x
+    * 0.75x
+    * 1.0x
+    * 1.25x
+    * 1.5x
+    * 1.75x
+    * 2.0x
+
+##### /F0010/ Akzeptierte nicht encodede Dateitypen
+* YUF
+
+##### /F0020/ Akzeptierte encodierte Dateitypen
+* kommt noch
+
+#### 4.1.1 Rohvideo auswählen und bearbeiten
+##### /F0100/ Auswahl mit Dateiauswaldialog
+Auswahl eines Videos mit einem Dateiauswahldialog. Erlaubte Dateitypen wie in /F0010/.
+##### /F0110/ Auswahl kürzlich ausgewählter Videos
+Auswahl aus einer Liste mit den 10 zuletzt ausgewählten
+Videos.
+##### /F0120/ Auswahl von Filtern
+Auswahl von einem oder mehreren Filter, die auf das Video gelegt werden.
+##### /F0121/ Filter: Schwarzweiß
+Ein Schwarzweißfilter mit einstelbaren Eigenschaften:
+* Helligkeit
+
+##### /F0122/ Filter: Unschärfe
+Ein Unschärfefilter mit folgenden einstellbaren Egenschaften:
+* Helligkeit
+* Grad der Unschärfe
+
+##### /F0123/ Filter: Farbe
+Ein Farbfilter mit folgenden einstellbaren Eigenschaften:
+* Helligkeit
+* Farbe(n) die herausegefiltert werden sollen
+* Intensität der einzelnen Farben
+
+##### /F0124/ Fiter: Kontrast
+Ein Kontrastfilter mit den folgenden einstelbaren Eigenschften:
+* Helligkeit
+* Stärke des Kontrastest
+
+##### /F0130/ Auswahl von Artefakten
+Auswahl von einem oder mehreren Artefakten, die auf das Video gelegt werden.
+##### /F0131/ Artefakt: Gittermuster
+Ein Gittermuster mit den folgenden einstellbaren Eigenschaften:
+* Anzahl der vertikalen und horizontalen Linien
+* Farbe
+* Helligkeit
+* Dicke der Linien
+
+##### /F0140/ Anwendugsreihenfolge von Filtern/Artefakten
+Filter und Artefakte werden in der Reihenfolge angewendet, in der sie ausgewählt wurden.
+
+##### /F0150/ Ändern der Anwendungsreihenfolge
+Die Anwendungsreihenfolge der Filter/Artefakte kann beliebig geändert werden.
+
+##### /F0160/ Entfernen ausgewählter Filter/Artefakte
+Ausgewählte Filter/Artefakte können wieder entfernt werden.
+
+##### /F0170/ Abspeichern einer Filter/Artefakte Konfiguration
+Abspeichern der Konfiguration von Filtern/Artefakten. Abgespeichert wird:
+* Welche Filter/Artefakte ausgewählt wurden
+* Reihenfolge in der die Filter/Artefakte angwendet werde sollen
+* Jeweiligen Zustad der einstellbaren Eigenschaften der Filter/Artefakte
+
+##### /F0180/ Anzeigen einer Vorschau
+Die Vorschau des ausgewählten Videos mit den ausgewählten Filtern und Artefakten besteht aus zwei Stufen:
+##### /F0181/ 5 Frame Vorschau
+Jedes mal wenn der Benutzer etwas an den Artefakten/Filtern ändert werden 5 Frames aus dem Video sofort gerendet.
+##### /F0182/ Komplette Vorschau
+Nachdem der Nutzer auf ein entsprechenden Button geklickt hat, kann er das ausgewählte Video mit allen ausgewählten Filtern und Artefakten angeschauen. Steuerelemente wie in /F0000/.
+
+##### /F0190/ Speichern des Videos
+Das veränderte Video kann abgepseichert werden. Das Dateiformat ist dasselbe wie das des Inputvideos.
 
 ## 5. Produktdaten
 
