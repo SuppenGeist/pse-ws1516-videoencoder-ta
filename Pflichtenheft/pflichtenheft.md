@@ -143,7 +143,7 @@ Ein Gittermuster mit den folgenden einstellbaren Eigenschaften:
 * Helligkeit
 * Dicke der Linien
 
-#### /F0132/ Artefakt: Schriftzug
+##### /F0132/ Artefakt: Schriftzug
 Ein Schriftzug mit fixer Position und folgenden Eigenschaften:
 * Schriftgröße
 * Farbe
@@ -172,7 +172,7 @@ Jedes mal, wenn der Benutzer etwas an den Artefakten/Filtern ändert, werden 5 F
 Nachdem der Nutzer auf ein entsprechenden Button geklickt hat, kann er das ausgewählte Video mit allen ausgewählten Filtern und Artefakten angeschauen. Steuerelemente wie in /F0000/.
 
 ##### /F0190/ Speichern des Videos
-Das veränderte Video kann abgepseichert werden. Das Dateiformat ist dasselbe wie das des Inputvideos.
+Das veränderte Video kann abgespeichert werden. Das Dateiformat ist dasselbe wie das des Inputvideos.
 
 ## 5. Produktdaten
 
@@ -185,3 +185,12 @@ Das veränderte Video kann abgepseichert werden. Das Dateiformat ist dasselbe wi
 ## 9. Globale Testfaelle und Szenarien
 
 ## 10. Glossar
+
+### Artefakt
+Eine Struktur, die über das Video gelegt wird, um den Encoder zu verwirren.
+
+### Encoder
+Ein Programm zum komprimieren von Video Dateien.
+
+### Filter
+Ein Algorithmus, der Farbwerte nach einem bestimmten Muster verändert.
