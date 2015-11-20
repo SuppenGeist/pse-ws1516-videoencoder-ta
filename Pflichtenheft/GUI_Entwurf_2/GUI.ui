@@ -20,15 +20,18 @@
       <x>0</x>
       <y>0</y>
       <width>791</width>
-      <height>561</height>
+      <height>571</height>
      </rect>
+    </property>
+    <property name="mouseTracking">
+     <bool>false</bool>
     </property>
     <property name="currentIndex">
      <number>0</number>
     </property>
     <widget class="QWidget" name="FilterandArtefacts">
      <attribute name="title">
-      <string>Filter and Artefacts</string>
+      <string>Filter and artefacts</string>
      </attribute>
      <widget class="QScrollArea" name="scrollArea">
       <property name="geometry">
@@ -63,37 +66,25 @@
          <height>359</height>
         </rect>
        </property>
-       <widget class="QWidget" name="verticalLayoutWidget_3">
+       <widget class="QListWidget" name="listWidget">
         <property name="geometry">
          <rect>
-          <x>10</x>
-          <y>10</y>
-          <width>111</width>
-          <height>61</height>
+          <x>0</x>
+          <y>0</y>
+          <width>151</width>
+          <height>361</height>
          </rect>
         </property>
-        <layout class="QVBoxLayout" name="verticalLayout_3">
-         <property name="spacing">
-          <number>6</number>
+        <item>
+         <property name="text">
+          <string>Selected filter A</string>
          </property>
-         <property name="sizeConstraint">
-          <enum>QLayout::SetDefaultConstraint</enum>
+        </item>
+        <item>
+         <property name="text">
+          <string>Selected filter B</string>
          </property>
-         <item>
-          <widget class="QCheckBox" name="checkBox_2">
-           <property name="text">
-            <string>Selected filter</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QCheckBox" name="checkBox_3">
-           <property name="text">
-            <string>Selected filter 2</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
+        </item>
        </widget>
       </widget>
      </widget>
@@ -140,32 +131,91 @@
            <height>112</height>
           </rect>
          </property>
-         <widget class="QWidget" name="verticalLayoutWidget">
+         <widget class="QWidget" name="horizontalLayoutWidget">
           <property name="geometry">
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>121</width>
-            <height>114</height>
+            <width>1041</width>
+            <height>111</height>
            </rect>
           </property>
-          <layout class="QVBoxLayout" name="verticalLayout">
+          <layout class="QHBoxLayout" name="horizontalLayout">
            <item>
-            <widget class="QLabel" name="label_3">
-             <property name="text">
-              <string/>
-             </property>
-             <property name="pixmap">
-              <pixmap resource="resource.qrc">:/new/prefix1/Picture/sw_filter.png</pixmap>
-             </property>
-            </widget>
+            <layout class="QVBoxLayout" name="verticalLayout">
+             <item>
+              <widget class="QLabel" name="label_3">
+               <property name="text">
+                <string/>
+               </property>
+               <property name="pixmap">
+                <pixmap resource="filter_artefact_icons.qrc">:/Filter_icons/Picture/Filter_icons/sw_filter.png</pixmap>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="checkBox">
+               <property name="text">
+                <string>SW Filter</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </item>
            <item>
-            <widget class="QCheckBox" name="checkBox">
-             <property name="text">
-              <string>SW Filter</string>
+            <layout class="QVBoxLayout" name="verticalLayout_4">
+             <item>
+              <widget class="QLabel" name="label_6">
+               <property name="text">
+                <string/>
+               </property>
+               <property name="pixmap">
+                <pixmap resource="filter_artefact_icons.qrc">:/Filter_icons/Picture/Filter_icons/blur_filter.png</pixmap>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="checkBox_2">
+               <property name="text">
+                <string>Blur filter</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_5">
+             <item>
+              <widget class="QLabel" name="label_9">
+               <property name="text">
+                <string/>
+               </property>
+               <property name="pixmap">
+                <pixmap resource="filter_artefact_icons.qrc">:/Filter_icons/Picture/Filter_icons/farbchange_filter.png</pixmap>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="checkBox_3">
+               <property name="text">
+                <string>Farb changer</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_4">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
              </property>
-            </widget>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
            </item>
           </layout>
          </widget>
@@ -176,13 +226,109 @@
        <attribute name="title">
         <string>Artefacts</string>
        </attribute>
+       <widget class="QScrollArea" name="scrollArea_5">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>771</width>
+          <height>131</height>
+         </rect>
+        </property>
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOn</enum>
+        </property>
+        <property name="widgetResizable">
+         <bool>true</bool>
+        </property>
+        <widget class="QWidget" name="scrollAreaWidgetContents_5">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>769</width>
+           <height>112</height>
+          </rect>
+         </property>
+         <widget class="QWidget" name="horizontalLayoutWidget_4">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>1041</width>
+            <height>111</height>
+           </rect>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_8">
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_9">
+             <item>
+              <widget class="QLabel" name="label_11">
+               <property name="text">
+                <string/>
+               </property>
+               <property name="pixmap">
+                <pixmap resource="filter_artefact_icons.qrc">:/Filter_icons/Picture/Filter_icons/gitter_muster.png</pixmap>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="checkBox_5">
+               <property name="text">
+                <string>Bar grid</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_10">
+             <item>
+              <widget class="QLabel" name="label_12">
+               <property name="text">
+                <string/>
+               </property>
+               <property name="pixmap">
+                <pixmap resource="filter_artefact_icons.qrc">:/Filter_icons/Picture/Filter_icons/text_muster.png</pixmap>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="checkBox_6">
+               <property name="text">
+                <string>Text grid</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_5">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </widget>
       </widget>
      </widget>
      <widget class="QWidget" name="verticalLayoutWidget_2">
       <property name="geometry">
        <rect>
         <x>180</x>
-        <y>50</y>
+        <y>10</y>
         <width>121</width>
         <height>221</height>
        </rect>
@@ -225,14 +371,21 @@
        <item>
         <widget class="QPushButton" name="pushButton_6">
          <property name="text">
-          <string>Load Video</string>
+          <string>Load video</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="pushButton">
          <property name="text">
-          <string>Appy to Video</string>
+          <string>Appy to video</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_7">
+         <property name="text">
+          <string>Save video</string>
          </property>
         </widget>
        </item>
@@ -277,9 +430,9 @@
      <widget class="QWidget" name="verticalLayoutWidget_6">
       <property name="geometry">
        <rect>
-        <x>350</x>
-        <y>330</y>
-        <width>421</width>
+        <x>400</x>
+        <y>340</y>
+        <width>341</width>
         <height>61</height>
        </rect>
       </property>
@@ -289,36 +442,114 @@
          <item>
           <widget class="QPushButton" name="pushButton_22">
            <property name="text">
-            <string>Play</string>
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset>
+             <activeon>:/player_buttons/Picture/playerButtons/play106.png</activeon>
+            </iconset>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QPushButton" name="pushButton_23">
            <property name="text">
-            <string>Stop</string>
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset>
+             <activeon>:/player_buttons/Picture/playerButtons/pause44.png</activeon>
+            </iconset>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QPushButton" name="pushButton_24">
            <property name="text">
-            <string>Reset</string>
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset>
+             <activeon>:/player_buttons/Picture/playerButtons/stop4.png</activeon>
+            </iconset>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QPushButton" name="pushButton_25">
            <property name="text">
-            <string>&lt;</string>
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset>
+             <activeon>:/player_buttons/Picture/playerButtons/last-track.png</activeon>
+            </iconset>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QPushButton" name="pushButton_26">
            <property name="text">
-            <string>&gt;</string>
+            <string/>
            </property>
+           <property name="icon">
+            <iconset>
+             <activeoff>:/player_buttons/Picture/playerButtons/skip2.png</activeoff>
+            </iconset>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="comboBox">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="currentText">
+            <string>0.25x</string>
+           </property>
+           <item>
+            <property name="text">
+             <string>0.25x</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>0.5x</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>0.75x</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>1.0x</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>1.25x</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>1.5x</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>1.75x</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>2.0x</string>
+            </property>
+           </item>
           </widget>
          </item>
         </layout>
@@ -369,6 +600,81 @@
        </item>
       </layout>
      </widget>
+     <widget class="QGroupBox" name="groupBox">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>250</y>
+        <width>131</width>
+        <height>131</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Filter/Artefact options:</string>
+      </property>
+      <widget class="QScrollArea" name="scrollArea_4">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>20</y>
+         <width>131</width>
+         <height>111</height>
+        </rect>
+       </property>
+       <property name="widgetResizable">
+        <bool>true</bool>
+       </property>
+       <widget class="QWidget" name="scrollAreaWidgetContents_4">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>129</width>
+          <height>109</height>
+         </rect>
+        </property>
+        <widget class="QWidget" name="verticalLayoutWidget_3">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>131</width>
+           <height>111</height>
+          </rect>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <item>
+             <widget class="QLabel" name="label_5">
+              <property name="text">
+               <string>Intensity:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEdit"/>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <spacer name="verticalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </widget>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab_2">
      <attribute name="title">
@@ -384,7 +690,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>Add Video</string>
+       <string>Add video</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_18">
@@ -397,7 +703,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>Remove Video</string>
+       <string>Remove video</string>
       </property>
      </widget>
      <widget class="QWidget" name="gridLayoutWidget">
@@ -458,76 +764,151 @@
        </rect>
       </property>
       <property name="text">
-       <string>Add Comparison</string>
+       <string>Add comparison</string>
       </property>
      </widget>
-     <widget class="QWidget" name="verticalLayoutWidget_5">
+     <widget class="QWidget" name="verticalLayoutWidget_7">
       <property name="geometry">
        <rect>
-        <x>320</x>
+        <x>370</x>
         <y>0</y>
-        <width>421</width>
+        <width>341</width>
         <height>61</height>
        </rect>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout_5">
+      <layout class="QVBoxLayout" name="verticalLayout_7">
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <layout class="QHBoxLayout" name="horizontalLayout_5">
          <item>
-          <widget class="QPushButton" name="pushButton_13">
+          <widget class="QPushButton" name="pushButton_27">
            <property name="text">
-            <string>Play</string>
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset>
+             <activeon>:/player_buttons/Picture/playerButtons/play106.png</activeon>
+            </iconset>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_14">
+          <widget class="QPushButton" name="pushButton_28">
            <property name="text">
-            <string>Stop</string>
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset>
+             <activeon>:/player_buttons/Picture/playerButtons/pause44.png</activeon>
+            </iconset>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_15">
+          <widget class="QPushButton" name="pushButton_29">
            <property name="text">
-            <string>Reset</string>
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset>
+             <activeon>:/player_buttons/Picture/playerButtons/stop4.png</activeon>
+            </iconset>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_16">
+          <widget class="QPushButton" name="pushButton_30">
            <property name="text">
-            <string>&lt;</string>
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset>
+             <activeon>:/player_buttons/Picture/playerButtons/last-track.png</activeon>
+            </iconset>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_17">
+          <widget class="QPushButton" name="pushButton_31">
            <property name="text">
-            <string>&gt;</string>
+            <string/>
            </property>
+           <property name="icon">
+            <iconset>
+             <activeoff>:/player_buttons/Picture/playerButtons/skip2.png</activeoff>
+            </iconset>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="comboBox_5">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <item>
+            <property name="text">
+             <string>0.25x</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>0.5x</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>0.75x</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>1.0x</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>1.25x</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>1.5x</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>1.75x</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>2.0x</string>
+            </property>
+           </item>
           </widget>
          </item>
         </layout>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_5">
+        <layout class="QHBoxLayout" name="horizontalLayout_7">
          <item>
-          <widget class="QLabel" name="label_6">
+          <widget class="QLabel" name="label_8">
            <property name="text">
             <string>Volume:</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QSlider" name="horizontalSlider_2">
+          <widget class="QSlider" name="horizontalSlider_4">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
           </widget>
          </item>
          <item>
-          <spacer name="horizontalSpacer_6">
+          <spacer name="horizontalSpacer_10">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
@@ -540,7 +921,7 @@
           </spacer>
          </item>
          <item>
-          <spacer name="horizontalSpacer_7">
+          <spacer name="horizontalSpacer_11">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
@@ -604,7 +985,8 @@
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Video A color differenz&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Video A color differenz graph&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
@@ -622,7 +1004,7 @@ p, li { white-space: pre-wrap; }
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Video B color differenz&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Video B color differenz graph&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
@@ -631,54 +1013,6 @@ p, li { white-space: pre-wrap; }
        <attribute name="title">
         <string>PSNR</string>
        </attribute>
-      </widget>
-     </widget>
-     <widget class="QScrollArea" name="scrollArea_3">
-      <property name="geometry">
-       <rect>
-        <x>480</x>
-        <y>330</y>
-        <width>281</width>
-        <height>131</height>
-       </rect>
-      </property>
-      <property name="verticalScrollBarPolicy">
-       <enum>Qt::ScrollBarAlwaysOn</enum>
-      </property>
-      <property name="horizontalScrollBarPolicy">
-       <enum>Qt::ScrollBarAlwaysOff</enum>
-      </property>
-      <property name="widgetResizable">
-       <bool>true</bool>
-      </property>
-      <widget class="QWidget" name="scrollAreaWidgetContents_3">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>262</width>
-         <height>129</height>
-        </rect>
-       </property>
-       <widget class="QTextBrowser" name="textBrowser_3">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>281</width>
-          <height>192</height>
-         </rect>
-        </property>
-        <property name="html">
-         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;  other information&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
       </widget>
      </widget>
      <widget class="QWidget" name="horizontalLayoutWidget_3">
@@ -790,6 +1124,31 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
+     <widget class="QTextBrowser" name="textBrowser_3">
+      <property name="geometry">
+       <rect>
+        <x>480</x>
+        <y>330</y>
+        <width>281</width>
+        <height>131</height>
+       </rect>
+      </property>
+      <property name="html">
+       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Name: rawVid&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Size: xxxx mb&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Name: VideoA&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Size: xxxx mb&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Name: VideoB&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Size: xxxx mb&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>
@@ -854,6 +1213,7 @@ p, li { white-space: pre-wrap; }
   </action>
  </widget>
  <resources>
+  <include location="filter_artefact_icons.qrc"/>
   <include location="resource.qrc"/>
  </resources>
  <connections/>

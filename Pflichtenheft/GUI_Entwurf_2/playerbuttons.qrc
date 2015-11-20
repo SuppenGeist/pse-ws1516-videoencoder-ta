@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/player_buttons">
+        <file>Picture/playerButtons/last-track.png</file>
+        <file>Picture/playerButtons/pause44.png</file>
+        <file>Picture/playerButtons/play43.png</file>
+        <file>Picture/playerButtons/play106.png</file>
+        <file>Picture/playerButtons/skip2.png</file>
+        <file>Picture/playerButtons/sound53.png</file>
+        <file>Picture/playerButtons/stop4.png</file>
+    </qresource>
+</RCC>
