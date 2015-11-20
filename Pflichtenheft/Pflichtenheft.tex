@@ -23,9 +23,10 @@ bookmarks=true,
 \newpage
 \tableofcontents
 \newpage
+\section*{Einleitung}
+Vive (lang: Video veritatem) ist ein Programm zum Testen verschiedener Videoencoder. Man hat die Möglichkeit ein Video (mit Filtern) zu bearbeiten welches dann von einem externen Encoder encodiert wird. Dieses encodierte Video kann dann wieder in Vive geladen werden, wo so komfortabel mit graphischen Visualisierungen entschieden werden kann, wie gut der Encoder das Video encodiert hat.
 \section{Zielbestimmung}
-Mit dem Produkt sollen Firmen/Forschungsprojekte eine einfache Möglichkeit erhalten,
-verschiedene Videoencoder objektiv zu bewerten und mit einander zu vergleichen.
+Vive ist ein Multimedia-Framework zum Vergleichen und zur Evaluation von Videoencodern.
 \subsection{Musskriterien}
 \subsubsection{Video Auswählen}
 Der Benutzer muss können:
@@ -189,7 +190,10 @@ Die 10 zuletzt verwendeten Videos werden abgespeichert, sodass diese über ein D
 \newpage
 \section{Nichtfunktionale Anforderungen}
 \begin{itemize}
-\item Informieren des Benutzers über aktuelle Aktion, falls für eine Aktion des Programmes längere Zeit gebraucht wird
+\item[]\textbf{/L010/ Responsive GUI}\\
+Auch bei rechenintensiven Hintergrundaktionen bleibt die GUI responsive.
+\item[]\textbf{/L020/ Fehlerrobust}\\
+Bei Fehlerhaften Videodateien oder Nutzereingaben soll das Programm nicht abstürzen.
 \end{itemize}
 \newpage
 \section{Benutzungsoberflächer}
@@ -306,8 +310,23 @@ Encoder, video, Filter und Artefakte wählen, encodieren, obere rechte Seite der
 \subsubsection{Interressante Eigenschaften des encodierten Videos anzeigen}
 Encoder, video, Filter und Artefakte wählen, encodieren, im rechten, mittleren Menü jede Auswahl durchgehen
 \section{Glossar}
-\begin{itemize}
-\item Artefakt: Form, Figur oder Muster
-\item Projekt: Ein Projekt beinhaltet die Pfade zu den geöffneten Videos sowie die eingestellten Filter und Artefakte
-\end{itemize}
+\subsection*{5-Sterne Bewertungssystem}  
+5 Sterne zur Bewertung, wobei 1 Stern die niedrigste Bewertung ist und 5 Sterne die höchste.
+
+\subsection*{Artefakt} Eine Struktur, die über das Video gelegt wird, wie zum Beispiel ein Kreis oder eine Linie.
+\subsection*{Benutzer} 
+Weibliche oder männliche Person, die das Programm benutzt.
+\subsection*{Encoder} 
+Ein Programm zum komprimieren von Videodateien.
+\subsection*{Filter} 
+Ein Algorithmus, der Farbwerte nach einem bestimmten Muster verändert.
+\subsection*{Projekt} 
+Ein Projekt beinhaltet die Pfade zu den geöffneten Videos sowie die eingestellten Filter und Artefakte.
+\subsection*{PSNR-Graph} 
+Ein Graph der auf der x-Achse Zeitwerte(Framenummer) enthält und auf der y-Achse den dazugehörigen PSNR-Wert.
+\subsection*{PSNR-Wert} 
+Peak signal-to-noise ratio ist ein Maß für das Verhältnis zwischen Signalrate und dem überlagerten Rauschsignal.
+\subsection*{RGB-Histogramm} 
+Ein Graph, der die Farbverteilung eines Videos anzeigt.
+
 \end{document}
