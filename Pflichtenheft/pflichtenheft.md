@@ -1,18 +1,17 @@
-### (Name änderbar)
 # Pflichtenheft zu Vive
 
 Carina Weber, Jan Bendeikt Schwarz, Johannes Werner, Noel Schuhmacher, Sasha Rapp, Simon
 Grafenhorst
 
 ## 0. Einleitung
-Aletheia ist ein Programm zum Testen verschiedener Videoencoder. Man hat die Moeglichkeit ein
+Vive (lang: Video veritatem) ist ein Programm zum Testen verschiedener Videoencoder. Man hat die Moeglichkeit ein
 Video (mit Filtern) zu bearbeiten welches dann von einem externen Encoder encodiert wird.
-Dieses encodierte Video kann dann wieder in Aletheia geladen werden, und so komfortabel
+Dieses encodierte Video kann dann wieder in Vive geladen werden, und so komfortabel
 mit graphischen Visualisierungen entschieden werden kann, wie gut der Encoder das Video
 encodiert hat.
 
 ## 1. Zielbestimmung
-Aletheia ist ein Multimedia-Framework zur Evaluation von Videoencodern.
+Vive ist ein Multimedia-Framework zur Evaluation von Videoencodern.
 
 ### 1.1 Musskriterien
 #### 1.1.1 Rohvideo auswählen und bearbeiten
@@ -174,23 +173,90 @@ Nachdem der Nutzer auf ein entsprechenden Button geklickt hat, kann er das ausge
 ##### /F0190/ Speichern des Videos
 Das veränderte Video kann abgespeichert werden. Das Dateiformat ist dasselbe wie das des Inputvideos.
 
+##### /F01100/ Laden einer Filter/Artefakte Konfiguration
+Gespeicherte Konfigurationen können wieder geladen werden.
+##### /F01110/ Alles zurücksetzen
+Ausgewählte Filter und Artefakte können alle auf einmal entfernt werden.
+
+#### 4.1.2 Encodede Videos bewerten
+##### /F0200/ Encodierte Videos laden
+Laden von mehreren enodierten Videos. Akzeptierte Dteitypen wie in /F0020/.
+##### /F0210/ Anzeigen der encodierten Videos
+Die geladen Videos können angeschaut werden.
+##### /F0220/ Anzeigen des Rohvideos
+Das Rohvideo kann angeschaut werden
+##### /F0230/ Steuerelemente
+Alle Videos aus /F0210/ und /F0220/ teilen sich ein Satz Steuerelemente. Steuerlemente wie in /F0000/.
+##### /F0240/ Anzeigen von Dateiattributen
+Folgende Dateiattribute der Videodateien werden angezeigt:
+* Dateiname
+* Dateigröße
+
+##### /F0250/ Anzeigen eines RGB-Histogramms
+Für jedes Video wird ein RGB-Histogramm angezeigt.
+##### /F0260/ Anzeigen eines PSNA-Graphen
+Für jedes Video wird eine PSNA-Graph angezeigt.
+##### /F0270/ PSNA-Graph als Timeline
+Durch klicken auf den PSNA-Graph wird zu der dazugehörigen Stelle im Video gesprungen (bei allen geladenen Videos wird zu dieser Stelle gesprungen).
+##### /F0280/ Farbunterschied zwischen Roh- und encodiertem Video anzeigen
+Anzeigen der Farbdifferenz der einzelnen Farbkanäle zwischen dem Roh- und encodiertem Video.
+##### /F0290/ Anzeigen von Makroblöcken
+Falls der Encoder Makroblöcke zum komprimieren verwendet hat, können diese angezeigt werden.
+##### /F02100/ Speichern des Zustands
+Der Zustand des Programms  kann gespeichert werden. Gespeichert wird dabei folgendes:
+* Absoluter Pfad zum Rohvideo
+* Absoluter Pfad zu allen geladenen encodierten Videos
+* Aktuelle Abspielstelle in den Videos
+
+##### /F02110/ Laden eines Zustandes
+Gespeicherte Zustände können wieder gelden werden.
+
+### 4.2 Wunschkriterien
+#### 4.2.1 Encoder integrieren
+##### /F1100/ Laden eines Encoders
+Der Encoder der verwendet werden soll kann mit einem Dateiauswahldialog ausgewählt werden. Akzeptiert werden LEF32,ELF64 Dateien. Der Encoder muss dabei über eine Konsole aufgerufen werden können mit dem Dateinamen zum zu encodierendem Video und verschiedene Encodierungsmodi als Parameter.
+##### /F1200/ Spezifizieren von Parametern
+Man kann Parameter Spezifizieren, die dem Encoder übergeben werden.
+##### /F1300/ Gewährleistung
+Wenn der Encoder nicht korrekt arbeitet (z.B. terminiert nicht), kann die Korrektheit von Vive nicht grantiert werden.
+
+#### 4.2.2 Manuelles Bewertungssystem
+##### /F2100/ Bewerten der encodierten Videos
+Die Qualität eines encodierten Videos kann mit einem 5-Sterne Bewertungssystem bewertet werden.
+##### /F2200/ Speichern des Zustandes
+Zusätzlich zu den in /F02100/ spezifizierten Attributen wird die 5-Sterne Bewertung gespeichert.
+##### /F2300/ Laden eines Zustandes
+Beim Laden eines Zustandes wie in /F02100/ wird auch die 5-Sterne Bewertung geladen.
+
+#### 4.2.3 Pluginsystem für Filter und Artefakte
+##### /F3100/ Dynamisches Laden von Plugins
+Beim Programmstart werden Filter und Artefakte dynamisch geladen.
+
+
 ## 5. Produktdaten
 
 ## 6. Nichtfunktionale Anforderungen
 
-## 7. Benutzeroberflaeche
+## 7. Benutzeroberfläche
 
-## 8. Qualitaetsbestimmung
+## 8. Qualitätsbestimmung
 
-## 9. Globale Testfaelle und Szenarien
+## 9. Globale Testfälle und Szenarien
 
 ## 10. Glossar
+#### Benutzer
+Weibliche oder männliche Person, die das Programm benutzt.
 
-### Artefakt
-Eine Struktur, die über das Video gelegt wird, um den Encoder zu verwirren.
+#### Artefakt
+Eine Struktur, die über das Video gelegt wird, wie zum Beipspiel ein Kreis oder eine Linie.
 
-### Encoder
-Ein Programm zum komprimieren von Video Dateien.
+#### Encoder
+Ein Programm zum komprimieren von Videodateien.
 
-### Filter
+#### Filter
 Ein Algorithmus, der Farbwerte nach einem bestimmten Muster verändert.
+
+#### RGB-Histogramm
+Ein Graph, der die Farbverteilung eines Videos anzeigt.
+#### PSNA-Graph
+Ein Graph der auf der x-Achse Zeitwerte(Framenummer) enthält und auf der y-Achse den dazugehörigen PSNA-Wert
