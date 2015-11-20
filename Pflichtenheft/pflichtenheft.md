@@ -158,7 +158,7 @@ Ein Schriftzug mit fixer Position und folgenden Eigenschaften:
 * Text
 
 ##### /F0140/ Anwendugsreihenfolge von Filtern/Artefakten
-Filter und Artefakte werden in der Reihenfolge angewendet, in der sie ausgewählt wurden.
+Ein neu ausgewählter Filter/Artefakte wird ans Ende der Anwendungsreihenfolge angehängt.
 
 ##### /F0150/ Ändern der Anwendungsreihenfolge
 Die Anwendungsreihenfolge der Filter/Artefakte kann beliebig geändert werden.
