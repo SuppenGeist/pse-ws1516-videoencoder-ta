@@ -104,6 +104,15 @@ Videos können mit folgenden Steuerelementen angeschaut werden:
 ##### /F0020/ Akzeptierte encodierte Dateitypen
 * kommt noch
 
+##### /F0030/ Anzeigen von Aktionen in Statusleiste
+Folgende Aktione werden in der Stausleiste angezeigt, falls sie aktiv sind:
+* Anwenden von Filtern/Artefakten
+* Speichern des veränderten Videos
+* Laden der encodierten Videos (also Berrechnung von PSNT,etc.)
+* Speichern des Zustandes des Programms
+* Laden des Zustandes des Programms
+
+
 #### 4.1.1 Rohvideo auswählen und bearbeiten
 ##### /F0100/ Auswahl mit Dateiauswaldialog
 Auswahl eines Videos mit einem Dateiauswahldialog. Erlaubte Dateitypen wie in /F0010/.
@@ -194,10 +203,10 @@ Folgende Dateiattribute der Videodateien werden angezeigt:
 
 ##### /F0250/ Anzeigen eines RGB-Histogramms
 Für jedes Video wird ein RGB-Histogramm angezeigt.
-##### /F0260/ Anzeigen eines PSNA-Graphen
-Für jedes Video wird eine PSNA-Graph angezeigt.
-##### /F0270/ PSNA-Graph als Timeline
-Durch klicken auf den PSNA-Graph wird zu der dazugehörigen Stelle im Video gesprungen (bei allen geladenen Videos wird zu dieser Stelle gesprungen).
+##### /F0260/ Anzeigen eines PSNR-Graphen
+Für jedes Video wird eine PSNR-Graph angezeigt.
+##### /F0270/ PSNR-Graph als Timeline
+Durch klicken auf den PSNR-Graph wird zu der dazugehörigen Stelle im Video gesprungen (bei allen geladenen Videos wird zu dieser Stelle gesprungen).
 ##### /F0280/ Farbunterschied zwischen Roh- und encodiertem Video anzeigen
 Anzeigen der Farbdifferenz der einzelnen Farbkanäle zwischen dem Roh- und encodiertem Video.
 ##### /F0290/ Anzeigen von Makroblöcken
@@ -214,11 +223,21 @@ Gespeicherte Zustände können wieder gelden werden.
 ### 4.2 Wunschkriterien
 #### 4.2.1 Encoder integrieren
 ##### /F1100/ Laden eines Encoders
-Der Encoder der verwendet werden soll kann mit einem Dateiauswahldialog ausgewählt werden. Akzeptiert werden LEF32,ELF64 Dateien. Der Encoder muss dabei über eine Konsole aufgerufen werden können mit dem Dateinamen zum zu encodierendem Video und verschiedene Encodierungsmodi als Parameter.
+Der Encoder der verwendet werden soll kann mit einem Dateiauswahldialog ausgewählt werden.
+##### /F1110/ Akzeptierte Dateitypen für Encoder
+Akzeptiert werden ELF32,ELF64 Dateien.
+##### /F1120/ Encoder interface
+Der Encoder mussüber eine Konsole aufgerufen werden können mit dem Dateinamen zum zu encodierendem Video und verschiedene Encodierungsmodi als Parameter.
 ##### /F1200/ Spezifizieren von Parametern
-Man kann Parameter Spezifizieren, die dem Encoder übergeben werden.
+Man kann Parameter angeben, die dem Encoder übergeben werden.
+##### /F1210/ Parameterliste
+Mehrere verschiedene Parameter werden in einer Liste zusammengefasst.
+##### /F1220/ Mehrfaches aufrufen des Encoders
+Für jeden Eintrag in der Liste aus /F1210/ wird der Encoder aufgerufen.
 ##### /F1300/ Gewährleistung
 Wenn der Encoder nicht korrekt arbeitet (z.B. terminiert nicht), kann die Korrektheit von Vive nicht grantiert werden.
+##### /F1400/ Laden der encodierten Videos
+Wenn alle encodierten Videos erzeugt wurden, werden sie automatisch geladen.
 
 #### 4.2.2 Manuelles Bewertungssystem
 ##### /F2100/ Bewerten der encodierten Videos
@@ -234,12 +253,36 @@ Beim Programmstart werden Filter und Artefakte dynamisch geladen.
 
 
 ## 5. Produktdaten
+### 5.1 Musskriterien
+##### /D010/ Filter/Artefakt Konfiguration
+Wie in /F0170/ spezifiert:
+* Ausgewählte Filter/Artefakte
+* Reihenfolge der Filter/Artefakte
+* Zustand der einstellbaren Eigenschaften der Filter/Artefakte
 
+##### /D020/ Zustand
+Wie in /F02100/ spezifiert:
+* Absoluter Pfad zum Rohvideo
+* Absolute Pfade zu den encodierten Videos
+* Abspielposition der Videos
+
+##### /D030/ Zuletzt ausgewählte Videos
+Wie in /F0110/ spezifiert:
+* Absoute Pfade zu den 10 zuletzt ausgewählten Videos
+
+### 5.2 Wunschkriterien
+#### 5.2.1 Manuelles Bewertungssystem
+##### /D110/ 5-Sterne Bewertung
+Wie in /F2200/ spezifiert.
 ## 6. Nichtfunktionale Anforderungen
-
+##### /L010/ Responsive GUI
+Auch bei rechenintensiven Hintergrundaktionen bleibt die GUI responsive.
+##### /L020/ Fehlerrobust
+Bei Fehlerhaften Videodateien oder Nutzereingaben soll das Programm nicht abstürzen.
 ## 7. Benutzeroberfläche
 
 ## 8. Qualitätsbestimmung
+Kann aus PDF übernommen werden.
 
 ## 9. Globale Testfälle und Szenarien
 
@@ -258,5 +301,7 @@ Ein Algorithmus, der Farbwerte nach einem bestimmten Muster verändert.
 
 #### RGB-Histogramm
 Ein Graph, der die Farbverteilung eines Videos anzeigt.
-#### PSNA-Graph
-Ein Graph der auf der x-Achse Zeitwerte(Framenummer) enthält und auf der y-Achse den dazugehörigen PSNA-Wert
+#### PSNR-Graph
+Ein Graph der auf der x-Achse Zeitwerte(Framenummer) enthält und auf der y-Achse den dazugehörigen PSNR-Wert
+#### 5-Sterne Bewertungssystem
+5 Sterne zur Bewertung, wobei 1 Stern die niedrigste Bewertung ist und 5 Sterne die höchste.
