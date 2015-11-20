@@ -4,9 +4,9 @@ Carina Weber, Jan Bendeikt Schwarz, Johannes Werner, Noel Schuhmacher, Sasha Rap
 Grafenhorst
 
 ## 0. Einleitung
-Vive (lang: Video veritatem) ist ein Programm zum Testen verschiedener Videoencoder. Man hat die Moeglichkeit ein
+Vive (lang: Video veritatem) ist ein Programm zum Testen verschiedener Videoencoder. Man hat die Möglichkeit ein
 Video (mit Filtern) zu bearbeiten welches dann von einem externen Encoder encodiert wird.
-Dieses encodierte Video kann dann wieder in Vive geladen werden, und so komfortabel
+Dieses encodierte Video kann dann wieder in Vive geladen werden, wo so komfortabel
 mit graphischen Visualisierungen entschieden werden kann, wie gut der Encoder das Video
 encodiert hat.
 
@@ -44,10 +44,10 @@ Vive ist ein Multimedia-Framework zur Evaluation von Videoencodern.
 * Die Software ist ausschließlich in deutscher Sprache verfügbar
 
 ## 2. Produkteinsatz
-Aletheia soll es Forschunkghseinrichtungen und Firmen ermöglichen Videoencoder einfach
+Vive soll es Forschungseinrichtungen und Firmen ermöglichen Videoencoder einfach
 miteinander zu vergleichen. So kann schnell ein optimaler Encoder für den jeweiligen Zweck
 gefunden oder die Qualität eines vorhandenen geprüft werden. Aber auch Privatpersonen können
-mit diesem Produkt die Funktionsweise eines Encoders kennenlernen oder ein Encoder für ein
+mit diesem Produkt die Funktionsweise eines Encoders kennenlernen oder einen Encoder für ein
 Privatprojekt auswählen.
 
 ### 2.1 Anwendungsbereiche
@@ -99,16 +99,16 @@ Videos können mit folgenden Steuerelementen angeschaut werden:
     * 2.0x
 
 ##### /F0010/ Akzeptierte nicht encodede Dateitypen
-* YUF
+* YUV
 
 ##### /F0020/ Akzeptierte encodierte Dateitypen
-* kommt noch
+* GStreamer kompatible Dateitypen
 
 ##### /F0030/ Anzeigen von Aktionen in Statusleiste
-Folgende Aktione werden in der Stausleiste angezeigt, falls sie aktiv sind:
+Folgende Aktionen werden in der Statusleiste angezeigt, falls sie aktiv sind:
 * Anwenden von Filtern/Artefakten
 * Speichern des veränderten Videos
-* Laden der encodierten Videos (also Berrechnung von PSNT,etc.)
+* Laden der encodierten Videos (also Berrechnung von PSNR,etc.)
 * Speichern des Zustandes des Programms
 * Laden des Zustandes des Programms
 
@@ -120,7 +120,7 @@ Auswahl eines Videos mit einem Dateiauswahldialog. Erlaubte Dateitypen wie in /F
 Auswahl aus einer Liste mit den 10 zuletzt ausgewählten
 Videos.
 ##### /F0120/ Auswahl von Filtern
-Auswahl von einem oder mehreren Filter, die auf das Video gelegt werden.
+Auswahl von einem oder mehreren Filtern, die auf das Video gelegt werden.
 ##### /F0121/ Filter: Schwarzweiß
 Ein Schwarzweißfilter mit einstellbaren Eigenschaften:
 * Helligkeit
@@ -168,16 +168,16 @@ Ausgewählte Filter/Artefakte können wieder entfernt werden.
 
 ##### /F0170/ Abspeichern einer Filter/Artefakte Konfiguration
 Abspeichern der Konfiguration von Filtern/Artefakten. Abgespeichert wird:
-* Welche Filter/Artefakte ausgewählt wurden
-* Reihenfolge in der die Filter/Artefakte angewendet werden sollen
-* Jeweiligen Zustand der einstellbaren Eigenschaften der Filter/Artefakte
+* welche Filter/Artefakte ausgewählt wurden
+* die Reihenfolge in der die Filter/Artefakte angewendet werden sollen
+* der jeweilige Zustand, der einstellbaren Eigenschaften der Filter/Artefakte
 
 ##### /F0180/ Anzeigen einer Vorschau
 Die Vorschau des ausgewählten Videos mit den ausgewählten Filtern und Artefakten besteht aus zwei Stufen:
 ##### /F0181/ 5 Frame Vorschau
 Jedes mal, wenn der Benutzer etwas an den Artefakten/Filtern ändert, werden 5 Frames aus dem Video sofort gerendert.
 ##### /F0182/ Komplette Vorschau
-Nachdem der Nutzer auf ein entsprechenden Button geklickt hat, kann er das ausgewählte Video mit allen ausgewählten Filtern und Artefakten angeschauen. Steuerelemente wie in /F0000/.
+Nachdem der Nutzer auf einen entsprechenden Button geklickt hat, kann er das ausgewählte Video mit allen ausgewählten Filtern und Artefakten angeschauen. Steuerelemente wie in /F0000/.
 
 ##### /F0190/ Speichern des Videos
 Das veränderte Video kann abgespeichert werden. Das Dateiformat ist dasselbe wie das des Inputvideos.
@@ -191,11 +191,11 @@ Ausgewählte Filter und Artefakte können alle auf einmal entfernt werden.
 ##### /F0200/ Encodierte Videos laden
 Laden von mehreren enodierten Videos. Akzeptierte Dteitypen wie in /F0020/.
 ##### /F0210/ Anzeigen der encodierten Videos
-Die geladen Videos können angeschaut werden.
+Die geladenen Videos können angeschaut werden.
 ##### /F0220/ Anzeigen des Rohvideos
 Das Rohvideo kann angeschaut werden
 ##### /F0230/ Steuerelemente
-Alle Videos aus /F0210/ und /F0220/ teilen sich ein Satz Steuerelemente. Steuerlemente wie in /F0000/.
+Alle Videos aus /F0210/ und /F0220/ teilen sich einen Satz Steuerelemente. Steuerlemente wie in /F0000/.
 ##### /F0240/ Anzeigen von Dateiattributen
 Folgende Dateiattribute der Videodateien werden angezeigt:
 * Dateiname
@@ -204,7 +204,7 @@ Folgende Dateiattribute der Videodateien werden angezeigt:
 ##### /F0250/ Anzeigen eines RGB-Histogramms
 Für jedes Video wird ein RGB-Histogramm angezeigt.
 ##### /F0260/ Anzeigen eines PSNR-Graphen
-Für jedes Video wird eine PSNR-Graph angezeigt.
+Für jedes Video wird ein PSNR-Graph angezeigt.
 ##### /F0270/ PSNR-Graph als Timeline
 Durch klicken auf den PSNR-Graph wird zu der dazugehörigen Stelle im Video gesprungen (bei allen geladenen Videos wird zu dieser Stelle gesprungen).
 ##### /F0280/ Farbunterschied zwischen Roh- und encodiertem Video anzeigen
@@ -223,7 +223,7 @@ Gespeicherte Zustände können wieder gelden werden.
 ### 4.2 Wunschkriterien
 #### 4.2.1 Encoder integrieren
 ##### /F1100/ Laden eines Encoders
-Der Encoder der verwendet werden soll kann mit einem Dateiauswahldialog ausgewählt werden.
+Der Encoder, der verwendet werden soll, kann mit einem Dateiauswahldialog ausgewählt werden.
 ##### /F1110/ Akzeptierte Dateitypen für Encoder
 Akzeptiert werden ELF32,ELF64 Dateien.
 ##### /F1120/ Encoder interface
@@ -235,7 +235,7 @@ Mehrere verschiedene Parameter werden in einer Liste zusammengefasst.
 ##### /F1220/ Mehrfaches aufrufen des Encoders
 Für jeden Eintrag in der Liste aus /F1210/ wird der Encoder aufgerufen.
 ##### /F1300/ Gewährleistung
-Wenn der Encoder nicht korrekt arbeitet (z.B. terminiert nicht), kann die Korrektheit von Vive nicht grantiert werden.
+Wenn der Encoder nicht korrekt arbeitet (z.B. nicht terminiert), kann die Korrektheit von Vive nicht grantiert werden.
 ##### /F1400/ Laden der encodierten Videos
 Wenn alle encodierten Videos erzeugt wurden, werden sie automatisch geladen.
 
