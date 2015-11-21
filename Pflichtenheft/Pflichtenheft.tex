@@ -280,35 +280,39 @@ Die Bedienungsoberfläche ist auf Mausbedienung ausgelegt, eine Bedienung ohne M
 \end{tabular} 
 \newpage
 \section{Globale Testfälle und Szenarien}
+\subsection{Testfälle}
 Folgende Funktionssequenzen sind zu überprüfen:
-\subsection{Video Auswählen}
-\subsubsection{Video wählen}
-"Öffnen" klicken, im Dateisystem das Video wählen
-\subsubsection{Video aus Liste wählen}
-unter "Zuletzt verwendet" ein Video wählen
-\subsubsection{Filter auswählen}
-Encoder und Video wählen, einzelne Filter ankreuzen
-\subsubsection{Artefakte auswählen}
-Encoder und Video wählen, einzelne Artefakte ankreuzen
-\subsubsection{Vorschau anzeigen}
-Encoder, Video, Filter und Artefakte wählen, "Vorschau drücken", "<", ">" verwenden
-\subsubsection{Filter/Artefakte anwenden}
-Encoder, Video, Filter und Artefakte wählen, "Video berechnen" drücken
-\subsubsection{Vorschau des kompletten Videos}
-Encoder, Video, Filter und Artefakte wählen, "Video berechnen" drücken, "Play", "Pause" und "Restart" Button verwenden
-\subsection{Video encodieren}
-Encoder, Video, Filter und Artefakte anwenden, "weiter" drücken
-\subsection{Bewertung des Encoders}
-\subsubsection{Anschauen des codierten und rohen Videos}
-Encoder, video, Filter und Artefakte wählen, encodieren, unter rechte Seite der Gui betrachten
-\subsubsection{Einstellen der Abspielgeschwindigkeit}
-Encoder, video, Filter und Artefakte wählen, encodieren, "<", ">" und das Menü rechts von den beiden Buttons verwenden
-\subsubsection{Bewertungskriterien anzeigen}
-Encoder, video, Filter und Artefakte wählen, encodieren, untere rechte Seite der Gui betrachten
-\subsubsection{Unterschied zwischen Roh- und encodiertem Video anzeigen}
-Encoder, video, Filter und Artefakte wählen, encodieren, obere rechte Seite der Gui betrachten
-\subsubsection{Interressante Eigenschaften des encodierten Videos anzeigen}
-Encoder, video, Filter und Artefakte wählen, encodieren, im rechten, mittleren Menü jede Auswahl durchgehen
+\begin{itemize}
+\item[]\textbf{/T000/}\qquad Oben auf "'Project"' und dann auf "'new"' klicken.
+\item[]\textbf{/T010/}\qquad Zwischen den Reitern wechseln.
+\item[]\textbf{/T020/}\qquad Auf dem Video Reiter auf "'Add video"' klicken.
+\item[]\textbf{/T030/}\qquad "'Load video"' klicken und unter "'File Explorer"' ein Video auswählen.
+\item[]\textbf{/T040/}\qquad "'Load video"' klicken und unter "'Recent used"' ein Video auswählen.
+\item[]\textbf{/T050/}\qquad Filter auswählen und deren Reihenfolge und Intensity ändern.
+\item[]\textbf{/T060/}\qquad Artefakte auswählen und deren Reihenfolge  ändern.
+\item[]\textbf{/T070/}\qquad Filter/Artefakte auswählen und "'Apply to video"' klicken.
+\item[]\textbf{/T080/}\qquad laden Filter/Artefakte auswählen und Vorschau des Videos testen.
+\item[]\textbf{/T090/}\qquad laden Filter/Artefakte auswählen und "'Save video"' klicken.
+\item[]\textbf{/T0100/}\qquad Auf "'Remove video"' klicken.
+\item[]\textbf{/T0110/}\qquad Mehrere Videos durch "'Add video"' aufrufen.
+\item[]\textbf{/T0120/}\qquad Videos mit 0,5x 1,0x 1,5x Geschwindigkeit abspielen.
+\item[]\textbf{/T0130/}\qquad Videos mit < und > und Frame für Frame  durchgehen.
+\item[]\textbf{/T0140/}\qquad Videos Starten, Pausieren und Stoppen.
+\item[]\textbf{/T0150/}\qquad Auf "'Add comparison"' klicken.
+\item[]\textbf{/T0160/}\qquad Auf dem Analyse Reiter Videos zur Analyse auswählen und "'Analysis"' klicken.
+\item[]\textbf{/T0170/}\qquad Ergebnisse unter den "'Color Differenz"' und dem "'PSNR"' Reiter betrachten.
+\item[]\textbf{/T0180/}\qquad Comment schreiben und auf "'Save result"' klicken.
+\item[]\textbf{/T0190/}\qquad Oben auf "'Project"' und dann auf "'Save"'/"'Save As"' klicken.
+\item[]\textbf{/T0200/}\qquad Oben auf "'Edit"' und dann auf "'undo"'/"'redo"' klicken.
+\item[]\textbf{/T0210/}\qquad Oben auf "'Project"' und dann auf "'Load"' klicken.
+\end{itemize}
+\subsection{Szenarien}
+Folgende Szenarien sind zu überprüfen:
+\begin{itemize}
+\item[]\textbf{/T100/}\qquad Zunächst neues Project starten dann ein Video hinzufügen, daraufhin eine encodierte Version des Videos hinzufügen. Diese dann betrachten und Analysieren.
+\item[]\textbf{/T110/}\qquad Zunächst neues Project starten dann ein Video hinzufügen und Filter/ Artefakte auswählen und abspeichern. daraufhin das abgespeicherte Video encodieren und als neues Video hinzufügen. Diese dann betrachten und Analysieren.
+\item[]\textbf{/T120/}\qquad Ein Project laden. Die Videos betrachten, Analysieren und deren Filter/Artefakte betrachten.
+\end{itemize}
 \section{Glossar}
 \subsection*{5-Sterne Bewertungssystem}  
 5 Sterne zur Bewertung, wobei 1 Stern die niedrigste Bewertung ist und 5 Sterne die höchste.
