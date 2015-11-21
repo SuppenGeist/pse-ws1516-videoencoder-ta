@@ -3,5 +3,10 @@
         <file>Picture/imgres.png</file>
         <file>Picture/SW_Filter.jpg</file>
         <file>Picture/sw_filter.png</file>
+        <file>Picture/projectEditIcons/blank4.png</file>
+        <file>Picture/projectEditIcons/folder47.png</file>
+        <file>Picture/projectEditIcons/return13.png</file>
+        <file>Picture/projectEditIcons/savefile2.png</file>
+        <file>Picture/projectEditIcons/arrows110.png</file>
     </qresource>
 </RCC>
