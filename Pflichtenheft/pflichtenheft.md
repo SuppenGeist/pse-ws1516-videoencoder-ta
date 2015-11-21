@@ -64,7 +64,7 @@ Privatprojekt auswählen.
 ### 2.3 Betriebsbedingungen
 Die Betriebsbedingungen unterscheiden sich im wesentlichen nicht zu denen normaler Software:
 * Büroumgebung
-* Laufzeit von bis zu 8h pro Tag ist zu erwarten
+* Laufzeiten von bis zu 8h pro Tag sind zu erwarten
 
 
 ## 3. Produktumgebung
@@ -101,7 +101,7 @@ Videos können mit folgenden Steuerelementen angeschaut werden:
 ##### /F0010/ Akzeptierte nicht encodede Dateitypen
 * YUV
 
-##### /F0020/ Akzeptierte encodierte Dateitypen
+##### /F0020/ Akzeptierte encodede Dateitypen
 * GStreamer kompatible Dateitypen
 
 ##### /F0030/ Anzeigen von Aktionen in Statusleiste
@@ -137,7 +137,7 @@ Ein Farbfilter mit folgenden einstellbaren Eigenschaften:
 * Intensität der einzelnen Farben
 
 ##### /F0124/ Fiter: Kontrast
-Ein Kontrastfilter mit den folgenden einstelbaren Eigenschften:
+Ein Kontrastfilter mit den folgenden einstelbaren Eigenschaften:
 * Helligkeit
 * Stärke des Kontrastes
 
@@ -193,7 +193,7 @@ Laden von mehreren enodierten Videos. Akzeptierte Dteitypen wie in /F0020/.
 ##### /F0210/ Anzeigen der encodierten Videos
 Die geladenen Videos können angeschaut werden.
 ##### /F0220/ Anzeigen des Rohvideos
-Das Rohvideo kann angeschaut werden
+Das Rohvideo kann angeschaut werden.
 ##### /F0230/ Steuerelemente
 Alle Videos aus /F0210/ und /F0220/ teilen sich einen Satz Steuerelemente. Steuerlemente wie in /F0000/.
 ##### /F0240/ Anzeigen von Dateiattributen
