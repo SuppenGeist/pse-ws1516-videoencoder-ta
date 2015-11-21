@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>795</width>
-    <height>628</height>
+    <width>792</width>
+    <height>644</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -34,7 +34,7 @@
       <string/>
      </property>
      <attribute name="title">
-      <string>Filter and artefacts</string>
+      <string>Filters and artefacts</string>
      </attribute>
      <widget class="QScrollArea" name="scrollArea">
       <property name="geometry">
@@ -97,7 +97,7 @@
         <x>10</x>
         <y>380</y>
         <width>771</width>
-        <height>161</height>
+        <height>181</height>
        </rect>
       </property>
       <property name="currentIndex">
@@ -105,7 +105,7 @@
       </property>
       <widget class="QWidget" name="tab_3">
        <attribute name="title">
-        <string>Filter</string>
+        <string>Filters</string>
        </attribute>
        <widget class="QScrollArea" name="scrollArea_2">
         <property name="geometry">
@@ -113,7 +113,7 @@
           <x>0</x>
           <y>0</y>
           <width>771</width>
-          <height>131</height>
+          <height>141</height>
          </rect>
         </property>
         <property name="verticalScrollBarPolicy">
@@ -131,16 +131,16 @@
            <x>0</x>
            <y>0</y>
            <width>769</width>
-           <height>116</height>
+           <height>126</height>
           </rect>
          </property>
          <widget class="QWidget" name="horizontalLayoutWidget">
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>0</y>
+            <y>10</y>
             <width>1041</width>
-            <height>121</height>
+            <height>111</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout">
@@ -235,7 +235,7 @@
           <x>0</x>
           <y>0</y>
           <width>771</width>
-          <height>131</height>
+          <height>141</height>
          </rect>
         </property>
         <property name="verticalScrollBarPolicy">
@@ -253,16 +253,16 @@
            <x>0</x>
            <y>0</y>
            <width>769</width>
-           <height>116</height>
+           <height>126</height>
           </rect>
          </property>
          <widget class="QWidget" name="horizontalLayoutWidget_4">
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>0</y>
+            <y>10</y>
             <width>1041</width>
-            <height>121</height>
+            <height>111</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_8">
@@ -608,8 +608,8 @@
        <rect>
         <x>180</x>
         <y>250</y>
-        <width>171</width>
-        <height>131</height>
+        <width>181</width>
+        <height>121</height>
        </rect>
       </property>
       <property name="title">
@@ -620,8 +620,8 @@
         <rect>
          <x>0</x>
          <y>20</y>
-         <width>171</width>
-         <height>111</height>
+         <width>181</width>
+         <height>101</height>
         </rect>
        </property>
        <property name="widgetResizable">
@@ -632,8 +632,8 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>169</width>
-          <height>109</height>
+          <width>179</width>
+          <height>99</height>
          </rect>
         </property>
         <widget class="QWidget" name="verticalLayoutWidget_3">
@@ -686,7 +686,7 @@
      <widget class="QPushButton" name="pushButton_12">
       <property name="geometry">
        <rect>
-        <x>0</x>
+        <x>10</x>
         <y>10</y>
         <width>101</width>
         <height>31</height>
@@ -699,7 +699,7 @@
      <widget class="QPushButton" name="pushButton_18">
       <property name="geometry">
        <rect>
-        <x>100</x>
+        <x>110</x>
         <y>10</y>
         <width>111</width>
         <height>31</height>
@@ -760,7 +760,7 @@
      <widget class="QPushButton" name="pushButton_21">
       <property name="geometry">
        <rect>
-        <x>210</x>
+        <x>220</x>
         <y>10</y>
         <width>121</width>
         <height>31</height>
@@ -961,7 +961,7 @@
      <widget class="QTabWidget" name="tabWidget_3">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>10</x>
         <y>60</y>
         <width>741</width>
         <height>251</height>
@@ -1021,7 +1021,7 @@ p, li { white-space: pre-wrap; }
      <widget class="QWidget" name="horizontalLayoutWidget_3">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>10</x>
         <y>0</y>
         <width>568</width>
         <height>51</height>
@@ -1112,7 +1112,7 @@ p, li { white-space: pre-wrap; }
      <widget class="QTextEdit" name="textEdit">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>10</x>
         <y>330</y>
         <width>431</width>
         <height>191</height>
@@ -1160,7 +1160,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>795</width>
+     <width>792</width>
      <height>25</height>
     </rect>
    </property>
@@ -1216,8 +1216,8 @@ p, li { white-space: pre-wrap; }
   </action>
  </widget>
  <resources>
-  <include location="filter_artefact_icons.qrc"/>
   <include location="resource.qrc"/>
+  <include location="filter_artefact_icons.qrc"/>
  </resources>
  <connections/>
 </ui>
