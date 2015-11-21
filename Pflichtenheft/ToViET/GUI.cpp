@@ -1,5 +1,5 @@
 #include "gui.h"
-#include "ui_gui.h"
+#include "ui_GUI.h"
 
 GUI::GUI(QWidget *parent) :
     QMainWindow(parent),
@@ -14,3 +14,4 @@ GUI::~GUI()
 {
     delete ui;
 }
+
