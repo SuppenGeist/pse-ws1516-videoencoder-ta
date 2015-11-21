@@ -25,176 +25,400 @@ bookmarks=true,
 \newpage
 \section*{Einleitung}
 Vive (lang: Video veritatem) ist ein Programm zum Testen verschiedener Videoencoder. Man hat die Möglichkeit ein Video (mit Filtern) zu bearbeiten welches dann von einem externen Encoder encodiert wird. Dieses encodierte Video kann dann wieder in Vive geladen werden, wo so komfortabel mit graphischen Visualisierungen entschieden werden kann, wie gut der Encoder das Video encodiert hat.
+\newpage
 \section{Zielbestimmung}
 Vive ist ein Multimedia-Framework zum Vergleichen und zur Evaluation von Videoencodern.
 \subsection{Musskriterien}
-\subsubsection{Video Auswählen}
-Der Benutzer muss können:
+\subsubsection{Rohvideo auswählen und bearbeiten}
 \begin{itemize}
 \item Video laden
-\item Aus einer Liste kürzlich geladener Videos auswählen
-\item Aus einer Liste von Filtern mehrere Filter auswählen und diese auf das gesamte Video anwenden
-\item Aus einer Liste von Artefakten ein Artefakt auswählen und dieses in das gesamte Video einfügen
-\item Anzeige einer Vorschau nach Auswahl der Filter und Artefakte
+\item Aus einer List von Filtern mehrere Filter auswählen
+\item Aus einer List von Artefakten mehrere Artefakte auswählen
+\item Filter/Artefakte anpassen
+\item Zuvor verwendete Konfigurationen (Filter/Artefakte) auswählen
+\item Anzeigen einer Vorschau mit den angewandten Filtern/Artefakten
 \item Video abspeichern
-\end{itemize}
-\subsubsection{Veränder des Videos}
-\begin{itemize}
-\item Video mithilfe von Filtern und Artefakten verändern
-\item Mindestens drei Filter gleichzeitig anwenden
-\item Zusätzlich zu den Filtern noch ein Artefakt auswählen
-\item Das veränderte Video abspeichern
 \end{itemize}
 \subsubsection{Bewerten des Encoders}
 \begin{itemize}
-\item Rohvideo und das encodierte Video synchron nebeneinander anschauen
-\item Die im vorigen Punkt genannten Videos in einstellbarer Geschwindigkeit abspielen
-\item Berechnete Bewertungskriterien für den Encoder anzeigen
-\item Unterschiede zwischen rohem und encodiertem Video in einer Differenzanzeige anzeigen lassen
-\item Encoderspezifische Eigenschaften wie Makroblöcke und Bitrate anzeigen
-\item Histogramm anzeigen
+\item Mehrere encodierte Videos laden
+\item Bewertungskriterien berrechnen
+\item Unterschiede zwischen Roh- und encodiertem Video visualisieren
+\item Bewertungskriterien/Videoeigenschaften/Metadaten visualisieren
+\item Roh- und encodierte(s) Video(s) nebeneinander synchron abspielen
+\end{itemize}
+\newpage
+\subsubsection{Sonstiges}
+\begin{itemize}
+\item Zustand des Programms als Projekt speichern
+\item Projekt laden
 \end{itemize}
 \subsection{Wunschkriterien}
-Der Benutzer soll können:
 \begin{itemize}
-\item Bewertungen speichern
-\item Bewertungen laden und neben der Bewertung des aktuell geladenen Encoders anzeigen
-\item Encoder auswählen und über die GUI starten
-\item Mehrere Artefakte gleichzeitig anwenden
-\end{itemize}
-\subsubsection{Projekte}
-\begin{itemize}
-\item Projekte anlegen
-\item Projekte speichern
+\item Encoder integrieren
+\item Manuelles Bewertungssystem
+\item Pluginsystem für Filter und Artefakte
+\item Sich bewegende Artefakte
 \end{itemize}
 \subsection{Abgrenzungskriterien}
 \begin{itemize}
 \item Die Software ist ausschließlich in deutscher Sprache verfügbar
-\item Die GUI ist fest vorgegeben, d.h. Schriftart,-größe, etc. sind nicht veränderbar
-\item Audio wird nicht mit abgespielt oder verglichen
+\item Audio wird nicht beachtet
 \end{itemize}
 \newpage
 \section{Produkteinsatz}
-Das Produkt dient zum Testen und Vergleichen von Videoencodern. 
-Damit sollen sowohl Privatpersonen, als auch Firmen oder Forschungseinrichtungen darin unterstützt werden, den best möglichen Videoencoder für ihre Bedürfnisse zu finden.
+Vive soll es Forschungseinrichtungen und Firmen ermöglichen Videoencoder einfach
+miteinander zu vergleichen. So kann schnell ein optimaler Encoder für den jeweiligen Zweck
+gefunden oder die Qualität eines vorhandenen geprüft werden. Aber auch Privatpersonen können
+mit diesem Produkt die Funktionsweise eines Encoders kennenlernen oder einen Encoder für ein
+Privatprojekt auswählen.
 \subsection{Anwendungsbereiche}
-Vergleich von Videoencodern für verschiedene Bedürfnisse
+\begin{itemize}
+\item Forschungsprojekte
+\item Kommerzielle Softwarentwicklung
+\item Privatprojekte
+\end{itemize}
 \subsection{Zielgruppe}
 \begin{itemize}
-\item Anwender von Videoencodern/ Privatpersonen
-\item Hersteller von Videoencodern
-\item Videoediteure
-\item Graphikdesigner
-\item Cutter
+\item Forscher im Bereich Multimedia
 \item Videoplattformbetreiber
-\item Forschungseinrichtungen
+\item Videobearbeiter
+\item Privatanwender
 \end{itemize}
 \subsection{Betriebsbedingungen}
+Die Betriebsbedingungen unterscheiden sich im wesentlichen nicht zu denen normaler Software:
 \begin{itemize}
-\item Benutzbar rund um die Uhr
-\item Wartungsfrei
-\item In privat oder geschäftlichem Einsatz
+\item Büroumgebung
+\item Laufzeiten von bis zu 8h pro Tag sind zu erwarten
 \end{itemize}
 \newpage
 \section{Produktumgebung}
 
 \subsection{Hardware}
 \begin{itemize}
-\item 64 Bit Prozessor
-\item Intel: Prozessor der Core-i-Serie oder neuer, AMD: Athlon II, Phenom II oder neuer
+\item AMD64 Prozessorarchitektur
+\item Intel: Pentium 4 oder neuer
+\item AMD: Athlon II, Phenom II oder neuer
 \item Mindestens 50 MB freier Speicher
 \item Mindestens 4 GB Arbeitsspeicher
 \end{itemize}
 \subsection{Software}
 \begin{itemize}
-\item 64Bit Linux
+\item Linux 64 bit (getestet auf Ubuntu)
 \item Qt Bibliothek Version 5.5.1
 \end{itemize}
 \newpage
+
+
 \section{Funktionale Anforderungen}
-\subsection{Video auswählen}
-Der Benutzer kann mittels eines Dateiauswahldialogs ein Video auszuwählen. Dieses
-Video wird später encodiert. Der Benutzer hat die Möglichkeit ein Video aus einer Liste zu wählen, die die letzten 10 encodierten
-Videos enthält. Das Programm prüft vor dem Anzeigen der Videos, ob diese noch existieren.
-\subsection{Filter auswählen}
-Der Benutzer hat die Möglichkeit einen einzigen Filter aus einer Liste vorgefertigter Filter mithilfe von Checkboxen auszuwählen. Vorhandene Filter:
+\subsection{Musskriterien}
+\subsubsection{Allgemein}
+\textbf{/F0000/ Steuerlemente für Videos}
+
+Videos können mit folgenden Steuerelementen angeschaut werden:
 \begin{itemize}
-\item Schwarzweiß-Filter
-\item Unschärfe-Filter
-\item Farbfilter
-\end{itemize}
-\subsection{Artefakte auswählen}
-Der Benutzer hat die Möglichkeit ein einziges Artefakt/Muster aus einer Liste vorgefertigter
-Artefakte/Muster auszuwählen. Diese Liste enthält folgende:
-\begin{itemize}
-\item Gitter-Muster
-\end{itemize}
-\subsection{Vorschau anzeigen}
-Der Benutzer hat die Möglichkeit, wenn er ein Artefakt oder ein Muster ausgewählt hat, sich eine
-Vorschau anzeigen zu lassen. Diese Vorschau besteht aus 5 Frames. Diese Frames sind jeweils bei
-1/5,2/5,... der gesamten Frameanzahl entnommen. Auf diese Frames wird der Filter bzw. Artefakt
-angewendet. Der Benutzer kann durch alle 5 Frames durchschalten. Wurde ein Artefakt und ein Filter
-gleichzeitig ausgewählt, wird erst das Artefakt angewendet, dann der Filter und wird die
-Vorschau angezeigt.
-\subsection{Filter/Artefakte anwenden}
-Der Benutzer muss den Filter/Artefakt anwenden, bevor das Video damit encodiert wird. Tut er
-das nicht, wird das Originalvideo codiert. Wenn der Nutzer das originale Video verändert, wird eine neue Videodatei mit
-dem Filter/Artefakt erzeugt. Werden Filter oder Artefakte geändert und die Änderungen angewandt, wird wieder eine neue
-Datei erstellt und die vorherige wieder gelöscht.
-\subsection{Vorschau des kompletten Videos}
-Hat der Benutzer den Filter/Artefakt angewandt, hat er die Möglichkeit, sich das komplette, neue
-Video anzuschauen. Steuerelemente für das Video sind dabei lediglich ein Start, Pause und Restart Buttons.
-\subsection{Video Encodieren}
-Der Benutzer kann, wenn er ein Video und Encoder ausgewählt hat, das ausgewählte Video mit dem ausgewählten Encoder codieren.
-\subsection{Bewertung des Encoders}
-\subsubsection{Amschauem des codierten und rohen Videos}
-Der Benutzer kann das Rohvideo sowie das codierte anschauen. Dabei sind beide Videos gleichzeitig zu sehen. Steuerelemente sind Start, Pause und Stop sowie eine Timeline. Es gibt nur einen Satz Steuerelemente für beide Videos. D.h. die Videos können nur synchron angeschaut werden.
-\subsubsection{Einstellen der Abspielgeschwindigkeit}
-Der Benutzer kann die Videos in verschiedenen Geschwindigkeiten abspielen. Zugelassen sind:
+\item Start/Pause-Button
+\item Stop-Button
+\item Timeline
+\item Geschwindigkeitsauswahl:
 \begin{itemize}
 \item Frame by Frame
-\item 0.25
-\item 0.5
-\item 0.75
-\item 1.0
-\item 1.25
-\item 1.5
-\item 1.75
-\item 2.0
+\item 0.25x
+\item 0.5x
+\item 0.75x
+\item 1.0x
+\item 1.25x
+\item 1.5x
+\item 1.75x
+\item 2.0x
 \end{itemize}
-\subsubsection{Bewertungskriterien anzeigen}
-Bewertungskriterien zum Encoder und Video werden angezeigt. Folgende Kriterien/Gegenüberstellungen gibt es:
+\end{itemize}
+
+\textbf{/F0010/ Akzeptierte nicht encodede Dateitypen}
+
 \begin{itemize}
-\item PSNR
+\item YUV
+\end{itemize}
+\newpage
+\textbf{/F0020/ Akzeptierte encodede Dateitypen}
+\begin{itemize}
+\item GStreamer kompatible Dateitypen
+\end{itemize}
+
+\textbf{/F0030/ Anzeigen von Aktionen in Statusleiste}
+
+Folgende Aktionen werden in der Statusleiste angezeigt, falls sie aktiv sind:
+\begin{itemize}
+\item Anwenden von Filtern/Artefakten
+\item Speichern des veränderten Videos
+\item Laden der encodierten Videos (also Berrechnung von PSNR,etc.)
+\item Speichern des Zustandes des Programms
+\item Laden des Zustandes des Programms
+\end{itemize}
+\subsubsection{Rohvideo auswählen und bearbeiten}
+\textbf{/F0100/ Auswahl mit Dateiauswaldialog}
+
+Auswahl eines Videos mit einem Dateiauswahldialog. Erlaubte Dateitypen wie in /F0010/.
+
+\textbf{/F0110/ Auswahl kürzlich ausgewählter Videos}
+
+Auswahl aus einer Liste mit den 10 zuletzt ausgewählten Videos.
+
+\textbf{/F0120/ Auswahl von Filtern}
+
+Auswahl von einem oder mehreren Filtern, die auf das Video gelegt werden.
+
+\textbf{/F0121/ Filter: Schwarzweiß}
+
+Ein Schwarzweißfilter mit einstellbaren Eigenschaften:
+\begin{itemize}
+\item Helligkeit
+\end{itemize}
+\newpage
+\textbf{/F0122/ Filter: Unschärfe}
+
+Ein Unschärfefilter mit folgenden einstellbaren Egenschaften:
+\begin{itemize}
+\item Helligkeit
+\item Grad der Unschärfe
+\end{itemize}
+
+\textbf{/F0123/ Filter: Farbe}
+
+Ein Farbfilter mit folgenden einstellbaren Eigenschaften:
+\begin{itemize}
+\item Helligkeit
+\item Farbe(n) die herausegefiltert werden sollen
+\item Intensität der einzelnen Farben
+\end{itemize}
+
+\textbf{/F0124/ Fiter: Kontrast}
+
+Ein Kontrastfilter mit den folgenden einstelbaren Eigenschaften:
+\begin{itemize}
+\item Helligkeit
+\item Stärke des Kontrastes
+\end{itemize}
+
+\textbf{/F0130/ Auswahl von Artefakten}
+
+Auswahl von einem oder mehreren Artefakten, die auf das Video gelegt werden.
+
+\textbf{/F0131/ Artefakt: Gittermuster}
+
+Ein Gittermuster mit den folgenden einstellbaren Eigenschaften:
+\begin{itemize}
+\item Anzahl der vertikalen und horizontalen Linien
+\item Farbe
+\item Helligkeit
+\item Dicke der Linien
+\end{itemize}
+\newpage
+\textbf{/F0132/ Artefakt: Schriftzug}
+
+Ein Schriftzug mit fixer Position und folgenden Eigenschaften:
+\begin{itemize}
+\item Schriftgröße
+\item Farbe
+\item Text
+\end{itemize}
+
+\textbf{/F0140/ Anwendugsreihenfolge von Filtern/Artefakten}
+
+Ein neu ausgewählter Filter/Artefakte wird ans Ende der Anwendungsreihenfolge angehängt.
+
+\textbf{/F0150/ Ändern der Anwendungsreihenfolge}
+
+Die Anwendungsreihenfolge der Filter/Artefakte kann beliebig geändert werden.
+
+\textbf{/F0160/ Entfernen ausgewählter Filter/Artefakte}
+
+Ausgewählte Filter/Artefakte können wieder entfernt werden.
+
+\textbf{/F0170/ Abspeichern einer Filter/Artefakte Konfiguration}
+
+Abspeichern der Konfiguration von Filtern/Artefakten. Abgespeichert wird:
+\begin{itemize}
+\item welche Filter/Artefakte ausgewählt wurden
+\item die Reihenfolge in der die Filter/Artefakte angewendet werden sollen
+\item der jeweilige Zustand, der einstellbaren Eigenschaften der Filter/Artefakte
+\end{itemize}
+
+\textbf{/F0180/ Anzeigen einer Vorschau}
+
+Die Vorschau des ausgewählten Videos mit den ausgewählten Filtern und Artefakten besteht aus zwei Stufen:
+
+\textbf{/F0181/ 5 Frame Vorschau}
+
+Jedes mal, wenn der Benutzer etwas an den Artefakten/Filtern ändert, werden 5 Frames aus dem Video sofort gerendert.
+\newpage
+\textbf{/F0182/ Komplette Vorschau}
+
+Nachdem der Nutzer auf einen entsprechenden Button geklickt hat, kann er das ausgewählte Video mit allen ausgewählten Filtern und Artefakten angeschauen. Steuerelemente wie in /F0000/.
+
+\textbf{/F0190/ Speichern des Videos}
+
+Das veränderte Video kann abgespeichert werden. Das Dateiformat ist dasselbe wie das des Inputvideos.
+
+\textbf{/F01100/ Laden einer Filter/Artefakte Konfiguration}
+
+Gespeicherte Konfigurationen können wieder geladen werden.
+
+\textbf{/F01110/ Alles zurücksetzen}
+
+Ausgewählte Filter und Artefakte können alle auf einmal entfernt werden.
+\subsubsection{Encodede Videos bewerten}
+\textbf{/F0200/ Encodierte Videos laden}
+
+Laden von mehreren enodierten Videos. Akzeptierte Dteitypen wie in /F0020/.
+
+\textbf{/F0210/ Anzeigen der encodierten Videos}
+
+Die geladenen Videos können angeschaut werden.
+\textbf{/F0220/ Anzeigen des Rohvideos}
+
+Das Rohvideo kann angeschaut werden.
+
+\textbf{/F0230/ Steuerelemente}
+
+Alle Videos aus /F0210/ und /F0220/ teilen sich einen Satz Steuerelemente. Steuerlemente wie in /F0000/.
+\newpage
+\textbf{/F0240/ Anzeigen von Dateiattributen}
+
+Folgende Dateiattribute der Videodateien werden angezeigt:
+\begin{itemize}
+\item Dateiname
 \item Dateigröße
-\item Encodierungsdauer
 \end{itemize}
-\subsubsection{Unterschied zwischen Roh- und encodiertem Video anzeigen}
-Der Benutzer kann sich die Farbabweichungen jeweils von RGB vom Roh- und encodiertem Video anzeigen lassen.
-\subsubsection{Interressante Eigenschaften des encodierten Videos anzeigen}
-Der Benutzer kann sich interressante Eigenschaften im encdierten Video anzeigen:
+
+\textbf{/F0250/ Anzeigen eines RGB-Histogramms}
+
+Für jedes Video wird ein RGB-Histogramm angezeigt.
+
+\textbf{/F0260/ Anzeigen eines PSNR-Graphen}
+
+Für jedes Video wird ein PSNR-Graph angezeigt.
+
+\textbf{/F0270/ PSNR-Graph als Timeline}
+
+Durch klicken auf den PSNR-Graph wird zu der dazugehörigen Stelle im Video gesprungen (bei allen geladenen Videos wird zu dieser Stelle gesprungen).
+\textbf{/F0280/ Farbunterschied zwischen Roh- und encodiertem Video anzeigen}
+Anzeigen der Farbdifferenz der einzelnen Farbkanäle zwischen dem Roh- und encodiertem Video.
+
+\textbf{/F0290/ Anzeigen von Makroblöcken}
+
+Falls der Encoder Makroblöcke zum komprimieren verwendet hat, können diese angezeigt werden.
+
+\textbf{/F02100/ Speichern des Zustands}
+
+Der Zustand des Programms  kann gespeichert werden. Gespeichert wird dabei folgendes:
 \begin{itemize}
-\item Makroblöcke
+\item Absoluter Pfad zum Rohvideo
+\item Absoluter Pfad zu allen geladenen encodierten Videos
+\item Aktuelle Abspielstelle in den Videos
 \end{itemize}
+
+\textbf{/F02110/ Laden eines Zustandes}
+
+Gespeicherte Zustände können wieder gelden werden.
+\subsection{Wunschkriterien}
+\textbf{/F1100/ Laden eines Encoders}
+
+Der Encoder, der verwendet werden soll, kann mit einem Dateiauswahldialog ausgewählt werden.
+
+\textbf{/F1110/ Akzeptierte Dateitypen für Encoder}
+
+Akzeptiert werden ELF32,ELF64 Dateien.
+
+\textbf{/F1120/ Encoder interface}
+
+Der Encoder mussüber eine Konsole aufgerufen werden können mit dem Dateinamen zum zu encodierendem Video und verschiedene Encodierungsmodi als Parameter.
+
+\textbf{/F1200/ Spezifizieren von Parametern}
+
+Man kann Parameter angeben, die dem Encoder übergeben werden.
+
+\textbf{/F1210/ Parameterliste}
+
+Mehrere verschiedene Parameter werden in einer Liste zusammengefasst.
+
+\textbf{/F1220/ Mehrfaches aufrufen des Encoders}
+
+Für jeden Eintrag in der Liste aus /F1210/ wird der Encoder aufgerufen.
+
+\textbf{/F1300/ Gewährleistung}
+
+Wenn der Encoder nicht korrekt arbeitet (z.B. nicht terminiert), kann die Korrektheit von Vive nicht grantiert werden.
+
+\textbf{/F1400/ Laden der encodierten Videos}
+
+Wenn alle encodierten Videos erzeugt wurden, werden sie automatisch geladen.
+\newpage
+\subsubsection{Manuelles Bewertungssystem}
+\textbf{/F2100/ Bewerten der encodierten Videos}
+
+Die Qualität eines encodierten Videos kann mit einem 5-Sterne Bewertungssystem bewertet werden.
+
+\textbf{/F2200/ Speichern des Zustandes}
+
+Zusätzlich zu den in /F02100/ spezifizierten Attributen wird die 5-Sterne Bewertung gespeichert.
+
+\textbf{/F2300/ Laden eines Zustandes}
+
+Beim Laden eines Zustandes wie in /F02100/ wird auch die 5-Sterne Bewertung geladen.
+
+
+\subsubsection{Pluginsystem für Filter und Artefakte}
+
+\textbf{/F3100/ Dynamisches Laden von Plugins}
+
+Beim Programmstart werden Filter und Artefakte dynamisch geladen.
+
+
+
 \newpage
 \section{Produktdaten}
-\subsection{Abgespeicherte Daten}
-Die 10 zuletzt verwendeten Videos werden abgespeichert, sodass diese über ein Dropdown-Auswahlmenü schnell ausgewählt werden können. Zu dem selben Zweck werden die 5 zuletzt verwendeten Videoencoder abgespeichert.
-\subsection{Vergleichsdaten}
+\subsection{Musskriterien}
+\textbf{/D010/ Filter/Artefakt Konfiguration}
+
+Wie in /F0170/ spezifiert:
 \begin{itemize}
-\item Ausgewähler Encoder
-\item Ausgewähltes Video
-\item Angewendete Filter und Artefakte
-\item Generierte PSNR Daten
+\item Ausgewählte Filter/Artefakte
+\item Reihenfolge der Filter/Artefakte
+\item Zustand der einstellbaren Eigenschaften der Filter/Artefakte
 \end{itemize}
+
+\textbf{/D020/ Zustand}
+
+Wie in /F02100/ spezifiert:
+\begin{itemize}
+\item Absoluter Pfad zum Rohvideo
+\item Absolute Pfade zu den encodierten Videos
+\item Abspielposition der Videos
+\end{itemize}
+
+\textbf{/D030/ Zuletzt ausgewählte Videos}
+
+Wie in /F0110/ spezifiert:
+\begin{itemize}
+\item Absoute Pfade zu den 10 zuletzt ausgewählten Videos
+\end{itemize}
+
+\subsection{Wunschkriterien}
+\textbf{/D110/ 5-Sterne Bewertung}
+
+Die manuelle Bewertung, wie in /F2200? spezifiziert.
+
+
 \newpage
 \section{Nichtfunktionale Anforderungen}
-\begin{itemize}
-\item[]\textbf{/L010/ Responsive GUI}\\
+\textbf{/L010/ Responsive GUI}
+
 Auch bei rechenintensiven Hintergrundaktionen bleibt die GUI responsive.
-\item[]\textbf{/L020/ Fehlerrobust}\\
+
+\textbf{/L020/ Fehlerrobust}
+
 Bei Fehlerhaften Videodateien oder Nutzereingaben soll das Programm nicht abstürzen.
-\end{itemize}
 \newpage
 \section{Benutzungsoberflächer}
 \subsection{Anforderungen}
@@ -204,65 +428,34 @@ Die Bedienungsoberfläche ist auf Mausbedienung ausgelegt, eine Bedienung ohne M
 \item Die Benutzungsoberfläche wird aus Elementen des Qt Designer aufgebaut
 \end{itemize}
 \subsection{Beispieldesign}
-\subsubsection{Encoderauswahl}
-\begin{figure}[htbp] 
-\centering
-\includegraphics[width=0.4\textwidth]{GUI_Entwurf_1/GUI_1.png}
-\caption{Encoderauswahl}
-\end{figure}
-\begin{itemize}
-\item "Öffnen" öffnet einen "Datei öffnen Dialog"
-\item Alternativ kann der Dateipfad manuell in das Textfenster eingegeben werden
-\item "Zuletzt verwendet" bietet eine Auswahl der kürzlich verwendeten Encoder
-\item "Weiter" bestätigt die Auswahl und wechselt zur Videoauswahl
-\end{itemize}
+
 \subsubsection{Videoauswahl}
 \begin{figure}[htbp] 
 \centering
-\includegraphics[width=0.5\textwidth]{GUI_Entwurf_1/GUI_2.png}
+\includegraphics[width=0.7\textwidth]{ToViET/Screenshots/Explorer.png}
 \caption{Videoauswahl}
 \end{figure}
-\begin{itemize}
-\item "Öffnen" öffnet einen "Datei öffnen Dialog"
-\item Alternativ kann der Dateipfad manuell in das Textfenster eingegeben werden
-\item "Zuletzt verwendet" bietet eine Auswahl der kürzlich verwendeten Videos
-\item "Weiter" bestätigt die Auswahl und wechselt zur Filter- und Musterauswahl
-\item "Zurück" wechselt zur Encoderauswahl
-\end{itemize}
+\newpage
 \subsubsection{Filter/Artefakte}
 \begin{figure}[htbp] 
 \centering
-\includegraphics[width=0.5\textwidth]{GUI_Entwurf_1/GUI_3.png}
+\includegraphics[width=0.7\textwidth]{ToViET/Screenshots/MainWindow_1.png}
 \caption{Filter/Artefakte Auswahl}
 \end{figure}
-\begin{itemize}
-\item "Filter" bietet die Möglichkeit einen Filter auszuwählen
-\item "Muster/Artefakte" bietet die Möglichkeit ein Muster oder ein Artefakt auszuwählen
-\item "Vorschau" berechnet 5 Vorschau Frames
-\item "<,>" bieten die Möglichkeit zwischen den Frames zu springen
-\item "Video berechnen" wendet die ausgewählten Filter/Muster auf das gesamte Video an
-\item "Play, Pause, Restart" bieten die Möglichkeit das berechnete Video abzuspielen
-\item "Weiter" bestätigt die Auswahl und wechselt zur Wiedergabe und Auswertung
-\item "Zurück" wechselt zur Videoauswahl
-\end{itemize}
+\newpage
 \subsubsection{Wiedergabe und Auswertung}
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.5\textwidth]{GUI_Entwurf_1/GUI_4.png}
+\includegraphics[width=0.5\textwidth]{ToViET/Screenshots/MainWindow_3.png}
 \caption{Wiedergabe und Auswertung}
 \end{figure}
-\begin{itemize}
-\item "Play" Startet alle Videos
-\item "Pause" Pausiert alle Videos
-\item "Restart" Startet alle Videos neu
-\item "<" Springt bei allen Videos einen Frame rückwärts
-\item ">" Springt bei allen Videos einen Frame vorwärts
-\item "x1.0" zeigt die aktuelle Wiedergabegeschwindigkeit und bietet die Möglichkeit diese zu ändern
-\item "Differenz" zeigt Differenz oder Makroblöcke in dem Bereich oben rechts
-\item "Weitere Informationen" kann Metadaten etc. enthalten
-\item "Zurück" Wechselt zur Filter- und Musterauswahl
-\item "Encoder ändern" öffnet einen "Datei öffnen Dialog" um den neuen Encoder zu wählen und wechselt dann zu Fenster 3 (alte Auswahl bleibt erhalten)
-\end{itemize}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.5\textwidth]{ToViET/Screenshots/MainWindow_4.png}
+\caption{Wiedergabe und Auswertung}
+\end{figure}
+
+
 \newpage
 \section{Qualitätsbestimmungen}
 \begin{tabular}{|c|c|c|c|c|}
@@ -278,6 +471,23 @@ Die Bedienungsoberfläche ist auf Mausbedienung ausgelegt, eine Bedienung ohne M
 \hline Sicherheit &  &  &  & • \\ 
 \hline 
 \end{tabular} 
+\newpage
+\section{Systemmodelle}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.7\textwidth]{UsecaseDiagrams/Analyse.png}
+\caption{Videoanalyse}
+\end{figure}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.7\textwidth]{UsecaseDiagrams/Filter_und_Artefakte.png}
+\caption{Filter und Artefakte}
+\end{figure}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.7\textwidth]{UsecaseDiagrams/Vive.png}
+\caption{Komplettes Programm}
+\end{figure}
 \newpage
 \section{Globale Testfälle und Szenarien}
 \subsection{Testfälle}
