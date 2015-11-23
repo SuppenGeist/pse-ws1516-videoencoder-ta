@@ -1,0 +1,143 @@
+%%% Template originaly created by Karol Kozioł (mail@karol-koziol.net) and modified for ShareLaTeX use
+\documentclass[parskip=full]{scrartcl}
+
+\usepackage[utf8]{inputenc} % use utf8 file encoding for TeX sources
+\usepackage[T1]{fontenc} % avoid garbled Unicode text in pdf
+\usepackage[german]{babel} % german hyphenation, quotes, etc
+\usepackage{hyperref} % detailed hyperlink/pdf configuration
+\hypersetup{ % ‘texdoc hyperref‘ for options
+pdftitle={Protokoll},
+bookmarks=true,
+}
+\usepackage{csquotes} % provides \enquote{} macro for "quotes"
+\usepackage{graphicx}
+\usepackage{xcolor}
+
+\usepackage{tgtermes}
+\usepackage{amsmath,amssymb,amsthm,textcomp}
+\usepackage{enumerate}
+\usepackage{multicol}
+\usepackage{tikz}
+
+\usepackage{geometry}
+\geometry{total={210mm,297mm},
+left=25mm,right=25mm,%
+bindingoffset=0mm, top=20mm,bottom=20mm}
+
+
+\linespread{1.3}
+
+\newcommand{\linia}{\rule{\linewidth}{0.5pt}}
+
+% custom theorems if needed
+\newtheoremstyle{mytheor}
+    {1ex}{1ex}{\normalfont}{0pt}{\scshape}{.}{1ex}
+    {{\thmname{#1 }}{\thmnumber{#2}}{\thmnote{ (#3)}}}
+
+\theoremstyle{mytheor}
+\newtheorem{defi}{Definition}
+
+% my own titles
+\makeatletter
+\renewcommand{\maketitle}{
+\begin{center}
+\vspace{2ex}
+{\huge \textsc{\@title}}
+\vspace{1ex}
+\\
+\linia\\
+\@author \hfill \@date
+\vspace{4ex}
+\end{center}
+}
+\makeatother
+%%%
+
+% custom footers and headers
+\usepackage{fancyhdr,lastpage}
+\pagestyle{fancy}
+\lhead{}
+\chead{}
+\rhead{}
+\cfoot{}
+\rfoot{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+%
+
+%%%----------%%%----------%%%----------%%%----------%%%
+
+\begin{document}
+
+\title{Protokoll \today}
+\date{\today}
+
+\maketitle
+\section{Überlegungen}
+\begin{itemize}
+\item Maximale Video-Auflösung definieren
+\item Sich bewegende Artefakte
+\item Vorschau-Frames auswählen
+\item Import Video-Codecs definieren
+\item Was passiert, wenn man versucht komplett andere Videos zu vergleichen?
+\end{itemize}
+
+\section{Tools}
+Visual Paradigm für UML
+
+\section{Libraries}
+\begin{itemize}
+\item GStreamer, was bietet das?
+\item Makroblöcke
+\end{itemize}
+
+\section{Pflichtenheft}
+\begin{itemize}
+\item Namen auf Titelseite
+\item Logo
+\item Nur ein Referenzvideo
+\item Filter selber schreiben
+\item Sonst ffmpeg, libav?
+\item 1.1.2: Mehrere encodierte Videos laden, auch Referenzvideo?
+\item Wir haben eine GUI -> Musskriterium
+\item Analyseergebnisse speichern? Berechnung könnte länger dauern... -> Wunschkriterien
+\item Pentium 4?
+\item Ressourcenverbrauch definieren, Festplattenspeicher könnte auch mehr sein, 5gb
+\item Monitorauflösung... Farbmonitor?
+\item Software: Bibliotheken
+\item Musskriterien funktionale Anforderungen: Frame vor, Frame zurück
+\item Kompatible Dateiformate auflisten
+\item Filter: Helligkeit? Extra Filter wäre evtl besser
+\item Beim Speichern der Videos: Dateiformat dasselbe wie bei input Video. Evtl nicht Rohdatenvideo filtern, Ausgabeformat von diesen? Eher genau definieren, welches Ausgabeformat
+\item Bei jedem Video wird ein Diagramm angezeigt, ohne Auswahl
+\item Rechtschreib- und Tippfehler
+\item Außer PSNR noch was?
+\item Produktdaten: Testvideos
+\item Responsive...?
+\item Wie lange dauert...? Programmstart, Filter anwenden, usw
+\item GUI nur Deutsch, nur Englisch?
+\item Was sieht man in der GUI?
+\item Filter und Artefakte, wo sieht man die Vorschau?
+\item Volume Button? Audio?
+\item Audio? Wird mit abgespielt?
+\item Load Video Button? Erklären
+\item Die letzten Videos sieht man nicht mehr?
+\item Wo werden die letzten Videos angezeigt?
+\item Letzte Videos werden global oder im Projekt gespeichert? -> Produktdaten
+\item Analyse-Ansicht: Wo können Videos abgespielt werden?
+\item Wie sollen die Videos verglichen werden? Add comparison...
+\item Konzept evtl nochmal überdenken? Vergleich, abspielen, ...
+\item Makroblöcke ändern sich mit der Zeit
+\item GUI Bilder fehlen, add comparison
+\item Umständliches GUI Konzept...
+\item Nutzerfreundlichkeit
+\item Systemmodelle, Texte
+\item Ausführlichere Testszenarien: Was macht der Nutzer, was passiert (Nutzer klickt auf Button, es öffnet sich etwas...)
+\item Fehlerszenarien
+\item Seitenanzahl: i.O. ca 30
+\end{itemize}
+
+\section{Abgabe}
+Nächsten Samstag, wie immer, und Montag ausgedruckt in Farbe mit Hefter
+Präsentation: 15 Minuten, Zeit einhalten
+\end{document}
