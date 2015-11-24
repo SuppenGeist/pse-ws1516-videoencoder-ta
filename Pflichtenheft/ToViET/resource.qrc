@@ -9,4 +9,9 @@
         <file>Picture/projectEditIcons/savefile2.png</file>
         <file>Picture/projectEditIcons/arrows110.png</file>
     </qresource>
+    <qresource prefix="/examples">
+        <file>Picture/makroblocks_example.png</file>
+        <file>Picture/psnr_example.png</file>
+        <file>Picture/bitrates_example.png</file>
+    </qresource>
 </RCC>
