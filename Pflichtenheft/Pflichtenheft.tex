@@ -15,7 +15,8 @@ bookmarks=true,
 %TitlePage
 {\title{\fontsize{40}{48} \selectfont \textsc{Pflichtenheft-Entwurf}\\
 {\fontsize{18}{18} \selectfont Multimediatool zum Testen von Videoencodern}}}
-{\author{Carina Weber, Jan Benedikt Schwarz, Johannes Werner, Noel Schuhmacher, Sascha Rapp, Simon Grafenhorst}}
+\author {Carina Weber, Jan Benedikt Schwarz, Johannes Werner, Noel Schuhmacher,\\
+Sascha Rapp, Simon Grafenhorst}
 
 \begin{document}
 \maketitle
@@ -59,11 +60,13 @@ Vive ist ein Multimedia-Framework zum Vergleichen und zur Evaluation von Videoen
 \item Manuelles Bewertungssystem
 \item Pluginsystem für Filter und Artefakte
 \item Sich bewegende Artefakte
+\item Auswählen von Vorschau Frames
 \end{itemize}
 \subsection{Abgrenzungskriterien}
 \begin{itemize}
-\item Die Software ist ausschließlich in deutscher Sprache verfügbar
+\item Die Software ist ausschließlich in englischer Sprache verfügbar
 \item Audio wird nicht beachtet
+\item Die maximale unterstützte Video-Auflösung beträgt 1920x1080 Pixel, wobei höhere Auflösungen auch funktionieren könnten. Diese werden aber nicht von uns unterstützt.
 \end{itemize}
 \newpage
 \section{Produkteinsatz}
@@ -106,6 +109,7 @@ Die Betriebsbedingungen unterscheiden sich im wesentlichen nicht zu denen normal
 \begin{itemize}
 \item Linux 64 bit (getestet auf Ubuntu)
 \item Qt Bibliothek Version 5.5.1
+\item Videocodecs für Import-Videos
 \end{itemize}
 \newpage
 
@@ -534,6 +538,8 @@ Weibliche oder männliche Person, die das Programm benutzt.
 Ein Programm zum komprimieren von Videodateien.
 \subsection*{Filter} 
 Ein Algorithmus, der Farbwerte nach einem bestimmten Muster verändert.
+\subsection*{Frame}
+Ein einziges Bild aus einem Video
 \subsection*{Projekt} 
 Ein Projekt beinhaltet die Pfade zu den geöffneten Videos sowie die eingestellten Filter und Artefakte.
 \subsection*{PSNR-Graph} 
