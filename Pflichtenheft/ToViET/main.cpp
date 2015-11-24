@@ -11,8 +11,6 @@ int main(int argc, char *argv[])
     GUI g;
     g.show();
 
-    comparisonDialog c;
-    c.show();
 
     return a.exec();
 }

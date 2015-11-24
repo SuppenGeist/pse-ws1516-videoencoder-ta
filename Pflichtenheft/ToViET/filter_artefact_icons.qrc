@@ -1,10 +1,10 @@
 <RCC>
     <qresource prefix="/Filter_icons">
         <file>Picture/Filter_icons/blur_filter.png</file>
-        <file>Picture/Filter_icons/farbchange_filter.png</file>
         <file>Picture/Filter_icons/gitter_muster.png</file>
-        <file>Picture/Filter_icons/sw_filter.png</file>
         <file>Picture/Filter_icons/text_muster.png</file>
-        <file>Picture/Filter_icons/without_filter.png</file>
+        <file>Picture/Filter_icons/bw_filter.png</file>
+        <file>Picture/Filter_icons/light_filter.png</file>
+        <file>Picture/Filter_icons/rgb_filter_example.png</file>
     </qresource>
 </RCC>
