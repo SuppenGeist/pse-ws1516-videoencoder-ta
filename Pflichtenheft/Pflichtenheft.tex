@@ -25,7 +25,7 @@ Sascha Rapp, Simon Grafenhorst}
 \tableofcontents
 \newpage
 \section*{Einleitung}
-Vive (lang: Video veritatem) ist ein Programm zum Testen verschiedener Videoencoder. Man hat die Möglichkeit ein Video (mit Filtern) zu bearbeiten, welches dann von einem externen Encoder encodiert wird. Dieses encodierte Video kann dann wieder in Vive geladen werden, und so komfortabel mit graphischen Visualisierungen entschieden werden kann, wie gut der Encoder das Video encodiert hat.
+Vive (lang: Video veritatem) ist ein Programm zum Testen verschiedener Videoencoder. Man hat die Möglichkeit ein Video (mit Filtern) zu bearbeiten welches dann von einem externen Encoder encodiert wird. Dieses encodierte Video kann dann wieder in Vive geladen werden, wo so komfortabel mit graphischen Visualisierungen entschieden werden kann, wie gut der Encoder das Video encodiert hat.
 \newpage
 \section{Zielbestimmung}
 Vive ist ein Multimedia-Framework zum Vergleichen und zur Evaluation von Videoencodern.
@@ -42,7 +42,6 @@ Vive ist ein Multimedia-Framework zum Vergleichen und zur Evaluation von Videoen
 \end{itemize}
 \subsubsection{Bewerten des Encoders}
 \begin{itemize}
-\item Das Rohvideo laden
 \item Mehrere encodierte Videos laden
 \item Bewertungskriterien berrechnen
 \item Unterschiede zwischen Roh- und encodiertem Video visualisieren
@@ -67,7 +66,7 @@ Vive ist ein Multimedia-Framework zum Vergleichen und zur Evaluation von Videoen
 \begin{itemize}
 \item Die Software ist ausschließlich in englischer Sprache verfügbar
 \item Audio wird nicht beachtet
-\item Korrektheit der Software wird gewährt bis zu einer Videauflösung von 1980x1020 Pixel
+\item Die maximale unterstützte Video-Auflösung beträgt 1920x1080 Pixel, wobei höhere Auflösungen auch funktionieren könnten. Diese werden aber nicht von uns unterstützt.
 \end{itemize}
 \newpage
 \section{Produkteinsatz}
@@ -103,15 +102,14 @@ Die Betriebsbedingungen unterscheiden sich im wesentlichen nicht zu denen normal
 \item AMD64 Prozessorarchitektur
 \item Intel: Pentium 4 oder neuer
 \item AMD: Athlon II, Phenom II oder neuer
-\item 5 GB freier Festplattenspeicher
+\item Mindestens 50 MB freier Speicher
 \item Mindestens 4 GB Arbeitsspeicher
 \end{itemize}
 \subsection{Software}
 \begin{itemize}
 \item Linux 64 bit (getestet auf Ubuntu)
 \item Qt Bibliothek Version 5.5.1
-\item Gewünschte Videocodecs
-\item ffmpeg 2.7.2 oder höher
+\item Videocodecs für Import-Videos
 \end{itemize}
 \newpage
 
@@ -119,7 +117,7 @@ Die Betriebsbedingungen unterscheiden sich im wesentlichen nicht zu denen normal
 \section{Funktionale Anforderungen}
 \subsection{Musskriterien}
 \subsubsection{Allgemein}
-\textbf{/F000/ Steuerlemente für Videos}
+\textbf{/F0000/ Steuerlemente für Videos}
 
 Videos können mit folgenden Steuerelementen angeschaut werden:
 \begin{itemize}
@@ -140,18 +138,18 @@ Videos können mit folgenden Steuerelementen angeschaut werden:
 \end{itemize}
 \end{itemize}
 
-\textbf{/F001/ Akzeptierte nicht encodede Dateitypen}
+\textbf{/F0010/ Akzeptierte nicht encodede Dateitypen}
 
 \begin{itemize}
 \item YUV
 \end{itemize}
 \newpage
-\textbf{/F002/ Akzeptierte encodede Dateitypen}
+\textbf{/F0020/ Akzeptierte encodede Dateitypen}
 \begin{itemize}
 \item GStreamer kompatible Dateitypen
 \end{itemize}
 
-\textbf{/F003/ Anzeigen von Aktionen in Statusleiste}
+\textbf{/F0030/ Anzeigen von Aktionen in Statusleiste}
 
 Folgende Aktionen werden in der Statusleiste angezeigt, falls sie aktiv sind:
 \begin{itemize}
@@ -161,28 +159,27 @@ Folgende Aktionen werden in der Statusleiste angezeigt, falls sie aktiv sind:
 \item Speichern des Zustandes des Programms
 \item Laden des Zustandes des Programms
 \end{itemize}
-
 \subsubsection{Rohvideo auswählen und bearbeiten}
-\textbf{/F100/ Auswahl mit Dateiauswaldialog}
+\textbf{/F0100/ Auswahl mit Dateiauswaldialog}
 
 Auswahl eines Videos mit einem Dateiauswahldialog. Erlaubte Dateitypen wie in /F0010/.
 
-\textbf{/F101/ Auswahl kürzlich ausgewählter Videos}
+\textbf{/F0110/ Auswahl kürzlich ausgewählter Videos}
 
 Auswahl aus einer Liste mit den 10 zuletzt ausgewählten Videos.
 
-\textbf{/F102/ Auswahl von Filtern}
+\textbf{/F0120/ Auswahl von Filtern}
 
 Auswahl von einem oder mehreren Filtern, die auf das Video gelegt werden.
 
-\textbf{/F103/ Filter: Schwarzweiß}
+\textbf{/F0121/ Filter: Schwarzweiß}
 
 Ein Schwarzweißfilter mit einstellbaren Eigenschaften:
 \begin{itemize}
 \item Helligkeit
 \end{itemize}
 \newpage
-\textbf{/F0104/ Filter: Unschärfe}
+\textbf{/F0122/ Filter: Unschärfe}
 
 Ein Unschärfefilter mit folgenden einstellbaren Egenschaften:
 \begin{itemize}
@@ -190,7 +187,7 @@ Ein Unschärfefilter mit folgenden einstellbaren Egenschaften:
 \item Grad der Unschärfe
 \end{itemize}
 
-\textbf{/F0105/ Filter: Farbe}
+\textbf{/F0123/ Filter: Farbe}
 
 Ein Farbfilter mit folgenden einstellbaren Eigenschaften:
 \begin{itemize}
@@ -199,7 +196,7 @@ Ein Farbfilter mit folgenden einstellbaren Eigenschaften:
 \item Intensität der einzelnen Farben
 \end{itemize}
 
-\textbf{/F0106/ Fiter: Kontrast}
+\textbf{/F0124/ Fiter: Kontrast}
 
 Ein Kontrastfilter mit den folgenden einstelbaren Eigenschaften:
 \begin{itemize}
@@ -207,11 +204,11 @@ Ein Kontrastfilter mit den folgenden einstelbaren Eigenschaften:
 \item Stärke des Kontrastes
 \end{itemize}
 
-\textbf{/F0107/ Auswahl von Artefakten}
+\textbf{/F0130/ Auswahl von Artefakten}
 
 Auswahl von einem oder mehreren Artefakten, die auf das Video gelegt werden.
 
-\textbf{/F0108/ Artefakt: Gittermuster}
+\textbf{/F0131/ Artefakt: Gittermuster}
 
 Ein Gittermuster mit den folgenden einstellbaren Eigenschaften:
 \begin{itemize}
@@ -221,7 +218,7 @@ Ein Gittermuster mit den folgenden einstellbaren Eigenschaften:
 \item Dicke der Linien
 \end{itemize}
 \newpage
-\textbf{/F0109/ Artefakt: Schriftzug}
+\textbf{/F0132/ Artefakt: Schriftzug}
 
 Ein Schriftzug mit fixer Position und folgenden Eigenschaften:
 \begin{itemize}
@@ -230,19 +227,19 @@ Ein Schriftzug mit fixer Position und folgenden Eigenschaften:
 \item Text
 \end{itemize}
 
-\textbf{/F0110/ Anwendugsreihenfolge von Filtern/Artefakten}
+\textbf{/F0140/ Anwendugsreihenfolge von Filtern/Artefakten}
 
 Ein neu ausgewählter Filter/Artefakte wird ans Ende der Anwendungsreihenfolge angehängt.
 
-\textbf{/F0111/ Ändern der Anwendungsreihenfolge}
+\textbf{/F0150/ Ändern der Anwendungsreihenfolge}
 
 Die Anwendungsreihenfolge der Filter/Artefakte kann beliebig geändert werden.
 
-\textbf{/F0112/ Entfernen ausgewählter Filter/Artefakte}
+\textbf{/F0160/ Entfernen ausgewählter Filter/Artefakte}
 
 Ausgewählte Filter/Artefakte können wieder entfernt werden.
 
-\textbf{/F0113/ Abspeichern einer Filter/Artefakte Konfiguration}
+\textbf{/F0170/ Abspeichern einer Filter/Artefakte Konfiguration}
 
 Abspeichern der Konfiguration von Filtern/Artefakten. Abgespeichert wird:
 \begin{itemize}
@@ -251,27 +248,27 @@ Abspeichern der Konfiguration von Filtern/Artefakten. Abgespeichert wird:
 \item der jeweilige Zustand, der einstellbaren Eigenschaften der Filter/Artefakte
 \end{itemize}
 
-\textbf{/F0114/ Anzeigen einer Vorschau}
+\textbf{/F0180/ Anzeigen einer Vorschau}
 
 Die Vorschau des ausgewählten Videos mit den ausgewählten Filtern und Artefakten besteht aus zwei Stufen:
 
-\textbf{/F0115/ 5 Frame Vorschau}
+\textbf{/F0181/ 5 Frame Vorschau}
 
 Jedes mal, wenn der Benutzer etwas an den Artefakten/Filtern ändert, werden 5 Frames aus dem Video sofort gerendert.
 \newpage
-\textbf{/F0116/ Komplette Vorschau}
+\textbf{/F0182/ Komplette Vorschau}
 
 Nachdem der Nutzer auf einen entsprechenden Button geklickt hat, kann er das ausgewählte Video mit allen ausgewählten Filtern und Artefakten angeschauen. Steuerelemente wie in /F0000/.
 
-\textbf{/F0117/ Speichern des Videos}
+\textbf{/F0190/ Speichern des Videos}
 
 Das veränderte Video kann abgespeichert werden. Das Dateiformat ist dasselbe wie das des Inputvideos.
 
-\textbf{/F0118/ Laden einer Filter/Artefakte Konfiguration}
+\textbf{/F01100/ Laden einer Filter/Artefakte Konfiguration}
 
 Gespeicherte Konfigurationen können wieder geladen werden.
 
-\textbf{/F0119/ Alles zurücksetzen}
+\textbf{/F01110/ Alles zurücksetzen}
 
 Ausgewählte Filter und Artefakte können alle auf einmal entfernt werden.
 \subsubsection{Encodede Videos bewerten}
@@ -461,8 +458,6 @@ Die Bedienungsoberfläche ist auf Mausbedienung ausgelegt, eine Bedienung ohne M
 \includegraphics[width=0.5\textwidth]{ToViET/Screenshots/MainWindow_4.png}
 \caption{Wiedergabe und Auswertung}
 \end{figure}
-
-
 \newpage
 \section{Qualitätsbestimmungen}
 \begin{tabular}{|c|c|c|c|c|}
@@ -482,18 +477,29 @@ Die Bedienungsoberfläche ist auf Mausbedienung ausgelegt, eine Bedienung ohne M
 \section{Systemmodelle}
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.7\textwidth]{UsecaseDiagrams/Analyse.png}
-\caption{Videoanalyse}
+\includegraphics[width=0.7\textwidth]{UsecaseDiagrams/Vive.png}
+\caption{Komplettes Programm}
+\begin{flushleft}
+Das Programm bietet zwei getrennte Funktionalitäten. Der Benutzer kann Filter und Artefakte auf eine Videosequenz anwenden und/oder mehrere Videos analysieren.
+\end{flushleft}
 \end{figure}
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.7\textwidth]{UsecaseDiagrams/Filter_und_Artefakte.png}
 \caption{Filter und Artefakte}
+\begin{flushleft}
+Während des Anwendens der Filter und Artefakte hat der Benutzer die Möglichkeit ein Video zu laden/speichern, die aktuelle Konfiguration zu bearbeiten und sich eine Vorschau anzeigen zu lassen. Das Bearbeiten der Konfiguration beinhaltet das Laden/Speichern/Anwenden der aktuellen Konfiguration, das Hinzufügen/Entfernen von Filtern und Artefakten, sowie das Verändern ihrer Reihenfolge. Zudem können Parameter wie die Intensität jedes Filters und Artefakts angepasst werden.
+\end{flushleft}
 \end{figure}
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.7\textwidth]{UsecaseDiagrams/Vive.png}
-\caption{Komplettes Programm}
+\includegraphics[width=0.7\textwidth]{UsecaseDiagrams/Analyse.png}
+\caption{Videoanalyse}
+\begin{flushleft}
+Der Benutzer hat die Möglichkeit mehrere Videos sowohl subjektiv als auch objektiv zu analysieren. Für die subjektive Analyse kann er Videos zur Übersicht hinzufügen, abspielen und wieder entfernen. Zudem kann er Differenzvideos hinzufügen oder Makroblocks ansehen.
+Zur objektiven Analyse können PSNR-Graphen, Bitrate-Graphen und Differenzgraphen angezeigt werden.
+Der Zustand des Projekts kann jederzeit gespeichert und geladen werden.
+\end{flushleft}
 \end{figure}
 \newpage
 \section{Globale Testfälle und Szenarien}
