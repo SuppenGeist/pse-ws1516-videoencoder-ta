@@ -30,7 +30,7 @@ Sascha Rapp, Simon Grafenhorst}
 \tableofcontents
 \newpage
 \section*{Einleitung}
-Vive (lang: Video veritatem) ist ein Programm zum Testen verschiedener Videoencoder. Man hat die Möglichkeit ein Video (mit Filtern) zu bearbeiten welches dann von einem externen Encoder encodiert wird. Dieses encodierte Video kann dann wieder in Vive geladen werden, wo so komfortabel mit graphischen Visualisierungen entschieden werden kann, wie gut der Encoder das Video encodiert hat.
+Vive (lang: Video veritatem) ist ein Programm zum Testen verschiedener Videoencoder. Man hat die Möglichkeit ein Video (mit Filtern) zu bearbeiten welches dann von einem externen Encoder encodiert wird. Dieses encodierte Video kann dann wieder in Vive geladen werden, und so komfortabel mit graphischen Visualisierungen entschieden werden kann, wie gut der Encoder das Video encodiert hat.
 \newpage
 \section{Zielbestimmung}
 Vive ist ein Multimedia-Framework zum Vergleichen und zur Evaluation von Videoencodern.
@@ -98,7 +98,9 @@ Privatprojekt auswählen.
 \item Privatanwender
 \end{itemize}
 \subsection{Betriebsbedingungen}
-Die Betriebsbedingungen unterscheiden sich im wesentlichen nicht zu denen normaler Software:
+Die Betriebsbedingungen unterscheiden sich im wesentlichen nicht zu denen normaler 
+\linebreak
+Software:
 \begin{itemize}
 \item Büroumgebung
 \item Laufzeiten von bis zu 8h pro Tag sind zu erwarten
@@ -166,15 +168,42 @@ Folgende Aktionen werden in der Statusleiste angezeigt, falls sie aktiv sind:
 \item Anwenden von Filtern/Artefakten
 \item Speichern des veränderten Videos
 \item Laden der encodierten Videos (also Berrechnung von PSNR,etc.)
-\item Speichern des Zustandes des Programms
-\item Laden des Zustandes des Programms
+\item Ladenn/Speichern von Projekten/Ergebnissen
+\item Laden/Speichern von Filterkonfigurationen
 \end{itemize}
+
+\textbf{/F0004/ Rückgängig}
+
+Es gibt eine globale Rückgängigfunktion.
+
+\textbf{/F0005/ Wiederholen}
+
+Es gibt eine globale Wiederholenfunktion.
+
+\textbf{/F0006/ Projekt speichern}
+
+Gespeichert wird:
+\begin{itemize}
+\item Attribute aus /F0211/
+\item Absoluter Pfad zu den encodeden Videos
+\item Absoluter Pfad zum Rohvideo
+\item Zustand des "Video and analysis"-Tabs
+\item Zustand des "Filter and artifacts"-Tabs
+\end{itemize}
+
+\textbf{/F0007/ Projekt laden}
+
+Alle Attribute aus /F0006/ werden wieder geladen und die GUI auf den Stand des
+Speicherns gesetzt. Wurden die gespeicherten Daten verändert kann die Korrektheit
+des Programms nicht mehr garantiert werden. Fehlende Daten werden, wenn möglich, neu berrechnet. 
+
 \subsubsection{Rohvideo auswählen und bearbeiten}
 \textbf{/F0100/ Auswahl mit Dateiauswaldialog}
 
 Auswahl eines Videos mit einem Dateiauswahldialog. Erlaubte Dateitypen wie in /F0001/.
 
 \textbf{/F0101/ Angabe von Eigenschaften}
+
 Angabe von
 \begin{itemize}
 \item Auflösung
@@ -184,6 +213,7 @@ Angabe von
 um den in /F0001/ spezifizierte Dateityp korrekt einlesen zu können.
 
 \textbf{/F0102/ Erlaubte Pixelshema}
+
 Für das in /F0101/ spezifierte Pixelshema sind folgende Angaben erlaubt:
 \begin{itemize}
 \item 4:4:4
@@ -201,74 +231,177 @@ nicht mehr gemacht werden.
 
 Auswahl von einem oder mehreren Filtern, die auf das Video gelegt werden.
 
-\textbf{/F0103/ Filter: Schwarzweiß}
+\textbf{/F0105/ Filter: Kontrast}
 
-Ein Schwarzweißfilter mit einstellbaren Eigenschaften:
+Einstellbare Eigenschaften:
 \begin{itemize}
-\item Helligkeit
-\end{itemize}
-\newpage
-\textbf{/F0104/ Filter: Unschärfe}
-
-Ein Unschärfefilter mit folgenden einstellbaren Egenschaften:
-\begin{itemize}
-\item Helligkeit
-\item Grad der Unschärfe
+\item Stärke
 \end{itemize}
 
-\textbf{/F0105/ Filter: Farbe}
+\textbf{/F0106/ Filter: Helligkeit}
 
-Ein Farbfilter mit folgenden einstellbaren Eigenschaften:
+Einstellbare Eigenschaften:
 \begin{itemize}
-\item Helligkeit
-\item Farbe(n) die herausegefiltert werden sollen
-\item Intensität der einzelnen Farben
+\item Stärke
 \end{itemize}
 
-\textbf{/F0106/ Fiter: Kontrast}
+\textbf{/F0107/ Filter: Sättigung}
 
-Ein Kontrastfilter mit den folgenden einstelbaren Eigenschaften:
+Einstellbare Eigenschaften:
 \begin{itemize}
-\item Helligkeit
-\item Stärke des Kontrastes
+\item Stärke
 \end{itemize}
 
-\textbf{/F0107/ Auswahl von Artefakten}
+\textbf{/F0108/ Filter: Postereffekt}
+
+Einstellbare Eigenschaften:
+\begin{itemize}
+\item Anzahl der verwendeten Zahlen
+\end{itemize}
+
+\textbf{/F0109/ Filter: Blende}
+
+Eine Ein-/Ausblende auf Schwarz.
+Einstellbare Eigenschaften:
+\begin{itemize}
+\item Ein-/Ausblende
+\item Start-/Endframe
+\end{itemize}
+
+\textbf{/F0110/ Filter: Rotieren}
+
+Einstellbare Eigenschaften:
+\begin{itemize}
+\item Rotationsgrad
+\end{itemize}
+
+\textbf{/F0111/ Filter: Rauschen}
+
+Einstellbare Eigenschaften:
+\begin{itemize}
+\item Statisch/Zufällig/Muster
+\item Stärke
+\end{itemize}
+
+\textbf{/F0112/ Filter: Negieren}
+
+\textbf{/F0113/ Filter: Rand}
+
+Der Rand vergrößert das Video.
+Einstellbare Eigenschaften:
+\begin{itemize}
+\item Oben/Unten/Rechts/Links
+\item Dicke
+\item Farbe
+\end{itemize}
+
+\textbf{/F0114/ Filter: Spiegeln}
+
+Einstellbare Eigenschaften:
+\begin{itemize}
+\item Horizontal/Vertikal
+\end{itemize}
+
+\textbf{/F0115/ Filter: Zoom}
+
+Zoomt zum Mittelpunkt in das Video.
+Einstellbare Eigenschaften:
+\begin{itemize}
+\item Stärke
+\end{itemize}
+
+\textbf{/F0116/ Filter: Skalieren}
+
+Zoomt zum Mittelpunkt in das Video.
+Einstellbare Eigenschaften:
+\begin{itemize}
+\item Seitenverhältnis beibehalten
+\item Auflösung/Verhältnis(z.B. 2 mal so groß)
+\end{itemize}
+
+\textbf{/F0117/ Filter: Schwarzweiß}
+
+\textbf{/F0118/ Filter: Sepia}
+
+\textbf{/F0119/ Filter: Vintage}
+
+\textbf{/F0120/ Filter: Unschärfe}
+
+Einstellbare Eigenschaften:
+\begin{itemize}
+\item Kanten beibehalten
+\item Stärke
+\end{itemize}
+
+\textbf{/F0121/ Filter: Schärfe}
+
+Einstellbare Eigenschaften:
+\begin{itemize}
+\item Stärke
+\end{itemize}
+
+\textbf{/F0122/ Filter: Farbbalance}
+
+Verändere Intensität der Grundfarben.
+Einstellbare Eigenschaften:
+\begin{itemize}
+\item Farbe
+\item Stärke
+\item Helle/Mittlere/Dunkle Pixel ändern
+\end{itemize}
+
+\textbf{/F0123/ Filter: RGB-Filter}
+
+Einstellbare Eigenschaften:
+\begin{itemize}
+\item Farbe
+\end{itemize}
+
+\textbf{/F0124/ Filter: Kanten}
+
+Zeichnet nur die Kanten.
+
+\textbf{/F0125/ Auswahl von Artefakten}
 
 Auswahl von einem oder mehreren Artefakten, die auf das Video gelegt werden.
 
-\textbf{/F0108/ Artefakt: Gittermuster}
+\textbf{/F0126/ Artefakt: Gittermuster}
 
-Ein Gittermuster mit den folgenden einstellbaren Eigenschaften:
+Einstellbare Eigenschaften:
 \begin{itemize}
 \item Anzahl der vertikalen und horizontalen Linien
 \item Farbe
-\item Helligkeit
 \item Dicke der Linien
+\item Durchsichtigkeit
 \end{itemize}
-\newpage
-\textbf{/F0109/ Artefakt: Schriftzug}
 
-Ein Schriftzug mit fixer Position und folgenden Eigenschaften:
+\textbf{/F0127/ Artefakt: Rechteck}
+
+Zeichnet ein gefülltes Rechteck.
+Einstellbare Eigenschaften:
 \begin{itemize}
-\item Schriftgröße
 \item Farbe
-\item Text
+\item Größe
+\item Position
+\item Durchsichtigkeit
 \end{itemize}
 
-\textbf{/F0110/ Anwendugsreihenfolge von Filtern/Artefakten}
+
+
+
+\textbf{/F0128/ Anwendugsreihenfolge von Filtern/Artefakten}
 
 Ein neu ausgewählter Filter/Artefakte wird ans Ende der Anwendungsreihenfolge angehängt.
 
-\textbf{/F0111/ Ändern der Anwendungsreihenfolge}
+\textbf{/F0129/ Ändern der Anwendungsreihenfolge}
 
 Die Anwendungsreihenfolge der Filter/Artefakte kann beliebig geändert werden.
 
-\textbf{/F0112/ Entfernen ausgewählter Filter/Artefakte}
+\textbf{/F0130/ Entfernen ausgewählter Filter/Artefakte}
 
 Ausgewählte Filter/Artefakte können wieder entfernt werden.
 
-\textbf{/F0113/ Abspeichern einer Filter/Artefakte Konfiguration}
+\textbf{/F0131/ Abspeichern einer Filter/Artefakte Konfiguration}
 
 Abspeichern der Konfiguration von Filtern/Artefakten. Abgespeichert wird:
 \begin{itemize}
@@ -277,27 +410,27 @@ Abspeichern der Konfiguration von Filtern/Artefakten. Abgespeichert wird:
 \item der jeweilige Zustand, der einstellbaren Eigenschaften der Filter/Artefakte
 \end{itemize}
 
-\textbf{/F0114/ Anzeigen einer Vorschau}
+\textbf{/F0132/ Anzeigen einer Vorschau}
 
-Die Vorschau des ausgewählten Videos mit den ausgewählten Filtern und Artefakten besteht aus zwei Stufen:
+Die Vorschau des ausgewählten Videos mit den ausgewählten Filtern und Artefakten besteht aus zwei Stufen.
 
-\textbf{/F0115/ 5 Frame Vorschau}
+\textbf{/F0133/ 5 Frame Vorschau}
 
 Jedes mal, wenn der Benutzer etwas an den Artefakten/Filtern ändert, werden 5 Frames aus dem Video sofort gerendert.
-\newpage
-\textbf{/F0116/ Komplette Vorschau}
+
+\textbf{/F0134/ Komplette Vorschau}
 
 Nachdem der Nutzer auf einen entsprechenden Button geklickt hat, kann er das ausgewählte Video mit allen ausgewählten Filtern und Artefakten angeschauen. Steuerelemente wie in /F0000/.
 
-\textbf{/F0117/ Speichern des Videos}
+\textbf{/F0135/ Speichern des Videos}
 
 Das veränderte Video kann abgespeichert werden. Das Dateiformat ist dasselbe wie das des Inputvideos.
 
-\textbf{/F0118/ Laden einer Filter/Artefakte Konfiguration}
+\textbf{/F0136/ Laden einer Filter/Artefakte Konfiguration}
 
 Gespeicherte Konfigurationen können wieder geladen werden.
 
-\textbf{/F0119/ Alles zurücksetzen}
+\textbf{/F0137/ Alles zurücksetzen}
 
 Ausgewählte Filter und Artefakte können alle auf einmal entfernt werden.
 \subsubsection{Encodede Videos bewerten}
@@ -305,151 +438,180 @@ Ausgewählte Filter und Artefakte können alle auf einmal entfernt werden.
 
 Laden von mehreren enodierten Videos. Akzeptierte Dteitypen wie in /F0020/.
 
-\textbf{/F0210/ Anzeigen der encodierten Videos}
+\textbf{/F0201/ Rohvideo laden}
+
+Laden des Rohvideos.
+
+\textbf{/F0202/ Anzeigen der encodierten Videos}
 
 Die geladenen Videos können angeschaut werden.
-\textbf{/F0220/ Anzeigen des Rohvideos}
+
+\textbf{/F0203/ Anzeigen des Rohvideos}
 
 Das Rohvideo kann angeschaut werden.
 
-\textbf{/F0230/ Steuerelemente}
+\textbf{/F0204/ Steuerelemente}
 
-Alle Videos aus /F0210/ und /F0220/ teilen sich einen Satz Steuerelemente. Steuerlemente wie in /F0000/.
-\newpage
-\textbf{/F0240/ Anzeigen von Dateiattributen}
+Alle Videos aus /F0202/ und /F0203/ teilen sich einen Satz Steuerelemente. Steuerlemente wie in /F0000/.
 
-Folgende Dateiattribute der Videodateien werden angezeigt:
+\textbf{/F0205/ Anzeigen von Dateiattributen}
+
+Folgende Attribute der Videodateien werden angezeigt:
 \begin{itemize}
 \item Dateiname
 \item Dateigröße
+\item Anzahl der verschiedenen Farben
+\item Codec
 \end{itemize}
 
-\textbf{/F0250/ Anzeigen eines RGB-Histogramms}
+\textbf{/F0206/ Anzeigen eines RGB-Histogramms}
 
 Für jedes Video wird ein RGB-Histogramm angezeigt.
 
-\textbf{/F0260/ Anzeigen eines PSNR-Graphen}
+\textbf{/F0207/ Anzeigen eines PSNR-Graphen}
 
-Für jedes Video wird ein PSNR-Graph angezeigt.
+Für jedes encodede Video wird ein PSNR-Graph angezeigt.
 
-\textbf{/F0270/ PSNR-Graph als Timeline}
+\textbf{/F0208/ PSNR-Graph als Timeline}
 
-Durch klicken auf den PSNR-Graph wird zu der dazugehörigen Stelle im Video gesprungen (bei allen geladenen Videos wird zu dieser Stelle gesprungen).
-\textbf{/F0280/ Farbunterschied zwischen Roh- und encodiertem Video anzeigen}
+Durch klicken auf den PSNR-Graph wird zu der dazugehörigen Stelle im Video gesprungen. (Bei allen geladenen Videos wird zu dieser Stelle gesprungen).
+
+\textbf{/F0209/ Farbunterschied zwischen Roh- und encodiertem Video anzeigen}
+
 Anzeigen der Farbdifferenz der einzelnen Farbkanäle zwischen dem Roh- und encodiertem Video.
 
-\textbf{/F0290/ Anzeigen von Makroblöcken}
+\textbf{/F0210/ Anzeigen von Makroblöcken}
 
-Falls der Encoder Makroblöcke zum komprimieren verwendet hat, können diese angezeigt werden.
+Falls der Encoder Makroblöcke zum Komprimieren verwendet hat, können diese angezeigt werden.
 
-\textbf{/F02100/ Speichern des Zustands}
+\textbf{/F0211/ Speichern der Ergebnisse}
 
-Der Zustand des Programms  kann gespeichert werden. Gespeichert wird dabei folgendes:
+Die Ergebnisse der Analyse können gespeichert werden. Gespeichert wird für jedes encodierte Video:
 \begin{itemize}
-\item Absoluter Pfad zum Rohvideo
-\item Absoluter Pfad zu allen geladenen encodierten Videos
-\item Aktuelle Abspielstelle in den Videos
+\item PSNR-Graph
+\item RGB-Histogramm
+\item Farbdifferenz
+\item Attribute aus /F0205/
+\item Kommentar zum Video
 \end{itemize}
 
-\textbf{/F02110/ Laden eines Zustandes}
+\textbf{/F02110/ Kommentar}
 
-Gespeicherte Zustände können wieder gelden werden.
+Zu jedem encodedem Video kann ein Kommentar angegeben.
 \subsection{Wunschkriterien}
-\textbf{/F1100/ Laden eines Encoders}
+
+\subsubsection{Encoder integrieren}
+\textbf{/W0000/ Laden eines Encoders}
 
 Der Encoder, der verwendet werden soll, kann mit einem Dateiauswahldialog ausgewählt werden.
 
-\textbf{/F1110/ Akzeptierte Dateitypen für Encoder}
+\textbf{/W0001/ Akzeptierte Dateitypen für Encoder}
 
 Akzeptiert werden ELF32,ELF64 Dateien.
 
-\textbf{/F1120/ Encoder interface}
+\textbf{/W0002/ Encoder interface}
 
 Der Encoder mussüber eine Konsole aufgerufen werden können mit dem Dateinamen zum zu encodierendem Video und verschiedene Encodierungsmodi als Parameter.
 
-\textbf{/F1200/ Spezifizieren von Parametern}
+\textbf{/W0003/ Spezifizieren von Parametern}
 
 Man kann Parameter angeben, die dem Encoder übergeben werden.
 
-\textbf{/F1210/ Parameterliste}
+\textbf{/W0004/ Parameterliste}
 
 Mehrere verschiedene Parameter werden in einer Liste zusammengefasst.
 
-\textbf{/F1220/ Mehrfaches aufrufen des Encoders}
+\textbf{/W0005/ Mehrfaches aufrufen des Encoders}
 
 Für jeden Eintrag in der Liste aus /F1210/ wird der Encoder aufgerufen.
 
-\textbf{/F1300/ Gewährleistung}
+\textbf{/W0006/ Gewährleistung}
 
 Wenn der Encoder nicht korrekt arbeitet (z.B. nicht terminiert), kann die Korrektheit von Vive nicht grantiert werden.
 
-\textbf{/F1400/ Laden der encodierten Videos}
+\textbf{/W0007/ Laden der encodierten Videos}
 
 Wenn alle encodierten Videos erzeugt wurden, werden sie automatisch geladen.
-\newpage
+
 \subsubsection{Manuelles Bewertungssystem}
-\textbf{/F2100/ Bewerten der encodierten Videos}
+\textbf{/W0100/ Bewerten der encodierten Videos}
 
 Die Qualität eines encodierten Videos kann mit einem 5-Sterne Bewertungssystem bewertet werden.
 
-\textbf{/F2200/ Speichern des Zustandes}
+\textbf{/W0101/ Speichern des Zustandes}
 
 Zusätzlich zu den in /F02100/ spezifizierten Attributen wird die 5-Sterne Bewertung gespeichert.
 
-\textbf{/F2300/ Laden eines Zustandes}
+\textbf{/W0102/ Laden eines Zustandes}
 
 Beim Laden eines Zustandes wie in /F02100/ wird auch die 5-Sterne Bewertung geladen.
 
 
 \subsubsection{Pluginsystem für Filter und Artefakte}
 
-\textbf{/F3100/ Dynamisches Laden von Plugins}
+\textbf{/W0200/ Dynamisches Laden von Plugins}
 
 Beim Programmstart werden Filter und Artefakte dynamisch geladen.
 
+\subsubsection{Bewegende Artefakte}
+
+\textbf{/W0300/ Bewegendes Rechteck}
+
+Das in /F0127/ spezifizierte Artfefakt kann sich auch nach vorgegebenen Mustern bewegen.
+
+\subsubsection{Auswählen von Vorschau Frames}
+
+\textbf{/W0400/ Vorschauframes}
+
+Die in /F0135/ spezifizierte Vorschau wird so verändert, dass die Frames zur Vorschau selbst gewählt werden können und nicht fest vorgegeben sind.
+
+\subsubsection{Weitere Bewertungskriterien}
+
+\textbf{/W0400/ SSim}
+
+SSim wird zusätzlich berrechnet und angezeigt, sowie zusatzlich in /F0211/ gespeichert.
+
+\textbf{/W0401/ VQuad-HD}
+
+VQuad-HD wird zusätzlich berrechnet und angezeigt, sowie zusatzlich in /F0211/ gespeichert.
 
 
 \newpage
 \section{Produktdaten}
 \subsection{Musskriterien}
-\textbf{/D010/ Filter/Artefakt Konfiguration}
+\textbf{/D001/ Filter/Artefakt Konfiguration}
 
-Wie in /F0170/ spezifiert:
-\begin{itemize}
-\item Ausgewählte Filter/Artefakte
-\item Reihenfolge der Filter/Artefakte
-\item Zustand der einstellbaren Eigenschaften der Filter/Artefakte
-\end{itemize}
+Wie in /F0131/ spezifiert.
 
-\textbf{/D020/ Zustand}
+\textbf{/D002/ Projekt}
 
-Wie in /F02100/ spezifiert:
-\begin{itemize}
-\item Absoluter Pfad zum Rohvideo
-\item Absolute Pfade zu den encodierten Videos
-\item Abspielposition der Videos
-\end{itemize}
+Wie in /F0006/ spezifiert.
 
-\textbf{/D030/ Zuletzt ausgewählte Videos}
+\textbf{/D003/ Ergenisse}
 
-Wie in /F0110/ spezifiert:
-\begin{itemize}
-\item Absoute Pfade zu den 10 zuletzt ausgewählten Videos
-\end{itemize}
+Wie in /F0211/ spezifiert.
+
+\textbf{/D004/ Videos}
+
+Mit Filtern und Artefakten veränderte Videos.
 
 \subsection{Wunschkriterien}
-\textbf{/D110/ 5-Sterne Bewertung}
+\textbf{/D100/ 5-Sterne Bewertung}
 
-Die manuelle Bewertung, wie in /F2200? spezifiziert.
+Wie in /W0101/ spezifiziert.
+
+\textbf{/D101/ Zusätzliche Bewertungskriterien}
+
+Wie in /W0400/ und /W0401/ spezifiziert.
 
 
 \newpage
 \section{Nichtfunktionale Anforderungen}
-\textbf{/L010/ Responsive GUI}
+\textbf{/L01/ Reagierende Oberfläche}
 
 Auch bei rechenintensiven Hintergrundaktionen reagiert das Programm auf Benutzereingaben.
 
-\textbf{/L020/ Fehlerrobust}
+\textbf{/L02/ Fehlerrobust}
 
 Bei Fehlerhaften Videodateien oder Nutzereingaben soll das Programm nicht abstürzen.
 \newpage
