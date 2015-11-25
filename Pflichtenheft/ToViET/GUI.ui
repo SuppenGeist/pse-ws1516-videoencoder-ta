@@ -1915,7 +1915,7 @@ Colour quantity:
       <widget class="QComboBox" name="comboBox_2">
        <property name="geometry">
         <rect>
-         <x>740</x>
+         <x>730</x>
          <y>40</y>
          <width>180</width>
          <height>22</height>
@@ -2110,7 +2110,7 @@ background-color: rgb(69, 62, 62);
       <widget class="QComboBox" name="comboBox_3">
        <property name="geometry">
         <rect>
-         <x>800</x>
+         <x>730</x>
          <y>10</y>
          <width>66</width>
          <height>25</height>
@@ -2182,6 +2182,8 @@ color: rgb(255, 255, 255);</string>
      </widget>
     </widget>
    </widget>
+   <zorder>tabWidget</zorder>
+   <zorder>scrollArea_3</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
