@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>954</width>
-    <height>932</height>
+    <height>953</height>
    </rect>
   </property>
   <property name="font">
@@ -23,9 +23,9 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>0</y>
+      <y>20</y>
       <width>951</width>
-      <height>881</height>
+      <height>921</height>
      </rect>
     </property>
     <property name="mouseTracking">
@@ -35,7 +35,11 @@
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
+     <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;
+</string>
+    </property>
+    <property name="tabShape">
+     <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
      <number>1</number>
@@ -166,7 +170,7 @@
             <x>0</x>
             <y>0</y>
             <width>1214</width>
-            <height>191</height>
+            <height>209</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout">
@@ -481,13 +485,35 @@
        <rect>
         <x>240</x>
         <y>10</y>
-        <width>171</width>
-        <height>361</height>
+        <width>246</width>
+        <height>401</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
         <widget class="QPushButton" name="pushButton_2">
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+	color: rgb(255, 255, 255);
+	border-color: rgb(69, 62, 62);
+background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #88d, stop: 0.1 #99e, stop: 0.49 #77c);
+	background: rgb(115, 115, 115);
+	border-width: 1px;
+	border-color:rgb(255, 255, 255);
+	border-style: outset;
+	border-radius: 7;
+	padding: 3px;
+	font-size: 18px;
+	padding-left: 5px;
+	padding-right: 5px;
+
+}
+
+QPushButton:pressed {
+background-color: rgb(69, 62, 62);
+	border-style: inset;
+}</string>
+         </property>
          <property name="text">
           <string>Up</string>
          </property>
@@ -495,13 +521,68 @@
        </item>
        <item>
         <widget class="QPushButton" name="pushButton_3">
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+	color: rgb(255, 255, 255);
+	border-color: rgb(69, 62, 62);
+background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #88d, stop: 0.1 #99e, stop: 0.49 #77c);
+	background: rgb(115, 115, 115);
+	border-width: 1px;
+	border-color:rgb(255, 255, 255);
+	border-style: outset;
+	border-radius: 7;
+	padding: 3px;
+	font-size: 18px;
+	min-width: 8em;
+	padding-left: 5px;
+	padding-right: 5px;
+
+}
+
+QPushButton:pressed {
+background-color: rgb(69, 62, 62);
+	border-style: inset;
+}</string>
+         </property>
          <property name="text">
           <string>Down</string>
+         </property>
+         <property name="autoDefault">
+          <bool>false</bool>
+         </property>
+         <property name="default">
+          <bool>false</bool>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="pushButton_4">
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+	color: rgb(255, 255, 255);
+	border-color: rgb(69, 62, 62);
+background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #88d, stop: 0.1 #99e, stop: 0.49 #77c);
+	background: rgb(115, 115, 115);
+	border-width: 1px;
+	border-color:rgb(255, 255, 255);
+	border-style: outset;
+	border-radius: 7;
+	padding: 3px;
+	font-size: 18px;
+	min-width: 8em;
+	padding-left: 5px;
+	padding-right: 5px;
+
+}
+
+QPushButton:pressed {
+background-color: rgb(69, 62, 62);
+	border-style: inset;
+}</string>
+         </property>
          <property name="text">
           <string>Remove</string>
          </property>
@@ -522,6 +603,29 @@
        </item>
        <item>
         <widget class="QPushButton" name="pushButton_6">
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+	color: rgb(255, 255, 255);
+	border-color: rgb(69, 62, 62);
+background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #88d, stop: 0.1 #99e, stop: 0.49 #77c);
+	background: rgb(115, 115, 115);
+	border-width: 1px;
+	border-color:rgb(255, 255, 255);
+	border-style: outset;
+	border-radius: 7;
+	padding: 3px;
+	font-size: 18px;
+	min-width: 8em;
+	padding-left: 5px;
+	padding-right: 5px;
+
+}
+
+QPushButton:pressed {
+background-color: rgb(69, 62, 62);
+	border-style: inset;
+}</string>
+         </property>
          <property name="text">
           <string>Load video</string>
          </property>
@@ -529,6 +633,29 @@
        </item>
        <item>
         <widget class="QPushButton" name="pushButton">
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+	color: rgb(255, 255, 255);
+	border-color: rgb(69, 62, 62);
+background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #88d, stop: 0.1 #99e, stop: 0.49 #77c);
+	background: rgb(115, 115, 115);
+	border-width: 1px;
+	border-color:rgb(255, 255, 255);
+	border-style: outset;
+	border-radius: 7;
+	padding: 3px;
+	font-size: 18px;
+	min-width: 8em;
+	padding-left: 5px;
+	padding-right: 5px;
+
+}
+
+QPushButton:pressed {
+background-color: rgb(69, 62, 62);
+	border-style: inset;
+}</string>
+         </property>
          <property name="text">
           <string>Appy to video</string>
          </property>
@@ -536,10 +663,43 @@
        </item>
        <item>
         <widget class="QPushButton" name="pushButton_7">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="font">
           <font>
-           <pointsize>12</pointsize>
+           <family>MS Shell Dlg 2</family>
+           <pointsize>-1</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
           </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+	color: rgb(255, 255, 255);
+	border-color: rgb(69, 62, 62);
+background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #88d, stop: 0.1 #99e, stop: 0.49 #77c);
+	background: rgb(115, 115, 115);
+	border-width: 1px;
+	border-color:rgb(255, 255, 255);
+	border-style: outset;
+	border-radius: 7;
+	padding: 3px;
+	font-size: 18px;
+	min-width: 8em;
+	padding-left: 5px;
+	padding-right: 5px;
+
+}
+
+QPushButton:pressed {
+background-color: rgb(69, 62, 62);
+	border-style: inset;
+}</string>
          </property>
          <property name="text">
           <string>Save video</string>
@@ -560,7 +720,103 @@
         </spacer>
        </item>
        <item>
+        <widget class="QPushButton" name="pushButton_8">
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+	color: rgb(255, 255, 255);
+	border-color: rgb(69, 62, 62);
+background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #88d, stop: 0.1 #99e, stop: 0.49 #77c);
+	background: rgb(115, 115, 115);
+	border-width: 1px;
+	border-color:rgb(255, 255, 255);
+	border-style: outset;
+	border-radius: 7;
+	padding: 3px;
+	font-size: 18px;
+	min-width: 8em;
+	padding-left: 5px;
+	padding-right: 5px;
+
+}
+
+QPushButton:pressed {
+background-color: rgb(69, 62, 62);
+	border-style: inset;
+}</string>
+         </property>
+         <property name="text">
+          <string>Load configuration</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_9">
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+	color: rgb(255, 255, 255);
+	border-color: rgb(69, 62, 62);
+background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #88d, stop: 0.1 #99e, stop: 0.49 #77c);
+	background: rgb(115, 115, 115);
+	border-width: 1px;
+	border-color:rgb(255, 255, 255);
+	border-style: outset;
+	border-radius: 7;
+	padding: 3px;
+	font-size: 18px;
+	min-width: 8em;
+	padding-left: 5px;
+	padding-right: 5px;
+
+}
+
+QPushButton:pressed {
+background-color: rgb(69, 62, 62);
+	border-style: inset;
+}</string>
+         </property>
+         <property name="text">
+          <string>Save configuration</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
         <widget class="QPushButton" name="pushButton_5">
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+	color: rgb(255, 255, 255);
+	border-color: rgb(69, 62, 62);
+background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #88d, stop: 0.1 #99e, stop: 0.49 #77c);
+	background: rgb(115, 115, 115);
+	border-width: 1px;
+	border-color:rgb(255, 255, 255);
+	border-style: outset;
+	border-radius: 7;
+	padding: 3px;
+	font-size: 18px;
+	min-width: 8em;
+	padding-left: 5px;
+	padding-right: 5px;
+
+}
+
+QPushButton:pressed {
+background-color: rgb(69, 62, 62);
+	border-style: inset;
+}</string>
+         </property>
          <property name="text">
           <string>Help</string>
          </property>
@@ -571,7 +827,7 @@
      <widget class="QLabel" name="label">
       <property name="geometry">
        <rect>
-        <x>480</x>
+        <x>500</x>
         <y>30</y>
         <width>411</width>
         <height>321</height>
@@ -693,6 +949,12 @@
       <layout class="QHBoxLayout" name="horizontalLayout_4">
        <item>
         <widget class="QPushButton" name="pushButton_22">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="text">
           <string/>
          </property>
@@ -717,8 +979,14 @@
        </item>
        <item>
         <widget class="QPushButton" name="pushButton_23">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="styleSheet">
-          <string notr="true">background: rgb(93, 93, 93)</string>
+          <string notr="true"/>
          </property>
          <property name="text">
           <string/>
@@ -735,6 +1003,12 @@
        </item>
        <item>
         <widget class="QPushButton" name="pushButton_24">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="text">
           <string/>
          </property>
@@ -750,6 +1024,12 @@
        </item>
        <item>
         <widget class="QPushButton" name="pushButton_25">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="text">
           <string/>
          </property>
@@ -765,6 +1045,12 @@
        </item>
        <item>
         <widget class="QPushButton" name="pushButton_26">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="text">
           <string/>
          </property>
@@ -865,42 +1151,19 @@
     </widget>
     <widget class="QWidget" name="tab_2">
      <attribute name="title">
-      <string>Video</string>
+      <string>Video and analysis</string>
      </attribute>
-     <widget class="QPushButton" name="pushButton_12">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>10</y>
-        <width>101</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add video</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_18">
-      <property name="geometry">
-       <rect>
-        <x>110</x>
-        <y>10</y>
-        <width>111</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Remove video</string>
-      </property>
-     </widget>
      <widget class="QScrollArea" name="scrollArea_3">
       <property name="geometry">
        <rect>
-        <x>-10</x>
-        <y>320</y>
+        <x>0</x>
+        <y>350</y>
         <width>951</width>
-        <height>521</height>
+        <height>511</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-attachment: scroll;</string>
       </property>
       <property name="verticalScrollBarPolicy">
        <enum>Qt::ScrollBarAlwaysOn</enum>
@@ -914,302 +1177,612 @@
          <x>0</x>
          <y>0</y>
          <width>932</width>
-         <height>519</height>
+         <height>816</height>
         </rect>
        </property>
-       <widget class="QGroupBox" name="groupBox_3">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>10</y>
-          <width>921</width>
-          <height>251</height>
-         </rect>
-        </property>
-        <property name="title">
-         <string>Video A</string>
-        </property>
-        <widget class="QLabel" name="label_26">
-         <property name="geometry">
-          <rect>
-           <x>680</x>
-           <y>20</y>
-           <width>231</width>
-           <height>221</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="pixmap">
-          <pixmap resource="resource.qrc">:/examples/Picture/makroblocks_example.png</pixmap>
-         </property>
-         <property name="scaledContents">
-          <bool>true</bool>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_27">
-         <property name="geometry">
-          <rect>
-           <x>10</x>
-           <y>20</y>
-           <width>225</width>
-           <height>225</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="pixmap">
-          <pixmap resource="resource.qrc">:/new/prefix1/Picture/imgres.png</pixmap>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_28">
-         <property name="geometry">
-          <rect>
-           <x>240</x>
-           <y>180</y>
-           <width>431</width>
-           <height>61</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="pixmap">
-          <pixmap resource="resource.qrc">:/examples/Picture/psnr_example.png</pixmap>
-         </property>
-         <property name="scaledContents">
-          <bool>true</bool>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_29">
-         <property name="geometry">
-          <rect>
-           <x>240</x>
-           <y>90</y>
-           <width>431</width>
-           <height>61</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="pixmap">
-          <pixmap resource="resource.qrc">:/examples/Picture/bitrates_example.png</pixmap>
-         </property>
-         <property name="scaledContents">
-          <bool>true</bool>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_30">
-         <property name="geometry">
-          <rect>
-           <x>250</x>
-           <y>20</y>
-           <width>111</width>
-           <height>16</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Space: 42 mB</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_31">
-         <property name="geometry">
-          <rect>
-           <x>240</x>
-           <y>160</y>
-           <width>47</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>PSNR:</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_32">
-         <property name="geometry">
-          <rect>
-           <x>240</x>
-           <y>70</y>
-           <width>47</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Bitrates:</string>
-         </property>
-        </widget>
-        <widget class="QTextEdit" name="textEdit">
-         <property name="geometry">
-          <rect>
-           <x>400</x>
-           <y>10</y>
-           <width>271</width>
-           <height>71</height>
-          </rect>
-         </property>
-         <property name="html">
-          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+       <layout class="QVBoxLayout" name="verticalLayout_6">
+        <item>
+         <widget class="QGroupBox" name="groupBox_4">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>250</height>
+           </size>
+          </property>
+          <property name="title">
+           <string>Video A</string>
+          </property>
+          <widget class="QLabel" name="label_31">
+           <property name="geometry">
+            <rect>
+             <x>680</x>
+             <y>20</y>
+             <width>231</width>
+             <height>221</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap resource="resource.qrc">:/examples/Picture/makroblocks_example.png</pixmap>
+           </property>
+           <property name="scaledContents">
+            <bool>true</bool>
+           </property>
+          </widget>
+          <widget class="QLabel" name="label_32">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>20</y>
+             <width>225</width>
+             <height>225</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap resource="resource.qrc">:/new/prefix1/Picture/imgres.png</pixmap>
+           </property>
+          </widget>
+          <widget class="QTextEdit" name="textEdit_2">
+           <property name="geometry">
+            <rect>
+             <x>240</x>
+             <y>170</y>
+             <width>431</width>
+             <height>71</height>
+            </rect>
+           </property>
+           <property name="html">
+            <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;User comment&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-         </property>
-        </widget>
-       </widget>
-       <widget class="QGroupBox" name="groupBox_4">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>270</y>
-          <width>921</width>
-          <height>251</height>
-         </rect>
-        </property>
-        <property name="title">
-         <string>Video B</string>
-        </property>
-        <widget class="QLabel" name="label_33">
-         <property name="geometry">
-          <rect>
-           <x>680</x>
-           <y>20</y>
-           <width>231</width>
-           <height>221</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="pixmap">
-          <pixmap resource="resource.qrc">:/examples/Picture/makroblocks_example.png</pixmap>
-         </property>
-         <property name="scaledContents">
-          <bool>true</bool>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_34">
-         <property name="geometry">
-          <rect>
-           <x>10</x>
-           <y>20</y>
-           <width>225</width>
-           <height>225</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="pixmap">
-          <pixmap resource="resource.qrc">:/new/prefix1/Picture/imgres.png</pixmap>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_35">
-         <property name="geometry">
-          <rect>
-           <x>240</x>
-           <y>180</y>
-           <width>431</width>
-           <height>61</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="pixmap">
-          <pixmap resource="resource.qrc">:/examples/Picture/psnr_example.png</pixmap>
-         </property>
-         <property name="scaledContents">
-          <bool>true</bool>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_36">
-         <property name="geometry">
-          <rect>
-           <x>240</x>
-           <y>90</y>
-           <width>431</width>
-           <height>61</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="pixmap">
-          <pixmap resource="resource.qrc">:/examples/Picture/bitrates_example.png</pixmap>
-         </property>
-         <property name="scaledContents">
-          <bool>true</bool>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_37">
-         <property name="geometry">
-          <rect>
-           <x>250</x>
-           <y>20</y>
-           <width>111</width>
-           <height>16</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Space: 42 mB</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_38">
-         <property name="geometry">
-          <rect>
-           <x>240</x>
-           <y>160</y>
-           <width>47</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>PSNR:</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_39">
-         <property name="geometry">
-          <rect>
-           <x>240</x>
-           <y>70</y>
-           <width>47</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Bitrates:</string>
-         </property>
-        </widget>
-        <widget class="QTextEdit" name="textEdit_2">
-         <property name="geometry">
-          <rect>
-           <x>400</x>
-           <y>10</y>
-           <width>271</width>
-           <height>71</height>
-          </rect>
-         </property>
-         <property name="html">
-          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+           </property>
+          </widget>
+          <widget class="QTabWidget" name="tabWidget_4">
+           <property name="geometry">
+            <rect>
+             <x>240</x>
+             <y>10</y>
+             <width>431</width>
+             <height>151</height>
+            </rect>
+           </property>
+           <property name="currentIndex">
+            <number>2</number>
+           </property>
+           <widget class="QWidget" name="tab_6">
+            <attribute name="title">
+             <string>Bitrates</string>
+            </attribute>
+            <widget class="QLabel" name="label_34">
+             <property name="geometry">
+              <rect>
+               <x>0</x>
+               <y>0</y>
+               <width>431</width>
+               <height>121</height>
+              </rect>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="pixmap">
+              <pixmap resource="resource.qrc">:/examples/Picture/bitrates_example.png</pixmap>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </widget>
+           <widget class="QWidget" name="tab_7">
+            <attribute name="title">
+             <string>PSNR</string>
+            </attribute>
+            <widget class="QLabel" name="label_36">
+             <property name="geometry">
+              <rect>
+               <x>0</x>
+               <y>0</y>
+               <width>431</width>
+               <height>121</height>
+              </rect>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="pixmap">
+              <pixmap resource="resource.qrc">:/examples/Picture/psnr_example.png</pixmap>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </widget>
+           <widget class="QWidget" name="tab">
+            <attribute name="title">
+             <string>Attributes</string>
+            </attribute>
+            <widget class="QLabel" name="label_33">
+             <property name="geometry">
+              <rect>
+               <x>0</x>
+               <y>0</y>
+               <width>421</width>
+               <height>121</height>
+              </rect>
+             </property>
+             <property name="text">
+              <string>Filesize: 42 mB</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+             </property>
+            </widget>
+           </widget>
+          </widget>
+          <widget class="QPushButton" name="pushButton_11">
+           <property name="geometry">
+            <rect>
+             <x>890</x>
+             <y>0</y>
+             <width>21</width>
+             <height>23</height>
+            </rect>
+           </property>
+           <property name="acceptDrops">
+            <bool>false</bool>
+           </property>
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="playerbuttons.qrc">
+             <normaloff>:/player_buttons/Picture/playerButtons/close.png</normaloff>:/player_buttons/Picture/playerButtons/close.png</iconset>
+           </property>
+           <property name="flat">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupBox_6">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>250</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background: rgb(189, 189, 189);</string>
+          </property>
+          <property name="title">
+           <string>Video B</string>
+          </property>
+          <widget class="QLabel" name="label_42">
+           <property name="geometry">
+            <rect>
+             <x>680</x>
+             <y>20</y>
+             <width>231</width>
+             <height>221</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap resource="resource.qrc">:/examples/Picture/makroblocks_example.png</pixmap>
+           </property>
+           <property name="scaledContents">
+            <bool>true</bool>
+           </property>
+          </widget>
+          <widget class="QLabel" name="label_43">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>20</y>
+             <width>225</width>
+             <height>225</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap resource="resource.qrc">:/new/prefix1/Picture/imgres.png</pixmap>
+           </property>
+          </widget>
+          <widget class="QTextEdit" name="textEdit_4">
+           <property name="geometry">
+            <rect>
+             <x>240</x>
+             <y>170</y>
+             <width>431</width>
+             <height>71</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);</string>
+           </property>
+           <property name="html">
+            <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;User comment&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-         </property>
-        </widget>
-       </widget>
+           </property>
+          </widget>
+          <widget class="QTabWidget" name="tabWidget_7">
+           <property name="geometry">
+            <rect>
+             <x>240</x>
+             <y>10</y>
+             <width>431</width>
+             <height>151</height>
+            </rect>
+           </property>
+           <property name="currentIndex">
+            <number>2</number>
+           </property>
+           <widget class="QWidget" name="tab_11">
+            <attribute name="title">
+             <string>Bitrates</string>
+            </attribute>
+            <widget class="QLabel" name="label_44">
+             <property name="geometry">
+              <rect>
+               <x>0</x>
+               <y>0</y>
+               <width>431</width>
+               <height>121</height>
+              </rect>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="pixmap">
+              <pixmap resource="resource.qrc">:/examples/Picture/bitrates_example.png</pixmap>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </widget>
+           <widget class="QWidget" name="tab_12">
+            <attribute name="title">
+             <string>PSNR</string>
+            </attribute>
+            <widget class="QLabel" name="label_45">
+             <property name="geometry">
+              <rect>
+               <x>0</x>
+               <y>0</y>
+               <width>431</width>
+               <height>121</height>
+              </rect>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="pixmap">
+              <pixmap resource="resource.qrc">:/examples/Picture/psnr_example.png</pixmap>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </widget>
+           <widget class="QWidget" name="tab_13">
+            <attribute name="title">
+             <string>Attributes</string>
+            </attribute>
+            <widget class="QLabel" name="label_46">
+             <property name="geometry">
+              <rect>
+               <x>0</x>
+               <y>0</y>
+               <width>431</width>
+               <height>121</height>
+              </rect>
+             </property>
+             <property name="font">
+              <font>
+               <family>MS Shell Dlg 2</family>
+               <pointsize>12</pointsize>
+               <weight>50</weight>
+               <italic>false</italic>
+               <bold>false</bold>
+              </font>
+             </property>
+             <property name="layoutDirection">
+              <enum>Qt::LeftToRight</enum>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(255, 255, 255);</string>
+             </property>
+             <property name="text">
+              <string>Filesize: 42 mB</string>
+             </property>
+             <property name="textFormat">
+              <enum>Qt::AutoText</enum>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+             </property>
+            </widget>
+           </widget>
+          </widget>
+          <widget class="QPushButton" name="pushButton_12">
+           <property name="geometry">
+            <rect>
+             <x>890</x>
+             <y>0</y>
+             <width>21</width>
+             <height>23</height>
+            </rect>
+           </property>
+           <property name="acceptDrops">
+            <bool>false</bool>
+           </property>
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="playerbuttons.qrc">
+             <normaloff>:/player_buttons/Picture/playerButtons/close.png</normaloff>:/player_buttons/Picture/playerButtons/close.png</iconset>
+           </property>
+           <property name="flat">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupBox_5">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>250</height>
+           </size>
+          </property>
+          <property name="title">
+           <string>Video C</string>
+          </property>
+          <widget class="QLabel" name="label_37">
+           <property name="geometry">
+            <rect>
+             <x>680</x>
+             <y>20</y>
+             <width>231</width>
+             <height>221</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap resource="resource.qrc">:/examples/Picture/makroblocks_example.png</pixmap>
+           </property>
+           <property name="scaledContents">
+            <bool>true</bool>
+           </property>
+          </widget>
+          <widget class="QLabel" name="label_38">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>20</y>
+             <width>225</width>
+             <height>225</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap resource="resource.qrc">:/new/prefix1/Picture/imgres.png</pixmap>
+           </property>
+          </widget>
+          <widget class="QTextEdit" name="textEdit_3">
+           <property name="geometry">
+            <rect>
+             <x>240</x>
+             <y>170</y>
+             <width>431</width>
+             <height>71</height>
+            </rect>
+           </property>
+           <property name="html">
+            <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;User comment&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+          <widget class="QTabWidget" name="tabWidget_6">
+           <property name="geometry">
+            <rect>
+             <x>240</x>
+             <y>10</y>
+             <width>431</width>
+             <height>151</height>
+            </rect>
+           </property>
+           <property name="currentIndex">
+            <number>2</number>
+           </property>
+           <widget class="QWidget" name="tab_9">
+            <attribute name="title">
+             <string>Bitrates</string>
+            </attribute>
+            <widget class="QLabel" name="label_39">
+             <property name="geometry">
+              <rect>
+               <x>0</x>
+               <y>0</y>
+               <width>431</width>
+               <height>121</height>
+              </rect>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="pixmap">
+              <pixmap resource="resource.qrc">:/examples/Picture/bitrates_example.png</pixmap>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </widget>
+           <widget class="QWidget" name="tab_10">
+            <attribute name="title">
+             <string>PSNR</string>
+            </attribute>
+            <widget class="QLabel" name="label_40">
+             <property name="geometry">
+              <rect>
+               <x>0</x>
+               <y>0</y>
+               <width>431</width>
+               <height>121</height>
+              </rect>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="pixmap">
+              <pixmap resource="resource.qrc">:/examples/Picture/psnr_example.png</pixmap>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </widget>
+           <widget class="QWidget" name="tab_5">
+            <attribute name="title">
+             <string>Attributes</string>
+            </attribute>
+            <widget class="QLabel" name="label_41">
+             <property name="geometry">
+              <rect>
+               <x>0</x>
+               <y>0</y>
+               <width>421</width>
+               <height>121</height>
+              </rect>
+             </property>
+             <property name="text">
+              <string>Filesize: 42 mB</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+             </property>
+            </widget>
+           </widget>
+          </widget>
+          <widget class="QPushButton" name="pushButton_13">
+           <property name="geometry">
+            <rect>
+             <x>890</x>
+             <y>0</y>
+             <width>21</width>
+             <height>23</height>
+            </rect>
+           </property>
+           <property name="acceptDrops">
+            <bool>false</bool>
+           </property>
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="playerbuttons.qrc">
+             <normaloff>:/player_buttons/Picture/playerButtons/close.png</normaloff>:/player_buttons/Picture/playerButtons/close.png</iconset>
+           </property>
+          </widget>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_10">
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+	color: rgb(255, 255, 255);
+	border-color: rgb(69, 62, 62);
+background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #88d, stop: 0.1 #99e, stop: 0.49 #77c);
+	background: rgb(115, 115, 115);
+	border-width: 1px;
+	border-color:rgb(255, 255, 255);
+	border-style: outset;
+	border-radius: 7;
+	padding: 3px;
+	font-size: 18px;
+	min-width: 8em;
+	padding-left: 5px;
+	padding-right: 5px;
+
+}
+
+QPushButton:pressed {
+background-color: rgb(69, 62, 62);
+	border-style: inset;
+}</string>
+          </property>
+          <property name="text">
+           <string>Add video</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </widget>
      </widget>
      <widget class="QGroupBox" name="groupBox_2">
       <property name="geometry">
        <rect>
-        <x>0</x>
-        <y>60</y>
+        <x>10</x>
+        <y>10</y>
         <width>921</width>
         <height>251</height>
        </rect>
@@ -1220,8 +1793,8 @@ p, li { white-space: pre-wrap; }
       <widget class="QLabel" name="label_10">
        <property name="geometry">
         <rect>
-         <x>680</x>
-         <y>20</y>
+         <x>690</x>
+         <y>30</y>
          <width>231</width>
          <height>221</height>
         </rect>
@@ -1252,217 +1825,279 @@ p, li { white-space: pre-wrap; }
         <pixmap resource="resource.qrc">:/new/prefix1/Picture/imgres.png</pixmap>
        </property>
       </widget>
-      <widget class="QLabel" name="label_14">
+      <widget class="QTabWidget" name="tabWidget_5">
        <property name="geometry">
         <rect>
          <x>240</x>
-         <y>180</y>
+         <y>100</y>
          <width>431</width>
-         <height>61</height>
+         <height>151</height>
         </rect>
        </property>
-       <property name="text">
-        <string/>
+       <property name="currentIndex">
+        <number>1</number>
        </property>
-       <property name="pixmap">
-        <pixmap resource="resource.qrc">:/examples/Picture/bitrates_example.png</pixmap>
-       </property>
-       <property name="scaledContents">
-        <bool>true</bool>
-       </property>
+       <widget class="QWidget" name="tab_8">
+        <attribute name="title">
+         <string>Bitrates</string>
+        </attribute>
+        <widget class="QLabel" name="label_35">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>431</width>
+           <height>121</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap resource="resource.qrc">:/examples/Picture/bitrates_example.png</pixmap>
+         </property>
+         <property name="scaledContents">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="tab_14">
+        <attribute name="title">
+         <string>Seite</string>
+        </attribute>
+        <widget class="QLabel" name="label_16">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>421</width>
+           <height>121</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Filesize: 42 mB</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+         </property>
+        </widget>
+       </widget>
       </widget>
-      <widget class="QLabel" name="label_16">
-       <property name="geometry">
-        <rect>
-         <x>250</x>
-         <y>20</y>
-         <width>111</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Space: 42 mB</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_18">
-       <property name="geometry">
-        <rect>
-         <x>240</x>
-         <y>150</y>
-         <width>47</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Bitrates:</string>
-       </property>
-      </widget>
      </widget>
-     <widget class="QPushButton" name="pushButton_20">
+     <widget class="QFrame" name="frame">
       <property name="geometry">
        <rect>
-        <x>230</x>
-        <y>10</y>
-        <width>101</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Save result</string>
-      </property>
-     </widget>
-     <widget class="QComboBox" name="comboBox_2">
-      <property name="geometry">
-       <rect>
-        <x>760</x>
-        <y>40</y>
-        <width>161</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <item>
-       <property name="text">
-        <string>Macroblocks</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>RGB difference</string>
-       </property>
-      </item>
-     </widget>
-     <widget class="QWidget" name="layoutWidget_2">
-      <property name="geometry">
-       <rect>
-        <x>350</x>
-        <y>0</y>
-        <width>391</width>
-        <height>51</height>
-       </rect>
-      </property>
-      <layout class="QHBoxLayout" name="horizontalLayout_5">
-       <item>
-        <widget class="QPushButton" name="pushButton_27">
-         <property name="text">
-          <string/>
-         </property>
-         <property name="icon">
-          <iconset>
-           <activeon>:/player_buttons/Picture/playerButtons/play106.png</activeon>
-          </iconset>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>20</width>
-           <height>20</height>
-          </size>
-         </property>
-         <property name="checkable">
-          <bool>false</bool>
-         </property>
-         <property name="flat">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="pushButton_28">
-         <property name="styleSheet">
-          <string notr="true">background: rgb(255, 255, 255)</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="icon">
-          <iconset>
-           <activeon>:/player_buttons/Picture/playerButtons/pause44.png</activeon>
-          </iconset>
-         </property>
-         <property name="flat">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="pushButton_29">
-         <property name="styleSheet">
-          <string notr="true">background: rgb(116, 116, 116)</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="icon">
-          <iconset>
-           <activeon>:/player_buttons/Picture/playerButtons/stop4.png</activeon>
-          </iconset>
-         </property>
-         <property name="flat">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="pushButton_30">
-         <property name="text">
-          <string/>
-         </property>
-         <property name="icon">
-          <iconset>
-           <activeon>:/player_buttons/Picture/playerButtons/last-track.png</activeon>
-          </iconset>
-         </property>
-         <property name="flat">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="pushButton_31">
-         <property name="text">
-          <string/>
-         </property>
-         <property name="icon">
-          <iconset>
-           <activeoff>:/player_buttons/Picture/playerButtons/skip2.png</activeoff>
-          </iconset>
-         </property>
-         <property name="autoDefault">
-          <bool>false</bool>
-         </property>
-         <property name="default">
-          <bool>false</bool>
-         </property>
-         <property name="flat">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QLabel" name="label_7">
-      <property name="geometry">
-       <rect>
-        <x>350</x>
-        <y>-70</y>
-        <width>391</width>
-        <height>121</height>
+        <x>0</x>
+        <y>280</y>
+        <width>961</width>
+        <height>71</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background: rgb(175, 175, 175)</string>
+       <string notr="true">background-color: rgb(181, 181, 181);</string>
       </property>
-      <property name="text">
-       <string/>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
       </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QComboBox" name="comboBox_2">
+       <property name="geometry">
+        <rect>
+         <x>750</x>
+         <y>30</y>
+         <width>180</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(116, 116, 116);
+color: rgb(255, 255, 255);</string>
+       </property>
+       <item>
+        <property name="text">
+         <string>RGB difference</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Macroblocks</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QWidget" name="layoutWidget_2">
+       <property name="geometry">
+        <rect>
+         <x>310</x>
+         <y>10</y>
+         <width>391</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_5">
+        <item>
+         <widget class="QPushButton" name="pushButton_27">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset>
+            <activeon>:/player_buttons/Picture/playerButtons/play106.png</activeon>
+           </iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>20</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="checkable">
+           <bool>false</bool>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_28">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset>
+            <activeon>:/player_buttons/Picture/playerButtons/pause44.png</activeon>
+           </iconset>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_29">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Ignored">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset>
+            <activeon>:/player_buttons/Picture/playerButtons/stop4.png</activeon>
+           </iconset>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_30">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset>
+            <activeon>:/player_buttons/Picture/playerButtons/last-track.png</activeon>
+           </iconset>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_31">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset>
+            <activeoff>:/player_buttons/Picture/playerButtons/skip2.png</activeoff>
+           </iconset>
+          </property>
+          <property name="autoDefault">
+           <bool>false</bool>
+          </property>
+          <property name="default">
+           <bool>false</bool>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QPushButton" name="pushButton_20">
+       <property name="geometry">
+        <rect>
+         <x>60</x>
+         <y>20</y>
+         <width>188</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+	color: rgb(255, 255, 255);
+	border-color: rgb(69, 62, 62);
+background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #88d, stop: 0.1 #99e, stop: 0.49 #77c);
+	background: rgb(115, 115, 115);
+	border-width: 1px;
+	border-color:rgb(255, 255, 255);
+	border-style: outset;
+	border-radius: 7;
+	padding: 3px;
+	font-size: 18px;
+	min-width: 8em;
+	padding-left: 5px;
+	padding-right: 5px;
+
+}
+
+QPushButton:pressed {
+background-color: rgb(69, 62, 62);
+	border-style: inset;
+}</string>
+       </property>
+       <property name="text">
+        <string>Save result</string>
+       </property>
+      </widget>
      </widget>
-     <zorder>label_7</zorder>
-     <zorder>pushButton_12</zorder>
-     <zorder>pushButton_18</zorder>
-     <zorder>scrollArea_3</zorder>
-     <zorder>groupBox_2</zorder>
-     <zorder>pushButton_20</zorder>
-     <zorder>comboBox_2</zorder>
-     <zorder>layoutWidget_2</zorder>
     </widget>
    </widget>
   </widget>
@@ -1477,7 +2112,7 @@ p, li { white-space: pre-wrap; }
    </property>
    <widget class="QMenu" name="menuProject">
     <property name="title">
-     <string>Project</string>
+     <string>P&amp;roject</string>
     </property>
     <addaction name="actionSave"/>
     <addaction name="actionSave_As"/>
@@ -1501,7 +2136,7 @@ p, li { white-space: pre-wrap; }
      <normaloff>:/new/prefix1/Picture/projectEditIcons/savefile2.png</normaloff>:/new/prefix1/Picture/projectEditIcons/savefile2.png</iconset>
    </property>
    <property name="text">
-    <string>Save</string>
+    <string>&amp;Save</string>
    </property>
    <property name="font">
     <font>
@@ -1511,7 +2146,7 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="actionSave_As">
    <property name="text">
-    <string>Save As</string>
+    <string>Sa&amp;ve As</string>
    </property>
    <property name="font">
     <font>
@@ -1525,7 +2160,7 @@ p, li { white-space: pre-wrap; }
      <normaloff>:/new/prefix1/Picture/projectEditIcons/folder47.png</normaloff>:/new/prefix1/Picture/projectEditIcons/folder47.png</iconset>
    </property>
    <property name="text">
-    <string>Load</string>
+    <string>&amp;Load</string>
    </property>
    <property name="font">
     <font>
@@ -1539,7 +2174,7 @@ p, li { white-space: pre-wrap; }
      <normaloff>:/new/prefix1/Picture/projectEditIcons/blank4.png</normaloff>:/new/prefix1/Picture/projectEditIcons/blank4.png</iconset>
    </property>
    <property name="text">
-    <string>New</string>
+    <string>&amp;New</string>
    </property>
    <property name="font">
     <font>
@@ -1553,7 +2188,7 @@ p, li { white-space: pre-wrap; }
      <normaloff>:/new/prefix1/Picture/projectEditIcons/return13.png</normaloff>:/new/prefix1/Picture/projectEditIcons/return13.png</iconset>
    </property>
    <property name="text">
-    <string>Undo</string>
+    <string>&amp;Undo</string>
    </property>
    <property name="font">
     <font>
@@ -1567,7 +2202,7 @@ p, li { white-space: pre-wrap; }
      <normaloff>:/new/prefix1/Picture/projectEditIcons/arrows110.png</normaloff>:/new/prefix1/Picture/projectEditIcons/arrows110.png</iconset>
    </property>
    <property name="text">
-    <string>Redo</string>
+    <string>&amp;Redo</string>
    </property>
    <property name="font">
     <font>
@@ -1578,6 +2213,7 @@ p, li { white-space: pre-wrap; }
  </widget>
  <resources>
   <include location="filter_artefact_icons.qrc"/>
+  <include location="playerbuttons.qrc"/>
   <include location="resource.qrc"/>
  </resources>
  <connections/>
