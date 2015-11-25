@@ -75,6 +75,7 @@ Vive ist ein Multimedia-Framework zum Vergleichen und zur Evaluation von Videoen
 \item Die Software ist ausschließlich in englischer Sprache verfügbar
 \item Audio wird nicht beachtet
 \item Korrektheit der Software wird gewährt bis zu einer Videauflösung von 1980x1020 Pixel
+\item Das Programm akzeptiert ausschließlich Rohvideos im YUV Format und Videos in Formaten, die in der libavcodec Bibliothek enthalten sind. 
 \end{itemize}
 \newpage
 \section{Produkteinsatz}
@@ -117,8 +118,8 @@ Die Betriebsbedingungen unterscheiden sich im wesentlichen nicht zu denen normal
 \begin{itemize}
 \item Linux 64 bit (getestet auf Ubuntu)
 \item Qt Bibliothek Version 5.5.1
-\item Gewünschte Videocodecs
 \item ffmpeg 2.7.2 oder höher
+\item libavcodec
 \end{itemize}
 \newpage
 
@@ -155,7 +156,7 @@ Videos können mit folgenden Steuerelementen angeschaut werden:
 \newpage
 \textbf{/F0002/ Akzeptierte encodede Dateitypen}
 \begin{itemize}
-\item GStreamer kompatible Dateitypen //TODO
+\item Libavcodec kompatible Dateitypen //TODO
 \end{itemize}
 
 \textbf{/F0003/ Anzeigen von Aktionen in Statusleiste}
