@@ -7,5 +7,6 @@
         <file>Picture/playerButtons/skip2.png</file>
         <file>Picture/playerButtons/sound53.png</file>
         <file>Picture/playerButtons/stop4.png</file>
+        <file>Picture/playerButtons/close.png</file>
     </qresource>
 </RCC>

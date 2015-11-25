@@ -15,17 +15,20 @@ TEMPLATE = app
 SOURCES += main.cpp \
     GUI.cpp \
     comparisondialog.cpp \
-    fileexplorer.cpp
+    fileexplorer.cpp \
+    propertiesdialog.cpp
 
 HEADERS  += \
     gui.h \
     comparisondialog.h \
-    fileexplorer.h
+    fileexplorer.h \
+    propertiesdialog.h
 
 FORMS    += \
     GUI.ui \
     comparisondialog.ui \
-    fileexplorer.ui
+    fileexplorer.ui \
+    propertiesdialog.ui
 
 RESOURCES += \
     resource.qrc \

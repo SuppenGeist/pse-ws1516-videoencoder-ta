@@ -128,7 +128,7 @@
        </rect>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab_3">
        <attribute name="title">
@@ -818,7 +818,7 @@ background-color: rgb(69, 62, 62);
 }</string>
          </property>
          <property name="text">
-          <string>Reset all</string>
+          <string>Help</string>
          </property>
         </widget>
        </item>
@@ -1156,10 +1156,10 @@ background-color: rgb(69, 62, 62);
      <widget class="QScrollArea" name="scrollArea_3">
       <property name="geometry">
        <rect>
-        <x>0</x>
+        <x>-10</x>
         <y>350</y>
         <width>951</width>
-        <height>511</height>
+        <height>456</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -1261,11 +1261,11 @@ p, li { white-space: pre-wrap; }
             </rect>
            </property>
            <property name="currentIndex">
-            <number>0</number>
+            <number>2</number>
            </property>
            <widget class="QWidget" name="tab_6">
             <attribute name="title">
-             <string>Bitrate</string>
+             <string>Bitrates</string>
             </attribute>
             <widget class="QLabel" name="label_34">
              <property name="geometry">
@@ -1315,17 +1315,24 @@ p, li { white-space: pre-wrap; }
             <attribute name="title">
              <string>Attributes</string>
             </attribute>
-            <widget class="QLabel" name="label_33">
+            <widget class="QLabel" name="label_17">
              <property name="geometry">
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>421</width>
+               <width>431</width>
                <height>121</height>
               </rect>
              </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(255, 255, 255);</string>
+             </property>
              <property name="text">
-              <string>Filesize: 42 mB</string>
+              <string>Filesize: 42 mB
+File name: 
+Codec:
+Colour quantity:
+</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -1447,11 +1454,11 @@ p, li { white-space: pre-wrap; }
             </rect>
            </property>
            <property name="currentIndex">
-            <number>0</number>
+            <number>2</number>
            </property>
            <widget class="QWidget" name="tab_11">
             <attribute name="title">
-             <string>Bitrate</string>
+             <string>Bitrates</string>
             </attribute>
             <widget class="QLabel" name="label_44">
              <property name="geometry">
@@ -1501,7 +1508,7 @@ p, li { white-space: pre-wrap; }
             <attribute name="title">
              <string>Attributes</string>
             </attribute>
-            <widget class="QLabel" name="label_46">
+            <widget class="QLabel" name="label_18">
              <property name="geometry">
               <rect>
                <x>0</x>
@@ -1510,26 +1517,15 @@ p, li { white-space: pre-wrap; }
                <height>121</height>
               </rect>
              </property>
-             <property name="font">
-              <font>
-               <family>MS Shell Dlg 2</family>
-               <pointsize>12</pointsize>
-               <weight>50</weight>
-               <italic>false</italic>
-               <bold>false</bold>
-              </font>
-             </property>
-             <property name="layoutDirection">
-              <enum>Qt::LeftToRight</enum>
-             </property>
              <property name="styleSheet">
               <string notr="true">background-color: rgb(255, 255, 255);</string>
              </property>
              <property name="text">
-              <string>Filesize: 42 mB</string>
-             </property>
-             <property name="textFormat">
-              <enum>Qt::AutoText</enum>
+              <string>Filesize: 42 mB
+File name: 
+Codec:
+Colour quantity:
+</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -1648,11 +1644,11 @@ p, li { white-space: pre-wrap; }
             </rect>
            </property>
            <property name="currentIndex">
-            <number>0</number>
+            <number>2</number>
            </property>
            <widget class="QWidget" name="tab_9">
             <attribute name="title">
-             <string>Bitrate</string>
+             <string>Bitrates</string>
             </attribute>
             <widget class="QLabel" name="label_39">
              <property name="geometry">
@@ -1702,17 +1698,24 @@ p, li { white-space: pre-wrap; }
             <attribute name="title">
              <string>Attributes</string>
             </attribute>
-            <widget class="QLabel" name="label_41">
+            <widget class="QLabel" name="label_20">
              <property name="geometry">
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>421</width>
+               <width>431</width>
                <height>121</height>
               </rect>
              </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(255, 255, 255);</string>
+             </property>
              <property name="text">
-              <string>Filesize: 42 mB</string>
+              <string>Filesize: 42 mB
+File name: 
+Codec:
+Colour quantity:
+</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -1835,11 +1838,11 @@ background-color: rgb(69, 62, 62);
         </rect>
        </property>
        <property name="currentIndex">
-        <number>0</number>
+        <number>1</number>
        </property>
        <widget class="QWidget" name="tab_8">
         <attribute name="title">
-         <string>Bitrate</string>
+         <string>Bitrates</string>
         </attribute>
         <widget class="QLabel" name="label_35">
          <property name="geometry">
@@ -1870,12 +1873,19 @@ background-color: rgb(69, 62, 62);
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>421</width>
+           <width>431</width>
            <height>121</height>
           </rect>
          </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(255, 255, 255);</string>
+         </property>
          <property name="text">
-          <string>Filesize: 42 mB</string>
+          <string>Filesize: 42 mB
+File name: 
+Codec:
+Colour quantity:
+</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -2094,7 +2104,7 @@ background-color: rgb(69, 62, 62);
 }</string>
        </property>
        <property name="text">
-        <string>Save results</string>
+        <string>Save result</string>
        </property>
       </widget>
       <widget class="QComboBox" name="comboBox_3">

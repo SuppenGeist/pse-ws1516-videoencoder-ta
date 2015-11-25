@@ -1,7 +1,7 @@
 #include <QApplication>
 #include "gui.h"
 #include "fileexplorer.h"
-#include "comparisondialog.h"
+#include "propertiesdialog.h"
 
 int main(int argc, char *argv[])
 {
@@ -10,6 +10,9 @@ int main(int argc, char *argv[])
     w.show();
     GUI g;
     g.show();
+
+    PropertiesDialog d;
+    d.show();
 
 
     return a.exec();
