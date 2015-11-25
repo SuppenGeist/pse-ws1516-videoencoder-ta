@@ -145,7 +145,7 @@ Videos können mit folgenden Steuerelementen angeschaut werden:
 \end{itemize}
 \end{itemize}
 
-\textbf{/F0001/ Akzeptierte nicht encodede Dateitypen}
+\textbf{/F0001/ Akzeptierte Rohdateitypen}
 
 \begin{itemize}
 \item YUV
@@ -153,7 +153,7 @@ Videos können mit folgenden Steuerelementen angeschaut werden:
 \newpage
 \textbf{/F0002/ Akzeptierte encodede Dateitypen}
 \begin{itemize}
-\item GStreamer kompatible Dateitypen
+\item GStreamer kompatible Dateitypen //TODO
 \end{itemize}
 
 \textbf{/F0003/ Anzeigen von Aktionen in Statusleiste}
@@ -169,13 +169,32 @@ Folgende Aktionen werden in der Statusleiste angezeigt, falls sie aktiv sind:
 \subsubsection{Rohvideo auswählen und bearbeiten}
 \textbf{/F0100/ Auswahl mit Dateiauswaldialog}
 
-Auswahl eines Videos mit einem Dateiauswahldialog. Erlaubte Dateitypen wie in /F0010/.
+Auswahl eines Videos mit einem Dateiauswahldialog. Erlaubte Dateitypen wie in /F0001/.
 
-\textbf{/F0101/ Auswahl kürzlich ausgewählter Videos}
+\textbf{/F0101/ Angabe von Eigenschaften}
+Angabe von
+\begin{itemize}
+\item Auflösung
+\item FPS (Standard:25)
+\item Pixelshema
+\end{itemize}
+um den in /F0001/ spezifizierte Dateityp korrekt einlesen zu können.
 
-Auswahl aus einer Liste mit den 10 zuletzt ausgewählten Videos.
+\textbf{/F0102/ Erlaubte Pixelshema}
+Für das in /F0101/ spezifierte Pixelshema sind folgende Angaben erlaubt:
+\begin{itemize}
+\item 4:4:4
+\item 4:2:2
+\item 4:2:0
+\item 4:1:1
+\end{itemize}
 
-\textbf{/F0102/ Auswahl von Filtern}
+\textbf{/F0103/ Auswahl kürzlich ausgewählter Videos}
+
+Auswahl aus einer Liste mit den 10 zuletzt ausgewählten Videos. Angaben wie in /F0101/ müssen
+nicht mehr gemacht werden.
+
+\textbf{/F0104/ Auswahl von Filtern}
 
 Auswahl von einem oder mehreren Filtern, die auf das Video gelegt werden.
 
