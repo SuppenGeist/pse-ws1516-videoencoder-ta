@@ -1863,7 +1863,7 @@ background-color: rgb(69, 62, 62);
        </widget>
        <widget class="QWidget" name="tab_14">
         <attribute name="title">
-         <string>Seite</string>
+         <string>Attributes</string>
         </attribute>
         <widget class="QLabel" name="label_16">
          <property name="geometry">
@@ -2212,9 +2212,9 @@ background-color: rgb(69, 62, 62);
   </action>
  </widget>
  <resources>
+  <include location="resource.qrc"/>
   <include location="filter_artefact_icons.qrc"/>
   <include location="playerbuttons.qrc"/>
-  <include location="resource.qrc"/>
  </resources>
  <connections/>
 </ui>
