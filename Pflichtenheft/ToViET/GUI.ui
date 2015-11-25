@@ -1175,7 +1175,7 @@ background-color: rgb(69, 62, 62);
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>-254</y>
+         <y>0</y>
          <width>932</width>
          <height>816</height>
         </rect>
@@ -2094,7 +2094,7 @@ background-color: rgb(69, 62, 62);
 }</string>
        </property>
        <property name="text">
-        <string>Save result</string>
+        <string>Save results</string>
        </property>
       </widget>
       <widget class="QComboBox" name="comboBox_3">
