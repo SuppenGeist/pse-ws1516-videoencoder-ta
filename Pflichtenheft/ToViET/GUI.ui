@@ -80,7 +80,7 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>202</width>
+         <width>206</width>
          <height>579</height>
         </rect>
        </property>
@@ -161,7 +161,7 @@
            <x>0</x>
            <y>0</y>
            <width>939</width>
-           <height>192</height>
+           <height>196</height>
           </rect>
          </property>
          <widget class="QWidget" name="horizontalLayoutWidget">
@@ -315,7 +315,7 @@
              <item>
               <widget class="QCheckBox" name="checkBox_7">
                <property name="text">
-                <string>Light filter</string>
+                <string>Brightness filter</string>
                </property>
               </widget>
              </item>
@@ -367,7 +367,7 @@
            <x>0</x>
            <y>0</y>
            <width>939</width>
-           <height>192</height>
+           <height>196</height>
           </rect>
          </property>
          <widget class="QWidget" name="horizontalLayoutWidget_4">
@@ -818,7 +818,7 @@ background-color: rgb(69, 62, 62);
 }</string>
          </property>
          <property name="text">
-          <string>Help</string>
+          <string>Reset</string>
          </property>
         </widget>
        </item>
@@ -1176,7 +1176,7 @@ background-color: rgb(69, 62, 62);
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>932</width>
+         <width>933</width>
          <height>816</height>
         </rect>
        </property>
@@ -2182,8 +2182,6 @@ color: rgb(255, 255, 255);</string>
      </widget>
     </widget>
    </widget>
-   <zorder>tabWidget</zorder>
-   <zorder>scrollArea_3</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -2191,7 +2189,7 @@ color: rgb(255, 255, 255);</string>
      <x>0</x>
      <y>0</y>
      <width>954</width>
-     <height>21</height>
+     <height>27</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuProject">
@@ -2296,9 +2294,9 @@ color: rgb(255, 255, 255);</string>
   </action>
  </widget>
  <resources>
-  <include location="resource.qrc"/>
-  <include location="filter_artefact_icons.qrc"/>
   <include location="playerbuttons.qrc"/>
+  <include location="filter_artefact_icons.qrc"/>
+  <include location="resource.qrc"/>
  </resources>
  <connections/>
 </ui>
