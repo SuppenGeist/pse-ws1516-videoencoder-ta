@@ -246,13 +246,15 @@ Einstellbare Eigenschaften:
 \end{itemize}
 
 \textbf{/F0108/ Filter: Postereffekt}
-Schränkt die Anzahl der Farben ein, die ein Pixel annehmen kann. Wenn diese Zahl höher ist, als im Originalvideo, wird das Original nicht verändert.
+
+Schränkt die Anzahl der Farben ein, aus denen das Video bestehen kann. Wenn diese Zahl höher ist als im Originalvideo, wird das Original nicht verändert.
 Einstellbare Eigenschaften:
 \begin{itemize}
-\item Anzahl möglicher Farben pro Pixel
+\item Anzahl der maximalen Farben
 \end{itemize}
 
 \textbf{/F0109/ Filter: Blende}
+
 Blendet das Video von einem schwarzen Bildschirm ein oder aus.
 Einstellbare Eigenschaften:
 \begin{itemize}
@@ -260,11 +262,12 @@ Einstellbare Eigenschaften:
 \item Start-/Endframe
 \end{itemize}
 
-\textbf{/F0110/ Filter: Rotieren}
-Rotiert das Video.
+\textbf{/F0110/ Filter: Drehen}
+
+Dreht das Video. Es ist dann permanent um die angegebene Gradzahl gedreht.
 Einstellbare Eigenschaften:
 \begin{itemize}
-\item Grad pro Sekunde
+\item Grad der Drehung
 \end{itemize}
 
 \textbf{/F0111/ Filter: Rauschen}
@@ -276,10 +279,11 @@ Einstellbare Eigenschaften:
 \end{itemize}
 
 \textbf{/F0112/ Filter: Negieren}
-Negiert die einzelnen Pixel im Video.
-Berrechnet das Negativ für jedes Frame.
+
+Berrechnet das farbliche Negativ des Videos.
 
 \textbf{/F0113/ Filter: Rand}
+
 Fügt dem Video einen Rand hinzu, welcher es vergrößert. Von dem Video wird nichts abgeschnitten.
 Einstellbare Eigenschaften:
 \begin{itemize}
@@ -289,6 +293,7 @@ Einstellbare Eigenschaften:
 \end{itemize}
 
 \textbf{/F0114/ Filter: Spiegeln}
+
 Spiegelt das Video um eine Achse.
 Einstellbare Eigenschaften:
 \begin{itemize}
@@ -343,10 +348,11 @@ Einstellbare Eigenschaften:
 \end{itemize}
 
 \textbf{/F0123/ Filter: RGB-Filter}
+
 Filtert zwei der Farben heraus.
 Einstellbare Eigenschaften:
 \begin{itemize}
-\item Farbe
+\item Farbe, die nicht gefiltert wird
 \end{itemize}
 
 \textbf{/F0124/ Filter: Kanten}
