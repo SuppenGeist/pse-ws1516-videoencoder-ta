@@ -29,8 +29,8 @@ Sascha Rapp, Simon Grafenhorst}
 \newpage
 \tableofcontents
 \newpage
-\section*{Einleitung}
-Vive (lang: Video veritatem) ist ein Programm zum Testen verschiedener Videoencoder. Man hat die Möglichkeit ein Video (mit Filtern) zu bearbeiten welches dann von einem externen Encoder encodiert wird. Dieses encodierte Video kann dann wieder in Vive geladen werden, und so komfortabel mit graphischen Visualisierungen entschieden werden kann, wie gut der Encoder das Video encodiert hat.
+\section{Einleitung}
+Vive (lang: Video veritatem) ist ein Programm zum Testen verschiedener Videoencoder. Man hat die Möglichkeit ein Video (mit Filtern und Artefakten) zu bearbeiten, welches dann von einem externen Encoder encodiert wird. Dieses encodierte Video kann dann wieder in Vive geladen werden. So kann komfortabel mit graphischen Visualisierungen entschieden werden, wie gut der Encoder das Video encodiert hat.
 \newpage
 \section{Zielbestimmung}
 Vive ist ein Multimedia-Framework zum Vergleichen und zur Evaluation von Videoencodern.
@@ -59,6 +59,7 @@ Vive ist ein Multimedia-Framework zum Vergleichen und zur Evaluation von Videoen
 \begin{itemize}
 \item Zustand des Programms als Projekt speichern
 \item Projekt laden
+\item Rückgängig/Wiederholen-Funktion
 \item Das Programm hat eine GUI
 \end{itemize}
 \subsection{Wunschkriterien}
@@ -112,7 +113,7 @@ Software:
 \begin{itemize}
 \item AMD64 Prozessorarchitektur
 \item Intel: Core i3 2100 oder neuer
-\item AMD: Athlon II, Phenom II oder neuer
+\item AMD: Athlon II oder neuer
 \item 5 GB freier Festplattenspeicher
 \item Mindestens 4 GB Arbeitsspeicher
 \item Monitorauflösung von mindestens 1240x1024
@@ -157,7 +158,7 @@ Videos können mit folgenden Steuerelementen angeschaut werden:
 \newpage
 \textbf{/F0002/ Akzeptierte encodede Dateitypen}
 \begin{itemize}
-\item Libavcodec kompatible Dateitypen //TODO
+\item Libavcodec kompatible Dateitypen
 \end{itemize}
 
 \textbf{/F0003/ Anzeigen von Aktionen in Statusleiste}
@@ -167,7 +168,7 @@ Folgende Aktionen werden in der Statusleiste angezeigt, falls sie aktiv sind:
 \item Anwenden von Filtern/Artefakten
 \item Speichern des veränderten Videos
 \item Laden der encodierten Videos (also Berrechnung von PSNR,etc.)
-\item Ladenn/Speichern von Projekten/Ergebnissen
+\item Laden/Speichern von Projekten/Ergebnissen
 \item Laden/Speichern von Filterkonfigurationen
 \end{itemize}
 
@@ -181,18 +182,11 @@ Es gibt eine globale Wiederholenfunktion.
 
 \textbf{/F0006/ Projekt speichern}
 
-Gespeichert wird:
-\begin{itemize}
-\item Attribute aus /F0211/
-\item Absoluter Pfad zu den encodeden Videos
-\item Absoluter Pfad zum Rohvideo
-\item Zustand des "Video and analysis"-Tabs
-\item Zustand des "Filter and artifacts"-Tabs
-\end{itemize}
+Es können Projekte gespeichert werden.
 
 \textbf{/F0007/ Projekt laden}
 
-Alle Attribute aus /F0006/ werden wieder geladen und die GUI auf den Stand des
+Das Projekt wird wieder geladen und die GUI auf den Stand des
 Speicherns gesetzt. Wurden die gespeicherten Daten verändert kann die Korrektheit
 des Programms nicht mehr garantiert werden. Fehlende Daten werden, wenn möglich, neu berrechnet. 
 
@@ -283,6 +277,8 @@ Einstellbare Eigenschaften:
 
 \textbf{/F0112/ Filter: Negieren}
 Negiert die einzelnen Pixel im Video.
+Berrechnet das Negativ für jedes Frame.
+
 \textbf{/F0113/ Filter: Rand}
 Fügt dem Video einen Rand hinzu, welcher es vergrößert. Von dem Video wird nichts abgeschnitten.
 Einstellbare Eigenschaften:
@@ -399,12 +395,7 @@ Ausgewählte Filter/Artefakte können wieder entfernt werden.
 
 \textbf{/F0131/ Abspeichern einer Filter/Artefakte Konfiguration}
 
-Abspeichern der Konfiguration von Filtern/Artefakten. Abgespeichert wird:
-\begin{itemize}
-\item welche Filter/Artefakte ausgewählt wurden
-\item die Reihenfolge in der die Filter/Artefakte angewendet werden sollen
-\item der jeweilige Zustand, der einstellbaren Eigenschaften der Filter/Artefakte
-\end{itemize}
+Konfiguration von Filtern/Artefakten kann abgespeichert werden.
 
 \textbf{/F0132/ Anzeigen einer Vorschau}
 
@@ -420,7 +411,7 @@ Nachdem der Nutzer auf einen entsprechenden Button geklickt hat, kann er das aus
 
 \textbf{/F0135/ Speichern des Videos}
 
-Das veränderte Video kann abgespeichert werden. Das Dateiformat ist dasselbe wie das des Inputvideos.
+Das veränderte Video kann abgespeichert werden. Das Dateiformat ist dasselbe wie das des Inputvideos. (Siehe /F0001/)
 
 \textbf{/F0136/ Laden einer Filter/Artefakte Konfiguration}
 
@@ -436,7 +427,7 @@ Laden von mehreren enodierten Videos. Akzeptierte Dteitypen wie in /F0020/.
 
 \textbf{/F0201/ Rohvideo laden}
 
-Laden des Rohvideos.
+Laden des Rohvideos. Akzeptierte Dateitypen wie in /F0001/.
 
 \textbf{/F0202/ Anzeigen der encodierten Videos}
 
@@ -482,16 +473,9 @@ Falls der Encoder Makroblöcke zum Komprimieren verwendet hat, können diese ang
 
 \textbf{/F0211/ Speichern der Ergebnisse}
 
-Die Ergebnisse der Analyse können gespeichert werden. Gespeichert wird für jedes encodierte Video:
-\begin{itemize}
-\item PSNR-Graph
-\item RGB-Histogramm
-\item Farbdifferenz
-\item Attribute aus /F0205/
-\item Kommentar zum Video
-\end{itemize}
+Die Ergebnisse der Analyse können gespeichert werden.
 
-\textbf{/F02110/ Kommentar}
+\textbf{/F0212/ Kommentar}
 
 Zu jedem encodedem Video kann ein Kommentar angegeben.
 \subsection{Wunschkriterien}
@@ -505,9 +489,10 @@ Der Encoder, der verwendet werden soll, kann mit einem Dateiauswahldialog ausgew
 
 Akzeptiert werden ELF32,ELF64 Dateien.
 
+\newpage
 \textbf{/W0002/ Encoder interface}
 
-Der Encoder mussüber eine Konsole aufgerufen werden können mit dem Dateinamen zum zu encodierendem Video und verschiedene Encodierungsmodi als Parameter.
+Der Encoder muss über eine Konsole aufgerufen werden können mit dem Dateinamen zum zu encodierendem Video und verschiedene Encodierungsmodi als Parameter.
 
 \textbf{/W0003/ Spezifizieren von Parametern}
 
@@ -534,13 +519,13 @@ Wenn alle encodierten Videos erzeugt wurden, werden sie automatisch geladen.
 
 Die Qualität eines encodierten Videos kann mit einem 5-Sterne Bewertungssystem bewertet werden.
 
-\textbf{/W0101/ Speichern des Zustandes}
+\textbf{/W0101/ Speichern der Bewertung}
 
-Zusätzlich zu den in /F02100/ spezifizierten Attributen wird die 5-Sterne Bewertung gespeichert.
+Die Bewertung wird gespeichert.
 
-\textbf{/W0102/ Laden eines Zustandes}
+\textbf{/W0102/ Laden der Bewertung}
 
-Beim Laden eines Zustandes wie in /F02100/ wird auch die 5-Sterne Bewertung geladen.
+Beim Laden eines Projektes wird auch die 5-Sterne Bewertung geladen.
 
 
 \subsubsection{Pluginsystem für Filter und Artefakte}
@@ -553,39 +538,59 @@ Beim Programmstart werden Filter und Artefakte dynamisch geladen.
 
 \textbf{/W0300/ Bewegendes Rechteck}
 
-Das in /F0127/ spezifizierte Artfefakt kann sich auch nach vorgegebenen Mustern bewegen.
+Artefakte können sich nach vorgegebenen Mustern bewegen.
 
 \subsubsection{Auswählen von Vorschau Frames}
 
 \textbf{/W0400/ Vorschauframes}
 
-Die in /F0135/ spezifizierte Vorschau wird so verändert, dass die Frames zur Vorschau selbst gewählt werden können und nicht fest vorgegeben sind.
+Die in /F0133/ spezifizierte Vorschau wird so verändert, dass die Frames zur Vorschau selbst gewählt werden können und nicht fest vorgegeben sind.
 
 \subsubsection{Weitere Bewertungskriterien}
 
 \textbf{/W0400/ SSim}
 
-SSim wird zusätzlich berrechnet und angezeigt, sowie zusatzlich in /F0211/ gespeichert.
+SSim wird zusätzlich berrechnet und angezeigt.
 
 \textbf{/W0401/ VQuad-HD}
 
-VQuad-HD wird zusätzlich berrechnet und angezeigt, sowie zusatzlich in /F0211/ gespeichert.
+VQuad-HD wird zusätzlich berrechnet und angezeigt.
 
 
 \newpage
 \section{Produktdaten}
 \subsection{Musskriterien}
-\textbf{/D001/ Filter/Artefakt Konfiguration}
+\textbf{/D001/ Filter/Artefakt Konfiguration abspeichern}
 
-Wie in /F0131/ spezifiert.
+Abgespeichert wird:
+\begin{itemize}
+\item welche Filter/Artefakte ausgewählt wurden
+\item die Reihenfolge, in der die Filter/Artefakte angewendet werden sollen
+\item der jeweilige Zustand der einstellbaren Eigenschaften der Filter/Artefakte
+\end{itemize}
 
-\textbf{/D002/ Projekt}
 
-Wie in /F0006/ spezifiert.
+\textbf{/D002/ Projekt speichern}
 
-\textbf{/D003/ Ergenisse}
+Gespeichert wird:
+\begin{itemize}
+\item Attribute aus /D003/
+\item Absoluter Pfad zu den encodeden Videos
+\item Absoluter Pfad zum Rohvideo
+\item Zustand des ''Video and analysis'' - Tabs
+\item Zustand des ''Filter and artifacts'' -Tabs
+\end{itemize}
 
-Wie in /F0211/ spezifiert.
+\textbf{/D003/ Ergenisse speichern}
+
+Gespeichert wird für jedes encodierte Video:
+\begin{itemize}
+\item PSNR-Graph
+\item RGB-Histogramm
+\item Farbdifferenz
+\item Attribute aus /F0205/
+\item Kommentar zum Video
+\end{itemize}
 
 \textbf{/D004/ Videos}
 
@@ -594,11 +599,11 @@ Mit Filtern und Artefakten veränderte Videos.
 \subsection{Wunschkriterien}
 \textbf{/D100/ 5-Sterne Bewertung}
 
-Wie in /W0101/ spezifiziert.
+Die Bewertung wird zusätzlich bei /D003/ mitgespeichert.
 
 \textbf{/D101/ Zusätzliche Bewertungskriterien}
 
-Wie in /W0400/ und /W0401/ spezifiziert.
+Die Bewertungskriterien werden zusätzlich zu /D003/ abespeichert.
 
 
 \newpage
