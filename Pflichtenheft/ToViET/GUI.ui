@@ -140,7 +140,7 @@
           <x>0</x>
           <y>0</y>
           <width>941</width>
-          <height>211</height>
+          <height>201</height>
          </rect>
         </property>
         <property name="frameShape">
@@ -161,7 +161,7 @@
            <x>0</x>
            <y>0</y>
            <width>939</width>
-           <height>196</height>
+           <height>186</height>
           </rect>
          </property>
          <widget class="QWidget" name="horizontalLayoutWidget">
@@ -170,7 +170,7 @@
             <x>0</x>
             <y>0</y>
             <width>1214</width>
-            <height>209</height>
+            <height>181</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout">
@@ -349,7 +349,7 @@
           <x>0</x>
           <y>0</y>
           <width>941</width>
-          <height>211</height>
+          <height>201</height>
          </rect>
         </property>
         <property name="verticalScrollBarPolicy">
@@ -367,7 +367,7 @@
            <x>0</x>
            <y>0</y>
            <width>939</width>
-           <height>196</height>
+           <height>186</height>
           </rect>
          </property>
          <widget class="QWidget" name="horizontalLayoutWidget_4">
@@ -376,7 +376,7 @@
             <x>0</x>
             <y>0</y>
             <width>941</width>
-            <height>191</height>
+            <height>181</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_8">
@@ -926,7 +926,7 @@ background-color: rgb(69, 62, 62);
        <rect>
         <x>510</x>
         <y>410</y>
-        <width>391</width>
+        <width>401</width>
         <height>71</height>
        </rect>
       </property>
@@ -1070,75 +1070,69 @@ background-color: rgb(69, 62, 62);
          </property>
         </widget>
        </item>
+       <item>
+        <widget class="QComboBox" name="comboBox">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="editable">
+          <bool>false</bool>
+         </property>
+         <property name="currentText">
+          <string notr="true">1.0x</string>
+         </property>
+         <property name="currentIndex">
+          <number>3</number>
+         </property>
+         <property name="frame">
+          <bool>false</bool>
+         </property>
+         <item>
+          <property name="text">
+           <string>0.25x</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>0.5x</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>0.75x</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1.0x</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1.25x</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1.5x</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1.75x</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2.0x</string>
+          </property>
+         </item>
+        </widget>
+       </item>
       </layout>
-     </widget>
-     <widget class="QComboBox" name="comboBox">
-      <property name="geometry">
-       <rect>
-        <x>840</x>
-        <y>490</y>
-        <width>66</width>
-        <height>25</height>
-       </rect>
-      </property>
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="editable">
-       <bool>false</bool>
-      </property>
-      <property name="currentText">
-       <string notr="true">1.0x</string>
-      </property>
-      <property name="currentIndex">
-       <number>3</number>
-      </property>
-      <property name="frame">
-       <bool>false</bool>
-      </property>
-      <item>
-       <property name="text">
-        <string>0.25x</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>0.5x</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>0.75x</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>1.0x</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>1.25x</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>1.5x</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>1.75x</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>2.0x</string>
-       </property>
-      </item>
      </widget>
      <zorder>label_4</zorder>
      <zorder>scrollArea</zorder>
@@ -1147,7 +1141,6 @@ background-color: rgb(69, 62, 62);
      <zorder>groupBox</zorder>
      <zorder>label</zorder>
      <zorder>layoutWidget</zorder>
-     <zorder>comboBox</zorder>
     </widget>
     <widget class="QWidget" name="tab_2">
      <attribute name="title">
@@ -1159,7 +1152,7 @@ background-color: rgb(69, 62, 62);
         <x>-10</x>
         <y>350</y>
         <width>951</width>
-        <height>456</height>
+        <height>491</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -1176,7 +1169,7 @@ background-color: rgb(69, 62, 62);
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>933</width>
+         <width>936</width>
          <height>816</height>
         </rect>
        </property>
@@ -1261,11 +1254,11 @@ p, li { white-space: pre-wrap; }
             </rect>
            </property>
            <property name="currentIndex">
-            <number>2</number>
+            <number>0</number>
            </property>
            <widget class="QWidget" name="tab_6">
             <attribute name="title">
-             <string>Bitrates</string>
+             <string>Bitrate</string>
             </attribute>
             <widget class="QLabel" name="label_34">
              <property name="geometry">
@@ -1454,11 +1447,11 @@ p, li { white-space: pre-wrap; }
             </rect>
            </property>
            <property name="currentIndex">
-            <number>2</number>
+            <number>0</number>
            </property>
            <widget class="QWidget" name="tab_11">
             <attribute name="title">
-             <string>Bitrates</string>
+             <string>Bitrate</string>
             </attribute>
             <widget class="QLabel" name="label_44">
              <property name="geometry">
@@ -1644,11 +1637,11 @@ p, li { white-space: pre-wrap; }
             </rect>
            </property>
            <property name="currentIndex">
-            <number>2</number>
+            <number>0</number>
            </property>
            <widget class="QWidget" name="tab_9">
             <attribute name="title">
-             <string>Bitrates</string>
+             <string>Bitrate</string>
             </attribute>
             <widget class="QLabel" name="label_39">
              <property name="geometry">
@@ -1797,7 +1790,7 @@ background-color: rgb(69, 62, 62);
        <property name="geometry">
         <rect>
          <x>690</x>
-         <y>30</y>
+         <y>20</y>
          <width>231</width>
          <height>221</height>
         </rect>
@@ -1831,8 +1824,8 @@ background-color: rgb(69, 62, 62);
       <widget class="QTabWidget" name="tabWidget_5">
        <property name="geometry">
         <rect>
-         <x>240</x>
-         <y>100</y>
+         <x>250</x>
+         <y>90</y>
          <width>431</width>
          <height>151</height>
         </rect>
@@ -1842,7 +1835,7 @@ background-color: rgb(69, 62, 62);
        </property>
        <widget class="QWidget" name="tab_8">
         <attribute name="title">
-         <string>Bitrates</string>
+         <string>Bitrate</string>
         </attribute>
         <widget class="QLabel" name="label_35">
          <property name="geometry">
@@ -2069,6 +2062,72 @@ color: rgb(255, 255, 255);</string>
           </property>
          </widget>
         </item>
+        <item>
+         <widget class="QComboBox" name="comboBox_3">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(116, 116, 116);
+color: rgb(255, 255, 255);</string>
+          </property>
+          <property name="editable">
+           <bool>false</bool>
+          </property>
+          <property name="currentText">
+           <string notr="true">1.0x</string>
+          </property>
+          <property name="currentIndex">
+           <number>3</number>
+          </property>
+          <property name="frame">
+           <bool>false</bool>
+          </property>
+          <item>
+           <property name="text">
+            <string>0.25x</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>0.5x</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>0.75x</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>1.0x</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>1.25x</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>1.5x</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>1.75x</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>2.0x</string>
+           </property>
+          </item>
+         </widget>
+        </item>
        </layout>
       </widget>
       <widget class="QPushButton" name="pushButton_20">
@@ -2076,7 +2135,7 @@ color: rgb(255, 255, 255);</string>
         <rect>
          <x>60</x>
          <y>20</y>
-         <width>188</width>
+         <width>220</width>
          <height>31</height>
         </rect>
        </property>
@@ -2104,80 +2163,8 @@ background-color: rgb(69, 62, 62);
 }</string>
        </property>
        <property name="text">
-        <string>Save result</string>
+        <string>Save results</string>
        </property>
-      </widget>
-      <widget class="QComboBox" name="comboBox_3">
-       <property name="geometry">
-        <rect>
-         <x>730</x>
-         <y>10</y>
-         <width>66</width>
-         <height>25</height>
-        </rect>
-       </property>
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: rgb(116, 116, 116);
-color: rgb(255, 255, 255);</string>
-       </property>
-       <property name="editable">
-        <bool>false</bool>
-       </property>
-       <property name="currentText">
-        <string notr="true">1.0x</string>
-       </property>
-       <property name="currentIndex">
-        <number>3</number>
-       </property>
-       <property name="frame">
-        <bool>false</bool>
-       </property>
-       <item>
-        <property name="text">
-         <string>0.25x</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>0.5x</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>0.75x</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>1.0x</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>1.25x</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>1.5x</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>1.75x</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>2.0x</string>
-        </property>
-       </item>
       </widget>
      </widget>
     </widget>
@@ -2189,7 +2176,7 @@ color: rgb(255, 255, 255);</string>
      <x>0</x>
      <y>0</y>
      <width>954</width>
-     <height>27</height>
+     <height>28</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuProject">
