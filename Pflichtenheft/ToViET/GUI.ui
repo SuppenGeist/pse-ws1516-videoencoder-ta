@@ -170,7 +170,7 @@
             <x>0</x>
             <y>0</y>
             <width>1214</width>
-            <height>181</height>
+            <height>184</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout">
@@ -376,7 +376,7 @@
             <x>0</x>
             <y>0</y>
             <width>941</width>
-            <height>181</height>
+            <height>184</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_8">
@@ -828,7 +828,7 @@ background-color: rgb(69, 62, 62);
       <property name="geometry">
        <rect>
         <x>500</x>
-        <y>30</y>
+        <y>40</y>
         <width>411</width>
         <height>321</height>
        </rect>
@@ -927,7 +927,7 @@ background-color: rgb(69, 62, 62);
         <x>510</x>
         <y>410</y>
         <width>401</width>
-        <height>71</height>
+        <height>111</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -943,7 +943,7 @@ background-color: rgb(69, 62, 62);
         <x>510</x>
         <y>410</y>
         <width>391</width>
-        <height>73</height>
+        <height>71</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -1134,6 +1134,19 @@ background-color: rgb(69, 62, 62);
        </item>
       </layout>
      </widget>
+     <widget class="QSlider" name="horizontalSlider_2">
+      <property name="geometry">
+       <rect>
+        <x>520</x>
+        <y>490</y>
+        <width>381</width>
+        <height>18</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
      <zorder>label_4</zorder>
      <zorder>scrollArea</zorder>
      <zorder>tabWidget_2</zorder>
@@ -1141,6 +1154,7 @@ background-color: rgb(69, 62, 62);
      <zorder>groupBox</zorder>
      <zorder>label</zorder>
      <zorder>layoutWidget</zorder>
+     <zorder>horizontalSlider_2</zorder>
     </widget>
     <widget class="QWidget" name="tab_2">
      <attribute name="title">
@@ -1149,10 +1163,10 @@ background-color: rgb(69, 62, 62);
      <widget class="QScrollArea" name="scrollArea_3">
       <property name="geometry">
        <rect>
-        <x>-10</x>
-        <y>350</y>
+        <x>0</x>
+        <y>390</y>
         <width>951</width>
-        <height>491</height>
+        <height>451</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -1893,7 +1907,7 @@ Colour quantity:
         <x>0</x>
         <y>280</y>
         <width>961</width>
-        <height>71</height>
+        <height>101</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -1909,7 +1923,7 @@ Colour quantity:
        <property name="geometry">
         <rect>
          <x>730</x>
-         <y>40</y>
+         <y>70</y>
          <width>180</width>
          <height>22</height>
         </rect>
@@ -2133,8 +2147,8 @@ color: rgb(255, 255, 255);</string>
       <widget class="QPushButton" name="pushButton_20">
        <property name="geometry">
         <rect>
-         <x>60</x>
-         <y>20</y>
+         <x>30</x>
+         <y>40</y>
          <width>220</width>
          <height>31</height>
         </rect>
@@ -2164,6 +2178,19 @@ background-color: rgb(69, 62, 62);
        </property>
        <property name="text">
         <string>Save results</string>
+       </property>
+      </widget>
+      <widget class="QSlider" name="horizontalSlider">
+       <property name="geometry">
+        <rect>
+         <x>310</x>
+         <y>70</y>
+         <width>391</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
        </property>
       </widget>
      </widget>
