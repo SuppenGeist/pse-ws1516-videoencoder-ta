@@ -76,7 +76,7 @@ Vive ist ein Multimedia-Framework zum Vergleichen und zur Evaluation von Videoen
 \item Die Software ist ausschließlich in englischer Sprache verfügbar
 \item Audio wird nicht beachtet
 \item Korrektheit der Software wird gewährt bis zu einer Videauflösung von 1980x1020 Pixel
-\item Das Programm akzeptiert ausschließlich Rohvideos im YUV Format und Videos in Formaten, die in der libavcodec Bibliothek enthalten sind. 
+\item Das Programm akzeptiert ausschließlich Rohvideos im YUV Format und Videos in Formaten, die in der libavcodec Bibliothek enthalten sind.
 \end{itemize}
 \newpage
 \section{Produkteinsatz}
@@ -112,10 +112,11 @@ Software:
 \subsection{Hardware}
 \begin{itemize}
 \item AMD64 Prozessorarchitektur
-\item Intel: Atom oder neuer
+\item Intel: Core i3 2100 oder neuer
 \item AMD: Athlon II oder neuer
 \item 5 GB freier Festplattenspeicher
 \item Mindestens 4 GB Arbeitsspeicher
+\item Monitorauflösung von mindestens 1240x1024
 \end{itemize}
 \subsection{Software}
 \begin{itemize}
@@ -125,8 +126,6 @@ Software:
 \item libavcodec
 \end{itemize}
 \newpage
-
-
 \section{Funktionale Anforderungen}
 \subsection{Musskriterien}
 \subsubsection{Allgemein}
@@ -202,11 +201,11 @@ Angabe von
 \begin{itemize}
 \item Auflösung
 \item FPS (Standard:25)
-\item Pixelshema
+\item Pixelschema
 \end{itemize}
 um den in /F0001/ spezifizierte Dateityp korrekt einlesen zu können.
 
-\textbf{/F0102/ Erlaubte Pixelshema}
+\textbf{/F0102/ Erlaubte Pixelschema}
 
 Für das in /F0101/ spezifierte Pixelshema sind folgende Angaben erlaubt:
 \begin{itemize}
@@ -247,15 +246,14 @@ Einstellbare Eigenschaften:
 \end{itemize}
 
 \textbf{/F0108/ Filter: Postereffekt}
-
+Schränkt die Anzahl der Farben ein, die ein Pixel annehmen kann. Wenn diese Zahl höher ist, als im Originalvideo, wird das Original nicht verändert.
 Einstellbare Eigenschaften:
 \begin{itemize}
-\item Anzahl der verwendeten Zahlen
+\item Anzahl möglicher Farben pro Pixel
 \end{itemize}
 
 \textbf{/F0109/ Filter: Blende}
-
-Eine Ein-/Ausblende auf Schwarz.
+Blendet das Video von einem schwarzen Bildschirm ein oder aus.
 Einstellbare Eigenschaften:
 \begin{itemize}
 \item Ein-/Ausblende
@@ -263,10 +261,10 @@ Einstellbare Eigenschaften:
 \end{itemize}
 
 \textbf{/F0110/ Filter: Rotieren}
-
+Rotiert das Video.
 Einstellbare Eigenschaften:
 \begin{itemize}
-\item Rotationsgrad
+\item Grad pro Sekunde
 \end{itemize}
 
 \textbf{/F0111/ Filter: Rauschen}
@@ -278,12 +276,11 @@ Einstellbare Eigenschaften:
 \end{itemize}
 
 \textbf{/F0112/ Filter: Negieren}
-
+Negiert die einzelnen Pixel im Video.
 Berrechnet das Negativ für jedes Frame.
 
 \textbf{/F0113/ Filter: Rand}
-
-Der Rand vergrößert das Video.
+Fügt dem Video einen Rand hinzu, welcher es vergrößert. Von dem Video wird nichts abgeschnitten.
 Einstellbare Eigenschaften:
 \begin{itemize}
 \item Oben/Unten/Rechts/Links
@@ -292,7 +289,7 @@ Einstellbare Eigenschaften:
 \end{itemize}
 
 \textbf{/F0114/ Filter: Spiegeln}
-
+Spiegelt das Video um eine Achse.
 Einstellbare Eigenschaften:
 \begin{itemize}
 \item Horizontal/Vertikal
@@ -346,7 +343,7 @@ Einstellbare Eigenschaften:
 \end{itemize}
 
 \textbf{/F0123/ Filter: RGB-Filter}
-
+Filtert zwei der Farben heraus.
 Einstellbare Eigenschaften:
 \begin{itemize}
 \item Farbe
