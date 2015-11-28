@@ -705,32 +705,48 @@ Der Zustand des Projekts kann jederzeit gespeichert und geladen werden.
 Folgende Funktionssequenzen sind zu überprüfen:
 \begin{itemize}
 \item[]\textbf{/T000/}\qquad Oben auf "'Project"' und dann auf "'new"' klicken.
-\item[]\textbf{/T001/}\qquad Zwischen den Tabs wechseln.
-\item[]\textbf{/T002/}\qquad Auf dem Video Tabs auf "'Add video"' klicken.
-\item[]\textbf{/T003/}\qquad "'Load video"' klicken und unter "'File Explorer"' ein Video auswählen.
-\item[]\textbf{/T004/}\qquad "'Load video"' klicken und unter "'Recent used"' ein Video auswählen.
-\item[]\textbf{/T005/}\qquad Filter auswählen und deren Reihenfolge und Intensity ändern.
-\item[]\textbf{/T006/}\qquad Artefakte auswählen und deren Reihenfolge  ändern.
-\item[]\textbf{/T007/}\qquad Filter/Artefakte auswählen und "'Apply to video"' klicken.
-\item[]\textbf{/T008/}\qquad laden Filter/Artefakte auswählen und Vorschau des Videos testen.
-\item[]\textbf{/T009/}\qquad laden Filter/Artefakte auswählen und "'Save video"' klicken.
-\item[]\textbf{/T010/}\qquad Auf "'Remove video"' klicken.
-\item[]\textbf{/T011/}\qquad Mehrere Videos durch "'Add video"' aufrufen.
-\item[]\textbf{/T012/}\qquad Videos mit verschiedenen Geschwindigkeit abspielen.
-\item[]\textbf{/T013/}\qquad Videos mit < und > und Frame für Frame  durchgehen.
-\item[]\textbf{/T014/}\qquad Videos Starten, Pausieren und Stoppen.
-\item[]\textbf{/T015/}\qquad Ergebnisse der Analysis betrachten.
-\item[]\textbf{/T016/}\qquad Comment schreiben und auf "'Save result"' klicken.
-\item[]\textbf{/T017/}\qquad Oben auf "'Edit"' und dann auf "'undo"'/"'redo"' klicken.
-\item[]\textbf{/T018/}\qquad Oben auf "'Project"' und dann auf "'Save"'/"'Save As"' klicken.
-\item[]\textbf{/T019/}\qquad Oben auf "'Project"' und dann auf "'Load"' klicken.
+\item[]\textbf{/T001/}\qquad Zwischen den Reitern wechseln.
+\item[]\textbf{/T002/}\qquad Oben auf "'Edit"' und dann auf "'undo"'/"'redo"' klicken.
+\item[]\textbf{/T003/}\qquad Oben auf "'Project"' und dann auf "'Save"'/"'Save As"' klicken.
+\item[]\textbf{/T004/}\qquad Oben auf "'Project"' und dann auf "'Load"' klicken.
+\end{itemize}
+\subsubsection{"'Filters and artefacts"' Reiter}
+\begin{itemize}
+\item[]\textbf{/T010/}\qquad "'Load video"' klicken und unter "'File Explorer"' ein Video auswählen.
+\item[]\textbf{/T011/}\qquad "'Load video"' klicken und unter "'Recent used"' ein Video auswählen.
+\item[]\textbf{/T012/}\qquad Filter auswählen und deren Reihenfolge und Intensity ändern.
+\item[]\textbf{/T013/}\qquad Artefakte auswählen und deren Reihenfolge  ändern.
+\item[]\textbf{/T014/}\qquad Filter/Artefakte auswählen und "'Apply to video"' klicken.
+\item[]\textbf{/T015/}\qquad Filter/Artefakte auswählen und Vorschau des Videos testen.
+\item[]\textbf{/T016/}\qquad Filter/Artefakte Auswahl durch klicken von "'Save configuration"' speichern.
+\item[]\textbf{/T017/}\qquad Filter/Artefakte Auswahl durch klicken von "'Load configuration"' laden.
+\item[]\textbf{/T018/}\qquad Filter/Artefakte auswählen und "'Save video"' klicken.
+\item[]\textbf{/T019/}\qquad Aktuelle Filter/Artefakte Auswahl durch klicken von "'Reset"' löschen.
+\end{itemize}
+\subsubsection{"'Video and analysis"' Reiter}
+\begin{itemize}
+\item[]\textbf{/T020/}\qquad Auf das "'Add video"' klicken um ein Video hinzuzufügen.
+\item[]\textbf{/T021/}\qquad Auf das "'x"' bei einem Video oben rechts klicken um ein Video zu entfernen.
+\item[]\textbf{/T022/}\qquad Mehrere Videos durch "'Add video"' aufrufen.
+\item[]\textbf{/T023/}\qquad Videos Starten, Pausieren und Stoppen.
+\item[]\textbf{/T024/}\qquad Videos mit verschiedenen Geschwindigkeit abspielen.
+\item[]\textbf{/T025/}\qquad Videos mit < und > und Frame für Frame  durchgehen.
+\item[]\textbf{/T026/}\qquad Mit der Zeitleiste das Video durch springen.
+\item[]\textbf{/T027/}\qquad Ergebnisse der Analysis betrachten.
+\item[]\textbf{/T028/}\qquad Kommentar schreiben und auf "'Save result"' klicken.
+\end{itemize}
+\subsubsection{Fehlerfälle}
+\begin{itemize}
+\item[]\textbf{/T030/}\qquad Beschädigtes Project laden und Fehlermeldung "'Project could not be opened"' erhalten.
+\item[]\textbf{/T031/}\qquad Beschädigtes Video Laden und Fehlermeldung "'Video could not be opened"' erhalten.
+\item[]\textbf{/T031/}\qquad Falsches Dateiformat laden und die Fehlermeldung "'Invalid file format"' erhalten.
 \end{itemize}
 \subsection{Szenarien}
 Folgende Szenarien sind zu überprüfen:
 \begin{itemize}
-\item[]\textbf{/T100/}\qquad Der Benutzer startet zunächst ein neues Project und fügt dann ein Rohvideo hinzu, indem er auf "'Add video"' klickt. Daraufhin fügt er durch klicken von "'Add video"' eine encodierte Version des Videos hinzu. Bei diesen betrachtet er dann die Video zunächst mit 0.5x, 1.0x, 1.5x facher Geschwindigkeit und geht die Videos dann "frame by frame" durch. Dann betrachtet er den PSNR Graphen und die Makroblöcke sowie weitere Analyse Auswertungen. Zuletzt schreibt er ein Kommentar in das "'User comment"' Feld und speichert dann die Analysis durch drücken von "'Save result"' und das Project durch drücken von "'Save as"' oben unter Project.
-\item[]\textbf{/T101/}\qquad Der Benuter startet ein neues Project. Dann lädt er im "'Filters and artefacts"' Tab ein Video und wählt mehrere Filter/ Artefakte aus. Daraufhin verändert er die Reihenfolge der Filter/ Artefakteund speichert das Video ab. Nachdem er das abgespeicherte Video encodiert hat fügt er dieses zusammen mit dem Rohvideo als neues Video im "'Video"' Tab hinzu. Danach betrachtet er die Videos und die dazugehörigen Analyse Auswertungen. zuletzt speichert er das Ergebnisse mit einem Kommentar ab.
-\item[]\textbf{/T102/}\qquad Der Benutzer lädt ein bereits existierendes Project durch klicken auf Project und Load. Er betrachtet dann die geladenen Videos und deren Analyse Auswertungen. Daraufhin schaut er sich unter dem "'Filters and artefacts"' Tab die ausgewählten Filter des zuletzt bearbeiteten Videos an. Danach schließt er das Programm.
+\item[]\textbf{/T100/}\qquad Der Benutzer startet zunächst ein neues Project und fügt dann ein Rohvideo hinzu, indem er im "'Video and analysis"' Reiter auf "'Add video"' klickt. Daraufhin fügt er durch klicken von "'Add video"' eine encodierte Version des Videos hinzu. Bei diesen betrachtet er dann die Video zunächst mit 0.5x, 1.0x, 1.5x facher Geschwindigkeit und geht die Videos dann "frame by frame" durch. Dann betrachtet er den PSNR Graphen und die Makroblöcke sowie weitere Analyse Auswertungen. Zuletzt schreibt er ein Kommentar in das "'User comment"' Feld und speichert dann die Analysis durch drücken von "'Save result"' und das Project durch drücken von "'Save as"' oben unter Project.
+\item[]\textbf{/T101/}\qquad Der Benuter startet ein neues Project. Dann lädt er im "'Filters and artefacts"' Reiter ein Video und wählt mehrere Filter/ Artefakte aus. Daraufhin verändert er die Reihenfolge der Filter/Artefakte und speichert das Video ab. Nachdem er das abgespeicherte Video encodiert hat fügt er dieses zusammen mit dem Rohvideo als neues Video im "'Video and analysis"' Reiter hinzu. Danach betrachtet er die Videos und die dazugehörigen Analyse Auswertungen. zuletzt speichert er das Ergebnisse mit einem Kommentar ab.
+\item[]\textbf{/T102/}\qquad Der Benutzer lädt ein bereits existierendes Project durch klicken auf Project und Load. Er betrachtet zunächst die geladenen Videos und deren Analyse Auswertungen im "'Video and analysis" Reiter. Daraufhin schaut er sich unter dem "'Filters and artefacts"' Reiter die ausgewählten Filter/Artefakte des zuletzt bearbeiteten Videos an. Danach schließt er das Programm.
 \end{itemize}
 \newpage
 \section{Glossar}
@@ -754,6 +770,4 @@ Ein Graph der auf der x-Achse Zeitwerte(Framenummer) enthält und auf der y-Achs
 Peak signal-to-noise ratio ist ein Maß für das Verhältnis zwischen Signalrate und dem überlagerten Rauschsignal.
 \subsection*{RGB-Histogramm} 
 Ein Graph, der die Farbverteilung eines Videos anzeigt.
-\subsection*{Tab\ (Deutsch: Registerkarte)}
-Graphische Elemente die dazu dienen in einem Fenster zwischen verschiedenen Dialogfenstern zu wechseln.
 \end{document}
