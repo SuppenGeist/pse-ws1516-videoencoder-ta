@@ -18,7 +18,7 @@ bookmarks=true,
 
 \usepackage{csquotes} % provides \enquote{} macro for "quotes"
 %TitlePage
-{\title{\fontsize{40}{48} \selectfont \textsc{Pflichtenheft-Entwurf}\\
+{\title{\fontsize{40}{48} \selectfont \textsc{Pflichtenheft}\\
 {\fontsize{18}{18} \selectfont Multimediatool zum Testen von Videoencodern}}}
 \author {Carina Weber, Jan Benedikt Schwarz, Johannes Werner, Noel Schuhmacher,\\
 Sascha Rapp, Simon Grafenhorst}
@@ -38,8 +38,8 @@ Vive ist ein Multimedia-Framework zum Vergleichen und zur Evaluation von Videoen
 \subsubsection{Rohvideo auswählen und bearbeiten}
 \begin{itemize}
 \item Video laden
-\item Aus einer List von Filtern mehrere Filter auswählen
-\item Aus einer List von Artefakten mehrere Artefakte auswählen
+\item Aus einer Liste von Filtern mehrere Filter auswählen
+\item Aus einer Liste von Artefakten mehrere Artefakte auswählen
 \item Filter/Artefakte anpassen
 \item Zuvor verwendete Konfigurationen (Filter/Artefakte) auswählen
 \item Anzeigen einer Vorschau mit den angewandten Filtern/Artefakten
@@ -49,7 +49,7 @@ Vive ist ein Multimedia-Framework zum Vergleichen und zur Evaluation von Videoen
 \begin{itemize}
 \item Das Rohvideo laden
 \item Mehrere encodierte Videos laden
-\item Bewertungskriterien berrechnen
+\item Bewertungskriterien berechnen
 \item Unterschiede zwischen Roh- und encodiertem Video visualisieren
 \item Bewertungskriterien/Videoeigenschaften/Metadaten visualisieren
 \item Roh- und encodierte(s) Video(s) nebeneinander synchron abspielen
@@ -99,7 +99,7 @@ Privatprojekt auswählen.
 \item Privatanwender
 \end{itemize}
 \subsection{Betriebsbedingungen}
-Die Betriebsbedingungen unterscheiden sich im wesentlichen nicht zu denen normaler 
+Die Betriebsbedingungen unterscheiden sich im Wesentlichen nicht zu denen normaler 
 \linebreak
 Software:
 \begin{itemize}
@@ -156,7 +156,7 @@ Videos können mit folgenden Steuerelementen angeschaut werden:
 \item YUV
 \end{itemize}
 \newpage
-\textbf{/F0002/ Akzeptierte encodede Dateitypen}
+\textbf{/F0002/ Akzeptierte encodierte Dateitypen}
 \begin{itemize}
 \item Libavcodec kompatible Dateitypen
 \end{itemize}
@@ -167,7 +167,7 @@ Folgende Aktionen werden in der Statusleiste angezeigt, falls sie aktiv sind:
 \begin{itemize}
 \item Anwenden von Filtern/Artefakten
 \item Speichern des veränderten Videos
-\item Laden der encodierten Videos (also Berrechnung von PSNR,etc.)
+\item Laden der encodierten Videos (also Berechnung von PSNR,etc.)
 \item Laden/Speichern von Projekten/Ergebnissen
 \item Laden/Speichern von Filterkonfigurationen
 \end{itemize}
@@ -188,7 +188,7 @@ Es können Projekte gespeichert werden.
 
 Das Projekt wird wieder geladen und die GUI auf den Stand des
 Speicherns gesetzt. Wurden die gespeicherten Daten verändert kann die Korrektheit
-des Programms nicht mehr garantiert werden. Fehlende Daten werden, wenn möglich, neu berrechnet. 
+des Programms nicht mehr garantiert werden. Fehlende Daten werden, wenn möglich, neu berechnet. 
 
 \subsubsection{Rohvideo auswählen und bearbeiten}
 \textbf{/F0100/ Auswahl mit Dateiauswaldialog}
@@ -203,11 +203,11 @@ Angabe von
 \item FPS (Standard:25)
 \item Pixelschema
 \end{itemize}
-um den in /F0001/ spezifizierte Dateityp korrekt einlesen zu können.
+um den in /F0001/ spezifizierten Dateityp korrekt einlesen zu können.
 
-\textbf{/F0102/ Erlaubte Pixelschema}
+\textbf{/F0102/ Erlaubte Pixelschemata}
 
-Für das in /F0101/ spezifierte Pixelshema sind folgende Angaben erlaubt:
+Für das in /F0101/ spezifizierte Pixelshema sind folgende Angaben erlaubt:
 \begin{itemize}
 \item 4:4:4
 \item 4:2:2
@@ -280,7 +280,7 @@ Einstellbare Eigenschaften:
 
 \textbf{/F0112/ Filter: Negieren}
 
-Berrechnet das farbliche Negativ des Videos.
+Berechnet das farbliche Negativ des Videos.
 
 \textbf{/F0113/ Filter: Rand}
 
@@ -389,7 +389,7 @@ Einstellbare Eigenschaften:
 
 \textbf{/F0128/ Anwendugsreihenfolge von Filtern/Artefakten}
 
-Ein neu ausgewählter Filter/Artefakte wird ans Ende der Anwendungsreihenfolge angehängt.
+Ein neu ausgewählter Filter/Artefakt wird an das Ende der Anwendungsreihenfolge angehängt.
 
 \textbf{/F0129/ Ändern der Anwendungsreihenfolge}
 
@@ -409,15 +409,15 @@ Die Vorschau des ausgewählten Videos mit den ausgewählten Filtern und Artefakt
 
 \textbf{/F0133/ 5 Frame Vorschau}
 
-Jedes mal, wenn der Benutzer etwas an den Artefakten/Filtern ändert, werden 5 Frames aus dem Video sofort gerendert.
+Wenn der Benutzer etwas an den Artefakten/Filtern ändert, werden 5 Frames aus dem Video sofort gerendert.
 
 \textbf{/F0134/ Komplette Vorschau}
 
-Nachdem der Nutzer auf einen entsprechenden Button geklickt hat, kann er das ausgewählte Video mit allen ausgewählten Filtern und Artefakten angeschauen. Steuerelemente wie in /F0000/.
+Nachdem der Nutzer auf einen entsprechenden Button geklickt hat, kann er das ausgewählte Video mit allen ausgewählten Filtern und Artefakten anschauen. Steuerelemente wie in /F0000/.
 
 \textbf{/F0135/ Speichern des Videos}
 
-Das veränderte Video kann abgespeichert werden. Das Dateiformat ist dasselbe wie das des Inputvideos. (Siehe /F0001/)
+Das veränderte Video kann abgespeichert werden. Das Dateiformat entspricht dem des Inputvideos. (Siehe /F0001/)
 
 \textbf{/F0136/ Laden einer Filter/Artefakte Konfiguration}
 
@@ -426,10 +426,10 @@ Gespeicherte Konfigurationen können wieder geladen werden.
 \textbf{/F0137/ Alles zurücksetzen}
 
 Ausgewählte Filter und Artefakte können alle auf einmal entfernt werden.
-\subsubsection{Encodede Videos bewerten}
+\subsubsection{Encodierte Videos bewerten}
 \textbf{/F0200/ Encodierte Videos laden}
 
-Laden von mehreren enodierten Videos. Die maximale Anzahl ist nicht beschränkt. Akzeptierte Dteitypen wie in /F0020/.
+Laden von mehreren enodierten Videos. Die maximale Anzahl ist nicht beschränkt. Akzeptierte Dateitypen wie in /F0020/.
 
 \textbf{/F0201/ Rohvideo laden}
 
@@ -463,7 +463,7 @@ Für jedes Video wird ein RGB-Histogramm angezeigt.
 
 \textbf{/F0207/ Anzeigen eines PSNR-Graphen}
 
-Für jedes encodede Video wird ein PSNR-Graph angezeigt.
+Für jedes encodierte Video wird ein PSNR-Graph angezeigt.
 
 \textbf{/F0208/ PSNR-Graph als Timeline}
 
@@ -471,7 +471,7 @@ Durch klicken auf den PSNR-Graph wird zu der dazugehörigen Stelle im Video gesp
 
 \textbf{/F0209/ Farbunterschied zwischen Roh- und encodiertem Video anzeigen}
 
-Anzeigen der Farbdifferenz der einzelnen Farbkanäle zwischen dem Roh- und encodiertem Video.
+Anzeigen der Farbdifferenz der einzelnen Farbkanäle zwischen Roh- und encodiertem Video.
 
 \textbf{/F0210/ Anzeigen von Makroblöcken}
 
@@ -483,7 +483,7 @@ Die Ergebnisse der Analyse können gespeichert werden.
 
 \textbf{/F0212/ Kommentar}
 
-Zu jedem encodedem Video kann ein Kommentar angegeben.
+Zu jedem encodierten Video kann ein Kommentar geschrieben werden.
 \subsection{Wunschkriterien}
 
 \subsubsection{Encoder integrieren}
@@ -498,7 +498,7 @@ Akzeptiert werden ELF32,ELF64 Dateien.
 \newpage
 \textbf{/W0002/ Encoder interface}
 
-Der Encoder muss über eine Konsole aufgerufen werden können mit dem Dateinamen zum zu encodierendem Video und verschiedene Encodierungsmodi als Parameter.
+Der Encoder muss über eine Konsole aufgerufen werden können mit dem Dateinamen zu dem zu encodierenden Video und verschiedenen Encodierungsmodi als Parameter.
 
 \textbf{/W0003/ Spezifizieren von Parametern}
 
@@ -514,7 +514,7 @@ Für jeden Eintrag in der Liste aus /F1210/ wird der Encoder aufgerufen.
 
 \textbf{/W0006/ Gewährleistung}
 
-Wenn der Encoder nicht korrekt arbeitet (z.B. nicht terminiert), kann die Korrektheit von Vive nicht grantiert werden.
+Wenn der Encoder nicht korrekt arbeitet (z.B. nicht terminiert), kann die Korrektheit von Vive nicht garantiert werden.
 
 \textbf{/W0007/ Laden der encodierten Videos}
 
@@ -540,7 +540,7 @@ Beim Laden eines Projektes wird auch die 5-Sterne Bewertung geladen.
 
 Beim Programmstart werden Filter und Artefakte dynamisch geladen.
 
-\subsubsection{Bewegende Artefakte}
+\subsubsection{Sich bewegende Artefakte}
 
 \textbf{/W0300/ Bewegendes Rechteck}
 
@@ -556,11 +556,11 @@ Die in /F0133/ spezifizierte Vorschau wird so verändert, dass die Frames zur Vo
 
 \textbf{/W0400/ SSim}
 
-SSim wird zusätzlich berrechnet und angezeigt.
+SSim wird zusätzlich berechnet und angezeigt.
 
 \textbf{/W0401/ VQuad-HD}
 
-VQuad-HD wird zusätzlich berrechnet und angezeigt.
+VQuad-HD wird zusätzlich berechnet und angezeigt.
 
 
 \newpage
@@ -581,13 +581,13 @@ Abgespeichert wird:
 Gespeichert wird:
 \begin{itemize}
 \item Attribute aus /D003/
-\item Absoluter Pfad zu den encodeden Videos
+\item Absoluter Pfad zu den encodierten Videos
 \item Absoluter Pfad zum Rohvideo
 \item Zustand des ''Video and analysis'' - Tabs
 \item Zustand des ''Filter and artifacts'' -Tabs
 \end{itemize}
 
-\textbf{/D003/ Ergenisse speichern}
+\textbf{/D003/ Ergebnisse speichern}
 
 Gespeichert wird für jedes encodierte Video:
 \begin{itemize}
@@ -653,11 +653,11 @@ Das Laden einer Filterkonfiguration soll nicht mehr als 0,5 Sekunden benötigen.
 \newpage
 \textbf{/L10/ Abspielen der Videos}
 
-Die Videos sollen mit maximal 1 Sekunden Verzögerung auf Veränderungen der Steuerelemente reagieren.
+Die Videos sollen mit einer Verzögerung von maximal einer Sekunde auf Veränderungen der Steuerelemente reagieren.
 
 \textbf{/L11/ Laden eines Rohvideos}
 
-Das Laden eines Rohvideos soll nicht mehr als 2 Sekunde benötigen für ein Video mit 300 Frames und einer Auflösung von 176x144.
+Das Laden eines Rohvideos soll nicht mehr als 2 Sekunden benötigen für ein Video mit 300 Frames und einer Auflösung von 176x144.
 
 \textbf{/L12/ Laden eines encodierten Videos}
 
@@ -665,7 +665,7 @@ Das Laden eines encodierten Videos soll nicht mehr als 1 Sekunde benötigen.
 \newpage
 \section{Benutzungsoberflächer}
 \subsection{Anforderungen}
-Die Bedienungsoberfläche ist auf Mausbedienung ausgelegt, eine Bedienung ohne Maus muss dennoch möglich sein.
+Die Benutzungsoberfläche ist auf Mausbedienung ausgelegt, eine Bedienung ohne Maus muss dennoch möglich sein.
 \begin{itemize}
 \item DIN 66234, Teil 8 ist zu beachten
 \item Die Benutzungsoberfläche wird aus Elementen des Qt Designer aufgebaut
@@ -697,10 +697,10 @@ Die Bedienungsoberfläche ist auf Mausbedienung ausgelegt, eine Bedienung ohne M
 \includegraphics[width=0.7\textwidth]{ToViET/Screenshots/GUI_Filterselection.jpg}
 \caption{Filter/Artefakte Auswahl}
 \begin{flushleft}
-\item 1) Auswahl zum speichern,öffnen und bearbeiten des Projekts
+\item 1) Auswahl zum Speichern,Öffnen und Bearbeiten des Projekts
 \item 2) Wechsel zwischen Videobearbeitung und Analyse
 \item 3) Auswahl für die Änderung von Filtern und Speichern des bearbeiteten Videos
-\item 4) Vorschau der Filter in einzelnen Frames oder dem ausgewähltem Video
+\item 4) Vorschau der Filter in einzelnen Frames oder dem ausgewählten Video
 \item 5) Auswahl von einsetzbaren Filtern und Artefakten
 \end{flushleft}
 \end{figure}
@@ -736,7 +736,7 @@ Die Bedienungsoberfläche ist auf Mausbedienung ausgelegt, eine Bedienung ohne M
 \section{Systemmodelle}
 \begin{figure}[htbp]
 {\centering 
-\includegraphics[width=0.7\textwidth]{UsecaseDiagrams/Use Case Diagram1.png}
+\includegraphics[width=0.7\textwidth]{UsecaseDiagrams/UseCaseDiagram1.png}
 \caption{Komplettes Programm} }
 
 Das Programm bietet zwei getrennte Funktionalitäten. Der Benutzer kann Filter und Artefakte auf eine Videosequenz anwenden und/oder mehrere Videos analysieren.
@@ -744,7 +744,7 @@ Das Programm bietet zwei getrennte Funktionalitäten. Der Benutzer kann Filter u
 \end{figure}
 \begin{figure}[htbp]
 {\centering
-\includegraphics[width=0.7\textwidth]{UsecaseDiagrams/Filter und Artefakte anwenden.png}
+\includegraphics[width=0.7\textwidth]{UsecaseDiagrams/FilterundArtefakteanwenden.png}
 \caption{Filter und Artefakte} }
 
 Während des Anwendens der Filter und Artefakte hat der Benutzer die Möglichkeit ein Video zu laden/speichern, die aktuelle Konfiguration zu bearbeiten und sich eine Vorschau anzeigen zu lassen. 
@@ -780,7 +780,7 @@ Folgende Funktionssequenzen sind zu überprüfen:
 \begin{itemize}
 \item[]\textbf{/T010/}\qquad "'Load video"' klicken und unter "'File Explorer"' ein Video auswählen.
 \item[]\textbf{/T011/}\qquad "'Load video"' klicken und unter "'Recent used"' ein Video auswählen.
-\item[]\textbf{/T012/}\qquad Filter auswählen und deren Reihenfolge und Intensity ändern.
+\item[]\textbf{/T012/}\qquad Filter auswählen und deren Reihenfolge und Intensität ändern.
 \item[]\textbf{/T013/}\qquad Artefakte auswählen und deren Reihenfolge  ändern.
 \item[]\textbf{/T014/}\qquad Filter/Artefakte auswählen und "'Apply to video"' klicken.
 \item[]\textbf{/T015/}\qquad Filter/Artefakte auswählen und Vorschau des Videos testen.
@@ -794,25 +794,25 @@ Folgende Funktionssequenzen sind zu überprüfen:
 \item[]\textbf{/T020/}\qquad Auf das "'Add video"' klicken um ein Video hinzuzufügen.
 \item[]\textbf{/T021/}\qquad Auf das "'x"' bei einem Video oben rechts klicken um ein Video zu entfernen.
 \item[]\textbf{/T022/}\qquad Mehrere Videos durch "'Add video"' aufrufen.
-\item[]\textbf{/T023/}\qquad Videos Starten, Pausieren und Stoppen.
-\item[]\textbf{/T024/}\qquad Videos mit verschiedenen Geschwindigkeit abspielen.
-\item[]\textbf{/T025/}\qquad Videos mit < und > und Frame für Frame  durchgehen.
+\item[]\textbf{/T023/}\qquad Videos starten, pausieren und stoppen.
+\item[]\textbf{/T024/}\qquad Videos mit verschiedenen Geschwindigkeiten abspielen.
+\item[]\textbf{/T025/}\qquad Videos mit "'<"' und "'>"' und Frame für Frame  durchgehen.
 \item[]\textbf{/T026/}\qquad Mit der Zeitleiste das Video durch springen.
-\item[]\textbf{/T027/}\qquad Ergebnisse der Analysis betrachten.
+\item[]\textbf{/T027/}\qquad Ergebnisse der Analyse betrachten.
 \item[]\textbf{/T028/}\qquad Kommentar schreiben und auf "'Save result"' klicken.
 \end{itemize}
 \subsubsection{Fehlerfälle}
 \begin{itemize}
-\item[]\textbf{/T030/}\qquad Beschädigtes Project laden und Fehlermeldung "'Project could not be opened"' erhalten.
+\item[]\textbf{/T030/}\qquad Beschädigtes Projekt laden und Fehlermeldung "'Project could not be opened"' erhalten.
 \item[]\textbf{/T031/}\qquad Beschädigtes Video Laden und Fehlermeldung "'Video could not be opened"' erhalten.
 \item[]\textbf{/T031/}\qquad Falsches Dateiformat laden und die Fehlermeldung "'Invalid file format"' erhalten.
 \end{itemize}
 \subsection{Szenarien}
 Folgende Szenarien sind zu überprüfen:
 \begin{itemize}
-\item[]\textbf{/T100/}\qquad Der Benutzer startet zunächst ein neues Project und fügt dann ein Rohvideo hinzu, indem er im "'Video and analysis"' Reiter auf "'Add video"' klickt. Daraufhin fügt er durch klicken von "'Add video"' eine encodierte Version des Videos hinzu. Bei diesen betrachtet er dann die Video zunächst mit 0.5x, 1.0x, 1.5x facher Geschwindigkeit und geht die Videos dann "frame by frame" durch. Dann betrachtet er den PSNR Graphen und die Makroblöcke sowie weitere Analyse Auswertungen. Zuletzt schreibt er ein Kommentar in das "'User comment"' Feld und speichert dann die Analysis durch drücken von "'Save result"' und das Project durch drücken von "'Save as"' oben unter Project.
-\item[]\textbf{/T101/}\qquad Der Benuter startet ein neues Project. Dann lädt er im "'Filters and artefacts"' Reiter ein Video und wählt mehrere Filter/ Artefakte aus. Daraufhin verändert er die Reihenfolge der Filter/Artefakte und speichert das Video ab. Nachdem er das abgespeicherte Video encodiert hat fügt er dieses zusammen mit dem Rohvideo als neues Video im "'Video and analysis"' Reiter hinzu. Danach betrachtet er die Videos und die dazugehörigen Analyse Auswertungen. zuletzt speichert er das Ergebnisse mit einem Kommentar ab.
-\item[]\textbf{/T102/}\qquad Der Benutzer lädt ein bereits existierendes Project durch klicken auf Project und Load. Er betrachtet zunächst die geladenen Videos und deren Analyse Auswertungen im "'Video and analysis" Reiter. Daraufhin schaut er sich unter dem "'Filters and artefacts"' Reiter die ausgewählten Filter/Artefakte des zuletzt bearbeiteten Videos an. Danach schließt er das Programm.
+\item[]\textbf{/T100/}\qquad Der Benutzer startet zunächst ein neues Projekt und fügt dann ein Rohvideo hinzu, indem er im "'Video and analysis"' Reiter auf "'Add video"' klickt. Daraufhin fügt er durch klicken von "'Add video"' eine encodierte Version des Videos hinzu. Daraufhin betrachtet er die Videos zunächst mit 0.5x, 1.0x, 1.5x facher Geschwindigkeit und geht die Videos dann "'frame by frame"' durch. Dann betrachtet er den PSNR Graphen und die Makroblöcke sowie weitere Analyse Auswertungen. Zuletzt schreibt er einen Kommentar in das "'User comment"' Feld und speichert dann die Analyse durch klicken auf "'Save result"' und das Projekt durch klicken auf "'Save as"' oben unter "'Project"'.
+\item[]\textbf{/T101/}\qquad Der Benuter startet ein neues Projekt. Dann lädt er im "'Filters and artefacts"' Reiter ein Video und wählt mehrere Filter/ Artefakte aus. Daraufhin verändert er die Reihenfolge der Filter/Artefakte und speichert das Video ab. Nachdem er das abgespeicherte Video encodiert hat fügt er dieses zusammen mit dem Rohvideo als neues Video im "'Video and analysis"' Reiter hinzu. Danach betrachtet er die Videos und die dazugehörigen Analyse Auswertungen. Zuletzt speichert er dies Ergebnisse mit einem Kommentar ab.
+\item[]\textbf{/T102/}\qquad Der Benutzer lädt ein bereits existierendes Projekt durch klicken auf "'Project"' und "'Load"'. Er betrachtet zunächst die geladenen Videos und deren Analyse Auswertungen im "'Video and analysis"' Reiter. Daraufhin schaut er sich unter dem "'Filters and artefacts"' Reiter die ausgewählten Filter/Artefakte des zuletzt bearbeiteten Videos an. Danach schließt er das Programm.
 \end{itemize}
 \newpage
 \section{Glossar}
