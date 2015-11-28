@@ -429,11 +429,11 @@ Ausgewählte Filter und Artefakte können alle auf einmal entfernt werden.
 \subsubsection{Encodede Videos bewerten}
 \textbf{/F0200/ Encodierte Videos laden}
 
-Laden von mehreren enodierten Videos. Akzeptierte Dteitypen wie in /F0020/.
+Laden von mehreren enodierten Videos. Die maximale Anzahl ist nicht beschränkt. Akzeptierte Dteitypen wie in /F0020/.
 
 \textbf{/F0201/ Rohvideo laden}
 
-Laden des Rohvideos. Akzeptierte Dateitypen wie in /F0001/.
+Laden eines Rohvideos. Akzeptierte Dateitypen wie in /F0001/.
 
 \textbf{/F0202/ Anzeigen der encodierten Videos}
 
@@ -621,6 +621,47 @@ Auch bei rechenintensiven Hintergrundaktionen reagiert das Programm auf Benutzer
 \textbf{/L02/ Fehlerrobust}
 
 Bei Fehlerhaften Videodateien oder Nutzereingaben soll das Programm nicht abstürzen.
+
+\textbf{/L03/ Programmstart}
+
+Das Programm soll zum Starten nicht mehr als 5 Sekunden benöntigen.
+
+\textbf{/L04/ Filter/Artefakte anwenden}
+
+Ein Filter soll im Schnitt für 300 Frames mit einer Auflösung von 176x144 nicht mehr als 2,5 Sekunden zum Berechnen benötigen.
+
+\textbf{/L05/ PSNR oder RBG-Unterschied}
+
+Das Berechnen des PSNR-Graphen oder der RGB-Unterschied soll nicht mehr als 5 Sekunden für 300 Frames mit einer Auflösung von 176x144 benötigen.
+
+\textbf{/L06/ Laden eines Projektes}
+
+Das Laden eines Projektes soll, sofern nichts neu berechnet werden muss, nicht mehr als 2 Sekunden benötigen.
+
+\textbf{/L07/ Speichern eines Projektes}
+
+Das Speichern eines Projektes soll, sofern alles bereits berechnet wurde, nicht mehr als 2 Sekunden benötigen.
+
+\textbf{/L08/ Speichern einer Filterkonfiguration}
+
+Das Speichern einer Filterkonfiguration soll nicht mehr als eine Sekunde benötigen.
+
+\textbf{/L09/ Laden einer Filterkonfiguration}
+
+Das Laden einer Filterkonfiguration soll nicht mehr als 0,5 Sekunden benötigen.
+
+\newpage
+\textbf{/L10/ Abspielen der Videos}
+
+Die Videos sollen mit maximal 1 Sekunden Verzögerung auf Veränderungen der Steuerelemente reagieren.
+
+\textbf{/L11/ Laden eines Rohvideos}
+
+Das Laden eines Rohvideos soll nicht mehr als 2 Sekunde benötigen für ein Video mit 300 Frames und einer Auflösung von 176x144.
+
+\textbf{/L12/ Laden eines encodierten Videos}
+
+Das Laden eines encodierten Videos soll nicht mehr als 1 Sekunde benötigen.
 \newpage
 \section{Benutzungsoberflächer}
 \subsection{Anforderungen}
