@@ -83,7 +83,7 @@ Vive ist ein Multimedia-Framework zum Vergleichen und zur Evaluation von Videoen
 \end{itemize}
 \newpage
 \section{Produkteinsatz}
-Vive soll es Forschungseinrichtungen und Firmen ermöglichen Videoencoder einfach
+Vive soll es Forschungseinrichtungen und Firmen ermöglichen, Videoencoder einfach
 miteinander zu vergleichen. So kann schnell ein optimaler Encoder für den jeweiligen Zweck
 gefunden oder die Qualität eines vorhandenen geprüft werden. Aber auch Privatpersonen können
 mit diesem Produkt die Funktionsweise eines Encoders kennenlernen oder einen Encoder für ein
@@ -161,7 +161,7 @@ Videos können mit folgenden Steuerelementen angeschaut werden:
 \newpage
 \textbf{/F0002/ Akzeptierte encodierte Dateitypen}
 \begin{itemize}
-\item Libavcodec kompatible Dateitypen
+\item Libavcodec kompatible Dateitypen (z.B. MPEG,AVI,FLV)
 \end{itemize}
 
 \textbf{/F0003/ Anzeigen von Aktionen in Statusleiste}
@@ -190,7 +190,7 @@ Es können Projekte gespeichert werden.
 \textbf{/F0007/ Projekt laden}
 
 Das Projekt wird wieder geladen und die GUI auf den Stand des
-Speicherns gesetzt. Wurden die gespeicherten Daten verändert kann die Korrektheit
+Speicherns gesetzt. Wurden die gespeicherten Daten verändert, kann die Korrektheit
 des Programms nicht mehr garantiert werden. Fehlende Daten werden, wenn möglich, neu berechnet. 
 
 \subsubsection{Rohvideo auswählen und bearbeiten}
@@ -224,7 +224,7 @@ nicht mehr gemacht werden.
 
 \textbf{/F0104/ Auswahl von Filtern}
 
-Auswahl von einem oder mehreren Filtern, die auf das Video gelegt werden.
+Auswahl von einem oder mehreren Filtern, die auf das Video gelegt werden. Jeder Filter kann maximal einmal angewendet werden.
 
 \textbf{/F0105/ Filter: Kontrast}
 
@@ -430,7 +430,7 @@ Ausgewählte Filter und Artefakte können alle auf einmal entfernt werden.
 \subsubsection{Encodierte Videos bewerten}
 \textbf{/F0200/ Encodierte Videos laden}
 
-Laden von mehreren enodierten Videos. Die maximale Anzahl ist nicht beschränkt. Akzeptierte Dateitypen wie in /F0020/.
+Laden von mehreren enodierten Videos. Die maximale Anzahl ist theorethisch nicht beschränkt. Es wird jedoch empfohlen nicht mehr als 6 Videos gleichzeitig zu laden. Akzeptierte Dateitypen wie in /F0020/.
 
 \textbf{/F0201/ Rohvideo laden}
 
@@ -629,7 +629,7 @@ Das Programm soll zum Starten nicht mehr als 5 Sekunden benöntigen.
 
 \textbf{/L04/ Filter/Artefakte anwenden}
 
-Ein Filter soll im Schnitt für 300 Frames mit einer Auflösung von 176x144 nicht mehr als 2,5 Sekunden zum Berechnen benötigen.
+Ein Filter soll im Schnitt für 300 Frames mit einer Auflösung von 176x144 nicht mehr als 3 Sekunden zum Berechnen benötigen.
 
 \textbf{/L05/ PSNR oder RBG-Unterschied}
 
@@ -649,7 +649,7 @@ Das Speichern einer Filterkonfiguration soll nicht mehr als eine Sekunde benöti
 
 \textbf{/L09/ Laden einer Filterkonfiguration}
 
-Das Laden einer Filterkonfiguration soll nicht mehr als 0,5 Sekunden benötigen.
+Das Laden einer Filterkonfiguration soll nicht mehr als 2 Sekunden benötigen.
 
 \newpage
 \textbf{/L10/ Abspielen der Videos}
@@ -782,7 +782,7 @@ Folgende Funktionssequenzen sind zu überprüfen:
 \begin{itemize}
 \item[]\textbf{/T010/}\qquad "'Load video"' klicken und unter "'File Explorer"' ein Video auswählen.
 \item[]\textbf{/T011/}\qquad "'Load video"' klicken und unter "'Recent used"' ein Video auswählen.
-\item[]\textbf{/T012/}\qquad Filter auswählen und deren Reihenfolge und Intensität ändern.
+\item[]\textbf{/T012/}\qquad Filter auswählen und deren Reihenfolge und Eigenschaften ändern.
 \item[]\textbf{/T013/}\qquad Artefakte auswählen und deren Reihenfolge  ändern.
 \item[]\textbf{/T014/}\qquad Filter/Artefakte auswählen und "'Apply to video"' klicken.
 \item[]\textbf{/T015/}\qquad Filter/Artefakte auswählen und Vorschau des Videos testen.
@@ -806,14 +806,16 @@ Folgende Funktionssequenzen sind zu überprüfen:
 \subsubsection{Fehlerfälle}
 \begin{itemize}
 \item[]\textbf{/T030/}\qquad Beschädigtes Projekt laden und Fehlermeldung "'Project could not be opened"' erhalten.
-\item[]\textbf{/T031/}\qquad Beschädigtes Video Laden und Fehlermeldung "'Video could not be opened"' erhalten.
-\item[]\textbf{/T031/}\qquad Falsches Dateiformat laden und die Fehlermeldung "'Invalid file format"' erhalten.
+\item[]\textbf{/T031/}\qquad Beschädigtes/Fehlendes Video Laden und Fehlermeldung "'Video could not be opened"' erhalten.
+\item[]\textbf{/T032/}\qquad Falsches Dateiformat laden und die Fehlermeldung "'Invalid file format"' erhalten.
+\item[]\textbf{/T033/}\qquad Fehlende Schreib-/Leserechte und die Fehlermeldung "'Invalid permissions"' erhalten.
+
 \end{itemize}
 \subsection{Szenarien}
 Folgende Szenarien sind zu überprüfen:
 \begin{itemize}
-\item[]\textbf{/T100/}\qquad Der Benutzer startet zunächst ein neues Projekt und fügt dann ein Rohvideo hinzu, indem er im "'Video and analysis"' Reiter auf "'Add video"' klickt. Daraufhin fügt er durch klicken von "'Add video"' eine encodierte Version des Videos hinzu. Danach betrachtet er die Videos zunächst mit 0.5x, 1.0x, 1.5x facher Geschwindigkeit und geht die Videos dann "'frame by frame"' durch. Nun betrachtet er den PSNR Graphen und die Makroblöcke sowie weitere Analyse Auswertungen. Zuletzt schreibt er einen Kommentar in das "'User comment"' Feld und speichert dann die Analyse durch klicken auf "'Save result"' und das Projekt durch klicken auf "'Save as"' oben unter "'Project"'.
-\item[]\textbf{/T101/}\qquad Der Benuter startet ein neues Projekt. Dann lädt er im "'Filters and artefacts"' Reiter ein Video und wählt mehrere Filter/ Artefakte aus. Daraufhin verändert er die Reihenfolge der Filter/Artefakte und speichert das Video ab. Nachdem er das abgespeicherte Video encodiert hat fügt er dieses zusammen mit dem Rohvideo als neues Video im "'Video and analysis"' Reiter hinzu. Danach betrachtet er die Videos und die dazugehörigen Analyse Auswertungen. Zuletzt speichert er dies Ergebnisse mit einem Kommentar ab.
+\item[]\textbf{/T100/}\qquad Der Benutzer startet zunächst ein neues Projekt und fügt dann ein Rohvideo hinzu, indem er im "'Video and analysis"' Reiter auf "'Add video"' klickt. Daraufhin fügt er durch klicken von "'Add video"' eine encodierte Version des Videos hinzu. Danach betrachtet er die Videos zunächst mit 0.5x, 1.0x, 1.5x facher Geschwindigkeit und geht die Videos dann "'frame by frame"' durch. Nun betrachtet er den PSNR Graphen und die Makroblöcke, sowie weitere Analyse Auswertungen. Zuletzt schreibt er einen Kommentar in das "'User comment"' Feld und speichert dann die Analyse durch klicken auf "'Save result"' und das Projekt durch klicken auf "'Save as"' oben unter "'Project"'.
+\item[]\textbf{/T101/}\qquad Der Benuter startet ein neues Projekt. Dann lädt er im "'Filters and artefacts"' Reiter ein Video und wählt mehrere Filter/ Artefakte aus. Daraufhin verändert er die Reihenfolge der Filter/Artefakte und speichert das Video ab. Nachdem er das abgespeicherte Video encodiert hat, fügt er dieses zusammen mit dem Rohvideo als neues Video im "'Video and analysis"' Reiter hinzu. Danach betrachtet er die Videos und die dazugehörigen Analyse Auswertungen. Zuletzt speichert er dies Ergebnisse mit einem Kommentar ab.
 \item[]\textbf{/T102/}\qquad Der Benutzer lädt ein bereits existierendes Projekt durch klicken auf "'Project"' und "'Load"'. Er betrachtet zunächst die geladenen Videos und deren Analyse Auswertungen im "'Video and analysis"' Reiter. Daraufhin schaut er sich unter dem "'Filters and artefacts"' Reiter die ausgewählten Filter/Artefakte des zuletzt bearbeiteten Videos an. Danach schließt er das Programm.
 \end{itemize}
 \newpage
@@ -831,9 +833,9 @@ Ein Algorithmus, der Farbwerte nach einem bestimmten Muster verändert.
 \subsection*{Frame}
 Ein einziges Bild aus einem Video
 \subsection*{Projekt} 
-Ein Projekt beinhaltet die Pfade zu den geöffneten Videos sowie die eingestellten Filter und Artefakte.
+Ein Projekt beinhaltet die Pfade zu den geöffneten Videos, sowie die eingestellten Filter und Artefakte.
 \subsection*{PSNR-Graph} 
-Ein Graph der auf der x-Achse Zeitwerte(Framenummer) enthält und auf der y-Achse den dazugehörigen PSNR-Wert.
+Ein Graph, der auf der x-Achse Zeitwerte(Framenummer) enthält und auf der y-Achse den dazugehörigen PSNR-Wert.
 \subsection*{PSNR-Wert} 
 Peak signal-to-noise ratio ist ein Maß für das Verhältnis zwischen Signalrate und dem überlagerten Rauschsignal.
 \subsection*{RGB-Histogramm} 
