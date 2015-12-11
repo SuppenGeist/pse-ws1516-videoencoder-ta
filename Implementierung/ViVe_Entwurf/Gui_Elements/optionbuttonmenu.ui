@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>OptionButtonMenu</class>
+ <widget class="QFrame" name="OptionButtonMenu">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>246</width>
+    <height>402</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Frame</string>
+  </property>
+  <property name="frameShape">
+   <enum>QFrame::StyledPanel</enum>
+  </property>
+  <property name="frameShadow">
+   <enum>QFrame::Raised</enum>
+  </property>
+  <widget class="QWidget" name="verticalLayoutWidget_2">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>246</width>
+     <height>401</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_2">
+    <item>
+     <widget class="QPushButton" name="pushButton_2">
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+	color: rgb(255, 255, 255);
+	border-color: rgb(69, 62, 62);
+background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #88d, stop: 0.1 #99e, stop: 0.49 #77c);
+	background: rgb(115, 115, 115);
+	border-width: 1px;
+	border-color:rgb(255, 255, 255);
+	border-style: outset;
+	border-radius: 7;
+	padding: 3px;
+	font-size: 18px;
+	padding-left: 5px;
+	padding-right: 5px;
+
+}
+
+QPushButton:pressed {
+background-color: rgb(69, 62, 62);
+	border-style: inset;
+}</string>
+      </property>
+      <property name="text">
+       <string>Up</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_3">
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+	color: rgb(255, 255, 255);
+	border-color: rgb(69, 62, 62);
+background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #88d, stop: 0.1 #99e, stop: 0.49 #77c);
+	background: rgb(115, 115, 115);
+	border-width: 1px;
+	border-color:rgb(255, 255, 255);
+	border-style: outset;
+	border-radius: 7;
+	padding: 3px;
+	font-size: 18px;
+	min-width: 8em;
+	padding-left: 5px;
+	padding-right: 5px;
+
+}
+
+QPushButton:pressed {
+background-color: rgb(69, 62, 62);
+	border-style: inset;
+}</string>
+      </property>
+      <property name="text">
+       <string>Down</string>
+      </property>
+      <property name="autoDefault">
+       <bool>false</bool>
+      </property>
+      <property name="default">
+       <bool>false</bool>
+      </property>
+      <property name="flat">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_4">
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+	color: rgb(255, 255, 255);
+	border-color: rgb(69, 62, 62);
+background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #88d, stop: 0.1 #99e, stop: 0.49 #77c);
+	background: rgb(115, 115, 115);
+	border-width: 1px;
+	border-color:rgb(255, 255, 255);
+	border-style: outset;
+	border-radius: 7;
+	padding: 3px;
+	font-size: 18px;
+	min-width: 8em;
+	padding-left: 5px;
+	padding-right: 5px;
+
+}
+
+QPushButton:pressed {
+background-color: rgb(69, 62, 62);
+	border-style: inset;
+}</string>
+      </property>
+      <property name="text">
+       <string>Remove</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <spacer name="verticalSpacer">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_6">
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+	color: rgb(255, 255, 255);
+	border-color: rgb(69, 62, 62);
+background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #88d, stop: 0.1 #99e, stop: 0.49 #77c);
+	background: rgb(115, 115, 115);
+	border-width: 1px;
+	border-color:rgb(255, 255, 255);
+	border-style: outset;
+	border-radius: 7;
+	padding: 3px;
+	font-size: 18px;
+	min-width: 8em;
+	padding-left: 5px;
+	padding-right: 5px;
+
+}
+
+QPushButton:pressed {
+background-color: rgb(69, 62, 62);
+	border-style: inset;
+}</string>
+      </property>
+      <property name="text">
+       <string>Load video</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton">
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+	color: rgb(255, 255, 255);
+	border-color: rgb(69, 62, 62);
+background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #88d, stop: 0.1 #99e, stop: 0.49 #77c);
+	background: rgb(115, 115, 115);
+	border-width: 1px;
+	border-color:rgb(255, 255, 255);
+	border-style: outset;
+	border-radius: 7;
+	padding: 3px;
+	font-size: 18px;
+	min-width: 8em;
+	padding-left: 5px;
+	padding-right: 5px;
+
+}
+
+QPushButton:pressed {
+background-color: rgb(69, 62, 62);
+	border-style: inset;
+}</string>
+      </property>
+      <property name="text">
+       <string>Appy to video</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_7">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>-1</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+	color: rgb(255, 255, 255);
+	border-color: rgb(69, 62, 62);
+background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #88d, stop: 0.1 #99e, stop: 0.49 #77c);
+	background: rgb(115, 115, 115);
+	border-width: 1px;
+	border-color:rgb(255, 255, 255);
+	border-style: outset;
+	border-radius: 7;
+	padding: 3px;
+	font-size: 18px;
+	min-width: 8em;
+	padding-left: 5px;
+	padding-right: 5px;
+
+}
+
+QPushButton:pressed {
+background-color: rgb(69, 62, 62);
+	border-style: inset;
+}</string>
+      </property>
+      <property name="text">
+       <string>Save video</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <spacer name="verticalSpacer_2">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_8">
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+	color: rgb(255, 255, 255);
+	border-color: rgb(69, 62, 62);
+background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #88d, stop: 0.1 #99e, stop: 0.49 #77c);
+	background: rgb(115, 115, 115);
+	border-width: 1px;
+	border-color:rgb(255, 255, 255);
+	border-style: outset;
+	border-radius: 7;
+	padding: 3px;
+	font-size: 18px;
+	min-width: 8em;
+	padding-left: 5px;
+	padding-right: 5px;
+
+}
+
+QPushButton:pressed {
+background-color: rgb(69, 62, 62);
+	border-style: inset;
+}</string>
+      </property>
+      <property name="text">
+       <string>Load configuration</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_9">
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+	color: rgb(255, 255, 255);
+	border-color: rgb(69, 62, 62);
+background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #88d, stop: 0.1 #99e, stop: 0.49 #77c);
+	background: rgb(115, 115, 115);
+	border-width: 1px;
+	border-color:rgb(255, 255, 255);
+	border-style: outset;
+	border-radius: 7;
+	padding: 3px;
+	font-size: 18px;
+	min-width: 8em;
+	padding-left: 5px;
+	padding-right: 5px;
+
+}
+
+QPushButton:pressed {
+background-color: rgb(69, 62, 62);
+	border-style: inset;
+}</string>
+      </property>
+      <property name="text">
+       <string>Save configuration</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <spacer name="verticalSpacer_4">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_5">
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+	color: rgb(255, 255, 255);
+	border-color: rgb(69, 62, 62);
+background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #88d, stop: 0.1 #99e, stop: 0.49 #77c);
+	background: rgb(115, 115, 115);
+	border-width: 1px;
+	border-color:rgb(255, 255, 255);
+	border-style: outset;
+	border-radius: 7;
+	padding: 3px;
+	font-size: 18px;
+	min-width: 8em;
+	padding-left: 5px;
+	padding-right: 5px;
+
+}
+
+QPushButton:pressed {
+background-color: rgb(69, 62, 62);
+	border-style: inset;
+}</string>
+      </property>
+      <property name="text">
+       <string>Reset</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
