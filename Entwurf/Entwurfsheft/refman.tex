@@ -17,7 +17,8 @@
 
 \DeclareUnicodeCharacter{00A0}{ }
 % Font selection
-\usepackage[T1]{fontenc}
+\usepackage[T1]{fontenc} % avoid garbled Unicode text in pdf
+\usepackage[german]{babel} % german hyphenation, quotes, etc
 \usepackage[scaled=.90]{helvet}
 \usepackage{courier}
 \usepackage{amssymb}
@@ -87,7 +88,7 @@
 % Indices & bibliography
 \usepackage{natbib}
 \usepackage[titles]{tocloft}
-\setcounter{tocdepth}{3}
+\setcounter{tocdepth}{1}
 \setcounter{secnumdepth}{5}
 \makeindex
 
@@ -121,7 +122,7 @@
              bookmarksnumbered=true,
              pdfencoding=unicode
             }
-\pagenumbering{roman}
+%\pagenumbering{roman}
 \begin{titlepage}
 \vspace*{7cm}
 \begin{center}%\\
@@ -141,12 +142,11 @@
 \chapter{Einleitung}
 Vive (lang: Video veritatem) ist ein Programm zum Testen verschiedener Videoencoder. Dieses Dokument ist das Entwurfsheft, in welchem sich Diagramme und Spezifikationen zu jeder einzelnen Klasse befinden. Außerdem dient es als Richtlinie für die Implementierungsphase.
 Das Entwurfsheft ist in mehrere Abschnitte gegliedert: Im ersten Abschnitt sind Diagramme zu sehen, die einen groben Überblick über die Struktur des Programms liefern. Darauf folgt die detaillierte Beschreibung jeder einzelnen Klasse und Methode. Eine Übersicht über die Implementierungsphase in Form eines Gantt-Diagrams ist im Anhang enthalten.
-\chapter{Data Structure Documentation}
+\chapter{Doxygen Klassendokumentation}
 \input{classUndo__Redo_1_1AddFilter}
 \input{classUndo__Redo_1_1AddVideo}
 \input{classGUI_1_1AnalysisBox}
 \input{classGUI_1_1AnalysisBoxContainer}
-\input{classGUI_1_1AnalysisBoxContainer2}
 \input{classMemento_1_1AnalysisBoxContainerMemento}
 \input{classMemento_1_1AnalysisBoxMemento}
 \input{classGUI_1_1AnalysisTab}
@@ -196,7 +196,6 @@ Das Entwurfsheft ist in mehrere Abschnitte gegliedert: Im ersten Abschnitt sind 
 \input{classUndo__Redo_1_1LoadAnalysisVideo}
 \input{classUndo__Redo_1_1LoadFilterconfig}
 \input{classUndo__Redo_1_1LoadFilterVideo}
-\input{classLoadVideo}
 \input{classGUI_1_1Player_1_1LoadVideoControlPanel}
 \input{classUtility_1_1MacroblockCalculator}
 \input{classGUI_1_1MainWindow}
@@ -209,12 +208,10 @@ Das Entwurfsheft ist in mehrere Abschnitte gegliedert: Im ersten Abschnitt sind 
 \input{classGUI_1_1NegativeFilterBox}
 \input{classModel_1_1Filter_1_1NoiseFilter}
 \input{classGUI_1_1NoiseFilterBox}
-\input{classPlayer_1_1PlayerControlPanel}
 \input{classGUI_1_1PlayerControlPanel____6}
 \input{classGUI_1_1Player_1_1PlayerControlPanel____7}
 \input{classModel_1_1Filter_1_1PosterFilter}
 \input{classGUI_1_1PosterFilterBox}
-\input{classPlayer_1_1PreviewControlPanel}
 \input{classGUI_1_1PreviewControlPanel____8}
 \input{classGUI_1_1Player_1_1PreviewControlPanel____9}
 \input{classModel_1_1Project}
@@ -223,13 +220,10 @@ Das Entwurfsheft ist in mehrere Abschnitte gegliedert: Im ersten Abschnitt sind 
 \input{classUtility_1_1PsnrCalculator}
 \input{classGUI_1_1QtGui_1_1QCheckBox}
 \input{classGUI_1_1QtGui_1_1QComboBox}
-\input{classPlayer_1_1QDialog}
 \input{classGUI_1_1Player_1_1QDialog____12}
 \input{classGUI_1_1QtGui_1_1QDialog____13}
 \input{classGUI_1_1QtGui_1_1QFarbDialog}
-\input{classQFrame____1}
 \input{classGUI_1_1QFrame____1}
-\input{classPlayer_1_1QFrame____2}
 \input{classGUI_1_1QtGui_1_1QFrame____2}
 \input{classGUI_1_1Player_1_1QFrame____3}
 \input{classGUI_1_1QtGui_1_1QGraphicsView}
@@ -237,7 +231,6 @@ Das Entwurfsheft ist in mehrere Abschnitte gegliedert: Im ersten Abschnitt sind 
 \input{classGUI_1_1QtGui_1_1QHBoxLayout}
 \input{classGUI_1_1QtGui_1_1QLabel}
 \input{classGUI_1_1QtGui_1_1QListWidget}
-\input{classQMainWindow}
 \input{classGUI_1_1QMainWindow____4}
 \input{classGUI_1_1QtGui_1_1QMainWindow____5}
 \input{classGUI_1_1QtGui_1_1QMediaPlayer}
@@ -245,11 +238,9 @@ Das Entwurfsheft ist in mehrere Abschnitte gegliedert: Im ersten Abschnitt sind 
 \input{classGUI_1_1QtGui_1_1QRadioButton}
 \input{classGUI_1_1QtGui_1_1QSpinBox}
 \input{classUndo__Redo_1_1QUndoCommand}
-\input{classUndo__Redo_1_1QUndoStack}
 \input{classGUI_1_1QtGui_1_1QVBoxLayout}
 \input{classGUI_1_1QtGui_1_1QVideoFrame}
 \input{classGUI_1_1QtGui_1_1QVideoWidget}
-\input{classPlayer_1_1QWidget}
 \input{classGUI_1_1QtGui_1_1QWidget____10}
 \input{classGUI_1_1Player_1_1QWidget____11}
 \input{classModel_1_1Filter_1_1RectangleFilter}
