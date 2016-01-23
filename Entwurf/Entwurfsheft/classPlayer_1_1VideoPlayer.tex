@@ -1,0 +1,183 @@
+\hypertarget{classPlayer_1_1VideoPlayer}{}\section{Video\+Player Class Reference}
+\label{classPlayer_1_1VideoPlayer}\index{Video\+Player@{Video\+Player}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classPlayer_1_1VideoPlayer_af6d7bb082887f6a9738741778c58daf8}{Video\+Player} ()
+\item 
+void \hyperlink{classPlayer_1_1VideoPlayer_a320aefdc59942711233d0bd903c7278c}{add\+View} (\hyperlink{classPlayer_1_1FrameView}{Player\+::\+Frame\+View} \&view)
+\item 
+void \hyperlink{classPlayer_1_1VideoPlayer_aa88692d3a84069234e027353a77ea73f}{remove\+View} (\hyperlink{classPlayer_1_1FrameView}{Player\+::\+Frame\+View} \&view)
+\item 
+void \hyperlink{classPlayer_1_1VideoPlayer_af2f6c6c3b1e8296440c02b444767838d}{set\+Video} (\hyperlink{classPlayer_1_1Video}{Player\+::\+Video} \&video)
+\item 
+\hyperlink{classPlayer_1_1Video}{Player\+::\+Video} $\ast$ \hyperlink{classPlayer_1_1VideoPlayer_a0fa3ec34b26df1cd21a350caf5e59da5}{get\+Video} ()
+\item 
+void \hyperlink{classPlayer_1_1VideoPlayer_a20e230fdff519566411cff7e4ce5c93d}{set\+Timer} (shared\+\_\+ptr$<$ \hyperlink{classPlayer_1_1Timer}{Player\+::\+Timer} $>$ timer\+\_\+\+:std\+:)
+\item 
+void \hyperlink{classPlayer_1_1VideoPlayer_ac99343fd51cdad1ee430905a00791ade}{clear\+Timer} ()
+\item 
+int \hyperlink{classPlayer_1_1VideoPlayer_a519ad5c0664b9de28c1a6d9dc77f959d}{get\+Fps} ()
+\item 
+\hypertarget{classPlayer_1_1VideoPlayer_a10af72f33b5d276133eb59f94c5cfc49}{}void {\bfseries set\+Master\+Control\+Panel} (\hyperlink{classPlayer_1_1ControlPanel}{Player\+::\+Control\+Panel} \&control\+Panel)\label{classPlayer_1_1VideoPlayer_a10af72f33b5d276133eb59f94c5cfc49}
+
+\item 
+\hypertarget{classPlayer_1_1VideoPlayer_a6d58098c6cf63c241ed03bc797256bb1}{}void {\bfseries play} ()\label{classPlayer_1_1VideoPlayer_a6d58098c6cf63c241ed03bc797256bb1}
+
+\item 
+\hypertarget{classPlayer_1_1VideoPlayer_a7167f5c196fc5e167bfabde1a730e81d}{}void {\bfseries pause} ()\label{classPlayer_1_1VideoPlayer_a7167f5c196fc5e167bfabde1a730e81d}
+
+\item 
+\hypertarget{classPlayer_1_1VideoPlayer_a8c528baf37154d347366083f0f816846}{}void {\bfseries stop} ()\label{classPlayer_1_1VideoPlayer_a8c528baf37154d347366083f0f816846}
+
+\item 
+\hypertarget{classPlayer_1_1VideoPlayer_a365329da56f8b07f8c95027ba967bbc3}{}void {\bfseries next\+Frame} ()\label{classPlayer_1_1VideoPlayer_a365329da56f8b07f8c95027ba967bbc3}
+
+\item 
+\hypertarget{classPlayer_1_1VideoPlayer_a3c96ed37c70ebc0b32c527a04e1536d1}{}void {\bfseries previous\+Frame} ()\label{classPlayer_1_1VideoPlayer_a3c96ed37c70ebc0b32c527a04e1536d1}
+
+\item 
+\hypertarget{classPlayer_1_1VideoPlayer_a5466c67c5ec22359c0702dc4ac8ffb19}{}void {\bfseries set\+Speed} (float speed)\label{classPlayer_1_1VideoPlayer_a5466c67c5ec22359c0702dc4ac8ffb19}
+
+\item 
+\hypertarget{classPlayer_1_1VideoPlayer_a1aa68f77243229daea38d59bc5145d35}{}void {\bfseries set\+Position} (int position)\label{classPlayer_1_1VideoPlayer_a1aa68f77243229daea38d59bc5145d35}
+
+\item 
+\hypertarget{classPlayer_1_1VideoPlayer_a97825791568ee242ca19d25b75030d87}{}int {\bfseries get\+Position} ()\label{classPlayer_1_1VideoPlayer_a97825791568ee242ca19d25b75030d87}
+
+\item 
+\hypertarget{classPlayer_1_1VideoPlayer_a26ebefde7fe71954e6c1282255951b7d}{}float {\bfseries get\+Speed} ()\label{classPlayer_1_1VideoPlayer_a26ebefde7fe71954e6c1282255951b7d}
+
+\item 
+\hypertarget{classPlayer_1_1VideoPlayer_a8438e3403946accc1986a05b89ee7b03}{}bool {\bfseries is\+Playing} ()\label{classPlayer_1_1VideoPlayer_a8438e3403946accc1986a05b89ee7b03}
+
+\item 
+\hypertarget{classPlayer_1_1VideoPlayer_a2fc5ff4f369aaa46c55c3ad3c63216d6}{}bool {\bfseries is\+Stopped} ()\label{classPlayer_1_1VideoPlayer_a2fc5ff4f369aaa46c55c3ad3c63216d6}
+
+\item 
+\hypertarget{classPlayer_1_1VideoPlayer_ad20897c5c8bd47f5d4005989bead0e55}{}void {\bfseries reset} ()\label{classPlayer_1_1VideoPlayer_ad20897c5c8bd47f5d4005989bead0e55}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class is a video player. It provides a basic interface for handling playback of videos. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classPlayer_1_1VideoPlayer_af6d7bb082887f6a9738741778c58daf8}{}\index{Player\+::\+Video\+Player@{Player\+::\+Video\+Player}!Video\+Player@{Video\+Player}}
+\index{Video\+Player@{Video\+Player}!Player\+::\+Video\+Player@{Player\+::\+Video\+Player}}
+\subsubsection[{Video\+Player}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Video\+Player} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classPlayer_1_1VideoPlayer_af6d7bb082887f6a9738741778c58daf8}
+
+
+Constructor. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classPlayer_1_1VideoPlayer_a320aefdc59942711233d0bd903c7278c}{}\index{Player\+::\+Video\+Player@{Player\+::\+Video\+Player}!add\+View@{add\+View}}
+\index{add\+View@{add\+View}!Player\+::\+Video\+Player@{Player\+::\+Video\+Player}}
+\subsubsection[{add\+View}]{\setlength{\rightskip}{0pt plus 5cm}void add\+View (
+\begin{DoxyParamCaption}
+\item[{{\bf Player\+::\+Frame\+View} \&}]{view}
+\end{DoxyParamCaption}
+)}\label{classPlayer_1_1VideoPlayer_a320aefdc59942711233d0bd903c7278c}
+
+
+Adds a view. Multiple views can be added. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em view} & the view to add\\
+\hline
+\end{DoxyParams}
+\hypertarget{classPlayer_1_1VideoPlayer_ac99343fd51cdad1ee430905a00791ade}{}\index{Player\+::\+Video\+Player@{Player\+::\+Video\+Player}!clear\+Timer@{clear\+Timer}}
+\index{clear\+Timer@{clear\+Timer}!Player\+::\+Video\+Player@{Player\+::\+Video\+Player}}
+\subsubsection[{clear\+Timer}]{\setlength{\rightskip}{0pt plus 5cm}void clear\+Timer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classPlayer_1_1VideoPlayer_ac99343fd51cdad1ee430905a00791ade}
+
+
+Clears the timer. 
+
+\hypertarget{classPlayer_1_1VideoPlayer_a519ad5c0664b9de28c1a6d9dc77f959d}{}\index{Player\+::\+Video\+Player@{Player\+::\+Video\+Player}!get\+Fps@{get\+Fps}}
+\index{get\+Fps@{get\+Fps}!Player\+::\+Video\+Player@{Player\+::\+Video\+Player}}
+\subsubsection[{get\+Fps}]{\setlength{\rightskip}{0pt plus 5cm}int get\+Fps (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classPlayer_1_1VideoPlayer_a519ad5c0664b9de28c1a6d9dc77f959d}
+
+
+Returns the fps the player is currently playing at. 
+
+\begin{DoxyReturn}{Returns}
+the current fps of the player
+\end{DoxyReturn}
+\hypertarget{classPlayer_1_1VideoPlayer_a0fa3ec34b26df1cd21a350caf5e59da5}{}\index{Player\+::\+Video\+Player@{Player\+::\+Video\+Player}!get\+Video@{get\+Video}}
+\index{get\+Video@{get\+Video}!Player\+::\+Video\+Player@{Player\+::\+Video\+Player}}
+\subsubsection[{get\+Video}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Player\+::\+Video} $\ast$ get\+Video (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classPlayer_1_1VideoPlayer_a0fa3ec34b26df1cd21a350caf5e59da5}
+
+
+Returns a pointer to the currently played video. If no video is set nullptr is returned. 
+
+\begin{DoxyReturn}{Returns}
+pointer to the current video
+\end{DoxyReturn}
+\hypertarget{classPlayer_1_1VideoPlayer_aa88692d3a84069234e027353a77ea73f}{}\index{Player\+::\+Video\+Player@{Player\+::\+Video\+Player}!remove\+View@{remove\+View}}
+\index{remove\+View@{remove\+View}!Player\+::\+Video\+Player@{Player\+::\+Video\+Player}}
+\subsubsection[{remove\+View}]{\setlength{\rightskip}{0pt plus 5cm}void remove\+View (
+\begin{DoxyParamCaption}
+\item[{{\bf Player\+::\+Frame\+View} \&}]{view}
+\end{DoxyParamCaption}
+)}\label{classPlayer_1_1VideoPlayer_aa88692d3a84069234e027353a77ea73f}
+
+
+Removes a view. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em view} & the view to remove\\
+\hline
+\end{DoxyParams}
+\hypertarget{classPlayer_1_1VideoPlayer_a20e230fdff519566411cff7e4ce5c93d}{}\index{Player\+::\+Video\+Player@{Player\+::\+Video\+Player}!set\+Timer@{set\+Timer}}
+\index{set\+Timer@{set\+Timer}!Player\+::\+Video\+Player@{Player\+::\+Video\+Player}}
+\subsubsection[{set\+Timer}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Timer (
+\begin{DoxyParamCaption}
+\item[{shared\+\_\+ptr$<$ {\bf Player\+::\+Timer} $>$ timer\+\_\+\+:std\+:}]{}
+\end{DoxyParamCaption}
+)}\label{classPlayer_1_1VideoPlayer_a20e230fdff519566411cff7e4ce5c93d}
+
+
+Sets the timer for the player. This method has to be called in order to be able to play the video. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em timer \+:std,\+:} & the timer for the player\\
+\hline
+\end{DoxyParams}
+\hypertarget{classPlayer_1_1VideoPlayer_af2f6c6c3b1e8296440c02b444767838d}{}\index{Player\+::\+Video\+Player@{Player\+::\+Video\+Player}!set\+Video@{set\+Video}}
+\index{set\+Video@{set\+Video}!Player\+::\+Video\+Player@{Player\+::\+Video\+Player}}
+\subsubsection[{set\+Video}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Video (
+\begin{DoxyParamCaption}
+\item[{{\bf Player\+::\+Video} \&}]{video}
+\end{DoxyParamCaption}
+)}\label{classPlayer_1_1VideoPlayer_af2f6c6c3b1e8296440c02b444767838d}
+
+
+Sets the video. If a video was previously set the old video gets deleted, 
+
+
+\begin{DoxyParams}{Parameters}
+{\em video} & the video to play\\
+\hline
+\end{DoxyParams}

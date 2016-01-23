@@ -1,0 +1,86 @@
+\hypertarget{classGUI_1_1Player_1_1Yuv444FileReader}{}\section{Yuv444\+File\+Reader Class Reference}
+\label{classGUI_1_1Player_1_1Yuv444FileReader}\index{Yuv444\+File\+Reader@{Yuv444\+File\+Reader}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classGUI_1_1Player_1_1Yuv444FileReader_aa532de3fc5d3c1de46df499edd669e03}{Yuv444\+File\+Reader} (Q\+String filename, int width, int height, G\+U\+I\+::\+Player\+::\+Compression compression)
+\item 
+std\+::unique\+\_\+ptr$<$ \hyperlink{classGUI_1_1Player_1_1Video}{G\+U\+I\+::\+Player\+::\+Video} $>$ \hyperlink{classGUI_1_1Player_1_1Yuv444FileReader_a796f80ad40ecc8941c49cd734ddeeae9}{read} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static Q\+Rgb \hyperlink{classGUI_1_1Player_1_1Yuv444FileReader_a94aceb3b427f20f116c769d65d4a0d10}{yuv444\+To\+Rgb888} (\hyperlink{classGUI_1_1Player_1_1Yuv444Vector}{G\+U\+I\+::\+Player\+::\+Yuv444\+Vector} vector)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+This class can read Yuv 444 files. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classGUI_1_1Player_1_1Yuv444FileReader_aa532de3fc5d3c1de46df499edd669e03}{}\index{G\+U\+I\+::\+Player\+::\+Yuv444\+File\+Reader@{G\+U\+I\+::\+Player\+::\+Yuv444\+File\+Reader}!Yuv444\+File\+Reader@{Yuv444\+File\+Reader}}
+\index{Yuv444\+File\+Reader@{Yuv444\+File\+Reader}!G\+U\+I\+::\+Player\+::\+Yuv444\+File\+Reader@{G\+U\+I\+::\+Player\+::\+Yuv444\+File\+Reader}}
+\subsubsection[{Yuv444\+File\+Reader}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Yuv444\+File\+Reader} (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{filename, }
+\item[{int}]{width, }
+\item[{int}]{height, }
+\item[{G\+U\+I\+::\+Player\+::\+Compression}]{compression}
+\end{DoxyParamCaption}
+)}\label{classGUI_1_1Player_1_1Yuv444FileReader_aa532de3fc5d3c1de46df499edd669e03}
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & absolute path to the file to load\\
+\hline
+{\em width} & width of the video\\
+\hline
+{\em height} & height of the video\\
+\hline
+{\em compression} & compression of the file\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classGUI_1_1Player_1_1Yuv444FileReader_a796f80ad40ecc8941c49cd734ddeeae9}{}\index{G\+U\+I\+::\+Player\+::\+Yuv444\+File\+Reader@{G\+U\+I\+::\+Player\+::\+Yuv444\+File\+Reader}!read@{read}}
+\index{read@{read}!G\+U\+I\+::\+Player\+::\+Yuv444\+File\+Reader@{G\+U\+I\+::\+Player\+::\+Yuv444\+File\+Reader}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}std\+::unique\+\_\+ptr$<$ {\bf G\+U\+I\+::\+Player\+::\+Video} $>$ read (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classGUI_1_1Player_1_1Yuv444FileReader_a796f80ad40ecc8941c49cd734ddeeae9}
+
+
+Reads the file in. 
+
+\begin{DoxyReturn}{Returns}
+the complete video
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classGUI_1_1Player_1_1YuvFileReader_a9e149e2cb193ef5ed20d0d38f42d2751}{Yuv\+File\+Reader}.
+
+\hypertarget{classGUI_1_1Player_1_1Yuv444FileReader_a94aceb3b427f20f116c769d65d4a0d10}{}\index{G\+U\+I\+::\+Player\+::\+Yuv444\+File\+Reader@{G\+U\+I\+::\+Player\+::\+Yuv444\+File\+Reader}!yuv444\+To\+Rgb888@{yuv444\+To\+Rgb888}}
+\index{yuv444\+To\+Rgb888@{yuv444\+To\+Rgb888}!G\+U\+I\+::\+Player\+::\+Yuv444\+File\+Reader@{G\+U\+I\+::\+Player\+::\+Yuv444\+File\+Reader}}
+\subsubsection[{yuv444\+To\+Rgb888}]{\setlength{\rightskip}{0pt plus 5cm}static Q\+Rgb yuv444\+To\+Rgb888 (
+\begin{DoxyParamCaption}
+\item[{{\bf G\+U\+I\+::\+Player\+::\+Yuv444\+Vector}}]{vector}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{classGUI_1_1Player_1_1Yuv444FileReader_a94aceb3b427f20f116c769d65d4a0d10}
+
+
+Converts a \hyperlink{classGUI_1_1Player_1_1Yuv444Vector}{Yuv444\+Vector} to a Rgb888 pixel. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vector} & the vector to convert\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the computed pixel
+\end{DoxyReturn}

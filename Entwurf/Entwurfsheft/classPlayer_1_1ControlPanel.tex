@@ -1,0 +1,78 @@
+\hypertarget{classPlayer_1_1ControlPanel}{}\section{Control\+Panel Class Reference}
+\label{classPlayer_1_1ControlPanel}\index{Control\+Panel@{Control\+Panel}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classPlayer_1_1ControlPanel_a0efa607fe77b973e1128eae3bb33a9a1}{Control\+Panel} ()
+\item 
+void \hyperlink{classPlayer_1_1ControlPanel_a798f5ffd7fe32e3fe8f67feed1e555c4}{set\+Master\+Video\+Player} (Player\+::\+Player \&player)
+\item 
+void \hyperlink{classPlayer_1_1ControlPanel_a792442cb9717fa224fe8e5bedb06dc89}{add\+Video\+Player} (Player \&player)
+\item 
+\hypertarget{classPlayer_1_1ControlPanel_aa9963358cf9cff5ea2531d73efa78f73}{}virtual void {\bfseries update\+Ui} ()=0\label{classPlayer_1_1ControlPanel_aa9963358cf9cff5ea2531d73efa78f73}
+
+\item 
+\hypertarget{classPlayer_1_1ControlPanel_aa24579c43e90697b0b05662270dfca3f}{}void {\bfseries remove\+Video\+Player} (Player\+::\+Player \&player)\label{classPlayer_1_1ControlPanel_aa24579c43e90697b0b05662270dfca3f}
+
+\end{DoxyCompactItemize}
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classPlayer_1_1ControlPanel_a15c652a3823f382424d5e243a45e8892}{}\hyperlink{classPlayer_1_1VideoPlayer}{Player\+::\+Video\+Player} $\ast$ {\bfseries master\+Panel}\label{classPlayer_1_1ControlPanel_a15c652a3823f382424d5e243a45e8892}
+
+\item 
+\hypertarget{classPlayer_1_1ControlPanel_a19d3bc127be800de1935d752240a9fcc}{}\hyperlink{classForwardPlayer}{Forward\+Player} $\ast$ {\bfseries forward\+Panel}\label{classPlayer_1_1ControlPanel_a19d3bc127be800de1935d752240a9fcc}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class is the base class for control panels. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classPlayer_1_1ControlPanel_a0efa607fe77b973e1128eae3bb33a9a1}{}\index{Player\+::\+Control\+Panel@{Player\+::\+Control\+Panel}!Control\+Panel@{Control\+Panel}}
+\index{Control\+Panel@{Control\+Panel}!Player\+::\+Control\+Panel@{Player\+::\+Control\+Panel}}
+\subsubsection[{Control\+Panel}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Control\+Panel} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classPlayer_1_1ControlPanel_a0efa607fe77b973e1128eae3bb33a9a1}
+
+
+Constructor. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classPlayer_1_1ControlPanel_a792442cb9717fa224fe8e5bedb06dc89}{}\index{Player\+::\+Control\+Panel@{Player\+::\+Control\+Panel}!add\+Video\+Player@{add\+Video\+Player}}
+\index{add\+Video\+Player@{add\+Video\+Player}!Player\+::\+Control\+Panel@{Player\+::\+Control\+Panel}}
+\subsubsection[{add\+Video\+Player}]{\setlength{\rightskip}{0pt plus 5cm}void add\+Video\+Player (
+\begin{DoxyParamCaption}
+\item[{Player \&}]{player}
+\end{DoxyParamCaption}
+)}\label{classPlayer_1_1ControlPanel_a792442cb9717fa224fe8e5bedb06dc89}
+
+
+Adds the video player the list of players to notify. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & The player to add to the list\\
+\hline
+\end{DoxyParams}
+\hypertarget{classPlayer_1_1ControlPanel_a798f5ffd7fe32e3fe8f67feed1e555c4}{}\index{Player\+::\+Control\+Panel@{Player\+::\+Control\+Panel}!set\+Master\+Video\+Player@{set\+Master\+Video\+Player}}
+\index{set\+Master\+Video\+Player@{set\+Master\+Video\+Player}!Player\+::\+Control\+Panel@{Player\+::\+Control\+Panel}}
+\subsubsection[{set\+Master\+Video\+Player}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Master\+Video\+Player (
+\begin{DoxyParamCaption}
+\item[{Player\+::\+Player \&}]{player}
+\end{DoxyParamCaption}
+)}\label{classPlayer_1_1ControlPanel_a798f5ffd7fe32e3fe8f67feed1e555c4}
+
+
+Sets the master video player. The master video player is the reference to where to set the position of the slider, if the video is played paused or stopped. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & the master video player\\
+\hline
+\end{DoxyParams}

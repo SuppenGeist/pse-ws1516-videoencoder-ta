@@ -1,0 +1,111 @@
+\hypertarget{classAnalysisBoxContainer}{}\section{Analysis\+Box\+Container Class Reference}
+\label{classAnalysisBoxContainer}\index{Analysis\+Box\+Container@{Analysis\+Box\+Container}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classAnalysisBoxContainer_afd0028b75819b4b6b0204e43c3b663c2}{}{\bfseries Analysis\+Box\+Container} (Player\+::\+Q\+Widget2 $\ast$parent)\label{classAnalysisBoxContainer_afd0028b75819b4b6b0204e43c3b663c2}
+
+\item 
+\hypertarget{classAnalysisBoxContainer_a490b0483a46b9ca4846c489a72670b8c}{}\hyperlink{classAnalysisBoxContainerMemento}{Analysis\+Box\+Container\+Memento} {\bfseries get\+Memento} ()\label{classAnalysisBoxContainer_a490b0483a46b9ca4846c489a72670b8c}
+
+\item 
+\hypertarget{classAnalysisBoxContainer_a18dc4cae1982fdf54a49959742ae2f59}{}void {\bfseries restore} (\hyperlink{classAnalysisBoxContainerMemento}{Analysis\+Box\+Container\+Memento} memento)\label{classAnalysisBoxContainer_a18dc4cae1982fdf54a49959742ae2f59}
+
+\item 
+void \hyperlink{classAnalysisBoxContainer_af3b761e148d9cb7352c5ffb4bf4c66bd}{add\+Video} (Q\+String path)
+\item 
+void \hyperlink{classAnalysisBoxContainer_a2b6f9916ed9f525eae2c47fab4275ddf}{set\+Raw\+Video} (\hyperlink{classPlayer_1_1Video}{Player\+::\+Video} $\ast$video)
+\item 
+void \hyperlink{classAnalysisBoxContainer_ae85e1178ac5c0f822c6311134f04b6f2}{set\+Timer} (shared\+\_\+ptr$<$ \hyperlink{classPlayer_1_1Timer}{Player\+::\+Timer} $>$ timer\+:std\+:)
+\item 
+void \hyperlink{classAnalysisBoxContainer_a9c1b482d1dcd6a733b84a9cdcc960263}{set\+Control\+Panel} (Player\+::\+Global\+Control\+Panel $\ast$panel)
+\item 
+void \hyperlink{classAnalysisBoxContainer_ab3d9dc42d8e78c5bf6f87c5e93bdf1ce}{show\+Macro\+Block\+Videos} ()
+\item 
+void \hyperlink{classAnalysisBoxContainer_a91638333a4b3fe577fd2062f2aa667f3}{show\+R\+G\+B\+Difference\+Videos} ()
+\item 
+void \hyperlink{classAnalysisBoxContainer_ace9070f3e0c9e782b87033128dacea3a}{remove\+Box} (\hyperlink{classAnalysisBox}{Analysis\+Box} \&box)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+contains and manages the Analysis\+Boxes 
+
+\subsection{Member Function Documentation}
+\hypertarget{classAnalysisBoxContainer_af3b761e148d9cb7352c5ffb4bf4c66bd}{}\index{Analysis\+Box\+Container@{Analysis\+Box\+Container}!add\+Video@{add\+Video}}
+\index{add\+Video@{add\+Video}!Analysis\+Box\+Container@{Analysis\+Box\+Container}}
+\subsubsection[{add\+Video}]{\setlength{\rightskip}{0pt plus 5cm}void add\+Video (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{path}
+\end{DoxyParamCaption}
+)}\label{classAnalysisBoxContainer_af3b761e148d9cb7352c5ffb4bf4c66bd}
+
+
+creates a Analysis box for the video and adds it to boxes 
+
+\hypertarget{classAnalysisBoxContainer_ace9070f3e0c9e782b87033128dacea3a}{}\index{Analysis\+Box\+Container@{Analysis\+Box\+Container}!remove\+Box@{remove\+Box}}
+\index{remove\+Box@{remove\+Box}!Analysis\+Box\+Container@{Analysis\+Box\+Container}}
+\subsubsection[{remove\+Box}]{\setlength{\rightskip}{0pt plus 5cm}void remove\+Box (
+\begin{DoxyParamCaption}
+\item[{{\bf Analysis\+Box} \&}]{box}
+\end{DoxyParamCaption}
+)}\label{classAnalysisBoxContainer_ace9070f3e0c9e782b87033128dacea3a}
+
+
+removes box from the list 
+
+\hypertarget{classAnalysisBoxContainer_a9c1b482d1dcd6a733b84a9cdcc960263}{}\index{Analysis\+Box\+Container@{Analysis\+Box\+Container}!set\+Control\+Panel@{set\+Control\+Panel}}
+\index{set\+Control\+Panel@{set\+Control\+Panel}!Analysis\+Box\+Container@{Analysis\+Box\+Container}}
+\subsubsection[{set\+Control\+Panel}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Control\+Panel (
+\begin{DoxyParamCaption}
+\item[{Player\+::\+Global\+Control\+Panel $\ast$}]{panel}
+\end{DoxyParamCaption}
+)}\label{classAnalysisBoxContainer_a9c1b482d1dcd6a733b84a9cdcc960263}
+
+
+set panel of the raw video and tells analysis\+Box to do the same with their video 
+
+\hypertarget{classAnalysisBoxContainer_a2b6f9916ed9f525eae2c47fab4275ddf}{}\index{Analysis\+Box\+Container@{Analysis\+Box\+Container}!set\+Raw\+Video@{set\+Raw\+Video}}
+\index{set\+Raw\+Video@{set\+Raw\+Video}!Analysis\+Box\+Container@{Analysis\+Box\+Container}}
+\subsubsection[{set\+Raw\+Video}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Raw\+Video (
+\begin{DoxyParamCaption}
+\item[{{\bf Player\+::\+Video} $\ast$}]{video}
+\end{DoxyParamCaption}
+)}\label{classAnalysisBoxContainer_a2b6f9916ed9f525eae2c47fab4275ddf}
+
+
+sets the raw\+Video to video 
+
+\hypertarget{classAnalysisBoxContainer_ae85e1178ac5c0f822c6311134f04b6f2}{}\index{Analysis\+Box\+Container@{Analysis\+Box\+Container}!set\+Timer@{set\+Timer}}
+\index{set\+Timer@{set\+Timer}!Analysis\+Box\+Container@{Analysis\+Box\+Container}}
+\subsubsection[{set\+Timer}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Timer (
+\begin{DoxyParamCaption}
+\item[{shared\+\_\+ptr$<$ {\bf Player\+::\+Timer} $>$ timer\+:std\+:}]{}
+\end{DoxyParamCaption}
+)}\label{classAnalysisBoxContainer_ae85e1178ac5c0f822c6311134f04b6f2}
+
+
+set timer of the raw video and tells analysis\+Box to do the same with their video 
+
+\hypertarget{classAnalysisBoxContainer_ab3d9dc42d8e78c5bf6f87c5e93bdf1ce}{}\index{Analysis\+Box\+Container@{Analysis\+Box\+Container}!show\+Macro\+Block\+Videos@{show\+Macro\+Block\+Videos}}
+\index{show\+Macro\+Block\+Videos@{show\+Macro\+Block\+Videos}!Analysis\+Box\+Container@{Analysis\+Box\+Container}}
+\subsubsection[{show\+Macro\+Block\+Videos}]{\setlength{\rightskip}{0pt plus 5cm}void show\+Macro\+Block\+Videos (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classAnalysisBoxContainer_ab3d9dc42d8e78c5bf6f87c5e93bdf1ce}
+
+
+tells all Analysis\+Boxes to show the macro block video 
+
+\hypertarget{classAnalysisBoxContainer_a91638333a4b3fe577fd2062f2aa667f3}{}\index{Analysis\+Box\+Container@{Analysis\+Box\+Container}!show\+R\+G\+B\+Difference\+Videos@{show\+R\+G\+B\+Difference\+Videos}}
+\index{show\+R\+G\+B\+Difference\+Videos@{show\+R\+G\+B\+Difference\+Videos}!Analysis\+Box\+Container@{Analysis\+Box\+Container}}
+\subsubsection[{show\+R\+G\+B\+Difference\+Videos}]{\setlength{\rightskip}{0pt plus 5cm}void show\+R\+G\+B\+Difference\+Videos (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classAnalysisBoxContainer_a91638333a4b3fe577fd2062f2aa667f3}
+
+
+tells all Analysis\+Boxes to show the R\+G\+B\+Diff video 
+

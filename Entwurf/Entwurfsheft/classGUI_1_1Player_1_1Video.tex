@@ -1,0 +1,192 @@
+\hypertarget{classGUI_1_1Player_1_1Video}{}\section{Video Class Reference}
+\label{classGUI_1_1Player_1_1Video}\index{Video@{Video}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classGUI_1_1Player_1_1Video_ab82b351b35612f4226f75726d958831b}{Video} (int fps, int width, int height)
+\item 
+int \hyperlink{classGUI_1_1Player_1_1Video_a67a0997183f24da19b776d96c1052998}{get\+Width} ()
+\item 
+int \hyperlink{classGUI_1_1Player_1_1Video_a07efb2a4e9a982688c8bb3c3f21d1092}{get\+Height} ()
+\item 
+int \hyperlink{classGUI_1_1Player_1_1Video_a519ad5c0664b9de28c1a6d9dc77f959d}{get\+Fps} ()
+\item 
+Q\+Image $\ast$ \hyperlink{classGUI_1_1Player_1_1Video_aa350d9b9ba7bad72aeda171dcc537c10}{get\+Frame} (int index)
+\item 
+void \hyperlink{classGUI_1_1Player_1_1Video_a099c54fc35c34a3231a9b5a6d9fe6d18}{insert\+Frame} (int index=-\/1, unique\+\_\+ptr$<$ Q\+Image $>$ frame\+:std\+:)
+\item 
+void \hyperlink{classGUI_1_1Player_1_1Video_a2467a8d0c175fdcbacea59e9955d88a9}{remove\+Frame} (int index)
+\item 
+void \hyperlink{classGUI_1_1Player_1_1Video_ab77b9ebd7677bbb317c511fa48d61aa6}{insert\+Frames} (int index=-\/1, vector$<$ std\+::unique\+\_\+ptr$<$ Q\+Image $>$ $>$ \&frames\+:std\+:)
+\item 
+int \hyperlink{classGUI_1_1Player_1_1Video_a038091d64aa83552571228512789d5ee}{get\+Number\+Of\+Frames} ()
+\end{DoxyCompactItemize}
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classGUI_1_1Player_1_1Video_ab3171c486c08dcb68f05c418ec4c17ab}{}\hyperlink{classModel_1_1EncodedVideo}{Model\+::\+Encoded\+Video} $\ast$ {\bfseries display\+Video}\label{classGUI_1_1Player_1_1Video_ab3171c486c08dcb68f05c418ec4c17ab}
+
+\item 
+\hypertarget{classGUI_1_1Player_1_1Video_ac579683bc7b2499eed6704c87a211234}{}\hyperlink{classModel_1_1EncodedVideo}{Model\+::\+Encoded\+Video} $\ast$ {\bfseries macroblock\+Video}\label{classGUI_1_1Player_1_1Video_ac579683bc7b2499eed6704c87a211234}
+
+\item 
+\hypertarget{classGUI_1_1Player_1_1Video_aa0602ff7e1e4796c78aa15520224b447}{}\hyperlink{classModel_1_1EncodedVideo}{Model\+::\+Encoded\+Video} $\ast$ {\bfseries rgb\+Diff\+Video}\label{classGUI_1_1Player_1_1Video_aa0602ff7e1e4796c78aa15520224b447}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class represents a video. It provides a basic interface to comfortly handle a vector of frames. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classGUI_1_1Player_1_1Video_ab82b351b35612f4226f75726d958831b}{}\index{G\+U\+I\+::\+Player\+::\+Video@{G\+U\+I\+::\+Player\+::\+Video}!Video@{Video}}
+\index{Video@{Video}!G\+U\+I\+::\+Player\+::\+Video@{G\+U\+I\+::\+Player\+::\+Video}}
+\subsubsection[{Video}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Video} (
+\begin{DoxyParamCaption}
+\item[{int}]{fps, }
+\item[{int}]{width, }
+\item[{int}]{height}
+\end{DoxyParamCaption}
+)}\label{classGUI_1_1Player_1_1Video_ab82b351b35612f4226f75726d958831b}
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fps} & the fps the video should be played at\\
+\hline
+{\em width} & the width of the video\\
+\hline
+{\em height} & the height of the video\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classGUI_1_1Player_1_1Video_a519ad5c0664b9de28c1a6d9dc77f959d}{}\index{G\+U\+I\+::\+Player\+::\+Video@{G\+U\+I\+::\+Player\+::\+Video}!get\+Fps@{get\+Fps}}
+\index{get\+Fps@{get\+Fps}!G\+U\+I\+::\+Player\+::\+Video@{G\+U\+I\+::\+Player\+::\+Video}}
+\subsubsection[{get\+Fps}]{\setlength{\rightskip}{0pt plus 5cm}int get\+Fps (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classGUI_1_1Player_1_1Video_a519ad5c0664b9de28c1a6d9dc77f959d}
+
+
+Returns the fps of the video. 
+
+\begin{DoxyReturn}{Returns}
+fps of the video
+\end{DoxyReturn}
+\hypertarget{classGUI_1_1Player_1_1Video_aa350d9b9ba7bad72aeda171dcc537c10}{}\index{G\+U\+I\+::\+Player\+::\+Video@{G\+U\+I\+::\+Player\+::\+Video}!get\+Frame@{get\+Frame}}
+\index{get\+Frame@{get\+Frame}!G\+U\+I\+::\+Player\+::\+Video@{G\+U\+I\+::\+Player\+::\+Video}}
+\subsubsection[{get\+Frame}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Image $\ast$ get\+Frame (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)}\label{classGUI_1_1Player_1_1Video_aa350d9b9ba7bad72aeda171dcc537c10}
+
+
+Returns the frame at the given index. If the index is invalid nullptr is returned. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & the index of the frame to return\\
+\hline
+\end{DoxyParams}
+\hypertarget{classGUI_1_1Player_1_1Video_a07efb2a4e9a982688c8bb3c3f21d1092}{}\index{G\+U\+I\+::\+Player\+::\+Video@{G\+U\+I\+::\+Player\+::\+Video}!get\+Height@{get\+Height}}
+\index{get\+Height@{get\+Height}!G\+U\+I\+::\+Player\+::\+Video@{G\+U\+I\+::\+Player\+::\+Video}}
+\subsubsection[{get\+Height}]{\setlength{\rightskip}{0pt plus 5cm}int get\+Height (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classGUI_1_1Player_1_1Video_a07efb2a4e9a982688c8bb3c3f21d1092}
+
+
+Returns the height of the video. 
+
+\begin{DoxyReturn}{Returns}
+the height of the video
+\end{DoxyReturn}
+\hypertarget{classGUI_1_1Player_1_1Video_a038091d64aa83552571228512789d5ee}{}\index{G\+U\+I\+::\+Player\+::\+Video@{G\+U\+I\+::\+Player\+::\+Video}!get\+Number\+Of\+Frames@{get\+Number\+Of\+Frames}}
+\index{get\+Number\+Of\+Frames@{get\+Number\+Of\+Frames}!G\+U\+I\+::\+Player\+::\+Video@{G\+U\+I\+::\+Player\+::\+Video}}
+\subsubsection[{get\+Number\+Of\+Frames}]{\setlength{\rightskip}{0pt plus 5cm}int get\+Number\+Of\+Frames (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classGUI_1_1Player_1_1Video_a038091d64aa83552571228512789d5ee}
+
+
+Returns the number of frames in the video. 
+
+\begin{DoxyReturn}{Returns}
+the number of frames in the video
+\end{DoxyReturn}
+\hypertarget{classGUI_1_1Player_1_1Video_a67a0997183f24da19b776d96c1052998}{}\index{G\+U\+I\+::\+Player\+::\+Video@{G\+U\+I\+::\+Player\+::\+Video}!get\+Width@{get\+Width}}
+\index{get\+Width@{get\+Width}!G\+U\+I\+::\+Player\+::\+Video@{G\+U\+I\+::\+Player\+::\+Video}}
+\subsubsection[{get\+Width}]{\setlength{\rightskip}{0pt plus 5cm}int get\+Width (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classGUI_1_1Player_1_1Video_a67a0997183f24da19b776d96c1052998}
+
+
+Returns the width of the video. 
+
+\begin{DoxyReturn}{Returns}
+the width of the video
+\end{DoxyReturn}
+\hypertarget{classGUI_1_1Player_1_1Video_a099c54fc35c34a3231a9b5a6d9fe6d18}{}\index{G\+U\+I\+::\+Player\+::\+Video@{G\+U\+I\+::\+Player\+::\+Video}!insert\+Frame@{insert\+Frame}}
+\index{insert\+Frame@{insert\+Frame}!G\+U\+I\+::\+Player\+::\+Video@{G\+U\+I\+::\+Player\+::\+Video}}
+\subsubsection[{insert\+Frame}]{\setlength{\rightskip}{0pt plus 5cm}void insert\+Frame (
+\begin{DoxyParamCaption}
+\item[{int}]{index = {\ttfamily -\/1}, }
+\item[{unique\+\_\+ptr$<$ Q\+Image $>$ frame\+:std\+:}]{}
+\end{DoxyParamCaption}
+)}\label{classGUI_1_1Player_1_1Video_a099c54fc35c34a3231a9b5a6d9fe6d18}
+
+
+Inserts a frame at the given index. If index $<$ 0 then the frame gets pushed to the back. If the index is greater than \hyperlink{classGUI_1_1Player_1_1Video_a038091d64aa83552571228512789d5ee}{get\+Number\+Of\+Frames()} the frames gets pushed to the back. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & The index to insert the frame at\\
+\hline
+{\em frame\+:std,\+:} & The frame to insert\\
+\hline
+\end{DoxyParams}
+\hypertarget{classGUI_1_1Player_1_1Video_ab77b9ebd7677bbb317c511fa48d61aa6}{}\index{G\+U\+I\+::\+Player\+::\+Video@{G\+U\+I\+::\+Player\+::\+Video}!insert\+Frames@{insert\+Frames}}
+\index{insert\+Frames@{insert\+Frames}!G\+U\+I\+::\+Player\+::\+Video@{G\+U\+I\+::\+Player\+::\+Video}}
+\subsubsection[{insert\+Frames}]{\setlength{\rightskip}{0pt plus 5cm}void insert\+Frames (
+\begin{DoxyParamCaption}
+\item[{int}]{index = {\ttfamily -\/1}, }
+\item[{vector$<$ std\+::unique\+\_\+ptr$<$ Q\+Image $>$ $>$ \&frames\+:std\+:}]{}
+\end{DoxyParamCaption}
+)}\label{classGUI_1_1Player_1_1Video_ab77b9ebd7677bbb317c511fa48d61aa6}
+
+
+Inserts a vector of frames at the given index. If the index$<$0 or index is greater than \hyperlink{classGUI_1_1Player_1_1Video_a038091d64aa83552571228512789d5ee}{get\+Number\+Of\+Frames()} then the frames are pushed to the back. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & the index to insert the frames at\\
+\hline
+{\em frames\+:std,\+:} & the frames to insert\\
+\hline
+\end{DoxyParams}
+\hypertarget{classGUI_1_1Player_1_1Video_a2467a8d0c175fdcbacea59e9955d88a9}{}\index{G\+U\+I\+::\+Player\+::\+Video@{G\+U\+I\+::\+Player\+::\+Video}!remove\+Frame@{remove\+Frame}}
+\index{remove\+Frame@{remove\+Frame}!G\+U\+I\+::\+Player\+::\+Video@{G\+U\+I\+::\+Player\+::\+Video}}
+\subsubsection[{remove\+Frame}]{\setlength{\rightskip}{0pt plus 5cm}void remove\+Frame (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)}\label{classGUI_1_1Player_1_1Video_a2467a8d0c175fdcbacea59e9955d88a9}
+
+
+Removes the frame at the given index. If the index is invalid nothing happens. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & the index of the frame to remove\\
+\hline
+\end{DoxyParams}

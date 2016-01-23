@@ -1,0 +1,86 @@
+\hypertarget{classPlayer_1_1Yuv411FileReader}{}\section{Yuv411\+File\+Reader Class Reference}
+\label{classPlayer_1_1Yuv411FileReader}\index{Yuv411\+File\+Reader@{Yuv411\+File\+Reader}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classPlayer_1_1Yuv411FileReader_a0b03e258cd5c5a44fb931cc66384e9aa}{Yuv411\+File\+Reader} (Q\+String filename, int width, int height, Player\+::\+Compression compression)
+\item 
+std\+::unique\+\_\+ptr$<$ \hyperlink{classPlayer_1_1Video}{Player\+::\+Video} $>$ \hyperlink{classPlayer_1_1Yuv411FileReader_aa4ccefe92119bf1d8879e9e219af8f93}{read} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::vector$<$ Q\+Rgb $>$ \hyperlink{classPlayer_1_1Yuv411FileReader_af6d2712d6e14bd1bb6cd0b7658ad71fb}{yuv411\+To\+Rgb888} (Yuv11\+Vector vector)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+This class is able to read Yuv 411 files. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classPlayer_1_1Yuv411FileReader_a0b03e258cd5c5a44fb931cc66384e9aa}{}\index{Player\+::\+Yuv411\+File\+Reader@{Player\+::\+Yuv411\+File\+Reader}!Yuv411\+File\+Reader@{Yuv411\+File\+Reader}}
+\index{Yuv411\+File\+Reader@{Yuv411\+File\+Reader}!Player\+::\+Yuv411\+File\+Reader@{Player\+::\+Yuv411\+File\+Reader}}
+\subsubsection[{Yuv411\+File\+Reader}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Yuv411\+File\+Reader} (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{filename, }
+\item[{int}]{width, }
+\item[{int}]{height, }
+\item[{Player\+::\+Compression}]{compression}
+\end{DoxyParamCaption}
+)}\label{classPlayer_1_1Yuv411FileReader_a0b03e258cd5c5a44fb931cc66384e9aa}
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & absolute path to the file to load\\
+\hline
+{\em width} & width of the video\\
+\hline
+{\em height} & height of the video\\
+\hline
+{\em compression} & the compression of the file\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classPlayer_1_1Yuv411FileReader_aa4ccefe92119bf1d8879e9e219af8f93}{}\index{Player\+::\+Yuv411\+File\+Reader@{Player\+::\+Yuv411\+File\+Reader}!read@{read}}
+\index{read@{read}!Player\+::\+Yuv411\+File\+Reader@{Player\+::\+Yuv411\+File\+Reader}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}std\+::unique\+\_\+ptr$<$ {\bf Player\+::\+Video} $>$ read (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classPlayer_1_1Yuv411FileReader_aa4ccefe92119bf1d8879e9e219af8f93}
+
+
+Reads the file in. 
+
+\begin{DoxyReturn}{Returns}
+the complete video
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classPlayer_1_1YuvFileReader_a459f344a5e83a00d0a84d8bde70f5372}{Yuv\+File\+Reader}.
+
+\hypertarget{classPlayer_1_1Yuv411FileReader_af6d2712d6e14bd1bb6cd0b7658ad71fb}{}\index{Player\+::\+Yuv411\+File\+Reader@{Player\+::\+Yuv411\+File\+Reader}!yuv411\+To\+Rgb888@{yuv411\+To\+Rgb888}}
+\index{yuv411\+To\+Rgb888@{yuv411\+To\+Rgb888}!Player\+::\+Yuv411\+File\+Reader@{Player\+::\+Yuv411\+File\+Reader}}
+\subsubsection[{yuv411\+To\+Rgb888}]{\setlength{\rightskip}{0pt plus 5cm}static std\+::vector$<$Q\+Rgb$>$ yuv411\+To\+Rgb888 (
+\begin{DoxyParamCaption}
+\item[{Yuv11\+Vector}]{vector}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{classPlayer_1_1Yuv411FileReader_af6d2712d6e14bd1bb6cd0b7658ad71fb}
+
+
+Converts a \hyperlink{classPlayer_1_1Yuv411Vector}{Yuv411\+Vector} to the corresponding Rgb88 pixels. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vector} & the vector to convert\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the computed rgb888 pixels
+\end{DoxyReturn}

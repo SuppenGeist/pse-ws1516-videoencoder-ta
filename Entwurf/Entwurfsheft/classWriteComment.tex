@@ -1,0 +1,76 @@
+\hypertarget{classWriteComment}{}\section{Write\+Comment Class Reference}
+\label{classWriteComment}\index{Write\+Comment@{Write\+Comment}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classWriteComment_a3fec11e7fda6d5e0c9aa98e3649cd7db}{Write\+Comment} ()
+\item 
+void \hyperlink{classWriteComment_acdc5bbe2ef5a0614895296a4a521ccdf}{merge\+With} (\hyperlink{classPlayer_1_1QUndoCommand}{Player\+::\+Q\+Undo\+Command} command)
+\item 
+void \hyperlink{classWriteComment_a0e1e7804a53f6d62efc72c9bdbec8571}{undo} ()
+\item 
+void \hyperlink{classWriteComment_a93c48d6ed036e1a381be53ac67643284}{redo} ()
+\item 
+void \hyperlink{classWriteComment_a02f60059e38d60cf5e123fa79471ab1c}{id} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classWriteComment_a3fec11e7fda6d5e0c9aa98e3649cd7db}{}\index{Write\+Comment@{Write\+Comment}!Write\+Comment@{Write\+Comment}}
+\index{Write\+Comment@{Write\+Comment}!Write\+Comment@{Write\+Comment}}
+\subsubsection[{Write\+Comment}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Write\+Comment} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classWriteComment_a3fec11e7fda6d5e0c9aa98e3649cd7db}
+
+
+Constuctor 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classWriteComment_a02f60059e38d60cf5e123fa79471ab1c}{}\index{Write\+Comment@{Write\+Comment}!id@{id}}
+\index{id@{id}!Write\+Comment@{Write\+Comment}}
+\subsubsection[{id}]{\setlength{\rightskip}{0pt plus 5cm}void id (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classWriteComment_a02f60059e38d60cf5e123fa79471ab1c}
+
+
+returns id of this command 
+
+\hypertarget{classWriteComment_acdc5bbe2ef5a0614895296a4a521ccdf}{}\index{Write\+Comment@{Write\+Comment}!merge\+With@{merge\+With}}
+\index{merge\+With@{merge\+With}!Write\+Comment@{Write\+Comment}}
+\subsubsection[{merge\+With}]{\setlength{\rightskip}{0pt plus 5cm}void merge\+With (
+\begin{DoxyParamCaption}
+\item[{{\bf Player\+::\+Q\+Undo\+Command}}]{command}
+\end{DoxyParamCaption}
+)}\label{classWriteComment_acdc5bbe2ef5a0614895296a4a521ccdf}
+
+
+attempts to merge this command with command if they have the same id, and the id is not -\/1 
+
+\hypertarget{classWriteComment_a93c48d6ed036e1a381be53ac67643284}{}\index{Write\+Comment@{Write\+Comment}!redo@{redo}}
+\index{redo@{redo}!Write\+Comment@{Write\+Comment}}
+\subsubsection[{redo}]{\setlength{\rightskip}{0pt plus 5cm}void redo (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classWriteComment_a93c48d6ed036e1a381be53ac67643284}
+
+
+applies changes to the textbox 
+
+\hypertarget{classWriteComment_a0e1e7804a53f6d62efc72c9bdbec8571}{}\index{Write\+Comment@{Write\+Comment}!undo@{undo}}
+\index{undo@{undo}!Write\+Comment@{Write\+Comment}}
+\subsubsection[{undo}]{\setlength{\rightskip}{0pt plus 5cm}void undo (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classWriteComment_a0e1e7804a53f6d62efc72c9bdbec8571}
+
+
+reverts changes to the textbox 
+

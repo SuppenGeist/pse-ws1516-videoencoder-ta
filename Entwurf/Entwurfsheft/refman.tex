@@ -1,0 +1,310 @@
+\documentclass[twoside]{book}
+
+% Packages required by doxygen
+\usepackage{fixltx2e}
+\usepackage{calc}
+\usepackage{doxygen}
+\usepackage[export]{adjustbox} % also loads graphicx
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{makeidx}
+\usepackage{multicol}
+\usepackage{multirow}
+\PassOptionsToPackage{warn}{textcomp}
+\usepackage{textcomp}
+\usepackage[nointegrals]{wasysym}
+\usepackage[table]{xcolor}
+
+\DeclareUnicodeCharacter{00A0}{ }
+% Font selection
+\usepackage[T1]{fontenc}
+\usepackage[scaled=.90]{helvet}
+\usepackage{courier}
+\usepackage{amssymb}
+\usepackage{sectsty}
+\renewcommand{\familydefault}{\sfdefault}
+\allsectionsfont{%
+  \fontseries{bc}\selectfont%
+  \color{darkgray}%
+}
+\renewcommand{\DoxyLabelFont}{%
+  \fontseries{bc}\selectfont%
+  \color{darkgray}%
+}
+\newcommand{\+}{\discretionary{\mbox{\scriptsize$\hookleftarrow$}}{}{}}
+
+% Page & text layout
+\usepackage{geometry}
+\geometry{%
+  a4paper,%
+  top=2.5cm,%
+  bottom=2.5cm,%
+  left=2.5cm,%
+  right=2.5cm%
+}
+\tolerance=750
+\hfuzz=15pt
+\hbadness=750
+\setlength{\emergencystretch}{15pt}
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{0.2cm}
+\makeatletter
+\renewcommand{\paragraph}{%
+  \@startsection{paragraph}{4}{0ex}{-1.0ex}{1.0ex}{%
+    \normalfont\normalsize\bfseries\SS@parafont%
+  }%
+}
+\renewcommand{\subparagraph}{%
+  \@startsection{subparagraph}{5}{0ex}{-1.0ex}{1.0ex}{%
+    \normalfont\normalsize\bfseries\SS@subparafont%
+  }%
+}
+\makeatother
+
+% Headers & footers
+\usepackage{fancyhdr}
+\pagestyle{fancyplain}
+\fancyhead[LE]{\fancyplain{}{\bfseries\thepage}}
+\fancyhead[CE]{\fancyplain{}{}}
+\fancyhead[RE]{\fancyplain{}{\bfseries\leftmark}}
+\fancyhead[LO]{\fancyplain{}{\bfseries\rightmark}}
+\fancyhead[CO]{\fancyplain{}{}}
+\fancyhead[RO]{\fancyplain{}{\bfseries\thepage}}
+\fancyfoot[LE]{\fancyplain{}{}}
+\fancyfoot[CE]{\fancyplain{}{}}
+\fancyfoot[RE]{\fancyplain{}{\bfseries\scriptsize Vive Entwurfsheft }}
+\fancyfoot[LO]{\fancyplain{}{\bfseries\scriptsize Vive Entwurfsheft }}
+\fancyfoot[CO]{\fancyplain{}{}}
+\fancyfoot[RO]{\fancyplain{}{}}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\chaptermark}[1]{%
+  \markboth{#1}{}%
+}
+\renewcommand{\sectionmark}[1]{%
+  \markright{\thesection\ #1}%
+}
+
+% Indices & bibliography
+\usepackage{natbib}
+\usepackage[titles]{tocloft}
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{5}
+\makeindex
+
+% Hyperlinks (required, but should be loaded last)
+\usepackage{ifpdf}
+\ifpdf
+  \usepackage[pdftex,pagebackref=true]{hyperref}
+\else
+  \usepackage[ps2pdf,pagebackref=true]{hyperref}
+\fi
+\hypersetup{%
+  colorlinks=true,%
+  linkcolor=blue,%
+  citecolor=blue,%
+  unicode%
+}
+
+% Custom commands
+\newcommand{\clearemptydoublepage}{%
+  \newpage{\pagestyle{empty}\cleardoublepage}%
+}
+
+
+%===== C O N T E N T S =====
+
+\begin{document}
+
+% Titlepage & ToC
+\hypersetup{pageanchor=false,
+             bookmarks=true,
+             bookmarksnumbered=true,
+             pdfencoding=unicode
+            }
+\pagenumbering{roman}
+\begin{titlepage}
+\vspace*{7cm}
+\begin{center}%\\
+{\centering\includegraphics[width=10cm]{Logo.png}}\\
+\vspace*{2cm}
+\fontsize{40}{48} \selectfont \textsc{Entwurfsheft}\\
+\vspace*{1cm}
+\vspace*{0.5cm}
+{\small Carina Weber, Jan Benedikt Schwarz, Johannes Werner, Noel Schuhmacher, Sascha Rapp, Simon Grafenhorst}\\
+\end{center}
+\end{titlepage}
+\clearemptydoublepage
+\tableofcontents
+\pagenumbering{arabic}
+\hypersetup{pageanchor=true}
+
+\chapter{Einleitung}
+Vive (lang: Video veritatem) ist ein Programm zum Testen verschiedener Videoencoder. Dieses Dokument ist das Entwurfsheft, in welchem sich Diagramme und Spezifikationen zu jeder einzelnen Klasse befinden. Außerdem dient es als Richtlinie für die Implementierungsphase.
+Das Entwurfsheft ist in mehrere Abschnitte gegliedert: Im ersten Abschnitt sind Diagramme zu sehen, die einen groben Überblick über die Struktur des Programms liefern. Darauf folgt die detaillierte Beschreibung jeder einzelnen Klasse und Methode. Eine Übersicht über die Implementierungsphase in Form eines Gantt-Diagrams ist im Anhang enthalten.
+\chapter{Data Structure Documentation}
+\input{classUndo__Redo_1_1AddFilter}
+\input{classUndo__Redo_1_1AddVideo}
+\input{classGUI_1_1AnalysisBox}
+\input{classGUI_1_1AnalysisBoxContainer}
+\input{classGUI_1_1AnalysisBoxContainer2}
+\input{classMemento_1_1AnalysisBoxContainerMemento}
+\input{classMemento_1_1AnalysisBoxMemento}
+\input{classGUI_1_1AnalysisTab}
+\input{classMemento_1_1AnalysisTabMemento}
+\input{classUndo__Redo_1_1ApplyFilter}
+\input{classModel_1_1AVVideo}
+\input{classUtility_1_1BitrateCalculator}
+\input{classModel_1_1Filter_1_1BlackWhiteFilter}
+\input{classGUI_1_1BlackWhiteFilterBox}
+\input{classModel_1_1Filter_1_1BlendingFilter}
+\input{classGUI_1_1BlendingFilterBox}
+\input{classModel_1_1Filter_1_1BlurFilter}
+\input{classGUI_1_1BlurFilterBox}
+\input{classModel_1_1Filter_1_1BorderFilter}
+\input{classGUI_1_1BorderFilterBox}
+\input{classModel_1_1Filter_1_1BrightnessFilter}
+\input{classGUI_1_1BrightnessFilterBox}
+\input{classModel_1_1Filter_1_1ColorbalanceFilter}
+\input{classGUI_1_1ColorbalanceFilterBox}
+\input{classModel_1_1Filter_1_1ContrastFilter}
+\input{classGUI_1_1ContrastFilterBox}
+\input{classGUI_1_1Player_1_1ControlPanel}
+\input{classModel_1_1Filter_1_1EdgeFilter}
+\input{classGUI_1_1EdgeFilterBox}
+\input{classModel_1_1EncodedVideo}
+\input{classModel_1_1Filter_1_1Filter}
+\input{classModel_1_1Filter_1_1FilterApplier}
+\input{classUtility_1_1FilterConfiguration}
+\input{classGUI_1_1FilterConfigurationBox}
+\input{classUtility_1_1FilterConfigurationLoader}
+\input{classUtility_1_1FilterConfigurationLoader2}
+\input{classUtility_1_1FilterConfigurationSaver}
+\input{classUtility_1_1FilterConfigurationSaver__}
+\input{classGUI_1_1FilterContainerTab}
+\input{classModel_1_1Filter_1_1FilterList}
+\input{classUndo__Redo_1_1FilterReset}
+\input{classGUI_1_1FilterTab}
+\input{classMemento_1_1FilterTabMemento}
+\input{classGUI_1_1FilterView}
+\input{classGUI_1_1ForwardPlayer}
+\input{classGUI_1_1Player_1_1FrameView}
+\input{classGUI_1_1GlobalControlPanel}
+\input{classModel_1_1Graph}
+\input{classGUI_1_1GraphWidget}
+\input{classModel_1_1Filter_1_1GridFilter}
+\input{classGUI_1_1GridFilterBox}
+\input{classUndo__Redo_1_1LoadAnalysisVideo}
+\input{classUndo__Redo_1_1LoadFilterconfig}
+\input{classUndo__Redo_1_1LoadFilterVideo}
+\input{classLoadVideo}
+\input{classGUI_1_1Player_1_1LoadVideoControlPanel}
+\input{classUtility_1_1MacroblockCalculator}
+\input{classGUI_1_1MainWindow}
+\input{classMemento_1_1MainWindowMemento}
+\input{classModel_1_1Filter_1_1MirrorFilter}
+\input{classGUI_1_1MirrorFilterBox}
+\input{classUndo__Redo_1_1MoveFilterDown}
+\input{classUndo__Redo_1_1MoveFilterUp}
+\input{classModel_1_1Filter_1_1NegativeFilter}
+\input{classGUI_1_1NegativeFilterBox}
+\input{classModel_1_1Filter_1_1NoiseFilter}
+\input{classGUI_1_1NoiseFilterBox}
+\input{classPlayer_1_1PlayerControlPanel}
+\input{classGUI_1_1PlayerControlPanel____6}
+\input{classGUI_1_1Player_1_1PlayerControlPanel____7}
+\input{classModel_1_1Filter_1_1PosterFilter}
+\input{classGUI_1_1PosterFilterBox}
+\input{classPlayer_1_1PreviewControlPanel}
+\input{classGUI_1_1PreviewControlPanel____8}
+\input{classGUI_1_1Player_1_1PreviewControlPanel____9}
+\input{classModel_1_1Project}
+\input{classUtility_1_1ProjectReader}
+\input{classUtility_1_1ProjectWriter}
+\input{classUtility_1_1PsnrCalculator}
+\input{classGUI_1_1QtGui_1_1QCheckBox}
+\input{classGUI_1_1QtGui_1_1QComboBox}
+\input{classPlayer_1_1QDialog}
+\input{classGUI_1_1Player_1_1QDialog____12}
+\input{classGUI_1_1QtGui_1_1QDialog____13}
+\input{classGUI_1_1QtGui_1_1QFarbDialog}
+\input{classQFrame____1}
+\input{classGUI_1_1QFrame____1}
+\input{classPlayer_1_1QFrame____2}
+\input{classGUI_1_1QtGui_1_1QFrame____2}
+\input{classGUI_1_1Player_1_1QFrame____3}
+\input{classGUI_1_1QtGui_1_1QGraphicsView}
+\input{classGUI_1_1QtGui_1_1QGroupBox}
+\input{classGUI_1_1QtGui_1_1QHBoxLayout}
+\input{classGUI_1_1QtGui_1_1QLabel}
+\input{classGUI_1_1QtGui_1_1QListWidget}
+\input{classQMainWindow}
+\input{classGUI_1_1QMainWindow____4}
+\input{classGUI_1_1QtGui_1_1QMainWindow____5}
+\input{classGUI_1_1QtGui_1_1QMediaPlayer}
+\input{classGUI_1_1QtGui_1_1QMenuBar}
+\input{classGUI_1_1QtGui_1_1QRadioButton}
+\input{classGUI_1_1QtGui_1_1QSpinBox}
+\input{classUndo__Redo_1_1QUndoCommand}
+\input{classUndo__Redo_1_1QUndoStack}
+\input{classGUI_1_1QtGui_1_1QVBoxLayout}
+\input{classGUI_1_1QtGui_1_1QVideoFrame}
+\input{classGUI_1_1QtGui_1_1QVideoWidget}
+\input{classPlayer_1_1QWidget}
+\input{classGUI_1_1QtGui_1_1QWidget____10}
+\input{classGUI_1_1Player_1_1QWidget____11}
+\input{classModel_1_1Filter_1_1RectangleFilter}
+\input{classGUI_1_1RectangleFilterBox}
+\input{classUndo__Redo_1_1RemoveFilter}
+\input{classUndo__Redo_1_1RemoveVideo}
+\input{classUtility_1_1RGBDifferenceCalculator}
+\input{classModel_1_1Filter_1_1RGBFilter}
+\input{classGUI_1_1RGBFilterBox}
+\input{classUtility_1_1RGBHistogrammCalculator}
+\input{classModel_1_1Filter_1_1RotationFilter}
+\input{classGUI_1_1RotationFilterBox}
+\input{classModel_1_1Filter_1_1SaturationFilter}
+\input{classGUI_1_1SaturationFilterBox}
+\input{classModel_1_1Filter_1_1ScaleFilter}
+\input{classGUI_1_1ScaleFilterBox}
+\input{classModel_1_1Filter_1_1SepiaFilter}
+\input{classGUI_1_1SepiaFilterBox}
+\input{classModel_1_1Filter_1_1SharpnessFilter}
+\input{classGUI_1_1SharpnessFilterBox}
+\input{classGUI_1_1Player_1_1Timer}
+\input{classUndo__Redo_1_1UndoStack}
+\input{classGUI_1_1Player_1_1Video}
+\input{classUtility_1_1VideoConverter}
+\input{classUtility_1_1VideoLoader}
+\input{classGUI_1_1Player_1_1VideoPlayer}
+\input{classModel_1_1Filter_1_1VintageFilter}
+\input{classGUI_1_1VintageFilterbox}
+\input{classUndo__Redo_1_1WriteComment}
+\input{classGUI_1_1Player_1_1Yuv411FileReader}
+\input{classGUI_1_1Player_1_1Yuv411FileSaver}
+\input{classGUI_1_1Player_1_1Yuv411Vector}
+\input{classGUI_1_1Player_1_1Yuv420FIleReader}
+\input{classGUI_1_1Player_1_1Yuv420FileSaver}
+\input{classGUI_1_1Player_1_1Yuv422FileReader}
+\input{classGUI_1_1Player_1_1Yuv422FileSaver}
+\input{classGUI_1_1Player_1_1Yuv422Vector}
+\input{classGUI_1_1Player_1_1Yuv444FileReader}
+\input{classGUI_1_1Player_1_1Yuv444FileSaver}
+\input{classGUI_1_1Player_1_1Yuv444Vector}
+\input{classGUI_1_1Player_1_1YuvFileOpenDialog}
+\input{classGUI_1_1Player_1_1YuvFileReader}
+\input{classGUI_1_1Player_1_1YuvFileSaver}
+\input{classGUI_1_1Player_1_1YuvInfoDialog}
+\input{classModel_1_1YuvVideo}
+\input{classModel_1_1Filter_1_1ZoomFilter}
+\input{classGUI_1_1ZoomFilterBox}
+%--- End generated contents ---
+
+% Index
+\backmatter
+\newpage
+\phantomsection
+\clearemptydoublepage
+\addcontentsline{toc}{chapter}{Index}
+\printindex
+
+\end{document}

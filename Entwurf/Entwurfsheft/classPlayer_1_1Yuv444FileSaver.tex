@@ -1,0 +1,80 @@
+\hypertarget{classPlayer_1_1Yuv444FileSaver}{}\section{Yuv444\+File\+Saver Class Reference}
+\label{classPlayer_1_1Yuv444FileSaver}\index{Yuv444\+File\+Saver@{Yuv444\+File\+Saver}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classPlayer_1_1Yuv444FileSaver_a12ca266e2d9bbc7639bbe132b9cec599}{Yuv444\+File\+Saver} (Q\+String filename, \hyperlink{classPlayer_1_1Video}{Player\+::\+Video} \&video, Player\+::\+Compression compression)
+\item 
+void \hyperlink{classPlayer_1_1Yuv444FileSaver_aae2c382151ef7c9aa913361172b30db6}{save} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classPlayer_1_1Yuv444Vector}{Player\+::\+Yuv444\+Vector} \hyperlink{classPlayer_1_1Yuv444FileSaver_ad2dcb5e8dc805bfeb49681d554ac2f6b}{rgb888\+To\+Yuv444} (Q\+Rgb pixel1)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+This class can save videos in the yuv 422 format. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classPlayer_1_1Yuv444FileSaver_a12ca266e2d9bbc7639bbe132b9cec599}{}\index{Player\+::\+Yuv444\+File\+Saver@{Player\+::\+Yuv444\+File\+Saver}!Yuv444\+File\+Saver@{Yuv444\+File\+Saver}}
+\index{Yuv444\+File\+Saver@{Yuv444\+File\+Saver}!Player\+::\+Yuv444\+File\+Saver@{Player\+::\+Yuv444\+File\+Saver}}
+\subsubsection[{Yuv444\+File\+Saver}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Yuv444\+File\+Saver} (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{filename, }
+\item[{{\bf Player\+::\+Video} \&}]{video, }
+\item[{Player\+::\+Compression}]{compression}
+\end{DoxyParamCaption}
+)}\label{classPlayer_1_1Yuv444FileSaver_a12ca266e2d9bbc7639bbe132b9cec599}
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & absolute path to the file to save to\\
+\hline
+{\em video} & the video to save\\
+\hline
+{\em compression} & the compression mode\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classPlayer_1_1Yuv444FileSaver_ad2dcb5e8dc805bfeb49681d554ac2f6b}{}\index{Player\+::\+Yuv444\+File\+Saver@{Player\+::\+Yuv444\+File\+Saver}!rgb888\+To\+Yuv444@{rgb888\+To\+Yuv444}}
+\index{rgb888\+To\+Yuv444@{rgb888\+To\+Yuv444}!Player\+::\+Yuv444\+File\+Saver@{Player\+::\+Yuv444\+File\+Saver}}
+\subsubsection[{rgb888\+To\+Yuv444}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Player\+::\+Yuv444\+Vector} rgb888\+To\+Yuv444 (
+\begin{DoxyParamCaption}
+\item[{Q\+Rgb}]{pixel1}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{classPlayer_1_1Yuv444FileSaver_ad2dcb5e8dc805bfeb49681d554ac2f6b}
+
+
+Converts a Rgb888 pixel to a \hyperlink{classPlayer_1_1Yuv444Vector}{Yuv444\+Vector}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pixel1} & the pixel to convert\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the \hyperlink{classPlayer_1_1Yuv444Vector}{Yuv444\+Vector}
+\end{DoxyReturn}
+\hypertarget{classPlayer_1_1Yuv444FileSaver_aae2c382151ef7c9aa913361172b30db6}{}\index{Player\+::\+Yuv444\+File\+Saver@{Player\+::\+Yuv444\+File\+Saver}!save@{save}}
+\index{save@{save}!Player\+::\+Yuv444\+File\+Saver@{Player\+::\+Yuv444\+File\+Saver}}
+\subsubsection[{save}]{\setlength{\rightskip}{0pt plus 5cm}void save (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classPlayer_1_1Yuv444FileSaver_aae2c382151ef7c9aa913361172b30db6}
+
+
+Saves the video to the file. 
+
+
+
+Implements \hyperlink{classPlayer_1_1YuvFileSaver_a710cb29afe2cd3d97a312f61140af200}{Yuv\+File\+Saver}.
+

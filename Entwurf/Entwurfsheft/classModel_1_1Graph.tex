@@ -1,0 +1,115 @@
+\hypertarget{classModel_1_1Graph}{}\section{Graph Class Reference}
+\label{classModel_1_1Graph}\index{Graph@{Graph}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classModel_1_1Graph_afc5ef9d72cc2c509814200791eaef62c}{Graph} ()
+\item 
+void \hyperlink{classModel_1_1Graph_ab2daf3a9b66c016d330dedbd83d3fa82}{set\+Value} (int x, double y)
+\item 
+void \hyperlink{classModel_1_1Graph_a940d481971e87001c6e4c17585b41a8e}{cut} (int x)
+\item 
+double \hyperlink{classModel_1_1Graph_aacd99feb76afec4bc9bdf645d4585880}{get\+Value} (int x)
+\item 
+int \hyperlink{classModel_1_1Graph_aab0d4bbd0884d04dbe281cc2b9d21206}{get\+Length} ()
+\end{DoxyCompactItemize}
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classModel_1_1Graph_a340d02df4a8d3c909b9242c450c2c4fa}{}\hyperlink{classModel_1_1EncodedVideo}{Model\+::\+Encoded\+Video} $\ast$ {\bfseries bitrate}\label{classModel_1_1Graph_a340d02df4a8d3c909b9242c450c2c4fa}
+
+\item 
+\hypertarget{classModel_1_1Graph_a6476f7924ca1e0e066bbb0da6f5ea5de}{}\hyperlink{classModel_1_1EncodedVideo}{Model\+::\+Encoded\+Video} $\ast$ {\bfseries psnr}\label{classModel_1_1Graph_a6476f7924ca1e0e066bbb0da6f5ea5de}
+
+\item 
+\hypertarget{classModel_1_1Graph_a826dee34980905d4300038e1ebc8efaf}{}\hyperlink{classModel_1_1EncodedVideo}{Model\+::\+Encoded\+Video} $\ast$ {\bfseries red\+Histo}\label{classModel_1_1Graph_a826dee34980905d4300038e1ebc8efaf}
+
+\item 
+\hypertarget{classModel_1_1Graph_adb7c23252690d5783f98e23046f785e8}{}\hyperlink{classModel_1_1EncodedVideo}{Model\+::\+Encoded\+Video} $\ast$ {\bfseries green\+Histo}\label{classModel_1_1Graph_adb7c23252690d5783f98e23046f785e8}
+
+\item 
+\hypertarget{classModel_1_1Graph_a478d40084049d5801d2c7c70a4447133}{}\hyperlink{classModel_1_1EncodedVideo}{Model\+::\+Encoded\+Video} $\ast$ {\bfseries blue\+Hiso}\label{classModel_1_1Graph_a478d40084049d5801d2c7c70a4447133}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class is a graph. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classModel_1_1Graph_afc5ef9d72cc2c509814200791eaef62c}{}\index{Model\+::\+Graph@{Model\+::\+Graph}!Graph@{Graph}}
+\index{Graph@{Graph}!Model\+::\+Graph@{Model\+::\+Graph}}
+\subsubsection[{Graph}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Graph} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classModel_1_1Graph_afc5ef9d72cc2c509814200791eaef62c}
+
+
+Constructor. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classModel_1_1Graph_a940d481971e87001c6e4c17585b41a8e}{}\index{Model\+::\+Graph@{Model\+::\+Graph}!cut@{cut}}
+\index{cut@{cut}!Model\+::\+Graph@{Model\+::\+Graph}}
+\subsubsection[{cut}]{\setlength{\rightskip}{0pt plus 5cm}void cut (
+\begin{DoxyParamCaption}
+\item[{int}]{x}
+\end{DoxyParamCaption}
+)}\label{classModel_1_1Graph_a940d481971e87001c6e4c17585b41a8e}
+
+
+cuts the number of vectors down up to a certain value x. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The last x-\/value in the cut down vectors.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classModel_1_1Graph_aab0d4bbd0884d04dbe281cc2b9d21206}{}\index{Model\+::\+Graph@{Model\+::\+Graph}!get\+Length@{get\+Length}}
+\index{get\+Length@{get\+Length}!Model\+::\+Graph@{Model\+::\+Graph}}
+\subsubsection[{get\+Length}]{\setlength{\rightskip}{0pt plus 5cm}int get\+Length (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classModel_1_1Graph_aab0d4bbd0884d04dbe281cc2b9d21206}
+
+
+Returns the length of the unbounded array. That many x/y values are saved. 
+
+\hypertarget{classModel_1_1Graph_aacd99feb76afec4bc9bdf645d4585880}{}\index{Model\+::\+Graph@{Model\+::\+Graph}!get\+Value@{get\+Value}}
+\index{get\+Value@{get\+Value}!Model\+::\+Graph@{Model\+::\+Graph}}
+\subsubsection[{get\+Value}]{\setlength{\rightskip}{0pt plus 5cm}double get\+Value (
+\begin{DoxyParamCaption}
+\item[{int}]{x}
+\end{DoxyParamCaption}
+)}\label{classModel_1_1Graph_aacd99feb76afec4bc9bdf645d4585880}
+
+
+Returns the y-\/value to a specific x-\/value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x value.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classModel_1_1Graph_ab2daf3a9b66c016d330dedbd83d3fa82}{}\index{Model\+::\+Graph@{Model\+::\+Graph}!set\+Value@{set\+Value}}
+\index{set\+Value@{set\+Value}!Model\+::\+Graph@{Model\+::\+Graph}}
+\subsubsection[{set\+Value}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Value (
+\begin{DoxyParamCaption}
+\item[{int}]{x, }
+\item[{double}]{y}
+\end{DoxyParamCaption}
+)}\label{classModel_1_1Graph_ab2daf3a9b66c016d330dedbd83d3fa82}
+
+
+gives a y-\/value to a x-\/value. Later the point in the graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & value on the x-\/axes.\\
+\hline
+{\em y} & value on the y-\/axes.\\
+\hline
+\end{DoxyParams}
