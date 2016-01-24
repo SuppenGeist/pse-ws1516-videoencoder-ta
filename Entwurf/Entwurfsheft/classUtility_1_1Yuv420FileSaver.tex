@@ -1,11 +1,26 @@
 \hypertarget{classUtility_1_1Yuv420FileSaver}{}\section{Yuv420\+File\+Saver Class Reference}
 \label{classUtility_1_1Yuv420FileSaver}\index{Yuv420\+File\+Saver@{Yuv420\+File\+Saver}}
+
+
+Inheritance diagram for Yuv420\+File\+Saver\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=171pt]{classUtility_1_1Yuv420FileSaver__inherit__graph}
+\end{center}
+\end{figure}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classUtility_1_1Yuv420FileSaver_a7b9746d5a5644ddb07aad69358cae3dc}{Yuv420\+File\+Saver} (Q\+String filename, \hyperlink{classGUI_1_1Player_1_1Video}{G\+U\+I\+::\+Player\+::\+Video} \&\hyperlink{classUtility_1_1YuvFileSaver_ac39cb6d0a56308ca6323374fc0d74c96}{video})
+\hyperlink{classUtility_1_1Yuv420FileSaver_a9fff5cb52eed9373204bae7a75fb6ca3}{Yuv420\+File\+Saver} (Q\+String filename, \hyperlink{classGUI_1_1Video}{G\+U\+I\+::\+Video} \&\hyperlink{classUtility_1_1YuvFileSaver_a1c4d4daa00ecea5e8390244e057da0df}{video})
 \item 
 void \hyperlink{classUtility_1_1Yuv420FileSaver_aae2c382151ef7c9aa913361172b30db6}{save} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classUtility_1_1Yuv420FileSaver_a8d8bf7ee5feac8d9ae676cda017c5d22}{save\+Frame} (int index)
 \end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
 
@@ -14,14 +29,14 @@ void \hyperlink{classUtility_1_1Yuv420FileSaver_aae2c382151ef7c9aa913361172b30db
 This class can save videos in the yuv 420 format. 
 
 \subsection{Constructor \& Destructor Documentation}
-\hypertarget{classUtility_1_1Yuv420FileSaver_a7b9746d5a5644ddb07aad69358cae3dc}{}\index{Utility\+::\+Yuv420\+File\+Saver@{Utility\+::\+Yuv420\+File\+Saver}!Yuv420\+File\+Saver@{Yuv420\+File\+Saver}}
+\hypertarget{classUtility_1_1Yuv420FileSaver_a9fff5cb52eed9373204bae7a75fb6ca3}{}\index{Utility\+::\+Yuv420\+File\+Saver@{Utility\+::\+Yuv420\+File\+Saver}!Yuv420\+File\+Saver@{Yuv420\+File\+Saver}}
 \index{Yuv420\+File\+Saver@{Yuv420\+File\+Saver}!Utility\+::\+Yuv420\+File\+Saver@{Utility\+::\+Yuv420\+File\+Saver}}
 \subsubsection[{Yuv420\+File\+Saver}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Yuv420\+File\+Saver} (
 \begin{DoxyParamCaption}
 \item[{Q\+String}]{filename, }
-\item[{{\bf G\+U\+I\+::\+Player\+::\+Video} \&}]{video}
+\item[{{\bf G\+U\+I\+::\+Video} \&}]{video}
 \end{DoxyParamCaption}
-)}\label{classUtility_1_1Yuv420FileSaver_a7b9746d5a5644ddb07aad69358cae3dc}
+)}\label{classUtility_1_1Yuv420FileSaver_a9fff5cb52eed9373204bae7a75fb6ca3}
 
 
 Constructor. 
@@ -51,3 +66,19 @@ Saves the video to the file.
 
 Implements \hyperlink{classUtility_1_1YuvFileSaver_a710cb29afe2cd3d97a312f61140af200}{Yuv\+File\+Saver}.
 
+\hypertarget{classUtility_1_1Yuv420FileSaver_a8d8bf7ee5feac8d9ae676cda017c5d22}{}\index{Utility\+::\+Yuv420\+File\+Saver@{Utility\+::\+Yuv420\+File\+Saver}!save\+Frame@{save\+Frame}}
+\index{save\+Frame@{save\+Frame}!Utility\+::\+Yuv420\+File\+Saver@{Utility\+::\+Yuv420\+File\+Saver}}
+\subsubsection[{save\+Frame}]{\setlength{\rightskip}{0pt plus 5cm}void save\+Frame (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classUtility_1_1Yuv420FileSaver_a8d8bf7ee5feac8d9ae676cda017c5d22}
+
+
+saves the ith frame. If the index is invalid nothing happens. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & index of the frame to safe\\
+\hline
+\end{DoxyParams}

@@ -1,9 +1,19 @@
 \hypertarget{classUtility_1_1Yuv444FileSaver}{}\section{Yuv444\+File\+Saver Class Reference}
 \label{classUtility_1_1Yuv444FileSaver}\index{Yuv444\+File\+Saver@{Yuv444\+File\+Saver}}
+
+
+Inheritance diagram for Yuv444\+File\+Saver\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=171pt]{classUtility_1_1Yuv444FileSaver__inherit__graph}
+\end{center}
+\end{figure}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classUtility_1_1Yuv444FileSaver_ac5a7100eea65b8418588dc8636b098e4}{Yuv444\+File\+Saver} (Q\+String filename, \hyperlink{classGUI_1_1Player_1_1Video}{G\+U\+I\+::\+Player\+::\+Video} \&\hyperlink{classUtility_1_1YuvFileSaver_ac39cb6d0a56308ca6323374fc0d74c96}{video}, \hyperlink{namespaceUtility_a56a83bf6847f4801f4205eb4be237ccf}{Utility\+::\+Compression} compression)
+\hyperlink{classUtility_1_1Yuv444FileSaver_ab6dfdc97c6f71b7e1e5a8b2ee4768df3}{Yuv444\+File\+Saver} (Q\+String filename, \hyperlink{classGUI_1_1Video}{G\+U\+I\+::\+Video} \&\hyperlink{classUtility_1_1YuvFileSaver_a1c4d4daa00ecea5e8390244e057da0df}{video}, \hyperlink{namespaceUtility_a56a83bf6847f4801f4205eb4be237ccf}{Utility\+::\+Compression} compression)
 \item 
 void \hyperlink{classUtility_1_1Yuv444FileSaver_aae2c382151ef7c9aa913361172b30db6}{save} ()
 \end{DoxyCompactItemize}
@@ -12,6 +22,13 @@ void \hyperlink{classUtility_1_1Yuv444FileSaver_aae2c382151ef7c9aa913361172b30db
 \item 
 static \hyperlink{classUtility_1_1Yuv444Vector}{Utility\+::\+Yuv444\+Vector} \hyperlink{classUtility_1_1Yuv444FileSaver_a9016ab21bfb4c4741ed30631f7808ed4}{rgb888\+To\+Yuv444} (Q\+Rgb pixel1)
 \end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classUtility_1_1Yuv444FileSaver_a81cabd563e23a4db7c3a6e8ffc0a2c72}{save\+Packed} ()
+\item 
+void \hyperlink{classUtility_1_1Yuv444FileSaver_a0a85bd176aa474ff6a25689c0fe3ff9f}{save\+Planar} ()
+\end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
 
 
@@ -19,15 +36,15 @@ static \hyperlink{classUtility_1_1Yuv444Vector}{Utility\+::\+Yuv444\+Vector} \hy
 This class can save videos in the yuv 422 format. 
 
 \subsection{Constructor \& Destructor Documentation}
-\hypertarget{classUtility_1_1Yuv444FileSaver_ac5a7100eea65b8418588dc8636b098e4}{}\index{Utility\+::\+Yuv444\+File\+Saver@{Utility\+::\+Yuv444\+File\+Saver}!Yuv444\+File\+Saver@{Yuv444\+File\+Saver}}
+\hypertarget{classUtility_1_1Yuv444FileSaver_ab6dfdc97c6f71b7e1e5a8b2ee4768df3}{}\index{Utility\+::\+Yuv444\+File\+Saver@{Utility\+::\+Yuv444\+File\+Saver}!Yuv444\+File\+Saver@{Yuv444\+File\+Saver}}
 \index{Yuv444\+File\+Saver@{Yuv444\+File\+Saver}!Utility\+::\+Yuv444\+File\+Saver@{Utility\+::\+Yuv444\+File\+Saver}}
 \subsubsection[{Yuv444\+File\+Saver}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Yuv444\+File\+Saver} (
 \begin{DoxyParamCaption}
 \item[{Q\+String}]{filename, }
-\item[{{\bf G\+U\+I\+::\+Player\+::\+Video} \&}]{video, }
+\item[{{\bf G\+U\+I\+::\+Video} \&}]{video, }
 \item[{{\bf Utility\+::\+Compression}}]{compression}
 \end{DoxyParamCaption}
-)}\label{classUtility_1_1Yuv444FileSaver_ac5a7100eea65b8418588dc8636b098e4}
+)}\label{classUtility_1_1Yuv444FileSaver_ab6dfdc97c6f71b7e1e5a8b2ee4768df3}
 
 
 Constructor. 
@@ -77,4 +94,26 @@ Saves the video to the file.
 
 
 Implements \hyperlink{classUtility_1_1YuvFileSaver_a710cb29afe2cd3d97a312f61140af200}{Yuv\+File\+Saver}.
+
+\hypertarget{classUtility_1_1Yuv444FileSaver_a81cabd563e23a4db7c3a6e8ffc0a2c72}{}\index{Utility\+::\+Yuv444\+File\+Saver@{Utility\+::\+Yuv444\+File\+Saver}!save\+Packed@{save\+Packed}}
+\index{save\+Packed@{save\+Packed}!Utility\+::\+Yuv444\+File\+Saver@{Utility\+::\+Yuv444\+File\+Saver}}
+\subsubsection[{save\+Packed}]{\setlength{\rightskip}{0pt plus 5cm}void save\+Packed (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classUtility_1_1Yuv444FileSaver_a81cabd563e23a4db7c3a6e8ffc0a2c72}
+
+
+Saves the video in packed format. 
+
+\hypertarget{classUtility_1_1Yuv444FileSaver_a0a85bd176aa474ff6a25689c0fe3ff9f}{}\index{Utility\+::\+Yuv444\+File\+Saver@{Utility\+::\+Yuv444\+File\+Saver}!save\+Planar@{save\+Planar}}
+\index{save\+Planar@{save\+Planar}!Utility\+::\+Yuv444\+File\+Saver@{Utility\+::\+Yuv444\+File\+Saver}}
+\subsubsection[{save\+Planar}]{\setlength{\rightskip}{0pt plus 5cm}void save\+Planar (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classUtility_1_1Yuv444FileSaver_a0a85bd176aa474ff6a25689c0fe3ff9f}
+
+
+Saves the video in planar format. 
 

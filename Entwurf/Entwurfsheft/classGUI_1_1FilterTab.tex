@@ -3,13 +3,13 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classGUI_1_1FilterTab_a46622cba9213a399b4b249dc276d4bd3}{Filter\+Tab} (\hyperlink{classGUI_1_1Player_1_1QWidget}{G\+U\+I\+::\+Player\+::\+Q\+Widget} $\ast$parent)
+\hyperlink{classGUI_1_1FilterTab_a3b29125d6d490f2cbdd22e453f79f6f9}{Filter\+Tab} (\hyperlink{classGUI_1_1QWidget}{G\+U\+I\+::\+Q\+Widget} $\ast$parent)
 \item 
 \hyperlink{classMemento_1_1FilterTabMemento}{Memento\+::\+Filter\+Tab\+Memento} \hyperlink{classGUI_1_1FilterTab_a7fc8423cb1fbba94b4f339ce1695312b}{get\+Memento} ()
 \item 
 void \hyperlink{classGUI_1_1FilterTab_a5ac565cc700848f69b7b30b83f9b7269}{restore} (\hyperlink{classMemento_1_1FilterTabMemento}{Memento\+::\+Filter\+Tab\+Memento} memento)
 \item 
-void \hyperlink{classGUI_1_1FilterTab_a3018fe1fa10050f141ca3e119e8b8836}{insert\+Filter} (\hyperlink{classModel_1_1Filter_1_1Filter}{Model\+::\+Filter\+::\+Filter} filter, int index=-\/1)
+void \hyperlink{classGUI_1_1FilterTab_a3f8590a73c5ed6fd39daaa995e4fe04b}{insert\+Filter} (\hyperlink{classModel_1_1Filter}{Model\+::\+Filter} filter, int index=-\/1)
 \item 
 void \hyperlink{classGUI_1_1FilterTab_afbcb1308b246ae3f3008dd9854e1b276}{remove\+Filter} (string filter\+Name)
 \item 
@@ -19,7 +19,7 @@ void \hyperlink{classGUI_1_1FilterTab_a683e97e8ce40844fdccefc091a0e678e}{show\+P
 \item 
 void \hyperlink{classGUI_1_1FilterTab_a4e238a9564770214fb84f0d542e846dc}{reset\+Filters} ()
 \item 
-void \hyperlink{classGUI_1_1FilterTab_a959433e6472c35f5c5e0135f269dbba0}{set\+Filter\+List} (\hyperlink{classModel_1_1Filter_1_1FilterList}{Model\+::\+Filter\+::\+Filter\+List} list)
+void \hyperlink{classGUI_1_1FilterTab_a217572cdf98a98bd908c87600af7eb50}{set\+Filter\+List} (\hyperlink{classModel_1_1FilterList}{Model\+::\+Filter\+List} list)
 \item 
 void \hyperlink{classGUI_1_1FilterTab_ae01a11c0a081e873c992ebb245295903}{set\+Raw\+Video} (\hyperlink{classModel_1_1YuvVideo}{Model\+::\+Yuv\+Video} video)
 \item 
@@ -30,19 +30,91 @@ void \hyperlink{classGUI_1_1FilterTab_a97ba0aa0c950aa895489093bbc6264f6}{move\+F
 \item 
 \hyperlink{classUndoRedo_1_1LoadFilterVideo}{Undo\+Redo\+::\+Load\+Filter\+Video} $\ast$ \hyperlink{classGUI_1_1FilterTab_a2cf35b3ca5c4cf4888621bb7b2e103a7}{filter\+Tab}
 \end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classGUI_1_1FilterTab_ac3ca31ff0047daecf8bbe393a15e940c}{connect\+Actions} ()
+\item 
+void \hyperlink{classGUI_1_1FilterTab_aa72182c9a958af0e87b65ab7bdba0035}{create\+Ui} ()
+\item 
+void \hyperlink{classGUI_1_1FilterTab_a0a1d932d49dd1079cfd0964b11adc7a0}{up} ()
+\item 
+void \hyperlink{classGUI_1_1FilterTab_a6663cf1e20c2f8162d29d31c8f6324e6}{down} ()
+\item 
+void \hyperlink{classGUI_1_1FilterTab_a1fcb45e5d2428352eb36b487d1d4eea3}{remove} ()
+\item 
+void \hyperlink{classGUI_1_1FilterTab_a78f61ac2dd03bcba8e09ca20cd7d68e3}{load} ()
+\item 
+void \hyperlink{classGUI_1_1FilterTab_a95067243b72a23863ec07c821797455c}{apply} ()
+\item 
+void \hyperlink{classGUI_1_1FilterTab_aca3e1f51d9d95bb5f353275bda471260}{save\+Conf} ()
+\item 
+void \hyperlink{classGUI_1_1FilterTab_a6a47b95b078bb5310cd420104f09966f}{load\+Conf} ()
+\item 
+void \hyperlink{classGUI_1_1FilterTab_ad20897c5c8bd47f5d4005989bead0e55}{reset} ()
+\item 
+void \hyperlink{classGUI_1_1FilterTab_aae2c382151ef7c9aa913361172b30db6}{save} ()
+\item 
+void \hyperlink{classGUI_1_1FilterTab_a925c74d61941e57111324aa0d1f4bb85}{list\+Selection\+Changed} (Q\+Model\+Index index)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Q\+Push\+Button $\ast$ \hyperlink{classGUI_1_1FilterTab_a7ffd636d50e89af94659d9b95f030d3a}{button\+\_\+up}
+\item 
+Q\+Push\+Button $\ast$ \hyperlink{classGUI_1_1FilterTab_ad858f8cd5d215c28f0f02f34d72cc2de}{button\+\_\+down}
+\item 
+Q\+Push\+Button $\ast$ \hyperlink{classGUI_1_1FilterTab_a3c9944c21208e29473ffc2a6d313fa84}{button\+\_\+remove}
+\item 
+Q\+Push\+Button $\ast$ \hyperlink{classGUI_1_1FilterTab_a73290dd82cac023039a9639ed4ee2a64}{button\+\_\+load}
+\item 
+Q\+Push\+Button $\ast$ \hyperlink{classGUI_1_1FilterTab_a41a7e158eeecc2ce4701674b848fb4ea}{button\+\_\+apply}
+\item 
+Q\+Push\+Button $\ast$ \hyperlink{classGUI_1_1FilterTab_a7c8a66ac3e3d168efff03a6da9a1ee02}{button\+\_\+save\+Conf}
+\item 
+Q\+Push\+Button $\ast$ \hyperlink{classGUI_1_1FilterTab_a83339040ed5dffc4a0f5b99b2a1ecf85}{button\+\_\+load\+Conf}
+\item 
+Q\+Push\+Button $\ast$ \hyperlink{classGUI_1_1FilterTab_a8ade1f6413d2829fcebef87d52e39904}{button\+\_\+reset}
+\item 
+Q\+Push\+Button $\ast$ \hyperlink{classGUI_1_1FilterTab_ac65ab223be901b07d3fb4ae0acf5f80f}{button\+\_\+save}
+\item 
+Q\+List\+Widget $\ast$ \hyperlink{classGUI_1_1FilterTab_a5fb61cc6e0821460452c387dab51bba3}{list\+\_\+filter\+List}
+\item 
+Q\+Tab\+Widget $\ast$ \hyperlink{classGUI_1_1FilterTab_ad0f0964c2d2113a68b9c59f4138e22e3}{tab\+\_\+filter\+Tabs}
+\item 
+Q\+Label $\ast$ \hyperlink{classGUI_1_1FilterTab_a6e618ac48cc8cd27bb7bbb1ae068dbcf}{label\+\_\+filter\+Options}
+\item 
+\hyperlink{classGUI_1_1QFrame}{G\+U\+I\+::\+Q\+Frame} $\ast$ \hyperlink{classGUI_1_1FilterTab_a16f45e31aa3e66824942b76aa75b4630}{frame\+\_\+filter\+Container}
+\item 
+Q\+String\+List\+Model $\ast$ \hyperlink{classGUI_1_1FilterTab_ac7d0d391532c07cc6745e6ef766e6b58}{model\+\_\+list}
+\item 
+\hyperlink{classGUI_1_1VideoPlayer}{G\+U\+I\+::\+Video\+Player} $\ast$ \hyperlink{classGUI_1_1FilterTab_a649e16c560960a5b48ca2ec6bc1a7232}{player}
+\item 
+\hyperlink{classGUI_1_1PreviewControlPanel}{G\+U\+I\+::\+Preview\+Control\+Panel} $\ast$ \hyperlink{classGUI_1_1FilterTab_a7ee97b60ba5c365fa8a4cdd3ab26bdb9}{preview\+Panel}
+\item 
+\hyperlink{classGUI_1_1FrameView}{G\+U\+I\+::\+Frame\+View} $\ast$ \hyperlink{classGUI_1_1FilterTab_a3fb59b508ebe75c20afa2e9e0fc3d862}{frame\+View}
+\item 
+\hyperlink{classGUI_1_1PlayerControlPanel}{G\+U\+I\+::\+Player\+Control\+Panel} $\ast$ \hyperlink{classGUI_1_1FilterTab_a20f9043c5269fd3d365cf6a6821d616d}{player\+Panel}
+\item 
+\hyperlink{classModel_1_1FilterList}{Model\+::\+Filter\+List} $\ast$ \hyperlink{classGUI_1_1FilterTab_ae1c4986a96d35566c0c7ebce2eeada53}{filter\+List}
+\item 
+\hyperlink{classModel_1_1YuvVideo}{Model\+::\+Yuv\+Video} $\ast$ \hyperlink{classGUI_1_1FilterTab_a095285c6e168db68548acccc569736ed}{raw\+Video}
+\item 
+std\+::vector$<$ \hyperlink{classGUI_1_1FilterContainerTab}{G\+U\+I\+::\+Filter\+Container\+Tab} $\ast$ $>$ \hyperlink{classGUI_1_1FilterTab_a3bfe5331038803533b637314ecf3351b}{filter\+Container\+Tab}
+\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 This class is the tab to filter videos. 
 
 \subsection{Constructor \& Destructor Documentation}
-\hypertarget{classGUI_1_1FilterTab_a46622cba9213a399b4b249dc276d4bd3}{}\index{G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}!Filter\+Tab@{Filter\+Tab}}
+\hypertarget{classGUI_1_1FilterTab_a3b29125d6d490f2cbdd22e453f79f6f9}{}\index{G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}!Filter\+Tab@{Filter\+Tab}}
 \index{Filter\+Tab@{Filter\+Tab}!G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}}
 \subsubsection[{Filter\+Tab}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Filter\+Tab} (
 \begin{DoxyParamCaption}
-\item[{{\bf G\+U\+I\+::\+Player\+::\+Q\+Widget} $\ast$}]{parent}
+\item[{{\bf G\+U\+I\+::\+Q\+Widget} $\ast$}]{parent}
 \end{DoxyParamCaption}
-)}\label{classGUI_1_1FilterTab_a46622cba9213a399b4b249dc276d4bd3}
+)}\label{classGUI_1_1FilterTab_a3b29125d6d490f2cbdd22e453f79f6f9}
 
 
 Constructor. 
@@ -50,6 +122,50 @@ Constructor.
 
 
 \subsection{Member Function Documentation}
+\hypertarget{classGUI_1_1FilterTab_a95067243b72a23863ec07c821797455c}{}\index{G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}!apply@{apply}}
+\index{apply@{apply}!G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}}
+\subsubsection[{apply}]{\setlength{\rightskip}{0pt plus 5cm}void apply (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1FilterTab_a95067243b72a23863ec07c821797455c}
+
+
+Slot\+: connected with button\+\_\+apply.\+pressed() applies the filter list on the video and shows it 
+
+\hypertarget{classGUI_1_1FilterTab_ac3ca31ff0047daecf8bbe393a15e940c}{}\index{G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}!connect\+Actions@{connect\+Actions}}
+\index{connect\+Actions@{connect\+Actions}!G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}}
+\subsubsection[{connect\+Actions}]{\setlength{\rightskip}{0pt plus 5cm}void connect\+Actions (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1FilterTab_ac3ca31ff0047daecf8bbe393a15e940c}
+
+
+Connect the buttons to their slots in this class. 
+
+\hypertarget{classGUI_1_1FilterTab_aa72182c9a958af0e87b65ab7bdba0035}{}\index{G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}!create\+Ui@{create\+Ui}}
+\index{create\+Ui@{create\+Ui}!G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}}
+\subsubsection[{create\+Ui}]{\setlength{\rightskip}{0pt plus 5cm}void create\+Ui (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1FilterTab_aa72182c9a958af0e87b65ab7bdba0035}
+
+
+Creates the user interface. 
+
+\hypertarget{classGUI_1_1FilterTab_a6663cf1e20c2f8162d29d31c8f6324e6}{}\index{G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}!down@{down}}
+\index{down@{down}!G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}}
+\subsubsection[{down}]{\setlength{\rightskip}{0pt plus 5cm}void down (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1FilterTab_a6663cf1e20c2f8162d29d31c8f6324e6}
+
+
+Slot\+: connected with button\+\_\+down.\+pressed() increases the index of a filter in the list 
+
 \hypertarget{classGUI_1_1FilterTab_a7fc8423cb1fbba94b4f339ce1695312b}{}\index{G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}!get\+Memento@{get\+Memento}}
 \index{get\+Memento@{get\+Memento}!G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}}
 \subsubsection[{get\+Memento}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Memento\+::\+Filter\+Tab\+Memento} get\+Memento (
@@ -64,14 +180,14 @@ Creates a memento which contains the state of this tab.
 \begin{DoxyReturn}{Returns}
 The created memento.
 \end{DoxyReturn}
-\hypertarget{classGUI_1_1FilterTab_a3018fe1fa10050f141ca3e119e8b8836}{}\index{G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}!insert\+Filter@{insert\+Filter}}
+\hypertarget{classGUI_1_1FilterTab_a3f8590a73c5ed6fd39daaa995e4fe04b}{}\index{G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}!insert\+Filter@{insert\+Filter}}
 \index{insert\+Filter@{insert\+Filter}!G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}}
 \subsubsection[{insert\+Filter}]{\setlength{\rightskip}{0pt plus 5cm}void insert\+Filter (
 \begin{DoxyParamCaption}
-\item[{{\bf Model\+::\+Filter\+::\+Filter}}]{filter, }
+\item[{{\bf Model\+::\+Filter}}]{filter, }
 \item[{int}]{index = {\ttfamily -\/1}}
 \end{DoxyParamCaption}
-)}\label{classGUI_1_1FilterTab_a3018fe1fa10050f141ca3e119e8b8836}
+)}\label{classGUI_1_1FilterTab_a3f8590a73c5ed6fd39daaa995e4fe04b}
 
 
 Inserts a filter to the filter\+List. If index is -\/1 the the filter is added to the end. 
@@ -83,6 +199,44 @@ Inserts a filter to the filter\+List. If index is -\/1 the the filter is added t
 {\em index} & The index to insert the filter at.\\
 \hline
 \end{DoxyParams}
+\hypertarget{classGUI_1_1FilterTab_a925c74d61941e57111324aa0d1f4bb85}{}\index{G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}!list\+Selection\+Changed@{list\+Selection\+Changed}}
+\index{list\+Selection\+Changed@{list\+Selection\+Changed}!G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}}
+\subsubsection[{list\+Selection\+Changed}]{\setlength{\rightskip}{0pt plus 5cm}void list\+Selection\+Changed (
+\begin{DoxyParamCaption}
+\item[{Q\+Model\+Index}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1FilterTab_a925c74d61941e57111324aa0d1f4bb85}
+
+
+Slot\+: connected with list\+\_\+filter\+List.\+clicked(index \+: Q\+Model\+Index); updates the filter\+Configuration\+Box that is shown 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & Index of the selected item.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classGUI_1_1FilterTab_a78f61ac2dd03bcba8e09ca20cd7d68e3}{}\index{G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}!load@{load}}
+\index{load@{load}!G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}}
+\subsubsection[{load}]{\setlength{\rightskip}{0pt plus 5cm}void load (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1FilterTab_a78f61ac2dd03bcba8e09ca20cd7d68e3}
+
+
+Slot\+: connected with button\+\_\+load.\+pressed() opens Q\+File\+Dialog and opens the video in the selected path 
+
+\hypertarget{classGUI_1_1FilterTab_a6a47b95b078bb5310cd420104f09966f}{}\index{G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}!load\+Conf@{load\+Conf}}
+\index{load\+Conf@{load\+Conf}!G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}}
+\subsubsection[{load\+Conf}]{\setlength{\rightskip}{0pt plus 5cm}void load\+Conf (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1FilterTab_a6a47b95b078bb5310cd420104f09966f}
+
+
+Slot\+: connected with button\+\_\+load\+Conf.\+pressed() opens Q\+File\+Dialog and loads the filter configuration in the selected path 
+
 \hypertarget{classGUI_1_1FilterTab_a97ba0aa0c950aa895489093bbc6264f6}{}\index{G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}!move\+Filter@{move\+Filter}}
 \index{move\+Filter@{move\+Filter}!G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}}
 \subsubsection[{move\+Filter}]{\setlength{\rightskip}{0pt plus 5cm}void move\+Filter (
@@ -102,6 +256,17 @@ Moves a filter in the filterlist.
 {\em new} & New list index.\\
 \hline
 \end{DoxyParams}
+\hypertarget{classGUI_1_1FilterTab_a1fcb45e5d2428352eb36b487d1d4eea3}{}\index{G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}!remove@{remove}}
+\index{remove@{remove}!G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}}
+\subsubsection[{remove}]{\setlength{\rightskip}{0pt plus 5cm}void remove (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1FilterTab_a1fcb45e5d2428352eb36b487d1d4eea3}
+
+
+Slot\+: connected with button\+\_\+remove.\+pressed() removes a filter from the list 
+
 \hypertarget{classGUI_1_1FilterTab_afbcb1308b246ae3f3008dd9854e1b276}{}\index{G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}!remove\+Filter@{remove\+Filter}}
 \index{remove\+Filter@{remove\+Filter}!G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}}
 \subsubsection[{remove\+Filter}]{\setlength{\rightskip}{0pt plus 5cm}void remove\+Filter (
@@ -118,6 +283,17 @@ Removes the filter with the name filter\+Name in the filterlist.
 {\em filter\+Name} & Name of the filter to remove.\\
 \hline
 \end{DoxyParams}
+\hypertarget{classGUI_1_1FilterTab_ad20897c5c8bd47f5d4005989bead0e55}{}\index{G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}!reset@{reset}}
+\index{reset@{reset}!G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}}
+\subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}void reset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1FilterTab_ad20897c5c8bd47f5d4005989bead0e55}
+
+
+Slot\+: connected with button\+\_\+reset.\+pressed() resets the filter list 
+
 \hypertarget{classGUI_1_1FilterTab_a4e238a9564770214fb84f0d542e846dc}{}\index{G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}!reset\+Filters@{reset\+Filters}}
 \index{reset\+Filters@{reset\+Filters}!G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}}
 \subsubsection[{reset\+Filters}]{\setlength{\rightskip}{0pt plus 5cm}void reset\+Filters (
@@ -145,13 +321,35 @@ Restores the tab based on the memento.
 {\em memento} & The memento which contains the state of the tab.\\
 \hline
 \end{DoxyParams}
-\hypertarget{classGUI_1_1FilterTab_a959433e6472c35f5c5e0135f269dbba0}{}\index{G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}!set\+Filter\+List@{set\+Filter\+List}}
+\hypertarget{classGUI_1_1FilterTab_aae2c382151ef7c9aa913361172b30db6}{}\index{G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}!save@{save}}
+\index{save@{save}!G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}}
+\subsubsection[{save}]{\setlength{\rightskip}{0pt plus 5cm}void save (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1FilterTab_aae2c382151ef7c9aa913361172b30db6}
+
+
+Slot\+: connected with button\+\_\+save.\+pressed() opens Q\+File\+Dialog and saves the video with the filters used on it. 
+
+\hypertarget{classGUI_1_1FilterTab_aca3e1f51d9d95bb5f353275bda471260}{}\index{G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}!save\+Conf@{save\+Conf}}
+\index{save\+Conf@{save\+Conf}!G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}}
+\subsubsection[{save\+Conf}]{\setlength{\rightskip}{0pt plus 5cm}void save\+Conf (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1FilterTab_aca3e1f51d9d95bb5f353275bda471260}
+
+
+Slot\+: connected with button\+\_\+save\+Conf.\+pressed() opens Q\+File\+Dialog and saves the filter configuration in the selected path 
+
+\hypertarget{classGUI_1_1FilterTab_a217572cdf98a98bd908c87600af7eb50}{}\index{G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}!set\+Filter\+List@{set\+Filter\+List}}
 \index{set\+Filter\+List@{set\+Filter\+List}!G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}}
 \subsubsection[{set\+Filter\+List}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Filter\+List (
 \begin{DoxyParamCaption}
-\item[{{\bf Model\+::\+Filter\+::\+Filter\+List}}]{list}
+\item[{{\bf Model\+::\+Filter\+List}}]{list}
 \end{DoxyParamCaption}
-)}\label{classGUI_1_1FilterTab_a959433e6472c35f5c5e0135f269dbba0}
+)}\label{classGUI_1_1FilterTab_a217572cdf98a98bd908c87600af7eb50}
 
 
 Sets the filterlist. 
@@ -199,9 +397,83 @@ Shows the 5 frame preview.
 
 Shows the video with the applied filters. 
 
+\hypertarget{classGUI_1_1FilterTab_a0a1d932d49dd1079cfd0964b11adc7a0}{}\index{G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}!up@{up}}
+\index{up@{up}!G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}}
+\subsubsection[{up}]{\setlength{\rightskip}{0pt plus 5cm}void up (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1FilterTab_a0a1d932d49dd1079cfd0964b11adc7a0}
+
+
+Slot\+: connected with button\+\_\+up.\+pressed() decreases the index of a filter in the list 
+
 
 
 \subsection{Field Documentation}
+\hypertarget{classGUI_1_1FilterTab_a41a7e158eeecc2ce4701674b848fb4ea}{}\index{G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}!button\+\_\+apply@{button\+\_\+apply}}
+\index{button\+\_\+apply@{button\+\_\+apply}!G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}}
+\subsubsection[{button\+\_\+apply}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Push\+Button$\ast$ button\+\_\+apply\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1FilterTab_a41a7e158eeecc2ce4701674b848fb4ea}
+\hypertarget{classGUI_1_1FilterTab_ad858f8cd5d215c28f0f02f34d72cc2de}{}\index{G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}!button\+\_\+down@{button\+\_\+down}}
+\index{button\+\_\+down@{button\+\_\+down}!G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}}
+\subsubsection[{button\+\_\+down}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Push\+Button$\ast$ button\+\_\+down\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1FilterTab_ad858f8cd5d215c28f0f02f34d72cc2de}
+\hypertarget{classGUI_1_1FilterTab_a73290dd82cac023039a9639ed4ee2a64}{}\index{G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}!button\+\_\+load@{button\+\_\+load}}
+\index{button\+\_\+load@{button\+\_\+load}!G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}}
+\subsubsection[{button\+\_\+load}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Push\+Button$\ast$ button\+\_\+load\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1FilterTab_a73290dd82cac023039a9639ed4ee2a64}
+\hypertarget{classGUI_1_1FilterTab_a83339040ed5dffc4a0f5b99b2a1ecf85}{}\index{G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}!button\+\_\+load\+Conf@{button\+\_\+load\+Conf}}
+\index{button\+\_\+load\+Conf@{button\+\_\+load\+Conf}!G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}}
+\subsubsection[{button\+\_\+load\+Conf}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Push\+Button$\ast$ button\+\_\+load\+Conf\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1FilterTab_a83339040ed5dffc4a0f5b99b2a1ecf85}
+\hypertarget{classGUI_1_1FilterTab_a3c9944c21208e29473ffc2a6d313fa84}{}\index{G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}!button\+\_\+remove@{button\+\_\+remove}}
+\index{button\+\_\+remove@{button\+\_\+remove}!G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}}
+\subsubsection[{button\+\_\+remove}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Push\+Button$\ast$ button\+\_\+remove\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1FilterTab_a3c9944c21208e29473ffc2a6d313fa84}
+\hypertarget{classGUI_1_1FilterTab_a8ade1f6413d2829fcebef87d52e39904}{}\index{G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}!button\+\_\+reset@{button\+\_\+reset}}
+\index{button\+\_\+reset@{button\+\_\+reset}!G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}}
+\subsubsection[{button\+\_\+reset}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Push\+Button$\ast$ button\+\_\+reset\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1FilterTab_a8ade1f6413d2829fcebef87d52e39904}
+\hypertarget{classGUI_1_1FilterTab_ac65ab223be901b07d3fb4ae0acf5f80f}{}\index{G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}!button\+\_\+save@{button\+\_\+save}}
+\index{button\+\_\+save@{button\+\_\+save}!G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}}
+\subsubsection[{button\+\_\+save}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Push\+Button$\ast$ button\+\_\+save\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1FilterTab_ac65ab223be901b07d3fb4ae0acf5f80f}
+\hypertarget{classGUI_1_1FilterTab_a7c8a66ac3e3d168efff03a6da9a1ee02}{}\index{G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}!button\+\_\+save\+Conf@{button\+\_\+save\+Conf}}
+\index{button\+\_\+save\+Conf@{button\+\_\+save\+Conf}!G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}}
+\subsubsection[{button\+\_\+save\+Conf}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Push\+Button$\ast$ button\+\_\+save\+Conf\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1FilterTab_a7c8a66ac3e3d168efff03a6da9a1ee02}
+\hypertarget{classGUI_1_1FilterTab_a7ffd636d50e89af94659d9b95f030d3a}{}\index{G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}!button\+\_\+up@{button\+\_\+up}}
+\index{button\+\_\+up@{button\+\_\+up}!G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}}
+\subsubsection[{button\+\_\+up}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Push\+Button$\ast$ button\+\_\+up\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1FilterTab_a7ffd636d50e89af94659d9b95f030d3a}
+\hypertarget{classGUI_1_1FilterTab_a3bfe5331038803533b637314ecf3351b}{}\index{G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}!filter\+Container\+Tab@{filter\+Container\+Tab}}
+\index{filter\+Container\+Tab@{filter\+Container\+Tab}!G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}}
+\subsubsection[{filter\+Container\+Tab}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf G\+U\+I\+::\+Filter\+Container\+Tab}$\ast$$>$ filter\+Container\+Tab\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1FilterTab_a3bfe5331038803533b637314ecf3351b}
+\hypertarget{classGUI_1_1FilterTab_ae1c4986a96d35566c0c7ebce2eeada53}{}\index{G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}!filter\+List@{filter\+List}}
+\index{filter\+List@{filter\+List}!G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}}
+\subsubsection[{filter\+List}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Model\+::\+Filter\+List}$\ast$ filter\+List\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1FilterTab_ae1c4986a96d35566c0c7ebce2eeada53}
 \hypertarget{classGUI_1_1FilterTab_a2cf35b3ca5c4cf4888621bb7b2e103a7}{}\index{G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}!filter\+Tab@{filter\+Tab}}
 \index{filter\+Tab@{filter\+Tab}!G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}}
 \subsubsection[{filter\+Tab}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Undo\+Redo\+::\+Load\+Filter\+Video}$\ast$ filter\+Tab}\label{classGUI_1_1FilterTab_a2cf35b3ca5c4cf4888621bb7b2e103a7}
+\hypertarget{classGUI_1_1FilterTab_a16f45e31aa3e66824942b76aa75b4630}{}\index{G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}!frame\+\_\+filter\+Container@{frame\+\_\+filter\+Container}}
+\index{frame\+\_\+filter\+Container@{frame\+\_\+filter\+Container}!G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}}
+\subsubsection[{frame\+\_\+filter\+Container}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Q\+Frame}$\ast$ frame\+\_\+filter\+Container\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1FilterTab_a16f45e31aa3e66824942b76aa75b4630}
+\hypertarget{classGUI_1_1FilterTab_a3fb59b508ebe75c20afa2e9e0fc3d862}{}\index{G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}!frame\+View@{frame\+View}}
+\index{frame\+View@{frame\+View}!G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}}
+\subsubsection[{frame\+View}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Frame\+View}$\ast$ frame\+View\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1FilterTab_a3fb59b508ebe75c20afa2e9e0fc3d862}
+\hypertarget{classGUI_1_1FilterTab_a6e618ac48cc8cd27bb7bbb1ae068dbcf}{}\index{G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}!label\+\_\+filter\+Options@{label\+\_\+filter\+Options}}
+\index{label\+\_\+filter\+Options@{label\+\_\+filter\+Options}!G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}}
+\subsubsection[{label\+\_\+filter\+Options}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Label$\ast$ label\+\_\+filter\+Options\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1FilterTab_a6e618ac48cc8cd27bb7bbb1ae068dbcf}
+\hypertarget{classGUI_1_1FilterTab_a5fb61cc6e0821460452c387dab51bba3}{}\index{G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}!list\+\_\+filter\+List@{list\+\_\+filter\+List}}
+\index{list\+\_\+filter\+List@{list\+\_\+filter\+List}!G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}}
+\subsubsection[{list\+\_\+filter\+List}]{\setlength{\rightskip}{0pt plus 5cm}Q\+List\+Widget$\ast$ list\+\_\+filter\+List\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1FilterTab_a5fb61cc6e0821460452c387dab51bba3}
+\hypertarget{classGUI_1_1FilterTab_ac7d0d391532c07cc6745e6ef766e6b58}{}\index{G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}!model\+\_\+list@{model\+\_\+list}}
+\index{model\+\_\+list@{model\+\_\+list}!G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}}
+\subsubsection[{model\+\_\+list}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String\+List\+Model$\ast$ model\+\_\+list\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1FilterTab_ac7d0d391532c07cc6745e6ef766e6b58}
+\hypertarget{classGUI_1_1FilterTab_a649e16c560960a5b48ca2ec6bc1a7232}{}\index{G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}!player@{player}}
+\index{player@{player}!G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}}
+\subsubsection[{player}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Video\+Player}$\ast$ player\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1FilterTab_a649e16c560960a5b48ca2ec6bc1a7232}
+\hypertarget{classGUI_1_1FilterTab_a20f9043c5269fd3d365cf6a6821d616d}{}\index{G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}!player\+Panel@{player\+Panel}}
+\index{player\+Panel@{player\+Panel}!G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}}
+\subsubsection[{player\+Panel}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Player\+Control\+Panel}$\ast$ player\+Panel\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1FilterTab_a20f9043c5269fd3d365cf6a6821d616d}
+\hypertarget{classGUI_1_1FilterTab_a7ee97b60ba5c365fa8a4cdd3ab26bdb9}{}\index{G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}!preview\+Panel@{preview\+Panel}}
+\index{preview\+Panel@{preview\+Panel}!G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}}
+\subsubsection[{preview\+Panel}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Preview\+Control\+Panel}$\ast$ preview\+Panel\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1FilterTab_a7ee97b60ba5c365fa8a4cdd3ab26bdb9}
+\hypertarget{classGUI_1_1FilterTab_a095285c6e168db68548acccc569736ed}{}\index{G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}!raw\+Video@{raw\+Video}}
+\index{raw\+Video@{raw\+Video}!G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}}
+\subsubsection[{raw\+Video}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Model\+::\+Yuv\+Video}$\ast$ raw\+Video\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1FilterTab_a095285c6e168db68548acccc569736ed}
+\hypertarget{classGUI_1_1FilterTab_ad0f0964c2d2113a68b9c59f4138e22e3}{}\index{G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}!tab\+\_\+filter\+Tabs@{tab\+\_\+filter\+Tabs}}
+\index{tab\+\_\+filter\+Tabs@{tab\+\_\+filter\+Tabs}!G\+U\+I\+::\+Filter\+Tab@{G\+U\+I\+::\+Filter\+Tab}}
+\subsubsection[{tab\+\_\+filter\+Tabs}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Tab\+Widget$\ast$ tab\+\_\+filter\+Tabs\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1FilterTab_ad0f0964c2d2113a68b9c59f4138e22e3}

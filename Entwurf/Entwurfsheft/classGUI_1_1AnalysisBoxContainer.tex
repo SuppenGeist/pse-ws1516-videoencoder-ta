@@ -1,9 +1,19 @@
 \hypertarget{classGUI_1_1AnalysisBoxContainer}{}\section{Analysis\+Box\+Container Class Reference}
 \label{classGUI_1_1AnalysisBoxContainer}\index{Analysis\+Box\+Container@{Analysis\+Box\+Container}}
+
+
+Inheritance diagram for Analysis\+Box\+Container\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=193pt]{classGUI_1_1AnalysisBoxContainer__inherit__graph}
+\end{center}
+\end{figure}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classGUI_1_1AnalysisBoxContainer_a9aa66993362512fd55086aac21506543}{Analysis\+Box\+Container} (\hyperlink{classGUI_1_1Player_1_1QWidget}{G\+U\+I\+::\+Player\+::\+Q\+Widget} $\ast$parent)
+\hyperlink{classGUI_1_1AnalysisBoxContainer_ae603e523cc42100eccf571ff85ca39e8}{Analysis\+Box\+Container} (\hyperlink{classGUI_1_1QWidget}{G\+U\+I\+::\+Q\+Widget} $\ast$parent)
 \item 
 \hyperlink{classMemento_1_1AnalysisBoxContainerMemento}{Memento\+::\+Analysis\+Box\+Container\+Memento} \hyperlink{classGUI_1_1AnalysisBoxContainer_a0743a7c422123fbd5d22a946af5092ca}{get\+Memento} ()
 \item 
@@ -11,9 +21,9 @@ void \hyperlink{classGUI_1_1AnalysisBoxContainer_af6d8c35bc3f7000da0579310af42e7
 \item 
 void \hyperlink{classGUI_1_1AnalysisBoxContainer_af3b761e148d9cb7352c5ffb4bf4c66bd}{add\+Video} (Q\+String path)
 \item 
-void \hyperlink{classGUI_1_1AnalysisBoxContainer_ae45e621cb87a85ffb069ac765a306711}{set\+Raw\+Video} (\hyperlink{classGUI_1_1Player_1_1Video}{G\+U\+I\+::\+Player\+::\+Video} $\ast$video)
+void \hyperlink{classGUI_1_1AnalysisBoxContainer_aa08759618dc05b98d60dc8942d41b556}{set\+Raw\+Video} (\hyperlink{classGUI_1_1Video}{G\+U\+I\+::\+Video} $\ast$video)
 \item 
-void \hyperlink{classGUI_1_1AnalysisBoxContainer_a0a63304dda40cabeda44acd79bb08b59}{set\+Timer} (shared\+\_\+ptr$<$ \hyperlink{classGUI_1_1Player_1_1Timer}{G\+U\+I\+::\+Player\+::\+Timer} $>$ timer\+:std\+:)
+void \hyperlink{classGUI_1_1AnalysisBoxContainer_a678bedcbfc074efd29b5587a753fc341}{set\+Timer} (shared\+\_\+ptr$<$ \hyperlink{classGUI_1_1Timer}{G\+U\+I\+::\+Timer} $>$ timer\+:std\+:)
 \item 
 void \hyperlink{classGUI_1_1AnalysisBoxContainer_a9c1b482d1dcd6a733b84a9cdcc960263}{set\+Control\+Panel} (Player\+::\+Global\+Control\+Panel $\ast$panel)
 \item 
@@ -30,19 +40,32 @@ void \hyperlink{classGUI_1_1AnalysisBoxContainer_a181a2114e38722fcae5a9c1d5b1d0f
 \item 
 \hyperlink{classUndoRedo_1_1RemoveVideo}{Undo\+Redo\+::\+Remove\+Video} $\ast$ \hyperlink{classGUI_1_1AnalysisBoxContainer_a14b06011d2f6be0da89f067a1e838b09}{ana\+Box\+Container}
 \end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classGUI_1_1Video}{G\+U\+I\+::\+Video} $\ast$ \hyperlink{classGUI_1_1AnalysisBoxContainer_a36ae288eba0c53b885d93498c8c68469}{raw\+Video}
+\item 
+shared\+\_\+ptr$<$ \hyperlink{classGUI_1_1Timer}{G\+U\+I\+::\+Timer} $>$ \hyperlink{classGUI_1_1AnalysisBoxContainer_a38f007cbe577c8cecfadf2358a3049fc}{timer}\+:std\+:
+\item 
+Player\+::\+Global\+Control\+Panel $\ast$ \hyperlink{classGUI_1_1AnalysisBoxContainer_aa7d83e3ba62ee643206acd2a48e058e3}{control\+Panel}
+\item 
+\hyperlink{classGUI_1_1AnalysisTab}{G\+U\+I\+::\+Analysis\+Tab} $\ast$ \hyperlink{classGUI_1_1AnalysisBoxContainer_a6754830af7090fa0a2bf7c94fbb188cc}{analysis\+Box\+Container}
+\item 
+std\+::vector$<$ \hyperlink{classGUI_1_1AnalysisBox}{G\+U\+I\+::\+Analysis\+Box} $\ast$ $>$ \hyperlink{classGUI_1_1AnalysisBoxContainer_a5083484e3ec5273e8a150e11fea5108b}{boxes}
+\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 Contains and manages the Analysis\+Boxes. 
 
 \subsection{Constructor \& Destructor Documentation}
-\hypertarget{classGUI_1_1AnalysisBoxContainer_a9aa66993362512fd55086aac21506543}{}\index{G\+U\+I\+::\+Analysis\+Box\+Container@{G\+U\+I\+::\+Analysis\+Box\+Container}!Analysis\+Box\+Container@{Analysis\+Box\+Container}}
+\hypertarget{classGUI_1_1AnalysisBoxContainer_ae603e523cc42100eccf571ff85ca39e8}{}\index{G\+U\+I\+::\+Analysis\+Box\+Container@{G\+U\+I\+::\+Analysis\+Box\+Container}!Analysis\+Box\+Container@{Analysis\+Box\+Container}}
 \index{Analysis\+Box\+Container@{Analysis\+Box\+Container}!G\+U\+I\+::\+Analysis\+Box\+Container@{G\+U\+I\+::\+Analysis\+Box\+Container}}
 \subsubsection[{Analysis\+Box\+Container}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Analysis\+Box\+Container} (
 \begin{DoxyParamCaption}
-\item[{{\bf G\+U\+I\+::\+Player\+::\+Q\+Widget} $\ast$}]{parent}
+\item[{{\bf G\+U\+I\+::\+Q\+Widget} $\ast$}]{parent}
 \end{DoxyParamCaption}
-)}\label{classGUI_1_1AnalysisBoxContainer_a9aa66993362512fd55086aac21506543}
+)}\label{classGUI_1_1AnalysisBoxContainer_ae603e523cc42100eccf571ff85ca39e8}
 
 
 Constructor. 
@@ -147,13 +170,13 @@ Sets the \hyperlink{classGUI_1_1GlobalControlPanel}{Global\+Control\+Panel}.
 {\em panel} & The panel.\\
 \hline
 \end{DoxyParams}
-\hypertarget{classGUI_1_1AnalysisBoxContainer_ae45e621cb87a85ffb069ac765a306711}{}\index{G\+U\+I\+::\+Analysis\+Box\+Container@{G\+U\+I\+::\+Analysis\+Box\+Container}!set\+Raw\+Video@{set\+Raw\+Video}}
+\hypertarget{classGUI_1_1AnalysisBoxContainer_aa08759618dc05b98d60dc8942d41b556}{}\index{G\+U\+I\+::\+Analysis\+Box\+Container@{G\+U\+I\+::\+Analysis\+Box\+Container}!set\+Raw\+Video@{set\+Raw\+Video}}
 \index{set\+Raw\+Video@{set\+Raw\+Video}!G\+U\+I\+::\+Analysis\+Box\+Container@{G\+U\+I\+::\+Analysis\+Box\+Container}}
 \subsubsection[{set\+Raw\+Video}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Raw\+Video (
 \begin{DoxyParamCaption}
-\item[{{\bf G\+U\+I\+::\+Player\+::\+Video} $\ast$}]{video}
+\item[{{\bf G\+U\+I\+::\+Video} $\ast$}]{video}
 \end{DoxyParamCaption}
-)}\label{classGUI_1_1AnalysisBoxContainer_ae45e621cb87a85ffb069ac765a306711}
+)}\label{classGUI_1_1AnalysisBoxContainer_aa08759618dc05b98d60dc8942d41b556}
 
 
 Sets the raw\+Video the encoded videos are compared to. 
@@ -163,13 +186,13 @@ Sets the raw\+Video the encoded videos are compared to.
 {\em video} & The raw video.\\
 \hline
 \end{DoxyParams}
-\hypertarget{classGUI_1_1AnalysisBoxContainer_a0a63304dda40cabeda44acd79bb08b59}{}\index{G\+U\+I\+::\+Analysis\+Box\+Container@{G\+U\+I\+::\+Analysis\+Box\+Container}!set\+Timer@{set\+Timer}}
+\hypertarget{classGUI_1_1AnalysisBoxContainer_a678bedcbfc074efd29b5587a753fc341}{}\index{G\+U\+I\+::\+Analysis\+Box\+Container@{G\+U\+I\+::\+Analysis\+Box\+Container}!set\+Timer@{set\+Timer}}
 \index{set\+Timer@{set\+Timer}!G\+U\+I\+::\+Analysis\+Box\+Container@{G\+U\+I\+::\+Analysis\+Box\+Container}}
 \subsubsection[{set\+Timer}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Timer (
 \begin{DoxyParamCaption}
-\item[{shared\+\_\+ptr$<$ {\bf G\+U\+I\+::\+Player\+::\+Timer} $>$ timer\+:std\+:}]{}
+\item[{shared\+\_\+ptr$<$ {\bf G\+U\+I\+::\+Timer} $>$ timer\+:std\+:}]{}
 \end{DoxyParamCaption}
-)}\label{classGUI_1_1AnalysisBoxContainer_a0a63304dda40cabeda44acd79bb08b59}
+)}\label{classGUI_1_1AnalysisBoxContainer_a678bedcbfc074efd29b5587a753fc341}
 
 
 Sets the timer for the videoplayers. 
@@ -207,3 +230,18 @@ Tells all Analysis\+Boxes to show the R\+G\+B\+Diff video.
 \hypertarget{classGUI_1_1AnalysisBoxContainer_a14b06011d2f6be0da89f067a1e838b09}{}\index{G\+U\+I\+::\+Analysis\+Box\+Container@{G\+U\+I\+::\+Analysis\+Box\+Container}!ana\+Box\+Container@{ana\+Box\+Container}}
 \index{ana\+Box\+Container@{ana\+Box\+Container}!G\+U\+I\+::\+Analysis\+Box\+Container@{G\+U\+I\+::\+Analysis\+Box\+Container}}
 \subsubsection[{ana\+Box\+Container}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Undo\+Redo\+::\+Remove\+Video}$\ast$ ana\+Box\+Container}\label{classGUI_1_1AnalysisBoxContainer_a14b06011d2f6be0da89f067a1e838b09}
+\hypertarget{classGUI_1_1AnalysisBoxContainer_a6754830af7090fa0a2bf7c94fbb188cc}{}\index{G\+U\+I\+::\+Analysis\+Box\+Container@{G\+U\+I\+::\+Analysis\+Box\+Container}!analysis\+Box\+Container@{analysis\+Box\+Container}}
+\index{analysis\+Box\+Container@{analysis\+Box\+Container}!G\+U\+I\+::\+Analysis\+Box\+Container@{G\+U\+I\+::\+Analysis\+Box\+Container}}
+\subsubsection[{analysis\+Box\+Container}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Analysis\+Tab}$\ast$ analysis\+Box\+Container\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1AnalysisBoxContainer_a6754830af7090fa0a2bf7c94fbb188cc}
+\hypertarget{classGUI_1_1AnalysisBoxContainer_a5083484e3ec5273e8a150e11fea5108b}{}\index{G\+U\+I\+::\+Analysis\+Box\+Container@{G\+U\+I\+::\+Analysis\+Box\+Container}!boxes@{boxes}}
+\index{boxes@{boxes}!G\+U\+I\+::\+Analysis\+Box\+Container@{G\+U\+I\+::\+Analysis\+Box\+Container}}
+\subsubsection[{boxes}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf G\+U\+I\+::\+Analysis\+Box}$\ast$$>$ boxes\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1AnalysisBoxContainer_a5083484e3ec5273e8a150e11fea5108b}
+\hypertarget{classGUI_1_1AnalysisBoxContainer_aa7d83e3ba62ee643206acd2a48e058e3}{}\index{G\+U\+I\+::\+Analysis\+Box\+Container@{G\+U\+I\+::\+Analysis\+Box\+Container}!control\+Panel@{control\+Panel}}
+\index{control\+Panel@{control\+Panel}!G\+U\+I\+::\+Analysis\+Box\+Container@{G\+U\+I\+::\+Analysis\+Box\+Container}}
+\subsubsection[{control\+Panel}]{\setlength{\rightskip}{0pt plus 5cm}Player\+::\+Global\+Control\+Panel$\ast$ control\+Panel\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1AnalysisBoxContainer_aa7d83e3ba62ee643206acd2a48e058e3}
+\hypertarget{classGUI_1_1AnalysisBoxContainer_a36ae288eba0c53b885d93498c8c68469}{}\index{G\+U\+I\+::\+Analysis\+Box\+Container@{G\+U\+I\+::\+Analysis\+Box\+Container}!raw\+Video@{raw\+Video}}
+\index{raw\+Video@{raw\+Video}!G\+U\+I\+::\+Analysis\+Box\+Container@{G\+U\+I\+::\+Analysis\+Box\+Container}}
+\subsubsection[{raw\+Video}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Video}$\ast$ raw\+Video\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1AnalysisBoxContainer_a36ae288eba0c53b885d93498c8c68469}
+\hypertarget{classGUI_1_1AnalysisBoxContainer_a38f007cbe577c8cecfadf2358a3049fc}{}\index{G\+U\+I\+::\+Analysis\+Box\+Container@{G\+U\+I\+::\+Analysis\+Box\+Container}!timer@{timer}}
+\index{timer@{timer}!G\+U\+I\+::\+Analysis\+Box\+Container@{G\+U\+I\+::\+Analysis\+Box\+Container}}
+\subsubsection[{timer}]{\setlength{\rightskip}{0pt plus 5cm}shared\+\_\+ptr$<${\bf G\+U\+I\+::\+Timer}$>$ timer\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1AnalysisBoxContainer_a38f007cbe577c8cecfadf2358a3049fc}

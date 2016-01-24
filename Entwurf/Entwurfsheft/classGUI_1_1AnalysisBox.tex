@@ -1,17 +1,27 @@
 \hypertarget{classGUI_1_1AnalysisBox}{}\section{Analysis\+Box Class Reference}
 \label{classGUI_1_1AnalysisBox}\index{Analysis\+Box@{Analysis\+Box}}
+
+
+Inheritance diagram for Analysis\+Box\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=151pt]{classGUI_1_1AnalysisBox__inherit__graph}
+\end{center}
+\end{figure}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classGUI_1_1AnalysisBox_a4ae2ada67e406d409a624f57c52235f4}{Analysis\+Box} (\hyperlink{classGUI_1_1Player_1_1QWidget}{G\+U\+I\+::\+Player\+::\+Q\+Widget} $\ast$parent)
+\hyperlink{classGUI_1_1AnalysisBox_a8c06588ec643fff93a0c637d2d662759}{Analysis\+Box} (\hyperlink{classGUI_1_1QWidget}{G\+U\+I\+::\+Q\+Widget} $\ast$parent)
 \item 
 \hyperlink{classMemento_1_1AnalysisBoxMemento}{Memento\+::\+Analysis\+Box\+Memento} \hyperlink{classGUI_1_1AnalysisBox_a73fa952c3fb3509d83ca1dadc7cefb33}{get\+Memento} ()
 \item 
 void \hyperlink{classGUI_1_1AnalysisBox_a70c1d51815b73ad12b08cbf0636e77eb}{restore} (\hyperlink{classMemento_1_1AnalysisBoxMemento}{Memento\+::\+Analysis\+Box\+Memento} memento)
 \item 
-void \hyperlink{classGUI_1_1AnalysisBox_a0a63304dda40cabeda44acd79bb08b59}{set\+Timer} (shared\+\_\+ptr$<$ \hyperlink{classGUI_1_1Player_1_1Timer}{G\+U\+I\+::\+Player\+::\+Timer} $>$ timer\+:std\+:)
+void \hyperlink{classGUI_1_1AnalysisBox_a678bedcbfc074efd29b5587a753fc341}{set\+Timer} (shared\+\_\+ptr$<$ \hyperlink{classGUI_1_1Timer}{G\+U\+I\+::\+Timer} $>$ timer\+:std\+:)
 \item 
-void \hyperlink{classGUI_1_1AnalysisBox_ae45e621cb87a85ffb069ac765a306711}{set\+Raw\+Video} (\hyperlink{classGUI_1_1Player_1_1Video}{G\+U\+I\+::\+Player\+::\+Video} $\ast$video)
+void \hyperlink{classGUI_1_1AnalysisBox_aa08759618dc05b98d60dc8942d41b556}{set\+Raw\+Video} (\hyperlink{classGUI_1_1Video}{G\+U\+I\+::\+Video} $\ast$\hyperlink{classGUI_1_1AnalysisBox_a226620d1252c162814ca98d3e522255c}{video})
 \item 
 void \hyperlink{classGUI_1_1AnalysisBox_a9c1b482d1dcd6a733b84a9cdcc960263}{set\+Control\+Panel} (Player\+::\+Global\+Control\+Panel $\ast$panel)
 \item 
@@ -19,12 +29,52 @@ void \hyperlink{classGUI_1_1AnalysisBox_a9484911b10192b865138995df1158d7e}{show\
 \item 
 void \hyperlink{classGUI_1_1AnalysisBox_a17b13bec505d0e1f579bdfa7f691f085}{show\+R\+G\+B\+Difference\+Video} ()
 \item 
-void \hyperlink{classGUI_1_1AnalysisBox_ab047270e0ea8ceb6504fb52d7b06dade}{set\+Analyse\+Video} (\hyperlink{classModel_1_1EncodedVideo}{Model\+::\+Encoded\+Video} video)
+void \hyperlink{classGUI_1_1AnalysisBox_ab047270e0ea8ceb6504fb52d7b06dade}{set\+Analyse\+Video} (\hyperlink{classModel_1_1EncodedVideo}{Model\+::\+Encoded\+Video} \hyperlink{classGUI_1_1AnalysisBox_a226620d1252c162814ca98d3e522255c}{video})
 \end{DoxyCompactItemize}
 \subsection*{Data Fields}
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{classUndoRedo_1_1RemoveVideo}{Undo\+Redo\+::\+Remove\+Video} $\ast$ \hyperlink{classGUI_1_1AnalysisBox_a2872ec622eeebd8ec665f83b2eafa7b5}{ana\+Box}
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classGUI_1_1AnalysisBox_a5ae591df94fc66ccb85cbb6565368bca}{close} ()
+\item 
+void \hyperlink{classGUI_1_1AnalysisBox_a92832e204f5bab2138a91c2a248b0730}{text\+Changed} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classGUI_1_1Video}{G\+U\+I\+::\+Video} $\ast$ \hyperlink{classGUI_1_1AnalysisBox_a36ae288eba0c53b885d93498c8c68469}{raw\+Video}
+\item 
+int \hyperlink{classGUI_1_1AnalysisBox_a42c7f34314887139c2b847a2fc190cd5}{currently\+Played\+Video}
+\item 
+Q\+Tab\+Widget $\ast$ \hyperlink{classGUI_1_1AnalysisBox_a84b21f36a5a1a5750502d3611321cef2}{tabs}
+\item 
+Q\+Push\+Button $\ast$ \hyperlink{classGUI_1_1AnalysisBox_a2ea06b6d8f34f05fdbfbaa0a09293a33}{button\+\_\+close}
+\item 
+Q\+Text\+Edit $\ast$ \hyperlink{classGUI_1_1AnalysisBox_ad9cff9fc5b4f7a96f3c7a996dece6155}{text\+Edit\+\_\+comment}
+\item 
+Gloabl\+Control\+Panel $\ast$ \hyperlink{classGUI_1_1AnalysisBox_a22a072a13da697f378cb26be7be72abe}{control\+Panel}
+\item 
+\hyperlink{classGUI_1_1AnalysisBoxContainer}{G\+U\+I\+::\+Analysis\+Box\+Container} $\ast$ \hyperlink{classGUI_1_1AnalysisBox_a63274682527f704e5bcd1931c770b8c5}{boxes}
+\item 
+\hyperlink{classGUI_1_1VideoPlayer}{G\+U\+I\+::\+Video\+Player} $\ast$ \hyperlink{classGUI_1_1AnalysisBox_a14ff456773f3f51fe1aba760747cca31}{plain\+Video\+Player}
+\item 
+\hyperlink{classGUI_1_1VideoPlayer}{G\+U\+I\+::\+Video\+Player} $\ast$ \hyperlink{classGUI_1_1AnalysisBox_a80c4876f9f65457ab392c5b5749aff04}{analysis\+Video\+Player}
+\item 
+\hyperlink{classGUI_1_1GraphWidget}{G\+U\+I\+::\+Graph\+Widget} $\ast$ \hyperlink{classGUI_1_1AnalysisBox_a582bcfbffcea9f3eaa27afcc74bd0ea2}{psnr\+Graph}
+\item 
+\hyperlink{classGUI_1_1GraphWidget}{G\+U\+I\+::\+Graph\+Widget} $\ast$ \hyperlink{classGUI_1_1AnalysisBox_abcd33b477976fb3b6908f22e6077d3be}{bitrate\+Graph}
+\item 
+\hyperlink{classGUI_1_1GraphWidget}{G\+U\+I\+::\+Graph\+Widget} $\ast$ \hyperlink{classGUI_1_1AnalysisBox_af6c816632eb98c137869c7dd3a1356b0}{red\+Histogramm}
+\item 
+\hyperlink{classGUI_1_1GraphWidget}{G\+U\+I\+::\+Graph\+Widget} $\ast$ \hyperlink{classGUI_1_1AnalysisBox_a0c40d875034d69b9555c6137240f70b3}{blue\+Histogramm}
+\item 
+\hyperlink{classGUI_1_1GraphWidget}{G\+U\+I\+::\+Graph\+Widget} $\ast$ \hyperlink{classGUI_1_1AnalysisBox_aec1e513bb22f56f0c013b9ed198cc09e}{green\+Histogramm}
+\item 
+\hyperlink{classModel_1_1EncodedVideo}{Model\+::\+Encoded\+Video} $\ast$ \hyperlink{classGUI_1_1AnalysisBox_a226620d1252c162814ca98d3e522255c}{video}
 \end{DoxyCompactItemize}
 
 
@@ -32,16 +82,27 @@ void \hyperlink{classGUI_1_1AnalysisBox_ab047270e0ea8ceb6504fb52d7b06dade}{set\+
 Shows the Analysis of a single encoded video. 
 
 \subsection{Constructor \& Destructor Documentation}
-\hypertarget{classGUI_1_1AnalysisBox_a4ae2ada67e406d409a624f57c52235f4}{}\index{G\+U\+I\+::\+Analysis\+Box@{G\+U\+I\+::\+Analysis\+Box}!Analysis\+Box@{Analysis\+Box}}
+\hypertarget{classGUI_1_1AnalysisBox_a8c06588ec643fff93a0c637d2d662759}{}\index{G\+U\+I\+::\+Analysis\+Box@{G\+U\+I\+::\+Analysis\+Box}!Analysis\+Box@{Analysis\+Box}}
 \index{Analysis\+Box@{Analysis\+Box}!G\+U\+I\+::\+Analysis\+Box@{G\+U\+I\+::\+Analysis\+Box}}
 \subsubsection[{Analysis\+Box}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Analysis\+Box} (
 \begin{DoxyParamCaption}
-\item[{{\bf G\+U\+I\+::\+Player\+::\+Q\+Widget} $\ast$}]{parent}
+\item[{{\bf G\+U\+I\+::\+Q\+Widget} $\ast$}]{parent}
 \end{DoxyParamCaption}
-)}\label{classGUI_1_1AnalysisBox_a4ae2ada67e406d409a624f57c52235f4}
+)}\label{classGUI_1_1AnalysisBox_a8c06588ec643fff93a0c637d2d662759}
 
 
 \subsection{Member Function Documentation}
+\hypertarget{classGUI_1_1AnalysisBox_a5ae591df94fc66ccb85cbb6565368bca}{}\index{G\+U\+I\+::\+Analysis\+Box@{G\+U\+I\+::\+Analysis\+Box}!close@{close}}
+\index{close@{close}!G\+U\+I\+::\+Analysis\+Box@{G\+U\+I\+::\+Analysis\+Box}}
+\subsubsection[{close}]{\setlength{\rightskip}{0pt plus 5cm}void close (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1AnalysisBox_a5ae591df94fc66ccb85cbb6565368bca}
+
+
+Slot\+: connected to button\+\_\+close.\+pressed() removes this box from \hyperlink{classGUI_1_1AnalysisBoxContainer}{Analysis\+Box\+Container} 
+
 \hypertarget{classGUI_1_1AnalysisBox_a73fa952c3fb3509d83ca1dadc7cefb33}{}\index{G\+U\+I\+::\+Analysis\+Box@{G\+U\+I\+::\+Analysis\+Box}!get\+Memento@{get\+Memento}}
 \index{get\+Memento@{get\+Memento}!G\+U\+I\+::\+Analysis\+Box@{G\+U\+I\+::\+Analysis\+Box}}
 \subsubsection[{get\+Memento}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Memento\+::\+Analysis\+Box\+Memento} get\+Memento (
@@ -104,13 +165,13 @@ Sets the \hyperlink{classGUI_1_1GlobalControlPanel}{Global\+Control\+Panel}.
 {\em panel} & The \hyperlink{classGUI_1_1GlobalControlPanel}{Global\+Control\+Panel}.\\
 \hline
 \end{DoxyParams}
-\hypertarget{classGUI_1_1AnalysisBox_ae45e621cb87a85ffb069ac765a306711}{}\index{G\+U\+I\+::\+Analysis\+Box@{G\+U\+I\+::\+Analysis\+Box}!set\+Raw\+Video@{set\+Raw\+Video}}
+\hypertarget{classGUI_1_1AnalysisBox_aa08759618dc05b98d60dc8942d41b556}{}\index{G\+U\+I\+::\+Analysis\+Box@{G\+U\+I\+::\+Analysis\+Box}!set\+Raw\+Video@{set\+Raw\+Video}}
 \index{set\+Raw\+Video@{set\+Raw\+Video}!G\+U\+I\+::\+Analysis\+Box@{G\+U\+I\+::\+Analysis\+Box}}
 \subsubsection[{set\+Raw\+Video}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Raw\+Video (
 \begin{DoxyParamCaption}
-\item[{{\bf G\+U\+I\+::\+Player\+::\+Video} $\ast$}]{video}
+\item[{{\bf G\+U\+I\+::\+Video} $\ast$}]{video}
 \end{DoxyParamCaption}
-)}\label{classGUI_1_1AnalysisBox_ae45e621cb87a85ffb069ac765a306711}
+)}\label{classGUI_1_1AnalysisBox_aa08759618dc05b98d60dc8942d41b556}
 
 
 Sets the rawvideo the encoded video is compared to. 
@@ -120,13 +181,13 @@ Sets the rawvideo the encoded video is compared to.
 {\em video} & The rawvideo.\\
 \hline
 \end{DoxyParams}
-\hypertarget{classGUI_1_1AnalysisBox_a0a63304dda40cabeda44acd79bb08b59}{}\index{G\+U\+I\+::\+Analysis\+Box@{G\+U\+I\+::\+Analysis\+Box}!set\+Timer@{set\+Timer}}
+\hypertarget{classGUI_1_1AnalysisBox_a678bedcbfc074efd29b5587a753fc341}{}\index{G\+U\+I\+::\+Analysis\+Box@{G\+U\+I\+::\+Analysis\+Box}!set\+Timer@{set\+Timer}}
 \index{set\+Timer@{set\+Timer}!G\+U\+I\+::\+Analysis\+Box@{G\+U\+I\+::\+Analysis\+Box}}
 \subsubsection[{set\+Timer}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Timer (
 \begin{DoxyParamCaption}
-\item[{shared\+\_\+ptr$<$ {\bf G\+U\+I\+::\+Player\+::\+Timer} $>$ timer\+:std\+:}]{}
+\item[{shared\+\_\+ptr$<$ {\bf G\+U\+I\+::\+Timer} $>$ timer\+:std\+:}]{}
 \end{DoxyParamCaption}
-)}\label{classGUI_1_1AnalysisBox_a0a63304dda40cabeda44acd79bb08b59}
+)}\label{classGUI_1_1AnalysisBox_a678bedcbfc074efd29b5587a753fc341}
 
 
 Sets the timer for the videoplayer. 
@@ -158,9 +219,65 @@ Shows the macroblock video. The rgb difference video is no longer shown.
 
 Shows the rgb difference video. The macroblock video is no longer shown. 
 
+\hypertarget{classGUI_1_1AnalysisBox_a92832e204f5bab2138a91c2a248b0730}{}\index{G\+U\+I\+::\+Analysis\+Box@{G\+U\+I\+::\+Analysis\+Box}!text\+Changed@{text\+Changed}}
+\index{text\+Changed@{text\+Changed}!G\+U\+I\+::\+Analysis\+Box@{G\+U\+I\+::\+Analysis\+Box}}
+\subsubsection[{text\+Changed}]{\setlength{\rightskip}{0pt plus 5cm}void text\+Changed (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1AnalysisBox_a92832e204f5bab2138a91c2a248b0730}
+
+
+Slot\+: connected with text\+Edit\+\_\+comment updates Q\+Undo\+Stack 
+
 
 
 \subsection{Field Documentation}
 \hypertarget{classGUI_1_1AnalysisBox_a2872ec622eeebd8ec665f83b2eafa7b5}{}\index{G\+U\+I\+::\+Analysis\+Box@{G\+U\+I\+::\+Analysis\+Box}!ana\+Box@{ana\+Box}}
 \index{ana\+Box@{ana\+Box}!G\+U\+I\+::\+Analysis\+Box@{G\+U\+I\+::\+Analysis\+Box}}
 \subsubsection[{ana\+Box}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Undo\+Redo\+::\+Remove\+Video}$\ast$ ana\+Box}\label{classGUI_1_1AnalysisBox_a2872ec622eeebd8ec665f83b2eafa7b5}
+\hypertarget{classGUI_1_1AnalysisBox_a80c4876f9f65457ab392c5b5749aff04}{}\index{G\+U\+I\+::\+Analysis\+Box@{G\+U\+I\+::\+Analysis\+Box}!analysis\+Video\+Player@{analysis\+Video\+Player}}
+\index{analysis\+Video\+Player@{analysis\+Video\+Player}!G\+U\+I\+::\+Analysis\+Box@{G\+U\+I\+::\+Analysis\+Box}}
+\subsubsection[{analysis\+Video\+Player}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Video\+Player}$\ast$ analysis\+Video\+Player\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1AnalysisBox_a80c4876f9f65457ab392c5b5749aff04}
+\hypertarget{classGUI_1_1AnalysisBox_abcd33b477976fb3b6908f22e6077d3be}{}\index{G\+U\+I\+::\+Analysis\+Box@{G\+U\+I\+::\+Analysis\+Box}!bitrate\+Graph@{bitrate\+Graph}}
+\index{bitrate\+Graph@{bitrate\+Graph}!G\+U\+I\+::\+Analysis\+Box@{G\+U\+I\+::\+Analysis\+Box}}
+\subsubsection[{bitrate\+Graph}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Graph\+Widget}$\ast$ bitrate\+Graph\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1AnalysisBox_abcd33b477976fb3b6908f22e6077d3be}
+\hypertarget{classGUI_1_1AnalysisBox_a0c40d875034d69b9555c6137240f70b3}{}\index{G\+U\+I\+::\+Analysis\+Box@{G\+U\+I\+::\+Analysis\+Box}!blue\+Histogramm@{blue\+Histogramm}}
+\index{blue\+Histogramm@{blue\+Histogramm}!G\+U\+I\+::\+Analysis\+Box@{G\+U\+I\+::\+Analysis\+Box}}
+\subsubsection[{blue\+Histogramm}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Graph\+Widget}$\ast$ blue\+Histogramm\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1AnalysisBox_a0c40d875034d69b9555c6137240f70b3}
+\hypertarget{classGUI_1_1AnalysisBox_a63274682527f704e5bcd1931c770b8c5}{}\index{G\+U\+I\+::\+Analysis\+Box@{G\+U\+I\+::\+Analysis\+Box}!boxes@{boxes}}
+\index{boxes@{boxes}!G\+U\+I\+::\+Analysis\+Box@{G\+U\+I\+::\+Analysis\+Box}}
+\subsubsection[{boxes}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Analysis\+Box\+Container}$\ast$ boxes\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1AnalysisBox_a63274682527f704e5bcd1931c770b8c5}
+\hypertarget{classGUI_1_1AnalysisBox_a2ea06b6d8f34f05fdbfbaa0a09293a33}{}\index{G\+U\+I\+::\+Analysis\+Box@{G\+U\+I\+::\+Analysis\+Box}!button\+\_\+close@{button\+\_\+close}}
+\index{button\+\_\+close@{button\+\_\+close}!G\+U\+I\+::\+Analysis\+Box@{G\+U\+I\+::\+Analysis\+Box}}
+\subsubsection[{button\+\_\+close}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Push\+Button$\ast$ button\+\_\+close\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1AnalysisBox_a2ea06b6d8f34f05fdbfbaa0a09293a33}
+\hypertarget{classGUI_1_1AnalysisBox_a22a072a13da697f378cb26be7be72abe}{}\index{G\+U\+I\+::\+Analysis\+Box@{G\+U\+I\+::\+Analysis\+Box}!control\+Panel@{control\+Panel}}
+\index{control\+Panel@{control\+Panel}!G\+U\+I\+::\+Analysis\+Box@{G\+U\+I\+::\+Analysis\+Box}}
+\subsubsection[{control\+Panel}]{\setlength{\rightskip}{0pt plus 5cm}Gloabl\+Control\+Panel$\ast$ control\+Panel\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1AnalysisBox_a22a072a13da697f378cb26be7be72abe}
+\hypertarget{classGUI_1_1AnalysisBox_a42c7f34314887139c2b847a2fc190cd5}{}\index{G\+U\+I\+::\+Analysis\+Box@{G\+U\+I\+::\+Analysis\+Box}!currently\+Played\+Video@{currently\+Played\+Video}}
+\index{currently\+Played\+Video@{currently\+Played\+Video}!G\+U\+I\+::\+Analysis\+Box@{G\+U\+I\+::\+Analysis\+Box}}
+\subsubsection[{currently\+Played\+Video}]{\setlength{\rightskip}{0pt plus 5cm}int currently\+Played\+Video\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1AnalysisBox_a42c7f34314887139c2b847a2fc190cd5}
+\hypertarget{classGUI_1_1AnalysisBox_aec1e513bb22f56f0c013b9ed198cc09e}{}\index{G\+U\+I\+::\+Analysis\+Box@{G\+U\+I\+::\+Analysis\+Box}!green\+Histogramm@{green\+Histogramm}}
+\index{green\+Histogramm@{green\+Histogramm}!G\+U\+I\+::\+Analysis\+Box@{G\+U\+I\+::\+Analysis\+Box}}
+\subsubsection[{green\+Histogramm}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Graph\+Widget}$\ast$ green\+Histogramm\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1AnalysisBox_aec1e513bb22f56f0c013b9ed198cc09e}
+\hypertarget{classGUI_1_1AnalysisBox_a14ff456773f3f51fe1aba760747cca31}{}\index{G\+U\+I\+::\+Analysis\+Box@{G\+U\+I\+::\+Analysis\+Box}!plain\+Video\+Player@{plain\+Video\+Player}}
+\index{plain\+Video\+Player@{plain\+Video\+Player}!G\+U\+I\+::\+Analysis\+Box@{G\+U\+I\+::\+Analysis\+Box}}
+\subsubsection[{plain\+Video\+Player}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Video\+Player}$\ast$ plain\+Video\+Player\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1AnalysisBox_a14ff456773f3f51fe1aba760747cca31}
+\hypertarget{classGUI_1_1AnalysisBox_a582bcfbffcea9f3eaa27afcc74bd0ea2}{}\index{G\+U\+I\+::\+Analysis\+Box@{G\+U\+I\+::\+Analysis\+Box}!psnr\+Graph@{psnr\+Graph}}
+\index{psnr\+Graph@{psnr\+Graph}!G\+U\+I\+::\+Analysis\+Box@{G\+U\+I\+::\+Analysis\+Box}}
+\subsubsection[{psnr\+Graph}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Graph\+Widget}$\ast$ psnr\+Graph\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1AnalysisBox_a582bcfbffcea9f3eaa27afcc74bd0ea2}
+\hypertarget{classGUI_1_1AnalysisBox_a36ae288eba0c53b885d93498c8c68469}{}\index{G\+U\+I\+::\+Analysis\+Box@{G\+U\+I\+::\+Analysis\+Box}!raw\+Video@{raw\+Video}}
+\index{raw\+Video@{raw\+Video}!G\+U\+I\+::\+Analysis\+Box@{G\+U\+I\+::\+Analysis\+Box}}
+\subsubsection[{raw\+Video}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Video}$\ast$ raw\+Video\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1AnalysisBox_a36ae288eba0c53b885d93498c8c68469}
+\hypertarget{classGUI_1_1AnalysisBox_af6c816632eb98c137869c7dd3a1356b0}{}\index{G\+U\+I\+::\+Analysis\+Box@{G\+U\+I\+::\+Analysis\+Box}!red\+Histogramm@{red\+Histogramm}}
+\index{red\+Histogramm@{red\+Histogramm}!G\+U\+I\+::\+Analysis\+Box@{G\+U\+I\+::\+Analysis\+Box}}
+\subsubsection[{red\+Histogramm}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Graph\+Widget}$\ast$ red\+Histogramm\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1AnalysisBox_af6c816632eb98c137869c7dd3a1356b0}
+\hypertarget{classGUI_1_1AnalysisBox_a84b21f36a5a1a5750502d3611321cef2}{}\index{G\+U\+I\+::\+Analysis\+Box@{G\+U\+I\+::\+Analysis\+Box}!tabs@{tabs}}
+\index{tabs@{tabs}!G\+U\+I\+::\+Analysis\+Box@{G\+U\+I\+::\+Analysis\+Box}}
+\subsubsection[{tabs}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Tab\+Widget$\ast$ tabs\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1AnalysisBox_a84b21f36a5a1a5750502d3611321cef2}
+\hypertarget{classGUI_1_1AnalysisBox_ad9cff9fc5b4f7a96f3c7a996dece6155}{}\index{G\+U\+I\+::\+Analysis\+Box@{G\+U\+I\+::\+Analysis\+Box}!text\+Edit\+\_\+comment@{text\+Edit\+\_\+comment}}
+\index{text\+Edit\+\_\+comment@{text\+Edit\+\_\+comment}!G\+U\+I\+::\+Analysis\+Box@{G\+U\+I\+::\+Analysis\+Box}}
+\subsubsection[{text\+Edit\+\_\+comment}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Text\+Edit$\ast$ text\+Edit\+\_\+comment\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1AnalysisBox_ad9cff9fc5b4f7a96f3c7a996dece6155}
+\hypertarget{classGUI_1_1AnalysisBox_a226620d1252c162814ca98d3e522255c}{}\index{G\+U\+I\+::\+Analysis\+Box@{G\+U\+I\+::\+Analysis\+Box}!video@{video}}
+\index{video@{video}!G\+U\+I\+::\+Analysis\+Box@{G\+U\+I\+::\+Analysis\+Box}}
+\subsubsection[{video}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Model\+::\+Encoded\+Video}$\ast$ video\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1AnalysisBox_a226620d1252c162814ca98d3e522255c}

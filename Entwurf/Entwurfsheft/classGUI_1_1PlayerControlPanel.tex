@@ -1,0 +1,211 @@
+\hypertarget{classGUI_1_1PlayerControlPanel}{}\section{Player\+Control\+Panel Class Reference}
+\label{classGUI_1_1PlayerControlPanel}\index{Player\+Control\+Panel@{Player\+Control\+Panel}}
+
+
+Inheritance diagram for Player\+Control\+Panel\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=224pt]{classGUI_1_1PlayerControlPanel__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classGUI_1_1PlayerControlPanel_a0432cd20dc9d144a23a8f8323fd68022}{Player\+Control\+Panel} (\hyperlink{classGUI_1_1QWidget}{Q\+Widget} $\ast$parent=0)
+\item 
+void \hyperlink{classGUI_1_1PlayerControlPanel_ae13c7f95f1ceda0fec18d18c3d7619f6}{update\+Ui} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classGUI_1_1PlayerControlPanel_aa72182c9a958af0e87b65ab7bdba0035}{create\+Ui} ()
+\item 
+void \hyperlink{classGUI_1_1PlayerControlPanel_a5176c9496a29e21eacb0f81ca1a29923}{create\+Actions} ()
+\item 
+void \hyperlink{classGUI_1_1PlayerControlPanel_a6d58098c6cf63c241ed03bc797256bb1}{play} ()
+\item 
+void \hyperlink{classGUI_1_1PlayerControlPanel_a7167f5c196fc5e167bfabde1a730e81d}{pause} ()
+\item 
+void \hyperlink{classGUI_1_1PlayerControlPanel_a8c528baf37154d347366083f0f816846}{stop} ()
+\item 
+void \hyperlink{classGUI_1_1PlayerControlPanel_a365329da56f8b07f8c95027ba967bbc3}{next\+Frame} ()
+\item 
+void \hyperlink{classGUI_1_1PlayerControlPanel_a3c96ed37c70ebc0b32c527a04e1536d1}{previous\+Frame} ()
+\item 
+void \hyperlink{classGUI_1_1PlayerControlPanel_a5589e2287b95a33fb20081ea7332e9bf}{change\+Speed} (int index)
+\item 
+void \hyperlink{classGUI_1_1PlayerControlPanel_a8941b919cc55ba59b57f9d10e92b5a9e}{change\+Timeline} (int value)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Q\+Push\+Button $\ast$ \hyperlink{classGUI_1_1PlayerControlPanel_aef3bac87f4b1a474e7962687db36070b}{button\+\_\+play}
+\item 
+Q\+Push\+Button $\ast$ \hyperlink{classGUI_1_1PlayerControlPanel_ac0235f183b389c9d592bc70287f97e73}{button\+\_\+stop}
+\item 
+Q\+Push\+Button $\ast$ \hyperlink{classGUI_1_1PlayerControlPanel_a13676b392df866080d4a9a0b42f0c8a8}{button\+\_\+next\+Frame}
+\item 
+Q\+Push\+Button $\ast$ \hyperlink{classGUI_1_1PlayerControlPanel_a94ca89bf967e4f6fab20899a9e03347e}{button\+\_\+previous\+Frame}
+\item 
+\hyperlink{classGUI_1_1QComboBox}{G\+U\+I\+::\+Q\+Combo\+Box} $\ast$ \hyperlink{classGUI_1_1PlayerControlPanel_a4981ab9117345fbe6cc663dec8dc2c01}{combo\+Box\+\_\+speed}
+\item 
+Q\+Slider $\ast$ \hyperlink{classGUI_1_1PlayerControlPanel_a18cb8efd82db13d946e30a9579b76817}{slider\+\_\+timeline}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+This class is the control panel to play videos. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classGUI_1_1PlayerControlPanel_a0432cd20dc9d144a23a8f8323fd68022}{}\index{G\+U\+I\+::\+Player\+Control\+Panel@{G\+U\+I\+::\+Player\+Control\+Panel}!Player\+Control\+Panel@{Player\+Control\+Panel}}
+\index{Player\+Control\+Panel@{Player\+Control\+Panel}!G\+U\+I\+::\+Player\+Control\+Panel@{G\+U\+I\+::\+Player\+Control\+Panel}}
+\subsubsection[{Player\+Control\+Panel}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Player\+Control\+Panel} (
+\begin{DoxyParamCaption}
+\item[{{\bf Q\+Widget} $\ast$}]{parent = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}\label{classGUI_1_1PlayerControlPanel_a0432cd20dc9d144a23a8f8323fd68022}
+
+
+Constructor. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classGUI_1_1PlayerControlPanel_a5589e2287b95a33fb20081ea7332e9bf}{}\index{G\+U\+I\+::\+Player\+Control\+Panel@{G\+U\+I\+::\+Player\+Control\+Panel}!change\+Speed@{change\+Speed}}
+\index{change\+Speed@{change\+Speed}!G\+U\+I\+::\+Player\+Control\+Panel@{G\+U\+I\+::\+Player\+Control\+Panel}}
+\subsubsection[{change\+Speed}]{\setlength{\rightskip}{0pt plus 5cm}void change\+Speed (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1PlayerControlPanel_a5589e2287b95a33fb20081ea7332e9bf}
+
+
+Slot for combo\+Box\+\_\+speed.\+current\+Index\+Changed(int) signal. 
+
+\hypertarget{classGUI_1_1PlayerControlPanel_a8941b919cc55ba59b57f9d10e92b5a9e}{}\index{G\+U\+I\+::\+Player\+Control\+Panel@{G\+U\+I\+::\+Player\+Control\+Panel}!change\+Timeline@{change\+Timeline}}
+\index{change\+Timeline@{change\+Timeline}!G\+U\+I\+::\+Player\+Control\+Panel@{G\+U\+I\+::\+Player\+Control\+Panel}}
+\subsubsection[{change\+Timeline}]{\setlength{\rightskip}{0pt plus 5cm}void change\+Timeline (
+\begin{DoxyParamCaption}
+\item[{int}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1PlayerControlPanel_a8941b919cc55ba59b57f9d10e92b5a9e}
+
+
+Slot for slider\+\_\+time\+Line.\+value\+Changed(int) signal. 
+
+\hypertarget{classGUI_1_1PlayerControlPanel_a5176c9496a29e21eacb0f81ca1a29923}{}\index{G\+U\+I\+::\+Player\+Control\+Panel@{G\+U\+I\+::\+Player\+Control\+Panel}!create\+Actions@{create\+Actions}}
+\index{create\+Actions@{create\+Actions}!G\+U\+I\+::\+Player\+Control\+Panel@{G\+U\+I\+::\+Player\+Control\+Panel}}
+\subsubsection[{create\+Actions}]{\setlength{\rightskip}{0pt plus 5cm}void create\+Actions (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1PlayerControlPanel_a5176c9496a29e21eacb0f81ca1a29923}
+
+
+Creates the actions. 
+
+\hypertarget{classGUI_1_1PlayerControlPanel_aa72182c9a958af0e87b65ab7bdba0035}{}\index{G\+U\+I\+::\+Player\+Control\+Panel@{G\+U\+I\+::\+Player\+Control\+Panel}!create\+Ui@{create\+Ui}}
+\index{create\+Ui@{create\+Ui}!G\+U\+I\+::\+Player\+Control\+Panel@{G\+U\+I\+::\+Player\+Control\+Panel}}
+\subsubsection[{create\+Ui}]{\setlength{\rightskip}{0pt plus 5cm}void create\+Ui (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1PlayerControlPanel_aa72182c9a958af0e87b65ab7bdba0035}
+
+
+Creates the ui. 
+
+\hypertarget{classGUI_1_1PlayerControlPanel_a365329da56f8b07f8c95027ba967bbc3}{}\index{G\+U\+I\+::\+Player\+Control\+Panel@{G\+U\+I\+::\+Player\+Control\+Panel}!next\+Frame@{next\+Frame}}
+\index{next\+Frame@{next\+Frame}!G\+U\+I\+::\+Player\+Control\+Panel@{G\+U\+I\+::\+Player\+Control\+Panel}}
+\subsubsection[{next\+Frame}]{\setlength{\rightskip}{0pt plus 5cm}void next\+Frame (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1PlayerControlPanel_a365329da56f8b07f8c95027ba967bbc3}
+
+
+Slot for button\+\_\+next\+Frame.\+clicked() signal. 
+
+\hypertarget{classGUI_1_1PlayerControlPanel_a7167f5c196fc5e167bfabde1a730e81d}{}\index{G\+U\+I\+::\+Player\+Control\+Panel@{G\+U\+I\+::\+Player\+Control\+Panel}!pause@{pause}}
+\index{pause@{pause}!G\+U\+I\+::\+Player\+Control\+Panel@{G\+U\+I\+::\+Player\+Control\+Panel}}
+\subsubsection[{pause}]{\setlength{\rightskip}{0pt plus 5cm}void pause (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1PlayerControlPanel_a7167f5c196fc5e167bfabde1a730e81d}
+
+
+Slot for button\+\_\+pause.\+clicked() signal. 
+
+\hypertarget{classGUI_1_1PlayerControlPanel_a6d58098c6cf63c241ed03bc797256bb1}{}\index{G\+U\+I\+::\+Player\+Control\+Panel@{G\+U\+I\+::\+Player\+Control\+Panel}!play@{play}}
+\index{play@{play}!G\+U\+I\+::\+Player\+Control\+Panel@{G\+U\+I\+::\+Player\+Control\+Panel}}
+\subsubsection[{play}]{\setlength{\rightskip}{0pt plus 5cm}void play (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1PlayerControlPanel_a6d58098c6cf63c241ed03bc797256bb1}
+
+
+Slot for the button\+\_\+play.\+clicked() signal. 
+
+\hypertarget{classGUI_1_1PlayerControlPanel_a3c96ed37c70ebc0b32c527a04e1536d1}{}\index{G\+U\+I\+::\+Player\+Control\+Panel@{G\+U\+I\+::\+Player\+Control\+Panel}!previous\+Frame@{previous\+Frame}}
+\index{previous\+Frame@{previous\+Frame}!G\+U\+I\+::\+Player\+Control\+Panel@{G\+U\+I\+::\+Player\+Control\+Panel}}
+\subsubsection[{previous\+Frame}]{\setlength{\rightskip}{0pt plus 5cm}void previous\+Frame (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1PlayerControlPanel_a3c96ed37c70ebc0b32c527a04e1536d1}
+
+
+Slot for button\+\_\+previous\+Frame.\+clicked() signal. 
+
+\hypertarget{classGUI_1_1PlayerControlPanel_a8c528baf37154d347366083f0f816846}{}\index{G\+U\+I\+::\+Player\+Control\+Panel@{G\+U\+I\+::\+Player\+Control\+Panel}!stop@{stop}}
+\index{stop@{stop}!G\+U\+I\+::\+Player\+Control\+Panel@{G\+U\+I\+::\+Player\+Control\+Panel}}
+\subsubsection[{stop}]{\setlength{\rightskip}{0pt plus 5cm}void stop (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1PlayerControlPanel_a8c528baf37154d347366083f0f816846}
+
+
+Slot for button\+\_\+stop.\+clicked() signal. 
+
+\hypertarget{classGUI_1_1PlayerControlPanel_ae13c7f95f1ceda0fec18d18c3d7619f6}{}\index{G\+U\+I\+::\+Player\+Control\+Panel@{G\+U\+I\+::\+Player\+Control\+Panel}!update\+Ui@{update\+Ui}}
+\index{update\+Ui@{update\+Ui}!G\+U\+I\+::\+Player\+Control\+Panel@{G\+U\+I\+::\+Player\+Control\+Panel}}
+\subsubsection[{update\+Ui}]{\setlength{\rightskip}{0pt plus 5cm}void update\+Ui (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classGUI_1_1PlayerControlPanel_ae13c7f95f1ceda0fec18d18c3d7619f6}
+
+
+Updates the ui of the control panel. 
+
+
+
+Implements \hyperlink{classGUI_1_1ControlPanel_aa9963358cf9cff5ea2531d73efa78f73}{Control\+Panel}.
+
+
+
+\subsection{Field Documentation}
+\hypertarget{classGUI_1_1PlayerControlPanel_a13676b392df866080d4a9a0b42f0c8a8}{}\index{G\+U\+I\+::\+Player\+Control\+Panel@{G\+U\+I\+::\+Player\+Control\+Panel}!button\+\_\+next\+Frame@{button\+\_\+next\+Frame}}
+\index{button\+\_\+next\+Frame@{button\+\_\+next\+Frame}!G\+U\+I\+::\+Player\+Control\+Panel@{G\+U\+I\+::\+Player\+Control\+Panel}}
+\subsubsection[{button\+\_\+next\+Frame}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Push\+Button$\ast$ button\+\_\+next\+Frame\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1PlayerControlPanel_a13676b392df866080d4a9a0b42f0c8a8}
+\hypertarget{classGUI_1_1PlayerControlPanel_aef3bac87f4b1a474e7962687db36070b}{}\index{G\+U\+I\+::\+Player\+Control\+Panel@{G\+U\+I\+::\+Player\+Control\+Panel}!button\+\_\+play@{button\+\_\+play}}
+\index{button\+\_\+play@{button\+\_\+play}!G\+U\+I\+::\+Player\+Control\+Panel@{G\+U\+I\+::\+Player\+Control\+Panel}}
+\subsubsection[{button\+\_\+play}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Push\+Button$\ast$ button\+\_\+play\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1PlayerControlPanel_aef3bac87f4b1a474e7962687db36070b}
+\hypertarget{classGUI_1_1PlayerControlPanel_a94ca89bf967e4f6fab20899a9e03347e}{}\index{G\+U\+I\+::\+Player\+Control\+Panel@{G\+U\+I\+::\+Player\+Control\+Panel}!button\+\_\+previous\+Frame@{button\+\_\+previous\+Frame}}
+\index{button\+\_\+previous\+Frame@{button\+\_\+previous\+Frame}!G\+U\+I\+::\+Player\+Control\+Panel@{G\+U\+I\+::\+Player\+Control\+Panel}}
+\subsubsection[{button\+\_\+previous\+Frame}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Push\+Button$\ast$ button\+\_\+previous\+Frame\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1PlayerControlPanel_a94ca89bf967e4f6fab20899a9e03347e}
+\hypertarget{classGUI_1_1PlayerControlPanel_ac0235f183b389c9d592bc70287f97e73}{}\index{G\+U\+I\+::\+Player\+Control\+Panel@{G\+U\+I\+::\+Player\+Control\+Panel}!button\+\_\+stop@{button\+\_\+stop}}
+\index{button\+\_\+stop@{button\+\_\+stop}!G\+U\+I\+::\+Player\+Control\+Panel@{G\+U\+I\+::\+Player\+Control\+Panel}}
+\subsubsection[{button\+\_\+stop}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Push\+Button$\ast$ button\+\_\+stop\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1PlayerControlPanel_ac0235f183b389c9d592bc70287f97e73}
+\hypertarget{classGUI_1_1PlayerControlPanel_a4981ab9117345fbe6cc663dec8dc2c01}{}\index{G\+U\+I\+::\+Player\+Control\+Panel@{G\+U\+I\+::\+Player\+Control\+Panel}!combo\+Box\+\_\+speed@{combo\+Box\+\_\+speed}}
+\index{combo\+Box\+\_\+speed@{combo\+Box\+\_\+speed}!G\+U\+I\+::\+Player\+Control\+Panel@{G\+U\+I\+::\+Player\+Control\+Panel}}
+\subsubsection[{combo\+Box\+\_\+speed}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Q\+Combo\+Box}$\ast$ combo\+Box\+\_\+speed\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1PlayerControlPanel_a4981ab9117345fbe6cc663dec8dc2c01}
+\hypertarget{classGUI_1_1PlayerControlPanel_a18cb8efd82db13d946e30a9579b76817}{}\index{G\+U\+I\+::\+Player\+Control\+Panel@{G\+U\+I\+::\+Player\+Control\+Panel}!slider\+\_\+timeline@{slider\+\_\+timeline}}
+\index{slider\+\_\+timeline@{slider\+\_\+timeline}!G\+U\+I\+::\+Player\+Control\+Panel@{G\+U\+I\+::\+Player\+Control\+Panel}}
+\subsubsection[{slider\+\_\+timeline}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Slider$\ast$ slider\+\_\+timeline\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1PlayerControlPanel_a18cb8efd82db13d946e30a9579b76817}

@@ -1,11 +1,33 @@
 \hypertarget{classUtility_1_1Yuv420FIleReader}{}\section{Yuv420\+F\+Ile\+Reader Class Reference}
 \label{classUtility_1_1Yuv420FIleReader}\index{Yuv420\+F\+Ile\+Reader@{Yuv420\+F\+Ile\+Reader}}
+
+
+Inheritance diagram for Yuv420\+F\+Ile\+Reader\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=178pt]{classUtility_1_1Yuv420FIleReader__inherit__graph}
+\end{center}
+\end{figure}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \hyperlink{classUtility_1_1Yuv420FIleReader_a16100d125e29dc91641cd6044bc57be4}{yuv420\+File\+Reader} (Q\+String filename, int \hyperlink{classUtility_1_1YuvFileReader_a2474a5474cbff19523a51eb1de01cda4}{width}, int \hyperlink{classUtility_1_1YuvFileReader_ad12fc34ce789bce6c8a05d8a17138534}{height})
 \item 
-unique\+\_\+ptr$<$ \hyperlink{classGUI_1_1Player_1_1Video}{G\+U\+I\+::\+Player\+::\+Video} $>$ \hyperlink{classUtility_1_1Yuv420FIleReader_a9dd03728ebb2e883f5cac8cb357fcd0e}{read} ()
+unique\+\_\+ptr$<$ \hyperlink{classGUI_1_1Video}{G\+U\+I\+::\+Video} $>$ \hyperlink{classUtility_1_1Yuv420FIleReader_ac6e45d1a396bdb81c8c8174bf5cc41c6}{read} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unique\+\_\+ptr$<$ Q\+Image $>$ \hyperlink{classUtility_1_1Yuv420FIleReader_a9199e88b4e515fc6d1661cea467466c5}{parse\+Next\+Frame} ()
+\item 
+\hyperlink{classUtility_1_1Yuv444Vector}{Utility\+::\+Yuv444\+Vector} \hyperlink{classUtility_1_1Yuv420FIleReader_a51664e2c9d28f58d019be8d15392cd1d}{read\+Next\+Vector} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classUtility_1_1Yuv420FIleReader_a401e942526aac47cef94f478182486e7}{position}
 \end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
 
@@ -14,13 +36,27 @@ unique\+\_\+ptr$<$ \hyperlink{classGUI_1_1Player_1_1Video}{G\+U\+I\+::\+Player\+
 This class can read Yuv 420 files. 
 
 \subsection{Member Function Documentation}
-\hypertarget{classUtility_1_1Yuv420FIleReader_a9dd03728ebb2e883f5cac8cb357fcd0e}{}\index{Utility\+::\+Yuv420\+F\+Ile\+Reader@{Utility\+::\+Yuv420\+F\+Ile\+Reader}!read@{read}}
-\index{read@{read}!Utility\+::\+Yuv420\+F\+Ile\+Reader@{Utility\+::\+Yuv420\+F\+Ile\+Reader}}
-\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}unique\+\_\+ptr$<$ {\bf G\+U\+I\+::\+Player\+::\+Video} $>$ read (
+\hypertarget{classUtility_1_1Yuv420FIleReader_a9199e88b4e515fc6d1661cea467466c5}{}\index{Utility\+::\+Yuv420\+F\+Ile\+Reader@{Utility\+::\+Yuv420\+F\+Ile\+Reader}!parse\+Next\+Frame@{parse\+Next\+Frame}}
+\index{parse\+Next\+Frame@{parse\+Next\+Frame}!Utility\+::\+Yuv420\+F\+Ile\+Reader@{Utility\+::\+Yuv420\+F\+Ile\+Reader}}
+\subsubsection[{parse\+Next\+Frame}]{\setlength{\rightskip}{0pt plus 5cm}std\+::unique\+\_\+ptr$<$ Q\+Image $>$ parse\+Next\+Frame (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classUtility_1_1Yuv420FIleReader_a9dd03728ebb2e883f5cac8cb357fcd0e}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classUtility_1_1Yuv420FIleReader_a9199e88b4e515fc6d1661cea467466c5}
+
+
+Parses the next frame. 
+
+\begin{DoxyReturn}{Returns}
+The parsed frame.
+\end{DoxyReturn}
+\hypertarget{classUtility_1_1Yuv420FIleReader_ac6e45d1a396bdb81c8c8174bf5cc41c6}{}\index{Utility\+::\+Yuv420\+F\+Ile\+Reader@{Utility\+::\+Yuv420\+F\+Ile\+Reader}!read@{read}}
+\index{read@{read}!Utility\+::\+Yuv420\+F\+Ile\+Reader@{Utility\+::\+Yuv420\+F\+Ile\+Reader}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}unique\+\_\+ptr$<$ {\bf G\+U\+I\+::\+Video} $>$ read (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classUtility_1_1Yuv420FIleReader_ac6e45d1a396bdb81c8c8174bf5cc41c6}
 
 
 Reads the file in. 
@@ -30,8 +66,22 @@ The complete video.
 \end{DoxyReturn}
 
 
-Implements \hyperlink{classUtility_1_1YuvFileReader_abc1ed29027875586a65ee627201343d4}{Yuv\+File\+Reader}.
+Implements \hyperlink{classUtility_1_1YuvFileReader_a9f6febb7a2fd1e1313f41c516d989bd1}{Yuv\+File\+Reader}.
 
+\hypertarget{classUtility_1_1Yuv420FIleReader_a51664e2c9d28f58d019be8d15392cd1d}{}\index{Utility\+::\+Yuv420\+F\+Ile\+Reader@{Utility\+::\+Yuv420\+F\+Ile\+Reader}!read\+Next\+Vector@{read\+Next\+Vector}}
+\index{read\+Next\+Vector@{read\+Next\+Vector}!Utility\+::\+Yuv420\+F\+Ile\+Reader@{Utility\+::\+Yuv420\+F\+Ile\+Reader}}
+\subsubsection[{read\+Next\+Vector}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Utility\+::\+Yuv444\+Vector} read\+Next\+Vector (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classUtility_1_1Yuv420FIleReader_a51664e2c9d28f58d019be8d15392cd1d}
+
+
+Reads the next Yuv 444 vector. 
+
+\begin{DoxyReturn}{Returns}
+The new vector.
+\end{DoxyReturn}
 \hypertarget{classUtility_1_1Yuv420FIleReader_a16100d125e29dc91641cd6044bc57be4}{}\index{Utility\+::\+Yuv420\+F\+Ile\+Reader@{Utility\+::\+Yuv420\+F\+Ile\+Reader}!yuv420\+File\+Reader@{yuv420\+File\+Reader}}
 \index{yuv420\+File\+Reader@{yuv420\+File\+Reader}!Utility\+::\+Yuv420\+F\+Ile\+Reader@{Utility\+::\+Yuv420\+F\+Ile\+Reader}}
 \subsubsection[{yuv420\+File\+Reader}]{\setlength{\rightskip}{0pt plus 5cm}void yuv420\+File\+Reader (
@@ -54,3 +104,9 @@ Constructor.
 {\em height} & Height of the video.\\
 \hline
 \end{DoxyParams}
+
+
+\subsection{Field Documentation}
+\hypertarget{classUtility_1_1Yuv420FIleReader_a401e942526aac47cef94f478182486e7}{}\index{Utility\+::\+Yuv420\+F\+Ile\+Reader@{Utility\+::\+Yuv420\+F\+Ile\+Reader}!position@{position}}
+\index{position@{position}!Utility\+::\+Yuv420\+F\+Ile\+Reader@{Utility\+::\+Yuv420\+F\+Ile\+Reader}}
+\subsubsection[{position}]{\setlength{\rightskip}{0pt plus 5cm}int position\hspace{0.3cm}{\ttfamily [private]}}\label{classUtility_1_1Yuv420FIleReader_a401e942526aac47cef94f478182486e7}

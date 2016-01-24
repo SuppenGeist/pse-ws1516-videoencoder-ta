@@ -1,0 +1,215 @@
+\hypertarget{classGUI_1_1Timer}{}\section{Timer Class Reference}
+\label{classGUI_1_1Timer}\index{Timer@{Timer}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classGUI_1_1Timer_ab333b697b20790f9c540b1c34f1a5eab}{Timer} (int \hyperlink{classGUI_1_1Timer_a45b67662d620a977a2cfe519f7ab6273}{fps})
+\item 
+void \hyperlink{classGUI_1_1Timer_a9913d8cd6d012c0ecfbc2de831d9d7cd}{set\+Fps} (int \hyperlink{classGUI_1_1Timer_a45b67662d620a977a2cfe519f7ab6273}{fps})
+\item 
+void \hyperlink{classGUI_1_1Timer_a5466c67c5ec22359c0702dc4ac8ffb19}{set\+Speed} (float \hyperlink{classGUI_1_1Timer_a7f7e4724cf57d59513b39c5ecc81adc8}{speed})
+\item 
+float \hyperlink{classGUI_1_1Timer_a26ebefde7fe71954e6c1282255951b7d}{get\+Speed} ()
+\item 
+int \hyperlink{classGUI_1_1Timer_a519ad5c0664b9de28c1a6d9dc77f959d}{get\+Fps} ()
+\item 
+void \hyperlink{classGUI_1_1Timer_a7167f5c196fc5e167bfabde1a730e81d}{pause} ()
+\item 
+void \hyperlink{classGUI_1_1Timer_a60de64d75454385b23995437f1d72669}{start} ()
+\item 
+void \hyperlink{classGUI_1_1Timer_a889aa04afcf41d73482b80e34c8d7439}{add\+Player} (\hyperlink{classGUI_1_1VideoPlayer}{G\+U\+I\+::\+Video\+Player} \&player)
+\item 
+bool \hyperlink{classGUI_1_1Timer_a8438e3403946accc1986a05b89ee7b03}{is\+Playing} ()
+\item 
+void \hyperlink{classGUI_1_1Timer_a6b66531935ec5f20b3565dd20a2994d8}{remove\+Player} (\hyperlink{classGUI_1_1VideoPlayer}{G\+U\+I\+::\+Video\+Player} \&player)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classGUI_1_1Timer_ac5c54df7ed3b930268c8d7752c101725}{update} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Q\+Timer \hyperlink{classGUI_1_1Timer_a0b2c8a8b8828160b1a0554c141e1318f}{timer}
+\item 
+float \hyperlink{classGUI_1_1Timer_a7f7e4724cf57d59513b39c5ecc81adc8}{speed}
+\item 
+int \hyperlink{classGUI_1_1Timer_a45b67662d620a977a2cfe519f7ab6273}{fps}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class is the timer for the video player. It handles the switching of the frames according to fps and speed. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classGUI_1_1Timer_ab333b697b20790f9c540b1c34f1a5eab}{}\index{G\+U\+I\+::\+Timer@{G\+U\+I\+::\+Timer}!Timer@{Timer}}
+\index{Timer@{Timer}!G\+U\+I\+::\+Timer@{G\+U\+I\+::\+Timer}}
+\subsubsection[{Timer}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Timer} (
+\begin{DoxyParamCaption}
+\item[{int}]{fps}
+\end{DoxyParamCaption}
+)}\label{classGUI_1_1Timer_ab333b697b20790f9c540b1c34f1a5eab}
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fps} & The fps to play at.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classGUI_1_1Timer_a889aa04afcf41d73482b80e34c8d7439}{}\index{G\+U\+I\+::\+Timer@{G\+U\+I\+::\+Timer}!add\+Player@{add\+Player}}
+\index{add\+Player@{add\+Player}!G\+U\+I\+::\+Timer@{G\+U\+I\+::\+Timer}}
+\subsubsection[{add\+Player}]{\setlength{\rightskip}{0pt plus 5cm}void add\+Player (
+\begin{DoxyParamCaption}
+\item[{{\bf G\+U\+I\+::\+Video\+Player} \&}]{player}
+\end{DoxyParamCaption}
+)}\label{classGUI_1_1Timer_a889aa04afcf41d73482b80e34c8d7439}
+
+
+Adds a player. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & The player to add.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classGUI_1_1Timer_a519ad5c0664b9de28c1a6d9dc77f959d}{}\index{G\+U\+I\+::\+Timer@{G\+U\+I\+::\+Timer}!get\+Fps@{get\+Fps}}
+\index{get\+Fps@{get\+Fps}!G\+U\+I\+::\+Timer@{G\+U\+I\+::\+Timer}}
+\subsubsection[{get\+Fps}]{\setlength{\rightskip}{0pt plus 5cm}int get\+Fps (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classGUI_1_1Timer_a519ad5c0664b9de28c1a6d9dc77f959d}
+
+
+Returns the current fps the timer plays at. 
+
+\begin{DoxyReturn}{Returns}
+The current fps.
+\end{DoxyReturn}
+\hypertarget{classGUI_1_1Timer_a26ebefde7fe71954e6c1282255951b7d}{}\index{G\+U\+I\+::\+Timer@{G\+U\+I\+::\+Timer}!get\+Speed@{get\+Speed}}
+\index{get\+Speed@{get\+Speed}!G\+U\+I\+::\+Timer@{G\+U\+I\+::\+Timer}}
+\subsubsection[{get\+Speed}]{\setlength{\rightskip}{0pt plus 5cm}float get\+Speed (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classGUI_1_1Timer_a26ebefde7fe71954e6c1282255951b7d}
+
+
+Returns the current speed the timer plays at. 
+
+\begin{DoxyReturn}{Returns}
+The current speed.
+\end{DoxyReturn}
+\hypertarget{classGUI_1_1Timer_a8438e3403946accc1986a05b89ee7b03}{}\index{G\+U\+I\+::\+Timer@{G\+U\+I\+::\+Timer}!is\+Playing@{is\+Playing}}
+\index{is\+Playing@{is\+Playing}!G\+U\+I\+::\+Timer@{G\+U\+I\+::\+Timer}}
+\subsubsection[{is\+Playing}]{\setlength{\rightskip}{0pt plus 5cm}bool is\+Playing (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classGUI_1_1Timer_a8438e3403946accc1986a05b89ee7b03}
+
+
+Whether the timer currently switches frames. 
+
+\begin{DoxyReturn}{Returns}
+true if the timer currently switches frames.
+\end{DoxyReturn}
+\hypertarget{classGUI_1_1Timer_a7167f5c196fc5e167bfabde1a730e81d}{}\index{G\+U\+I\+::\+Timer@{G\+U\+I\+::\+Timer}!pause@{pause}}
+\index{pause@{pause}!G\+U\+I\+::\+Timer@{G\+U\+I\+::\+Timer}}
+\subsubsection[{pause}]{\setlength{\rightskip}{0pt plus 5cm}void pause (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classGUI_1_1Timer_a7167f5c196fc5e167bfabde1a730e81d}
+
+
+Stops the timer from switching frames. 
+
+\hypertarget{classGUI_1_1Timer_a6b66531935ec5f20b3565dd20a2994d8}{}\index{G\+U\+I\+::\+Timer@{G\+U\+I\+::\+Timer}!remove\+Player@{remove\+Player}}
+\index{remove\+Player@{remove\+Player}!G\+U\+I\+::\+Timer@{G\+U\+I\+::\+Timer}}
+\subsubsection[{remove\+Player}]{\setlength{\rightskip}{0pt plus 5cm}void remove\+Player (
+\begin{DoxyParamCaption}
+\item[{{\bf G\+U\+I\+::\+Video\+Player} \&}]{player}
+\end{DoxyParamCaption}
+)}\label{classGUI_1_1Timer_a6b66531935ec5f20b3565dd20a2994d8}
+
+
+Removes a player from the list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & The player to remove.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classGUI_1_1Timer_a9913d8cd6d012c0ecfbc2de831d9d7cd}{}\index{G\+U\+I\+::\+Timer@{G\+U\+I\+::\+Timer}!set\+Fps@{set\+Fps}}
+\index{set\+Fps@{set\+Fps}!G\+U\+I\+::\+Timer@{G\+U\+I\+::\+Timer}}
+\subsubsection[{set\+Fps}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Fps (
+\begin{DoxyParamCaption}
+\item[{int}]{fps}
+\end{DoxyParamCaption}
+)}\label{classGUI_1_1Timer_a9913d8cd6d012c0ecfbc2de831d9d7cd}
+
+
+Sets the fps for the timer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fps} & The new fps.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classGUI_1_1Timer_a5466c67c5ec22359c0702dc4ac8ffb19}{}\index{G\+U\+I\+::\+Timer@{G\+U\+I\+::\+Timer}!set\+Speed@{set\+Speed}}
+\index{set\+Speed@{set\+Speed}!G\+U\+I\+::\+Timer@{G\+U\+I\+::\+Timer}}
+\subsubsection[{set\+Speed}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Speed (
+\begin{DoxyParamCaption}
+\item[{float}]{speed}
+\end{DoxyParamCaption}
+)}\label{classGUI_1_1Timer_a5466c67c5ec22359c0702dc4ac8ffb19}
+
+
+Sets the speed to play at. The default value is 1.\+0. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em speed} & The new speed.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classGUI_1_1Timer_a60de64d75454385b23995437f1d72669}{}\index{G\+U\+I\+::\+Timer@{G\+U\+I\+::\+Timer}!start@{start}}
+\index{start@{start}!G\+U\+I\+::\+Timer@{G\+U\+I\+::\+Timer}}
+\subsubsection[{start}]{\setlength{\rightskip}{0pt plus 5cm}void start (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classGUI_1_1Timer_a60de64d75454385b23995437f1d72669}
+
+
+Tells the timer to start switching frames. 
+
+\hypertarget{classGUI_1_1Timer_ac5c54df7ed3b930268c8d7752c101725}{}\index{G\+U\+I\+::\+Timer@{G\+U\+I\+::\+Timer}!update@{update}}
+\index{update@{update}!G\+U\+I\+::\+Timer@{G\+U\+I\+::\+Timer}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void update (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1Timer_ac5c54df7ed3b930268c8d7752c101725}
+
+
+This method switched the frames in all players. 
+
+
+
+\subsection{Field Documentation}
+\hypertarget{classGUI_1_1Timer_a45b67662d620a977a2cfe519f7ab6273}{}\index{G\+U\+I\+::\+Timer@{G\+U\+I\+::\+Timer}!fps@{fps}}
+\index{fps@{fps}!G\+U\+I\+::\+Timer@{G\+U\+I\+::\+Timer}}
+\subsubsection[{fps}]{\setlength{\rightskip}{0pt plus 5cm}int fps\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1Timer_a45b67662d620a977a2cfe519f7ab6273}
+\hypertarget{classGUI_1_1Timer_a7f7e4724cf57d59513b39c5ecc81adc8}{}\index{G\+U\+I\+::\+Timer@{G\+U\+I\+::\+Timer}!speed@{speed}}
+\index{speed@{speed}!G\+U\+I\+::\+Timer@{G\+U\+I\+::\+Timer}}
+\subsubsection[{speed}]{\setlength{\rightskip}{0pt plus 5cm}float speed\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1Timer_a7f7e4724cf57d59513b39c5ecc81adc8}
+\hypertarget{classGUI_1_1Timer_a0b2c8a8b8828160b1a0554c141e1318f}{}\index{G\+U\+I\+::\+Timer@{G\+U\+I\+::\+Timer}!timer@{timer}}
+\index{timer@{timer}!G\+U\+I\+::\+Timer@{G\+U\+I\+::\+Timer}}
+\subsubsection[{timer}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Timer timer\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1Timer_a0b2c8a8b8828160b1a0554c141e1318f}

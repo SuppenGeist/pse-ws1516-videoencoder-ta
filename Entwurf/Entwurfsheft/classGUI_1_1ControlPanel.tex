@@ -1,0 +1,140 @@
+\hypertarget{classGUI_1_1ControlPanel}{}\section{Control\+Panel Class Reference}
+\label{classGUI_1_1ControlPanel}\index{Control\+Panel@{Control\+Panel}}
+
+
+Inheritance diagram for Control\+Panel\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGUI_1_1ControlPanel__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classGUI_1_1ControlPanel_a0efa607fe77b973e1128eae3bb33a9a1}{Control\+Panel} ()
+\item 
+void \hyperlink{classGUI_1_1ControlPanel_a798f5ffd7fe32e3fe8f67feed1e555c4}{set\+Master\+Video\+Player} (Player\+::\+Player \&player)
+\item 
+void \hyperlink{classGUI_1_1ControlPanel_a1a372b46dee9c1f2b2696337231b3add}{add\+Video\+Player} (\hyperlink{classGUI_1_1Player}{G\+U\+I\+::\+Player} \&player)
+\item 
+virtual void \hyperlink{classGUI_1_1ControlPanel_aa9963358cf9cff5ea2531d73efa78f73}{update\+Ui} ()=0
+\item 
+void \hyperlink{classGUI_1_1ControlPanel_aa24579c43e90697b0b05662270dfca3f}{remove\+Video\+Player} (Player\+::\+Player \&player)
+\end{DoxyCompactItemize}
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classGUI_1_1ForwardPlayer}{G\+U\+I\+::\+Forward\+Player} $\ast$ \hyperlink{classGUI_1_1ControlPanel_a15dc5e66f941f96f5b10d4da627f7f4e}{forward\+Panel}
+\item 
+\hyperlink{classGUI_1_1VideoPlayer}{G\+U\+I\+::\+Video\+Player} $\ast$ \hyperlink{classGUI_1_1ControlPanel_a5e72764e084c40951f89250eea333664}{master\+Panel}
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \hyperlink{classGUI_1_1VideoPlayer}{G\+U\+I\+::\+Video\+Player} $\ast$ $>$ \hyperlink{classGUI_1_1ControlPanel_a5a284ea6859626e5d7ffb80231e5d319}{players}
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classGUI_1_1Player}{G\+U\+I\+::\+Player} $\ast$ \hyperlink{classGUI_1_1ControlPanel_a32f716e694e82571b2bcf3159a1f2876}{master\+Player}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class is the base class for control panels. Control panels control videoplayers, 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classGUI_1_1ControlPanel_a0efa607fe77b973e1128eae3bb33a9a1}{}\index{G\+U\+I\+::\+Control\+Panel@{G\+U\+I\+::\+Control\+Panel}!Control\+Panel@{Control\+Panel}}
+\index{Control\+Panel@{Control\+Panel}!G\+U\+I\+::\+Control\+Panel@{G\+U\+I\+::\+Control\+Panel}}
+\subsubsection[{Control\+Panel}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Control\+Panel} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classGUI_1_1ControlPanel_a0efa607fe77b973e1128eae3bb33a9a1}
+
+
+Constructor. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classGUI_1_1ControlPanel_a1a372b46dee9c1f2b2696337231b3add}{}\index{G\+U\+I\+::\+Control\+Panel@{G\+U\+I\+::\+Control\+Panel}!add\+Video\+Player@{add\+Video\+Player}}
+\index{add\+Video\+Player@{add\+Video\+Player}!G\+U\+I\+::\+Control\+Panel@{G\+U\+I\+::\+Control\+Panel}}
+\subsubsection[{add\+Video\+Player}]{\setlength{\rightskip}{0pt plus 5cm}void add\+Video\+Player (
+\begin{DoxyParamCaption}
+\item[{{\bf G\+U\+I\+::\+Player} \&}]{player}
+\end{DoxyParamCaption}
+)}\label{classGUI_1_1ControlPanel_a1a372b46dee9c1f2b2696337231b3add}
+
+
+Adds the video player the list of players to notify. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & The player to add to the list.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classGUI_1_1ControlPanel_aa24579c43e90697b0b05662270dfca3f}{}\index{G\+U\+I\+::\+Control\+Panel@{G\+U\+I\+::\+Control\+Panel}!remove\+Video\+Player@{remove\+Video\+Player}}
+\index{remove\+Video\+Player@{remove\+Video\+Player}!G\+U\+I\+::\+Control\+Panel@{G\+U\+I\+::\+Control\+Panel}}
+\subsubsection[{remove\+Video\+Player}]{\setlength{\rightskip}{0pt plus 5cm}void remove\+Video\+Player (
+\begin{DoxyParamCaption}
+\item[{Player\+::\+Player \&}]{player}
+\end{DoxyParamCaption}
+)}\label{classGUI_1_1ControlPanel_aa24579c43e90697b0b05662270dfca3f}
+
+
+Removes the video player from the list of the players to notify. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & The player to remove.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classGUI_1_1ControlPanel_a798f5ffd7fe32e3fe8f67feed1e555c4}{}\index{G\+U\+I\+::\+Control\+Panel@{G\+U\+I\+::\+Control\+Panel}!set\+Master\+Video\+Player@{set\+Master\+Video\+Player}}
+\index{set\+Master\+Video\+Player@{set\+Master\+Video\+Player}!G\+U\+I\+::\+Control\+Panel@{G\+U\+I\+::\+Control\+Panel}}
+\subsubsection[{set\+Master\+Video\+Player}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Master\+Video\+Player (
+\begin{DoxyParamCaption}
+\item[{Player\+::\+Player \&}]{player}
+\end{DoxyParamCaption}
+)}\label{classGUI_1_1ControlPanel_a798f5ffd7fe32e3fe8f67feed1e555c4}
+
+
+Sets the master video player. The master video player is the reference to where to set the position of the slider, if the video is played paused or stopped. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & The master video player.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classGUI_1_1ControlPanel_aa9963358cf9cff5ea2531d73efa78f73}{}\index{G\+U\+I\+::\+Control\+Panel@{G\+U\+I\+::\+Control\+Panel}!update\+Ui@{update\+Ui}}
+\index{update\+Ui@{update\+Ui}!G\+U\+I\+::\+Control\+Panel@{G\+U\+I\+::\+Control\+Panel}}
+\subsubsection[{update\+Ui}]{\setlength{\rightskip}{0pt plus 5cm}virtual void update\+Ui (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\label{classGUI_1_1ControlPanel_aa9963358cf9cff5ea2531d73efa78f73}
+
+
+Updates the ui of the control panel. 
+
+
+
+Implemented in \hyperlink{classGUI_1_1PlayerControlPanel_ae13c7f95f1ceda0fec18d18c3d7619f6}{Player\+Control\+Panel}, \hyperlink{classGUI_1_1PreviewControlPanel_ae13c7f95f1ceda0fec18d18c3d7619f6}{Preview\+Control\+Panel}, and \hyperlink{classGUI_1_1GlobalControlPanel_ae13c7f95f1ceda0fec18d18c3d7619f6}{Global\+Control\+Panel}.
+
+
+
+\subsection{Field Documentation}
+\hypertarget{classGUI_1_1ControlPanel_a15dc5e66f941f96f5b10d4da627f7f4e}{}\index{G\+U\+I\+::\+Control\+Panel@{G\+U\+I\+::\+Control\+Panel}!forward\+Panel@{forward\+Panel}}
+\index{forward\+Panel@{forward\+Panel}!G\+U\+I\+::\+Control\+Panel@{G\+U\+I\+::\+Control\+Panel}}
+\subsubsection[{forward\+Panel}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Forward\+Player}$\ast$ forward\+Panel}\label{classGUI_1_1ControlPanel_a15dc5e66f941f96f5b10d4da627f7f4e}
+\hypertarget{classGUI_1_1ControlPanel_a5e72764e084c40951f89250eea333664}{}\index{G\+U\+I\+::\+Control\+Panel@{G\+U\+I\+::\+Control\+Panel}!master\+Panel@{master\+Panel}}
+\index{master\+Panel@{master\+Panel}!G\+U\+I\+::\+Control\+Panel@{G\+U\+I\+::\+Control\+Panel}}
+\subsubsection[{master\+Panel}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Video\+Player}$\ast$ master\+Panel}\label{classGUI_1_1ControlPanel_a5e72764e084c40951f89250eea333664}
+\hypertarget{classGUI_1_1ControlPanel_a32f716e694e82571b2bcf3159a1f2876}{}\index{G\+U\+I\+::\+Control\+Panel@{G\+U\+I\+::\+Control\+Panel}!master\+Player@{master\+Player}}
+\index{master\+Player@{master\+Player}!G\+U\+I\+::\+Control\+Panel@{G\+U\+I\+::\+Control\+Panel}}
+\subsubsection[{master\+Player}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Player}$\ast$ master\+Player\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1ControlPanel_a32f716e694e82571b2bcf3159a1f2876}
+\hypertarget{classGUI_1_1ControlPanel_a5a284ea6859626e5d7ffb80231e5d319}{}\index{G\+U\+I\+::\+Control\+Panel@{G\+U\+I\+::\+Control\+Panel}!players@{players}}
+\index{players@{players}!G\+U\+I\+::\+Control\+Panel@{G\+U\+I\+::\+Control\+Panel}}
+\subsubsection[{players}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf G\+U\+I\+::\+Video\+Player}$\ast$$>$ players\hspace{0.3cm}{\ttfamily [protected]}}\label{classGUI_1_1ControlPanel_a5a284ea6859626e5d7ffb80231e5d319}

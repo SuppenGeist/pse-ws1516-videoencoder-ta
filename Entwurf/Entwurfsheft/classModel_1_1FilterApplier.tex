@@ -1,0 +1,101 @@
+\hypertarget{classModel_1_1FilterApplier}{}\section{Filter\+Applier Class Reference}
+\label{classModel_1_1FilterApplier}\index{Filter\+Applier@{Filter\+Applier}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classModel_1_1FilterApplier_ac17d08b323fb1e56dc2fb0a08eda926d}{Filter\+Applier} (\hyperlink{classModel_1_1FilterList}{Model\+::\+Filter\+List} \&\hyperlink{classModel_1_1FilterApplier_a80412703a258894c4e17f84bfccc08b9}{list})
+\item 
+void \hyperlink{classModel_1_1FilterApplier_a5931fdefc866a4f03123e9fc4e797601}{apply\+To\+Video} (\hyperlink{classModel_1_1AVVideo}{Model\+::\+A\+V\+Video} \&target, \hyperlink{classModel_1_1AVVideo}{Model\+::\+A\+V\+Video} \&video)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classModel_1_1FilterApplier_a2deffc5b57ae773bc38edb096be31bd6}{init\+Filters} ()
+\item 
+A\+V\+Frame \hyperlink{classModel_1_1FilterApplier_a32cfe2ae1bcfded94c8f52322719b3be}{apply\+To\+Frame} (A\+V\+Frame \&frame)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classModel_1_1FilterList}{Model\+::\+Filter\+List} $\ast$ \hyperlink{classModel_1_1FilterApplier_a80412703a258894c4e17f84bfccc08b9}{list}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Applies filters of a given \hyperlink{classModel_1_1FilterList}{Filter\+List} to a video. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classModel_1_1FilterApplier_ac17d08b323fb1e56dc2fb0a08eda926d}{}\index{Model\+::\+Filter\+Applier@{Model\+::\+Filter\+Applier}!Filter\+Applier@{Filter\+Applier}}
+\index{Filter\+Applier@{Filter\+Applier}!Model\+::\+Filter\+Applier@{Model\+::\+Filter\+Applier}}
+\subsubsection[{Filter\+Applier}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Filter\+Applier} (
+\begin{DoxyParamCaption}
+\item[{{\bf Model\+::\+Filter\+List} \&}]{list}
+\end{DoxyParamCaption}
+)}\label{classModel_1_1FilterApplier_ac17d08b323fb1e56dc2fb0a08eda926d}
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & The list with the filters to apply.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classModel_1_1FilterApplier_a32cfe2ae1bcfded94c8f52322719b3be}{}\index{Model\+::\+Filter\+Applier@{Model\+::\+Filter\+Applier}!apply\+To\+Frame@{apply\+To\+Frame}}
+\index{apply\+To\+Frame@{apply\+To\+Frame}!Model\+::\+Filter\+Applier@{Model\+::\+Filter\+Applier}}
+\subsubsection[{apply\+To\+Frame}]{\setlength{\rightskip}{0pt plus 5cm}A\+V\+Frame apply\+To\+Frame (
+\begin{DoxyParamCaption}
+\item[{A\+V\+Frame \&}]{frame}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classModel_1_1FilterApplier_a32cfe2ae1bcfded94c8f52322719b3be}
+
+
+Applies the filters to one frame. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em frame} & The frame to apply the filters on.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The filtered frame.
+\end{DoxyReturn}
+\hypertarget{classModel_1_1FilterApplier_a5931fdefc866a4f03123e9fc4e797601}{}\index{Model\+::\+Filter\+Applier@{Model\+::\+Filter\+Applier}!apply\+To\+Video@{apply\+To\+Video}}
+\index{apply\+To\+Video@{apply\+To\+Video}!Model\+::\+Filter\+Applier@{Model\+::\+Filter\+Applier}}
+\subsubsection[{apply\+To\+Video}]{\setlength{\rightskip}{0pt plus 5cm}void apply\+To\+Video (
+\begin{DoxyParamCaption}
+\item[{{\bf Model\+::\+A\+V\+Video} \&}]{target, }
+\item[{{\bf Model\+::\+A\+V\+Video} \&}]{video}
+\end{DoxyParamCaption}
+)}\label{classModel_1_1FilterApplier_a5931fdefc866a4f03123e9fc4e797601}
+
+
+Applies the given filters to the video. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target} & The video to which the new frames are added to.\\
+\hline
+{\em video} & The video to apply the filters on.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classModel_1_1FilterApplier_a2deffc5b57ae773bc38edb096be31bd6}{}\index{Model\+::\+Filter\+Applier@{Model\+::\+Filter\+Applier}!init\+Filters@{init\+Filters}}
+\index{init\+Filters@{init\+Filters}!Model\+::\+Filter\+Applier@{Model\+::\+Filter\+Applier}}
+\subsubsection[{init\+Filters}]{\setlength{\rightskip}{0pt plus 5cm}void init\+Filters (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classModel_1_1FilterApplier_a2deffc5b57ae773bc38edb096be31bd6}
+
+
+Initializes the filters. 
+
+
+
+\subsection{Field Documentation}
+\hypertarget{classModel_1_1FilterApplier_a80412703a258894c4e17f84bfccc08b9}{}\index{Model\+::\+Filter\+Applier@{Model\+::\+Filter\+Applier}!list@{list}}
+\index{list@{list}!Model\+::\+Filter\+Applier@{Model\+::\+Filter\+Applier}}
+\subsubsection[{list}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Model\+::\+Filter\+List}$\ast$ list\hspace{0.3cm}{\ttfamily [private]}}\label{classModel_1_1FilterApplier_a80412703a258894c4e17f84bfccc08b9}

@@ -1,11 +1,21 @@
 \hypertarget{classGUI_1_1ForwardPlayer}{}\section{Forward\+Player Class Reference}
 \label{classGUI_1_1ForwardPlayer}\index{Forward\+Player@{Forward\+Player}}
+
+
+Inheritance diagram for Forward\+Player\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=160pt]{classGUI_1_1ForwardPlayer__inherit__graph}
+\end{center}
+\end{figure}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{classGUI_1_1ForwardPlayer_a61bebb272dd2685ca2bfdf72349bc0f1}{Forward\+Player} ()
 \item 
-void \hyperlink{classGUI_1_1ForwardPlayer_a197c17c5b8dc04f8c311b41763a9db0e}{set\+Forward\+Control\+Panel} (\hyperlink{classGUI_1_1Player_1_1ControlPanel}{G\+U\+I\+::\+Player\+::\+Control\+Panel} panel)
+void \hyperlink{classGUI_1_1ForwardPlayer_a7b529b38e751d7e01c690df7a28122d5}{set\+Forward\+Control\+Panel} (\hyperlink{classGUI_1_1ControlPanel}{G\+U\+I\+::\+Control\+Panel} panel)
 \item 
 void \hyperlink{classGUI_1_1ForwardPlayer_a6d58098c6cf63c241ed03bc797256bb1}{play} ()
 \item 
@@ -31,11 +41,18 @@ bool \hyperlink{classGUI_1_1ForwardPlayer_a2fc5ff4f369aaa46c55c3ad3c63216d6}{is\
 \item 
 void \hyperlink{classGUI_1_1ForwardPlayer_ad20897c5c8bd47f5d4005989bead0e55}{reset} ()
 \end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classGUI_1_1ControlPanel}{G\+U\+I\+::\+Control\+Panel} $\ast$ \hyperlink{classGUI_1_1ForwardPlayer_af5025a887047a182dff8f35d6f96e965}{control\+Panel}
+\item 
+\hyperlink{classGUI_1_1ControlPanel}{G\+U\+I\+::\+Control\+Panel} $\ast$ \hyperlink{classGUI_1_1ForwardPlayer_aefb230389b50dc60b17e50c76f10c686}{forward\+Panel}
+\end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
 
 
 \subsection{Detailed Description}
-This player forwards its input to a Control\+Panel. 
+This player forwards its input to a \hyperlink{classGUI_1_1ControlPanel}{Control\+Panel}. 
 
 \subsection{Constructor \& Destructor Documentation}
 \hypertarget{classGUI_1_1ForwardPlayer_a61bebb272dd2685ca2bfdf72349bc0f1}{}\index{G\+U\+I\+::\+Forward\+Player@{G\+U\+I\+::\+Forward\+Player}!Forward\+Player@{Forward\+Player}}
@@ -68,7 +85,7 @@ The current position.
 \end{DoxyReturn}
 
 
-Implements \hyperlink{classGUI_1_1Player_1_1Player_a889dbfa5524d69dcc31d377d2d9bd230}{Player}.
+Implements \hyperlink{classGUI_1_1Player_a889dbfa5524d69dcc31d377d2d9bd230}{Player}.
 
 \hypertarget{classGUI_1_1ForwardPlayer_a26ebefde7fe71954e6c1282255951b7d}{}\index{G\+U\+I\+::\+Forward\+Player@{G\+U\+I\+::\+Forward\+Player}!get\+Speed@{get\+Speed}}
 \index{get\+Speed@{get\+Speed}!G\+U\+I\+::\+Forward\+Player@{G\+U\+I\+::\+Forward\+Player}}
@@ -86,7 +103,7 @@ The current speed.
 \end{DoxyReturn}
 
 
-Implements \hyperlink{classGUI_1_1Player_1_1Player_a349fa93e666bd9fb256a238a3194f948}{Player}.
+Implements \hyperlink{classGUI_1_1Player_a349fa93e666bd9fb256a238a3194f948}{Player}.
 
 \hypertarget{classGUI_1_1ForwardPlayer_a8438e3403946accc1986a05b89ee7b03}{}\index{G\+U\+I\+::\+Forward\+Player@{G\+U\+I\+::\+Forward\+Player}!is\+Playing@{is\+Playing}}
 \index{is\+Playing@{is\+Playing}!G\+U\+I\+::\+Forward\+Player@{G\+U\+I\+::\+Forward\+Player}}
@@ -104,7 +121,7 @@ True if the player is playing.
 \end{DoxyReturn}
 
 
-Implements \hyperlink{classGUI_1_1Player_1_1Player_a4fbad8972dd248e6c8f5dc2c898a9bc7}{Player}.
+Implements \hyperlink{classGUI_1_1Player_a4fbad8972dd248e6c8f5dc2c898a9bc7}{Player}.
 
 \hypertarget{classGUI_1_1ForwardPlayer_a2fc5ff4f369aaa46c55c3ad3c63216d6}{}\index{G\+U\+I\+::\+Forward\+Player@{G\+U\+I\+::\+Forward\+Player}!is\+Stopped@{is\+Stopped}}
 \index{is\+Stopped@{is\+Stopped}!G\+U\+I\+::\+Forward\+Player@{G\+U\+I\+::\+Forward\+Player}}
@@ -122,7 +139,7 @@ True if the player is stopped.
 \end{DoxyReturn}
 
 
-Implements \hyperlink{classGUI_1_1Player_1_1Player_ab9e7bd794ed42cea965c5250ec804225}{Player}.
+Implements \hyperlink{classGUI_1_1Player_ab9e7bd794ed42cea965c5250ec804225}{Player}.
 
 \hypertarget{classGUI_1_1ForwardPlayer_a365329da56f8b07f8c95027ba967bbc3}{}\index{G\+U\+I\+::\+Forward\+Player@{G\+U\+I\+::\+Forward\+Player}!next\+Frame@{next\+Frame}}
 \index{next\+Frame@{next\+Frame}!G\+U\+I\+::\+Forward\+Player@{G\+U\+I\+::\+Forward\+Player}}
@@ -137,7 +154,7 @@ Shows the next frame.
 
 
 
-Implements \hyperlink{classGUI_1_1Player_1_1Player_af64b0827c381fcd751fe2bbbf38682f4}{Player}.
+Implements \hyperlink{classGUI_1_1Player_af64b0827c381fcd751fe2bbbf38682f4}{Player}.
 
 \hypertarget{classGUI_1_1ForwardPlayer_a7167f5c196fc5e167bfabde1a730e81d}{}\index{G\+U\+I\+::\+Forward\+Player@{G\+U\+I\+::\+Forward\+Player}!pause@{pause}}
 \index{pause@{pause}!G\+U\+I\+::\+Forward\+Player@{G\+U\+I\+::\+Forward\+Player}}
@@ -152,7 +169,7 @@ Pauses the video.
 
 
 
-Implements \hyperlink{classGUI_1_1Player_1_1Player_a0edeed26c37624e7aa90f391c9a7128f}{Player}.
+Implements \hyperlink{classGUI_1_1Player_a0edeed26c37624e7aa90f391c9a7128f}{Player}.
 
 \hypertarget{classGUI_1_1ForwardPlayer_a6d58098c6cf63c241ed03bc797256bb1}{}\index{G\+U\+I\+::\+Forward\+Player@{G\+U\+I\+::\+Forward\+Player}!play@{play}}
 \index{play@{play}!G\+U\+I\+::\+Forward\+Player@{G\+U\+I\+::\+Forward\+Player}}
@@ -167,7 +184,7 @@ Plays the video.
 
 
 
-Implements \hyperlink{classGUI_1_1Player_1_1Player_aa3c4df4568ad2126665a07db4e1f59b6}{Player}.
+Implements \hyperlink{classGUI_1_1Player_aa3c4df4568ad2126665a07db4e1f59b6}{Player}.
 
 \hypertarget{classGUI_1_1ForwardPlayer_a3c96ed37c70ebc0b32c527a04e1536d1}{}\index{G\+U\+I\+::\+Forward\+Player@{G\+U\+I\+::\+Forward\+Player}!previous\+Frame@{previous\+Frame}}
 \index{previous\+Frame@{previous\+Frame}!G\+U\+I\+::\+Forward\+Player@{G\+U\+I\+::\+Forward\+Player}}
@@ -182,7 +199,7 @@ Shows the previous frame.
 
 
 
-Implements \hyperlink{classGUI_1_1Player_1_1Player_a4db6c8b8c8e9b567d466181337cdc001}{Player}.
+Implements \hyperlink{classGUI_1_1Player_a4db6c8b8c8e9b567d466181337cdc001}{Player}.
 
 \hypertarget{classGUI_1_1ForwardPlayer_ad20897c5c8bd47f5d4005989bead0e55}{}\index{G\+U\+I\+::\+Forward\+Player@{G\+U\+I\+::\+Forward\+Player}!reset@{reset}}
 \index{reset@{reset}!G\+U\+I\+::\+Forward\+Player@{G\+U\+I\+::\+Forward\+Player}}
@@ -197,15 +214,15 @@ Resets the player.
 
 
 
-Implements \hyperlink{classGUI_1_1Player_1_1Player_a00af5c2c5e03cb5748a94d936fe34d9a}{Player}.
+Implements \hyperlink{classGUI_1_1Player_a00af5c2c5e03cb5748a94d936fe34d9a}{Player}.
 
-\hypertarget{classGUI_1_1ForwardPlayer_a197c17c5b8dc04f8c311b41763a9db0e}{}\index{G\+U\+I\+::\+Forward\+Player@{G\+U\+I\+::\+Forward\+Player}!set\+Forward\+Control\+Panel@{set\+Forward\+Control\+Panel}}
+\hypertarget{classGUI_1_1ForwardPlayer_a7b529b38e751d7e01c690df7a28122d5}{}\index{G\+U\+I\+::\+Forward\+Player@{G\+U\+I\+::\+Forward\+Player}!set\+Forward\+Control\+Panel@{set\+Forward\+Control\+Panel}}
 \index{set\+Forward\+Control\+Panel@{set\+Forward\+Control\+Panel}!G\+U\+I\+::\+Forward\+Player@{G\+U\+I\+::\+Forward\+Player}}
 \subsubsection[{set\+Forward\+Control\+Panel}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Forward\+Control\+Panel (
 \begin{DoxyParamCaption}
-\item[{{\bf G\+U\+I\+::\+Player\+::\+Control\+Panel}}]{panel}
+\item[{{\bf G\+U\+I\+::\+Control\+Panel}}]{panel}
 \end{DoxyParamCaption}
-)}\label{classGUI_1_1ForwardPlayer_a197c17c5b8dc04f8c311b41763a9db0e}
+)}\label{classGUI_1_1ForwardPlayer_a7b529b38e751d7e01c690df7a28122d5}
 
 
 Sets the control panel that the player forwards its input to. 
@@ -233,7 +250,7 @@ Sets the position in the video.
 \end{DoxyParams}
 
 
-Implements \hyperlink{classGUI_1_1Player_1_1Player_acf5fb178b5d9a7f5f4bd198a13ae6bf7}{Player}.
+Implements \hyperlink{classGUI_1_1Player_acf5fb178b5d9a7f5f4bd198a13ae6bf7}{Player}.
 
 \hypertarget{classGUI_1_1ForwardPlayer_a5466c67c5ec22359c0702dc4ac8ffb19}{}\index{G\+U\+I\+::\+Forward\+Player@{G\+U\+I\+::\+Forward\+Player}!set\+Speed@{set\+Speed}}
 \index{set\+Speed@{set\+Speed}!G\+U\+I\+::\+Forward\+Player@{G\+U\+I\+::\+Forward\+Player}}
@@ -253,7 +270,7 @@ Sets the speed.
 \end{DoxyParams}
 
 
-Implements \hyperlink{classGUI_1_1Player_1_1Player_a1c7d2ab9f6c21f2e7bf15a2ec9841a0a}{Player}.
+Implements \hyperlink{classGUI_1_1Player_a1c7d2ab9f6c21f2e7bf15a2ec9841a0a}{Player}.
 
 \hypertarget{classGUI_1_1ForwardPlayer_a8c528baf37154d347366083f0f816846}{}\index{G\+U\+I\+::\+Forward\+Player@{G\+U\+I\+::\+Forward\+Player}!stop@{stop}}
 \index{stop@{stop}!G\+U\+I\+::\+Forward\+Player@{G\+U\+I\+::\+Forward\+Player}}
@@ -268,5 +285,14 @@ Stops the video.
 
 
 
-Implements \hyperlink{classGUI_1_1Player_1_1Player_a7a0e5d7c45657ca21b5b8d0d4b0a0e7b}{Player}.
+Implements \hyperlink{classGUI_1_1Player_a7a0e5d7c45657ca21b5b8d0d4b0a0e7b}{Player}.
 
+
+
+\subsection{Field Documentation}
+\hypertarget{classGUI_1_1ForwardPlayer_af5025a887047a182dff8f35d6f96e965}{}\index{G\+U\+I\+::\+Forward\+Player@{G\+U\+I\+::\+Forward\+Player}!control\+Panel@{control\+Panel}}
+\index{control\+Panel@{control\+Panel}!G\+U\+I\+::\+Forward\+Player@{G\+U\+I\+::\+Forward\+Player}}
+\subsubsection[{control\+Panel}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Control\+Panel}$\ast$ control\+Panel\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1ForwardPlayer_af5025a887047a182dff8f35d6f96e965}
+\hypertarget{classGUI_1_1ForwardPlayer_aefb230389b50dc60b17e50c76f10c686}{}\index{G\+U\+I\+::\+Forward\+Player@{G\+U\+I\+::\+Forward\+Player}!forward\+Panel@{forward\+Panel}}
+\index{forward\+Panel@{forward\+Panel}!G\+U\+I\+::\+Forward\+Player@{G\+U\+I\+::\+Forward\+Player}}
+\subsubsection[{forward\+Panel}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Control\+Panel}$\ast$ forward\+Panel\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1ForwardPlayer_aefb230389b50dc60b17e50c76f10c686}

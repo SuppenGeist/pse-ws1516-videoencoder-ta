@@ -1,0 +1,139 @@
+\hypertarget{classGUI_1_1FrameView}{}\section{Frame\+View Class Reference}
+\label{classGUI_1_1FrameView}\index{Frame\+View@{Frame\+View}}
+
+
+Inheritance diagram for Frame\+View\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=146pt]{classGUI_1_1FrameView__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classGUI_1_1FrameView_a75ab7862211fa66433f92fc148ba9e7d}{Frame\+View} (\hyperlink{classGUI_1_1QWidget}{Q\+Widget} $\ast$parent=0)
+\item 
+\hyperlink{classGUI_1_1FrameView_a3d5c8743a83d04c10c6686dbb2698088}{void} \hyperlink{classGUI_1_1FrameView_ab38693f5302565670675156a8f33d77c}{set\+Frame} (Q\+Image \&frame)
+\item 
+\hyperlink{classGUI_1_1FrameView_a3d5c8743a83d04c10c6686dbb2698088}{void} \hyperlink{classGUI_1_1FrameView_ac8bb3912a3ce86b15842e79d0b421204}{clear} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classGUI_1_1FrameView_a3d5c8743a83d04c10c6686dbb2698088}{void} \hyperlink{classGUI_1_1FrameView_a6fbc07cec19868c41d513b9ef8343e9a}{resize\+Event} (Q\+Resize\+Event $\ast$event)
+\item 
+\hyperlink{classGUI_1_1FrameView_a3d5c8743a83d04c10c6686dbb2698088}{void} \hyperlink{classGUI_1_1FrameView_a67e5a053c3728683d415a35d1eafa5c2}{repaint\+Event} (Q\+Paint\+Event $\ast$event)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classGUI_1_1FrameView_a3d5c8743a83d04c10c6686dbb2698088}{void} () update\+Offset()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classGUI_1_1FrameView_a38b670313be423c4fbcaa4b6ff0e5e83}{x\+Offset}
+\item 
+int \hyperlink{classGUI_1_1FrameView_a016718268d32fcb95b1190cc1071e270}{y\+Offset}
+\item 
+Q\+Image \hyperlink{classGUI_1_1FrameView_ac300e76e226708a306ca770e1a2eac0e}{current\+Frame}
+\item 
+Q\+Image $\ast$ \hyperlink{classGUI_1_1FrameView_a1984b51c6b8b7444c971cbc7c6b6eead}{original\+Frame}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class is the view used by the video player. It automatically scales the frames passed to it. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classGUI_1_1FrameView_a75ab7862211fa66433f92fc148ba9e7d}{}\index{G\+U\+I\+::\+Frame\+View@{G\+U\+I\+::\+Frame\+View}!Frame\+View@{Frame\+View}}
+\index{Frame\+View@{Frame\+View}!G\+U\+I\+::\+Frame\+View@{G\+U\+I\+::\+Frame\+View}}
+\subsubsection[{Frame\+View}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Frame\+View} (
+\begin{DoxyParamCaption}
+\item[{{\bf Q\+Widget} $\ast$}]{parent = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}\label{classGUI_1_1FrameView_a75ab7862211fa66433f92fc148ba9e7d}
+
+
+Constructor. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classGUI_1_1FrameView_ac8bb3912a3ce86b15842e79d0b421204}{}\index{G\+U\+I\+::\+Frame\+View@{G\+U\+I\+::\+Frame\+View}!clear@{clear}}
+\index{clear@{clear}!G\+U\+I\+::\+Frame\+View@{G\+U\+I\+::\+Frame\+View}}
+\subsubsection[{clear}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} clear (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classGUI_1_1FrameView_ac8bb3912a3ce86b15842e79d0b421204}
+
+
+Clears the current frame so nothing is shown. 
+
+\hypertarget{classGUI_1_1FrameView_a67e5a053c3728683d415a35d1eafa5c2}{}\index{G\+U\+I\+::\+Frame\+View@{G\+U\+I\+::\+Frame\+View}!repaint\+Event@{repaint\+Event}}
+\index{repaint\+Event@{repaint\+Event}!G\+U\+I\+::\+Frame\+View@{G\+U\+I\+::\+Frame\+View}}
+\subsubsection[{repaint\+Event}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} repaint\+Event (
+\begin{DoxyParamCaption}
+\item[{Q\+Paint\+Event $\ast$}]{event}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\label{classGUI_1_1FrameView_a67e5a053c3728683d415a35d1eafa5c2}
+
+
+This method is called when the widget has to be repainted. 
+
+\hypertarget{classGUI_1_1FrameView_a6fbc07cec19868c41d513b9ef8343e9a}{}\index{G\+U\+I\+::\+Frame\+View@{G\+U\+I\+::\+Frame\+View}!resize\+Event@{resize\+Event}}
+\index{resize\+Event@{resize\+Event}!G\+U\+I\+::\+Frame\+View@{G\+U\+I\+::\+Frame\+View}}
+\subsubsection[{resize\+Event}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} resize\+Event (
+\begin{DoxyParamCaption}
+\item[{Q\+Resize\+Event $\ast$}]{event}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\label{classGUI_1_1FrameView_a6fbc07cec19868c41d513b9ef8343e9a}
+
+
+This method is called when the widget got resized. 
+
+\hypertarget{classGUI_1_1FrameView_ab38693f5302565670675156a8f33d77c}{}\index{G\+U\+I\+::\+Frame\+View@{G\+U\+I\+::\+Frame\+View}!set\+Frame@{set\+Frame}}
+\index{set\+Frame@{set\+Frame}!G\+U\+I\+::\+Frame\+View@{G\+U\+I\+::\+Frame\+View}}
+\subsubsection[{set\+Frame}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} set\+Frame (
+\begin{DoxyParamCaption}
+\item[{Q\+Image \&}]{frame}
+\end{DoxyParamCaption}
+)}\label{classGUI_1_1FrameView_ab38693f5302565670675156a8f33d77c}
+
+
+Sets the frame to show. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em frame} & The frame to show.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classGUI_1_1FrameView_a3d5c8743a83d04c10c6686dbb2698088}{}\index{G\+U\+I\+::\+Frame\+View@{G\+U\+I\+::\+Frame\+View}!void@{void}}
+\index{void@{void}!G\+U\+I\+::\+Frame\+View@{G\+U\+I\+::\+Frame\+View}}
+\subsubsection[{void}]{\setlength{\rightskip}{0pt plus 5cm}void (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1FrameView_a3d5c8743a83d04c10c6686dbb2698088}
+
+
+Updates the offset at which the image is drawn. 
+
+
+
+\subsection{Field Documentation}
+\hypertarget{classGUI_1_1FrameView_ac300e76e226708a306ca770e1a2eac0e}{}\index{G\+U\+I\+::\+Frame\+View@{G\+U\+I\+::\+Frame\+View}!current\+Frame@{current\+Frame}}
+\index{current\+Frame@{current\+Frame}!G\+U\+I\+::\+Frame\+View@{G\+U\+I\+::\+Frame\+View}}
+\subsubsection[{current\+Frame}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Image current\+Frame\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1FrameView_ac300e76e226708a306ca770e1a2eac0e}
+\hypertarget{classGUI_1_1FrameView_a1984b51c6b8b7444c971cbc7c6b6eead}{}\index{G\+U\+I\+::\+Frame\+View@{G\+U\+I\+::\+Frame\+View}!original\+Frame@{original\+Frame}}
+\index{original\+Frame@{original\+Frame}!G\+U\+I\+::\+Frame\+View@{G\+U\+I\+::\+Frame\+View}}
+\subsubsection[{original\+Frame}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Image$\ast$ original\+Frame\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1FrameView_a1984b51c6b8b7444c971cbc7c6b6eead}
+\hypertarget{classGUI_1_1FrameView_a38b670313be423c4fbcaa4b6ff0e5e83}{}\index{G\+U\+I\+::\+Frame\+View@{G\+U\+I\+::\+Frame\+View}!x\+Offset@{x\+Offset}}
+\index{x\+Offset@{x\+Offset}!G\+U\+I\+::\+Frame\+View@{G\+U\+I\+::\+Frame\+View}}
+\subsubsection[{x\+Offset}]{\setlength{\rightskip}{0pt plus 5cm}int x\+Offset\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1FrameView_a38b670313be423c4fbcaa4b6ff0e5e83}
+\hypertarget{classGUI_1_1FrameView_a016718268d32fcb95b1190cc1071e270}{}\index{G\+U\+I\+::\+Frame\+View@{G\+U\+I\+::\+Frame\+View}!y\+Offset@{y\+Offset}}
+\index{y\+Offset@{y\+Offset}!G\+U\+I\+::\+Frame\+View@{G\+U\+I\+::\+Frame\+View}}
+\subsubsection[{y\+Offset}]{\setlength{\rightskip}{0pt plus 5cm}int y\+Offset\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1FrameView_a016718268d32fcb95b1190cc1071e270}

@@ -1,0 +1,207 @@
+\hypertarget{classModel_1_1FilterList}{}\section{Filter\+List Class Reference}
+\label{classModel_1_1FilterList}\index{Filter\+List@{Filter\+List}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classModel_1_1FilterList_a01ca9d807b9f410ea40bd70743337638}{Filter\+List} ()
+\item 
+\hyperlink{classModel_1_1Filter}{Model\+::\+Filter} $\ast$ \hyperlink{classModel_1_1FilterList_af5c4c134636ff39a8b4f0f0a6a443178}{get\+Filter\+By\+Name} (string name)
+\item 
+void \hyperlink{classModel_1_1FilterList_acfe5b66a730352a58df782209557ba82}{remove\+Filter} (string name)
+\item 
+void \hyperlink{classModel_1_1FilterList_a13c4ca4bd21b65ab2e2f01556338d095}{move\+Filter} (int old\+Position, int new\+Position)
+\item 
+void \hyperlink{classModel_1_1FilterList_a3cd55a8f60d5021235199170937644c5}{remove\+Filter} (int position)
+\item 
+void \hyperlink{classModel_1_1FilterList_a0977e76495c1328c469f31dac97ef60d}{add\+Filter} (string name, int index=-\/1)
+\item 
+\hyperlink{classModel_1_1Filter}{Model\+::\+Filter} $\ast$ \hyperlink{classModel_1_1FilterList_a3c39f1ba92d92107a4e389660746c658}{get\+F\+Ilter\+By\+Index} (int index)
+\item 
+int \hyperlink{classModel_1_1FilterList_afe5620a51c1e0946f79d6c2a4f7ac340}{get\+Index} (string name)
+\end{DoxyCompactItemize}
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classModel_1_1FilterApplier}{Model\+::\+Filter\+Applier} $\ast$ \hyperlink{classModel_1_1FilterList_a9112d56886987751ee0f00bedfb0d571}{list}
+\item 
+\hyperlink{classUndoRedo_1_1FilterReset}{Undo\+Redo\+::\+Filter\+Reset} $\ast$ \hyperlink{classModel_1_1FilterList_a96269287dfd54a6d36242ba5fe3b7da1}{filter\+List}
+\item 
+\hyperlink{classUndoRedo_1_1LoadFilterconfig}{Undo\+Redo\+::\+Load\+Filterconfig} $\ast$ \hyperlink{classModel_1_1FilterList_ab9b8c3631972f39309b9810f2b58b094}{old\+List}
+\item 
+\hyperlink{classUndoRedo_1_1LoadFilterconfig}{Undo\+Redo\+::\+Load\+Filterconfig} $\ast$ \hyperlink{classModel_1_1FilterList_a835cb4539ec6d9b4021efc25db09e1ea}{new\+List}
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+vector \hyperlink{classModel_1_1FilterList_ae72489e455ca229c6e956a41ea6b5b1c}{filters}\+:std\+:
+\item 
+std\+::vector$<$ \hyperlink{classModel_1_1Filter}{Model\+::\+Filter} $\ast$ $>$ \hyperlink{classModel_1_1FilterList_a5ba4feb70bf95921adf982eda6207cb4}{filters}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class contains a filter configuration. Every filter can only be once in thi slist. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classModel_1_1FilterList_a01ca9d807b9f410ea40bd70743337638}{}\index{Model\+::\+Filter\+List@{Model\+::\+Filter\+List}!Filter\+List@{Filter\+List}}
+\index{Filter\+List@{Filter\+List}!Model\+::\+Filter\+List@{Model\+::\+Filter\+List}}
+\subsubsection[{Filter\+List}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Filter\+List} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classModel_1_1FilterList_a01ca9d807b9f410ea40bd70743337638}
+
+
+Constructor. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classModel_1_1FilterList_a0977e76495c1328c469f31dac97ef60d}{}\index{Model\+::\+Filter\+List@{Model\+::\+Filter\+List}!add\+Filter@{add\+Filter}}
+\index{add\+Filter@{add\+Filter}!Model\+::\+Filter\+List@{Model\+::\+Filter\+List}}
+\subsubsection[{add\+Filter}]{\setlength{\rightskip}{0pt plus 5cm}void add\+Filter (
+\begin{DoxyParamCaption}
+\item[{string}]{name, }
+\item[{int}]{index = {\ttfamily -\/1}}
+\end{DoxyParamCaption}
+)}\label{classModel_1_1FilterList_a0977e76495c1328c469f31dac97ef60d}
+
+
+Inserts a filter at the given index. If the index is -\/1 then the filter is added to the end. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name of the filter to add.\\
+\hline
+{\em index} & Index to insert the filter at.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classModel_1_1FilterList_a3c39f1ba92d92107a4e389660746c658}{}\index{Model\+::\+Filter\+List@{Model\+::\+Filter\+List}!get\+F\+Ilter\+By\+Index@{get\+F\+Ilter\+By\+Index}}
+\index{get\+F\+Ilter\+By\+Index@{get\+F\+Ilter\+By\+Index}!Model\+::\+Filter\+List@{Model\+::\+Filter\+List}}
+\subsubsection[{get\+F\+Ilter\+By\+Index}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Model\+::\+Filter} $\ast$ get\+F\+Ilter\+By\+Index (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)}\label{classModel_1_1FilterList_a3c39f1ba92d92107a4e389660746c658}
+
+
+Returns the filter at the given index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & Index of the filter.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The filter at the given index.
+\end{DoxyReturn}
+\hypertarget{classModel_1_1FilterList_af5c4c134636ff39a8b4f0f0a6a443178}{}\index{Model\+::\+Filter\+List@{Model\+::\+Filter\+List}!get\+Filter\+By\+Name@{get\+Filter\+By\+Name}}
+\index{get\+Filter\+By\+Name@{get\+Filter\+By\+Name}!Model\+::\+Filter\+List@{Model\+::\+Filter\+List}}
+\subsubsection[{get\+Filter\+By\+Name}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Model\+::\+Filter} $\ast$ get\+Filter\+By\+Name (
+\begin{DoxyParamCaption}
+\item[{string}]{name}
+\end{DoxyParamCaption}
+)}\label{classModel_1_1FilterList_af5c4c134636ff39a8b4f0f0a6a443178}
+
+
+Returns a filter by its name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the filter.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The filter.
+\end{DoxyReturn}
+\hypertarget{classModel_1_1FilterList_afe5620a51c1e0946f79d6c2a4f7ac340}{}\index{Model\+::\+Filter\+List@{Model\+::\+Filter\+List}!get\+Index@{get\+Index}}
+\index{get\+Index@{get\+Index}!Model\+::\+Filter\+List@{Model\+::\+Filter\+List}}
+\subsubsection[{get\+Index}]{\setlength{\rightskip}{0pt plus 5cm}int get\+Index (
+\begin{DoxyParamCaption}
+\item[{string}]{name}
+\end{DoxyParamCaption}
+)}\label{classModel_1_1FilterList_afe5620a51c1e0946f79d6c2a4f7ac340}
+
+
+Returns the index of a filter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the filter.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The index.
+\end{DoxyReturn}
+\hypertarget{classModel_1_1FilterList_a13c4ca4bd21b65ab2e2f01556338d095}{}\index{Model\+::\+Filter\+List@{Model\+::\+Filter\+List}!move\+Filter@{move\+Filter}}
+\index{move\+Filter@{move\+Filter}!Model\+::\+Filter\+List@{Model\+::\+Filter\+List}}
+\subsubsection[{move\+Filter}]{\setlength{\rightskip}{0pt plus 5cm}void move\+Filter (
+\begin{DoxyParamCaption}
+\item[{int}]{old\+Position, }
+\item[{int}]{new\+Position}
+\end{DoxyParamCaption}
+)}\label{classModel_1_1FilterList_a13c4ca4bd21b65ab2e2f01556338d095}
+
+
+Moves a filter to another position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em old\+Position} & The old position.\\
+\hline
+{\em new\+Position} & The new position.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classModel_1_1FilterList_acfe5b66a730352a58df782209557ba82}{}\index{Model\+::\+Filter\+List@{Model\+::\+Filter\+List}!remove\+Filter@{remove\+Filter}}
+\index{remove\+Filter@{remove\+Filter}!Model\+::\+Filter\+List@{Model\+::\+Filter\+List}}
+\subsubsection[{remove\+Filter}]{\setlength{\rightskip}{0pt plus 5cm}void remove\+Filter (
+\begin{DoxyParamCaption}
+\item[{string}]{name}
+\end{DoxyParamCaption}
+)}\label{classModel_1_1FilterList_acfe5b66a730352a58df782209557ba82}
+
+
+Removes a filter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name of the filter to remove.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classModel_1_1FilterList_a3cd55a8f60d5021235199170937644c5}{}\index{Model\+::\+Filter\+List@{Model\+::\+Filter\+List}!remove\+Filter@{remove\+Filter}}
+\index{remove\+Filter@{remove\+Filter}!Model\+::\+Filter\+List@{Model\+::\+Filter\+List}}
+\subsubsection[{remove\+Filter}]{\setlength{\rightskip}{0pt plus 5cm}void remove\+Filter (
+\begin{DoxyParamCaption}
+\item[{int}]{position}
+\end{DoxyParamCaption}
+)}\label{classModel_1_1FilterList_a3cd55a8f60d5021235199170937644c5}
+
+
+Removes a filter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & Position of the filter to remove.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Field Documentation}
+\hypertarget{classModel_1_1FilterList_a96269287dfd54a6d36242ba5fe3b7da1}{}\index{Model\+::\+Filter\+List@{Model\+::\+Filter\+List}!filter\+List@{filter\+List}}
+\index{filter\+List@{filter\+List}!Model\+::\+Filter\+List@{Model\+::\+Filter\+List}}
+\subsubsection[{filter\+List}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Undo\+Redo\+::\+Filter\+Reset}$\ast$ filter\+List}\label{classModel_1_1FilterList_a96269287dfd54a6d36242ba5fe3b7da1}
+\hypertarget{classModel_1_1FilterList_ae72489e455ca229c6e956a41ea6b5b1c}{}\index{Model\+::\+Filter\+List@{Model\+::\+Filter\+List}!filters@{filters}}
+\index{filters@{filters}!Model\+::\+Filter\+List@{Model\+::\+Filter\+List}}
+\subsubsection[{filters}]{\setlength{\rightskip}{0pt plus 5cm}vector filters\hspace{0.3cm}{\ttfamily [private]}}\label{classModel_1_1FilterList_ae72489e455ca229c6e956a41ea6b5b1c}
+\hypertarget{classModel_1_1FilterList_a5ba4feb70bf95921adf982eda6207cb4}{}\index{Model\+::\+Filter\+List@{Model\+::\+Filter\+List}!filters@{filters}}
+\index{filters@{filters}!Model\+::\+Filter\+List@{Model\+::\+Filter\+List}}
+\subsubsection[{filters}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Model\+::\+Filter}$\ast$$>$ filters\hspace{0.3cm}{\ttfamily [private]}}\label{classModel_1_1FilterList_a5ba4feb70bf95921adf982eda6207cb4}
+\hypertarget{classModel_1_1FilterList_a9112d56886987751ee0f00bedfb0d571}{}\index{Model\+::\+Filter\+List@{Model\+::\+Filter\+List}!list@{list}}
+\index{list@{list}!Model\+::\+Filter\+List@{Model\+::\+Filter\+List}}
+\subsubsection[{list}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Model\+::\+Filter\+Applier}$\ast$ list}\label{classModel_1_1FilterList_a9112d56886987751ee0f00bedfb0d571}
+\hypertarget{classModel_1_1FilterList_a835cb4539ec6d9b4021efc25db09e1ea}{}\index{Model\+::\+Filter\+List@{Model\+::\+Filter\+List}!new\+List@{new\+List}}
+\index{new\+List@{new\+List}!Model\+::\+Filter\+List@{Model\+::\+Filter\+List}}
+\subsubsection[{new\+List}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Undo\+Redo\+::\+Load\+Filterconfig}$\ast$ new\+List}\label{classModel_1_1FilterList_a835cb4539ec6d9b4021efc25db09e1ea}
+\hypertarget{classModel_1_1FilterList_ab9b8c3631972f39309b9810f2b58b094}{}\index{Model\+::\+Filter\+List@{Model\+::\+Filter\+List}!old\+List@{old\+List}}
+\index{old\+List@{old\+List}!Model\+::\+Filter\+List@{Model\+::\+Filter\+List}}
+\subsubsection[{old\+List}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Undo\+Redo\+::\+Load\+Filterconfig}$\ast$ old\+List}\label{classModel_1_1FilterList_ab9b8c3631972f39309b9810f2b58b094}

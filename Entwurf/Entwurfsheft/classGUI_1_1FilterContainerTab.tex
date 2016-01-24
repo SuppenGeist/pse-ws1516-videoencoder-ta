@@ -3,13 +3,22 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classGUI_1_1FilterContainerTab_acfb5f5657afb5cd6f1a21c800887eb5e}{Filter\+Container\+Tab} (\hyperlink{classGUI_1_1Player_1_1QWidget}{G\+U\+I\+::\+Player\+::\+Q\+Widget} $\ast$parent)
+\hyperlink{classGUI_1_1FilterContainerTab_aad3f3c3bfaf5046c5dd1d3fdecbc6a67}{Filter\+Container\+Tab} (\hyperlink{classGUI_1_1QWidget}{G\+U\+I\+::\+Q\+Widget} $\ast$parent)
 \item 
-void \hyperlink{classGUI_1_1FilterContainerTab_a42f70ee69ef83ea68dcdbf29c1e8a908}{add\+Filter} (\hyperlink{classModel_1_1Filter_1_1Filter}{Model\+::\+Filter\+::\+Filter} filter)
+void \hyperlink{classGUI_1_1FilterContainerTab_a91199aedb5655ad88d49a2c73b1b8854}{add\+Filter} (\hyperlink{classModel_1_1Filter}{Model\+::\+Filter} filter)
 \item 
 void \hyperlink{classGUI_1_1FilterContainerTab_aeca76c1062e211338acc4d20093ac1a5}{set\+Parent\+Tab} (\hyperlink{classGUI_1_1FilterTab}{G\+U\+I\+::\+Filter\+Tab} \&parent)
 \item 
 void \hyperlink{classGUI_1_1FilterContainerTab_afb7423e6c05af77b30334cce349ea4db}{uncheck} (string filter\+Name)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classGUI_1_1FilterTab}{G\+U\+I\+::\+Filter\+Tab} $\ast$ \hyperlink{classGUI_1_1FilterContainerTab_a321c854e2a631e394faad6e15ad10786}{parent\+Tab}
+\item 
+\hyperlink{classGUI_1_1FilterTab}{G\+U\+I\+::\+Filter\+Tab} $\ast$ \hyperlink{classGUI_1_1FilterContainerTab_a488c10510c6cacac9ce1a7615382b5df}{filter\+Container\+Tab}
+\item 
+std\+::vector$<$ \hyperlink{classGUI_1_1FilterView}{G\+U\+I\+::\+Filter\+View} $\ast$ $>$ \hyperlink{classGUI_1_1FilterContainerTab_a580e9a117be47e3b1e3c4234884118ec}{filter\+Views}
 \end{DoxyCompactItemize}
 
 
@@ -17,13 +26,13 @@ void \hyperlink{classGUI_1_1FilterContainerTab_afb7423e6c05af77b30334cce349ea4db
 This class shows all the selectable filters. 
 
 \subsection{Constructor \& Destructor Documentation}
-\hypertarget{classGUI_1_1FilterContainerTab_acfb5f5657afb5cd6f1a21c800887eb5e}{}\index{G\+U\+I\+::\+Filter\+Container\+Tab@{G\+U\+I\+::\+Filter\+Container\+Tab}!Filter\+Container\+Tab@{Filter\+Container\+Tab}}
+\hypertarget{classGUI_1_1FilterContainerTab_aad3f3c3bfaf5046c5dd1d3fdecbc6a67}{}\index{G\+U\+I\+::\+Filter\+Container\+Tab@{G\+U\+I\+::\+Filter\+Container\+Tab}!Filter\+Container\+Tab@{Filter\+Container\+Tab}}
 \index{Filter\+Container\+Tab@{Filter\+Container\+Tab}!G\+U\+I\+::\+Filter\+Container\+Tab@{G\+U\+I\+::\+Filter\+Container\+Tab}}
 \subsubsection[{Filter\+Container\+Tab}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Filter\+Container\+Tab} (
 \begin{DoxyParamCaption}
-\item[{{\bf G\+U\+I\+::\+Player\+::\+Q\+Widget} $\ast$}]{parent}
+\item[{{\bf G\+U\+I\+::\+Q\+Widget} $\ast$}]{parent}
 \end{DoxyParamCaption}
-)}\label{classGUI_1_1FilterContainerTab_acfb5f5657afb5cd6f1a21c800887eb5e}
+)}\label{classGUI_1_1FilterContainerTab_aad3f3c3bfaf5046c5dd1d3fdecbc6a67}
 
 
 Constructor. 
@@ -31,13 +40,13 @@ Constructor.
 
 
 \subsection{Member Function Documentation}
-\hypertarget{classGUI_1_1FilterContainerTab_a42f70ee69ef83ea68dcdbf29c1e8a908}{}\index{G\+U\+I\+::\+Filter\+Container\+Tab@{G\+U\+I\+::\+Filter\+Container\+Tab}!add\+Filter@{add\+Filter}}
+\hypertarget{classGUI_1_1FilterContainerTab_a91199aedb5655ad88d49a2c73b1b8854}{}\index{G\+U\+I\+::\+Filter\+Container\+Tab@{G\+U\+I\+::\+Filter\+Container\+Tab}!add\+Filter@{add\+Filter}}
 \index{add\+Filter@{add\+Filter}!G\+U\+I\+::\+Filter\+Container\+Tab@{G\+U\+I\+::\+Filter\+Container\+Tab}}
 \subsubsection[{add\+Filter}]{\setlength{\rightskip}{0pt plus 5cm}void add\+Filter (
 \begin{DoxyParamCaption}
-\item[{{\bf Model\+::\+Filter\+::\+Filter}}]{filter}
+\item[{{\bf Model\+::\+Filter}}]{filter}
 \end{DoxyParamCaption}
-)}\label{classGUI_1_1FilterContainerTab_a42f70ee69ef83ea68dcdbf29c1e8a908}
+)}\label{classGUI_1_1FilterContainerTab_a91199aedb5655ad88d49a2c73b1b8854}
 
 
 Adds a selectable filter. 
@@ -79,3 +88,15 @@ Searches for the filter\+View with the filter filter\+Name and unchecks it.
 {\em filter\+Name} & The filter to uncheck.\\
 \hline
 \end{DoxyParams}
+
+
+\subsection{Field Documentation}
+\hypertarget{classGUI_1_1FilterContainerTab_a488c10510c6cacac9ce1a7615382b5df}{}\index{G\+U\+I\+::\+Filter\+Container\+Tab@{G\+U\+I\+::\+Filter\+Container\+Tab}!filter\+Container\+Tab@{filter\+Container\+Tab}}
+\index{filter\+Container\+Tab@{filter\+Container\+Tab}!G\+U\+I\+::\+Filter\+Container\+Tab@{G\+U\+I\+::\+Filter\+Container\+Tab}}
+\subsubsection[{filter\+Container\+Tab}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Filter\+Tab}$\ast$ filter\+Container\+Tab\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1FilterContainerTab_a488c10510c6cacac9ce1a7615382b5df}
+\hypertarget{classGUI_1_1FilterContainerTab_a580e9a117be47e3b1e3c4234884118ec}{}\index{G\+U\+I\+::\+Filter\+Container\+Tab@{G\+U\+I\+::\+Filter\+Container\+Tab}!filter\+Views@{filter\+Views}}
+\index{filter\+Views@{filter\+Views}!G\+U\+I\+::\+Filter\+Container\+Tab@{G\+U\+I\+::\+Filter\+Container\+Tab}}
+\subsubsection[{filter\+Views}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf G\+U\+I\+::\+Filter\+View}$\ast$$>$ filter\+Views\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1FilterContainerTab_a580e9a117be47e3b1e3c4234884118ec}
+\hypertarget{classGUI_1_1FilterContainerTab_a321c854e2a631e394faad6e15ad10786}{}\index{G\+U\+I\+::\+Filter\+Container\+Tab@{G\+U\+I\+::\+Filter\+Container\+Tab}!parent\+Tab@{parent\+Tab}}
+\index{parent\+Tab@{parent\+Tab}!G\+U\+I\+::\+Filter\+Container\+Tab@{G\+U\+I\+::\+Filter\+Container\+Tab}}
+\subsubsection[{parent\+Tab}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Filter\+Tab}$\ast$ parent\+Tab\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1FilterContainerTab_a321c854e2a631e394faad6e15ad10786}

@@ -18,7 +18,7 @@
 \DeclareUnicodeCharacter{00A0}{ }
 % Font selection
 \usepackage[T1]{fontenc} % avoid garbled Unicode text in pdf
-\usepackage[german]{babel} % german hyphenation, quotes, etc
+%\usepackage[german]{babel} % german hyphenation, quotes, etc
 \usepackage[scaled=.90]{helvet}
 \usepackage{courier}
 \usepackage{amssymb}
@@ -128,7 +128,7 @@
 \begin{center}%\\
 {\centering\includegraphics[width=10cm]{Logo.png}}\\
 \vspace*{2cm}
-\fontsize{40}{48} \selectfont \textsc{Entwurfsheft}\\
+\fontsize{40}{48} \selectfont \textsc{Documentation}\\
 \vspace*{1cm}
 \vspace*{0.5cm}
 {\small Carina Weber, Jan Benedikt Schwarz, Johannes Werner, Noel Schuhmacher, Sascha Rapp, Simon Grafenhorst}\\
@@ -139,172 +139,169 @@
 \pagenumbering{arabic}
 \hypersetup{pageanchor=true}
 
-\chapter{Einleitung}
-Vive (short for: Video veritatem) is a programm for testing of different videoencoders. This is the draft in which diagrams and specifications of the classes are documented. It is intended as a guideline for the implementation phase.
-The draft is seperated into different parts: in the first part are diagrams to give a rough overview of the structure of the programm. In the second part are detailed descriptions of every class and methode. An overview of the implementation phase is given in the form of a gantt-diagram in the appendix.
-\chapter{Diagramme}
-\section{Klassendiagramme}
-Der grobe Aufbau des Programms\\\\
+\chapter{Introduction}
+Vive (short for: Video veritatem) is a programm for testing different videoencoders. This is the documentation in which diagrams and specifications of the classes are included. It is intended as a guideline for the implementation.
+This document is seperated into different parts: in the first part are diagrams to give a rough overview of the structure of the programm. In the second part are detailed descriptions of every class and methode. An overview of the implementation phase is given in the form of a gantt-diagram in the appendix.
+\chapter{Diagrams}
+\section{Class Diagrams}
+Program structure\\\\
 {\centering\includegraphics[width=1\textwidth]{Grobuebersicht.jpg}}\\
 \newpage
-Das Utility Package\\\\
+Utility Package\\\\
 {\centering\includegraphics[width=1\textwidth]{Utility.jpg}}\\
 \newpage
-Das Model ohne die Filter\\\\
+Model without the filters\\\\
 {\centering\includegraphics[width=1\textwidth]{Model_noFilter.jpg}}\\
 \newpage
-Die GUI ohne die FilterBox Klassen\\\\
+GUI without filterboxes\\\\
 {\centering\includegraphics[width=1\textwidth]{GUI_noFilter.jpg}}\\
 \newpage
-Das Memento Package\\\\
+Memento Package\\\\
 {\centering\includegraphics[width=1\textwidth]{Memento.jpg}}\\\\\\
-Das Undo/Redo Package\\\\
+Undo/Redo Package\\\\
 {\centering\includegraphics[width=1\textwidth]{UndoRedo.jpg}}\\
 \newpage
-\section{Sequenzdiagramme}
-\subsection*{Das LoadVideo Sequenzdiagram}
+\section{Sequence Diagrams}
+\subsection*{LoadVideo sequence diagram}
 {\centering\includegraphics[width=1\textwidth]{SequenceDiagram1.jpg}}\\
 When you load a new Video a LoadVideo object is created with the path to the Video as a parameter.Then a AVVideo is created and with the Converter a Video which is then given to a VideoPlayer. This VideoPlayer has a FrameView a Timer and is then given to a ControlPanel
 \newpage
-\subsection*{Das Analysis Sequenzdiagram}
+\subsection*{Analysis sequence diagram}
 {\centering\includegraphics[width=1\textwidth]{SequenceDiagram2.jpg}}\\
 First a ControlPanel and a PlayerControlPanel are created. When a Video is added the LoadVideo Sequenz which is descriped above is initiated.  If an additional Video is added  
 an AnalysisBox is created in which the added Video is loaded and the Analysis starts in which he MacroblocVideo is calculated and Displayed in a second VideoPlayer.
 When play is pressed in the ControlPanel all Videos start to play.
 \newpage
-\subsection*{Das Filter Sequenzdiagram}
+\subsection*{Filter sequence diagram}
 {\centering\includegraphics[width=1\textwidth]{SequenceDiagram3.jpg}}\\
 First the ControlPanel, PlayerControlPanel and PreviewControlPanel are created.
 Then a Video is loaded with the LoadVideo sequenz. Then a Filter are added to the FilterList. This FilterLis is then applied to the AVVideo which is the converted to an Video and Displayed in the VideoPlayer.
-\chapter{Namensräume}
+\chapter{Namespace Documentation}
 \input{namespaceGUI}
-\input{namespaceGUI_1_1Player}
-\input{namespaceGUI_1_1QtGui}
 \input{namespaceMemento}
 \input{namespaceModel}
-\input{namespaceModel_1_1Filter}
 \input{namespaceUndoRedo}
 \input{namespaceUtility}
-\chapter{Klassendokumentation}
-\input{classUndoRedo_1_1AddFilter}
-\input{classUndoRedo_1_1AddVideo}
-\input{classGUI_1_1AnalysisBox}
-\input{classGUI_1_1AnalysisBoxContainer}
-\input{classMemento_1_1AnalysisBoxContainerMemento}
-\input{classMemento_1_1AnalysisBoxMemento}
-\input{classGUI_1_1AnalysisTab}
-\input{classMemento_1_1AnalysisTabMemento}
-\input{classUndoRedo_1_1ApplyFilter}
-\input{classModel_1_1AVVideo}
-\input{classUtility_1_1BitrateCalculator}
-\input{classModel_1_1Filter_1_1BlackWhiteFilter}
-\input{classModel_1_1Filter_1_1BlendingFilter}
-\input{classGUI_1_1BlendingFilterBox}
-\input{classModel_1_1Filter_1_1BlurFilter}
-\input{classGUI_1_1BlurFilterBox}
-\input{classModel_1_1Filter_1_1BorderFilter}
-\input{classGUI_1_1BorderFilterBox}
-\input{classModel_1_1Filter_1_1BrightnessFilter}
-\input{classGUI_1_1BrightnessFilterBox}
-\input{classModel_1_1Filter_1_1ColorbalanceFilter}
-\input{classGUI_1_1ColorbalanceFilterBox}
-\input{classModel_1_1Filter_1_1ContrastFilter}
-\input{classGUI_1_1ContrastFilterBox}
-\input{classGUI_1_1Player_1_1ControlPanel}
-\input{classModel_1_1Filter_1_1EdgeFilter}
-\input{classModel_1_1EncodedVideo}
-\input{classModel_1_1Filter_1_1Filter}
-\input{classModel_1_1Filter_1_1FilterApplier}
-\input{classGUI_1_1FilterConfigurationBox}
-\input{classUtility_1_1FilterConfigurationLoader}
-\input{classUtility_1_1FilterConfigurationSaver}
-\input{classGUI_1_1FilterContainerTab}
-\input{classModel_1_1Filter_1_1FilterList}
-\input{classUndoRedo_1_1FilterReset}
-\input{classGUI_1_1FilterTab}
-\input{classMemento_1_1FilterTabMemento}
-\input{classGUI_1_1FilterView}
-\input{classGUI_1_1ForwardPlayer}
-\input{classGUI_1_1Player_1_1FrameView}
-\input{classGUI_1_1GlobalControlPanel}
-\input{classModel_1_1Graph}
-\input{classGUI_1_1GraphWidget}
-\input{classModel_1_1Filter_1_1GridFilter}
-\input{classGUI_1_1GridFilterBox}
-\input{classUndoRedo_1_1LoadAnalysisVideo}
-\input{classUndoRedo_1_1LoadFilterconfig}
-\input{classUndoRedo_1_1LoadFilterVideo}
-\input{classUtility_1_1MacroblockCalculator}
-\input{classGUI_1_1MainWindow}
-\input{classMemento_1_1MainWindowMemento}
-\input{classModel_1_1Filter_1_1MirrorFilter}
-\input{classGUI_1_1MirrorFilterBox}
-\input{classUndoRedo_1_1MoveFilterDown}
-\input{classUndoRedo_1_1MoveFilterUp}
-\input{classModel_1_1Filter_1_1NegativeFilter}
-\input{classModel_1_1Filter_1_1NoiseFilter}
-\input{classGUI_1_1NoiseFilterBox}
-\input{classGUI_1_1PlainFilterBox}
-\input{classGUI_1_1Player_1_1Player}
-\input{classGUI_1_1Player_1_1PlayerControlPanel}
-\input{classModel_1_1Filter_1_1PosterFilter}
-\input{classGUI_1_1PosterFilterBox}
-\input{classGUI_1_1Player_1_1PreviewControlPanel}
-\input{classModel_1_1Project}
-\input{classUtility_1_1ProjectReader}
-\input{classUtility_1_1ProjectWriter}
-\input{classUtility_1_1PsnrCalculator}
-\input{classGUI_1_1QtGui_1_1QCheckBox}
-\input{classGUI_1_1QtGui_1_1QComboBox}
-\input{classGUI_1_1Player_1_1QDialog}
-\input{classGUI_1_1Player_1_1QFrame}
-\input{classGUI_1_1QtGui_1_1QGraphicsView}
-\input{classGUI_1_1QtGui_1_1QMainWindow}
-\input{classUndoRedo_1_1QUndoCommand}
-\input{classGUI_1_1Player_1_1QWidget}
-\input{classModel_1_1Filter_1_1RectangleFilter}
-\input{classGUI_1_1RectangleFilterBox}
-\input{classUndoRedo_1_1RemoveFilter}
-\input{classUndoRedo_1_1RemoveVideo}
-\input{classUtility_1_1RGBDifferenceCalculator}
-\input{classModel_1_1Filter_1_1RGBFilter}
-\input{classGUI_1_1RGBFilterBox}
-\input{classUtility_1_1RGBHistogrammCalculator}
-\input{classModel_1_1Filter_1_1RotationFilter}
-\input{classGUI_1_1RotationFilterBox}
-\input{classModel_1_1Filter_1_1SaturationFilter}
-\input{classGUI_1_1SaturationFilterBox}
-\input{classModel_1_1Filter_1_1ScaleFilter}
-\input{classGUI_1_1ScaleFilterBox}
-\input{classModel_1_1Filter_1_1SepiaFilter}
-\input{classModel_1_1Filter_1_1SharpnessFilter}
-\input{classGUI_1_1SharpnessFilterBox}
-\input{classGUI_1_1Player_1_1Timer}
-\input{classUndoRedo_1_1UndoStack}
-\input{classGUI_1_1Player_1_1Video}
-\input{classUtility_1_1VideoConverter}
-\input{classUtility_1_1VideoLoader}
-\input{classGUI_1_1Player_1_1VideoPlayer}
-\input{classModel_1_1Filter_1_1VintageFilter}
-\input{classUndoRedo_1_1WriteComment}
-\input{classUtility_1_1Yuv411FileReader}
-\input{classUtility_1_1Yuv411FileSaver}
-\input{classUtility_1_1Yuv411Vector}
-\input{classUtility_1_1Yuv420FIleReader}
-\input{classUtility_1_1Yuv420FileSaver}
-\input{classUtility_1_1Yuv422FileReader}
-\input{classUtility_1_1Yuv422FileSaver}
-\input{classUtility_1_1Yuv422Vector}
-\input{classUtility_1_1Yuv444FileReader}
-\input{classUtility_1_1Yuv444FileSaver}
-\input{classUtility_1_1Yuv444Vector}
-\input{classGUI_1_1Player_1_1YuvFileOpenDialog}
-\input{classUtility_1_1YuvFileReader}
-\input{classUtility_1_1YuvFileSaver}
-\input{classGUI_1_1Player_1_1YuvInfoDialog}
-\input{classModel_1_1YuvVideo}
-\input{classModel_1_1Filter_1_1ZoomFilter}
-\input{classGUI_1_1ZoomFilterBox}
+\chapter{Data Structure Documentation}
+\newpage\input{classUndoRedo_1_1AddFilter}
+\newpage\input{classUndoRedo_1_1AddVideo}
+\newpage\input{classGUI_1_1AnalysisBox}
+\newpage\input{classGUI_1_1AnalysisBoxContainer}
+\newpage\input{classMemento_1_1AnalysisBoxContainerMemento}
+\newpage\input{classMemento_1_1AnalysisBoxMemento}
+\newpage\input{classGUI_1_1AnalysisTab}
+\newpage\input{classMemento_1_1AnalysisTabMemento}
+\newpage\input{classUndoRedo_1_1ApplyFilter}
+\newpage\input{classModel_1_1AVVideo}
+\newpage\input{classUtility_1_1BitrateCalculator}
+\newpage\input{classModel_1_1BlackWhiteFilter}
+\newpage\input{classModel_1_1BlendingFilter}
+\newpage\input{classGUI_1_1BlendingFilterBox}
+\newpage\input{classModel_1_1BlurFilter}
+\newpage\input{classGUI_1_1BlurFilterBox}
+\newpage\input{classModel_1_1BorderFilter}
+\newpage\input{classGUI_1_1BorderFilterBox}
+\newpage\input{classModel_1_1BrightnessFilter}
+\newpage\input{classGUI_1_1BrightnessFilterBox}
+\newpage\input{classModel_1_1ColorbalanceFilter}
+\newpage\input{classGUI_1_1ColorbalanceFilterBox}
+\newpage\input{classModel_1_1ContrastFilter}
+\newpage\input{classGUI_1_1ContrastFilterBox}
+\newpage\input{classGUI_1_1ControlPanel}
+\newpage\input{classModel_1_1EdgeFilter}
+\newpage\input{classModel_1_1EncodedVideo}
+\newpage\input{classModel_1_1Filter}
+\newpage\input{classModel_1_1FilterApplier}
+\newpage\input{classGUI_1_1FilterConfigurationBox}
+\newpage\input{classUtility_1_1FilterConfigurationLoader}
+\newpage\input{classUtility_1_1FilterConfigurationSaver}
+\newpage\input{classGUI_1_1FilterContainerTab}
+\newpage\input{classModel_1_1FilterList}
+\newpage\input{classUndoRedo_1_1FilterReset}
+\newpage\input{classGUI_1_1FilterTab}
+\newpage\input{classMemento_1_1FilterTabMemento}
+\newpage\input{classGUI_1_1FilterView}
+\newpage\input{classGUI_1_1ForwardPlayer}
+\newpage\input{classGUI_1_1FrameView}
+\newpage\input{classGUI_1_1GlobalControlPanel}
+\newpage\input{classModel_1_1Graph}
+\newpage\input{classGUI_1_1GraphWidget}
+\newpage\input{classModel_1_1GridFilter}
+\newpage\input{classGUI_1_1GridFilterBox}
+\newpage\input{classUndoRedo_1_1LoadAnalysisVideo}
+\newpage\input{classUndoRedo_1_1LoadFilterconfig}
+\newpage\input{classUndoRedo_1_1LoadFilterVideo}
+\newpage\input{classUtility_1_1MacroblockCalculator}
+\newpage\input{classGUI_1_1MainWindow}
+\newpage\input{classMemento_1_1MainWindowMemento}
+\newpage\input{classModel_1_1MirrorFilter}
+\newpage\input{classGUI_1_1MirrorFilterBox}
+\newpage\input{classUndoRedo_1_1MoveFilterDown}
+\newpage\input{classUndoRedo_1_1MoveFilterUp}
+\newpage\input{classModel_1_1NegativeFilter}
+\newpage\input{classModel_1_1NoiseFilter}
+\newpage\input{classGUI_1_1NoiseFilterBox}
+\newpage\input{classGUI_1_1PlainFilterBox}
+\newpage\input{classGUI_1_1Player}
+\newpage\input{classGUI_1_1PlayerControlPanel}
+\newpage\input{classModel_1_1PosterFilter}
+\newpage\input{classGUI_1_1PosterFilterBox}
+\newpage\input{classGUI_1_1PreviewControlPanel}
+\newpage\input{classModel_1_1Project}
+\newpage\input{classUtility_1_1ProjectReader}
+\newpage\input{classUtility_1_1ProjectWriter}
+\newpage\input{classUtility_1_1PsnrCalculator}
+\newpage\input{classGUI_1_1QCheckBox}
+\newpage\input{classGUI_1_1QComboBox}
+\newpage\input{classGUI_1_1QDialog}
+\newpage\input{classGUI_1_1QFrame}
+\newpage\input{classGUI_1_1QGraphicsView}
+\newpage\input{classGUI_1_1QMainWindow}
+\newpage\input{classUndoRedo_1_1QUndoCommand}
+\newpage\input{classGUI_1_1QWidget}
+\newpage\input{classModel_1_1RectangleFilter}
+\newpage\input{classGUI_1_1RectangleFilterBox}
+\newpage\input{classUndoRedo_1_1RemoveFilter}
+\newpage\input{classUndoRedo_1_1RemoveVideo}
+\newpage\input{classUtility_1_1RGBDifferenceCalculator}
+\newpage\input{classModel_1_1RGBFilter}
+\newpage\input{classGUI_1_1RGBFilterBox}
+\newpage\input{classUtility_1_1RGBHistogrammCalculator}
+\newpage\input{classModel_1_1RotationFilter}
+\newpage\input{classGUI_1_1RotationFilterBox}
+\newpage\input{classModel_1_1SaturationFilter}
+\newpage\input{classGUI_1_1SaturationFilterBox}
+\newpage\input{classModel_1_1ScaleFilter}
+\newpage\input{classGUI_1_1ScaleFilterBox}
+\newpage\input{classModel_1_1SepiaFilter}
+\newpage\input{classModel_1_1SharpnessFilter}
+\newpage\input{classGUI_1_1SharpnessFilterBox}
+\newpage\input{classGUI_1_1Timer}
+\newpage\input{classUndoRedo_1_1UndoStack}
+\newpage\input{classGUI_1_1Video}
+\newpage\input{classUtility_1_1VideoConverter}
+\newpage\input{classUtility_1_1VideoLoader}
+\newpage\input{classGUI_1_1VideoPlayer}
+\newpage\input{classModel_1_1VintageFilter}
+\newpage\input{classUndoRedo_1_1WriteComment}
+\newpage\input{classUtility_1_1Yuv411FileReader}
+\newpage\input{classUtility_1_1Yuv411FileSaver}
+\newpage\input{classUtility_1_1Yuv411Vector}
+\newpage\input{classUtility_1_1Yuv420FIleReader}
+\newpage\input{classUtility_1_1Yuv420FileSaver}
+\newpage\input{classUtility_1_1Yuv422FileReader}
+\newpage\input{classUtility_1_1Yuv422FileSaver}
+\newpage\input{classUtility_1_1Yuv422Vector}
+\newpage\input{classUtility_1_1Yuv444FileReader}
+\newpage\input{classUtility_1_1Yuv444FileSaver}
+\newpage\input{classUtility_1_1Yuv444Vector}
+\newpage\input{classGUI_1_1YuvFileOpenDialog}
+\newpage\input{classUtility_1_1YuvFileReader}
+\newpage\input{classUtility_1_1YuvFileSaver}
+\newpage\input{classGUI_1_1YuvInfoDialog}
+\newpage\input{classModel_1_1YuvVideo}
+\newpage\input{classModel_1_1ZoomFilter}
+\newpage\input{classGUI_1_1ZoomFilterBox}
 %--- End generated contents ---
 
 
@@ -317,8 +314,7 @@ Then a Video is loaded with the LoadVideo sequenz. Then a Filter are added to th
 \addcontentsline{toc}{chapter}{Index}
 \printindex
 \newpage
-\chapter{Anhang}
-Implementierungsplan\\\\
+\chapter{Appendix}
 {\centering\includegraphics[width=1\textwidth]{Projektplan_new.PNG}}\\
 \end{document}
 

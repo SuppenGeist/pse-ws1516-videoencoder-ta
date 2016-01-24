@@ -1,0 +1,263 @@
+\hypertarget{classGUI_1_1Player}{}\section{Player Class Reference}
+\label{classGUI_1_1Player}\index{Player@{Player}}
+
+
+Inheritance diagram for Player\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=248pt]{classGUI_1_1Player__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classGUI_1_1Player_aa3c4df4568ad2126665a07db4e1f59b6}{play} ()=0
+\item 
+virtual void \hyperlink{classGUI_1_1Player_a0edeed26c37624e7aa90f391c9a7128f}{pause} ()=0
+\item 
+virtual void \hyperlink{classGUI_1_1Player_a7a0e5d7c45657ca21b5b8d0d4b0a0e7b}{stop} ()=0
+\item 
+virtual void \hyperlink{classGUI_1_1Player_af64b0827c381fcd751fe2bbbf38682f4}{next\+Frame} ()=0
+\item 
+virtual void \hyperlink{classGUI_1_1Player_a4db6c8b8c8e9b567d466181337cdc001}{previous\+Frame} ()=0
+\item 
+virtual void \hyperlink{classGUI_1_1Player_a1c7d2ab9f6c21f2e7bf15a2ec9841a0a}{set\+Speed} (float speed)=0
+\item 
+virtual void \hyperlink{classGUI_1_1Player_acf5fb178b5d9a7f5f4bd198a13ae6bf7}{set\+Position} (int position)=0
+\item 
+virtual int \hyperlink{classGUI_1_1Player_a889dbfa5524d69dcc31d377d2d9bd230}{get\+Position} ()=0
+\item 
+virtual float \hyperlink{classGUI_1_1Player_a349fa93e666bd9fb256a238a3194f948}{get\+Speed} ()=0
+\item 
+virtual bool \hyperlink{classGUI_1_1Player_a4fbad8972dd248e6c8f5dc2c898a9bc7}{is\+Playing} ()=0
+\item 
+virtual bool \hyperlink{classGUI_1_1Player_ab9e7bd794ed42cea965c5250ec804225}{is\+Stopped} ()=0
+\item 
+virtual void \hyperlink{classGUI_1_1Player_a00af5c2c5e03cb5748a94d936fe34d9a}{reset} ()=0
+\end{DoxyCompactItemize}
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classGUI_1_1ControlPanel}{G\+U\+I\+::\+Control\+Panel} $\ast$ \hyperlink{classGUI_1_1Player_a068c1591fd22d057fcaf36617c45d557}{players}
+\item 
+\hyperlink{classGUI_1_1ControlPanel}{G\+U\+I\+::\+Control\+Panel} $\ast$ \hyperlink{classGUI_1_1Player_a3c9f4437b3e54e8bd9ad90739f051abc}{master\+Player}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class is the base class for players. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classGUI_1_1Player_a889dbfa5524d69dcc31d377d2d9bd230}{}\index{G\+U\+I\+::\+Player@{G\+U\+I\+::\+Player}!get\+Position@{get\+Position}}
+\index{get\+Position@{get\+Position}!G\+U\+I\+::\+Player@{G\+U\+I\+::\+Player}}
+\subsubsection[{get\+Position}]{\setlength{\rightskip}{0pt plus 5cm}int get\+Position (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\label{classGUI_1_1Player_a889dbfa5524d69dcc31d377d2d9bd230}
+
+
+Returns the position in the video. 
+
+\begin{DoxyReturn}{Returns}
+The current position.
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classGUI_1_1VideoPlayer_a97825791568ee242ca19d25b75030d87}{Video\+Player}, and \hyperlink{classGUI_1_1ForwardPlayer_a97825791568ee242ca19d25b75030d87}{Forward\+Player}.
+
+\hypertarget{classGUI_1_1Player_a349fa93e666bd9fb256a238a3194f948}{}\index{G\+U\+I\+::\+Player@{G\+U\+I\+::\+Player}!get\+Speed@{get\+Speed}}
+\index{get\+Speed@{get\+Speed}!G\+U\+I\+::\+Player@{G\+U\+I\+::\+Player}}
+\subsubsection[{get\+Speed}]{\setlength{\rightskip}{0pt plus 5cm}float get\+Speed (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\label{classGUI_1_1Player_a349fa93e666bd9fb256a238a3194f948}
+
+
+Returns the speed. 
+
+\begin{DoxyReturn}{Returns}
+The current speed.
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classGUI_1_1VideoPlayer_a26ebefde7fe71954e6c1282255951b7d}{Video\+Player}, and \hyperlink{classGUI_1_1ForwardPlayer_a26ebefde7fe71954e6c1282255951b7d}{Forward\+Player}.
+
+\hypertarget{classGUI_1_1Player_a4fbad8972dd248e6c8f5dc2c898a9bc7}{}\index{G\+U\+I\+::\+Player@{G\+U\+I\+::\+Player}!is\+Playing@{is\+Playing}}
+\index{is\+Playing@{is\+Playing}!G\+U\+I\+::\+Player@{G\+U\+I\+::\+Player}}
+\subsubsection[{is\+Playing}]{\setlength{\rightskip}{0pt plus 5cm}bool is\+Playing (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\label{classGUI_1_1Player_a4fbad8972dd248e6c8f5dc2c898a9bc7}
+
+
+Whether the player is currently playing. 
+
+\begin{DoxyReturn}{Returns}
+True if the player is playing.
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classGUI_1_1VideoPlayer_a8438e3403946accc1986a05b89ee7b03}{Video\+Player}, and \hyperlink{classGUI_1_1ForwardPlayer_a8438e3403946accc1986a05b89ee7b03}{Forward\+Player}.
+
+\hypertarget{classGUI_1_1Player_ab9e7bd794ed42cea965c5250ec804225}{}\index{G\+U\+I\+::\+Player@{G\+U\+I\+::\+Player}!is\+Stopped@{is\+Stopped}}
+\index{is\+Stopped@{is\+Stopped}!G\+U\+I\+::\+Player@{G\+U\+I\+::\+Player}}
+\subsubsection[{is\+Stopped}]{\setlength{\rightskip}{0pt plus 5cm}bool is\+Stopped (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\label{classGUI_1_1Player_ab9e7bd794ed42cea965c5250ec804225}
+
+
+Whether the player is stopped. 
+
+\begin{DoxyReturn}{Returns}
+True if the player is stopped.
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classGUI_1_1VideoPlayer_a2fc5ff4f369aaa46c55c3ad3c63216d6}{Video\+Player}, and \hyperlink{classGUI_1_1ForwardPlayer_a2fc5ff4f369aaa46c55c3ad3c63216d6}{Forward\+Player}.
+
+\hypertarget{classGUI_1_1Player_af64b0827c381fcd751fe2bbbf38682f4}{}\index{G\+U\+I\+::\+Player@{G\+U\+I\+::\+Player}!next\+Frame@{next\+Frame}}
+\index{next\+Frame@{next\+Frame}!G\+U\+I\+::\+Player@{G\+U\+I\+::\+Player}}
+\subsubsection[{next\+Frame}]{\setlength{\rightskip}{0pt plus 5cm}void next\+Frame (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\label{classGUI_1_1Player_af64b0827c381fcd751fe2bbbf38682f4}
+
+
+Shows the next frame. 
+
+
+
+Implemented in \hyperlink{classGUI_1_1VideoPlayer_a365329da56f8b07f8c95027ba967bbc3}{Video\+Player}, and \hyperlink{classGUI_1_1ForwardPlayer_a365329da56f8b07f8c95027ba967bbc3}{Forward\+Player}.
+
+\hypertarget{classGUI_1_1Player_a0edeed26c37624e7aa90f391c9a7128f}{}\index{G\+U\+I\+::\+Player@{G\+U\+I\+::\+Player}!pause@{pause}}
+\index{pause@{pause}!G\+U\+I\+::\+Player@{G\+U\+I\+::\+Player}}
+\subsubsection[{pause}]{\setlength{\rightskip}{0pt plus 5cm}void pause (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\label{classGUI_1_1Player_a0edeed26c37624e7aa90f391c9a7128f}
+
+
+Pauses the video. 
+
+
+
+Implemented in \hyperlink{classGUI_1_1VideoPlayer_a7167f5c196fc5e167bfabde1a730e81d}{Video\+Player}, and \hyperlink{classGUI_1_1ForwardPlayer_a7167f5c196fc5e167bfabde1a730e81d}{Forward\+Player}.
+
+\hypertarget{classGUI_1_1Player_aa3c4df4568ad2126665a07db4e1f59b6}{}\index{G\+U\+I\+::\+Player@{G\+U\+I\+::\+Player}!play@{play}}
+\index{play@{play}!G\+U\+I\+::\+Player@{G\+U\+I\+::\+Player}}
+\subsubsection[{play}]{\setlength{\rightskip}{0pt plus 5cm}void play (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\label{classGUI_1_1Player_aa3c4df4568ad2126665a07db4e1f59b6}
+
+
+Plays the video. 
+
+
+
+Implemented in \hyperlink{classGUI_1_1VideoPlayer_a6d58098c6cf63c241ed03bc797256bb1}{Video\+Player}, and \hyperlink{classGUI_1_1ForwardPlayer_a6d58098c6cf63c241ed03bc797256bb1}{Forward\+Player}.
+
+\hypertarget{classGUI_1_1Player_a4db6c8b8c8e9b567d466181337cdc001}{}\index{G\+U\+I\+::\+Player@{G\+U\+I\+::\+Player}!previous\+Frame@{previous\+Frame}}
+\index{previous\+Frame@{previous\+Frame}!G\+U\+I\+::\+Player@{G\+U\+I\+::\+Player}}
+\subsubsection[{previous\+Frame}]{\setlength{\rightskip}{0pt plus 5cm}void previous\+Frame (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\label{classGUI_1_1Player_a4db6c8b8c8e9b567d466181337cdc001}
+
+
+Shows the previous frame. 
+
+
+
+Implemented in \hyperlink{classGUI_1_1VideoPlayer_a3c96ed37c70ebc0b32c527a04e1536d1}{Video\+Player}, and \hyperlink{classGUI_1_1ForwardPlayer_a3c96ed37c70ebc0b32c527a04e1536d1}{Forward\+Player}.
+
+\hypertarget{classGUI_1_1Player_a00af5c2c5e03cb5748a94d936fe34d9a}{}\index{G\+U\+I\+::\+Player@{G\+U\+I\+::\+Player}!reset@{reset}}
+\index{reset@{reset}!G\+U\+I\+::\+Player@{G\+U\+I\+::\+Player}}
+\subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}void reset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\label{classGUI_1_1Player_a00af5c2c5e03cb5748a94d936fe34d9a}
+
+
+Resets the player. 
+
+
+
+Implemented in \hyperlink{classGUI_1_1VideoPlayer_ad20897c5c8bd47f5d4005989bead0e55}{Video\+Player}, and \hyperlink{classGUI_1_1ForwardPlayer_ad20897c5c8bd47f5d4005989bead0e55}{Forward\+Player}.
+
+\hypertarget{classGUI_1_1Player_acf5fb178b5d9a7f5f4bd198a13ae6bf7}{}\index{G\+U\+I\+::\+Player@{G\+U\+I\+::\+Player}!set\+Position@{set\+Position}}
+\index{set\+Position@{set\+Position}!G\+U\+I\+::\+Player@{G\+U\+I\+::\+Player}}
+\subsubsection[{set\+Position}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Position (
+\begin{DoxyParamCaption}
+\item[{int}]{position}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\label{classGUI_1_1Player_acf5fb178b5d9a7f5f4bd198a13ae6bf7}
+
+
+Sets the position in the video. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & The new position.\\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classGUI_1_1VideoPlayer_a1aa68f77243229daea38d59bc5145d35}{Video\+Player}, and \hyperlink{classGUI_1_1ForwardPlayer_a1aa68f77243229daea38d59bc5145d35}{Forward\+Player}.
+
+\hypertarget{classGUI_1_1Player_a1c7d2ab9f6c21f2e7bf15a2ec9841a0a}{}\index{G\+U\+I\+::\+Player@{G\+U\+I\+::\+Player}!set\+Speed@{set\+Speed}}
+\index{set\+Speed@{set\+Speed}!G\+U\+I\+::\+Player@{G\+U\+I\+::\+Player}}
+\subsubsection[{set\+Speed}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Speed (
+\begin{DoxyParamCaption}
+\item[{float}]{speed}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\label{classGUI_1_1Player_a1c7d2ab9f6c21f2e7bf15a2ec9841a0a}
+
+
+Sets the speed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em speed} & The new speed.\\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classGUI_1_1VideoPlayer_a5466c67c5ec22359c0702dc4ac8ffb19}{Video\+Player}, and \hyperlink{classGUI_1_1ForwardPlayer_a5466c67c5ec22359c0702dc4ac8ffb19}{Forward\+Player}.
+
+\hypertarget{classGUI_1_1Player_a7a0e5d7c45657ca21b5b8d0d4b0a0e7b}{}\index{G\+U\+I\+::\+Player@{G\+U\+I\+::\+Player}!stop@{stop}}
+\index{stop@{stop}!G\+U\+I\+::\+Player@{G\+U\+I\+::\+Player}}
+\subsubsection[{stop}]{\setlength{\rightskip}{0pt plus 5cm}void stop (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\label{classGUI_1_1Player_a7a0e5d7c45657ca21b5b8d0d4b0a0e7b}
+
+
+Stops the video. 
+
+
+
+Implemented in \hyperlink{classGUI_1_1VideoPlayer_a8c528baf37154d347366083f0f816846}{Video\+Player}, and \hyperlink{classGUI_1_1ForwardPlayer_a8c528baf37154d347366083f0f816846}{Forward\+Player}.
+
+
+
+\subsection{Field Documentation}
+\hypertarget{classGUI_1_1Player_a3c9f4437b3e54e8bd9ad90739f051abc}{}\index{G\+U\+I\+::\+Player@{G\+U\+I\+::\+Player}!master\+Player@{master\+Player}}
+\index{master\+Player@{master\+Player}!G\+U\+I\+::\+Player@{G\+U\+I\+::\+Player}}
+\subsubsection[{master\+Player}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Control\+Panel}$\ast$ master\+Player}\label{classGUI_1_1Player_a3c9f4437b3e54e8bd9ad90739f051abc}
+\hypertarget{classGUI_1_1Player_a068c1591fd22d057fcaf36617c45d557}{}\index{G\+U\+I\+::\+Player@{G\+U\+I\+::\+Player}!players@{players}}
+\index{players@{players}!G\+U\+I\+::\+Player@{G\+U\+I\+::\+Player}}
+\subsubsection[{players}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Control\+Panel}$\ast$ players}\label{classGUI_1_1Player_a068c1591fd22d057fcaf36617c45d557}

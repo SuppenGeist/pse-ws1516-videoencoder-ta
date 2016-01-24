@@ -1,9 +1,19 @@
 \hypertarget{classGUI_1_1MainWindow}{}\section{Main\+Window Class Reference}
 \label{classGUI_1_1MainWindow}\index{Main\+Window@{Main\+Window}}
+
+
+Inheritance diagram for Main\+Window\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=160pt]{classGUI_1_1MainWindow__inherit__graph}
+\end{center}
+\end{figure}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classGUI_1_1MainWindow_a6dcf16c443f94075bbc29f51512efec9}{Main\+Window} (\hyperlink{classGUI_1_1Player_1_1QWidget}{G\+U\+I\+::\+Player\+::\+Q\+Widget} $\ast$parent)
+\hyperlink{classGUI_1_1MainWindow_aafaf72c52e0a059620d80026737865b4}{Main\+Window} (\hyperlink{classGUI_1_1QWidget}{G\+U\+I\+::\+Q\+Widget} $\ast$parent)
 \item 
 \hyperlink{classMemento_1_1MainWindowMemento}{Memento\+::\+Main\+Window\+Memento} \hyperlink{classGUI_1_1MainWindow_ae085d92d1c5bec057a813bd86bc20fa4}{get\+Memento} ()
 \item 
@@ -16,19 +26,63 @@ void \hyperlink{classGUI_1_1MainWindow_a72db05f1394dbeeb2a76b74d8f65917b}{restor
 \item 
 \hyperlink{classModel_1_1Project}{Model\+::\+Project} $\ast$ \hyperlink{classGUI_1_1MainWindow_a870e96d05ee2e8c616461952d01ac408}{loaded\+Project}
 \end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classGUI_1_1MainWindow_ae128dfd6fbafee0370f9912e4112f054}{new\+Project} ()
+\item 
+void \hyperlink{classGUI_1_1MainWindow_a0e1e7804a53f6d62efc72c9bdbec8571}{undo} ()
+\item 
+void \hyperlink{classGUI_1_1MainWindow_a65005f9a81d8c7396e2583a80a1f70bf}{save\+As} ()
+\item 
+void \hyperlink{classGUI_1_1MainWindow_adb575720306afca2c0e0c5930467321b}{load\+Project} ()
+\item 
+void \hyperlink{classGUI_1_1MainWindow_a5de2650de39370a5fe89f8d918966276}{save\+Project} ()
+\item 
+void \hyperlink{classGUI_1_1MainWindow_a93c48d6ed036e1a381be53ac67643284}{redo} ()
+\item 
+void \hyperlink{classGUI_1_1MainWindow_aa72182c9a958af0e87b65ab7bdba0035}{create\+Ui} ()
+\item 
+void \hyperlink{classGUI_1_1MainWindow_ac3ca31ff0047daecf8bbe393a15e940c}{connect\+Actions} ()
+\item 
+void \hyperlink{classGUI_1_1MainWindow_a5421da114e56e8856aa455426c24f805}{create\+Menu\+Bar} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Q\+Status\+Bar $\ast$ \hyperlink{classGUI_1_1MainWindow_ab12bbb712331d72b3972876494b01d43}{statusbar}
+\item 
+Q\+Menu\+Bar $\ast$ \hyperlink{classGUI_1_1MainWindow_a3a7fd0d9d9fcaf5f23b620ecc1d868a2}{menubar\+\_\+project}
+\item 
+Q\+Menu\+Bar $\ast$ \hyperlink{classGUI_1_1MainWindow_a5beda12aa8191deaad381531b99992f8}{menubar\+\_\+edit}
+\item 
+Q\+Action $\ast$ \hyperlink{classGUI_1_1MainWindow_a5cf13e75b97a8a55f79a7f1a5dfeccdd}{action\+\_\+new\+Project}
+\item 
+Q\+Action $\ast$ \hyperlink{classGUI_1_1MainWindow_af4ed54c2c44d393a4c854ca626103f72}{action\+\_\+undo}
+\item 
+Q\+Action $\ast$ \hyperlink{classGUI_1_1MainWindow_a477f9c21e430c9db3664df4ac4a5bec9}{action\+\_\+save\+As}
+\item 
+Q\+Action $\ast$ \hyperlink{classGUI_1_1MainWindow_acbc3dfeebc15f93a7808e5a1d7a44492}{action\+\_\+load\+Project}
+\item 
+Q\+Action $\ast$ \hyperlink{classGUI_1_1MainWindow_a84cc9a3cf59e2fdd3196da97a5faa717}{action\+\_\+save\+Project}
+\item 
+Q\+Action $\ast$ \hyperlink{classGUI_1_1MainWindow_a76bce8131d4330008b0f40cf8e8b97d6}{action\+\_\+redo}
+\item 
+Q\+Tab\+Widget $\ast$ \hyperlink{classGUI_1_1MainWindow_aaeb8f9f47ba45615e767b2a7f7b009d9}{tab\+\_\+tabs}
+\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 This class is the main window that is shown. 
 
 \subsection{Constructor \& Destructor Documentation}
-\hypertarget{classGUI_1_1MainWindow_a6dcf16c443f94075bbc29f51512efec9}{}\index{G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}!Main\+Window@{Main\+Window}}
+\hypertarget{classGUI_1_1MainWindow_aafaf72c52e0a059620d80026737865b4}{}\index{G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}!Main\+Window@{Main\+Window}}
 \index{Main\+Window@{Main\+Window}!G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}}
 \subsubsection[{Main\+Window}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Main\+Window} (
 \begin{DoxyParamCaption}
-\item[{{\bf G\+U\+I\+::\+Player\+::\+Q\+Widget} $\ast$}]{parent}
+\item[{{\bf G\+U\+I\+::\+Q\+Widget} $\ast$}]{parent}
 \end{DoxyParamCaption}
-)}\label{classGUI_1_1MainWindow_a6dcf16c443f94075bbc29f51512efec9}
+)}\label{classGUI_1_1MainWindow_aafaf72c52e0a059620d80026737865b4}
 
 
 Constructor. 
@@ -36,6 +90,35 @@ Constructor.
 
 
 \subsection{Member Function Documentation}
+\hypertarget{classGUI_1_1MainWindow_ac3ca31ff0047daecf8bbe393a15e940c}{}\index{G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}!connect\+Actions@{connect\+Actions}}
+\index{connect\+Actions@{connect\+Actions}!G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}}
+\subsubsection[{connect\+Actions}]{\setlength{\rightskip}{0pt plus 5cm}void connect\+Actions (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1MainWindow_ac3ca31ff0047daecf8bbe393a15e940c}
+
+
+connect actions in the menu\+Bars to the slots in this class 
+
+\hypertarget{classGUI_1_1MainWindow_a5421da114e56e8856aa455426c24f805}{}\index{G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}!create\+Menu\+Bar@{create\+Menu\+Bar}}
+\index{create\+Menu\+Bar@{create\+Menu\+Bar}!G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}}
+\subsubsection[{create\+Menu\+Bar}]{\setlength{\rightskip}{0pt plus 5cm}void create\+Menu\+Bar (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1MainWindow_a5421da114e56e8856aa455426c24f805}
+\hypertarget{classGUI_1_1MainWindow_aa72182c9a958af0e87b65ab7bdba0035}{}\index{G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}!create\+Ui@{create\+Ui}}
+\index{create\+Ui@{create\+Ui}!G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}}
+\subsubsection[{create\+Ui}]{\setlength{\rightskip}{0pt plus 5cm}void create\+Ui (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1MainWindow_aa72182c9a958af0e87b65ab7bdba0035}
+
+
+creates the U\+I 
+
 \hypertarget{classGUI_1_1MainWindow_ae085d92d1c5bec057a813bd86bc20fa4}{}\index{G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}!get\+Memento@{get\+Memento}}
 \index{get\+Memento@{get\+Memento}!G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}}
 \subsubsection[{get\+Memento}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Memento\+::\+Main\+Window\+Memento} get\+Memento (
@@ -64,6 +147,39 @@ Returns the project that is currently loaded.
 \begin{DoxyReturn}{Returns}
 The currently loaded project.
 \end{DoxyReturn}
+\hypertarget{classGUI_1_1MainWindow_adb575720306afca2c0e0c5930467321b}{}\index{G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}!load\+Project@{load\+Project}}
+\index{load\+Project@{load\+Project}!G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}}
+\subsubsection[{load\+Project}]{\setlength{\rightskip}{0pt plus 5cm}void load\+Project (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1MainWindow_adb575720306afca2c0e0c5930467321b}
+
+
+Slot\+:connected with action\+\_\+load\+Project.\+triggered() opens Q\+File\+Dialog and opens project in the selected file if possible 
+
+\hypertarget{classGUI_1_1MainWindow_ae128dfd6fbafee0370f9912e4112f054}{}\index{G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}!new\+Project@{new\+Project}}
+\index{new\+Project@{new\+Project}!G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}}
+\subsubsection[{new\+Project}]{\setlength{\rightskip}{0pt plus 5cm}void new\+Project (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1MainWindow_ae128dfd6fbafee0370f9912e4112f054}
+
+
+slot creates new project, removes existing one 
+
+\hypertarget{classGUI_1_1MainWindow_a93c48d6ed036e1a381be53ac67643284}{}\index{G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}!redo@{redo}}
+\index{redo@{redo}!G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}}
+\subsubsection[{redo}]{\setlength{\rightskip}{0pt plus 5cm}void redo (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1MainWindow_a93c48d6ed036e1a381be53ac67643284}
+
+
+Slot\+:connected with action\+\_\+redo.\+triggered() redo action if undo has been used 
+
 \hypertarget{classGUI_1_1MainWindow_a72db05f1394dbeeb2a76b74d8f65917b}{}\index{G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}!restore@{restore}}
 \index{restore@{restore}!G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}}
 \subsubsection[{restore}]{\setlength{\rightskip}{0pt plus 5cm}void restore (
@@ -80,9 +196,72 @@ Restores the window based on the memento.
 {\em memento} & The memento which contains the state of the window.\\
 \hline
 \end{DoxyParams}
+\hypertarget{classGUI_1_1MainWindow_a65005f9a81d8c7396e2583a80a1f70bf}{}\index{G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}!save\+As@{save\+As}}
+\index{save\+As@{save\+As}!G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}}
+\subsubsection[{save\+As}]{\setlength{\rightskip}{0pt plus 5cm}void save\+As (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1MainWindow_a65005f9a81d8c7396e2583a80a1f70bf}
+
+
+Slot\+:connected with action\+\_\+save\+As.\+triggered() Opens Q\+File\+Dialog and saves project in selected file 
+
+\hypertarget{classGUI_1_1MainWindow_a5de2650de39370a5fe89f8d918966276}{}\index{G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}!save\+Project@{save\+Project}}
+\index{save\+Project@{save\+Project}!G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}}
+\subsubsection[{save\+Project}]{\setlength{\rightskip}{0pt plus 5cm}void save\+Project (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1MainWindow_a5de2650de39370a5fe89f8d918966276}
+
+
+Slot\+:connected with action\+\_\+save\+Project.\+triggered() opens Q\+File\+Dialog and saves project in selected file 
+
+\hypertarget{classGUI_1_1MainWindow_a0e1e7804a53f6d62efc72c9bdbec8571}{}\index{G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}!undo@{undo}}
+\index{undo@{undo}!G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}}
+\subsubsection[{undo}]{\setlength{\rightskip}{0pt plus 5cm}void undo (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1MainWindow_a0e1e7804a53f6d62efc72c9bdbec8571}
+
+
+Slot\+:connected with action\+\_\+undo.\+triggered() undo last action if possible 
+
 
 
 \subsection{Field Documentation}
+\hypertarget{classGUI_1_1MainWindow_acbc3dfeebc15f93a7808e5a1d7a44492}{}\index{G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}!action\+\_\+load\+Project@{action\+\_\+load\+Project}}
+\index{action\+\_\+load\+Project@{action\+\_\+load\+Project}!G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}}
+\subsubsection[{action\+\_\+load\+Project}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Action$\ast$ action\+\_\+load\+Project\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1MainWindow_acbc3dfeebc15f93a7808e5a1d7a44492}
+\hypertarget{classGUI_1_1MainWindow_a5cf13e75b97a8a55f79a7f1a5dfeccdd}{}\index{G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}!action\+\_\+new\+Project@{action\+\_\+new\+Project}}
+\index{action\+\_\+new\+Project@{action\+\_\+new\+Project}!G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}}
+\subsubsection[{action\+\_\+new\+Project}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Action$\ast$ action\+\_\+new\+Project\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1MainWindow_a5cf13e75b97a8a55f79a7f1a5dfeccdd}
+\hypertarget{classGUI_1_1MainWindow_a76bce8131d4330008b0f40cf8e8b97d6}{}\index{G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}!action\+\_\+redo@{action\+\_\+redo}}
+\index{action\+\_\+redo@{action\+\_\+redo}!G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}}
+\subsubsection[{action\+\_\+redo}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Action$\ast$ action\+\_\+redo\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1MainWindow_a76bce8131d4330008b0f40cf8e8b97d6}
+\hypertarget{classGUI_1_1MainWindow_a477f9c21e430c9db3664df4ac4a5bec9}{}\index{G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}!action\+\_\+save\+As@{action\+\_\+save\+As}}
+\index{action\+\_\+save\+As@{action\+\_\+save\+As}!G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}}
+\subsubsection[{action\+\_\+save\+As}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Action$\ast$ action\+\_\+save\+As\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1MainWindow_a477f9c21e430c9db3664df4ac4a5bec9}
+\hypertarget{classGUI_1_1MainWindow_a84cc9a3cf59e2fdd3196da97a5faa717}{}\index{G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}!action\+\_\+save\+Project@{action\+\_\+save\+Project}}
+\index{action\+\_\+save\+Project@{action\+\_\+save\+Project}!G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}}
+\subsubsection[{action\+\_\+save\+Project}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Action$\ast$ action\+\_\+save\+Project\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1MainWindow_a84cc9a3cf59e2fdd3196da97a5faa717}
+\hypertarget{classGUI_1_1MainWindow_af4ed54c2c44d393a4c854ca626103f72}{}\index{G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}!action\+\_\+undo@{action\+\_\+undo}}
+\index{action\+\_\+undo@{action\+\_\+undo}!G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}}
+\subsubsection[{action\+\_\+undo}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Action$\ast$ action\+\_\+undo\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1MainWindow_af4ed54c2c44d393a4c854ca626103f72}
 \hypertarget{classGUI_1_1MainWindow_a870e96d05ee2e8c616461952d01ac408}{}\index{G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}!loaded\+Project@{loaded\+Project}}
 \index{loaded\+Project@{loaded\+Project}!G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}}
 \subsubsection[{loaded\+Project}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Model\+::\+Project}$\ast$ loaded\+Project}\label{classGUI_1_1MainWindow_a870e96d05ee2e8c616461952d01ac408}
+\hypertarget{classGUI_1_1MainWindow_a5beda12aa8191deaad381531b99992f8}{}\index{G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}!menubar\+\_\+edit@{menubar\+\_\+edit}}
+\index{menubar\+\_\+edit@{menubar\+\_\+edit}!G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}}
+\subsubsection[{menubar\+\_\+edit}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Menu\+Bar$\ast$ menubar\+\_\+edit\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1MainWindow_a5beda12aa8191deaad381531b99992f8}
+\hypertarget{classGUI_1_1MainWindow_a3a7fd0d9d9fcaf5f23b620ecc1d868a2}{}\index{G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}!menubar\+\_\+project@{menubar\+\_\+project}}
+\index{menubar\+\_\+project@{menubar\+\_\+project}!G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}}
+\subsubsection[{menubar\+\_\+project}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Menu\+Bar$\ast$ menubar\+\_\+project\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1MainWindow_a3a7fd0d9d9fcaf5f23b620ecc1d868a2}
+\hypertarget{classGUI_1_1MainWindow_ab12bbb712331d72b3972876494b01d43}{}\index{G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}!statusbar@{statusbar}}
+\index{statusbar@{statusbar}!G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}}
+\subsubsection[{statusbar}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Status\+Bar$\ast$ statusbar\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1MainWindow_ab12bbb712331d72b3972876494b01d43}
+\hypertarget{classGUI_1_1MainWindow_aaeb8f9f47ba45615e767b2a7f7b009d9}{}\index{G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}!tab\+\_\+tabs@{tab\+\_\+tabs}}
+\index{tab\+\_\+tabs@{tab\+\_\+tabs}!G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}}
+\subsubsection[{tab\+\_\+tabs}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Tab\+Widget$\ast$ tab\+\_\+tabs\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1MainWindow_aaeb8f9f47ba45615e767b2a7f7b009d9}

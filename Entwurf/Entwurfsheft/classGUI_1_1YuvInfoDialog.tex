@@ -1,0 +1,228 @@
+\hypertarget{classGUI_1_1YuvInfoDialog}{}\section{Yuv\+Info\+Dialog Class Reference}
+\label{classGUI_1_1YuvInfoDialog}\index{Yuv\+Info\+Dialog@{Yuv\+Info\+Dialog}}
+
+
+Inheritance diagram for Yuv\+Info\+Dialog\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=158pt]{classGUI_1_1YuvInfoDialog__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classGUI_1_1YuvInfoDialog_a0c5446ed8ab005637f6b79bf5ccfc920}{Yuv\+Info\+Dialog} (\hyperlink{classGUI_1_1QWidget}{G\+U\+I\+::\+Q\+Widget} $\ast$parent)
+\item 
+int \hyperlink{classGUI_1_1YuvInfoDialog_a519ad5c0664b9de28c1a6d9dc77f959d}{get\+Fps} ()
+\item 
+int \hyperlink{classGUI_1_1YuvInfoDialog_a67a0997183f24da19b776d96c1052998}{get\+Width} ()
+\item 
+int \hyperlink{classGUI_1_1YuvInfoDialog_a07efb2a4e9a982688c8bb3c3f21d1092}{get\+Height} ()
+\item 
+\hyperlink{namespaceUtility_a56a83bf6847f4801f4205eb4be237ccf}{Utility\+::\+Compression} \hyperlink{classGUI_1_1YuvInfoDialog_a000ce702632feab3b3c87d4416f0b3d3}{get\+Compression} ()
+\item 
+\hyperlink{namespaceGUI_a52432774abcaf0c8c417ae77739fccfc}{G\+U\+I\+::\+Pixel\+Sheme} \hyperlink{classGUI_1_1YuvInfoDialog_a30c56f1f9dca274af19da20bc5471ce7}{get\+Pixel\+Sheme} ()
+\item 
+bool \hyperlink{classGUI_1_1YuvInfoDialog_a6677ab283cdae9435a6be93d9c3481b2}{was\+Successful} ()
+\item 
+void \hyperlink{classGUI_1_1YuvInfoDialog_a4b148f40a95444d5669406b918ad2f52}{show} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classGUI_1_1YuvInfoDialog_aa72182c9a958af0e87b65ab7bdba0035}{create\+Ui} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Q\+Line\+Edit $\ast$ \hyperlink{classGUI_1_1YuvInfoDialog_abb7c7fbfdec5ce5cd058e808433d14c3}{line\+Edit\+\_\+width}
+\item 
+Q\+Line\+Edit $\ast$ \hyperlink{classGUI_1_1YuvInfoDialog_a973158d8be96622d3779272949acacd4}{line\+Edit\+\_\+height}
+\item 
+Q\+Line\+Edit $\ast$ \hyperlink{classGUI_1_1YuvInfoDialog_a956ff0be70f461ca7b10c0ba7a2ff247}{line\+Edit\+\_\+fps}
+\item 
+\hyperlink{classGUI_1_1QComboBox}{G\+U\+I\+::\+Q\+Combo\+Box} $\ast$ \hyperlink{classGUI_1_1YuvInfoDialog_a34dd7f437a3e09f3a4657b9cd7345076}{combo\+Box\+\_\+pixel\+Sheme}
+\item 
+\hyperlink{classGUI_1_1QComboBox}{G\+U\+I\+::\+Q\+Combo\+Box} $\ast$ \hyperlink{classGUI_1_1YuvInfoDialog_a6b925e5ef707952e563c927e5456b6b8}{combo\+Box\+\_\+compression}
+\item 
+\hyperlink{classGUI_1_1QWidget}{G\+U\+I\+::\+Q\+Widget} $\ast$ \hyperlink{classGUI_1_1YuvInfoDialog_a65d8cf2709a0f533c53d00fe8162c367}{label\+\_\+resolution}
+\item 
+\hyperlink{classGUI_1_1QWidget}{G\+U\+I\+::\+Q\+Widget} $\ast$ \hyperlink{classGUI_1_1YuvInfoDialog_ac83fcca7edcc057f99a9afeafb5dfef9}{label\+\_\+fps}
+\item 
+\hyperlink{classGUI_1_1QWidget}{G\+U\+I\+::\+Q\+Widget} $\ast$ \hyperlink{classGUI_1_1YuvInfoDialog_a14c7a7fc5942bc40510fce4c4a930722}{label\+\_\+compression}
+\item 
+\hyperlink{classGUI_1_1QWidget}{G\+U\+I\+::\+Q\+Widget} $\ast$ \hyperlink{classGUI_1_1YuvInfoDialog_a0a29a71f9272e0ce6a9e4aceb8513257}{label\+\_\+pixel\+Sheme}
+\item 
+Q\+Push\+Button $\ast$ \hyperlink{classGUI_1_1YuvInfoDialog_ac404fa1107dd730776bc91574e8f3a3f}{button\+\_\+ok}
+\item 
+Q\+Push\+Button $\ast$ \hyperlink{classGUI_1_1YuvInfoDialog_ab370378f59e456f6179be2167af82034}{button\+\_\+cancel}
+\item 
+\hyperlink{classGUI_1_1QWidget}{G\+U\+I\+::\+Q\+Widget} $\ast$ \hyperlink{classGUI_1_1YuvInfoDialog_ac095ed51ebccbae706b100b0d7f2e296}{label\+\_\+x}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class is the dialog that gets shown to ask the user for additional information about the yuv file he wants to load. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classGUI_1_1YuvInfoDialog_a0c5446ed8ab005637f6b79bf5ccfc920}{}\index{G\+U\+I\+::\+Yuv\+Info\+Dialog@{G\+U\+I\+::\+Yuv\+Info\+Dialog}!Yuv\+Info\+Dialog@{Yuv\+Info\+Dialog}}
+\index{Yuv\+Info\+Dialog@{Yuv\+Info\+Dialog}!G\+U\+I\+::\+Yuv\+Info\+Dialog@{G\+U\+I\+::\+Yuv\+Info\+Dialog}}
+\subsubsection[{Yuv\+Info\+Dialog}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Yuv\+Info\+Dialog} (
+\begin{DoxyParamCaption}
+\item[{{\bf G\+U\+I\+::\+Q\+Widget} $\ast$}]{parent}
+\end{DoxyParamCaption}
+)}\label{classGUI_1_1YuvInfoDialog_a0c5446ed8ab005637f6b79bf5ccfc920}
+
+
+Constructor. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classGUI_1_1YuvInfoDialog_aa72182c9a958af0e87b65ab7bdba0035}{}\index{G\+U\+I\+::\+Yuv\+Info\+Dialog@{G\+U\+I\+::\+Yuv\+Info\+Dialog}!create\+Ui@{create\+Ui}}
+\index{create\+Ui@{create\+Ui}!G\+U\+I\+::\+Yuv\+Info\+Dialog@{G\+U\+I\+::\+Yuv\+Info\+Dialog}}
+\subsubsection[{create\+Ui}]{\setlength{\rightskip}{0pt plus 5cm}void create\+Ui (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1YuvInfoDialog_aa72182c9a958af0e87b65ab7bdba0035}
+
+
+Creates the gui. 
+
+\hypertarget{classGUI_1_1YuvInfoDialog_a000ce702632feab3b3c87d4416f0b3d3}{}\index{G\+U\+I\+::\+Yuv\+Info\+Dialog@{G\+U\+I\+::\+Yuv\+Info\+Dialog}!get\+Compression@{get\+Compression}}
+\index{get\+Compression@{get\+Compression}!G\+U\+I\+::\+Yuv\+Info\+Dialog@{G\+U\+I\+::\+Yuv\+Info\+Dialog}}
+\subsubsection[{get\+Compression}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Utility\+::\+Compression} get\+Compression (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classGUI_1_1YuvInfoDialog_a000ce702632feab3b3c87d4416f0b3d3}
+
+
+Returns the compression the user entered. 
+
+\begin{DoxyReturn}{Returns}
+The compression.
+\end{DoxyReturn}
+\hypertarget{classGUI_1_1YuvInfoDialog_a519ad5c0664b9de28c1a6d9dc77f959d}{}\index{G\+U\+I\+::\+Yuv\+Info\+Dialog@{G\+U\+I\+::\+Yuv\+Info\+Dialog}!get\+Fps@{get\+Fps}}
+\index{get\+Fps@{get\+Fps}!G\+U\+I\+::\+Yuv\+Info\+Dialog@{G\+U\+I\+::\+Yuv\+Info\+Dialog}}
+\subsubsection[{get\+Fps}]{\setlength{\rightskip}{0pt plus 5cm}int get\+Fps (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classGUI_1_1YuvInfoDialog_a519ad5c0664b9de28c1a6d9dc77f959d}
+
+
+Returns the fps the user entered. 
+
+\begin{DoxyReturn}{Returns}
+The fps.
+\end{DoxyReturn}
+\hypertarget{classGUI_1_1YuvInfoDialog_a07efb2a4e9a982688c8bb3c3f21d1092}{}\index{G\+U\+I\+::\+Yuv\+Info\+Dialog@{G\+U\+I\+::\+Yuv\+Info\+Dialog}!get\+Height@{get\+Height}}
+\index{get\+Height@{get\+Height}!G\+U\+I\+::\+Yuv\+Info\+Dialog@{G\+U\+I\+::\+Yuv\+Info\+Dialog}}
+\subsubsection[{get\+Height}]{\setlength{\rightskip}{0pt plus 5cm}int get\+Height (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classGUI_1_1YuvInfoDialog_a07efb2a4e9a982688c8bb3c3f21d1092}
+
+
+Returns the height the user entered. 
+
+\begin{DoxyReturn}{Returns}
+The height.
+\end{DoxyReturn}
+\hypertarget{classGUI_1_1YuvInfoDialog_a30c56f1f9dca274af19da20bc5471ce7}{}\index{G\+U\+I\+::\+Yuv\+Info\+Dialog@{G\+U\+I\+::\+Yuv\+Info\+Dialog}!get\+Pixel\+Sheme@{get\+Pixel\+Sheme}}
+\index{get\+Pixel\+Sheme@{get\+Pixel\+Sheme}!G\+U\+I\+::\+Yuv\+Info\+Dialog@{G\+U\+I\+::\+Yuv\+Info\+Dialog}}
+\subsubsection[{get\+Pixel\+Sheme}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Pixel\+Sheme} get\+Pixel\+Sheme (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classGUI_1_1YuvInfoDialog_a30c56f1f9dca274af19da20bc5471ce7}
+
+
+Returns the pixelsheme the user entered. 
+
+\begin{DoxyReturn}{Returns}
+The pixelsheme.
+\end{DoxyReturn}
+\hypertarget{classGUI_1_1YuvInfoDialog_a67a0997183f24da19b776d96c1052998}{}\index{G\+U\+I\+::\+Yuv\+Info\+Dialog@{G\+U\+I\+::\+Yuv\+Info\+Dialog}!get\+Width@{get\+Width}}
+\index{get\+Width@{get\+Width}!G\+U\+I\+::\+Yuv\+Info\+Dialog@{G\+U\+I\+::\+Yuv\+Info\+Dialog}}
+\subsubsection[{get\+Width}]{\setlength{\rightskip}{0pt plus 5cm}int get\+Width (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classGUI_1_1YuvInfoDialog_a67a0997183f24da19b776d96c1052998}
+
+
+Returns the width the user entered. 
+
+\begin{DoxyReturn}{Returns}
+The width.
+\end{DoxyReturn}
+\hypertarget{classGUI_1_1YuvInfoDialog_a4b148f40a95444d5669406b918ad2f52}{}\index{G\+U\+I\+::\+Yuv\+Info\+Dialog@{G\+U\+I\+::\+Yuv\+Info\+Dialog}!show@{show}}
+\index{show@{show}!G\+U\+I\+::\+Yuv\+Info\+Dialog@{G\+U\+I\+::\+Yuv\+Info\+Dialog}}
+\subsubsection[{show}]{\setlength{\rightskip}{0pt plus 5cm}void show (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classGUI_1_1YuvInfoDialog_a4b148f40a95444d5669406b918ad2f52}
+
+
+Shows the dialog. 
+
+\hypertarget{classGUI_1_1YuvInfoDialog_a6677ab283cdae9435a6be93d9c3481b2}{}\index{G\+U\+I\+::\+Yuv\+Info\+Dialog@{G\+U\+I\+::\+Yuv\+Info\+Dialog}!was\+Successful@{was\+Successful}}
+\index{was\+Successful@{was\+Successful}!G\+U\+I\+::\+Yuv\+Info\+Dialog@{G\+U\+I\+::\+Yuv\+Info\+Dialog}}
+\subsubsection[{was\+Successful}]{\setlength{\rightskip}{0pt plus 5cm}bool was\+Successful (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classGUI_1_1YuvInfoDialog_a6677ab283cdae9435a6be93d9c3481b2}
+
+
+Whether the user clicked ok or cancel. 
+
+\begin{DoxyReturn}{Returns}
+True if the user clicked ok. false otherwise.
+\end{DoxyReturn}
+
+
+\subsection{Field Documentation}
+\hypertarget{classGUI_1_1YuvInfoDialog_ab370378f59e456f6179be2167af82034}{}\index{G\+U\+I\+::\+Yuv\+Info\+Dialog@{G\+U\+I\+::\+Yuv\+Info\+Dialog}!button\+\_\+cancel@{button\+\_\+cancel}}
+\index{button\+\_\+cancel@{button\+\_\+cancel}!G\+U\+I\+::\+Yuv\+Info\+Dialog@{G\+U\+I\+::\+Yuv\+Info\+Dialog}}
+\subsubsection[{button\+\_\+cancel}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Push\+Button$\ast$ button\+\_\+cancel\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1YuvInfoDialog_ab370378f59e456f6179be2167af82034}
+\hypertarget{classGUI_1_1YuvInfoDialog_ac404fa1107dd730776bc91574e8f3a3f}{}\index{G\+U\+I\+::\+Yuv\+Info\+Dialog@{G\+U\+I\+::\+Yuv\+Info\+Dialog}!button\+\_\+ok@{button\+\_\+ok}}
+\index{button\+\_\+ok@{button\+\_\+ok}!G\+U\+I\+::\+Yuv\+Info\+Dialog@{G\+U\+I\+::\+Yuv\+Info\+Dialog}}
+\subsubsection[{button\+\_\+ok}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Push\+Button$\ast$ button\+\_\+ok\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1YuvInfoDialog_ac404fa1107dd730776bc91574e8f3a3f}
+\hypertarget{classGUI_1_1YuvInfoDialog_a6b925e5ef707952e563c927e5456b6b8}{}\index{G\+U\+I\+::\+Yuv\+Info\+Dialog@{G\+U\+I\+::\+Yuv\+Info\+Dialog}!combo\+Box\+\_\+compression@{combo\+Box\+\_\+compression}}
+\index{combo\+Box\+\_\+compression@{combo\+Box\+\_\+compression}!G\+U\+I\+::\+Yuv\+Info\+Dialog@{G\+U\+I\+::\+Yuv\+Info\+Dialog}}
+\subsubsection[{combo\+Box\+\_\+compression}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Q\+Combo\+Box}$\ast$ combo\+Box\+\_\+compression\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1YuvInfoDialog_a6b925e5ef707952e563c927e5456b6b8}
+\hypertarget{classGUI_1_1YuvInfoDialog_a34dd7f437a3e09f3a4657b9cd7345076}{}\index{G\+U\+I\+::\+Yuv\+Info\+Dialog@{G\+U\+I\+::\+Yuv\+Info\+Dialog}!combo\+Box\+\_\+pixel\+Sheme@{combo\+Box\+\_\+pixel\+Sheme}}
+\index{combo\+Box\+\_\+pixel\+Sheme@{combo\+Box\+\_\+pixel\+Sheme}!G\+U\+I\+::\+Yuv\+Info\+Dialog@{G\+U\+I\+::\+Yuv\+Info\+Dialog}}
+\subsubsection[{combo\+Box\+\_\+pixel\+Sheme}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Q\+Combo\+Box}$\ast$ combo\+Box\+\_\+pixel\+Sheme\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1YuvInfoDialog_a34dd7f437a3e09f3a4657b9cd7345076}
+\hypertarget{classGUI_1_1YuvInfoDialog_a14c7a7fc5942bc40510fce4c4a930722}{}\index{G\+U\+I\+::\+Yuv\+Info\+Dialog@{G\+U\+I\+::\+Yuv\+Info\+Dialog}!label\+\_\+compression@{label\+\_\+compression}}
+\index{label\+\_\+compression@{label\+\_\+compression}!G\+U\+I\+::\+Yuv\+Info\+Dialog@{G\+U\+I\+::\+Yuv\+Info\+Dialog}}
+\subsubsection[{label\+\_\+compression}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Q\+Widget}$\ast$ label\+\_\+compression\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1YuvInfoDialog_a14c7a7fc5942bc40510fce4c4a930722}
+\hypertarget{classGUI_1_1YuvInfoDialog_ac83fcca7edcc057f99a9afeafb5dfef9}{}\index{G\+U\+I\+::\+Yuv\+Info\+Dialog@{G\+U\+I\+::\+Yuv\+Info\+Dialog}!label\+\_\+fps@{label\+\_\+fps}}
+\index{label\+\_\+fps@{label\+\_\+fps}!G\+U\+I\+::\+Yuv\+Info\+Dialog@{G\+U\+I\+::\+Yuv\+Info\+Dialog}}
+\subsubsection[{label\+\_\+fps}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Q\+Widget}$\ast$ label\+\_\+fps\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1YuvInfoDialog_ac83fcca7edcc057f99a9afeafb5dfef9}
+\hypertarget{classGUI_1_1YuvInfoDialog_a0a29a71f9272e0ce6a9e4aceb8513257}{}\index{G\+U\+I\+::\+Yuv\+Info\+Dialog@{G\+U\+I\+::\+Yuv\+Info\+Dialog}!label\+\_\+pixel\+Sheme@{label\+\_\+pixel\+Sheme}}
+\index{label\+\_\+pixel\+Sheme@{label\+\_\+pixel\+Sheme}!G\+U\+I\+::\+Yuv\+Info\+Dialog@{G\+U\+I\+::\+Yuv\+Info\+Dialog}}
+\subsubsection[{label\+\_\+pixel\+Sheme}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Q\+Widget}$\ast$ label\+\_\+pixel\+Sheme\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1YuvInfoDialog_a0a29a71f9272e0ce6a9e4aceb8513257}
+\hypertarget{classGUI_1_1YuvInfoDialog_a65d8cf2709a0f533c53d00fe8162c367}{}\index{G\+U\+I\+::\+Yuv\+Info\+Dialog@{G\+U\+I\+::\+Yuv\+Info\+Dialog}!label\+\_\+resolution@{label\+\_\+resolution}}
+\index{label\+\_\+resolution@{label\+\_\+resolution}!G\+U\+I\+::\+Yuv\+Info\+Dialog@{G\+U\+I\+::\+Yuv\+Info\+Dialog}}
+\subsubsection[{label\+\_\+resolution}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Q\+Widget}$\ast$ label\+\_\+resolution\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1YuvInfoDialog_a65d8cf2709a0f533c53d00fe8162c367}
+\hypertarget{classGUI_1_1YuvInfoDialog_ac095ed51ebccbae706b100b0d7f2e296}{}\index{G\+U\+I\+::\+Yuv\+Info\+Dialog@{G\+U\+I\+::\+Yuv\+Info\+Dialog}!label\+\_\+x@{label\+\_\+x}}
+\index{label\+\_\+x@{label\+\_\+x}!G\+U\+I\+::\+Yuv\+Info\+Dialog@{G\+U\+I\+::\+Yuv\+Info\+Dialog}}
+\subsubsection[{label\+\_\+x}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Q\+Widget}$\ast$ label\+\_\+x\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1YuvInfoDialog_ac095ed51ebccbae706b100b0d7f2e296}
+\hypertarget{classGUI_1_1YuvInfoDialog_a956ff0be70f461ca7b10c0ba7a2ff247}{}\index{G\+U\+I\+::\+Yuv\+Info\+Dialog@{G\+U\+I\+::\+Yuv\+Info\+Dialog}!line\+Edit\+\_\+fps@{line\+Edit\+\_\+fps}}
+\index{line\+Edit\+\_\+fps@{line\+Edit\+\_\+fps}!G\+U\+I\+::\+Yuv\+Info\+Dialog@{G\+U\+I\+::\+Yuv\+Info\+Dialog}}
+\subsubsection[{line\+Edit\+\_\+fps}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Line\+Edit$\ast$ line\+Edit\+\_\+fps\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1YuvInfoDialog_a956ff0be70f461ca7b10c0ba7a2ff247}
+\hypertarget{classGUI_1_1YuvInfoDialog_a973158d8be96622d3779272949acacd4}{}\index{G\+U\+I\+::\+Yuv\+Info\+Dialog@{G\+U\+I\+::\+Yuv\+Info\+Dialog}!line\+Edit\+\_\+height@{line\+Edit\+\_\+height}}
+\index{line\+Edit\+\_\+height@{line\+Edit\+\_\+height}!G\+U\+I\+::\+Yuv\+Info\+Dialog@{G\+U\+I\+::\+Yuv\+Info\+Dialog}}
+\subsubsection[{line\+Edit\+\_\+height}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Line\+Edit$\ast$ line\+Edit\+\_\+height\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1YuvInfoDialog_a973158d8be96622d3779272949acacd4}
+\hypertarget{classGUI_1_1YuvInfoDialog_abb7c7fbfdec5ce5cd058e808433d14c3}{}\index{G\+U\+I\+::\+Yuv\+Info\+Dialog@{G\+U\+I\+::\+Yuv\+Info\+Dialog}!line\+Edit\+\_\+width@{line\+Edit\+\_\+width}}
+\index{line\+Edit\+\_\+width@{line\+Edit\+\_\+width}!G\+U\+I\+::\+Yuv\+Info\+Dialog@{G\+U\+I\+::\+Yuv\+Info\+Dialog}}
+\subsubsection[{line\+Edit\+\_\+width}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Line\+Edit$\ast$ line\+Edit\+\_\+width\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1YuvInfoDialog_abb7c7fbfdec5ce5cd058e808433d14c3}

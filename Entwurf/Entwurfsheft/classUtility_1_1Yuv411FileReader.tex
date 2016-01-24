@@ -1,16 +1,42 @@
 \hypertarget{classUtility_1_1Yuv411FileReader}{}\section{Yuv411\+File\+Reader Class Reference}
 \label{classUtility_1_1Yuv411FileReader}\index{Yuv411\+File\+Reader@{Yuv411\+File\+Reader}}
+
+
+Inheritance diagram for Yuv411\+File\+Reader\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=177pt]{classUtility_1_1Yuv411FileReader__inherit__graph}
+\end{center}
+\end{figure}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classUtility_1_1Yuv411FileReader_af4e7eb4bd4929f14e6334ae7ac9dad6f}{Yuv411\+File\+Reader} (Q\+String filename, int \hyperlink{classUtility_1_1YuvFileReader_a2474a5474cbff19523a51eb1de01cda4}{width}, int \hyperlink{classUtility_1_1YuvFileReader_ad12fc34ce789bce6c8a05d8a17138534}{height}, \hyperlink{namespaceUtility_a56a83bf6847f4801f4205eb4be237ccf}{Utility\+::\+Compression} compression)
+\hyperlink{classUtility_1_1Yuv411FileReader_af4e7eb4bd4929f14e6334ae7ac9dad6f}{Yuv411\+File\+Reader} (Q\+String filename, int \hyperlink{classUtility_1_1YuvFileReader_a2474a5474cbff19523a51eb1de01cda4}{width}, int \hyperlink{classUtility_1_1YuvFileReader_ad12fc34ce789bce6c8a05d8a17138534}{height}, \hyperlink{namespaceUtility_a56a83bf6847f4801f4205eb4be237ccf}{Utility\+::\+Compression} \hyperlink{classUtility_1_1Yuv411FileReader_aa484ffcb0c9f4d4dea91c6fae73f1fda}{compression})
 \item 
-unique\+\_\+ptr$<$ \hyperlink{classGUI_1_1Player_1_1Video}{G\+U\+I\+::\+Player\+::\+Video} $>$ \hyperlink{classUtility_1_1Yuv411FileReader_a9dd03728ebb2e883f5cac8cb357fcd0e}{read} ()
+unique\+\_\+ptr$<$ \hyperlink{classGUI_1_1Video}{G\+U\+I\+::\+Video} $>$ \hyperlink{classUtility_1_1Yuv411FileReader_ac6e45d1a396bdb81c8c8174bf5cc41c6}{read} ()
 \end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 static std\+::vector$<$ Q\+Rgb $>$ \hyperlink{classUtility_1_1Yuv411FileReader_af6d2712d6e14bd1bb6cd0b7658ad71fb}{yuv411\+To\+Rgb888} (Yuv11\+Vector vector)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+unique\+\_\+ptr$<$ Q\+Image $>$ \hyperlink{classUtility_1_1Yuv411FileReader_a22ed1cd234a6f19e4108129f99faa4ad}{parse\+Next\+Frame} ()
+\item 
+\hyperlink{classUtility_1_1Yuv411Vector}{Utility\+::\+Yuv411\+Vector} \hyperlink{classUtility_1_1Yuv411FileReader_a5839a300485e76fa27cd9cf17f157bd3}{read\+Next\+Vector\+Packed} ()
+\item 
+\hyperlink{classUtility_1_1Yuv411Vector}{Utility\+::\+Yuv411\+Vector} \hyperlink{classUtility_1_1Yuv411FileReader_ae4778b06d609c73ddb55f1b8fc73252c}{read\+Next\+Vector\+Planar} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classUtility_1_1Yuv411FileReader_a401e942526aac47cef94f478182486e7}{position}
+\item 
+\hyperlink{namespaceUtility_a56a83bf6847f4801f4205eb4be237ccf}{Utility\+::\+Compression} \hyperlink{classUtility_1_1Yuv411FileReader_aa484ffcb0c9f4d4dea91c6fae73f1fda}{compression}
 \end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
 
@@ -47,13 +73,27 @@ Constructor.
 
 
 \subsection{Member Function Documentation}
-\hypertarget{classUtility_1_1Yuv411FileReader_a9dd03728ebb2e883f5cac8cb357fcd0e}{}\index{Utility\+::\+Yuv411\+File\+Reader@{Utility\+::\+Yuv411\+File\+Reader}!read@{read}}
-\index{read@{read}!Utility\+::\+Yuv411\+File\+Reader@{Utility\+::\+Yuv411\+File\+Reader}}
-\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}unique\+\_\+ptr$<$ {\bf G\+U\+I\+::\+Player\+::\+Video} $>$ read (
+\hypertarget{classUtility_1_1Yuv411FileReader_a22ed1cd234a6f19e4108129f99faa4ad}{}\index{Utility\+::\+Yuv411\+File\+Reader@{Utility\+::\+Yuv411\+File\+Reader}!parse\+Next\+Frame@{parse\+Next\+Frame}}
+\index{parse\+Next\+Frame@{parse\+Next\+Frame}!Utility\+::\+Yuv411\+File\+Reader@{Utility\+::\+Yuv411\+File\+Reader}}
+\subsubsection[{parse\+Next\+Frame}]{\setlength{\rightskip}{0pt plus 5cm}unique\+\_\+ptr$<$ Q\+Image $>$ parse\+Next\+Frame (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classUtility_1_1Yuv411FileReader_a9dd03728ebb2e883f5cac8cb357fcd0e}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classUtility_1_1Yuv411FileReader_a22ed1cd234a6f19e4108129f99faa4ad}
+
+
+Parses the next frame. 
+
+\begin{DoxyReturn}{Returns}
+The parsed frame.
+\end{DoxyReturn}
+\hypertarget{classUtility_1_1Yuv411FileReader_ac6e45d1a396bdb81c8c8174bf5cc41c6}{}\index{Utility\+::\+Yuv411\+File\+Reader@{Utility\+::\+Yuv411\+File\+Reader}!read@{read}}
+\index{read@{read}!Utility\+::\+Yuv411\+File\+Reader@{Utility\+::\+Yuv411\+File\+Reader}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}unique\+\_\+ptr$<$ {\bf G\+U\+I\+::\+Video} $>$ read (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classUtility_1_1Yuv411FileReader_ac6e45d1a396bdb81c8c8174bf5cc41c6}
 
 
 Reads the file in. 
@@ -63,8 +103,36 @@ The complete video.
 \end{DoxyReturn}
 
 
-Implements \hyperlink{classUtility_1_1YuvFileReader_abc1ed29027875586a65ee627201343d4}{Yuv\+File\+Reader}.
+Implements \hyperlink{classUtility_1_1YuvFileReader_a9f6febb7a2fd1e1313f41c516d989bd1}{Yuv\+File\+Reader}.
 
+\hypertarget{classUtility_1_1Yuv411FileReader_a5839a300485e76fa27cd9cf17f157bd3}{}\index{Utility\+::\+Yuv411\+File\+Reader@{Utility\+::\+Yuv411\+File\+Reader}!read\+Next\+Vector\+Packed@{read\+Next\+Vector\+Packed}}
+\index{read\+Next\+Vector\+Packed@{read\+Next\+Vector\+Packed}!Utility\+::\+Yuv411\+File\+Reader@{Utility\+::\+Yuv411\+File\+Reader}}
+\subsubsection[{read\+Next\+Vector\+Packed}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Utility\+::\+Yuv411\+Vector} read\+Next\+Vector\+Packed (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classUtility_1_1Yuv411FileReader_a5839a300485e76fa27cd9cf17f157bd3}
+
+
+Reads the next vector from a packed file. 
+
+\begin{DoxyReturn}{Returns}
+The new vector.
+\end{DoxyReturn}
+\hypertarget{classUtility_1_1Yuv411FileReader_ae4778b06d609c73ddb55f1b8fc73252c}{}\index{Utility\+::\+Yuv411\+File\+Reader@{Utility\+::\+Yuv411\+File\+Reader}!read\+Next\+Vector\+Planar@{read\+Next\+Vector\+Planar}}
+\index{read\+Next\+Vector\+Planar@{read\+Next\+Vector\+Planar}!Utility\+::\+Yuv411\+File\+Reader@{Utility\+::\+Yuv411\+File\+Reader}}
+\subsubsection[{read\+Next\+Vector\+Planar}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Utility\+::\+Yuv411\+Vector} read\+Next\+Vector\+Planar (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classUtility_1_1Yuv411FileReader_ae4778b06d609c73ddb55f1b8fc73252c}
+
+
+Reads the next vector from a planar file. 
+
+\begin{DoxyReturn}{Returns}
+The new vector.
+\end{DoxyReturn}
 \hypertarget{classUtility_1_1Yuv411FileReader_af6d2712d6e14bd1bb6cd0b7658ad71fb}{}\index{Utility\+::\+Yuv411\+File\+Reader@{Utility\+::\+Yuv411\+File\+Reader}!yuv411\+To\+Rgb888@{yuv411\+To\+Rgb888}}
 \index{yuv411\+To\+Rgb888@{yuv411\+To\+Rgb888}!Utility\+::\+Yuv411\+File\+Reader@{Utility\+::\+Yuv411\+File\+Reader}}
 \subsubsection[{yuv411\+To\+Rgb888}]{\setlength{\rightskip}{0pt plus 5cm}static std\+::vector$<$Q\+Rgb$>$ yuv411\+To\+Rgb888 (
@@ -84,3 +152,12 @@ Converts a \hyperlink{classUtility_1_1Yuv411Vector}{Yuv411\+Vector} to the corre
 \begin{DoxyReturn}{Returns}
 The computed rgb888 pixels.
 \end{DoxyReturn}
+
+
+\subsection{Field Documentation}
+\hypertarget{classUtility_1_1Yuv411FileReader_aa484ffcb0c9f4d4dea91c6fae73f1fda}{}\index{Utility\+::\+Yuv411\+File\+Reader@{Utility\+::\+Yuv411\+File\+Reader}!compression@{compression}}
+\index{compression@{compression}!Utility\+::\+Yuv411\+File\+Reader@{Utility\+::\+Yuv411\+File\+Reader}}
+\subsubsection[{compression}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Utility\+::\+Compression} compression\hspace{0.3cm}{\ttfamily [private]}}\label{classUtility_1_1Yuv411FileReader_aa484ffcb0c9f4d4dea91c6fae73f1fda}
+\hypertarget{classUtility_1_1Yuv411FileReader_a401e942526aac47cef94f478182486e7}{}\index{Utility\+::\+Yuv411\+File\+Reader@{Utility\+::\+Yuv411\+File\+Reader}!position@{position}}
+\index{position@{position}!Utility\+::\+Yuv411\+File\+Reader@{Utility\+::\+Yuv411\+File\+Reader}}
+\subsubsection[{position}]{\setlength{\rightskip}{0pt plus 5cm}int position\hspace{0.3cm}{\ttfamily [private]}}\label{classUtility_1_1Yuv411FileReader_a401e942526aac47cef94f478182486e7}

@@ -1,9 +1,19 @@
 \hypertarget{classGUI_1_1AnalysisTab}{}\section{Analysis\+Tab Class Reference}
 \label{classGUI_1_1AnalysisTab}\index{Analysis\+Tab@{Analysis\+Tab}}
+
+
+Inheritance diagram for Analysis\+Tab\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=151pt]{classGUI_1_1AnalysisTab__inherit__graph}
+\end{center}
+\end{figure}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classGUI_1_1AnalysisTab_ad7387c7350ed1011bdbf3f88e44b19ff}{Analysis\+Tab} (\hyperlink{classGUI_1_1Player_1_1QWidget}{G\+U\+I\+::\+Player\+::\+Q\+Widget} $\ast$parent)
+\hyperlink{classGUI_1_1AnalysisTab_a34918b6b8bf24eff714545d40bc59090}{Analysis\+Tab} (\hyperlink{classGUI_1_1QWidget}{G\+U\+I\+::\+Q\+Widget} $\ast$parent)
 \item 
 \hyperlink{classMemento_1_1AnalysisTabMemento}{Memento\+::\+Analysis\+Tab\+Memento} \hyperlink{classGUI_1_1AnalysisTab_ad452524ed628a2eba1f167f79469b829}{get\+Memento} ()
 \item 
@@ -16,7 +26,47 @@ void \hyperlink{classGUI_1_1AnalysisTab_ae01a11c0a081e873c992ebb245295903}{set\+
 \item 
 \hyperlink{classUndoRedo_1_1LoadAnalysisVideo}{Undo\+Redo\+::\+Load\+Analysis\+Video} $\ast$ \hyperlink{classGUI_1_1AnalysisTab_a3ababc5048f673abd931e7b98eaf0f99}{ana\+Tab}
 \item 
-\hyperlink{classGUI_1_1Player_1_1FrameView}{G\+U\+I\+::\+Player\+::\+Frame\+View} $\ast$ \hyperlink{classGUI_1_1AnalysisTab_ad1a5ead95d905d9ec387ee6c95665c38}{raw\+Video\+View}
+\hyperlink{classGUI_1_1FrameView}{G\+U\+I\+::\+Frame\+View} $\ast$ \hyperlink{classGUI_1_1AnalysisTab_a1f4ef1f929a95b39d9446910d47cd32a}{raw\+Video\+View}
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classGUI_1_1AnalysisTab_ae89926cdddcb35828531b826e6caac13}{analyse\+Typ\+Changed} (int index)
+\item 
+void \hyperlink{classGUI_1_1AnalysisTab_aa7983a33bb5717a628f2dd72a6f36405}{add\+Video} ()
+\item 
+void \hyperlink{classGUI_1_1AnalysisTab_afb18c20ecdc5393c31167dd5003eee21}{load\+Raw\+Video} ()
+\item 
+void \hyperlink{classGUI_1_1AnalysisTab_a5c087450ee93776fd121b0fd6af473e6}{save\+Results} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Q\+Push\+Button $\ast$ \hyperlink{classGUI_1_1AnalysisTab_ac65ab223be901b07d3fb4ae0acf5f80f}{button\+\_\+save}
+\item 
+\hyperlink{classGUI_1_1QComboBox}{G\+U\+I\+::\+Q\+Combo\+Box} $\ast$ \hyperlink{classGUI_1_1AnalysisTab_a43dfb01359987ba27d34f6b0df4d730b}{combo\+Box\+\_\+analyse\+Typ}
+\item 
+Q\+Scroll\+Area $\ast$ \hyperlink{classGUI_1_1AnalysisTab_ac3a6aba72f0b920721f7b343fc52365d}{scroll\+Area\+\_\+analyse\+Videos}
+\item 
+Q\+Label $\ast$ \hyperlink{classGUI_1_1AnalysisTab_a0b0ef192a361769df582531bb748351f}{label\+\_\+raw\+Video}
+\item 
+Q\+Push\+Button $\ast$ \hyperlink{classGUI_1_1AnalysisTab_a90d6c396da735f1b44c56f86757da47e}{button\+\_\+add\+Raw\+Video}
+\item 
+Q\+Tab\+Widget $\ast$ \hyperlink{classGUI_1_1AnalysisTab_a4561738d42b83e7ac0bc4d9dd0672a2a}{tab\+\_\+properties}
+\item 
+Q\+Push\+Button $\ast$ \hyperlink{classGUI_1_1AnalysisTab_aea18698c81906e3048fb495952795dfc}{button\+\_\+add\+Video}
+\item 
+\hyperlink{classGUI_1_1VideoPlayer}{G\+U\+I\+::\+Video\+Player} $\ast$ \hyperlink{classGUI_1_1AnalysisTab_a649e16c560960a5b48ca2ec6bc1a7232}{player}
+\item 
+\hyperlink{classGUI_1_1PlayerControlPanel}{G\+U\+I\+::\+Player\+Control\+Panel} $\ast$ \hyperlink{classGUI_1_1AnalysisTab_a9cd8ff4f4ac3d1891c3b515ef1425d5a}{control\+Panel}
+\item 
+\hyperlink{classGUI_1_1Timer}{G\+U\+I\+::\+Timer} $\ast$ \hyperlink{classGUI_1_1AnalysisTab_ae542bcf9f3c84dd68282c029f3c09bb9}{player\+Timer}
+\item 
+\hyperlink{classGUI_1_1AnalysisBoxContainer}{G\+U\+I\+::\+Analysis\+Box\+Container} $\ast$ \hyperlink{classGUI_1_1AnalysisTab_a445fe0c2433d1fccb776a8968541b4ce}{analysis\+Box\+Container}
+\item 
+\hyperlink{classModel_1_1YuvVideo}{Model\+::\+Yuv\+Video} $\ast$ \hyperlink{classGUI_1_1AnalysisTab_a095285c6e168db68548acccc569736ed}{raw\+Video}
+\item 
+\hyperlink{classGUI_1_1GlobalControlPanel}{G\+U\+I\+::\+Global\+Control\+Panel} $\ast$ \hyperlink{classGUI_1_1AnalysisTab_a81bde05bdc9e3f7afd48a05d2fb4e2ec}{global\+Control\+Panel}
 \end{DoxyCompactItemize}
 
 
@@ -24,13 +74,13 @@ void \hyperlink{classGUI_1_1AnalysisTab_ae01a11c0a081e873c992ebb245295903}{set\+
 The tab that shows videos and analyses them. 
 
 \subsection{Constructor \& Destructor Documentation}
-\hypertarget{classGUI_1_1AnalysisTab_ad7387c7350ed1011bdbf3f88e44b19ff}{}\index{G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}!Analysis\+Tab@{Analysis\+Tab}}
+\hypertarget{classGUI_1_1AnalysisTab_a34918b6b8bf24eff714545d40bc59090}{}\index{G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}!Analysis\+Tab@{Analysis\+Tab}}
 \index{Analysis\+Tab@{Analysis\+Tab}!G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}}
 \subsubsection[{Analysis\+Tab}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Analysis\+Tab} (
 \begin{DoxyParamCaption}
-\item[{{\bf G\+U\+I\+::\+Player\+::\+Q\+Widget} $\ast$}]{parent}
+\item[{{\bf G\+U\+I\+::\+Q\+Widget} $\ast$}]{parent}
 \end{DoxyParamCaption}
-)}\label{classGUI_1_1AnalysisTab_ad7387c7350ed1011bdbf3f88e44b19ff}
+)}\label{classGUI_1_1AnalysisTab_a34918b6b8bf24eff714545d40bc59090}
 
 
 Constructor. 
@@ -38,6 +88,33 @@ Constructor.
 
 
 \subsection{Member Function Documentation}
+\hypertarget{classGUI_1_1AnalysisTab_aa7983a33bb5717a628f2dd72a6f36405}{}\index{G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}!add\+Video@{add\+Video}}
+\index{add\+Video@{add\+Video}!G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}}
+\subsubsection[{add\+Video}]{\setlength{\rightskip}{0pt plus 5cm}void add\+Video (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1AnalysisTab_aa7983a33bb5717a628f2dd72a6f36405}
+
+
+Slot\+: connected to button\+\_\+add\+Video.\+pressed() opens Q\+F\+Ile\+Dialog, and gives string to \hyperlink{classGUI_1_1AnalysisBoxContainer}{Analysis\+Box\+Container} 
+
+\hypertarget{classGUI_1_1AnalysisTab_ae89926cdddcb35828531b826e6caac13}{}\index{G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}!analyse\+Typ\+Changed@{analyse\+Typ\+Changed}}
+\index{analyse\+Typ\+Changed@{analyse\+Typ\+Changed}!G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}}
+\subsubsection[{analyse\+Typ\+Changed}]{\setlength{\rightskip}{0pt plus 5cm}void analyse\+Typ\+Changed (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1AnalysisTab_ae89926cdddcb35828531b826e6caac13}
+
+
+Slot\+: connected to combo\+Box\+\_\+analyse\+Typ.\+current\+Index\+Changed(index \+: int) tells \hyperlink{classGUI_1_1AnalysisBox}{Analysis\+Box} to show\+Macro\+Blocks() or show\+R\+G\+B\+Diff() 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & The new type.\\
+\hline
+\end{DoxyParams}
 \hypertarget{classGUI_1_1AnalysisTab_ad452524ed628a2eba1f167f79469b829}{}\index{G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}!get\+Memento@{get\+Memento}}
 \index{get\+Memento@{get\+Memento}!G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}}
 \subsubsection[{get\+Memento}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Memento\+::\+Analysis\+Tab\+Memento} get\+Memento (
@@ -52,6 +129,17 @@ Creates a memento which contains the state of this tab.
 \begin{DoxyReturn}{Returns}
 The created memento.
 \end{DoxyReturn}
+\hypertarget{classGUI_1_1AnalysisTab_afb18c20ecdc5393c31167dd5003eee21}{}\index{G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}!load\+Raw\+Video@{load\+Raw\+Video}}
+\index{load\+Raw\+Video@{load\+Raw\+Video}!G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}}
+\subsubsection[{load\+Raw\+Video}]{\setlength{\rightskip}{0pt plus 5cm}void load\+Raw\+Video (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1AnalysisTab_afb18c20ecdc5393c31167dd5003eee21}
+
+
+Slot\+: connected to button\+\_\+add\+Raw\+Video.\+pressed() opens \hyperlink{classGUI_1_1YuvFileOpenDialog}{Yuv\+File\+Open\+Dialog} and gives the video to \hyperlink{classGUI_1_1AnalysisBoxContainer}{Analysis\+Box\+Container} 
+
 \hypertarget{classGUI_1_1AnalysisTab_a37a387e0b6f67a340ff7e60b2f8f7f24}{}\index{G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}!restore@{restore}}
 \index{restore@{restore}!G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}}
 \subsubsection[{restore}]{\setlength{\rightskip}{0pt plus 5cm}void restore (
@@ -68,6 +156,17 @@ Restores the tab based on the memento.
 {\em memento} & The memento which contains the state of the tab.\\
 \hline
 \end{DoxyParams}
+\hypertarget{classGUI_1_1AnalysisTab_a5c087450ee93776fd121b0fd6af473e6}{}\index{G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}!save\+Results@{save\+Results}}
+\index{save\+Results@{save\+Results}!G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}}
+\subsubsection[{save\+Results}]{\setlength{\rightskip}{0pt plus 5cm}void save\+Results (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1AnalysisTab_a5c087450ee93776fd121b0fd6af473e6}
+
+
+Opens Q\+F\+Ile\+Dialog and saves relevant data in the path. 
+
 \hypertarget{classGUI_1_1AnalysisTab_ae01a11c0a081e873c992ebb245295903}{}\index{G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}!set\+Raw\+Video@{set\+Raw\+Video}}
 \index{set\+Raw\+Video@{set\+Raw\+Video}!G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}}
 \subsubsection[{set\+Raw\+Video}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Raw\+Video (
@@ -87,9 +186,48 @@ Sets the raw video for the analysis. This operation resets the tab completely.
 
 
 \subsection{Field Documentation}
+\hypertarget{classGUI_1_1AnalysisTab_a445fe0c2433d1fccb776a8968541b4ce}{}\index{G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}!analysis\+Box\+Container@{analysis\+Box\+Container}}
+\index{analysis\+Box\+Container@{analysis\+Box\+Container}!G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}}
+\subsubsection[{analysis\+Box\+Container}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Analysis\+Box\+Container}$\ast$ analysis\+Box\+Container\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1AnalysisTab_a445fe0c2433d1fccb776a8968541b4ce}
 \hypertarget{classGUI_1_1AnalysisTab_a3ababc5048f673abd931e7b98eaf0f99}{}\index{G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}!ana\+Tab@{ana\+Tab}}
 \index{ana\+Tab@{ana\+Tab}!G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}}
 \subsubsection[{ana\+Tab}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Undo\+Redo\+::\+Load\+Analysis\+Video}$\ast$ ana\+Tab}\label{classGUI_1_1AnalysisTab_a3ababc5048f673abd931e7b98eaf0f99}
-\hypertarget{classGUI_1_1AnalysisTab_ad1a5ead95d905d9ec387ee6c95665c38}{}\index{G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}!raw\+Video\+View@{raw\+Video\+View}}
+\hypertarget{classGUI_1_1AnalysisTab_a90d6c396da735f1b44c56f86757da47e}{}\index{G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}!button\+\_\+add\+Raw\+Video@{button\+\_\+add\+Raw\+Video}}
+\index{button\+\_\+add\+Raw\+Video@{button\+\_\+add\+Raw\+Video}!G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}}
+\subsubsection[{button\+\_\+add\+Raw\+Video}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Push\+Button$\ast$ button\+\_\+add\+Raw\+Video\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1AnalysisTab_a90d6c396da735f1b44c56f86757da47e}
+\hypertarget{classGUI_1_1AnalysisTab_aea18698c81906e3048fb495952795dfc}{}\index{G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}!button\+\_\+add\+Video@{button\+\_\+add\+Video}}
+\index{button\+\_\+add\+Video@{button\+\_\+add\+Video}!G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}}
+\subsubsection[{button\+\_\+add\+Video}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Push\+Button$\ast$ button\+\_\+add\+Video\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1AnalysisTab_aea18698c81906e3048fb495952795dfc}
+\hypertarget{classGUI_1_1AnalysisTab_ac65ab223be901b07d3fb4ae0acf5f80f}{}\index{G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}!button\+\_\+save@{button\+\_\+save}}
+\index{button\+\_\+save@{button\+\_\+save}!G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}}
+\subsubsection[{button\+\_\+save}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Push\+Button$\ast$ button\+\_\+save\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1AnalysisTab_ac65ab223be901b07d3fb4ae0acf5f80f}
+\hypertarget{classGUI_1_1AnalysisTab_a43dfb01359987ba27d34f6b0df4d730b}{}\index{G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}!combo\+Box\+\_\+analyse\+Typ@{combo\+Box\+\_\+analyse\+Typ}}
+\index{combo\+Box\+\_\+analyse\+Typ@{combo\+Box\+\_\+analyse\+Typ}!G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}}
+\subsubsection[{combo\+Box\+\_\+analyse\+Typ}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Q\+Combo\+Box}$\ast$ combo\+Box\+\_\+analyse\+Typ\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1AnalysisTab_a43dfb01359987ba27d34f6b0df4d730b}
+\hypertarget{classGUI_1_1AnalysisTab_a9cd8ff4f4ac3d1891c3b515ef1425d5a}{}\index{G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}!control\+Panel@{control\+Panel}}
+\index{control\+Panel@{control\+Panel}!G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}}
+\subsubsection[{control\+Panel}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Player\+Control\+Panel}$\ast$ control\+Panel\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1AnalysisTab_a9cd8ff4f4ac3d1891c3b515ef1425d5a}
+\hypertarget{classGUI_1_1AnalysisTab_a81bde05bdc9e3f7afd48a05d2fb4e2ec}{}\index{G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}!global\+Control\+Panel@{global\+Control\+Panel}}
+\index{global\+Control\+Panel@{global\+Control\+Panel}!G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}}
+\subsubsection[{global\+Control\+Panel}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Global\+Control\+Panel}$\ast$ global\+Control\+Panel\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1AnalysisTab_a81bde05bdc9e3f7afd48a05d2fb4e2ec}
+\hypertarget{classGUI_1_1AnalysisTab_a0b0ef192a361769df582531bb748351f}{}\index{G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}!label\+\_\+raw\+Video@{label\+\_\+raw\+Video}}
+\index{label\+\_\+raw\+Video@{label\+\_\+raw\+Video}!G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}}
+\subsubsection[{label\+\_\+raw\+Video}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Label$\ast$ label\+\_\+raw\+Video\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1AnalysisTab_a0b0ef192a361769df582531bb748351f}
+\hypertarget{classGUI_1_1AnalysisTab_a649e16c560960a5b48ca2ec6bc1a7232}{}\index{G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}!player@{player}}
+\index{player@{player}!G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}}
+\subsubsection[{player}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Video\+Player}$\ast$ player\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1AnalysisTab_a649e16c560960a5b48ca2ec6bc1a7232}
+\hypertarget{classGUI_1_1AnalysisTab_ae542bcf9f3c84dd68282c029f3c09bb9}{}\index{G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}!player\+Timer@{player\+Timer}}
+\index{player\+Timer@{player\+Timer}!G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}}
+\subsubsection[{player\+Timer}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Timer}$\ast$ player\+Timer\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1AnalysisTab_ae542bcf9f3c84dd68282c029f3c09bb9}
+\hypertarget{classGUI_1_1AnalysisTab_a095285c6e168db68548acccc569736ed}{}\index{G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}!raw\+Video@{raw\+Video}}
+\index{raw\+Video@{raw\+Video}!G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}}
+\subsubsection[{raw\+Video}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Model\+::\+Yuv\+Video}$\ast$ raw\+Video\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1AnalysisTab_a095285c6e168db68548acccc569736ed}
+\hypertarget{classGUI_1_1AnalysisTab_a1f4ef1f929a95b39d9446910d47cd32a}{}\index{G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}!raw\+Video\+View@{raw\+Video\+View}}
 \index{raw\+Video\+View@{raw\+Video\+View}!G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}}
-\subsubsection[{raw\+Video\+View}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Player\+::\+Frame\+View}$\ast$ raw\+Video\+View}\label{classGUI_1_1AnalysisTab_ad1a5ead95d905d9ec387ee6c95665c38}
+\subsubsection[{raw\+Video\+View}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Frame\+View}$\ast$ raw\+Video\+View}\label{classGUI_1_1AnalysisTab_a1f4ef1f929a95b39d9446910d47cd32a}
+\hypertarget{classGUI_1_1AnalysisTab_ac3a6aba72f0b920721f7b343fc52365d}{}\index{G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}!scroll\+Area\+\_\+analyse\+Videos@{scroll\+Area\+\_\+analyse\+Videos}}
+\index{scroll\+Area\+\_\+analyse\+Videos@{scroll\+Area\+\_\+analyse\+Videos}!G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}}
+\subsubsection[{scroll\+Area\+\_\+analyse\+Videos}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Scroll\+Area$\ast$ scroll\+Area\+\_\+analyse\+Videos\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1AnalysisTab_ac3a6aba72f0b920721f7b343fc52365d}
+\hypertarget{classGUI_1_1AnalysisTab_a4561738d42b83e7ac0bc4d9dd0672a2a}{}\index{G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}!tab\+\_\+properties@{tab\+\_\+properties}}
+\index{tab\+\_\+properties@{tab\+\_\+properties}!G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}}
+\subsubsection[{tab\+\_\+properties}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Tab\+Widget$\ast$ tab\+\_\+properties\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1AnalysisTab_a4561738d42b83e7ac0bc4d9dd0672a2a}

@@ -3,7 +3,7 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classModel_1_1AVVideo_af6a4a9766b45d8b9a6c10f0b6c5d8998}{A\+V\+Video} (int fps, int width, int height)
+\hyperlink{classModel_1_1AVVideo_af6a4a9766b45d8b9a6c10f0b6c5d8998}{A\+V\+Video} (int \hyperlink{classModel_1_1AVVideo_a45b67662d620a977a2cfe519f7ab6273}{fps}, int \hyperlink{classModel_1_1AVVideo_a2474a5474cbff19523a51eb1de01cda4}{width}, int \hyperlink{classModel_1_1AVVideo_ad12fc34ce789bce6c8a05d8a17138534}{height})
 \item 
 int \hyperlink{classModel_1_1AVVideo_a67a0997183f24da19b776d96c1052998}{get\+Width} ()
 \item 
@@ -25,6 +25,17 @@ int \hyperlink{classModel_1_1AVVideo_a038091d64aa83552571228512789d5ee}{get\+Num
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{classModel_1_1EncodedVideo}{Model\+::\+Encoded\+Video} $\ast$ \hyperlink{classModel_1_1AVVideo_a2ee559c7a937231b8bdc36ed5a15d865}{av\+Video}
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ A\+V\+Frame $>$ $>$ \hyperlink{classModel_1_1AVVideo_a601870b0122737f8ee0b0b094944d2ae}{video}
+\item 
+int \hyperlink{classModel_1_1AVVideo_a45b67662d620a977a2cfe519f7ab6273}{fps}
+\item 
+int \hyperlink{classModel_1_1AVVideo_a2474a5474cbff19523a51eb1de01cda4}{width}
+\item 
+int \hyperlink{classModel_1_1AVVideo_ad12fc34ce789bce6c8a05d8a17138534}{height}
 \end{DoxyCompactItemize}
 
 
@@ -192,3 +203,15 @@ Removes the frame at the given index. If the index is invalid nothing happens.
 \hypertarget{classModel_1_1AVVideo_a2ee559c7a937231b8bdc36ed5a15d865}{}\index{Model\+::\+A\+V\+Video@{Model\+::\+A\+V\+Video}!av\+Video@{av\+Video}}
 \index{av\+Video@{av\+Video}!Model\+::\+A\+V\+Video@{Model\+::\+A\+V\+Video}}
 \subsubsection[{av\+Video}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Model\+::\+Encoded\+Video}$\ast$ av\+Video}\label{classModel_1_1AVVideo_a2ee559c7a937231b8bdc36ed5a15d865}
+\hypertarget{classModel_1_1AVVideo_a45b67662d620a977a2cfe519f7ab6273}{}\index{Model\+::\+A\+V\+Video@{Model\+::\+A\+V\+Video}!fps@{fps}}
+\index{fps@{fps}!Model\+::\+A\+V\+Video@{Model\+::\+A\+V\+Video}}
+\subsubsection[{fps}]{\setlength{\rightskip}{0pt plus 5cm}int fps\hspace{0.3cm}{\ttfamily [private]}}\label{classModel_1_1AVVideo_a45b67662d620a977a2cfe519f7ab6273}
+\hypertarget{classModel_1_1AVVideo_ad12fc34ce789bce6c8a05d8a17138534}{}\index{Model\+::\+A\+V\+Video@{Model\+::\+A\+V\+Video}!height@{height}}
+\index{height@{height}!Model\+::\+A\+V\+Video@{Model\+::\+A\+V\+Video}}
+\subsubsection[{height}]{\setlength{\rightskip}{0pt plus 5cm}int height\hspace{0.3cm}{\ttfamily [private]}}\label{classModel_1_1AVVideo_ad12fc34ce789bce6c8a05d8a17138534}
+\hypertarget{classModel_1_1AVVideo_a601870b0122737f8ee0b0b094944d2ae}{}\index{Model\+::\+A\+V\+Video@{Model\+::\+A\+V\+Video}!video@{video}}
+\index{video@{video}!Model\+::\+A\+V\+Video@{Model\+::\+A\+V\+Video}}
+\subsubsection[{video}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$std\+::unique\+\_\+ptr$<$A\+V\+Frame$>$ $>$ video\hspace{0.3cm}{\ttfamily [private]}}\label{classModel_1_1AVVideo_a601870b0122737f8ee0b0b094944d2ae}
+\hypertarget{classModel_1_1AVVideo_a2474a5474cbff19523a51eb1de01cda4}{}\index{Model\+::\+A\+V\+Video@{Model\+::\+A\+V\+Video}!width@{width}}
+\index{width@{width}!Model\+::\+A\+V\+Video@{Model\+::\+A\+V\+Video}}
+\subsubsection[{width}]{\setlength{\rightskip}{0pt plus 5cm}int width\hspace{0.3cm}{\ttfamily [private]}}\label{classModel_1_1AVVideo_a2474a5474cbff19523a51eb1de01cda4}

@@ -1,0 +1,162 @@
+\hypertarget{classModel_1_1BlurFilter}{}\section{Blur\+Filter Class Reference}
+\label{classModel_1_1BlurFilter}\index{Blur\+Filter@{Blur\+Filter}}
+
+
+Inheritance diagram for Blur\+Filter\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=136pt]{classModel_1_1BlurFilter__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classModel_1_1BlurFilter_afe4d07071313db8ac2e61b2641051b21}{Blur\+Filter} ()
+\item 
+bool \hyperlink{classModel_1_1BlurFilter_a0f68baff76107f2b3982df5cca754340}{get\+Preserve\+Edges} ()
+\item 
+void \hyperlink{classModel_1_1BlurFilter_a87c0326c6cec136fccffeca502d20ede}{set\+Preserve\+Edges} (bool \hyperlink{classModel_1_1BlurFilter_a063a2e7e7a9dbc091f483eeaec61d5e3}{preserve\+Edges})
+\item 
+int \hyperlink{classModel_1_1BlurFilter_a708995fb1b6acb31ee0dfb0f4881e5b5}{get\+Intensity} ()
+\item 
+void \hyperlink{classModel_1_1BlurFilter_ac8255ffbc46bb61acaa8fd23d0d260eb}{set\+Intensity} (int \hyperlink{classModel_1_1BlurFilter_a299ec0c42ccc5a2d79d1739428ac3210}{intensity})
+\item 
+string \hyperlink{classModel_1_1BlurFilter_a62b7b60e24f92234393b840b35808e06}{get\+Filter\+Description} ()
+\item 
+string \hyperlink{classModel_1_1BlurFilter_a11335e13e50af74108bf926dc1340b4b}{get\+Name} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classModel_1_1BlurFilter_a063a2e7e7a9dbc091f483eeaec61d5e3}{preserve\+Edges}
+\item 
+int \hyperlink{classModel_1_1BlurFilter_a299ec0c42ccc5a2d79d1739428ac3210}{intensity}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Blurs the video. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classModel_1_1BlurFilter_afe4d07071313db8ac2e61b2641051b21}{}\index{Model\+::\+Blur\+Filter@{Model\+::\+Blur\+Filter}!Blur\+Filter@{Blur\+Filter}}
+\index{Blur\+Filter@{Blur\+Filter}!Model\+::\+Blur\+Filter@{Model\+::\+Blur\+Filter}}
+\subsubsection[{Blur\+Filter}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Blur\+Filter} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classModel_1_1BlurFilter_afe4d07071313db8ac2e61b2641051b21}
+
+
+Constructor. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classModel_1_1BlurFilter_a62b7b60e24f92234393b840b35808e06}{}\index{Model\+::\+Blur\+Filter@{Model\+::\+Blur\+Filter}!get\+Filter\+Description@{get\+Filter\+Description}}
+\index{get\+Filter\+Description@{get\+Filter\+Description}!Model\+::\+Blur\+Filter@{Model\+::\+Blur\+Filter}}
+\subsubsection[{get\+Filter\+Description}]{\setlength{\rightskip}{0pt plus 5cm}string get\+Filter\+Description (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classModel_1_1BlurFilter_a62b7b60e24f92234393b840b35808e06}
+
+
+Returns the string that the ffmpeg library needs to apply the filter to a video. 
+
+\begin{DoxyReturn}{Returns}
+The string for the ffmpeg library.
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classModel_1_1Filter_a453fcafa809afa1ce58d9ef95d5f26c0}{Filter}.
+
+\hypertarget{classModel_1_1BlurFilter_a708995fb1b6acb31ee0dfb0f4881e5b5}{}\index{Model\+::\+Blur\+Filter@{Model\+::\+Blur\+Filter}!get\+Intensity@{get\+Intensity}}
+\index{get\+Intensity@{get\+Intensity}!Model\+::\+Blur\+Filter@{Model\+::\+Blur\+Filter}}
+\subsubsection[{get\+Intensity}]{\setlength{\rightskip}{0pt plus 5cm}int get\+Intensity (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classModel_1_1BlurFilter_a708995fb1b6acb31ee0dfb0f4881e5b5}
+
+
+Returns the intensity of the blurring. 
+
+\begin{DoxyReturn}{Returns}
+The intensity of the blurring.
+\end{DoxyReturn}
+\hypertarget{classModel_1_1BlurFilter_a11335e13e50af74108bf926dc1340b4b}{}\index{Model\+::\+Blur\+Filter@{Model\+::\+Blur\+Filter}!get\+Name@{get\+Name}}
+\index{get\+Name@{get\+Name}!Model\+::\+Blur\+Filter@{Model\+::\+Blur\+Filter}}
+\subsubsection[{get\+Name}]{\setlength{\rightskip}{0pt plus 5cm}string get\+Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classModel_1_1BlurFilter_a11335e13e50af74108bf926dc1340b4b}
+
+
+Returns the name of the filter. 
+
+\begin{DoxyReturn}{Returns}
+The filtername.
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classModel_1_1Filter_ade93aa98c68d185a9c03784d36140225}{Filter}.
+
+\hypertarget{classModel_1_1BlurFilter_a0f68baff76107f2b3982df5cca754340}{}\index{Model\+::\+Blur\+Filter@{Model\+::\+Blur\+Filter}!get\+Preserve\+Edges@{get\+Preserve\+Edges}}
+\index{get\+Preserve\+Edges@{get\+Preserve\+Edges}!Model\+::\+Blur\+Filter@{Model\+::\+Blur\+Filter}}
+\subsubsection[{get\+Preserve\+Edges}]{\setlength{\rightskip}{0pt plus 5cm}bool get\+Preserve\+Edges (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classModel_1_1BlurFilter_a0f68baff76107f2b3982df5cca754340}
+
+
+Whether edges shall be preserved when blurring. 
+
+\begin{DoxyReturn}{Returns}
+true if the edges are preserved.
+\end{DoxyReturn}
+\hypertarget{classModel_1_1BlurFilter_ac8255ffbc46bb61acaa8fd23d0d260eb}{}\index{Model\+::\+Blur\+Filter@{Model\+::\+Blur\+Filter}!set\+Intensity@{set\+Intensity}}
+\index{set\+Intensity@{set\+Intensity}!Model\+::\+Blur\+Filter@{Model\+::\+Blur\+Filter}}
+\subsubsection[{set\+Intensity}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Intensity (
+\begin{DoxyParamCaption}
+\item[{int}]{intensity}
+\end{DoxyParamCaption}
+)}\label{classModel_1_1BlurFilter_ac8255ffbc46bb61acaa8fd23d0d260eb}
+
+
+Sets the intensity of the blurring. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em intensity} & The intensity of the blurring.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classModel_1_1BlurFilter_a87c0326c6cec136fccffeca502d20ede}{}\index{Model\+::\+Blur\+Filter@{Model\+::\+Blur\+Filter}!set\+Preserve\+Edges@{set\+Preserve\+Edges}}
+\index{set\+Preserve\+Edges@{set\+Preserve\+Edges}!Model\+::\+Blur\+Filter@{Model\+::\+Blur\+Filter}}
+\subsubsection[{set\+Preserve\+Edges}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Preserve\+Edges (
+\begin{DoxyParamCaption}
+\item[{bool}]{preserve\+Edges}
+\end{DoxyParamCaption}
+)}\label{classModel_1_1BlurFilter_a87c0326c6cec136fccffeca502d20ede}
+
+
+Sets whether the edges shall be preserved when blurring. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em preserve\+Edges} & True if the edges shall be preserved.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Field Documentation}
+\hypertarget{classModel_1_1BlurFilter_a299ec0c42ccc5a2d79d1739428ac3210}{}\index{Model\+::\+Blur\+Filter@{Model\+::\+Blur\+Filter}!intensity@{intensity}}
+\index{intensity@{intensity}!Model\+::\+Blur\+Filter@{Model\+::\+Blur\+Filter}}
+\subsubsection[{intensity}]{\setlength{\rightskip}{0pt plus 5cm}int intensity\hspace{0.3cm}{\ttfamily [private]}}\label{classModel_1_1BlurFilter_a299ec0c42ccc5a2d79d1739428ac3210}
+\hypertarget{classModel_1_1BlurFilter_a063a2e7e7a9dbc091f483eeaec61d5e3}{}\index{Model\+::\+Blur\+Filter@{Model\+::\+Blur\+Filter}!preserve\+Edges@{preserve\+Edges}}
+\index{preserve\+Edges@{preserve\+Edges}!Model\+::\+Blur\+Filter@{Model\+::\+Blur\+Filter}}
+\subsubsection[{preserve\+Edges}]{\setlength{\rightskip}{0pt plus 5cm}bool preserve\+Edges\hspace{0.3cm}{\ttfamily [private]}}\label{classModel_1_1BlurFilter_a063a2e7e7a9dbc091f483eeaec61d5e3}

@@ -1,0 +1,123 @@
+\hypertarget{classModel_1_1RGBFilter}{}\section{R\+G\+B\+Filter Class Reference}
+\label{classModel_1_1RGBFilter}\index{R\+G\+B\+Filter@{R\+G\+B\+Filter}}
+
+
+Inheritance diagram for R\+G\+B\+Filter\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=140pt]{classModel_1_1RGBFilter__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classModel_1_1RGBFilter_a9065d7c86503c630a3422f5db4af723f}{R\+G\+B\+Filter} ()
+\item 
+string \hyperlink{classModel_1_1RGBFilter_a62b7b60e24f92234393b840b35808e06}{get\+Filter\+Description} ()
+\item 
+\hyperlink{namespaceModel_a54742b2fc8f6a246926cbb87b7fae1a4}{Model\+::\+Basic\+Color} \hyperlink{classModel_1_1RGBFilter_a82ac188d01a7ce771cdb254e9eb70ba6}{get\+Color} ()
+\item 
+void \hyperlink{classModel_1_1RGBFilter_a707221b518c3ae5bf8ce16cc9b0d0054}{set\+Color} (\hyperlink{namespaceModel_a54742b2fc8f6a246926cbb87b7fae1a4}{Model\+::\+Basic\+Color} \hyperlink{classModel_1_1RGBFilter_af9c4a828f1030ef2b7d7ab814dd37cb9}{color})
+\item 
+string \hyperlink{classModel_1_1RGBFilter_a11335e13e50af74108bf926dc1340b4b}{get\+Name} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceModel_a54742b2fc8f6a246926cbb87b7fae1a4}{Model\+::\+Basic\+Color} $\ast$ \hyperlink{classModel_1_1RGBFilter_af9c4a828f1030ef2b7d7ab814dd37cb9}{color}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Filters the video by a given channel (red, green or blue). 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classModel_1_1RGBFilter_a9065d7c86503c630a3422f5db4af723f}{}\index{Model\+::\+R\+G\+B\+Filter@{Model\+::\+R\+G\+B\+Filter}!R\+G\+B\+Filter@{R\+G\+B\+Filter}}
+\index{R\+G\+B\+Filter@{R\+G\+B\+Filter}!Model\+::\+R\+G\+B\+Filter@{Model\+::\+R\+G\+B\+Filter}}
+\subsubsection[{R\+G\+B\+Filter}]{\setlength{\rightskip}{0pt plus 5cm}{\bf R\+G\+B\+Filter} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classModel_1_1RGBFilter_a9065d7c86503c630a3422f5db4af723f}
+
+
+Constructor. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classModel_1_1RGBFilter_a82ac188d01a7ce771cdb254e9eb70ba6}{}\index{Model\+::\+R\+G\+B\+Filter@{Model\+::\+R\+G\+B\+Filter}!get\+Color@{get\+Color}}
+\index{get\+Color@{get\+Color}!Model\+::\+R\+G\+B\+Filter@{Model\+::\+R\+G\+B\+Filter}}
+\subsubsection[{get\+Color}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Model\+::\+Basic\+Color} get\+Color (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classModel_1_1RGBFilter_a82ac188d01a7ce771cdb254e9eb70ba6}
+
+
+Returns the color that is not filtered out. 
+
+\begin{DoxyReturn}{Returns}
+The preserved color.
+\end{DoxyReturn}
+\hypertarget{classModel_1_1RGBFilter_a62b7b60e24f92234393b840b35808e06}{}\index{Model\+::\+R\+G\+B\+Filter@{Model\+::\+R\+G\+B\+Filter}!get\+Filter\+Description@{get\+Filter\+Description}}
+\index{get\+Filter\+Description@{get\+Filter\+Description}!Model\+::\+R\+G\+B\+Filter@{Model\+::\+R\+G\+B\+Filter}}
+\subsubsection[{get\+Filter\+Description}]{\setlength{\rightskip}{0pt plus 5cm}string get\+Filter\+Description (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classModel_1_1RGBFilter_a62b7b60e24f92234393b840b35808e06}
+
+
+Returns the string that the ffmpeg library needs to apply the filter to a video. 
+
+\begin{DoxyReturn}{Returns}
+The string for the ffmpeg library.
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classModel_1_1Filter_a453fcafa809afa1ce58d9ef95d5f26c0}{Filter}.
+
+\hypertarget{classModel_1_1RGBFilter_a11335e13e50af74108bf926dc1340b4b}{}\index{Model\+::\+R\+G\+B\+Filter@{Model\+::\+R\+G\+B\+Filter}!get\+Name@{get\+Name}}
+\index{get\+Name@{get\+Name}!Model\+::\+R\+G\+B\+Filter@{Model\+::\+R\+G\+B\+Filter}}
+\subsubsection[{get\+Name}]{\setlength{\rightskip}{0pt plus 5cm}string get\+Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classModel_1_1RGBFilter_a11335e13e50af74108bf926dc1340b4b}
+
+
+Returns the name of the filter. 
+
+\begin{DoxyReturn}{Returns}
+The filtername.
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classModel_1_1Filter_ade93aa98c68d185a9c03784d36140225}{Filter}.
+
+\hypertarget{classModel_1_1RGBFilter_a707221b518c3ae5bf8ce16cc9b0d0054}{}\index{Model\+::\+R\+G\+B\+Filter@{Model\+::\+R\+G\+B\+Filter}!set\+Color@{set\+Color}}
+\index{set\+Color@{set\+Color}!Model\+::\+R\+G\+B\+Filter@{Model\+::\+R\+G\+B\+Filter}}
+\subsubsection[{set\+Color}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Color (
+\begin{DoxyParamCaption}
+\item[{{\bf Model\+::\+Basic\+Color}}]{color}
+\end{DoxyParamCaption}
+)}\label{classModel_1_1RGBFilter_a707221b518c3ae5bf8ce16cc9b0d0054}
+
+
+Sets the preserved color. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & The preserved color.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Field Documentation}
+\hypertarget{classModel_1_1RGBFilter_af9c4a828f1030ef2b7d7ab814dd37cb9}{}\index{Model\+::\+R\+G\+B\+Filter@{Model\+::\+R\+G\+B\+Filter}!color@{color}}
+\index{color@{color}!Model\+::\+R\+G\+B\+Filter@{Model\+::\+R\+G\+B\+Filter}}
+\subsubsection[{color}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Model\+::\+Basic\+Color}$\ast$ color\hspace{0.3cm}{\ttfamily [private]}}\label{classModel_1_1RGBFilter_af9c4a828f1030ef2b7d7ab814dd37cb9}

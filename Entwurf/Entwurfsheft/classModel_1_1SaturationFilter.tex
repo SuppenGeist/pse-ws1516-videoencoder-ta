@@ -1,0 +1,123 @@
+\hypertarget{classModel_1_1SaturationFilter}{}\section{Saturation\+Filter Class Reference}
+\label{classModel_1_1SaturationFilter}\index{Saturation\+Filter@{Saturation\+Filter}}
+
+
+Inheritance diagram for Saturation\+Filter\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=163pt]{classModel_1_1SaturationFilter__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classModel_1_1SaturationFilter_ae45fd836bb8ade0550727f4060bdffa9}{Saturation\+Filter} ()
+\item 
+string \hyperlink{classModel_1_1SaturationFilter_a62b7b60e24f92234393b840b35808e06}{get\+Filter\+Description} ()
+\item 
+int \hyperlink{classModel_1_1SaturationFilter_a708995fb1b6acb31ee0dfb0f4881e5b5}{get\+Intensity} ()
+\item 
+string \hyperlink{classModel_1_1SaturationFilter_a11335e13e50af74108bf926dc1340b4b}{get\+Name} ()
+\item 
+void \hyperlink{classModel_1_1SaturationFilter_ac8255ffbc46bb61acaa8fd23d0d260eb}{set\+Intensity} (int \hyperlink{classModel_1_1SaturationFilter_a299ec0c42ccc5a2d79d1739428ac3210}{intensity})
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classModel_1_1SaturationFilter_a299ec0c42ccc5a2d79d1739428ac3210}{intensity}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Adjusts the saturation of the video. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classModel_1_1SaturationFilter_ae45fd836bb8ade0550727f4060bdffa9}{}\index{Model\+::\+Saturation\+Filter@{Model\+::\+Saturation\+Filter}!Saturation\+Filter@{Saturation\+Filter}}
+\index{Saturation\+Filter@{Saturation\+Filter}!Model\+::\+Saturation\+Filter@{Model\+::\+Saturation\+Filter}}
+\subsubsection[{Saturation\+Filter}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Saturation\+Filter} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classModel_1_1SaturationFilter_ae45fd836bb8ade0550727f4060bdffa9}
+
+
+Constructor. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classModel_1_1SaturationFilter_a62b7b60e24f92234393b840b35808e06}{}\index{Model\+::\+Saturation\+Filter@{Model\+::\+Saturation\+Filter}!get\+Filter\+Description@{get\+Filter\+Description}}
+\index{get\+Filter\+Description@{get\+Filter\+Description}!Model\+::\+Saturation\+Filter@{Model\+::\+Saturation\+Filter}}
+\subsubsection[{get\+Filter\+Description}]{\setlength{\rightskip}{0pt plus 5cm}string get\+Filter\+Description (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classModel_1_1SaturationFilter_a62b7b60e24f92234393b840b35808e06}
+
+
+Returns the string that the ffmpeg library needs to apply the filter to a video. 
+
+\begin{DoxyReturn}{Returns}
+The string for the ffmpeg library.
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classModel_1_1Filter_a453fcafa809afa1ce58d9ef95d5f26c0}{Filter}.
+
+\hypertarget{classModel_1_1SaturationFilter_a708995fb1b6acb31ee0dfb0f4881e5b5}{}\index{Model\+::\+Saturation\+Filter@{Model\+::\+Saturation\+Filter}!get\+Intensity@{get\+Intensity}}
+\index{get\+Intensity@{get\+Intensity}!Model\+::\+Saturation\+Filter@{Model\+::\+Saturation\+Filter}}
+\subsubsection[{get\+Intensity}]{\setlength{\rightskip}{0pt plus 5cm}int get\+Intensity (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classModel_1_1SaturationFilter_a708995fb1b6acb31ee0dfb0f4881e5b5}
+
+
+Returns the intensity of the saturation. 
+
+\begin{DoxyReturn}{Returns}
+The intensity.
+\end{DoxyReturn}
+\hypertarget{classModel_1_1SaturationFilter_a11335e13e50af74108bf926dc1340b4b}{}\index{Model\+::\+Saturation\+Filter@{Model\+::\+Saturation\+Filter}!get\+Name@{get\+Name}}
+\index{get\+Name@{get\+Name}!Model\+::\+Saturation\+Filter@{Model\+::\+Saturation\+Filter}}
+\subsubsection[{get\+Name}]{\setlength{\rightskip}{0pt plus 5cm}string get\+Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classModel_1_1SaturationFilter_a11335e13e50af74108bf926dc1340b4b}
+
+
+Returns the name of the filter. 
+
+\begin{DoxyReturn}{Returns}
+The filtername.
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classModel_1_1Filter_ade93aa98c68d185a9c03784d36140225}{Filter}.
+
+\hypertarget{classModel_1_1SaturationFilter_ac8255ffbc46bb61acaa8fd23d0d260eb}{}\index{Model\+::\+Saturation\+Filter@{Model\+::\+Saturation\+Filter}!set\+Intensity@{set\+Intensity}}
+\index{set\+Intensity@{set\+Intensity}!Model\+::\+Saturation\+Filter@{Model\+::\+Saturation\+Filter}}
+\subsubsection[{set\+Intensity}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Intensity (
+\begin{DoxyParamCaption}
+\item[{int}]{intensity}
+\end{DoxyParamCaption}
+)}\label{classModel_1_1SaturationFilter_ac8255ffbc46bb61acaa8fd23d0d260eb}
+
+
+Sets the intensity of the saturation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em intensity} & The new intensity,\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Field Documentation}
+\hypertarget{classModel_1_1SaturationFilter_a299ec0c42ccc5a2d79d1739428ac3210}{}\index{Model\+::\+Saturation\+Filter@{Model\+::\+Saturation\+Filter}!intensity@{intensity}}
+\index{intensity@{intensity}!Model\+::\+Saturation\+Filter@{Model\+::\+Saturation\+Filter}}
+\subsubsection[{intensity}]{\setlength{\rightskip}{0pt plus 5cm}int intensity\hspace{0.3cm}{\ttfamily [private]}}\label{classModel_1_1SaturationFilter_a299ec0c42ccc5a2d79d1739428ac3210}

@@ -3,9 +3,21 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classUtility_1_1PsnrCalculator_af9b7f590502107d7fa40cfb6288287f5}{Psnr\+Calculator} (\hyperlink{classModel_1_1AVVideo}{Model\+::\+A\+V\+Video} \&reference\+Video, \hyperlink{classModel_1_1AVVideo}{Model\+::\+A\+V\+Video} \&compare\+Video)
+\hyperlink{classUtility_1_1PsnrCalculator_af9b7f590502107d7fa40cfb6288287f5}{Psnr\+Calculator} (\hyperlink{classModel_1_1AVVideo}{Model\+::\+A\+V\+Video} \&\hyperlink{classUtility_1_1PsnrCalculator_ac18ce56ef484f4499434c4b5c5fafc8a}{reference\+Video}, \hyperlink{classModel_1_1AVVideo}{Model\+::\+A\+V\+Video} \&compare\+Video)
 \item 
 \hyperlink{classModel_1_1Graph}{Model\+::\+Graph} \hyperlink{classUtility_1_1PsnrCalculator_add29b5117d03aca3e7bb3199edc95cd5}{calculate} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classUtility_1_1PsnrCalculator_a02fd73d861ef2e4aabb38c0c9ff82947}{init} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classModel_1_1AVVideo}{Model\+::\+A\+V\+Video} $\ast$ \hyperlink{classUtility_1_1PsnrCalculator_ac18ce56ef484f4499434c4b5c5fafc8a}{reference\+Video}
+\item 
+\hyperlink{classModel_1_1AVVideo}{Model\+::\+A\+V\+Video} $\ast$ \hyperlink{classUtility_1_1PsnrCalculator_a9d9339a030e5aa3b959eecf241b6ffac}{video}
 \end{DoxyCompactItemize}
 
 
@@ -49,3 +61,23 @@ Calculates the psnr graph.
 \begin{DoxyReturn}{Returns}
 The calculated psnr graph.
 \end{DoxyReturn}
+\hypertarget{classUtility_1_1PsnrCalculator_a02fd73d861ef2e4aabb38c0c9ff82947}{}\index{Utility\+::\+Psnr\+Calculator@{Utility\+::\+Psnr\+Calculator}!init@{init}}
+\index{init@{init}!Utility\+::\+Psnr\+Calculator@{Utility\+::\+Psnr\+Calculator}}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}void init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classUtility_1_1PsnrCalculator_a02fd73d861ef2e4aabb38c0c9ff82947}
+
+
+Initializes the ffmpeg psnr filter. 
+
+
+
+\subsection{Field Documentation}
+\hypertarget{classUtility_1_1PsnrCalculator_ac18ce56ef484f4499434c4b5c5fafc8a}{}\index{Utility\+::\+Psnr\+Calculator@{Utility\+::\+Psnr\+Calculator}!reference\+Video@{reference\+Video}}
+\index{reference\+Video@{reference\+Video}!Utility\+::\+Psnr\+Calculator@{Utility\+::\+Psnr\+Calculator}}
+\subsubsection[{reference\+Video}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Model\+::\+A\+V\+Video}$\ast$ reference\+Video\hspace{0.3cm}{\ttfamily [private]}}\label{classUtility_1_1PsnrCalculator_ac18ce56ef484f4499434c4b5c5fafc8a}
+\hypertarget{classUtility_1_1PsnrCalculator_a9d9339a030e5aa3b959eecf241b6ffac}{}\index{Utility\+::\+Psnr\+Calculator@{Utility\+::\+Psnr\+Calculator}!video@{video}}
+\index{video@{video}!Utility\+::\+Psnr\+Calculator@{Utility\+::\+Psnr\+Calculator}}
+\subsubsection[{video}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Model\+::\+A\+V\+Video}$\ast$ video\hspace{0.3cm}{\ttfamily [private]}}\label{classUtility_1_1PsnrCalculator_a9d9339a030e5aa3b959eecf241b6ffac}

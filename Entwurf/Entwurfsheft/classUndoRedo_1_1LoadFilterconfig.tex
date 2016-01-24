@@ -1,13 +1,32 @@
 \hypertarget{classUndoRedo_1_1LoadFilterconfig}{}\section{Load\+Filterconfig Class Reference}
 \label{classUndoRedo_1_1LoadFilterconfig}\index{Load\+Filterconfig@{Load\+Filterconfig}}
+
+
+Inheritance diagram for Load\+Filterconfig\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=172pt]{classUndoRedo_1_1LoadFilterconfig__inherit__graph}
+\end{center}
+\end{figure}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classUndoRedo_1_1LoadFilterconfig_a7d0074b786381d2cf9d31f7ec9ef4924}{Load\+Filterconfig} (\hyperlink{classGUI_1_1FilterTab}{G\+U\+I\+::\+Filter\+Tab} $\ast$filter\+Tab, \hyperlink{classModel_1_1Filter_1_1FilterList}{Model\+::\+Filter\+::\+Filter\+List} old\+List, \hyperlink{classModel_1_1Filter_1_1FilterList}{Model\+::\+Filter\+::\+Filter\+List} list)
+\hyperlink{classUndoRedo_1_1LoadFilterconfig_a3bffa2e2bc6f8fc55e2e5c2615dad570}{Load\+Filterconfig} (\hyperlink{classGUI_1_1FilterTab}{G\+U\+I\+::\+Filter\+Tab} $\ast$\hyperlink{classUndoRedo_1_1LoadFilterconfig_a47ca82534a740774d79998759818d9f4}{filter\+Tab}, \hyperlink{classModel_1_1FilterList}{Model\+::\+Filter\+List} \hyperlink{classUndoRedo_1_1LoadFilterconfig_a6b2ec60707991d5154fcd5235ee89fe5}{old\+List}, \hyperlink{classModel_1_1FilterList}{Model\+::\+Filter\+List} list)
 \item 
 void \hyperlink{classUndoRedo_1_1LoadFilterconfig_a0e1e7804a53f6d62efc72c9bdbec8571}{undo} ()
 \item 
 void \hyperlink{classUndoRedo_1_1LoadFilterconfig_a93c48d6ed036e1a381be53ac67643284}{redo} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classGUI_1_1FilterTab}{G\+U\+I\+::\+Filter\+Tab} $\ast$ \hyperlink{classUndoRedo_1_1LoadFilterconfig_a47ca82534a740774d79998759818d9f4}{filter\+Tab}
+\item 
+\hyperlink{classModel_1_1FilterList}{Model\+::\+Filter\+List} $\ast$ \hyperlink{classUndoRedo_1_1LoadFilterconfig_a6b2ec60707991d5154fcd5235ee89fe5}{old\+List}
+\item 
+\hyperlink{classModel_1_1FilterList}{Model\+::\+Filter\+List} $\ast$ \hyperlink{classUndoRedo_1_1LoadFilterconfig_a9c97730b5f8420d2d9d2a2210a17f79c}{new\+List}
 \end{DoxyCompactItemize}
 
 
@@ -15,15 +34,15 @@ void \hyperlink{classUndoRedo_1_1LoadFilterconfig_a93c48d6ed036e1a381be53ac67643
 This class is the undo command for loading a filter config on the filter tab. 
 
 \subsection{Constructor \& Destructor Documentation}
-\hypertarget{classUndoRedo_1_1LoadFilterconfig_a7d0074b786381d2cf9d31f7ec9ef4924}{}\index{Undo\+Redo\+::\+Load\+Filterconfig@{Undo\+Redo\+::\+Load\+Filterconfig}!Load\+Filterconfig@{Load\+Filterconfig}}
+\hypertarget{classUndoRedo_1_1LoadFilterconfig_a3bffa2e2bc6f8fc55e2e5c2615dad570}{}\index{Undo\+Redo\+::\+Load\+Filterconfig@{Undo\+Redo\+::\+Load\+Filterconfig}!Load\+Filterconfig@{Load\+Filterconfig}}
 \index{Load\+Filterconfig@{Load\+Filterconfig}!Undo\+Redo\+::\+Load\+Filterconfig@{Undo\+Redo\+::\+Load\+Filterconfig}}
 \subsubsection[{Load\+Filterconfig}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Load\+Filterconfig} (
 \begin{DoxyParamCaption}
 \item[{{\bf G\+U\+I\+::\+Filter\+Tab} $\ast$}]{filter\+Tab, }
-\item[{{\bf Model\+::\+Filter\+::\+Filter\+List}}]{old\+List, }
-\item[{{\bf Model\+::\+Filter\+::\+Filter\+List}}]{list}
+\item[{{\bf Model\+::\+Filter\+List}}]{old\+List, }
+\item[{{\bf Model\+::\+Filter\+List}}]{list}
 \end{DoxyParamCaption}
-)}\label{classUndoRedo_1_1LoadFilterconfig_a7d0074b786381d2cf9d31f7ec9ef4924}
+)}\label{classUndoRedo_1_1LoadFilterconfig_a3bffa2e2bc6f8fc55e2e5c2615dad570}
 
 
 Constuctor. 
@@ -62,3 +81,15 @@ Loads a filter configuration from a external file.
 
 Loads the filter configuration present before external configuration was loaded. 
 
+
+
+\subsection{Field Documentation}
+\hypertarget{classUndoRedo_1_1LoadFilterconfig_a47ca82534a740774d79998759818d9f4}{}\index{Undo\+Redo\+::\+Load\+Filterconfig@{Undo\+Redo\+::\+Load\+Filterconfig}!filter\+Tab@{filter\+Tab}}
+\index{filter\+Tab@{filter\+Tab}!Undo\+Redo\+::\+Load\+Filterconfig@{Undo\+Redo\+::\+Load\+Filterconfig}}
+\subsubsection[{filter\+Tab}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Filter\+Tab}$\ast$ filter\+Tab\hspace{0.3cm}{\ttfamily [private]}}\label{classUndoRedo_1_1LoadFilterconfig_a47ca82534a740774d79998759818d9f4}
+\hypertarget{classUndoRedo_1_1LoadFilterconfig_a9c97730b5f8420d2d9d2a2210a17f79c}{}\index{Undo\+Redo\+::\+Load\+Filterconfig@{Undo\+Redo\+::\+Load\+Filterconfig}!new\+List@{new\+List}}
+\index{new\+List@{new\+List}!Undo\+Redo\+::\+Load\+Filterconfig@{Undo\+Redo\+::\+Load\+Filterconfig}}
+\subsubsection[{new\+List}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Model\+::\+Filter\+List}$\ast$ new\+List\hspace{0.3cm}{\ttfamily [private]}}\label{classUndoRedo_1_1LoadFilterconfig_a9c97730b5f8420d2d9d2a2210a17f79c}
+\hypertarget{classUndoRedo_1_1LoadFilterconfig_a6b2ec60707991d5154fcd5235ee89fe5}{}\index{Undo\+Redo\+::\+Load\+Filterconfig@{Undo\+Redo\+::\+Load\+Filterconfig}!old\+List@{old\+List}}
+\index{old\+List@{old\+List}!Undo\+Redo\+::\+Load\+Filterconfig@{Undo\+Redo\+::\+Load\+Filterconfig}}
+\subsubsection[{old\+List}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Model\+::\+Filter\+List}$\ast$ old\+List\hspace{0.3cm}{\ttfamily [private]}}\label{classUndoRedo_1_1LoadFilterconfig_a6b2ec60707991d5154fcd5235ee89fe5}

@@ -1,0 +1,201 @@
+\hypertarget{classModel_1_1BlendingFilter}{}\section{Blending\+Filter Class Reference}
+\label{classModel_1_1BlendingFilter}\index{Blending\+Filter@{Blending\+Filter}}
+
+
+Inheritance diagram for Blending\+Filter\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=156pt]{classModel_1_1BlendingFilter__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classModel_1_1BlendingFilter_aef4d8116cdf1f472bfc3f294a324a68d}{Blending\+Filter} ()
+\item 
+bool \hyperlink{classModel_1_1BlendingFilter_a323aa2fded0187976205e9bd41455108}{get\+In\+Blend} ()
+\item 
+void \hyperlink{classModel_1_1BlendingFilter_a4b3c5d143c333646fc19059b52d91f98}{set\+In\+Blend} (bool \hyperlink{classModel_1_1BlendingFilter_a5236a1acd21870beccb3622a0d868f64}{in\+Blend})
+\item 
+int \hyperlink{classModel_1_1BlendingFilter_ab75960aceca9106a2d1e4ac528e5c00f}{get\+Start\+Frame} ()
+\item 
+void \hyperlink{classModel_1_1BlendingFilter_aef2a28543fc8ddf9225491e032590c9c}{set\+Start\+Frame} (int \hyperlink{classModel_1_1BlendingFilter_a2c832c53905dc1fcfff946674d89f01d}{start\+Frame})
+\item 
+int \hyperlink{classModel_1_1BlendingFilter_a46a1b77243525a05a4c5594b00c7be28}{get\+End\+Frame} ()
+\item 
+void \hyperlink{classModel_1_1BlendingFilter_a87b980b1874e8518ddb597d74bd3c832}{set\+End\+Frame} (int \hyperlink{classModel_1_1BlendingFilter_ae86f112663a85130f9a8de28ca0070cb}{end\+Frame})
+\item 
+string \hyperlink{classModel_1_1BlendingFilter_a11335e13e50af74108bf926dc1340b4b}{get\+Name} ()
+\item 
+string \hyperlink{classModel_1_1BlendingFilter_a62b7b60e24f92234393b840b35808e06}{get\+Filter\+Description} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classModel_1_1BlendingFilter_a5236a1acd21870beccb3622a0d868f64}{in\+Blend}
+\item 
+int \hyperlink{classModel_1_1BlendingFilter_a2c832c53905dc1fcfff946674d89f01d}{start\+Frame}
+\item 
+int \hyperlink{classModel_1_1BlendingFilter_ae86f112663a85130f9a8de28ca0070cb}{end\+Frame}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Inserts black blending into the video 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classModel_1_1BlendingFilter_aef4d8116cdf1f472bfc3f294a324a68d}{}\index{Model\+::\+Blending\+Filter@{Model\+::\+Blending\+Filter}!Blending\+Filter@{Blending\+Filter}}
+\index{Blending\+Filter@{Blending\+Filter}!Model\+::\+Blending\+Filter@{Model\+::\+Blending\+Filter}}
+\subsubsection[{Blending\+Filter}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Blending\+Filter} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classModel_1_1BlendingFilter_aef4d8116cdf1f472bfc3f294a324a68d}
+
+
+Constructor. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classModel_1_1BlendingFilter_a46a1b77243525a05a4c5594b00c7be28}{}\index{Model\+::\+Blending\+Filter@{Model\+::\+Blending\+Filter}!get\+End\+Frame@{get\+End\+Frame}}
+\index{get\+End\+Frame@{get\+End\+Frame}!Model\+::\+Blending\+Filter@{Model\+::\+Blending\+Filter}}
+\subsubsection[{get\+End\+Frame}]{\setlength{\rightskip}{0pt plus 5cm}int get\+End\+Frame (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classModel_1_1BlendingFilter_a46a1b77243525a05a4c5594b00c7be28}
+
+
+Returns the end frame of the blending. 
+
+\begin{DoxyReturn}{Returns}
+The end frame.
+\end{DoxyReturn}
+\hypertarget{classModel_1_1BlendingFilter_a62b7b60e24f92234393b840b35808e06}{}\index{Model\+::\+Blending\+Filter@{Model\+::\+Blending\+Filter}!get\+Filter\+Description@{get\+Filter\+Description}}
+\index{get\+Filter\+Description@{get\+Filter\+Description}!Model\+::\+Blending\+Filter@{Model\+::\+Blending\+Filter}}
+\subsubsection[{get\+Filter\+Description}]{\setlength{\rightskip}{0pt plus 5cm}string get\+Filter\+Description (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classModel_1_1BlendingFilter_a62b7b60e24f92234393b840b35808e06}
+
+
+Returns the string that the ffmpeg library needs to apply the filter to a video. 
+
+\begin{DoxyReturn}{Returns}
+The string for the ffmpeg library.
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classModel_1_1Filter_a453fcafa809afa1ce58d9ef95d5f26c0}{Filter}.
+
+\hypertarget{classModel_1_1BlendingFilter_a323aa2fded0187976205e9bd41455108}{}\index{Model\+::\+Blending\+Filter@{Model\+::\+Blending\+Filter}!get\+In\+Blend@{get\+In\+Blend}}
+\index{get\+In\+Blend@{get\+In\+Blend}!Model\+::\+Blending\+Filter@{Model\+::\+Blending\+Filter}}
+\subsubsection[{get\+In\+Blend}]{\setlength{\rightskip}{0pt plus 5cm}bool get\+In\+Blend (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classModel_1_1BlendingFilter_a323aa2fded0187976205e9bd41455108}
+
+
+Whether it is an in blending. 
+
+\begin{DoxyReturn}{Returns}
+true if it is an in blending.
+\end{DoxyReturn}
+\hypertarget{classModel_1_1BlendingFilter_a11335e13e50af74108bf926dc1340b4b}{}\index{Model\+::\+Blending\+Filter@{Model\+::\+Blending\+Filter}!get\+Name@{get\+Name}}
+\index{get\+Name@{get\+Name}!Model\+::\+Blending\+Filter@{Model\+::\+Blending\+Filter}}
+\subsubsection[{get\+Name}]{\setlength{\rightskip}{0pt plus 5cm}string get\+Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classModel_1_1BlendingFilter_a11335e13e50af74108bf926dc1340b4b}
+
+
+Returns the name of the filter. 
+
+\begin{DoxyReturn}{Returns}
+The filtername.
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classModel_1_1Filter_ade93aa98c68d185a9c03784d36140225}{Filter}.
+
+\hypertarget{classModel_1_1BlendingFilter_ab75960aceca9106a2d1e4ac528e5c00f}{}\index{Model\+::\+Blending\+Filter@{Model\+::\+Blending\+Filter}!get\+Start\+Frame@{get\+Start\+Frame}}
+\index{get\+Start\+Frame@{get\+Start\+Frame}!Model\+::\+Blending\+Filter@{Model\+::\+Blending\+Filter}}
+\subsubsection[{get\+Start\+Frame}]{\setlength{\rightskip}{0pt plus 5cm}int get\+Start\+Frame (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classModel_1_1BlendingFilter_ab75960aceca9106a2d1e4ac528e5c00f}
+
+
+Returns the start frame of the blending. 
+
+\begin{DoxyReturn}{Returns}
+The start frame of the blending.
+\end{DoxyReturn}
+\hypertarget{classModel_1_1BlendingFilter_a87b980b1874e8518ddb597d74bd3c832}{}\index{Model\+::\+Blending\+Filter@{Model\+::\+Blending\+Filter}!set\+End\+Frame@{set\+End\+Frame}}
+\index{set\+End\+Frame@{set\+End\+Frame}!Model\+::\+Blending\+Filter@{Model\+::\+Blending\+Filter}}
+\subsubsection[{set\+End\+Frame}]{\setlength{\rightskip}{0pt plus 5cm}void set\+End\+Frame (
+\begin{DoxyParamCaption}
+\item[{int}]{end\+Frame}
+\end{DoxyParamCaption}
+)}\label{classModel_1_1BlendingFilter_a87b980b1874e8518ddb597d74bd3c832}
+
+
+Sets the end frame of the blending. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em end\+Frame} & The end frame.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classModel_1_1BlendingFilter_a4b3c5d143c333646fc19059b52d91f98}{}\index{Model\+::\+Blending\+Filter@{Model\+::\+Blending\+Filter}!set\+In\+Blend@{set\+In\+Blend}}
+\index{set\+In\+Blend@{set\+In\+Blend}!Model\+::\+Blending\+Filter@{Model\+::\+Blending\+Filter}}
+\subsubsection[{set\+In\+Blend}]{\setlength{\rightskip}{0pt plus 5cm}void set\+In\+Blend (
+\begin{DoxyParamCaption}
+\item[{bool}]{in\+Blend}
+\end{DoxyParamCaption}
+)}\label{classModel_1_1BlendingFilter_a4b3c5d143c333646fc19059b52d91f98}
+
+
+Sets whether it is an in blending. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in\+Blend} & True if it is an in blending.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classModel_1_1BlendingFilter_aef2a28543fc8ddf9225491e032590c9c}{}\index{Model\+::\+Blending\+Filter@{Model\+::\+Blending\+Filter}!set\+Start\+Frame@{set\+Start\+Frame}}
+\index{set\+Start\+Frame@{set\+Start\+Frame}!Model\+::\+Blending\+Filter@{Model\+::\+Blending\+Filter}}
+\subsubsection[{set\+Start\+Frame}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Start\+Frame (
+\begin{DoxyParamCaption}
+\item[{int}]{start\+Frame}
+\end{DoxyParamCaption}
+)}\label{classModel_1_1BlendingFilter_aef2a28543fc8ddf9225491e032590c9c}
+
+
+Sets the start frame of the blending. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em start\+Frame} & The start frame.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Field Documentation}
+\hypertarget{classModel_1_1BlendingFilter_ae86f112663a85130f9a8de28ca0070cb}{}\index{Model\+::\+Blending\+Filter@{Model\+::\+Blending\+Filter}!end\+Frame@{end\+Frame}}
+\index{end\+Frame@{end\+Frame}!Model\+::\+Blending\+Filter@{Model\+::\+Blending\+Filter}}
+\subsubsection[{end\+Frame}]{\setlength{\rightskip}{0pt plus 5cm}int end\+Frame\hspace{0.3cm}{\ttfamily [private]}}\label{classModel_1_1BlendingFilter_ae86f112663a85130f9a8de28ca0070cb}
+\hypertarget{classModel_1_1BlendingFilter_a5236a1acd21870beccb3622a0d868f64}{}\index{Model\+::\+Blending\+Filter@{Model\+::\+Blending\+Filter}!in\+Blend@{in\+Blend}}
+\index{in\+Blend@{in\+Blend}!Model\+::\+Blending\+Filter@{Model\+::\+Blending\+Filter}}
+\subsubsection[{in\+Blend}]{\setlength{\rightskip}{0pt plus 5cm}bool in\+Blend\hspace{0.3cm}{\ttfamily [private]}}\label{classModel_1_1BlendingFilter_a5236a1acd21870beccb3622a0d868f64}
+\hypertarget{classModel_1_1BlendingFilter_a2c832c53905dc1fcfff946674d89f01d}{}\index{Model\+::\+Blending\+Filter@{Model\+::\+Blending\+Filter}!start\+Frame@{start\+Frame}}
+\index{start\+Frame@{start\+Frame}!Model\+::\+Blending\+Filter@{Model\+::\+Blending\+Filter}}
+\subsubsection[{start\+Frame}]{\setlength{\rightskip}{0pt plus 5cm}int start\+Frame\hspace{0.3cm}{\ttfamily [private]}}\label{classModel_1_1BlendingFilter_a2c832c53905dc1fcfff946674d89f01d}

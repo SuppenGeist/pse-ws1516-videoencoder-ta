@@ -1,13 +1,30 @@
 \hypertarget{classUndoRedo_1_1AddFilter}{}\section{Add\+Filter Class Reference}
 \label{classUndoRedo_1_1AddFilter}\index{Add\+Filter@{Add\+Filter}}
+
+
+Inheritance diagram for Add\+Filter\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=172pt]{classUndoRedo_1_1AddFilter__inherit__graph}
+\end{center}
+\end{figure}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classUndoRedo_1_1AddFilter_a659a3f77315ba040fd763b2779f41fa8}{Add\+Filter} (Model\+::\+Filter\+::\+Filter\+Tab $\ast$filter\+Tab, \hyperlink{classModel_1_1Filter_1_1Filter}{Model\+::\+Filter\+::\+Filter} filter)
+\hyperlink{classUndoRedo_1_1AddFilter_a5a59ac8760928a47325c5d9722ca88cd}{Add\+Filter} (Model\+::\+Filter\+::\+Filter\+Tab $\ast$\hyperlink{classUndoRedo_1_1AddFilter_a47ca82534a740774d79998759818d9f4}{filter\+Tab}, \hyperlink{classModel_1_1Filter}{Model\+::\+Filter} \hyperlink{classUndoRedo_1_1AddFilter_a573678d67a3af0d81b06a4bb3a88957e}{filter})
 \item 
 void \hyperlink{classUndoRedo_1_1AddFilter_a0e1e7804a53f6d62efc72c9bdbec8571}{undo} ()
 \item 
 void \hyperlink{classUndoRedo_1_1AddFilter_a93c48d6ed036e1a381be53ac67643284}{redo} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classGUI_1_1FilterTab}{G\+U\+I\+::\+Filter\+Tab} $\ast$ \hyperlink{classUndoRedo_1_1AddFilter_a47ca82534a740774d79998759818d9f4}{filter\+Tab}
+\item 
+\hyperlink{classModel_1_1Filter}{Model\+::\+Filter} $\ast$ \hyperlink{classUndoRedo_1_1AddFilter_a573678d67a3af0d81b06a4bb3a88957e}{filter}
 \end{DoxyCompactItemize}
 
 
@@ -15,14 +32,14 @@ void \hyperlink{classUndoRedo_1_1AddFilter_a93c48d6ed036e1a381be53ac67643284}{re
 This is the undo command for adding a filter to the filterlist on the filtertab. 
 
 \subsection{Constructor \& Destructor Documentation}
-\hypertarget{classUndoRedo_1_1AddFilter_a659a3f77315ba040fd763b2779f41fa8}{}\index{Undo\+Redo\+::\+Add\+Filter@{Undo\+Redo\+::\+Add\+Filter}!Add\+Filter@{Add\+Filter}}
+\hypertarget{classUndoRedo_1_1AddFilter_a5a59ac8760928a47325c5d9722ca88cd}{}\index{Undo\+Redo\+::\+Add\+Filter@{Undo\+Redo\+::\+Add\+Filter}!Add\+Filter@{Add\+Filter}}
 \index{Add\+Filter@{Add\+Filter}!Undo\+Redo\+::\+Add\+Filter@{Undo\+Redo\+::\+Add\+Filter}}
 \subsubsection[{Add\+Filter}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Add\+Filter} (
 \begin{DoxyParamCaption}
 \item[{Model\+::\+Filter\+::\+Filter\+Tab $\ast$}]{filter\+Tab, }
-\item[{{\bf Model\+::\+Filter\+::\+Filter}}]{filter}
+\item[{{\bf Model\+::\+Filter}}]{filter}
 \end{DoxyParamCaption}
-)}\label{classUndoRedo_1_1AddFilter_a659a3f77315ba040fd763b2779f41fa8}
+)}\label{classUndoRedo_1_1AddFilter_a5a59ac8760928a47325c5d9722ca88cd}
 
 
 Constructor. 
@@ -59,3 +76,12 @@ Adds a filter to the filterlist.
 
 Removes the added filter from the filterlist. 
 
+
+
+\subsection{Field Documentation}
+\hypertarget{classUndoRedo_1_1AddFilter_a573678d67a3af0d81b06a4bb3a88957e}{}\index{Undo\+Redo\+::\+Add\+Filter@{Undo\+Redo\+::\+Add\+Filter}!filter@{filter}}
+\index{filter@{filter}!Undo\+Redo\+::\+Add\+Filter@{Undo\+Redo\+::\+Add\+Filter}}
+\subsubsection[{filter}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Model\+::\+Filter}$\ast$ filter\hspace{0.3cm}{\ttfamily [private]}}\label{classUndoRedo_1_1AddFilter_a573678d67a3af0d81b06a4bb3a88957e}
+\hypertarget{classUndoRedo_1_1AddFilter_a47ca82534a740774d79998759818d9f4}{}\index{Undo\+Redo\+::\+Add\+Filter@{Undo\+Redo\+::\+Add\+Filter}!filter\+Tab@{filter\+Tab}}
+\index{filter\+Tab@{filter\+Tab}!Undo\+Redo\+::\+Add\+Filter@{Undo\+Redo\+::\+Add\+Filter}}
+\subsubsection[{filter\+Tab}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Filter\+Tab}$\ast$ filter\+Tab\hspace{0.3cm}{\ttfamily [private]}}\label{classUndoRedo_1_1AddFilter_a47ca82534a740774d79998759818d9f4}

@@ -3,11 +3,32 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classGUI_1_1FilterView_ad71d4f27fa2abfe20b3f91f8ce3ef044}{Filter\+View} (\hyperlink{classGUI_1_1Player_1_1QWidget}{G\+U\+I\+::\+Player\+::\+Q\+Widget} $\ast$parent)
+\hyperlink{classGUI_1_1FilterView_a6994f5827cdc07911e099975f67044df}{Filter\+View} (\hyperlink{classGUI_1_1QWidget}{G\+U\+I\+::\+Q\+Widget} $\ast$parent)
 \item 
-void \hyperlink{classGUI_1_1FilterView_a5b70d646670fa62496626d2a3248598c}{set\+Filter} (\hyperlink{classModel_1_1Filter_1_1Filter}{Model\+::\+Filter\+::\+Filter} filter)
+void \hyperlink{classGUI_1_1FilterView_a701b7d9f632d1a26c34b5a13eb75249e}{set\+Filter} (\hyperlink{classModel_1_1Filter}{Model\+::\+Filter} \hyperlink{classGUI_1_1FilterView_a573678d67a3af0d81b06a4bb3a88957e}{filter})
 \item 
 void \hyperlink{classGUI_1_1FilterView_a8732f98917f4cf76c86e9c4d6df1ce70}{set\+Filter\+Tab} (\hyperlink{classGUI_1_1FilterTab}{G\+U\+I\+::\+Filter\+Tab} $\ast$filtertab)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classGUI_1_1FilterView_a2df842907a528c0743d099b52b28f656}{check\+Box\+State\+Changed} (int state)
+\end{DoxyCompactItemize}
+\subsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static Q\+Image \hyperlink{classGUI_1_1FilterView_aa321fa9d813df1f89a5fefe4723baf2d}{get\+Default\+Image} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classGUI_1_1QCheckBox}{G\+U\+I\+::\+Q\+Check\+Box} $\ast$ \hyperlink{classGUI_1_1FilterView_a3596dc6ca96995c950cf1929a3d7f662}{checkbox}
+\item 
+Q\+Label $\ast$ \hyperlink{classGUI_1_1FilterView_a04293c681f4f8e169e69d7971ab28866}{preview}
+\item 
+\hyperlink{classGUI_1_1FilterTab}{G\+U\+I\+::\+Filter\+Tab} $\ast$ \hyperlink{classGUI_1_1FilterView_a47ca82534a740774d79998759818d9f4}{filter\+Tab}
+\item 
+\hyperlink{classModel_1_1Filter}{Model\+::\+Filter} $\ast$ \hyperlink{classGUI_1_1FilterView_a573678d67a3af0d81b06a4bb3a88957e}{filter}
 \end{DoxyCompactItemize}
 
 
@@ -15,13 +36,13 @@ void \hyperlink{classGUI_1_1FilterView_a8732f98917f4cf76c86e9c4d6df1ce70}{set\+F
 Represents a selectable filter in the gui. Shows a example of the filter and  a checkbox as well as its name. 
 
 \subsection{Constructor \& Destructor Documentation}
-\hypertarget{classGUI_1_1FilterView_ad71d4f27fa2abfe20b3f91f8ce3ef044}{}\index{G\+U\+I\+::\+Filter\+View@{G\+U\+I\+::\+Filter\+View}!Filter\+View@{Filter\+View}}
+\hypertarget{classGUI_1_1FilterView_a6994f5827cdc07911e099975f67044df}{}\index{G\+U\+I\+::\+Filter\+View@{G\+U\+I\+::\+Filter\+View}!Filter\+View@{Filter\+View}}
 \index{Filter\+View@{Filter\+View}!G\+U\+I\+::\+Filter\+View@{G\+U\+I\+::\+Filter\+View}}
 \subsubsection[{Filter\+View}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Filter\+View} (
 \begin{DoxyParamCaption}
-\item[{{\bf G\+U\+I\+::\+Player\+::\+Q\+Widget} $\ast$}]{parent}
+\item[{{\bf G\+U\+I\+::\+Q\+Widget} $\ast$}]{parent}
 \end{DoxyParamCaption}
-)}\label{classGUI_1_1FilterView_ad71d4f27fa2abfe20b3f91f8ce3ef044}
+)}\label{classGUI_1_1FilterView_a6994f5827cdc07911e099975f67044df}
 
 
 Constructor. 
@@ -29,13 +50,38 @@ Constructor.
 
 
 \subsection{Member Function Documentation}
-\hypertarget{classGUI_1_1FilterView_a5b70d646670fa62496626d2a3248598c}{}\index{G\+U\+I\+::\+Filter\+View@{G\+U\+I\+::\+Filter\+View}!set\+Filter@{set\+Filter}}
+\hypertarget{classGUI_1_1FilterView_a2df842907a528c0743d099b52b28f656}{}\index{G\+U\+I\+::\+Filter\+View@{G\+U\+I\+::\+Filter\+View}!check\+Box\+State\+Changed@{check\+Box\+State\+Changed}}
+\index{check\+Box\+State\+Changed@{check\+Box\+State\+Changed}!G\+U\+I\+::\+Filter\+View@{G\+U\+I\+::\+Filter\+View}}
+\subsubsection[{check\+Box\+State\+Changed}]{\setlength{\rightskip}{0pt plus 5cm}void check\+Box\+State\+Changed (
+\begin{DoxyParamCaption}
+\item[{int}]{state}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1FilterView_a2df842907a528c0743d099b52b28f656}
+
+
+Slot\+: connected with checkbox.\+state\+Changed(state \+: int) does filter\+Tab.\+add\+Filter(filter) or filter\+Tab.\+remove\+Filter(filter.\+get\+Name()) 
+
+\hypertarget{classGUI_1_1FilterView_aa321fa9d813df1f89a5fefe4723baf2d}{}\index{G\+U\+I\+::\+Filter\+View@{G\+U\+I\+::\+Filter\+View}!get\+Default\+Image@{get\+Default\+Image}}
+\index{get\+Default\+Image@{get\+Default\+Image}!G\+U\+I\+::\+Filter\+View@{G\+U\+I\+::\+Filter\+View}}
+\subsubsection[{get\+Default\+Image}]{\setlength{\rightskip}{0pt plus 5cm}static Q\+Image get\+Default\+Image (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}\label{classGUI_1_1FilterView_aa321fa9d813df1f89a5fefe4723baf2d}
+
+
+Returns the default image on which the filter is applied as a preview. 
+
+\begin{DoxyReturn}{Returns}
+The default image.
+\end{DoxyReturn}
+\hypertarget{classGUI_1_1FilterView_a701b7d9f632d1a26c34b5a13eb75249e}{}\index{G\+U\+I\+::\+Filter\+View@{G\+U\+I\+::\+Filter\+View}!set\+Filter@{set\+Filter}}
 \index{set\+Filter@{set\+Filter}!G\+U\+I\+::\+Filter\+View@{G\+U\+I\+::\+Filter\+View}}
 \subsubsection[{set\+Filter}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Filter (
 \begin{DoxyParamCaption}
-\item[{{\bf Model\+::\+Filter\+::\+Filter}}]{filter}
+\item[{{\bf Model\+::\+Filter}}]{filter}
 \end{DoxyParamCaption}
-)}\label{classGUI_1_1FilterView_a5b70d646670fa62496626d2a3248598c}
+)}\label{classGUI_1_1FilterView_a701b7d9f632d1a26c34b5a13eb75249e}
 
 
 Sets the filter this view represents. 
@@ -61,3 +107,18 @@ Sets the tab this view is contained in.
 {\em filtertab} & The parent filtertab.\\
 \hline
 \end{DoxyParams}
+
+
+\subsection{Field Documentation}
+\hypertarget{classGUI_1_1FilterView_a3596dc6ca96995c950cf1929a3d7f662}{}\index{G\+U\+I\+::\+Filter\+View@{G\+U\+I\+::\+Filter\+View}!checkbox@{checkbox}}
+\index{checkbox@{checkbox}!G\+U\+I\+::\+Filter\+View@{G\+U\+I\+::\+Filter\+View}}
+\subsubsection[{checkbox}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Q\+Check\+Box}$\ast$ checkbox\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1FilterView_a3596dc6ca96995c950cf1929a3d7f662}
+\hypertarget{classGUI_1_1FilterView_a573678d67a3af0d81b06a4bb3a88957e}{}\index{G\+U\+I\+::\+Filter\+View@{G\+U\+I\+::\+Filter\+View}!filter@{filter}}
+\index{filter@{filter}!G\+U\+I\+::\+Filter\+View@{G\+U\+I\+::\+Filter\+View}}
+\subsubsection[{filter}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Model\+::\+Filter}$\ast$ filter\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1FilterView_a573678d67a3af0d81b06a4bb3a88957e}
+\hypertarget{classGUI_1_1FilterView_a47ca82534a740774d79998759818d9f4}{}\index{G\+U\+I\+::\+Filter\+View@{G\+U\+I\+::\+Filter\+View}!filter\+Tab@{filter\+Tab}}
+\index{filter\+Tab@{filter\+Tab}!G\+U\+I\+::\+Filter\+View@{G\+U\+I\+::\+Filter\+View}}
+\subsubsection[{filter\+Tab}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Filter\+Tab}$\ast$ filter\+Tab\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1FilterView_a47ca82534a740774d79998759818d9f4}
+\hypertarget{classGUI_1_1FilterView_a04293c681f4f8e169e69d7971ab28866}{}\index{G\+U\+I\+::\+Filter\+View@{G\+U\+I\+::\+Filter\+View}!preview@{preview}}
+\index{preview@{preview}!G\+U\+I\+::\+Filter\+View@{G\+U\+I\+::\+Filter\+View}}
+\subsubsection[{preview}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Label$\ast$ preview\hspace{0.3cm}{\ttfamily [private]}}\label{classGUI_1_1FilterView_a04293c681f4f8e169e69d7971ab28866}
