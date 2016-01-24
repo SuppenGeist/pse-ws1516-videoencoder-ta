@@ -162,15 +162,18 @@ Das Undo/Redo Package\\\\
 {\centering\includegraphics[width=1\textwidth]{UndoRedo.jpg}}\\
 \newpage
 \section{Sequenzdiagramme}
-{\centering\includegraphics[width=10cm]{Sequence Diagram1.jpg}}\\
+\subsection*{Das LoadVideo Sequenzdiagram}
+{\centering\includegraphics[width=1\textwidth]{SequenceDiagram1.jpg}}\\
 When you load a new Video a LoadVideo object is created with the path to the Video as a parameter.Then a AVVideo is created and with the Converter a Video which is then given to a VideoPlayer. This VideoPlayer has a FrameView a Timer and is then given to a ControlPanel
 \newpage
-{\centering\includegraphics[width=10cm]{Sequence Diagram2.jpg}}\\
+\subsection*{Das Analysis Sequenzdiagram}
+{\centering\includegraphics[width=1\textwidth]{SequenceDiagram2.jpg}}\\
 First a ControlPanel and a PlayerControlPanel are created. When a Video is added the LoadVideo Sequenz which is descriped above is initiated.  If an additional Video is added  
 an AnalysisBox is created in which the added Video is loaded and the Analysis starts in which he MacroblocVideo is calculated and Displayed in a second VideoPlayer.
 When play is pressed in the ControlPanel all Videos start to play.
 \newpage
-{\centering\includegraphics[width=10cm]{Sequence Diagram3.jpg}}\\
+\subsection*{Das Filter Sequenzdiagram}
+{\centering\includegraphics[width=1\textwidth]{SequenceDiagram3.jpg}}\\
 First the ControlPanel, PlayerControlPanel and PreviewControlPanel are created.
 Then a Video is loaded with the LoadVideo sequenz. Then a Filter are added to the FilterList. This FilterLis is then applied to the AVVideo which is the converted to an Video and Displayed in the VideoPlayer.
 \chapter{Namensräume}
