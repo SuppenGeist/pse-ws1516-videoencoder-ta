@@ -142,7 +142,37 @@
 \chapter{Einleitung}
 Vive (lang: Video veritatem) ist ein Programm zum Testen verschiedener Videoencoder. Dieses Dokument ist das Entwurfsheft, in welchem sich Diagramme und Spezifikationen zu jeder einzelnen Klasse befinden. Außerdem dient es als Richtlinie für die Implementierungsphase.
 Das Entwurfsheft ist in mehrere Abschnitte gegliedert: Im ersten Abschnitt sind Diagramme zu sehen, die einen groben Überblick über die Struktur des Programms liefern. Darauf folgt die detaillierte Beschreibung jeder einzelnen Klasse und Methode. Eine Übersicht über die Implementierungsphase in Form eines Gantt-Diagrams ist im Anhang enthalten.
-
+\chapter{Diagramme}
+\section{Klassendiagramme}
+Der grobe Aufbau des Programms\\\\
+{\centering\includegraphics[width=1\textwidth]{Grobuebersicht.jpg}}\\
+\newpage
+Das Utility Package\\\\
+{\centering\includegraphics[width=1\textwidth]{Utility.jpg}}\\
+\newpage
+Das Model ohne die Filter\\\\
+{\centering\includegraphics[width=1\textwidth]{Model_noFilter.jpg}}\\
+\newpage
+Die GUI ohne die FilterBox Klassen\\\\
+{\centering\includegraphics[width=1\textwidth]{GUI_noFilter.jpg}}\\
+\newpage
+Das Memento Package\\\\
+{\centering\includegraphics[width=1\textwidth]{Memento.jpg}}\\\\\\
+Das Undo/Redo Package\\\\
+{\centering\includegraphics[width=1\textwidth]{UndoRedo.jpg}}\\
+\newpage
+\section{Sequenzdiagramme}
+{\centering\includegraphics[width=10cm]{Sequence Diagram1.jpg}}\\
+When you load a new Video a LoadVideo object is created with the path to the Video as a parameter.Then a AVVideo is created and with the Converter a Video which is then given to a VideoPlayer. This VideoPlayer has a FrameView a Timer and is then given to a ControlPanel
+\newpage
+{\centering\includegraphics[width=10cm]{Sequence Diagram2.jpg}}\\
+First a ControlPanel and a PlayerControlPanel are created. When a Video is added the LoadVideo Sequenz which is descriped above is initiated.  If an additional Video is added  
+an AnalysisBox is created in which the added Video is loaded and the Analysis starts in which he MacroblocVideo is calculated and Displayed in a second VideoPlayer.
+When play is pressed in the ControlPanel all Videos start to play.
+\newpage
+{\centering\includegraphics[width=10cm]{Sequence Diagram3.jpg}}\\
+First the ControlPanel, PlayerControlPanel and PreviewControlPanel are created.
+Then a Video is loaded with the LoadVideo sequenz. Then a Filter are added to the FilterList. This FilterLis is then applied to the AVVideo which is the converted to an Video and Displayed in the VideoPlayer.
 \chapter{Namensräume}
 \input{namespaceGUI}
 \input{namespaceGUI_1_1Player}
@@ -274,6 +304,8 @@ Das Entwurfsheft ist in mehrere Abschnitte gegliedert: Im ersten Abschnitt sind 
 \input{classGUI_1_1ZoomFilterBox}
 %--- End generated contents ---
 
+
+
 % Index
 \backmatter
 \newpage
@@ -282,16 +314,8 @@ Das Entwurfsheft ist in mehrere Abschnitte gegliedert: Im ersten Abschnitt sind 
 \addcontentsline{toc}{chapter}{Index}
 \printindex
 \newpage
-{\centering\includegraphics[width=10cm]{Sequence Diagram1.jpg}}\\
-When you load a new Video a LoadVideo object is created with the path to the Video as a parameter.Then a AVVideo is created and with the Converter a Video which is then given to a VideoPlayer. This VideoPlayer has a FrameView a Timer and is then given to a ControlPanel
-\newpage
-{\centering\includegraphics[width=10cm]{Sequence Diagram2.jpg}}\\
-First a ControlPanel and a PlayerControlPanel are created. When a Video is added the LoadVideo Sequenz which is descriped above is initiated.  If an additional Video is added  
-an AnalysisBox is created in which the added Video is loaded and the Analysis starts in which he MacroblocVideo is calculated and Displayed in a second VideoPlayer.
-When play is pressed in the ControlPanel all Videos start to play.
-\newpage
-{\centering\includegraphics[width=10cm]{Sequence Diagram3.jpg}}\\
-First the ControlPanel, PlayerControlPanel and PreviewControlPanel are created.
-Then a Video is loaded with the LoadVideo sequenz. Then a Filter are added to the FilterList. This FilterLis is then applied to the AVVideo which is the converted to an Video and Displayed in the VideoPlayer. 
+\chapter{Anhang}
+Implementierungsplan\\\\
+{\centering\includegraphics[width=1\textwidth]{Projektplan_new.PNG}}\\
 \end{document}
 
