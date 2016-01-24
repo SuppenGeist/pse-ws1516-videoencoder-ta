@@ -13,25 +13,22 @@ int \hyperlink{classGUI_1_1Player_1_1Video_a519ad5c0664b9de28c1a6d9dc77f959d}{ge
 \item 
 Q\+Image $\ast$ \hyperlink{classGUI_1_1Player_1_1Video_aa350d9b9ba7bad72aeda171dcc537c10}{get\+Frame} (int index)
 \item 
-void \hyperlink{classGUI_1_1Player_1_1Video_a099c54fc35c34a3231a9b5a6d9fe6d18}{insert\+Frame} (int index=-\/1, unique\+\_\+ptr$<$ Q\+Image $>$ frame\+:std\+:)
+void \hyperlink{classGUI_1_1Player_1_1Video_a34274f56faa98faa9697ef24e6fe99ef}{insert\+Frame} (int index=-\/1, unique\+\_\+ptr$<$ Q\+Image $>$ frame)
 \item 
 void \hyperlink{classGUI_1_1Player_1_1Video_a2467a8d0c175fdcbacea59e9955d88a9}{remove\+Frame} (int index)
 \item 
-void \hyperlink{classGUI_1_1Player_1_1Video_ab77b9ebd7677bbb317c511fa48d61aa6}{insert\+Frames} (int index=-\/1, vector$<$ std\+::unique\+\_\+ptr$<$ Q\+Image $>$ $>$ \&frames\+:std\+:)
+void \hyperlink{classGUI_1_1Player_1_1Video_aa6207c0d55d5353cd1df573ae326f602}{insert\+Frames} (int index=-\/1, vector$<$ unique\+\_\+ptr$<$ Q\+Image $>$ $>$ \&frames)
 \item 
 int \hyperlink{classGUI_1_1Player_1_1Video_a038091d64aa83552571228512789d5ee}{get\+Number\+Of\+Frames} ()
 \end{DoxyCompactItemize}
 \subsection*{Data Fields}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classGUI_1_1Player_1_1Video_ab3171c486c08dcb68f05c418ec4c17ab}{}\hyperlink{classModel_1_1EncodedVideo}{Model\+::\+Encoded\+Video} $\ast$ {\bfseries display\+Video}\label{classGUI_1_1Player_1_1Video_ab3171c486c08dcb68f05c418ec4c17ab}
-
+\hyperlink{classModel_1_1EncodedVideo}{Model\+::\+Encoded\+Video} $\ast$ \hyperlink{classGUI_1_1Player_1_1Video_ab3171c486c08dcb68f05c418ec4c17ab}{display\+Video}
 \item 
-\hypertarget{classGUI_1_1Player_1_1Video_ac579683bc7b2499eed6704c87a211234}{}\hyperlink{classModel_1_1EncodedVideo}{Model\+::\+Encoded\+Video} $\ast$ {\bfseries macroblock\+Video}\label{classGUI_1_1Player_1_1Video_ac579683bc7b2499eed6704c87a211234}
-
+\hyperlink{classModel_1_1EncodedVideo}{Model\+::\+Encoded\+Video} $\ast$ \hyperlink{classGUI_1_1Player_1_1Video_ac579683bc7b2499eed6704c87a211234}{macroblock\+Video}
 \item 
-\hypertarget{classGUI_1_1Player_1_1Video_aa0602ff7e1e4796c78aa15520224b447}{}\hyperlink{classModel_1_1EncodedVideo}{Model\+::\+Encoded\+Video} $\ast$ {\bfseries rgb\+Diff\+Video}\label{classGUI_1_1Player_1_1Video_aa0602ff7e1e4796c78aa15520224b447}
-
+\hyperlink{classModel_1_1EncodedVideo}{Model\+::\+Encoded\+Video} $\ast$ \hyperlink{classGUI_1_1Player_1_1Video_aa0602ff7e1e4796c78aa15520224b447}{rgb\+Diff\+Video}
 \end{DoxyCompactItemize}
 
 
@@ -54,11 +51,11 @@ Constructor.
 
 
 \begin{DoxyParams}{Parameters}
-{\em fps} & the fps the video should be played at\\
+{\em fps} & The fps the video should be played at.\\
 \hline
-{\em width} & the width of the video\\
+{\em width} & The width of the video.\\
 \hline
-{\em height} & the height of the video\\
+{\em height} & The height of the video.\\
 \hline
 \end{DoxyParams}
 
@@ -76,7 +73,7 @@ Constructor.
 Returns the fps of the video. 
 
 \begin{DoxyReturn}{Returns}
-fps of the video
+Fps of the video.
 \end{DoxyReturn}
 \hypertarget{classGUI_1_1Player_1_1Video_aa350d9b9ba7bad72aeda171dcc537c10}{}\index{G\+U\+I\+::\+Player\+::\+Video@{G\+U\+I\+::\+Player\+::\+Video}!get\+Frame@{get\+Frame}}
 \index{get\+Frame@{get\+Frame}!G\+U\+I\+::\+Player\+::\+Video@{G\+U\+I\+::\+Player\+::\+Video}}
@@ -91,7 +88,7 @@ Returns the frame at the given index. If the index is invalid nullptr is returne
 
 
 \begin{DoxyParams}{Parameters}
-{\em index} & the index of the frame to return\\
+{\em index} & The index of the frame to return.\\
 \hline
 \end{DoxyParams}
 \hypertarget{classGUI_1_1Player_1_1Video_a07efb2a4e9a982688c8bb3c3f21d1092}{}\index{G\+U\+I\+::\+Player\+::\+Video@{G\+U\+I\+::\+Player\+::\+Video}!get\+Height@{get\+Height}}
@@ -106,7 +103,7 @@ Returns the frame at the given index. If the index is invalid nullptr is returne
 Returns the height of the video. 
 
 \begin{DoxyReturn}{Returns}
-the height of the video
+The height of the video.
 \end{DoxyReturn}
 \hypertarget{classGUI_1_1Player_1_1Video_a038091d64aa83552571228512789d5ee}{}\index{G\+U\+I\+::\+Player\+::\+Video@{G\+U\+I\+::\+Player\+::\+Video}!get\+Number\+Of\+Frames@{get\+Number\+Of\+Frames}}
 \index{get\+Number\+Of\+Frames@{get\+Number\+Of\+Frames}!G\+U\+I\+::\+Player\+::\+Video@{G\+U\+I\+::\+Player\+::\+Video}}
@@ -120,7 +117,7 @@ the height of the video
 Returns the number of frames in the video. 
 
 \begin{DoxyReturn}{Returns}
-the number of frames in the video
+The number of frames in the video.
 \end{DoxyReturn}
 \hypertarget{classGUI_1_1Player_1_1Video_a67a0997183f24da19b776d96c1052998}{}\index{G\+U\+I\+::\+Player\+::\+Video@{G\+U\+I\+::\+Player\+::\+Video}!get\+Width@{get\+Width}}
 \index{get\+Width@{get\+Width}!G\+U\+I\+::\+Player\+::\+Video@{G\+U\+I\+::\+Player\+::\+Video}}
@@ -134,44 +131,44 @@ the number of frames in the video
 Returns the width of the video. 
 
 \begin{DoxyReturn}{Returns}
-the width of the video
+The width of the video.
 \end{DoxyReturn}
-\hypertarget{classGUI_1_1Player_1_1Video_a099c54fc35c34a3231a9b5a6d9fe6d18}{}\index{G\+U\+I\+::\+Player\+::\+Video@{G\+U\+I\+::\+Player\+::\+Video}!insert\+Frame@{insert\+Frame}}
+\hypertarget{classGUI_1_1Player_1_1Video_a34274f56faa98faa9697ef24e6fe99ef}{}\index{G\+U\+I\+::\+Player\+::\+Video@{G\+U\+I\+::\+Player\+::\+Video}!insert\+Frame@{insert\+Frame}}
 \index{insert\+Frame@{insert\+Frame}!G\+U\+I\+::\+Player\+::\+Video@{G\+U\+I\+::\+Player\+::\+Video}}
 \subsubsection[{insert\+Frame}]{\setlength{\rightskip}{0pt plus 5cm}void insert\+Frame (
 \begin{DoxyParamCaption}
 \item[{int}]{index = {\ttfamily -\/1}, }
-\item[{unique\+\_\+ptr$<$ Q\+Image $>$ frame\+:std\+:}]{}
+\item[{unique\+\_\+ptr$<$ Q\+Image $>$}]{frame}
 \end{DoxyParamCaption}
-)}\label{classGUI_1_1Player_1_1Video_a099c54fc35c34a3231a9b5a6d9fe6d18}
+)}\label{classGUI_1_1Player_1_1Video_a34274f56faa98faa9697ef24e6fe99ef}
 
 
 Inserts a frame at the given index. If index $<$ 0 then the frame gets pushed to the back. If the index is greater than \hyperlink{classGUI_1_1Player_1_1Video_a038091d64aa83552571228512789d5ee}{get\+Number\+Of\+Frames()} the frames gets pushed to the back. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em index} & The index to insert the frame at\\
+{\em index} & The index to insert the frame at.\\
 \hline
-{\em frame\+:std,\+:} & The frame to insert\\
+{\em frame} & The frame to insert.\\
 \hline
 \end{DoxyParams}
-\hypertarget{classGUI_1_1Player_1_1Video_ab77b9ebd7677bbb317c511fa48d61aa6}{}\index{G\+U\+I\+::\+Player\+::\+Video@{G\+U\+I\+::\+Player\+::\+Video}!insert\+Frames@{insert\+Frames}}
+\hypertarget{classGUI_1_1Player_1_1Video_aa6207c0d55d5353cd1df573ae326f602}{}\index{G\+U\+I\+::\+Player\+::\+Video@{G\+U\+I\+::\+Player\+::\+Video}!insert\+Frames@{insert\+Frames}}
 \index{insert\+Frames@{insert\+Frames}!G\+U\+I\+::\+Player\+::\+Video@{G\+U\+I\+::\+Player\+::\+Video}}
 \subsubsection[{insert\+Frames}]{\setlength{\rightskip}{0pt plus 5cm}void insert\+Frames (
 \begin{DoxyParamCaption}
 \item[{int}]{index = {\ttfamily -\/1}, }
-\item[{vector$<$ std\+::unique\+\_\+ptr$<$ Q\+Image $>$ $>$ \&frames\+:std\+:}]{}
+\item[{vector$<$ unique\+\_\+ptr$<$ Q\+Image $>$ $>$ \&}]{frames}
 \end{DoxyParamCaption}
-)}\label{classGUI_1_1Player_1_1Video_ab77b9ebd7677bbb317c511fa48d61aa6}
+)}\label{classGUI_1_1Player_1_1Video_aa6207c0d55d5353cd1df573ae326f602}
 
 
 Inserts a vector of frames at the given index. If the index$<$0 or index is greater than \hyperlink{classGUI_1_1Player_1_1Video_a038091d64aa83552571228512789d5ee}{get\+Number\+Of\+Frames()} then the frames are pushed to the back. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em index} & the index to insert the frames at\\
+{\em index} & The index to insert the frames at.\\
 \hline
-{\em frames\+:std,\+:} & the frames to insert\\
+{\em frames} & The frames to insert.\\
 \hline
 \end{DoxyParams}
 \hypertarget{classGUI_1_1Player_1_1Video_a2467a8d0c175fdcbacea59e9955d88a9}{}\index{G\+U\+I\+::\+Player\+::\+Video@{G\+U\+I\+::\+Player\+::\+Video}!remove\+Frame@{remove\+Frame}}
@@ -187,6 +184,18 @@ Removes the frame at the given index. If the index is invalid nothing happens.
 
 
 \begin{DoxyParams}{Parameters}
-{\em index} & the index of the frame to remove\\
+{\em index} & The index of the frame to remove.\\
 \hline
 \end{DoxyParams}
+
+
+\subsection{Field Documentation}
+\hypertarget{classGUI_1_1Player_1_1Video_ab3171c486c08dcb68f05c418ec4c17ab}{}\index{G\+U\+I\+::\+Player\+::\+Video@{G\+U\+I\+::\+Player\+::\+Video}!display\+Video@{display\+Video}}
+\index{display\+Video@{display\+Video}!G\+U\+I\+::\+Player\+::\+Video@{G\+U\+I\+::\+Player\+::\+Video}}
+\subsubsection[{display\+Video}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Model\+::\+Encoded\+Video}$\ast$ display\+Video}\label{classGUI_1_1Player_1_1Video_ab3171c486c08dcb68f05c418ec4c17ab}
+\hypertarget{classGUI_1_1Player_1_1Video_ac579683bc7b2499eed6704c87a211234}{}\index{G\+U\+I\+::\+Player\+::\+Video@{G\+U\+I\+::\+Player\+::\+Video}!macroblock\+Video@{macroblock\+Video}}
+\index{macroblock\+Video@{macroblock\+Video}!G\+U\+I\+::\+Player\+::\+Video@{G\+U\+I\+::\+Player\+::\+Video}}
+\subsubsection[{macroblock\+Video}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Model\+::\+Encoded\+Video}$\ast$ macroblock\+Video}\label{classGUI_1_1Player_1_1Video_ac579683bc7b2499eed6704c87a211234}
+\hypertarget{classGUI_1_1Player_1_1Video_aa0602ff7e1e4796c78aa15520224b447}{}\index{G\+U\+I\+::\+Player\+::\+Video@{G\+U\+I\+::\+Player\+::\+Video}!rgb\+Diff\+Video@{rgb\+Diff\+Video}}
+\index{rgb\+Diff\+Video@{rgb\+Diff\+Video}!G\+U\+I\+::\+Player\+::\+Video@{G\+U\+I\+::\+Player\+::\+Video}}
+\subsubsection[{rgb\+Diff\+Video}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Model\+::\+Encoded\+Video}$\ast$ rgb\+Diff\+Video}\label{classGUI_1_1Player_1_1Video_aa0602ff7e1e4796c78aa15520224b447}

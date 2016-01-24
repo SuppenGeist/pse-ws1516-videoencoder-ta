@@ -1,0 +1,64 @@
+\hypertarget{classUndoRedo_1_1MoveFilterUp}{}\section{Move\+Filter\+Up Class Reference}
+\label{classUndoRedo_1_1MoveFilterUp}\index{Move\+Filter\+Up@{Move\+Filter\+Up}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classUndoRedo_1_1MoveFilterUp_ad11948fd1a203013d312b05633a01941}{Move\+Filter\+Up} (\hyperlink{classGUI_1_1FilterTab}{G\+U\+I\+::\+Filter\+Tab} $\ast$filter\+Tab, int old, int new\+\_\+1)
+\item 
+void \hyperlink{classUndoRedo_1_1MoveFilterUp_a0e1e7804a53f6d62efc72c9bdbec8571}{undo} ()
+\item 
+void \hyperlink{classUndoRedo_1_1MoveFilterUp_a93c48d6ed036e1a381be53ac67643284}{redo} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class is the undo command for moving a filter up in the filterlist. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classUndoRedo_1_1MoveFilterUp_ad11948fd1a203013d312b05633a01941}{}\index{Undo\+Redo\+::\+Move\+Filter\+Up@{Undo\+Redo\+::\+Move\+Filter\+Up}!Move\+Filter\+Up@{Move\+Filter\+Up}}
+\index{Move\+Filter\+Up@{Move\+Filter\+Up}!Undo\+Redo\+::\+Move\+Filter\+Up@{Undo\+Redo\+::\+Move\+Filter\+Up}}
+\subsubsection[{Move\+Filter\+Up}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Move\+Filter\+Up} (
+\begin{DoxyParamCaption}
+\item[{{\bf G\+U\+I\+::\+Filter\+Tab} $\ast$}]{filter\+Tab, }
+\item[{int}]{old, }
+\item[{int}]{new\+\_\+1}
+\end{DoxyParamCaption}
+)}\label{classUndoRedo_1_1MoveFilterUp_ad11948fd1a203013d312b05633a01941}
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filter\+Tab} & The filtertab to operate on.\\
+\hline
+{\em old} & Old index of the filter.\\
+\hline
+{\em new} & New index of the filter.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classUndoRedo_1_1MoveFilterUp_a93c48d6ed036e1a381be53ac67643284}{}\index{Undo\+Redo\+::\+Move\+Filter\+Up@{Undo\+Redo\+::\+Move\+Filter\+Up}!redo@{redo}}
+\index{redo@{redo}!Undo\+Redo\+::\+Move\+Filter\+Up@{Undo\+Redo\+::\+Move\+Filter\+Up}}
+\subsubsection[{redo}]{\setlength{\rightskip}{0pt plus 5cm}void redo (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classUndoRedo_1_1MoveFilterUp_a93c48d6ed036e1a381be53ac67643284}
+
+
+Moves selected filter one position up in the filterlist. 
+
+\hypertarget{classUndoRedo_1_1MoveFilterUp_a0e1e7804a53f6d62efc72c9bdbec8571}{}\index{Undo\+Redo\+::\+Move\+Filter\+Up@{Undo\+Redo\+::\+Move\+Filter\+Up}!undo@{undo}}
+\index{undo@{undo}!Undo\+Redo\+::\+Move\+Filter\+Up@{Undo\+Redo\+::\+Move\+Filter\+Up}}
+\subsubsection[{undo}]{\setlength{\rightskip}{0pt plus 5cm}void undo (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classUndoRedo_1_1MoveFilterUp_a0e1e7804a53f6d62efc72c9bdbec8571}
+
+
+Moves the filter one position back down in the filterlist. 
+

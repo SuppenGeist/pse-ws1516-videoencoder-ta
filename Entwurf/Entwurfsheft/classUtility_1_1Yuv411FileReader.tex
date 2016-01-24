@@ -1,0 +1,86 @@
+\hypertarget{classUtility_1_1Yuv411FileReader}{}\section{Yuv411\+File\+Reader Class Reference}
+\label{classUtility_1_1Yuv411FileReader}\index{Yuv411\+File\+Reader@{Yuv411\+File\+Reader}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classUtility_1_1Yuv411FileReader_af4e7eb4bd4929f14e6334ae7ac9dad6f}{Yuv411\+File\+Reader} (Q\+String filename, int \hyperlink{classUtility_1_1YuvFileReader_a2474a5474cbff19523a51eb1de01cda4}{width}, int \hyperlink{classUtility_1_1YuvFileReader_ad12fc34ce789bce6c8a05d8a17138534}{height}, \hyperlink{namespaceUtility_a56a83bf6847f4801f4205eb4be237ccf}{Utility\+::\+Compression} compression)
+\item 
+unique\+\_\+ptr$<$ \hyperlink{classGUI_1_1Player_1_1Video}{G\+U\+I\+::\+Player\+::\+Video} $>$ \hyperlink{classUtility_1_1Yuv411FileReader_a9dd03728ebb2e883f5cac8cb357fcd0e}{read} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::vector$<$ Q\+Rgb $>$ \hyperlink{classUtility_1_1Yuv411FileReader_af6d2712d6e14bd1bb6cd0b7658ad71fb}{yuv411\+To\+Rgb888} (Yuv11\+Vector vector)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+This class is able to read Yuv 411 files. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classUtility_1_1Yuv411FileReader_af4e7eb4bd4929f14e6334ae7ac9dad6f}{}\index{Utility\+::\+Yuv411\+File\+Reader@{Utility\+::\+Yuv411\+File\+Reader}!Yuv411\+File\+Reader@{Yuv411\+File\+Reader}}
+\index{Yuv411\+File\+Reader@{Yuv411\+File\+Reader}!Utility\+::\+Yuv411\+File\+Reader@{Utility\+::\+Yuv411\+File\+Reader}}
+\subsubsection[{Yuv411\+File\+Reader}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Yuv411\+File\+Reader} (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{filename, }
+\item[{int}]{width, }
+\item[{int}]{height, }
+\item[{{\bf Utility\+::\+Compression}}]{compression}
+\end{DoxyParamCaption}
+)}\label{classUtility_1_1Yuv411FileReader_af4e7eb4bd4929f14e6334ae7ac9dad6f}
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Absolute path to the file to load.\\
+\hline
+{\em width} & Width of the video.\\
+\hline
+{\em height} & Height of the video.\\
+\hline
+{\em compression} & The compression of the file.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classUtility_1_1Yuv411FileReader_a9dd03728ebb2e883f5cac8cb357fcd0e}{}\index{Utility\+::\+Yuv411\+File\+Reader@{Utility\+::\+Yuv411\+File\+Reader}!read@{read}}
+\index{read@{read}!Utility\+::\+Yuv411\+File\+Reader@{Utility\+::\+Yuv411\+File\+Reader}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}unique\+\_\+ptr$<$ {\bf G\+U\+I\+::\+Player\+::\+Video} $>$ read (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classUtility_1_1Yuv411FileReader_a9dd03728ebb2e883f5cac8cb357fcd0e}
+
+
+Reads the file in. 
+
+\begin{DoxyReturn}{Returns}
+The complete video.
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classUtility_1_1YuvFileReader_abc1ed29027875586a65ee627201343d4}{Yuv\+File\+Reader}.
+
+\hypertarget{classUtility_1_1Yuv411FileReader_af6d2712d6e14bd1bb6cd0b7658ad71fb}{}\index{Utility\+::\+Yuv411\+File\+Reader@{Utility\+::\+Yuv411\+File\+Reader}!yuv411\+To\+Rgb888@{yuv411\+To\+Rgb888}}
+\index{yuv411\+To\+Rgb888@{yuv411\+To\+Rgb888}!Utility\+::\+Yuv411\+File\+Reader@{Utility\+::\+Yuv411\+File\+Reader}}
+\subsubsection[{yuv411\+To\+Rgb888}]{\setlength{\rightskip}{0pt plus 5cm}static std\+::vector$<$Q\+Rgb$>$ yuv411\+To\+Rgb888 (
+\begin{DoxyParamCaption}
+\item[{Yuv11\+Vector}]{vector}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{classUtility_1_1Yuv411FileReader_af6d2712d6e14bd1bb6cd0b7658ad71fb}
+
+
+Converts a \hyperlink{classUtility_1_1Yuv411Vector}{Yuv411\+Vector} to the corresponding Rgb88 pixels. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vector} & The vector to convert.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The computed rgb888 pixels.
+\end{DoxyReturn}

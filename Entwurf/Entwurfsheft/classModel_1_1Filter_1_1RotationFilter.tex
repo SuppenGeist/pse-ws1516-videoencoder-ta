@@ -3,49 +3,100 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-std\+::string \hyperlink{classModel_1_1Filter_1_1RotationFilter_a2b3f7d8fcd3d774b4a2fde5914a9729f}{get\+Filter\+Description} ()
+\hyperlink{classModel_1_1Filter_1_1RotationFilter_a81e4560ff6f30e689b915149f4db871c}{Rotation\+Filter} ()
 \item 
-\hypertarget{classModel_1_1Filter_1_1RotationFilter_ae71094a2b50726fbec9d9475b2c92e01}{}int {\bfseries get\+Angle} ()\label{classModel_1_1Filter_1_1RotationFilter_ae71094a2b50726fbec9d9475b2c92e01}
-
+string \hyperlink{classModel_1_1Filter_1_1RotationFilter_a62b7b60e24f92234393b840b35808e06}{get\+Filter\+Description} ()
 \item 
-std\+::string \hyperlink{classModel_1_1Filter_1_1RotationFilter_ac0fc966d4386ddb71d99361e3fccb311}{get\+Name} ()
+int \hyperlink{classModel_1_1Filter_1_1RotationFilter_ae71094a2b50726fbec9d9475b2c92e01}{get\+Angle} ()
 \item 
-\hypertarget{classModel_1_1Filter_1_1RotationFilter_a241a28cb2a44be5be3440363436be22f}{}void {\bfseries set\+Angle} (int angle)\label{classModel_1_1Filter_1_1RotationFilter_a241a28cb2a44be5be3440363436be22f}
-
+string \hyperlink{classModel_1_1Filter_1_1RotationFilter_a11335e13e50af74108bf926dc1340b4b}{get\+Name} ()
+\item 
+void \hyperlink{classModel_1_1Filter_1_1RotationFilter_a241a28cb2a44be5be3440363436be22f}{set\+Angle} (int angle)
 \end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
 
 
 \subsection{Detailed Description}
-Rotates the video 
+Rotates the video. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classModel_1_1Filter_1_1RotationFilter_a81e4560ff6f30e689b915149f4db871c}{}\index{Model\+::\+Filter\+::\+Rotation\+Filter@{Model\+::\+Filter\+::\+Rotation\+Filter}!Rotation\+Filter@{Rotation\+Filter}}
+\index{Rotation\+Filter@{Rotation\+Filter}!Model\+::\+Filter\+::\+Rotation\+Filter@{Model\+::\+Filter\+::\+Rotation\+Filter}}
+\subsubsection[{Rotation\+Filter}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Rotation\+Filter} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classModel_1_1Filter_1_1RotationFilter_a81e4560ff6f30e689b915149f4db871c}
+
+
+Constructor. 
+
+
 
 \subsection{Member Function Documentation}
-\hypertarget{classModel_1_1Filter_1_1RotationFilter_a2b3f7d8fcd3d774b4a2fde5914a9729f}{}\index{Model\+::\+Filter\+::\+Rotation\+Filter@{Model\+::\+Filter\+::\+Rotation\+Filter}!get\+Filter\+Description@{get\+Filter\+Description}}
+\hypertarget{classModel_1_1Filter_1_1RotationFilter_ae71094a2b50726fbec9d9475b2c92e01}{}\index{Model\+::\+Filter\+::\+Rotation\+Filter@{Model\+::\+Filter\+::\+Rotation\+Filter}!get\+Angle@{get\+Angle}}
+\index{get\+Angle@{get\+Angle}!Model\+::\+Filter\+::\+Rotation\+Filter@{Model\+::\+Filter\+::\+Rotation\+Filter}}
+\subsubsection[{get\+Angle}]{\setlength{\rightskip}{0pt plus 5cm}int get\+Angle (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classModel_1_1Filter_1_1RotationFilter_ae71094a2b50726fbec9d9475b2c92e01}
+
+
+Returns the angle of the rotation. 
+
+\begin{DoxyReturn}{Returns}
+The rotation angle.
+\end{DoxyReturn}
+\hypertarget{classModel_1_1Filter_1_1RotationFilter_a62b7b60e24f92234393b840b35808e06}{}\index{Model\+::\+Filter\+::\+Rotation\+Filter@{Model\+::\+Filter\+::\+Rotation\+Filter}!get\+Filter\+Description@{get\+Filter\+Description}}
 \index{get\+Filter\+Description@{get\+Filter\+Description}!Model\+::\+Filter\+::\+Rotation\+Filter@{Model\+::\+Filter\+::\+Rotation\+Filter}}
-\subsubsection[{get\+Filter\+Description}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string get\+Filter\+Description (
+\subsubsection[{get\+Filter\+Description}]{\setlength{\rightskip}{0pt plus 5cm}string get\+Filter\+Description (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classModel_1_1Filter_1_1RotationFilter_a2b3f7d8fcd3d774b4a2fde5914a9729f}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classModel_1_1Filter_1_1RotationFilter_a62b7b60e24f92234393b840b35808e06}
 
 
-Returns the description of the filter 
+Returns the string that the ffmpeg library needs to apply the filter to a video. 
+
+\begin{DoxyReturn}{Returns}
+The string for the ffmpeg library.
+\end{DoxyReturn}
 
 
+Implements \hyperlink{classModel_1_1Filter_1_1Filter_a453fcafa809afa1ce58d9ef95d5f26c0}{Filter}.
 
-Implements \hyperlink{classModel_1_1Filter_1_1Filter_ad400dc313dea3f9d3838d078ea4d2590}{Filter}.
-
-\hypertarget{classModel_1_1Filter_1_1RotationFilter_ac0fc966d4386ddb71d99361e3fccb311}{}\index{Model\+::\+Filter\+::\+Rotation\+Filter@{Model\+::\+Filter\+::\+Rotation\+Filter}!get\+Name@{get\+Name}}
+\hypertarget{classModel_1_1Filter_1_1RotationFilter_a11335e13e50af74108bf926dc1340b4b}{}\index{Model\+::\+Filter\+::\+Rotation\+Filter@{Model\+::\+Filter\+::\+Rotation\+Filter}!get\+Name@{get\+Name}}
 \index{get\+Name@{get\+Name}!Model\+::\+Filter\+::\+Rotation\+Filter@{Model\+::\+Filter\+::\+Rotation\+Filter}}
-\subsubsection[{get\+Name}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string get\+Name (
+\subsubsection[{get\+Name}]{\setlength{\rightskip}{0pt plus 5cm}string get\+Name (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classModel_1_1Filter_1_1RotationFilter_ac0fc966d4386ddb71d99361e3fccb311}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classModel_1_1Filter_1_1RotationFilter_a11335e13e50af74108bf926dc1340b4b}
 
 
-Returns the name of the filter 
+Returns the name of the filter. 
+
+\begin{DoxyReturn}{Returns}
+The filtername.
+\end{DoxyReturn}
 
 
+Implements \hyperlink{classModel_1_1Filter_1_1Filter_ade93aa98c68d185a9c03784d36140225}{Filter}.
 
-Implements \hyperlink{classModel_1_1Filter_1_1Filter_ab7a5c5c512dadd4cbd18dd1b0f42e930}{Filter}.
+\hypertarget{classModel_1_1Filter_1_1RotationFilter_a241a28cb2a44be5be3440363436be22f}{}\index{Model\+::\+Filter\+::\+Rotation\+Filter@{Model\+::\+Filter\+::\+Rotation\+Filter}!set\+Angle@{set\+Angle}}
+\index{set\+Angle@{set\+Angle}!Model\+::\+Filter\+::\+Rotation\+Filter@{Model\+::\+Filter\+::\+Rotation\+Filter}}
+\subsubsection[{set\+Angle}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Angle (
+\begin{DoxyParamCaption}
+\item[{int}]{angle}
+\end{DoxyParamCaption}
+)}\label{classModel_1_1Filter_1_1RotationFilter_a241a28cb2a44be5be3440363436be22f}
 
+
+Sets the angle of the rotation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em angle} & The new rotation angle.\\
+\hline
+\end{DoxyParams}

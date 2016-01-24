@@ -1,0 +1,75 @@
+\hypertarget{classUndoRedo_1_1LoadAnalysisVideo}{}\section{Load\+Analysis\+Video Class Reference}
+\label{classUndoRedo_1_1LoadAnalysisVideo}\index{Load\+Analysis\+Video@{Load\+Analysis\+Video}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classUndoRedo_1_1LoadAnalysisVideo_ae34179e8d6121bb4cbe36e1cad9a829f}{Load\+Analysis\+Video} (\hyperlink{classGUI_1_1AnalysisTab}{G\+U\+I\+::\+Analysis\+Tab} $\ast$ana\+Tab, Analyse\+Tab\+Memento ana\+Tab\+Mem, \hyperlink{classModel_1_1YuvVideo}{Model\+::\+Yuv\+Video} video)
+\item 
+void \hyperlink{classUndoRedo_1_1LoadAnalysisVideo_a0e1e7804a53f6d62efc72c9bdbec8571}{undo} ()
+\item 
+void \hyperlink{classUndoRedo_1_1LoadAnalysisVideo_a93c48d6ed036e1a381be53ac67643284}{redo} ()
+\end{DoxyCompactItemize}
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classMemento_1_1AnalysisTabMemento}{Memento\+::\+Analysis\+Tab\+Memento} $\ast$ \hyperlink{classUndoRedo_1_1LoadAnalysisVideo_a56e13226ed93b1cf23903379eb5d89cb}{memento}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class is the undo command for loading the raw video on the analysis tab. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classUndoRedo_1_1LoadAnalysisVideo_ae34179e8d6121bb4cbe36e1cad9a829f}{}\index{Undo\+Redo\+::\+Load\+Analysis\+Video@{Undo\+Redo\+::\+Load\+Analysis\+Video}!Load\+Analysis\+Video@{Load\+Analysis\+Video}}
+\index{Load\+Analysis\+Video@{Load\+Analysis\+Video}!Undo\+Redo\+::\+Load\+Analysis\+Video@{Undo\+Redo\+::\+Load\+Analysis\+Video}}
+\subsubsection[{Load\+Analysis\+Video}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Load\+Analysis\+Video} (
+\begin{DoxyParamCaption}
+\item[{{\bf G\+U\+I\+::\+Analysis\+Tab} $\ast$}]{ana\+Tab, }
+\item[{Analyse\+Tab\+Memento}]{ana\+Tab\+Mem, }
+\item[{{\bf Model\+::\+Yuv\+Video}}]{video}
+\end{DoxyParamCaption}
+)}\label{classUndoRedo_1_1LoadAnalysisVideo_ae34179e8d6121bb4cbe36e1cad9a829f}
+
+
+Constructor.. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ana\+Tab} & The Analyse\+Tab to operate on.\\
+\hline
+{\em ana\+Tab\+Mem} & The memento of the analyse tab before the raw video is loaded.\\
+\hline
+{\em video} & The new raw video.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classUndoRedo_1_1LoadAnalysisVideo_a93c48d6ed036e1a381be53ac67643284}{}\index{Undo\+Redo\+::\+Load\+Analysis\+Video@{Undo\+Redo\+::\+Load\+Analysis\+Video}!redo@{redo}}
+\index{redo@{redo}!Undo\+Redo\+::\+Load\+Analysis\+Video@{Undo\+Redo\+::\+Load\+Analysis\+Video}}
+\subsubsection[{redo}]{\setlength{\rightskip}{0pt plus 5cm}void redo (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classUndoRedo_1_1LoadAnalysisVideo_a93c48d6ed036e1a381be53ac67643284}
+
+
+Loads anew raw video in the analysis tab. 
+
+\hypertarget{classUndoRedo_1_1LoadAnalysisVideo_a0e1e7804a53f6d62efc72c9bdbec8571}{}\index{Undo\+Redo\+::\+Load\+Analysis\+Video@{Undo\+Redo\+::\+Load\+Analysis\+Video}!undo@{undo}}
+\index{undo@{undo}!Undo\+Redo\+::\+Load\+Analysis\+Video@{Undo\+Redo\+::\+Load\+Analysis\+Video}}
+\subsubsection[{undo}]{\setlength{\rightskip}{0pt plus 5cm}void undo (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classUndoRedo_1_1LoadAnalysisVideo_a0e1e7804a53f6d62efc72c9bdbec8571}
+
+
+Restores the anlysis tab to the state before the new video was loaded. 
+
+
+
+\subsection{Field Documentation}
+\hypertarget{classUndoRedo_1_1LoadAnalysisVideo_a56e13226ed93b1cf23903379eb5d89cb}{}\index{Undo\+Redo\+::\+Load\+Analysis\+Video@{Undo\+Redo\+::\+Load\+Analysis\+Video}!memento@{memento}}
+\index{memento@{memento}!Undo\+Redo\+::\+Load\+Analysis\+Video@{Undo\+Redo\+::\+Load\+Analysis\+Video}}
+\subsubsection[{memento}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Memento\+::\+Analysis\+Tab\+Memento}$\ast$ memento}\label{classUndoRedo_1_1LoadAnalysisVideo_a56e13226ed93b1cf23903379eb5d89cb}

@@ -1,0 +1,89 @@
+\hypertarget{classUtility_1_1Yuv411FileSaver}{}\section{Yuv411\+File\+Saver Class Reference}
+\label{classUtility_1_1Yuv411FileSaver}\index{Yuv411\+File\+Saver@{Yuv411\+File\+Saver}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classUtility_1_1Yuv411FileSaver_a1ef1cdb086ab0a90dbbbf402ff0b2e7d}{Yuv411\+File\+Saver} (Q\+String filename, \hyperlink{classGUI_1_1Player_1_1Video}{G\+U\+I\+::\+Player\+::\+Video} \&\hyperlink{classUtility_1_1YuvFileSaver_ac39cb6d0a56308ca6323374fc0d74c96}{video}, \hyperlink{namespaceUtility_a56a83bf6847f4801f4205eb4be237ccf}{Utility\+::\+Compression} compression)
+\item 
+void \hyperlink{classUtility_1_1Yuv411FileSaver_aae2c382151ef7c9aa913361172b30db6}{save} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classUtility_1_1Yuv411Vector}{Utility\+::\+Yuv411\+Vector} \hyperlink{classUtility_1_1Yuv411FileSaver_aa92efa9b4eb22a7e2afff2e806397524}{rgb888\+To\+Yuv411} (Q\+Rgb pixel1, Q\+Rgb pixel2, Q\+Rgb pixel3, Q\+Rgb pixe4)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+This class can save videos in the yuv 411 format. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classUtility_1_1Yuv411FileSaver_a1ef1cdb086ab0a90dbbbf402ff0b2e7d}{}\index{Utility\+::\+Yuv411\+File\+Saver@{Utility\+::\+Yuv411\+File\+Saver}!Yuv411\+File\+Saver@{Yuv411\+File\+Saver}}
+\index{Yuv411\+File\+Saver@{Yuv411\+File\+Saver}!Utility\+::\+Yuv411\+File\+Saver@{Utility\+::\+Yuv411\+File\+Saver}}
+\subsubsection[{Yuv411\+File\+Saver}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Yuv411\+File\+Saver} (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{filename, }
+\item[{{\bf G\+U\+I\+::\+Player\+::\+Video} \&}]{video, }
+\item[{{\bf Utility\+::\+Compression}}]{compression}
+\end{DoxyParamCaption}
+)}\label{classUtility_1_1Yuv411FileSaver_a1ef1cdb086ab0a90dbbbf402ff0b2e7d}
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Absolute path to the file to save to.\\
+\hline
+{\em video} & The video to save.\\
+\hline
+{\em compression} & The compression mode.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classUtility_1_1Yuv411FileSaver_aa92efa9b4eb22a7e2afff2e806397524}{}\index{Utility\+::\+Yuv411\+File\+Saver@{Utility\+::\+Yuv411\+File\+Saver}!rgb888\+To\+Yuv411@{rgb888\+To\+Yuv411}}
+\index{rgb888\+To\+Yuv411@{rgb888\+To\+Yuv411}!Utility\+::\+Yuv411\+File\+Saver@{Utility\+::\+Yuv411\+File\+Saver}}
+\subsubsection[{rgb888\+To\+Yuv411}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Utility\+::\+Yuv411\+Vector} rgb888\+To\+Yuv411 (
+\begin{DoxyParamCaption}
+\item[{Q\+Rgb}]{pixel1, }
+\item[{Q\+Rgb}]{pixel2, }
+\item[{Q\+Rgb}]{pixel3, }
+\item[{Q\+Rgb}]{pixe4}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{classUtility_1_1Yuv411FileSaver_aa92efa9b4eb22a7e2afff2e806397524}
+
+
+Converts Rgb888 pixels to a \hyperlink{classUtility_1_1Yuv411Vector}{Yuv411\+Vector}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pixel1} & Pixel 1 to convert.\\
+\hline
+{\em pixel2} & Pixel 2 to convert.\\
+\hline
+{\em pixel3} & Pixel 3 to convert.\\
+\hline
+{\em pixe4} & Pixel 4 to convert.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The \hyperlink{classUtility_1_1Yuv411Vector}{Yuv411\+Vector}
+\end{DoxyReturn}
+\hypertarget{classUtility_1_1Yuv411FileSaver_aae2c382151ef7c9aa913361172b30db6}{}\index{Utility\+::\+Yuv411\+File\+Saver@{Utility\+::\+Yuv411\+File\+Saver}!save@{save}}
+\index{save@{save}!Utility\+::\+Yuv411\+File\+Saver@{Utility\+::\+Yuv411\+File\+Saver}}
+\subsubsection[{save}]{\setlength{\rightskip}{0pt plus 5cm}void save (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classUtility_1_1Yuv411FileSaver_aae2c382151ef7c9aa913361172b30db6}
+
+
+Saves the video to the file. 
+
+
+
+Implements \hyperlink{classUtility_1_1YuvFileSaver_a710cb29afe2cd3d97a312f61140af200}{Yuv\+File\+Saver}.
+

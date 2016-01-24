@@ -3,55 +3,134 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-std\+::string \hyperlink{classModel_1_1Filter_1_1NoiseFilter_a2b3f7d8fcd3d774b4a2fde5914a9729f}{get\+Filter\+Description} ()
+\hyperlink{classModel_1_1Filter_1_1NoiseFilter_ae0fddd4ce827a9428beb93c8fd39ea6a}{Noise\+Filter} ()
 \item 
-\hypertarget{classModel_1_1Filter_1_1NoiseFilter_a8cf1af8c1df3a0e626fbd81dd18563e3}{}Model\+::\+Filter\+::\+Noise\+Mode {\bfseries get\+Mode} ()\label{classModel_1_1Filter_1_1NoiseFilter_a8cf1af8c1df3a0e626fbd81dd18563e3}
-
+string \hyperlink{classModel_1_1Filter_1_1NoiseFilter_a62b7b60e24f92234393b840b35808e06}{get\+Filter\+Description} ()
 \item 
-\hypertarget{classModel_1_1Filter_1_1NoiseFilter_aa89a05210654576ff0a5b5fcf97d03b0}{}void {\bfseries set\+Mode} (Model\+::\+Filter\+::\+Noise\+Mode mode)\label{classModel_1_1Filter_1_1NoiseFilter_aa89a05210654576ff0a5b5fcf97d03b0}
-
+\hyperlink{namespaceModel_1_1Filter_a0466e3095e9c21e5864d8964e9d7df59}{Model\+::\+Filter\+::\+Noise\+Mode} \hyperlink{classModel_1_1Filter_1_1NoiseFilter_a8cf1af8c1df3a0e626fbd81dd18563e3}{get\+Mode} ()
 \item 
-\hypertarget{classModel_1_1Filter_1_1NoiseFilter_a708995fb1b6acb31ee0dfb0f4881e5b5}{}int {\bfseries get\+Intensity} ()\label{classModel_1_1Filter_1_1NoiseFilter_a708995fb1b6acb31ee0dfb0f4881e5b5}
-
+void \hyperlink{classModel_1_1Filter_1_1NoiseFilter_aa89a05210654576ff0a5b5fcf97d03b0}{set\+Mode} (\hyperlink{namespaceModel_1_1Filter_a0466e3095e9c21e5864d8964e9d7df59}{Model\+::\+Filter\+::\+Noise\+Mode} mode)
 \item 
-std\+::string \hyperlink{classModel_1_1Filter_1_1NoiseFilter_ac0fc966d4386ddb71d99361e3fccb311}{get\+Name} ()
+int \hyperlink{classModel_1_1Filter_1_1NoiseFilter_a708995fb1b6acb31ee0dfb0f4881e5b5}{get\+Intensity} ()
 \item 
-\hypertarget{classModel_1_1Filter_1_1NoiseFilter_ac8255ffbc46bb61acaa8fd23d0d260eb}{}void {\bfseries set\+Intensity} (int intensity)\label{classModel_1_1Filter_1_1NoiseFilter_ac8255ffbc46bb61acaa8fd23d0d260eb}
-
+string \hyperlink{classModel_1_1Filter_1_1NoiseFilter_a11335e13e50af74108bf926dc1340b4b}{get\+Name} ()
+\item 
+void \hyperlink{classModel_1_1Filter_1_1NoiseFilter_ac8255ffbc46bb61acaa8fd23d0d260eb}{set\+Intensity} (int intensity)
 \end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
 
 
 \subsection{Detailed Description}
-Inserts noise into the video 
+Inserts noise into the video. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classModel_1_1Filter_1_1NoiseFilter_ae0fddd4ce827a9428beb93c8fd39ea6a}{}\index{Model\+::\+Filter\+::\+Noise\+Filter@{Model\+::\+Filter\+::\+Noise\+Filter}!Noise\+Filter@{Noise\+Filter}}
+\index{Noise\+Filter@{Noise\+Filter}!Model\+::\+Filter\+::\+Noise\+Filter@{Model\+::\+Filter\+::\+Noise\+Filter}}
+\subsubsection[{Noise\+Filter}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Noise\+Filter} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classModel_1_1Filter_1_1NoiseFilter_ae0fddd4ce827a9428beb93c8fd39ea6a}
+
+
+Constructor. 
+
+
 
 \subsection{Member Function Documentation}
-\hypertarget{classModel_1_1Filter_1_1NoiseFilter_a2b3f7d8fcd3d774b4a2fde5914a9729f}{}\index{Model\+::\+Filter\+::\+Noise\+Filter@{Model\+::\+Filter\+::\+Noise\+Filter}!get\+Filter\+Description@{get\+Filter\+Description}}
+\hypertarget{classModel_1_1Filter_1_1NoiseFilter_a62b7b60e24f92234393b840b35808e06}{}\index{Model\+::\+Filter\+::\+Noise\+Filter@{Model\+::\+Filter\+::\+Noise\+Filter}!get\+Filter\+Description@{get\+Filter\+Description}}
 \index{get\+Filter\+Description@{get\+Filter\+Description}!Model\+::\+Filter\+::\+Noise\+Filter@{Model\+::\+Filter\+::\+Noise\+Filter}}
-\subsubsection[{get\+Filter\+Description}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string get\+Filter\+Description (
+\subsubsection[{get\+Filter\+Description}]{\setlength{\rightskip}{0pt plus 5cm}string get\+Filter\+Description (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classModel_1_1Filter_1_1NoiseFilter_a2b3f7d8fcd3d774b4a2fde5914a9729f}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classModel_1_1Filter_1_1NoiseFilter_a62b7b60e24f92234393b840b35808e06}
 
 
-Returns the description of the filter 
+Returns the string that the ffmpeg library needs to apply the filter to a video. 
+
+\begin{DoxyReturn}{Returns}
+The string for the ffmpeg library.
+\end{DoxyReturn}
 
 
+Implements \hyperlink{classModel_1_1Filter_1_1Filter_a453fcafa809afa1ce58d9ef95d5f26c0}{Filter}.
 
-Implements \hyperlink{classModel_1_1Filter_1_1Filter_ad400dc313dea3f9d3838d078ea4d2590}{Filter}.
+\hypertarget{classModel_1_1Filter_1_1NoiseFilter_a708995fb1b6acb31ee0dfb0f4881e5b5}{}\index{Model\+::\+Filter\+::\+Noise\+Filter@{Model\+::\+Filter\+::\+Noise\+Filter}!get\+Intensity@{get\+Intensity}}
+\index{get\+Intensity@{get\+Intensity}!Model\+::\+Filter\+::\+Noise\+Filter@{Model\+::\+Filter\+::\+Noise\+Filter}}
+\subsubsection[{get\+Intensity}]{\setlength{\rightskip}{0pt plus 5cm}int get\+Intensity (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classModel_1_1Filter_1_1NoiseFilter_a708995fb1b6acb31ee0dfb0f4881e5b5}
 
-\hypertarget{classModel_1_1Filter_1_1NoiseFilter_ac0fc966d4386ddb71d99361e3fccb311}{}\index{Model\+::\+Filter\+::\+Noise\+Filter@{Model\+::\+Filter\+::\+Noise\+Filter}!get\+Name@{get\+Name}}
+
+Returns the intensity of the noise. 
+
+\begin{DoxyReturn}{Returns}
+The noise intensity.
+\end{DoxyReturn}
+\hypertarget{classModel_1_1Filter_1_1NoiseFilter_a8cf1af8c1df3a0e626fbd81dd18563e3}{}\index{Model\+::\+Filter\+::\+Noise\+Filter@{Model\+::\+Filter\+::\+Noise\+Filter}!get\+Mode@{get\+Mode}}
+\index{get\+Mode@{get\+Mode}!Model\+::\+Filter\+::\+Noise\+Filter@{Model\+::\+Filter\+::\+Noise\+Filter}}
+\subsubsection[{get\+Mode}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Model\+::\+Filter\+::\+Noise\+Mode} get\+Mode (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classModel_1_1Filter_1_1NoiseFilter_a8cf1af8c1df3a0e626fbd81dd18563e3}
+
+
+Returns the Noise\+Mode. 
+
+\begin{DoxyReturn}{Returns}
+The Noise\+Mode.
+\end{DoxyReturn}
+\hypertarget{classModel_1_1Filter_1_1NoiseFilter_a11335e13e50af74108bf926dc1340b4b}{}\index{Model\+::\+Filter\+::\+Noise\+Filter@{Model\+::\+Filter\+::\+Noise\+Filter}!get\+Name@{get\+Name}}
 \index{get\+Name@{get\+Name}!Model\+::\+Filter\+::\+Noise\+Filter@{Model\+::\+Filter\+::\+Noise\+Filter}}
-\subsubsection[{get\+Name}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string get\+Name (
+\subsubsection[{get\+Name}]{\setlength{\rightskip}{0pt plus 5cm}string get\+Name (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classModel_1_1Filter_1_1NoiseFilter_ac0fc966d4386ddb71d99361e3fccb311}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classModel_1_1Filter_1_1NoiseFilter_a11335e13e50af74108bf926dc1340b4b}
 
 
-Returns the name of the filter 
+Returns the name of the filter. 
+
+\begin{DoxyReturn}{Returns}
+The filtername.
+\end{DoxyReturn}
 
 
+Implements \hyperlink{classModel_1_1Filter_1_1Filter_ade93aa98c68d185a9c03784d36140225}{Filter}.
 
-Implements \hyperlink{classModel_1_1Filter_1_1Filter_ab7a5c5c512dadd4cbd18dd1b0f42e930}{Filter}.
+\hypertarget{classModel_1_1Filter_1_1NoiseFilter_ac8255ffbc46bb61acaa8fd23d0d260eb}{}\index{Model\+::\+Filter\+::\+Noise\+Filter@{Model\+::\+Filter\+::\+Noise\+Filter}!set\+Intensity@{set\+Intensity}}
+\index{set\+Intensity@{set\+Intensity}!Model\+::\+Filter\+::\+Noise\+Filter@{Model\+::\+Filter\+::\+Noise\+Filter}}
+\subsubsection[{set\+Intensity}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Intensity (
+\begin{DoxyParamCaption}
+\item[{int}]{intensity}
+\end{DoxyParamCaption}
+)}\label{classModel_1_1Filter_1_1NoiseFilter_ac8255ffbc46bb61acaa8fd23d0d260eb}
 
+
+Sets the intensity of the noise. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em intensity} & The new intensity of the noise.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classModel_1_1Filter_1_1NoiseFilter_aa89a05210654576ff0a5b5fcf97d03b0}{}\index{Model\+::\+Filter\+::\+Noise\+Filter@{Model\+::\+Filter\+::\+Noise\+Filter}!set\+Mode@{set\+Mode}}
+\index{set\+Mode@{set\+Mode}!Model\+::\+Filter\+::\+Noise\+Filter@{Model\+::\+Filter\+::\+Noise\+Filter}}
+\subsubsection[{set\+Mode}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Mode (
+\begin{DoxyParamCaption}
+\item[{{\bf Model\+::\+Filter\+::\+Noise\+Mode}}]{mode}
+\end{DoxyParamCaption}
+)}\label{classModel_1_1Filter_1_1NoiseFilter_aa89a05210654576ff0a5b5fcf97d03b0}
+
+
+Sets the Noise\+Mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & The new Noise\+Mode.\\
+\hline
+\end{DoxyParams}

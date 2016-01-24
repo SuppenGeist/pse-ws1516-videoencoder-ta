@@ -5,31 +5,28 @@
 \item 
 \hyperlink{classModel_1_1Graph_afc5ef9d72cc2c509814200791eaef62c}{Graph} ()
 \item 
-void \hyperlink{classModel_1_1Graph_ab2daf3a9b66c016d330dedbd83d3fa82}{set\+Value} (int x, double y)
+void \hyperlink{classModel_1_1Graph_ad4f64ac7b49c53bcfe6e62f538381a50}{add\+Value} (int x, double y)
 \item 
 void \hyperlink{classModel_1_1Graph_a940d481971e87001c6e4c17585b41a8e}{cut} (int x)
 \item 
 double \hyperlink{classModel_1_1Graph_aacd99feb76afec4bc9bdf645d4585880}{get\+Value} (int x)
 \item 
 int \hyperlink{classModel_1_1Graph_aab0d4bbd0884d04dbe281cc2b9d21206}{get\+Length} ()
+\item 
+void \hyperlink{classModel_1_1Graph_a88400b56c971065fc52ce8c02ecaffcd}{remove\+Value} (int x)
 \end{DoxyCompactItemize}
 \subsection*{Data Fields}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classModel_1_1Graph_a340d02df4a8d3c909b9242c450c2c4fa}{}\hyperlink{classModel_1_1EncodedVideo}{Model\+::\+Encoded\+Video} $\ast$ {\bfseries bitrate}\label{classModel_1_1Graph_a340d02df4a8d3c909b9242c450c2c4fa}
-
+\hyperlink{classModel_1_1EncodedVideo}{Model\+::\+Encoded\+Video} $\ast$ \hyperlink{classModel_1_1Graph_a340d02df4a8d3c909b9242c450c2c4fa}{bitrate}
 \item 
-\hypertarget{classModel_1_1Graph_a6476f7924ca1e0e066bbb0da6f5ea5de}{}\hyperlink{classModel_1_1EncodedVideo}{Model\+::\+Encoded\+Video} $\ast$ {\bfseries psnr}\label{classModel_1_1Graph_a6476f7924ca1e0e066bbb0da6f5ea5de}
-
+\hyperlink{classModel_1_1EncodedVideo}{Model\+::\+Encoded\+Video} $\ast$ \hyperlink{classModel_1_1Graph_a6476f7924ca1e0e066bbb0da6f5ea5de}{psnr}
 \item 
-\hypertarget{classModel_1_1Graph_a826dee34980905d4300038e1ebc8efaf}{}\hyperlink{classModel_1_1EncodedVideo}{Model\+::\+Encoded\+Video} $\ast$ {\bfseries red\+Histo}\label{classModel_1_1Graph_a826dee34980905d4300038e1ebc8efaf}
-
+\hyperlink{classModel_1_1EncodedVideo}{Model\+::\+Encoded\+Video} $\ast$ \hyperlink{classModel_1_1Graph_a826dee34980905d4300038e1ebc8efaf}{red\+Histo}
 \item 
-\hypertarget{classModel_1_1Graph_adb7c23252690d5783f98e23046f785e8}{}\hyperlink{classModel_1_1EncodedVideo}{Model\+::\+Encoded\+Video} $\ast$ {\bfseries green\+Histo}\label{classModel_1_1Graph_adb7c23252690d5783f98e23046f785e8}
-
+\hyperlink{classModel_1_1EncodedVideo}{Model\+::\+Encoded\+Video} $\ast$ \hyperlink{classModel_1_1Graph_adb7c23252690d5783f98e23046f785e8}{green\+Histo}
 \item 
-\hypertarget{classModel_1_1Graph_a478d40084049d5801d2c7c70a4447133}{}\hyperlink{classModel_1_1EncodedVideo}{Model\+::\+Encoded\+Video} $\ast$ {\bfseries blue\+Hiso}\label{classModel_1_1Graph_a478d40084049d5801d2c7c70a4447133}
-
+\hyperlink{classModel_1_1EncodedVideo}{Model\+::\+Encoded\+Video} $\ast$ \hyperlink{classModel_1_1Graph_a478d40084049d5801d2c7c70a4447133}{blue\+Hiso}
 \end{DoxyCompactItemize}
 
 
@@ -51,6 +48,25 @@ Constructor.
 
 
 \subsection{Member Function Documentation}
+\hypertarget{classModel_1_1Graph_ad4f64ac7b49c53bcfe6e62f538381a50}{}\index{Model\+::\+Graph@{Model\+::\+Graph}!add\+Value@{add\+Value}}
+\index{add\+Value@{add\+Value}!Model\+::\+Graph@{Model\+::\+Graph}}
+\subsubsection[{add\+Value}]{\setlength{\rightskip}{0pt plus 5cm}void add\+Value (
+\begin{DoxyParamCaption}
+\item[{int}]{x, }
+\item[{double}]{y}
+\end{DoxyParamCaption}
+)}\label{classModel_1_1Graph_ad4f64ac7b49c53bcfe6e62f538381a50}
+
+
+Adds a value pair. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Value on the x-\/axes.\\
+\hline
+{\em y} & Value on the y-\/axes.\\
+\hline
+\end{DoxyParams}
 \hypertarget{classModel_1_1Graph_a940d481971e87001c6e4c17585b41a8e}{}\index{Model\+::\+Graph@{Model\+::\+Graph}!cut@{cut}}
 \index{cut@{cut}!Model\+::\+Graph@{Model\+::\+Graph}}
 \subsubsection[{cut}]{\setlength{\rightskip}{0pt plus 5cm}void cut (
@@ -60,7 +76,7 @@ Constructor.
 )}\label{classModel_1_1Graph_a940d481971e87001c6e4c17585b41a8e}
 
 
-cuts the number of vectors down up to a certain value x. 
+Cuts the number of vectors down up to a certain value x. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -76,8 +92,11 @@ cuts the number of vectors down up to a certain value x.
 )}\label{classModel_1_1Graph_aab0d4bbd0884d04dbe281cc2b9d21206}
 
 
-Returns the length of the unbounded array. That many x/y values are saved. 
+Returns the biggest x value. 
 
+\begin{DoxyReturn}{Returns}
+The biggest x value.
+\end{DoxyReturn}
 \hypertarget{classModel_1_1Graph_aacd99feb76afec4bc9bdf645d4585880}{}\index{Model\+::\+Graph@{Model\+::\+Graph}!get\+Value@{get\+Value}}
 \index{get\+Value@{get\+Value}!Model\+::\+Graph@{Model\+::\+Graph}}
 \subsubsection[{get\+Value}]{\setlength{\rightskip}{0pt plus 5cm}double get\+Value (
@@ -94,22 +113,37 @@ Returns the y-\/value to a specific x-\/value.
 {\em x} & The x value.\\
 \hline
 \end{DoxyParams}
-\hypertarget{classModel_1_1Graph_ab2daf3a9b66c016d330dedbd83d3fa82}{}\index{Model\+::\+Graph@{Model\+::\+Graph}!set\+Value@{set\+Value}}
-\index{set\+Value@{set\+Value}!Model\+::\+Graph@{Model\+::\+Graph}}
-\subsubsection[{set\+Value}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Value (
+\hypertarget{classModel_1_1Graph_a88400b56c971065fc52ce8c02ecaffcd}{}\index{Model\+::\+Graph@{Model\+::\+Graph}!remove\+Value@{remove\+Value}}
+\index{remove\+Value@{remove\+Value}!Model\+::\+Graph@{Model\+::\+Graph}}
+\subsubsection[{remove\+Value}]{\setlength{\rightskip}{0pt plus 5cm}void remove\+Value (
 \begin{DoxyParamCaption}
-\item[{int}]{x, }
-\item[{double}]{y}
+\item[{int}]{x}
 \end{DoxyParamCaption}
-)}\label{classModel_1_1Graph_ab2daf3a9b66c016d330dedbd83d3fa82}
+)}\label{classModel_1_1Graph_a88400b56c971065fc52ce8c02ecaffcd}
 
 
-gives a y-\/value to a x-\/value. Later the point in the graph. 
+Removes the corresponding y value. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em x} & value on the x-\/axes.\\
-\hline
-{\em y} & value on the y-\/axes.\\
+{\em x} & The x value whose y value shall be removed.\\
 \hline
 \end{DoxyParams}
+
+
+\subsection{Field Documentation}
+\hypertarget{classModel_1_1Graph_a340d02df4a8d3c909b9242c450c2c4fa}{}\index{Model\+::\+Graph@{Model\+::\+Graph}!bitrate@{bitrate}}
+\index{bitrate@{bitrate}!Model\+::\+Graph@{Model\+::\+Graph}}
+\subsubsection[{bitrate}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Model\+::\+Encoded\+Video}$\ast$ bitrate}\label{classModel_1_1Graph_a340d02df4a8d3c909b9242c450c2c4fa}
+\hypertarget{classModel_1_1Graph_a478d40084049d5801d2c7c70a4447133}{}\index{Model\+::\+Graph@{Model\+::\+Graph}!blue\+Hiso@{blue\+Hiso}}
+\index{blue\+Hiso@{blue\+Hiso}!Model\+::\+Graph@{Model\+::\+Graph}}
+\subsubsection[{blue\+Hiso}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Model\+::\+Encoded\+Video}$\ast$ blue\+Hiso}\label{classModel_1_1Graph_a478d40084049d5801d2c7c70a4447133}
+\hypertarget{classModel_1_1Graph_adb7c23252690d5783f98e23046f785e8}{}\index{Model\+::\+Graph@{Model\+::\+Graph}!green\+Histo@{green\+Histo}}
+\index{green\+Histo@{green\+Histo}!Model\+::\+Graph@{Model\+::\+Graph}}
+\subsubsection[{green\+Histo}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Model\+::\+Encoded\+Video}$\ast$ green\+Histo}\label{classModel_1_1Graph_adb7c23252690d5783f98e23046f785e8}
+\hypertarget{classModel_1_1Graph_a6476f7924ca1e0e066bbb0da6f5ea5de}{}\index{Model\+::\+Graph@{Model\+::\+Graph}!psnr@{psnr}}
+\index{psnr@{psnr}!Model\+::\+Graph@{Model\+::\+Graph}}
+\subsubsection[{psnr}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Model\+::\+Encoded\+Video}$\ast$ psnr}\label{classModel_1_1Graph_a6476f7924ca1e0e066bbb0da6f5ea5de}
+\hypertarget{classModel_1_1Graph_a826dee34980905d4300038e1ebc8efaf}{}\index{Model\+::\+Graph@{Model\+::\+Graph}!red\+Histo@{red\+Histo}}
+\index{red\+Histo@{red\+Histo}!Model\+::\+Graph@{Model\+::\+Graph}}
+\subsubsection[{red\+Histo}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Model\+::\+Encoded\+Video}$\ast$ red\+Histo}\label{classModel_1_1Graph_a826dee34980905d4300038e1ebc8efaf}

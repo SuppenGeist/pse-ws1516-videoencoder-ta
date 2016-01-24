@@ -3,25 +3,86 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classGUI_1_1MainWindow_a6b91276653c1bd8cd1b256636d1270f7}{}{\bfseries Main\+Window} (\hyperlink{classGUI_1_1QtGui_1_1QWidget____10}{G\+U\+I\+::\+Qt\+Gui\+::\+Q\+Widget\+\_\+\+\_\+10} $\ast$parent)\label{classGUI_1_1MainWindow_a6b91276653c1bd8cd1b256636d1270f7}
-
+\hyperlink{classGUI_1_1MainWindow_a6dcf16c443f94075bbc29f51512efec9}{Main\+Window} (\hyperlink{classGUI_1_1Player_1_1QWidget}{G\+U\+I\+::\+Player\+::\+Q\+Widget} $\ast$parent)
 \item 
-\hypertarget{classGUI_1_1MainWindow_ae085d92d1c5bec057a813bd86bc20fa4}{}\hyperlink{classMemento_1_1MainWindowMemento}{Memento\+::\+Main\+Window\+Memento} {\bfseries get\+Memento} ()\label{classGUI_1_1MainWindow_ae085d92d1c5bec057a813bd86bc20fa4}
-
+\hyperlink{classMemento_1_1MainWindowMemento}{Memento\+::\+Main\+Window\+Memento} \hyperlink{classGUI_1_1MainWindow_ae085d92d1c5bec057a813bd86bc20fa4}{get\+Memento} ()
 \item 
-\hypertarget{classGUI_1_1MainWindow_a72db05f1394dbeeb2a76b74d8f65917b}{}void {\bfseries restore} (\hyperlink{classMemento_1_1MainWindowMemento}{Memento\+::\+Main\+Window\+Memento} memento)\label{classGUI_1_1MainWindow_a72db05f1394dbeeb2a76b74d8f65917b}
-
+void \hyperlink{classGUI_1_1MainWindow_a72db05f1394dbeeb2a76b74d8f65917b}{restore} (\hyperlink{classMemento_1_1MainWindowMemento}{Memento\+::\+Main\+Window\+Memento} memento)
 \item 
-\hypertarget{classGUI_1_1MainWindow_a0e9fe41bc141b89f4955329b959310eb}{}\hyperlink{classModel_1_1Project}{Model\+::\+Project} \& {\bfseries get\+Project} ()\label{classGUI_1_1MainWindow_a0e9fe41bc141b89f4955329b959310eb}
-
+\hyperlink{classModel_1_1Project}{Model\+::\+Project} \& \hyperlink{classGUI_1_1MainWindow_a0e9fe41bc141b89f4955329b959310eb}{get\+Project} ()
 \end{DoxyCompactItemize}
 \subsection*{Data Fields}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classGUI_1_1MainWindow_a870e96d05ee2e8c616461952d01ac408}{}\hyperlink{classModel_1_1Project}{Model\+::\+Project} $\ast$ {\bfseries loaded\+Project}\label{classGUI_1_1MainWindow_a870e96d05ee2e8c616461952d01ac408}
-
+\hyperlink{classModel_1_1Project}{Model\+::\+Project} $\ast$ \hyperlink{classGUI_1_1MainWindow_a870e96d05ee2e8c616461952d01ac408}{loaded\+Project}
 \end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-Contains the elements of the G\+U\+I 
+This class is the main window that is shown. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classGUI_1_1MainWindow_a6dcf16c443f94075bbc29f51512efec9}{}\index{G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}!Main\+Window@{Main\+Window}}
+\index{Main\+Window@{Main\+Window}!G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}}
+\subsubsection[{Main\+Window}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Main\+Window} (
+\begin{DoxyParamCaption}
+\item[{{\bf G\+U\+I\+::\+Player\+::\+Q\+Widget} $\ast$}]{parent}
+\end{DoxyParamCaption}
+)}\label{classGUI_1_1MainWindow_a6dcf16c443f94075bbc29f51512efec9}
+
+
+Constructor. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classGUI_1_1MainWindow_ae085d92d1c5bec057a813bd86bc20fa4}{}\index{G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}!get\+Memento@{get\+Memento}}
+\index{get\+Memento@{get\+Memento}!G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}}
+\subsubsection[{get\+Memento}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Memento\+::\+Main\+Window\+Memento} get\+Memento (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classGUI_1_1MainWindow_ae085d92d1c5bec057a813bd86bc20fa4}
+
+
+Creates a memento which contains the state of the window. 
+
+\begin{DoxyReturn}{Returns}
+The created memento.
+\end{DoxyReturn}
+\hypertarget{classGUI_1_1MainWindow_a0e9fe41bc141b89f4955329b959310eb}{}\index{G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}!get\+Project@{get\+Project}}
+\index{get\+Project@{get\+Project}!G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}}
+\subsubsection[{get\+Project}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Model\+::\+Project} \& get\+Project (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classGUI_1_1MainWindow_a0e9fe41bc141b89f4955329b959310eb}
+
+
+Returns the project that is currently loaded. 
+
+\begin{DoxyReturn}{Returns}
+The currently loaded project.
+\end{DoxyReturn}
+\hypertarget{classGUI_1_1MainWindow_a72db05f1394dbeeb2a76b74d8f65917b}{}\index{G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}!restore@{restore}}
+\index{restore@{restore}!G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}}
+\subsubsection[{restore}]{\setlength{\rightskip}{0pt plus 5cm}void restore (
+\begin{DoxyParamCaption}
+\item[{{\bf Memento\+::\+Main\+Window\+Memento}}]{memento}
+\end{DoxyParamCaption}
+)}\label{classGUI_1_1MainWindow_a72db05f1394dbeeb2a76b74d8f65917b}
+
+
+Restores the window based on the memento. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em memento} & The memento which contains the state of the window.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Field Documentation}
+\hypertarget{classGUI_1_1MainWindow_a870e96d05ee2e8c616461952d01ac408}{}\index{G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}!loaded\+Project@{loaded\+Project}}
+\index{loaded\+Project@{loaded\+Project}!G\+U\+I\+::\+Main\+Window@{G\+U\+I\+::\+Main\+Window}}
+\subsubsection[{loaded\+Project}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Model\+::\+Project}$\ast$ loaded\+Project}\label{classGUI_1_1MainWindow_a870e96d05ee2e8c616461952d01ac408}

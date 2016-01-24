@@ -1,0 +1,86 @@
+\hypertarget{classUtility_1_1Yuv422FileReader}{}\section{Yuv422\+File\+Reader Class Reference}
+\label{classUtility_1_1Yuv422FileReader}\index{Yuv422\+File\+Reader@{Yuv422\+File\+Reader}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classUtility_1_1Yuv422FileReader_a061cfaea6974d3d0ff811c44bf036edd}{Yuv422\+File\+Reader} (Q\+String filename, int \hyperlink{classUtility_1_1YuvFileReader_a2474a5474cbff19523a51eb1de01cda4}{width}, int \hyperlink{classUtility_1_1YuvFileReader_ad12fc34ce789bce6c8a05d8a17138534}{height}, \hyperlink{namespaceUtility_a56a83bf6847f4801f4205eb4be237ccf}{Utility\+::\+Compression} compression)
+\item 
+unique\+\_\+ptr$<$ \hyperlink{classGUI_1_1Player_1_1Video}{G\+U\+I\+::\+Player\+::\+Video} $>$ \hyperlink{classUtility_1_1Yuv422FileReader_a9dd03728ebb2e883f5cac8cb357fcd0e}{read} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static vector$<$ Q\+Rgb $>$ \hyperlink{classUtility_1_1Yuv422FileReader_a6f6b820735249f6dfd2d3ee75cccc886}{yuv422\+To\+Rgb888} (\hyperlink{classUtility_1_1Yuv422Vector}{Utility\+::\+Yuv422\+Vector} vector)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+This class can read yuv 422 files. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classUtility_1_1Yuv422FileReader_a061cfaea6974d3d0ff811c44bf036edd}{}\index{Utility\+::\+Yuv422\+File\+Reader@{Utility\+::\+Yuv422\+File\+Reader}!Yuv422\+File\+Reader@{Yuv422\+File\+Reader}}
+\index{Yuv422\+File\+Reader@{Yuv422\+File\+Reader}!Utility\+::\+Yuv422\+File\+Reader@{Utility\+::\+Yuv422\+File\+Reader}}
+\subsubsection[{Yuv422\+File\+Reader}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Yuv422\+File\+Reader} (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{filename, }
+\item[{int}]{width, }
+\item[{int}]{height, }
+\item[{{\bf Utility\+::\+Compression}}]{compression}
+\end{DoxyParamCaption}
+)}\label{classUtility_1_1Yuv422FileReader_a061cfaea6974d3d0ff811c44bf036edd}
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Absolute path to the file to load.\\
+\hline
+{\em width} & Width of the video.\\
+\hline
+{\em height} & Height of the video.\\
+\hline
+{\em compression} & Compression of the file.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classUtility_1_1Yuv422FileReader_a9dd03728ebb2e883f5cac8cb357fcd0e}{}\index{Utility\+::\+Yuv422\+File\+Reader@{Utility\+::\+Yuv422\+File\+Reader}!read@{read}}
+\index{read@{read}!Utility\+::\+Yuv422\+File\+Reader@{Utility\+::\+Yuv422\+File\+Reader}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}unique\+\_\+ptr$<$ {\bf G\+U\+I\+::\+Player\+::\+Video} $>$ read (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classUtility_1_1Yuv422FileReader_a9dd03728ebb2e883f5cac8cb357fcd0e}
+
+
+Reads the file in. 
+
+\begin{DoxyReturn}{Returns}
+The complete video.
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classUtility_1_1YuvFileReader_abc1ed29027875586a65ee627201343d4}{Yuv\+File\+Reader}.
+
+\hypertarget{classUtility_1_1Yuv422FileReader_a6f6b820735249f6dfd2d3ee75cccc886}{}\index{Utility\+::\+Yuv422\+File\+Reader@{Utility\+::\+Yuv422\+File\+Reader}!yuv422\+To\+Rgb888@{yuv422\+To\+Rgb888}}
+\index{yuv422\+To\+Rgb888@{yuv422\+To\+Rgb888}!Utility\+::\+Yuv422\+File\+Reader@{Utility\+::\+Yuv422\+File\+Reader}}
+\subsubsection[{yuv422\+To\+Rgb888}]{\setlength{\rightskip}{0pt plus 5cm}static vector$<$Q\+Rgb$>$ yuv422\+To\+Rgb888 (
+\begin{DoxyParamCaption}
+\item[{{\bf Utility\+::\+Yuv422\+Vector}}]{vector}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{classUtility_1_1Yuv422FileReader_a6f6b820735249f6dfd2d3ee75cccc886}
+
+
+Converts a \hyperlink{classUtility_1_1Yuv422Vector}{Yuv422\+Vector} the Rgb888 pixels 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vector} & The vector to convert.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The computed rgb888 pixels.
+\end{DoxyReturn}

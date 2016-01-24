@@ -5,35 +5,33 @@
 \item 
 \hyperlink{classGUI_1_1GraphWidget_a6d80d51caf0aee4c148baee49978f8c3}{Graph\+Widget} ()
 \item 
-void \hyperlink{classGUI_1_1GraphWidget_a25c17e8ca0168048e36c347f423ed017}{draw\+Graph} (\hyperlink{classModel_1_1Graph}{Model\+::\+Graph} graph, bool filled)
+void \hyperlink{classGUI_1_1GraphWidget_a25c17e8ca0168048e36c347f423ed017}{draw\+Graph} (\hyperlink{classModel_1_1Graph}{Model\+::\+Graph} \hyperlink{classGUI_1_1GraphWidget_ab3ea51551e457dd2373457329db2651e}{graph}, bool filled)
 \item 
 void \hyperlink{classGUI_1_1GraphWidget_ac7a4a8dd961c4b9c732ef22bfb4143ce}{set\+Line\+Color} (Q\+Rgb color)
 \item 
 void \hyperlink{classGUI_1_1GraphWidget_a7d8af579d2c285a372ec5bc60cbac4c1}{set\+Fill\+Color} (Q\+Rgb color)
 \item 
-\hypertarget{classGUI_1_1GraphWidget_a7b9e0f55d4f00ec543cc714478104c80}{}void {\bfseries set\+Control\+Panel} (\hyperlink{classGUI_1_1GlobalControlPanel}{G\+U\+I\+::\+Global\+Control\+Panel} $\ast$panel)\label{classGUI_1_1GraphWidget_a7b9e0f55d4f00ec543cc714478104c80}
-
+void \hyperlink{classGUI_1_1GraphWidget_a7b9e0f55d4f00ec543cc714478104c80}{set\+Control\+Panel} (\hyperlink{classGUI_1_1GlobalControlPanel}{G\+U\+I\+::\+Global\+Control\+Panel} $\ast$panel)
 \end{DoxyCompactItemize}
 \subsection*{Data Fields}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classGUI_1_1GraphWidget_a8eb06e20b4d45dae183529cdbcfccd37}{}\hyperlink{classGUI_1_1AnalysisBox}{G\+U\+I\+::\+Analysis\+Box} $\ast$ {\bfseries psnr\+Graph}\label{classGUI_1_1GraphWidget_a8eb06e20b4d45dae183529cdbcfccd37}
-
+\hyperlink{classGUI_1_1AnalysisBox}{G\+U\+I\+::\+Analysis\+Box} $\ast$ \hyperlink{classGUI_1_1GraphWidget_a8eb06e20b4d45dae183529cdbcfccd37}{psnr\+Graph}
 \item 
-\hypertarget{classGUI_1_1GraphWidget_a0820983260f94179618b2d20660fccb8}{}\hyperlink{classGUI_1_1AnalysisBox}{G\+U\+I\+::\+Analysis\+Box} $\ast$ {\bfseries bitrate\+Graph}\label{classGUI_1_1GraphWidget_a0820983260f94179618b2d20660fccb8}
-
+\hyperlink{classGUI_1_1AnalysisBox}{G\+U\+I\+::\+Analysis\+Box} $\ast$ \hyperlink{classGUI_1_1GraphWidget_a0820983260f94179618b2d20660fccb8}{bitrate\+Graph}
 \item 
-\hypertarget{classGUI_1_1GraphWidget_abbcef0fcdc2fe6a2fcf4f1c7dc894616}{}\hyperlink{classGUI_1_1AnalysisBox}{G\+U\+I\+::\+Analysis\+Box} $\ast$ {\bfseries red\+Histogramm}\label{classGUI_1_1GraphWidget_abbcef0fcdc2fe6a2fcf4f1c7dc894616}
-
+\hyperlink{classGUI_1_1AnalysisBox}{G\+U\+I\+::\+Analysis\+Box} $\ast$ \hyperlink{classGUI_1_1GraphWidget_abbcef0fcdc2fe6a2fcf4f1c7dc894616}{red\+Histogramm}
 \item 
-\hypertarget{classGUI_1_1GraphWidget_ae1216a2a17f8e93ec56dadca439499e2}{}\hyperlink{classGUI_1_1AnalysisBox}{G\+U\+I\+::\+Analysis\+Box} $\ast$ {\bfseries blue\+Histogramm}\label{classGUI_1_1GraphWidget_ae1216a2a17f8e93ec56dadca439499e2}
-
+\hyperlink{classGUI_1_1AnalysisBox}{G\+U\+I\+::\+Analysis\+Box} $\ast$ \hyperlink{classGUI_1_1GraphWidget_ae1216a2a17f8e93ec56dadca439499e2}{blue\+Histogramm}
 \item 
-\hypertarget{classGUI_1_1GraphWidget_a262e4b4b63ed00cb7e29d0e80096cc48}{}\hyperlink{classGUI_1_1AnalysisBox}{G\+U\+I\+::\+Analysis\+Box} $\ast$ {\bfseries green\+Histogramm}\label{classGUI_1_1GraphWidget_a262e4b4b63ed00cb7e29d0e80096cc48}
-
+\hyperlink{classGUI_1_1AnalysisBox}{G\+U\+I\+::\+Analysis\+Box} $\ast$ \hyperlink{classGUI_1_1GraphWidget_a262e4b4b63ed00cb7e29d0e80096cc48}{green\+Histogramm}
 \item 
-\hypertarget{classGUI_1_1GraphWidget_ab3ea51551e457dd2373457329db2651e}{}\hyperlink{classModel_1_1Graph}{Model\+::\+Graph} $\ast$ {\bfseries graph}\label{classGUI_1_1GraphWidget_ab3ea51551e457dd2373457329db2651e}
-
+\hyperlink{classModel_1_1Graph}{Model\+::\+Graph} $\ast$ \hyperlink{classGUI_1_1GraphWidget_ab3ea51551e457dd2373457329db2651e}{graph}
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classGUI_1_1GraphWidget_a35226f6549add1ff837c65888fcd00fc}{mouse\+Release\+Event} (Q\+Mouse\+Event $\ast$event)
 \end{DoxyCompactItemize}
 
 
@@ -67,6 +65,40 @@ Constructor.
 
 Draws a graph to the widget. 
 
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & The graph to draw.\\
+\hline
+{\em filled} & Whether the area under the graph is filled.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classGUI_1_1GraphWidget_a35226f6549add1ff837c65888fcd00fc}{}\index{G\+U\+I\+::\+Graph\+Widget@{G\+U\+I\+::\+Graph\+Widget}!mouse\+Release\+Event@{mouse\+Release\+Event}}
+\index{mouse\+Release\+Event@{mouse\+Release\+Event}!G\+U\+I\+::\+Graph\+Widget@{G\+U\+I\+::\+Graph\+Widget}}
+\subsubsection[{mouse\+Release\+Event}]{\setlength{\rightskip}{0pt plus 5cm}void mouse\+Release\+Event (
+\begin{DoxyParamCaption}
+\item[{Q\+Mouse\+Event $\ast$}]{event}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\label{classGUI_1_1GraphWidget_a35226f6549add1ff837c65888fcd00fc}
+
+
+This method is called if the was a click on the widget. 
+
+\hypertarget{classGUI_1_1GraphWidget_a7b9e0f55d4f00ec543cc714478104c80}{}\index{G\+U\+I\+::\+Graph\+Widget@{G\+U\+I\+::\+Graph\+Widget}!set\+Control\+Panel@{set\+Control\+Panel}}
+\index{set\+Control\+Panel@{set\+Control\+Panel}!G\+U\+I\+::\+Graph\+Widget@{G\+U\+I\+::\+Graph\+Widget}}
+\subsubsection[{set\+Control\+Panel}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Control\+Panel (
+\begin{DoxyParamCaption}
+\item[{{\bf G\+U\+I\+::\+Global\+Control\+Panel} $\ast$}]{panel}
+\end{DoxyParamCaption}
+)}\label{classGUI_1_1GraphWidget_a7b9e0f55d4f00ec543cc714478104c80}
+
+
+Sets the \hyperlink{classGUI_1_1GlobalControlPanel}{Global\+Control\+Panel} to notify if a click on the graph was performed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em panel} & The panel to notify.\\
+\hline
+\end{DoxyParams}
 \hypertarget{classGUI_1_1GraphWidget_a7d8af579d2c285a372ec5bc60cbac4c1}{}\index{G\+U\+I\+::\+Graph\+Widget@{G\+U\+I\+::\+Graph\+Widget}!set\+Fill\+Color@{set\+Fill\+Color}}
 \index{set\+Fill\+Color@{set\+Fill\+Color}!G\+U\+I\+::\+Graph\+Widget@{G\+U\+I\+::\+Graph\+Widget}}
 \subsubsection[{set\+Fill\+Color}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Fill\+Color (
@@ -99,3 +131,24 @@ Determines the color of the graph line.
 {\em color} & The color in which the line is shown.\\
 \hline
 \end{DoxyParams}
+
+
+\subsection{Field Documentation}
+\hypertarget{classGUI_1_1GraphWidget_a0820983260f94179618b2d20660fccb8}{}\index{G\+U\+I\+::\+Graph\+Widget@{G\+U\+I\+::\+Graph\+Widget}!bitrate\+Graph@{bitrate\+Graph}}
+\index{bitrate\+Graph@{bitrate\+Graph}!G\+U\+I\+::\+Graph\+Widget@{G\+U\+I\+::\+Graph\+Widget}}
+\subsubsection[{bitrate\+Graph}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Analysis\+Box}$\ast$ bitrate\+Graph}\label{classGUI_1_1GraphWidget_a0820983260f94179618b2d20660fccb8}
+\hypertarget{classGUI_1_1GraphWidget_ae1216a2a17f8e93ec56dadca439499e2}{}\index{G\+U\+I\+::\+Graph\+Widget@{G\+U\+I\+::\+Graph\+Widget}!blue\+Histogramm@{blue\+Histogramm}}
+\index{blue\+Histogramm@{blue\+Histogramm}!G\+U\+I\+::\+Graph\+Widget@{G\+U\+I\+::\+Graph\+Widget}}
+\subsubsection[{blue\+Histogramm}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Analysis\+Box}$\ast$ blue\+Histogramm}\label{classGUI_1_1GraphWidget_ae1216a2a17f8e93ec56dadca439499e2}
+\hypertarget{classGUI_1_1GraphWidget_ab3ea51551e457dd2373457329db2651e}{}\index{G\+U\+I\+::\+Graph\+Widget@{G\+U\+I\+::\+Graph\+Widget}!graph@{graph}}
+\index{graph@{graph}!G\+U\+I\+::\+Graph\+Widget@{G\+U\+I\+::\+Graph\+Widget}}
+\subsubsection[{graph}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Model\+::\+Graph}$\ast$ graph}\label{classGUI_1_1GraphWidget_ab3ea51551e457dd2373457329db2651e}
+\hypertarget{classGUI_1_1GraphWidget_a262e4b4b63ed00cb7e29d0e80096cc48}{}\index{G\+U\+I\+::\+Graph\+Widget@{G\+U\+I\+::\+Graph\+Widget}!green\+Histogramm@{green\+Histogramm}}
+\index{green\+Histogramm@{green\+Histogramm}!G\+U\+I\+::\+Graph\+Widget@{G\+U\+I\+::\+Graph\+Widget}}
+\subsubsection[{green\+Histogramm}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Analysis\+Box}$\ast$ green\+Histogramm}\label{classGUI_1_1GraphWidget_a262e4b4b63ed00cb7e29d0e80096cc48}
+\hypertarget{classGUI_1_1GraphWidget_a8eb06e20b4d45dae183529cdbcfccd37}{}\index{G\+U\+I\+::\+Graph\+Widget@{G\+U\+I\+::\+Graph\+Widget}!psnr\+Graph@{psnr\+Graph}}
+\index{psnr\+Graph@{psnr\+Graph}!G\+U\+I\+::\+Graph\+Widget@{G\+U\+I\+::\+Graph\+Widget}}
+\subsubsection[{psnr\+Graph}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Analysis\+Box}$\ast$ psnr\+Graph}\label{classGUI_1_1GraphWidget_a8eb06e20b4d45dae183529cdbcfccd37}
+\hypertarget{classGUI_1_1GraphWidget_abbcef0fcdc2fe6a2fcf4f1c7dc894616}{}\index{G\+U\+I\+::\+Graph\+Widget@{G\+U\+I\+::\+Graph\+Widget}!red\+Histogramm@{red\+Histogramm}}
+\index{red\+Histogramm@{red\+Histogramm}!G\+U\+I\+::\+Graph\+Widget@{G\+U\+I\+::\+Graph\+Widget}}
+\subsubsection[{red\+Histogramm}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Analysis\+Box}$\ast$ red\+Histogramm}\label{classGUI_1_1GraphWidget_abbcef0fcdc2fe6a2fcf4f1c7dc894616}

@@ -3,22 +3,93 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classGUI_1_1AnalysisTab_a544106f19b9119dd044e0b351af6b8a0}{}{\bfseries Analysis\+Tab} (\hyperlink{classGUI_1_1QtGui_1_1QWidget____10}{G\+U\+I\+::\+Qt\+Gui\+::\+Q\+Widget\+\_\+\+\_\+10} $\ast$parent)\label{classGUI_1_1AnalysisTab_a544106f19b9119dd044e0b351af6b8a0}
-
+\hyperlink{classGUI_1_1AnalysisTab_ad7387c7350ed1011bdbf3f88e44b19ff}{Analysis\+Tab} (\hyperlink{classGUI_1_1Player_1_1QWidget}{G\+U\+I\+::\+Player\+::\+Q\+Widget} $\ast$parent)
 \item 
-\hypertarget{classGUI_1_1AnalysisTab_ad452524ed628a2eba1f167f79469b829}{}\hyperlink{classMemento_1_1AnalysisTabMemento}{Memento\+::\+Analysis\+Tab\+Memento} {\bfseries get\+Memento} ()\label{classGUI_1_1AnalysisTab_ad452524ed628a2eba1f167f79469b829}
-
+\hyperlink{classMemento_1_1AnalysisTabMemento}{Memento\+::\+Analysis\+Tab\+Memento} \hyperlink{classGUI_1_1AnalysisTab_ad452524ed628a2eba1f167f79469b829}{get\+Memento} ()
 \item 
-\hypertarget{classGUI_1_1AnalysisTab_a37a387e0b6f67a340ff7e60b2f8f7f24}{}void {\bfseries restore} (\hyperlink{classMemento_1_1AnalysisTabMemento}{Memento\+::\+Analysis\+Tab\+Memento} memento)\label{classGUI_1_1AnalysisTab_a37a387e0b6f67a340ff7e60b2f8f7f24}
-
+void \hyperlink{classGUI_1_1AnalysisTab_a37a387e0b6f67a340ff7e60b2f8f7f24}{restore} (\hyperlink{classMemento_1_1AnalysisTabMemento}{Memento\+::\+Analysis\+Tab\+Memento} memento)
+\item 
+void \hyperlink{classGUI_1_1AnalysisTab_ae01a11c0a081e873c992ebb245295903}{set\+Raw\+Video} (\hyperlink{classModel_1_1YuvVideo}{Model\+::\+Yuv\+Video} video)
 \end{DoxyCompactItemize}
 \subsection*{Data Fields}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classGUI_1_1AnalysisTab_ad1a5ead95d905d9ec387ee6c95665c38}{}\hyperlink{classGUI_1_1Player_1_1FrameView}{G\+U\+I\+::\+Player\+::\+Frame\+View} $\ast$ {\bfseries raw\+Video\+View}\label{classGUI_1_1AnalysisTab_ad1a5ead95d905d9ec387ee6c95665c38}
-
+\hyperlink{classUndoRedo_1_1LoadAnalysisVideo}{Undo\+Redo\+::\+Load\+Analysis\+Video} $\ast$ \hyperlink{classGUI_1_1AnalysisTab_a3ababc5048f673abd931e7b98eaf0f99}{ana\+Tab}
+\item 
+\hyperlink{classGUI_1_1Player_1_1FrameView}{G\+U\+I\+::\+Player\+::\+Frame\+View} $\ast$ \hyperlink{classGUI_1_1AnalysisTab_ad1a5ead95d905d9ec387ee6c95665c38}{raw\+Video\+View}
 \end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-the tab that shows videos and analyses them 
+The tab that shows videos and analyses them. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classGUI_1_1AnalysisTab_ad7387c7350ed1011bdbf3f88e44b19ff}{}\index{G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}!Analysis\+Tab@{Analysis\+Tab}}
+\index{Analysis\+Tab@{Analysis\+Tab}!G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}}
+\subsubsection[{Analysis\+Tab}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Analysis\+Tab} (
+\begin{DoxyParamCaption}
+\item[{{\bf G\+U\+I\+::\+Player\+::\+Q\+Widget} $\ast$}]{parent}
+\end{DoxyParamCaption}
+)}\label{classGUI_1_1AnalysisTab_ad7387c7350ed1011bdbf3f88e44b19ff}
+
+
+Constructor. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classGUI_1_1AnalysisTab_ad452524ed628a2eba1f167f79469b829}{}\index{G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}!get\+Memento@{get\+Memento}}
+\index{get\+Memento@{get\+Memento}!G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}}
+\subsubsection[{get\+Memento}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Memento\+::\+Analysis\+Tab\+Memento} get\+Memento (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classGUI_1_1AnalysisTab_ad452524ed628a2eba1f167f79469b829}
+
+
+Creates a memento which contains the state of this tab. 
+
+\begin{DoxyReturn}{Returns}
+The created memento.
+\end{DoxyReturn}
+\hypertarget{classGUI_1_1AnalysisTab_a37a387e0b6f67a340ff7e60b2f8f7f24}{}\index{G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}!restore@{restore}}
+\index{restore@{restore}!G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}}
+\subsubsection[{restore}]{\setlength{\rightskip}{0pt plus 5cm}void restore (
+\begin{DoxyParamCaption}
+\item[{{\bf Memento\+::\+Analysis\+Tab\+Memento}}]{memento}
+\end{DoxyParamCaption}
+)}\label{classGUI_1_1AnalysisTab_a37a387e0b6f67a340ff7e60b2f8f7f24}
+
+
+Restores the tab based on the memento. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em memento} & The memento which contains the state of the tab.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classGUI_1_1AnalysisTab_ae01a11c0a081e873c992ebb245295903}{}\index{G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}!set\+Raw\+Video@{set\+Raw\+Video}}
+\index{set\+Raw\+Video@{set\+Raw\+Video}!G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}}
+\subsubsection[{set\+Raw\+Video}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Raw\+Video (
+\begin{DoxyParamCaption}
+\item[{{\bf Model\+::\+Yuv\+Video}}]{video}
+\end{DoxyParamCaption}
+)}\label{classGUI_1_1AnalysisTab_ae01a11c0a081e873c992ebb245295903}
+
+
+Sets the raw video for the analysis. This operation resets the tab completely. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em video} & The new raw video.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Field Documentation}
+\hypertarget{classGUI_1_1AnalysisTab_a3ababc5048f673abd931e7b98eaf0f99}{}\index{G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}!ana\+Tab@{ana\+Tab}}
+\index{ana\+Tab@{ana\+Tab}!G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}}
+\subsubsection[{ana\+Tab}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Undo\+Redo\+::\+Load\+Analysis\+Video}$\ast$ ana\+Tab}\label{classGUI_1_1AnalysisTab_a3ababc5048f673abd931e7b98eaf0f99}
+\hypertarget{classGUI_1_1AnalysisTab_ad1a5ead95d905d9ec387ee6c95665c38}{}\index{G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}!raw\+Video\+View@{raw\+Video\+View}}
+\index{raw\+Video\+View@{raw\+Video\+View}!G\+U\+I\+::\+Analysis\+Tab@{G\+U\+I\+::\+Analysis\+Tab}}
+\subsubsection[{raw\+Video\+View}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+U\+I\+::\+Player\+::\+Frame\+View}$\ast$ raw\+Video\+View}\label{classGUI_1_1AnalysisTab_ad1a5ead95d905d9ec387ee6c95665c38}

@@ -24,10 +24,12 @@ int \hyperlink{classModel_1_1AVVideo_a038091d64aa83552571228512789d5ee}{get\+Num
 \subsection*{Data Fields}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classModel_1_1AVVideo_a2ee559c7a937231b8bdc36ed5a15d865}{}\hyperlink{classModel_1_1EncodedVideo}{Model\+::\+Encoded\+Video} $\ast$ {\bfseries av\+Video}\label{classModel_1_1AVVideo_a2ee559c7a937231b8bdc36ed5a15d865}
-
+\hyperlink{classModel_1_1EncodedVideo}{Model\+::\+Encoded\+Video} $\ast$ \hyperlink{classModel_1_1AVVideo_a2ee559c7a937231b8bdc36ed5a15d865}{av\+Video}
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+This class contains A\+V\+Frames from the ffmpeg library and manages them. 
 
 \subsection{Constructor \& Destructor Documentation}
 \hypertarget{classModel_1_1AVVideo_af6a4a9766b45d8b9a6c10f0b6c5d8998}{}\index{Model\+::\+A\+V\+Video@{Model\+::\+A\+V\+Video}!A\+V\+Video@{A\+V\+Video}}
@@ -45,11 +47,11 @@ Constructor.
 
 
 \begin{DoxyParams}{Parameters}
-{\em fps} & the fps the video should be played at\\
+{\em fps} & The fps the video should be played at.\\
 \hline
-{\em width} & the width of the video\\
+{\em width} & The width of the video.\\
 \hline
-{\em height} & the height of the video\\
+{\em height} & The height of the video.\\
 \hline
 \end{DoxyParams}
 
@@ -67,7 +69,7 @@ Constructor.
 Returns the fps of the video. 
 
 \begin{DoxyReturn}{Returns}
-fps of the video
+Fps of the video.
 \end{DoxyReturn}
 \hypertarget{classModel_1_1AVVideo_a5ae52bc55f8cdfa021eb1107beba5f61}{}\index{Model\+::\+A\+V\+Video@{Model\+::\+A\+V\+Video}!get\+Frame@{get\+Frame}}
 \index{get\+Frame@{get\+Frame}!Model\+::\+A\+V\+Video@{Model\+::\+A\+V\+Video}}
@@ -85,6 +87,9 @@ Returns the frame at the given index. If the index is invalid nullptr is returne
 {\em index} & the index of the frame to return\\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The frame at the given index.
+\end{DoxyReturn}
 \hypertarget{classModel_1_1AVVideo_a07efb2a4e9a982688c8bb3c3f21d1092}{}\index{Model\+::\+A\+V\+Video@{Model\+::\+A\+V\+Video}!get\+Height@{get\+Height}}
 \index{get\+Height@{get\+Height}!Model\+::\+A\+V\+Video@{Model\+::\+A\+V\+Video}}
 \subsubsection[{get\+Height}]{\setlength{\rightskip}{0pt plus 5cm}int get\+Height (
@@ -97,7 +102,7 @@ Returns the frame at the given index. If the index is invalid nullptr is returne
 Returns the height of the video. 
 
 \begin{DoxyReturn}{Returns}
-the height of the video
+The height of the video.
 \end{DoxyReturn}
 \hypertarget{classModel_1_1AVVideo_a038091d64aa83552571228512789d5ee}{}\index{Model\+::\+A\+V\+Video@{Model\+::\+A\+V\+Video}!get\+Number\+Of\+Frames@{get\+Number\+Of\+Frames}}
 \index{get\+Number\+Of\+Frames@{get\+Number\+Of\+Frames}!Model\+::\+A\+V\+Video@{Model\+::\+A\+V\+Video}}
@@ -111,7 +116,7 @@ the height of the video
 Returns the number of frames in the video. 
 
 \begin{DoxyReturn}{Returns}
-the number of frames in the video
+The number of frames in the video.
 \end{DoxyReturn}
 \hypertarget{classModel_1_1AVVideo_a67a0997183f24da19b776d96c1052998}{}\index{Model\+::\+A\+V\+Video@{Model\+::\+A\+V\+Video}!get\+Width@{get\+Width}}
 \index{get\+Width@{get\+Width}!Model\+::\+A\+V\+Video@{Model\+::\+A\+V\+Video}}
@@ -125,7 +130,7 @@ the number of frames in the video
 Returns the width of the video. 
 
 \begin{DoxyReturn}{Returns}
-the width of the video
+The width of the video.
 \end{DoxyReturn}
 \hypertarget{classModel_1_1AVVideo_ace104c676dbfe0dc570e75b8ed79c283}{}\index{Model\+::\+A\+V\+Video@{Model\+::\+A\+V\+Video}!insert\+Frame@{insert\+Frame}}
 \index{insert\+Frame@{insert\+Frame}!Model\+::\+A\+V\+Video@{Model\+::\+A\+V\+Video}}
@@ -141,9 +146,9 @@ Inserts a frame at the given index. If index $<$ 0 then the frame gets pushed to
 
 
 \begin{DoxyParams}{Parameters}
-{\em index} & The index to insert the frame at\\
+{\em index} & The index to insert the frame at.\\
 \hline
-{\em frame\+:std,\+:} & The frame to insert\\
+{\em frame\+:std,\+:} & The frame to insert.\\
 \hline
 \end{DoxyParams}
 \hypertarget{classModel_1_1AVVideo_af7a4bb4befc8330296b9765b4b23a7db}{}\index{Model\+::\+A\+V\+Video@{Model\+::\+A\+V\+Video}!insert\+Frames@{insert\+Frames}}
@@ -160,9 +165,9 @@ Inserts a vector of frames at the given index. If the index$<$0 or index is grea
 
 
 \begin{DoxyParams}{Parameters}
-{\em index} & the index to insert the frames at\\
+{\em index} & The index to insert the frames at.\\
 \hline
-{\em frames\+:std,\+:} & the frames to insert\\
+{\em frames\+:std,\+:} & The frames to insert.\\
 \hline
 \end{DoxyParams}
 \hypertarget{classModel_1_1AVVideo_a2467a8d0c175fdcbacea59e9955d88a9}{}\index{Model\+::\+A\+V\+Video@{Model\+::\+A\+V\+Video}!remove\+Frame@{remove\+Frame}}
@@ -178,6 +183,12 @@ Removes the frame at the given index. If the index is invalid nothing happens.
 
 
 \begin{DoxyParams}{Parameters}
-{\em index} & the index of the frame to remove\\
+{\em index} & The index of the frame to remove.\\
 \hline
 \end{DoxyParams}
+
+
+\subsection{Field Documentation}
+\hypertarget{classModel_1_1AVVideo_a2ee559c7a937231b8bdc36ed5a15d865}{}\index{Model\+::\+A\+V\+Video@{Model\+::\+A\+V\+Video}!av\+Video@{av\+Video}}
+\index{av\+Video@{av\+Video}!Model\+::\+A\+V\+Video@{Model\+::\+A\+V\+Video}}
+\subsubsection[{av\+Video}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Model\+::\+Encoded\+Video}$\ast$ av\+Video}\label{classModel_1_1AVVideo_a2ee559c7a937231b8bdc36ed5a15d865}

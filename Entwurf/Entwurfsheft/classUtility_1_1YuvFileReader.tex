@@ -1,0 +1,108 @@
+\hypertarget{classUtility_1_1YuvFileReader}{}\section{Yuv\+File\+Reader Class Reference}
+\label{classUtility_1_1YuvFileReader}\index{Yuv\+File\+Reader@{Yuv\+File\+Reader}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classUtility_1_1YuvFileReader_a4d1117a96eef85d154a837df5779e21a}{Yuv\+File\+Reader} (Q\+String filename, int \hyperlink{classUtility_1_1YuvFileReader_a2474a5474cbff19523a51eb1de01cda4}{width}, int \hyperlink{classUtility_1_1YuvFileReader_ad12fc34ce789bce6c8a05d8a17138534}{height})
+\item 
+virtual unique\+\_\+ptr$<$ \hyperlink{classGUI_1_1Player_1_1Video}{G\+U\+I\+::\+Player\+::\+Video} $>$ \hyperlink{classUtility_1_1YuvFileReader_abc1ed29027875586a65ee627201343d4}{read} ()=0
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{classUtility_1_1YuvFileReader_ae73346d00388350396fd2185ca80dfb8}{clamp} (int value)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+unique\+\_\+ptr$<$ Q\+Byte\+Array $>$ \hyperlink{classUtility_1_1YuvFileReader_aa6f0d985e2603aa538ffa615b26c0b4d}{binary\+Data}
+\item 
+int \hyperlink{classUtility_1_1YuvFileReader_a2474a5474cbff19523a51eb1de01cda4}{width}
+\item 
+int \hyperlink{classUtility_1_1YuvFileReader_ad12fc34ce789bce6c8a05d8a17138534}{height}
+\item 
+unique\+\_\+ptr$<$ \hyperlink{classGUI_1_1Player_1_1Video}{G\+U\+I\+::\+Player\+::\+Video} $>$ \hyperlink{classUtility_1_1YuvFileReader_a116c92e009352d894f8d0f608109ebe9}{video}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This is the base class for all different yuv file readers. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classUtility_1_1YuvFileReader_a4d1117a96eef85d154a837df5779e21a}{}\index{Utility\+::\+Yuv\+File\+Reader@{Utility\+::\+Yuv\+File\+Reader}!Yuv\+File\+Reader@{Yuv\+File\+Reader}}
+\index{Yuv\+File\+Reader@{Yuv\+File\+Reader}!Utility\+::\+Yuv\+File\+Reader@{Utility\+::\+Yuv\+File\+Reader}}
+\subsubsection[{Yuv\+File\+Reader}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Yuv\+File\+Reader} (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{filename, }
+\item[{int}]{width, }
+\item[{int}]{height}
+\end{DoxyParamCaption}
+)}\label{classUtility_1_1YuvFileReader_a4d1117a96eef85d154a837df5779e21a}
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The absolute path to the file to load.\\
+\hline
+{\em width} & The width of the video.\\
+\hline
+{\em height} & The height of the video.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classUtility_1_1YuvFileReader_ae73346d00388350396fd2185ca80dfb8}{}\index{Utility\+::\+Yuv\+File\+Reader@{Utility\+::\+Yuv\+File\+Reader}!clamp@{clamp}}
+\index{clamp@{clamp}!Utility\+::\+Yuv\+File\+Reader@{Utility\+::\+Yuv\+File\+Reader}}
+\subsubsection[{clamp}]{\setlength{\rightskip}{0pt plus 5cm}static int clamp (
+\begin{DoxyParamCaption}
+\item[{int}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{classUtility_1_1YuvFileReader_ae73346d00388350396fd2185ca80dfb8}
+
+
+Clamps the given value to the range \mbox{[}0,255\mbox{]}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & The value to clamp.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The clamped value.
+\end{DoxyReturn}
+\hypertarget{classUtility_1_1YuvFileReader_abc1ed29027875586a65ee627201343d4}{}\index{Utility\+::\+Yuv\+File\+Reader@{Utility\+::\+Yuv\+File\+Reader}!read@{read}}
+\index{read@{read}!Utility\+::\+Yuv\+File\+Reader@{Utility\+::\+Yuv\+File\+Reader}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}virtual unique\+\_\+ptr$<${\bf G\+U\+I\+::\+Player\+::\+Video}$>$ read (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\label{classUtility_1_1YuvFileReader_abc1ed29027875586a65ee627201343d4}
+
+
+Reads the file in. 
+
+\begin{DoxyReturn}{Returns}
+The complete video.
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classUtility_1_1Yuv411FileReader_a9dd03728ebb2e883f5cac8cb357fcd0e}{Yuv411\+File\+Reader}, \hyperlink{classUtility_1_1Yuv422FileReader_a9dd03728ebb2e883f5cac8cb357fcd0e}{Yuv422\+File\+Reader}, \hyperlink{classUtility_1_1Yuv444FileReader_a9dd03728ebb2e883f5cac8cb357fcd0e}{Yuv444\+File\+Reader}, and \hyperlink{classUtility_1_1Yuv420FIleReader_a9dd03728ebb2e883f5cac8cb357fcd0e}{Yuv420\+F\+Ile\+Reader}.
+
+
+
+\subsection{Field Documentation}
+\hypertarget{classUtility_1_1YuvFileReader_aa6f0d985e2603aa538ffa615b26c0b4d}{}\index{Utility\+::\+Yuv\+File\+Reader@{Utility\+::\+Yuv\+File\+Reader}!binary\+Data@{binary\+Data}}
+\index{binary\+Data@{binary\+Data}!Utility\+::\+Yuv\+File\+Reader@{Utility\+::\+Yuv\+File\+Reader}}
+\subsubsection[{binary\+Data}]{\setlength{\rightskip}{0pt plus 5cm}unique\+\_\+ptr$<$Q\+Byte\+Array$>$ binary\+Data\hspace{0.3cm}{\ttfamily [protected]}}\label{classUtility_1_1YuvFileReader_aa6f0d985e2603aa538ffa615b26c0b4d}
+\hypertarget{classUtility_1_1YuvFileReader_ad12fc34ce789bce6c8a05d8a17138534}{}\index{Utility\+::\+Yuv\+File\+Reader@{Utility\+::\+Yuv\+File\+Reader}!height@{height}}
+\index{height@{height}!Utility\+::\+Yuv\+File\+Reader@{Utility\+::\+Yuv\+File\+Reader}}
+\subsubsection[{height}]{\setlength{\rightskip}{0pt plus 5cm}int height\hspace{0.3cm}{\ttfamily [protected]}}\label{classUtility_1_1YuvFileReader_ad12fc34ce789bce6c8a05d8a17138534}
+\hypertarget{classUtility_1_1YuvFileReader_a116c92e009352d894f8d0f608109ebe9}{}\index{Utility\+::\+Yuv\+File\+Reader@{Utility\+::\+Yuv\+File\+Reader}!video@{video}}
+\index{video@{video}!Utility\+::\+Yuv\+File\+Reader@{Utility\+::\+Yuv\+File\+Reader}}
+\subsubsection[{video}]{\setlength{\rightskip}{0pt plus 5cm}unique\+\_\+ptr$<${\bf G\+U\+I\+::\+Player\+::\+Video}$>$ video\hspace{0.3cm}{\ttfamily [protected]}}\label{classUtility_1_1YuvFileReader_a116c92e009352d894f8d0f608109ebe9}
+\hypertarget{classUtility_1_1YuvFileReader_a2474a5474cbff19523a51eb1de01cda4}{}\index{Utility\+::\+Yuv\+File\+Reader@{Utility\+::\+Yuv\+File\+Reader}!width@{width}}
+\index{width@{width}!Utility\+::\+Yuv\+File\+Reader@{Utility\+::\+Yuv\+File\+Reader}}
+\subsubsection[{width}]{\setlength{\rightskip}{0pt plus 5cm}int width\hspace{0.3cm}{\ttfamily [protected]}}\label{classUtility_1_1YuvFileReader_a2474a5474cbff19523a51eb1de01cda4}

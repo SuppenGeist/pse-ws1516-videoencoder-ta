@@ -1,0 +1,64 @@
+\hypertarget{classUndoRedo_1_1LoadFilterconfig}{}\section{Load\+Filterconfig Class Reference}
+\label{classUndoRedo_1_1LoadFilterconfig}\index{Load\+Filterconfig@{Load\+Filterconfig}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classUndoRedo_1_1LoadFilterconfig_a7d0074b786381d2cf9d31f7ec9ef4924}{Load\+Filterconfig} (\hyperlink{classGUI_1_1FilterTab}{G\+U\+I\+::\+Filter\+Tab} $\ast$filter\+Tab, \hyperlink{classModel_1_1Filter_1_1FilterList}{Model\+::\+Filter\+::\+Filter\+List} old\+List, \hyperlink{classModel_1_1Filter_1_1FilterList}{Model\+::\+Filter\+::\+Filter\+List} list)
+\item 
+void \hyperlink{classUndoRedo_1_1LoadFilterconfig_a0e1e7804a53f6d62efc72c9bdbec8571}{undo} ()
+\item 
+void \hyperlink{classUndoRedo_1_1LoadFilterconfig_a93c48d6ed036e1a381be53ac67643284}{redo} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class is the undo command for loading a filter config on the filter tab. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classUndoRedo_1_1LoadFilterconfig_a7d0074b786381d2cf9d31f7ec9ef4924}{}\index{Undo\+Redo\+::\+Load\+Filterconfig@{Undo\+Redo\+::\+Load\+Filterconfig}!Load\+Filterconfig@{Load\+Filterconfig}}
+\index{Load\+Filterconfig@{Load\+Filterconfig}!Undo\+Redo\+::\+Load\+Filterconfig@{Undo\+Redo\+::\+Load\+Filterconfig}}
+\subsubsection[{Load\+Filterconfig}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Load\+Filterconfig} (
+\begin{DoxyParamCaption}
+\item[{{\bf G\+U\+I\+::\+Filter\+Tab} $\ast$}]{filter\+Tab, }
+\item[{{\bf Model\+::\+Filter\+::\+Filter\+List}}]{old\+List, }
+\item[{{\bf Model\+::\+Filter\+::\+Filter\+List}}]{list}
+\end{DoxyParamCaption}
+)}\label{classUndoRedo_1_1LoadFilterconfig_a7d0074b786381d2cf9d31f7ec9ef4924}
+
+
+Constuctor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filter\+Tab} & The filtertab to operate on.\\
+\hline
+{\em old\+List} & The filterlist before the config is loaded.\\
+\hline
+{\em list} & The new filter configuration.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classUndoRedo_1_1LoadFilterconfig_a93c48d6ed036e1a381be53ac67643284}{}\index{Undo\+Redo\+::\+Load\+Filterconfig@{Undo\+Redo\+::\+Load\+Filterconfig}!redo@{redo}}
+\index{redo@{redo}!Undo\+Redo\+::\+Load\+Filterconfig@{Undo\+Redo\+::\+Load\+Filterconfig}}
+\subsubsection[{redo}]{\setlength{\rightskip}{0pt plus 5cm}void redo (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classUndoRedo_1_1LoadFilterconfig_a93c48d6ed036e1a381be53ac67643284}
+
+
+Loads a filter configuration from a external file. 
+
+\hypertarget{classUndoRedo_1_1LoadFilterconfig_a0e1e7804a53f6d62efc72c9bdbec8571}{}\index{Undo\+Redo\+::\+Load\+Filterconfig@{Undo\+Redo\+::\+Load\+Filterconfig}!undo@{undo}}
+\index{undo@{undo}!Undo\+Redo\+::\+Load\+Filterconfig@{Undo\+Redo\+::\+Load\+Filterconfig}}
+\subsubsection[{undo}]{\setlength{\rightskip}{0pt plus 5cm}void undo (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classUndoRedo_1_1LoadFilterconfig_a0e1e7804a53f6d62efc72c9bdbec8571}
+
+
+Loads the filter configuration present before external configuration was loaded. 
+

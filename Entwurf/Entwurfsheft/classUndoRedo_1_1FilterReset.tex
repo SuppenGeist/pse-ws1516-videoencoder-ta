@@ -1,0 +1,61 @@
+\hypertarget{classUndoRedo_1_1FilterReset}{}\section{Filter\+Reset Class Reference}
+\label{classUndoRedo_1_1FilterReset}\index{Filter\+Reset@{Filter\+Reset}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classUndoRedo_1_1FilterReset_ad87e89a1477e76ce6249ff2af32a7049}{Filter\+Reset} (\hyperlink{classGUI_1_1FilterTab}{G\+U\+I\+::\+Filter\+Tab} $\ast$filter\+Tab, \hyperlink{classModel_1_1Filter_1_1FilterList}{Model\+::\+Filter\+::\+Filter\+List} filter\+List)
+\item 
+void \hyperlink{classUndoRedo_1_1FilterReset_a0e1e7804a53f6d62efc72c9bdbec8571}{undo} ()
+\item 
+void \hyperlink{classUndoRedo_1_1FilterReset_a93c48d6ed036e1a381be53ac67643284}{redo} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class is the undo command for resting the filterlist in the filter tab. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classUndoRedo_1_1FilterReset_ad87e89a1477e76ce6249ff2af32a7049}{}\index{Undo\+Redo\+::\+Filter\+Reset@{Undo\+Redo\+::\+Filter\+Reset}!Filter\+Reset@{Filter\+Reset}}
+\index{Filter\+Reset@{Filter\+Reset}!Undo\+Redo\+::\+Filter\+Reset@{Undo\+Redo\+::\+Filter\+Reset}}
+\subsubsection[{Filter\+Reset}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Filter\+Reset} (
+\begin{DoxyParamCaption}
+\item[{{\bf G\+U\+I\+::\+Filter\+Tab} $\ast$}]{filter\+Tab, }
+\item[{{\bf Model\+::\+Filter\+::\+Filter\+List}}]{filter\+List}
+\end{DoxyParamCaption}
+)}\label{classUndoRedo_1_1FilterReset_ad87e89a1477e76ce6249ff2af32a7049}
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filter\+Tab} & The filtertab to operate on.\\
+\hline
+{\em filter\+List} & The filterlist the action to perform on.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classUndoRedo_1_1FilterReset_a93c48d6ed036e1a381be53ac67643284}{}\index{Undo\+Redo\+::\+Filter\+Reset@{Undo\+Redo\+::\+Filter\+Reset}!redo@{redo}}
+\index{redo@{redo}!Undo\+Redo\+::\+Filter\+Reset@{Undo\+Redo\+::\+Filter\+Reset}}
+\subsubsection[{redo}]{\setlength{\rightskip}{0pt plus 5cm}void redo (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classUndoRedo_1_1FilterReset_a93c48d6ed036e1a381be53ac67643284}
+
+
+Clears the filter configurations and the filter list. 
+
+\hypertarget{classUndoRedo_1_1FilterReset_a0e1e7804a53f6d62efc72c9bdbec8571}{}\index{Undo\+Redo\+::\+Filter\+Reset@{Undo\+Redo\+::\+Filter\+Reset}!undo@{undo}}
+\index{undo@{undo}!Undo\+Redo\+::\+Filter\+Reset@{Undo\+Redo\+::\+Filter\+Reset}}
+\subsubsection[{undo}]{\setlength{\rightskip}{0pt plus 5cm}void undo (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classUndoRedo_1_1FilterReset_a0e1e7804a53f6d62efc72c9bdbec8571}
+
+
+Loads the filterlist and filter configuration to the state it was before the reset. 
+
