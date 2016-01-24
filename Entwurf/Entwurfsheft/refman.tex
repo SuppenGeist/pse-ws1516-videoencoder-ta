@@ -88,7 +88,7 @@
 % Indices & bibliography
 \usepackage{natbib}
 \usepackage[titles]{tocloft}
-\setcounter{tocdepth}{0}
+\setcounter{tocdepth}{1}
 \setcounter{secnumdepth}{5}
 \makeindex
 
@@ -144,7 +144,17 @@ Vive (short for: Video veritatem) is a programm for testing different videoencod
 This document is seperated into different parts: in the first part are diagrams to give a rough overview of the structure of the programm. In the second part are detailed descriptions of every class and methode. An overview of the implementation phase is given in the form of a gantt-diagram in the appendix.
 \chapter{Diagrams}
 \section{Class Diagrams}
-Program structure\\\\
+Program structure\\
+The software is structured in 5 sections: Memento, GUI, UNDO/REDO, Model und Utility.    
+
+We have a modified MVC-architecture, where the GUI represents not only the view, but also the controller. The GUI displays videos and diagrams of the Utility and data of the Model package.
+The previous representations can be restored through commands of the UNDO/REDO-package.\\
+
+The Model represents, as the name already tells, the model. It stores the data that are calculated in the Utility-package. 
+The Memento-package encapsulates the data, configurations and the project and stores them for a longer duration of time. 
+In the Utility-package data are calculated and videos are loaded.
+UNDO/REDO saves data and commands during a session, so that actions can be undone.
+\\
 {\centering\includegraphics[width=1\textwidth]{Grobuebersicht.jpg}}\\
 \newpage
 Utility Package\\\\
@@ -304,16 +314,6 @@ Then a Video is loaded with the LoadVideo sequenz. Then a Filter are added to th
 \newpage\input{classGUI_1_1ZoomFilterBox}
 %--- End generated contents ---
 
-
-
-% Index
-\backmatter
-\newpage
-\phantomsection
-\clearemptydoublepage
-\addcontentsline{toc}{chapter}{Index}
-\printindex
-\newpage
 \chapter{Appendix}
 {\centering\includegraphics[width=1\textwidth]{Projektplan_new.PNG}}\\
 \end{document}
