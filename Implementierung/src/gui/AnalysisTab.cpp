@@ -1,4 +1,4 @@
-#include <exception>
+/*#include <exception>
 
 #include "AnalysisTab.h"
 #include "VideoPlayer.h"
@@ -44,3 +44,4 @@ void AnalysisTab::setRawVideo(YuvVideo video) {
 	throw "Not yet implemented";
 }
 
+*/

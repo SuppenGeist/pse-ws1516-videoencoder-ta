@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 using namespace std;
 
@@ -20,7 +20,7 @@ namespace Utility
 {
 	/**
 	 * This class calculates the RGB-difference video of a video.
-	 */
+
 	class RGBDifferenceCalculator
 	{
 		private: GUI::Video* referenceVideo;
@@ -42,3 +42,4 @@ namespace Utility
 }
 
 #endif
+*/

@@ -1,4 +1,4 @@
-#include <exception>
+/*#include <exception>
 
 #include "FrameView.h"
 #include "QWidget.h"
@@ -26,3 +26,4 @@ void() FrameView::updateOffset() {
 	throw "Not yet implemented";
 }
 
+*/

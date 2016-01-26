@@ -1,4 +1,4 @@
-
+/*
 #ifndef __PixelSheme_h__
 #define __PixelSheme_h__
 
@@ -19,3 +19,4 @@ namespace GUI
 }
 
 #endif
+*/

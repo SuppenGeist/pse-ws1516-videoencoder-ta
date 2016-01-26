@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 using namespace std;
 
@@ -24,7 +24,7 @@ namespace GUI
 {
 	/**
 	 * This class is a widget to draw graphs.
-	 */
+
 	class GraphWidget
 	{
 		private: QRgb lineColor;
@@ -75,3 +75,4 @@ namespace GUI
 }
 
 #endif
+*/

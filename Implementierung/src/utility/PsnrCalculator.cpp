@@ -1,4 +1,4 @@
-#include <exception>
+/*#include <exception>
 
 #include "PsnrCalculator.h"
 #include "AVVideo.h"
@@ -15,3 +15,4 @@ void PsnrCalculator::init() {
 	throw "Not yet implemented";
 }
 
+*/

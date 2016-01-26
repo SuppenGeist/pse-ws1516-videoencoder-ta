@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 using namespace std;
 
@@ -19,7 +19,7 @@ namespace GUI
 {
 	/**
 	 * This class is the control panel to play videos.
-	 */
+
 	class PlayerControlPanel: public GUI::QFrame, public GUI::ControlPanel
 	{
 		private: QPushButton* button_play;
@@ -87,3 +87,4 @@ namespace GUI
 }
 
 #endif
+*/

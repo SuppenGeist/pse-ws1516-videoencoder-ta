@@ -1,4 +1,4 @@
-
+/*/*
 #include <exception>
 #include <string>
 using namespace std;
@@ -20,7 +20,7 @@ namespace Model
 {
 	/**
 	 * Adjusts the colorbalance of the video for the 3 basic colors.
-	 */
+
 	class ColorbalanceFilter: public Model::Filter
 	{
 		private: int intensity;
@@ -101,3 +101,5 @@ namespace Model
 }
 
 #endif
+*/
+

@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 using namespace std;
 
@@ -27,7 +27,7 @@ namespace GUI
 {
 	/**
 	 * This class is the main window that is shown.
-	 */
+
 	class MainWindow
 	{
 		private: QStatusBar* statusbar;
@@ -117,3 +117,4 @@ namespace GUI
 }
 
 #endif
+*/

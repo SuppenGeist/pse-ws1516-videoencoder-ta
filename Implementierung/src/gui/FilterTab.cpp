@@ -1,4 +1,4 @@
-#include <exception>
+/*#include <exception>
 #include <string>
 #include <vector>
 
@@ -107,3 +107,4 @@ void FilterTab::moveFilter(int old, int new_3) {
 	throw "Not yet implemented";
 }
 
+*/

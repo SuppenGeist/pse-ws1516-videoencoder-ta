@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 using namespace std;
 
@@ -19,7 +19,7 @@ namespace Model
 {
 	/**
 	 * Applies filters of a given FilterList to a video.
-	 */
+
 	class FilterApplier
 	{
 		private: Model::FilterList* list;
@@ -52,3 +52,4 @@ namespace Model
 }
 
 #endif
+*/

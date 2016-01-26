@@ -1,4 +1,4 @@
-#include <exception>
+/*/*#include <exception>
 
 #include "BlendingFilterBox.h"
 #include "QWidget.h"
@@ -6,4 +6,6 @@
 
 BlendingFilterBox::BlendingFilterBox(QWidget* parent) {
 }
+
+*/
 

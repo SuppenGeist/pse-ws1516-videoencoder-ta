@@ -1,4 +1,4 @@
-#include <exception>
+/*/*#include <exception>
 #include <string>
 
 #include "EdgeFilter.h"
@@ -14,4 +14,6 @@ string EdgeFilter::getFilterDescription() {
 string EdgeFilter::getName() {
 	throw "Not yet implemented";
 }
+
+*/
 

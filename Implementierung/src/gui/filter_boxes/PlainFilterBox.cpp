@@ -1,4 +1,4 @@
-#include <exception>
+/*/*#include <exception>
 
 #include "PlainFilterBox.h"
 #include "QWidget.h"
@@ -7,3 +7,4 @@
 PlainFilterBox::PlainFilterBox(QWidget* parent) {
 }
 
+*/

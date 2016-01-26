@@ -1,4 +1,4 @@
-#include <exception>
+/*#include <exception>
 
 #include "FilterView.h"
 #include "FilterTab.h"
@@ -21,3 +21,4 @@ void FilterView::setFilterTab(FilterTab* filtertab) {
 }
 
 
+*/

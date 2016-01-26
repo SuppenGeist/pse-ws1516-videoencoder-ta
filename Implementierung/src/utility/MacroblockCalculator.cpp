@@ -1,4 +1,4 @@
-#include <exception>
+/*#include <exception>
 
 #include "MacroblockCalculator.h"
 #include "Video.h"
@@ -12,3 +12,4 @@ void MacroblockCalculator::calculateMacroblockImages(Video& target) {
 	throw "Not yet implemented";
 }
 
+*/

@@ -1,4 +1,4 @@
-
+/*
 #ifndef __YuvType_h__
 #define __YuvType_h__
 
@@ -19,3 +19,4 @@ namespace Utility
 }
 
 #endif
+*/

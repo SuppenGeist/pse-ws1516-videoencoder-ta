@@ -1,4 +1,4 @@
-#include <exception>
+/*/*#include <exception>
 #include <string>
 
 #include "ScaleFilter.h"
@@ -47,3 +47,4 @@ void ScaleFilter::setRatio(int ratio) {
 	this->ratio = ratio;
 }
 
+*/

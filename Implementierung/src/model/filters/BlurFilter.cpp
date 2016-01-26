@@ -1,4 +1,4 @@
-#include <exception>
+/*/*#include <exception>
 #include <string>
 
 #include "BlurFilter.h"
@@ -31,3 +31,4 @@ string BlurFilter::getName() {
 	throw "Not yet implemented";
 }
 
+*/

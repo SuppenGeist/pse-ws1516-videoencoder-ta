@@ -1,4 +1,4 @@
-
+/*
 
 #ifndef __Yuv411Vector_h__
 #define __Yuv411Vector_h__
@@ -12,7 +12,7 @@ namespace Utility
 {
 	/**
 	 * A Yuv411Vector.
-	 */
+
 	class Yuv411Vector
 	{
 		public: uint8_t u;
@@ -25,3 +25,4 @@ namespace Utility
 }
 
 #endif
+*/

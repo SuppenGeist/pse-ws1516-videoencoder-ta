@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 using namespace std;
 
@@ -19,7 +19,7 @@ namespace GUI
 {
 	/**
 	 * This control panel has no gui. Instead it has functions to control the video.
-	 */
+
 	class GlobalControlPanel: public GUI::ControlPanel
 	{
 		public: GUI::AnalysisTab* globalControlPanel;
@@ -68,3 +68,4 @@ namespace GUI
 }
 
 #endif
+*/

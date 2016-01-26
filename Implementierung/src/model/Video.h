@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 #include <vector>
 using namespace std;
@@ -22,7 +22,7 @@ namespace GUI
 	/**
 	 * This class represents a video.
 	 * It provides a basic interface to comfortly handle a vector of frames.
-	 */
+
 	class Video
 	{
 		private: std::vector<std::unique_ptr<QImage> > frames;
@@ -99,3 +99,4 @@ namespace GUI
 }
 
 #endif
+*/

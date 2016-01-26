@@ -1,4 +1,4 @@
-#include <exception>
+/*/*#include <exception>
 #include <string>
 
 #include "NoiseFilter.h"
@@ -32,3 +32,4 @@ void NoiseFilter::setIntensity(int intensity) {
 	this->intensity = intensity;
 }
 
+*/

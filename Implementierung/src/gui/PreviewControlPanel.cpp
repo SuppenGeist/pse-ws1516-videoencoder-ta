@@ -1,4 +1,4 @@
-#include <exception>
+/*#include <exception>
 
 #include "PreviewControlPanel.h"
 #include "QWidget.h"
@@ -32,3 +32,4 @@ void PreviewControlPanel::updateLabel() {
 	throw "Not yet implemented";
 }
 
+*/

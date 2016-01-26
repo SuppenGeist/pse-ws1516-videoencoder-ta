@@ -1,4 +1,4 @@
-#include <exception>
+/*#include <exception>
 
 #include "YuvInfoDialog.h"
 #include "QWidget.h"
@@ -41,3 +41,4 @@ void YuvInfoDialog::show() {
 	throw "Not yet implemented";
 }
 
+*/

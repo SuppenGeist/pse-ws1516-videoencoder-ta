@@ -1,4 +1,4 @@
-#include <exception>
+/*#include <exception>
 
 #include "GlobalControlPanel.h"
 #include "AnalysisTab.h"
@@ -35,3 +35,4 @@ void GlobalControlPanel::setPosition(int position) {
 	throw "Not yet implemented";
 }
 
+*/

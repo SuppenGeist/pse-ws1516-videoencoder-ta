@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 using namespace std;
 
@@ -25,7 +25,7 @@ namespace Utility
 {
 	/**
 	 * This class calculates the RGB histogramm for a video.
-	 */
+
 	class RGBHistogrammCalculator
 	{
 		private: GUI::Video* video;
@@ -62,3 +62,4 @@ namespace Utility
 }
 
 #endif
+*/

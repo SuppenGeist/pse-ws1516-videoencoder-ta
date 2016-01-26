@@ -1,4 +1,4 @@
-#include <exception>
+/*/*#include <exception>
 #include <string>
 
 #include "BorderFilter.h"
@@ -62,4 +62,6 @@ string BorderFilter::getName() {
 string BorderFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
+
+*/
 

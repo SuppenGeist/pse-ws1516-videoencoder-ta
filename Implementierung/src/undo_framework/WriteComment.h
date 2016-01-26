@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 using namespace std;
 
@@ -46,3 +46,4 @@ namespace UndoRedo
 }
 
 #endif
+*/

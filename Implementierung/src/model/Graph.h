@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 #include <vector>
 using namespace std;
@@ -18,7 +18,7 @@ namespace Model
 {
 	/**
 	 * This class is a graph.
-	 */
+
 	class Graph
 	{
 		private: vector<double> graph;
@@ -67,3 +67,4 @@ namespace Model
 }
 
 #endif
+*/

@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 #include <string>
 using namespace std;
@@ -26,7 +26,7 @@ namespace Memento
 {
 	/**
 	 * This class is the memento for the FilterTab.
-	 */
+
 	class FilterTabMemento
 	{
 		private: Model::FilterList filterList;
@@ -41,7 +41,7 @@ namespace Memento
 		public: FilterTabMemento();
 
 		/// <summary>
-		/// Returns the list of the currently selected  filters.
+		/// Returns the list of the currently selected  filters.
 		/// </summary>
 		/// <returns>List of the selected filters.</returns>
 		public: Model::FilterList getFilterList();
@@ -91,3 +91,4 @@ namespace Memento
 }
 
 #endif
+*/

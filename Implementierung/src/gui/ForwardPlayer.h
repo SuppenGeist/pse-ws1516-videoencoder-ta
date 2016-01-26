@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 using namespace std;
 
@@ -19,7 +19,7 @@ namespace GUI
 {
 	/**
 	 * This player forwards its input to a ControlPanel.
-	 */
+
 	class ForwardPlayer: public GUI::Player
 	{
 		private: GUI::ControlPanel* controlPanel;
@@ -105,3 +105,4 @@ namespace GUI
 }
 
 #endif
+*/

@@ -1,4 +1,4 @@
-#include <exception>
+/*/*#include <exception>
 #include <string>
 
 #include "RectangleFilter.h"
@@ -63,3 +63,4 @@ void RectangleFilter::setOpacity(int opacity) {
 	this->opacity = opacity;
 }
 
+*/

@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 using namespace std;
 
@@ -20,7 +20,7 @@ namespace Utility
 {
 	/**
 	 * This class can write the project files and the results.
-	 */
+
 	class ProjectWriter
 	{
 
@@ -43,3 +43,4 @@ namespace Utility
 }
 
 #endif
+*/

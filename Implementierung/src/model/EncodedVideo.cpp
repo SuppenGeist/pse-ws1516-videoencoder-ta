@@ -1,4 +1,4 @@
-#include <exception>
+/*#include <exception>
 
 #include "EncodedVideo.h"
 #include "AnalysisBox.h"
@@ -93,3 +93,4 @@ void EncodedVideo::setRgbDiffVideo(Video video) {
 	throw "Not yet implemented";
 }
 
+*/

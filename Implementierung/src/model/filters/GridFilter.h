@@ -1,4 +1,4 @@
-
+/*/*
 #include <exception>
 #include <string>
 using namespace std;
@@ -18,7 +18,7 @@ namespace Model
 {
 	/**
 	 * Inserts a grid into the video as an overlay.
-	 */
+
 	class GridFilter: public Model::Filter
 	{
 		private: int horizontalLines;
@@ -99,3 +99,5 @@ namespace Model
 }
 
 #endif
+*/
+

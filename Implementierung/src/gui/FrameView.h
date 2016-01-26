@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 using namespace std;
 
@@ -18,7 +18,7 @@ namespace GUI
 	/**
 	 * This class is the view used by the video player.
 	 * It automatically scales the frames passed to it.
-	 */
+
 	class FrameView: public GUI::QWidget
 	{
 		private: int xOffset;
@@ -60,3 +60,4 @@ namespace GUI
 }
 
 #endif
+*/

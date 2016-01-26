@@ -1,4 +1,4 @@
-#include <exception>
+/*#include <exception>
 
 #include "ForwardPlayer.h"
 #include "ControlPanel.h"
@@ -59,3 +59,4 @@ void ForwardPlayer::reset() {
 	throw "Not yet implemented";
 }
 
+*/

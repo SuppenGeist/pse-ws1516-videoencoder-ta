@@ -1,4 +1,4 @@
-#include <exception>
+/*/*#include <exception>
 #include <string>
 
 #include "RGBFilter.h"
@@ -24,3 +24,4 @@ string RGBFilter::getName() {
 	throw "Not yet implemented";
 }
 
+*/

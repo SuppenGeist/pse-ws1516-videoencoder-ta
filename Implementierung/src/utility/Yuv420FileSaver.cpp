@@ -1,4 +1,4 @@
-#include <exception>
+/*#include <exception>
 
 #include "Yuv420FileSaver.h"
 #include "Video.h"
@@ -15,3 +15,4 @@ void Yuv420FileSaver::saveFrame(int index) {
 	throw "Not yet implemented";
 }
 
+*/

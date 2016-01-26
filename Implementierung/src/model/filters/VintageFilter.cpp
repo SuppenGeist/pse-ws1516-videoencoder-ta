@@ -1,4 +1,4 @@
-#include <exception>
+/*/*#include <exception>
 #include <string>
 
 #include "VintageFilter.h"
@@ -15,3 +15,4 @@ string VintageFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 
+*/

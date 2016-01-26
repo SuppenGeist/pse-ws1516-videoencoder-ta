@@ -1,4 +1,4 @@
-#include <exception>
+/*#include <exception>
 
 #include "Project.h"
 #include "MainWindow.h"
@@ -27,3 +27,4 @@ QString Project::getPath() {
 	return this->path;
 }
 
+*/

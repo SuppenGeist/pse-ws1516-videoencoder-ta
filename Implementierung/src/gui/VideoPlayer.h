@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 #include <vector>
 using namespace std;
@@ -27,7 +27,7 @@ namespace GUI
 	/**
 	 * This class is a video player.
 	 * It provides a basic interface for handling playback of videos.
-	 */
+
 	class VideoPlayer: public GUI::Player
 	{
 		private: int position;
@@ -161,3 +161,4 @@ namespace GUI
 }
 
 #endif
+*/

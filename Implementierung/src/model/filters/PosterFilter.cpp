@@ -1,4 +1,4 @@
-#include <exception>
+/*/*#include <exception>
 #include <string>
 
 #include "PosterFilter.h"
@@ -23,3 +23,4 @@ void PosterFilter::setNumberOfColors(int numberOfColors) {
 	this->numberOfColors = numberOfColors;
 }
 
+*/

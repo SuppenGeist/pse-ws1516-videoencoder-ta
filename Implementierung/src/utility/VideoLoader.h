@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 using namespace std;
 
@@ -20,7 +20,7 @@ namespace Utility
 {
 	/**
 	 * This class can load a encoded video.
-	 */
+
 	class VideoLoader
 	{
 		private: QString path;
@@ -40,3 +40,4 @@ namespace Utility
 }
 
 #endif
+*/

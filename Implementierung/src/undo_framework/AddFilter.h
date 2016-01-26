@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 using namespace std;
 
@@ -27,7 +27,7 @@ namespace UndoRedo
 {
 	/**
 	 * This is the undo command for adding a filter to the filterlist on the filtertab.
-	 */
+
 	class AddFilter: public UndoRedo::QUndoCommand
 	{
 		private: GUI::FilterTab* filterTab;
@@ -53,3 +53,4 @@ namespace UndoRedo
 }
 
 #endif
+*/

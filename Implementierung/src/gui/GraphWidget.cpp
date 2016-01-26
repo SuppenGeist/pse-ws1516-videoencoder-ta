@@ -1,4 +1,4 @@
-#include <exception>
+/*#include <exception>
 
 #include "GraphWidget.h"
 #include "AnalysisBox.h"
@@ -28,3 +28,4 @@ void GraphWidget::mouseReleaseEvent(QMouseEvent* event) {
 	throw "Not yet implemented";
 }
 
+*/

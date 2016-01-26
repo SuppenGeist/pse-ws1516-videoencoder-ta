@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 using namespace std;
 
@@ -25,7 +25,7 @@ namespace Memento
 {
 	/**
 	 * This class is the memento for the AnalysisBox.
-	 */
+
 	class AnalysisBoxMemento
 	{
 		private: QString videoPath;
@@ -115,3 +115,4 @@ namespace Memento
 }
 
 #endif
+*/

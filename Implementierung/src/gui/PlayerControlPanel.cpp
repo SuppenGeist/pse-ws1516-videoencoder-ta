@@ -1,4 +1,4 @@
-#include <exception>
+/*#include <exception>
 
 #include "PlayerControlPanel.h"
 #include "QFrame.h"
@@ -47,3 +47,4 @@ void PlayerControlPanel::changeTimeline(int value) {
 	throw "Not yet implemented";
 }
 
+*/

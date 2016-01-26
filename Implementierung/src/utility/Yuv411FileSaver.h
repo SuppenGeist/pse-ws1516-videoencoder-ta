@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 using namespace std;
 
@@ -26,7 +26,7 @@ namespace Utility
 {
 	/**
 	 * This class can save videos in the yuv 411 format.
-	 */
+
 	class Yuv411FileSaver: public Utility::YuvFileSaver
 	{
 		private: Utility::Compression compression;
@@ -66,3 +66,4 @@ namespace Utility
 }
 
 #endif
+*/

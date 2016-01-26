@@ -1,4 +1,4 @@
-#include <exception>
+/*/*#include <exception>
 
 #include "BorderFilterBox.h"
 #include "QWidget.h"
@@ -7,3 +7,4 @@
 BorderFilterBox::BorderFilterBox(QWidget* parent) {
 }
 
+*/

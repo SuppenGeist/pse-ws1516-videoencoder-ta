@@ -1,4 +1,4 @@
-
+/*/*
 #include <exception>
 #include <string>
 using namespace std;
@@ -20,7 +20,7 @@ namespace Model
 {
 	/**
 	 * Filters the video by a given channel (red, green or blue).
-	 */
+
 	class RGBFilter: public Model::Filter
 	{
 		private: Model::BasicColor* color;
@@ -49,3 +49,5 @@ namespace Model
 }
 
 #endif
+*/
+

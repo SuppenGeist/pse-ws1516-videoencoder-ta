@@ -1,4 +1,4 @@
-
+/*/*
 #include <exception>
 #include <string>
 using namespace std;
@@ -20,7 +20,7 @@ namespace Model
 {
 	/**
 	 * Mirrors the video horizontally or vertically.
-	 */
+
 	class MirrorFilter: public Model::Filter
 	{
 		private: Model::MirrorMode* mode;
@@ -49,3 +49,5 @@ namespace Model
 }
 
 #endif
+*/
+

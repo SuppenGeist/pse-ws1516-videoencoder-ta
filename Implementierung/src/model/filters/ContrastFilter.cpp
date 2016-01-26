@@ -1,4 +1,4 @@
-#include <exception>
+/*/*#include <exception>
 #include <string>
 
 #include "ContrastFilter.h"
@@ -22,4 +22,6 @@ string ContrastFilter::getName() {
 string ContrastFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
+
+*/
 

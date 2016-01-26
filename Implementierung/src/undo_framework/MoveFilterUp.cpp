@@ -1,4 +1,4 @@
-#include <exception>
+/*#include <exception>
 
 #include "MoveFilterUp.h"
 #include "FilterTab.h"
@@ -15,3 +15,4 @@ void MoveFilterUp::redo() {
 	throw "Not yet implemented";
 }
 
+*/

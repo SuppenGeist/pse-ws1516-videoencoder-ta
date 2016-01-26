@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 #include <vector>
 using namespace std;
@@ -23,7 +23,7 @@ namespace GUI
 	/**
 	 * This class is the base class for control panels.
 	 * Control panels control videoplayers,
-	 */
+
 	__abstract class ControlPanel
 	{
 		public: GUI::ForwardPlayer* forwardPanel;
@@ -63,3 +63,4 @@ namespace GUI
 }
 
 #endif
+*/

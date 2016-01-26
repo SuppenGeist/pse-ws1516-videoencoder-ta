@@ -1,4 +1,4 @@
-
+/*/*
 #include <exception>
 #include <string>
 using namespace std;
@@ -18,7 +18,7 @@ namespace Model
 {
 	/**
 	 * Scales the video.
-	 */
+
 	class ScaleFilter: public Model::Filter
 	{
 		private: bool keepRatio;
@@ -86,3 +86,5 @@ namespace Model
 }
 
 #endif
+*/
+

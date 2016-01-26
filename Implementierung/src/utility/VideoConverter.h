@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 using namespace std;
 
@@ -25,7 +25,7 @@ namespace Utility
 {
 	/**
 	 * Converts AVFrames to QImages and vice versa.
-	 */
+
 	class VideoConverter
 	{
 
@@ -70,3 +70,4 @@ namespace Utility
 }
 
 #endif
+*/

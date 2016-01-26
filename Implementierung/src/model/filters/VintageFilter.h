@@ -1,4 +1,4 @@
-
+/*/*
 #include <exception>
 #include <string>
 using namespace std;
@@ -18,7 +18,7 @@ namespace Model
 {
 	/**
 	 * Adjusts the colors of the video to make it look vintage.
-	 */
+
 	class VintageFilter: public Model::Filter
 	{
 
@@ -31,3 +31,5 @@ namespace Model
 }
 
 #endif
+*/
+

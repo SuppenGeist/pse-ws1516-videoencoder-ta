@@ -1,4 +1,4 @@
-#include <exception>
+/*/*#include <exception>
 #include <string>
 
 #include "ZoomFilter.h"
@@ -23,3 +23,4 @@ void ZoomFilter::setIntensity(int intensity) {
 	this->intensity = intensity;
 }
 
+*/

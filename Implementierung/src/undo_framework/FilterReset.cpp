@@ -1,4 +1,4 @@
-#include <exception>
+/*#include <exception>
 
 #include "FilterReset.h"
 #include "FilterTab.h"
@@ -16,3 +16,4 @@ void FilterReset::redo() {
 	throw "Not yet implemented";
 }
 
+*/

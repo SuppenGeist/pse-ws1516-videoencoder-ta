@@ -1,4 +1,4 @@
-#include <exception>
+/*#include <exception>
 
 #include "YuvFileOpenDialog.h"
 #include "QWidget.h"
@@ -24,3 +24,4 @@ bool YuvFileOpenDialog::wasSuccessfull() {
 }
 
 
+*/

@@ -1,4 +1,4 @@
-#include <exception>
+/*/*#include <exception>
 
 #include "RectangleFilterBox.h"
 #include "QWidget.h"
@@ -7,3 +7,4 @@
 RectangleFilterBox::RectangleFilterBox(QWidget* parent) {
 }
 
+*/

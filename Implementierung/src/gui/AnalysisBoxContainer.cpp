@@ -1,4 +1,4 @@
-#include <exception>
+/*#include <exception>
 #include <vector>
 
 #include "AnalysisBoxContainer.h"
@@ -55,3 +55,4 @@ GUI::AnalysisBox* AnalysisBoxContainer::addVideo(EncodedVideo video) {
 	throw "Not yet implemented";
 }
 
+*/

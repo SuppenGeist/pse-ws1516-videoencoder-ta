@@ -1,4 +1,4 @@
-#include <exception>
+/*#include <exception>
 
 #include "ProjectReader.h"
 #include "Project.h"
@@ -10,3 +10,4 @@ Model::Project ProjectReader::readProject() {
 	throw "Not yet implemented";
 }
 
+*/

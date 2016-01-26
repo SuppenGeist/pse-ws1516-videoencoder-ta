@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 using namespace std;
 
@@ -27,7 +27,7 @@ namespace UndoRedo
 {
 	/**
 	 * This class is the undo command for removing a filter in the filterlist on the filtertab.
-	 */
+
 	class RemoveFilter: public UndoRedo::QUndoCommand
 	{
 		private: int index;
@@ -55,3 +55,4 @@ namespace UndoRedo
 }
 
 #endif
+*/

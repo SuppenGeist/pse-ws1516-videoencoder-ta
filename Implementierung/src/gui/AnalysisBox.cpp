@@ -1,4 +1,4 @@
-#include <exception>
+/*#include <exception>
 
 #include "AnalysisBox.h"
 #include "Video.h"
@@ -55,3 +55,4 @@ void AnalysisBox::setAnalyseVideo(EncodedVideo video) {
 	throw "Not yet implemented";
 }
 
+*/

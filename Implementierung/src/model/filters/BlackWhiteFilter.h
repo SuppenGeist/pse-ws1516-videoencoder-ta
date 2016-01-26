@@ -1,4 +1,4 @@
-
+/*/*
 #include <exception>
 #include <string>
 using namespace std;
@@ -18,7 +18,7 @@ namespace Model
 {
 	/**
 	 * Converts the video to a black and white video.
-	 */
+
 	class BlackWhiteFilter: public Model::Filter
 	{
 
@@ -34,3 +34,5 @@ namespace Model
 }
 
 #endif
+*/
+

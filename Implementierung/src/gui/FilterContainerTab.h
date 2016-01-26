@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 #include <string>
 #include <vector>
@@ -28,7 +28,7 @@ namespace GUI
 {
 	/**
 	 * This class shows all the selectable filters.
-	 */
+
 	class FilterContainerTab
 	{
 		private: GUI::FilterTab* parentTab;
@@ -61,3 +61,4 @@ namespace GUI
 }
 
 #endif
+*/

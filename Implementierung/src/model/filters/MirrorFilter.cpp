@@ -1,4 +1,4 @@
-#include <exception>
+/*/*#include <exception>
 #include <string>
 
 #include "MirrorFilter.h"
@@ -24,3 +24,4 @@ void MirrorFilter::setMode(MirrorMode mode) {
 	throw "Not yet implemented";
 }
 
+*/

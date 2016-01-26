@@ -1,4 +1,4 @@
-#include <exception>
+/*/*#include <exception>
 
 #include "ScaleFilterBox.h"
 #include "QWidget.h"
@@ -7,3 +7,4 @@
 ScaleFilterBox::ScaleFilterBox(QWidget* parent) {
 }
 
+*/

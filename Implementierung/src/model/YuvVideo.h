@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 using namespace std;
 
@@ -36,7 +36,7 @@ namespace Model
 {
 	/**
 	 * This class holds a yuv video with all its properties.
-	 */
+
 	class YuvVideo
 	{
 		private: QString path;
@@ -97,3 +97,4 @@ namespace Model
 }
 
 #endif
+*/

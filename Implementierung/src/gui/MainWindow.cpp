@@ -1,4 +1,4 @@
-#include <exception>
+/*#include <exception>
 
 #include "MainWindow.h"
 #include "QWidget.h"
@@ -56,3 +56,4 @@ Model::Project& MainWindow::getProject() {
 	throw "Not yet implemented";
 }
 
+*/

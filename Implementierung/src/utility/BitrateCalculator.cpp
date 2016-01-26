@@ -1,4 +1,4 @@
-#include <exception>
+/*#include <exception>
 
 #include "BitrateCalculator.h"
 #include "AVVideo.h"
@@ -11,3 +11,4 @@ Model::Graph BitrateCalculator::calculate() {
 	throw "Not yet implemented";
 }
 
+*/

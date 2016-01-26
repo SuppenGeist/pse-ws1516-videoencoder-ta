@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 using namespace std;
 
@@ -27,7 +27,7 @@ namespace UndoRedo
 {
 	/**
 	 * This class is the undo command for loading a filter config on the filter tab.
-	 */
+
 	class LoadFilterconfig: public UndoRedo::QUndoCommand
 	{
 		private: GUI::FilterTab* filterTab;
@@ -55,3 +55,4 @@ namespace UndoRedo
 }
 
 #endif
+*/

@@ -1,4 +1,4 @@
-#include <exception>
+/*/*#include <exception>
 #include <string>
 
 #include "SepiaFilter.h"
@@ -15,3 +15,4 @@ string SepiaFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 
+*/

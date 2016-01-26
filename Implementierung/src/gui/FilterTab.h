@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 #include <string>
 #include <vector>
@@ -50,7 +50,7 @@ namespace GUI
 {
 	/**
 	 * This class is the tab to filter videos.
-	 */
+
 	class FilterTab
 	{
 		private: QPushButton* button_up;
@@ -214,3 +214,4 @@ namespace GUI
 }
 
 #endif
+*/

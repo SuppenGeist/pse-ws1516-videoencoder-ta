@@ -1,4 +1,4 @@
-
+/*/*
 #include <exception>
 #include <string>
 using namespace std;
@@ -18,7 +18,7 @@ namespace Model
 {
 	/**
 	 * Inserts border into the video
-	 */
+
 	class BorderFilter: public Model::Filter
 	{
 		private: bool top;
@@ -112,3 +112,5 @@ namespace Model
 }
 
 #endif
+*/
+

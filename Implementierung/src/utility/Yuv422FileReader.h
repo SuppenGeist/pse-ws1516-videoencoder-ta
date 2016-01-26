@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 #include <vector>
 using namespace std;
@@ -27,7 +27,7 @@ namespace Utility
 {
 	/**
 	 * This class can read yuv 422 files.
-	 */
+
 	class Yuv422FileReader: public Utility::YuvFileReader
 	{
 		private: int position;
@@ -74,3 +74,4 @@ namespace Utility
 }
 
 #endif
+*/

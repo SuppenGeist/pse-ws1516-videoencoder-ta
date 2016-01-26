@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 #include <vector>
 using namespace std;
@@ -19,7 +19,7 @@ namespace GUI
 	/**
 	 * This class is the timer for the video player.
 	 * It handles the switching of the frames according to fps and speed.
-	 */
+
 	class Timer
 	{
 		private: QTimer timer;
@@ -93,3 +93,4 @@ namespace GUI
 }
 
 #endif
+*/

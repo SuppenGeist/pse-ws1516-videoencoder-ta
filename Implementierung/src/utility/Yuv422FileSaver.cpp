@@ -1,4 +1,4 @@
-#include <exception>
+/*#include <exception>
 
 #include "Yuv422FileSaver.h"
 #include "Video.h"
@@ -22,3 +22,4 @@ void Yuv422FileSaver::savePlanar() {
 }
 
 
+*/

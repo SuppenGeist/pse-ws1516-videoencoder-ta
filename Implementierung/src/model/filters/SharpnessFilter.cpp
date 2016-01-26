@@ -1,4 +1,4 @@
-#include <exception>
+/*/*#include <exception>
 #include <string>
 
 #include "SharpnessFilter.h"
@@ -23,3 +23,4 @@ void SharpnessFilter::setIntensity(int intensity) {
 	this->intensity = intensity;
 }
 
+*/

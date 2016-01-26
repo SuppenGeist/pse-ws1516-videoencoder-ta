@@ -1,4 +1,4 @@
-#include <exception>
+/*#include <exception>
 
 #include "YuvVideo.h"
 #include "Video.h"
@@ -35,3 +35,4 @@ void YuvVideo::loadVideo() {
 	throw "Not yet implemented";
 }
 
+*/

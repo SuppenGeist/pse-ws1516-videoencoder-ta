@@ -1,4 +1,4 @@
-#include <exception>
+/*#include <exception>
 
 #include "AnalysisTabMemento.h"
 #include "AnalysisBoxContainerMemento.h"
@@ -39,3 +39,4 @@ void AnalysisTabMemento::setAnalysisBoxContainerMemento(AnalysisBoxContainerMeme
 	throw "Not yet implemented";
 }
 
+*/

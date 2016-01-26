@@ -1,4 +1,4 @@
-
+/*/*
 #include <exception>
 #include <string>
 using namespace std;
@@ -18,7 +18,7 @@ namespace Model
 {
 	/**
 	 * Converts the video into sepia.
-	 */
+
 	class SepiaFilter: public Model::Filter
 	{
 
@@ -31,3 +31,5 @@ namespace Model
 }
 
 #endif
+*/
+

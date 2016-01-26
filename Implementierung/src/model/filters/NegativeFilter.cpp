@@ -1,4 +1,4 @@
-#include <exception>
+/*/*#include <exception>
 #include <string>
 
 #include "NegativeFilter.h"
@@ -15,3 +15,4 @@ string NegativeFilter::getName() {
 	throw "Not yet implemented";
 }
 
+*/

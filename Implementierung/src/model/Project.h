@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 using namespace std;
 
@@ -25,7 +25,7 @@ namespace Model
 {
 	/**
 	 * This class contains the different mementos.
-	 */
+
 	class Project
 	{
 		private: QString name;
@@ -72,3 +72,4 @@ namespace Model
 }
 
 #endif
+*/

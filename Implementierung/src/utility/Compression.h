@@ -1,4 +1,4 @@
-
+/*
 #ifndef __Compression_h__
 #define __Compression_h__
 
@@ -17,3 +17,4 @@ namespace Utility
 }
 
 #endif
+*/

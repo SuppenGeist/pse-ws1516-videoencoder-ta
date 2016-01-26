@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 #include <vector>
 using namespace std;
@@ -18,7 +18,7 @@ namespace Model
 {
 	/**
 	 * This class contains AVFrames from the ffmpeg library and manages them.
-	 */
+
 	class AVVideo
 	{
 		private: std::vector<std::unique_ptr<AVFrame> > video;
@@ -94,3 +94,4 @@ namespace Model
 }
 
 #endif
+

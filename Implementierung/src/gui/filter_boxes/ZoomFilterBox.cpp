@@ -1,4 +1,4 @@
-#include <exception>
+/*/*#include <exception>
 
 #include "ZoomFilterBox.h"
 #include "QWidget.h"
@@ -7,3 +7,4 @@
 ZoomFilterBox::ZoomFilterBox(QWidget* parent) {
 }
 
+*/

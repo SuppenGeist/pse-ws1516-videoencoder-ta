@@ -1,4 +1,4 @@
-#include <exception>
+/*/*#include <exception>
 
 #include "BlurFilterBox.h"
 #include "QWidget.h"
@@ -7,3 +7,4 @@
 BlurFilterBox::BlurFilterBox(QWidget* parent) {
 }
 
+*/

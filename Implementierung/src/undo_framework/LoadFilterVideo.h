@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 using namespace std;
 
@@ -32,7 +32,7 @@ namespace UndoRedo
 {
 	/**
 	 * This class is the undo command for loading a raw video in the filtertab.
-	 */
+
 	class LoadFilterVideo: public UndoRedo::QUndoCommand
 	{
 		private: Memento::FilterTabMemento* memento;
@@ -60,3 +60,4 @@ namespace UndoRedo
 }
 
 #endif
+*/

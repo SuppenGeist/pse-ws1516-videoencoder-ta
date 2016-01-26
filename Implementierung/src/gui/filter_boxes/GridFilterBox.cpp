@@ -1,4 +1,4 @@
-#include <exception>
+/*/*#include <exception>
 
 #include "GridFilterBox.h"
 #include "QWidget.h"
@@ -7,3 +7,4 @@
 GridFilterBox::GridFilterBox(QWidget* parent) {
 }
 
+*/

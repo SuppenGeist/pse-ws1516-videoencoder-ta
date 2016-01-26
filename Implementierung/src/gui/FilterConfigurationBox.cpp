@@ -1,4 +1,4 @@
-#include <exception>
+/*#include <exception>
 
 #include "FilterConfigurationBox.h"
 #include "QWidget.h"
@@ -15,3 +15,4 @@ Model::Filter* FilterConfigurationBox::getFilter() {
 	return this->filter;
 }
 
+*/

@@ -1,4 +1,4 @@
-#include <exception>
+/*#include <exception>
 
 #include "Yuv420FIleReader.h"
 #include "Video.h"
@@ -21,3 +21,4 @@ Utility::Yuv444Vector Yuv420FIleReader::readNextVector() {
 	throw "Not yet implemented";
 }
 
+*/

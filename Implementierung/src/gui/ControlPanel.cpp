@@ -1,4 +1,4 @@
-#include <exception>
+/*#include <exception>
 #include <vector>
 
 #include "ControlPanel.h"
@@ -22,3 +22,4 @@ void ControlPanel::removeVideoPlayer(Player::Player& player) {
 	throw "Not yet implemented";
 }
 
+*/

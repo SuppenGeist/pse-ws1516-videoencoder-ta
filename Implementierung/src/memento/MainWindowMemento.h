@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 using namespace std;
 
@@ -19,7 +19,7 @@ namespace Memento
 {
 	/**
 	 * This class is the memento for the MainWindow.
-	 */
+
 	class MainWindowMemento
 	{
 		private: int selectedTab;
@@ -70,3 +70,4 @@ namespace Memento
 }
 
 #endif
+*/

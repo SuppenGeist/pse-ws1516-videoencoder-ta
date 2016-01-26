@@ -1,4 +1,4 @@
-#include <exception>
+/*#include <exception>
 
 #include "AnalysisBoxMemento.h"
 #include "Video.h"
@@ -55,3 +55,4 @@ void AnalysisBoxMemento::setBitrate(Graph bitrate) {
 	this->bitrate = bitrate;
 }
 
+*/

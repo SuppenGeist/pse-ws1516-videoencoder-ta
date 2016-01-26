@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 using namespace std;
 
@@ -26,7 +26,7 @@ namespace Model
 {
 	/**
 	 * This class contains all analysis info of an encoded video.
-	 */
+
 	class EncodedVideo
 	{
 		private: QString path;
@@ -179,3 +179,4 @@ namespace Model
 }
 
 #endif
+

@@ -1,4 +1,4 @@
-#include <exception>
+/*/*#include <exception>
 #include <string>
 
 #include "BlendingFilter.h"
@@ -38,4 +38,6 @@ string BlendingFilter::getName() {
 string BlendingFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
+
+*/
 

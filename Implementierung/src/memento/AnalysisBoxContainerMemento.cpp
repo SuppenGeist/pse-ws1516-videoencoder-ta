@@ -1,4 +1,4 @@
-#include <exception>
+/*#include <exception>
 #include <vector>
 
 #include "AnalysisBoxContainerMemento.h"
@@ -16,3 +16,4 @@ void AnalysisBoxContainerMemento::setAnalysisBoxList(vectorvector<Memento::Analy
 	throw "Not yet implemented";
 }
 
+*/

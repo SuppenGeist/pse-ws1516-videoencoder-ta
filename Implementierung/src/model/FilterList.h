@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 #include <string>
 #include <vector>
@@ -28,7 +28,7 @@ namespace Model
 {
 	/**
 	 * This class contains a filter configuration. Every filter can only be once in thi slist.
-	 */
+
 	class FilterList
 	{
 		private: vector filters:std:;
@@ -93,3 +93,4 @@ namespace Model
 }
 
 #endif
+

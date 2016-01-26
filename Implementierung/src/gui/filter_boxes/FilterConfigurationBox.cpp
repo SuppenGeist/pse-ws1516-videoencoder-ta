@@ -1,4 +1,4 @@
-#include <exception>
+/*/*#include <exception>
 
 #include "FilterConfigurationBox.h"
 #include "QWidget.h"
@@ -14,4 +14,6 @@ void FilterConfigurationBox::setFilter(Filter& filter) {
 Model::Filter* FilterConfigurationBox::getFilter() {
 	return this->filter;
 }
+
+*/
 

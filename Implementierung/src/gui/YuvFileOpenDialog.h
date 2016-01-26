@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 using namespace std;
 
@@ -19,7 +19,7 @@ namespace GUI
 {
 	/**
 	 * This class is the dialog that gets shown when the user wants to select a yuv file to load.
-	 */
+
 	class YuvFileOpenDialog: public GUI::QDialog
 	{
 		private: QPushButton* button_cancel;
@@ -67,3 +67,4 @@ namespace GUI
 }
 
 #endif
+*/

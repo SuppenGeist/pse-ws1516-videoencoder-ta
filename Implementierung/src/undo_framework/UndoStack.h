@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 using namespace std;
 
@@ -14,7 +14,7 @@ namespace UndoRedo
 {
 	/**
 	 * This class holds the stack that all undo commands are stacked on as a singleton.
-	 */
+
 	class UndoStack
 	{
 		private: static QUndoStack undoStack;
@@ -35,3 +35,4 @@ namespace UndoRedo
 }
 
 #endif
+*/

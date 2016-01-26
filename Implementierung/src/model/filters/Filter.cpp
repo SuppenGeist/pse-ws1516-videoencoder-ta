@@ -1,4 +1,4 @@
-#include <exception>
+/*/*#include <exception>
 #include <string>
 
 #include "Filter.h"
@@ -8,4 +8,6 @@
 string Filter::getName() {
 	throw "Not yet implemented";
 }
+
+*/
 

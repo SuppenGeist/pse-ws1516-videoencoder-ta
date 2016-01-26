@@ -1,4 +1,4 @@
-#include <exception>
+/*/*#include <exception>
 #include <string>
 
 #include "RotationFilter.h"
@@ -23,3 +23,4 @@ void RotationFilter::setAngle(int angle) {
 	this->angle = angle;
 }
 
+*/

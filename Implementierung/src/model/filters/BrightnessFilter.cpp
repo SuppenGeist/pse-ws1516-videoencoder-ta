@@ -1,4 +1,4 @@
-#include <exception>
+/*/*#include <exception>
 #include <string>
 
 #include "BrightnessFilter.h"
@@ -22,4 +22,6 @@ string BrightnessFilter::getName() {
 string BrightnessFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
+
+*/
 

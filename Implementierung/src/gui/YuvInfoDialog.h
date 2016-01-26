@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 using namespace std;
 
@@ -26,7 +26,7 @@ namespace GUI
 {
 	/**
 	 * This class is the dialog that gets shown to ask the user for additional information about the yuv file he wants to load.
-	 */
+
 	class YuvInfoDialog: public GUI::QDialog
 	{
 		private: QLineEdit* lineEdit_width;
@@ -96,3 +96,4 @@ namespace GUI
 }
 
 #endif
+*/

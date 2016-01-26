@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 using namespace std;
 
@@ -22,7 +22,7 @@ namespace UndoRedo
 {
 	/**
 	 * This class is the undo command for moving a filter up in the filterlist.
-	 */
+
 	class MoveFilterUp: public UndoRedo::QUndoCommand
 	{
 		private: int oldIndex;
@@ -50,3 +50,4 @@ namespace UndoRedo
 }
 
 #endif
+*/

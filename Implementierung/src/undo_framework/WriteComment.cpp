@@ -1,4 +1,4 @@
-#include <exception>
+/*#include <exception>
 
 #include "WriteComment.h"
 #include "QUndoCommand.h"
@@ -22,3 +22,4 @@ void WriteComment::id() {
 	throw "Not yet implemented";
 }
 
+*/

@@ -1,4 +1,4 @@
-
+/*/*
 #include <exception>
 using namespace std;
 
@@ -19,7 +19,7 @@ namespace GUI
 {
 	/**
 	 * This class contains the gui elements for changing the options of a blending filter.
-	 */
+
 	class BlendingFilterBox: public GUI::FilterConfigurationBox
 	{
 
@@ -31,3 +31,5 @@ namespace GUI
 }
 
 #endif
+*/
+*/

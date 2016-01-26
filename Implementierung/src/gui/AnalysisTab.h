@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 using namespace std;
 
@@ -46,7 +46,7 @@ namespace GUI
 {
 	/**
 	 * The tab that shows videos and analyses them.
-	 */
+
 	class AnalysisTab: public GUI::QFrame
 	{
 		private: QPushButton* button_save;
@@ -115,3 +115,4 @@ namespace GUI
 }
 
 #endif
+*/

@@ -1,4 +1,4 @@
-#include <exception>
+/*#include <exception>
 
 #include "RGBDifferenceCalculator.h"
 #include "Video.h"
@@ -10,3 +10,4 @@ void RGBDifferenceCalculator::calculateVideo(Video& target) {
 	throw "Not yet implemented";
 }
 
+*/

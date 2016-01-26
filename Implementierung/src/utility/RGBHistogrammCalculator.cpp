@@ -1,4 +1,4 @@
-#include <exception>
+/*#include <exception>
 
 #include "RGBHistogrammCalculator.h"
 #include "Video.h"
@@ -24,3 +24,4 @@ Model::Graph RGBHistogrammCalculator::getBlueHistogramm() {
 	return this->blueHistogramm;
 }
 
+*/

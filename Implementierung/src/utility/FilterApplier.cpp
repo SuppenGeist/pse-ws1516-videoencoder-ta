@@ -1,4 +1,4 @@
-#include <exception>
+/*#include <exception>
 
 #include "FilterApplier.h"
 #include "FilterList.h"
@@ -19,3 +19,4 @@ AVFrame FilterApplier::applyToFrame(AVFrame& frame) {
 	throw "Not yet implemented";
 }
 
+*/

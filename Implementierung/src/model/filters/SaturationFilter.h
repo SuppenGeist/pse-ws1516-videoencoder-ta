@@ -1,4 +1,4 @@
-
+/*/*
 #include <exception>
 #include <string>
 using namespace std;
@@ -18,7 +18,7 @@ namespace Model
 {
 	/**
 	 * Adjusts the saturation of the video.
-	 */
+
 	class SaturationFilter: public Model::Filter
 	{
 		private: int intensity;
@@ -47,3 +47,5 @@ namespace Model
 }
 
 #endif
+*/
+

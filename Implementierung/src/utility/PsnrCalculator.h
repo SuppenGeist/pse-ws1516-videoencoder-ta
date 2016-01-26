@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 using namespace std;
 
@@ -22,7 +22,7 @@ namespace Utility
 {
 	/**
 	 * This class calculates the psnr-graph of a video.
-	 */
+
 	class PsnrCalculator
 	{
 		private: Model::AVVideo* referenceVideo;
@@ -49,3 +49,4 @@ namespace Utility
 }
 
 #endif
+*/

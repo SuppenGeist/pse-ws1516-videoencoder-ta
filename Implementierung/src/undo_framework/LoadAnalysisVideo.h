@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 using namespace std;
 
@@ -32,7 +32,7 @@ namespace UndoRedo
 {
 	/**
 	 * This class is the undo command for loading the raw video on the analysis tab.
-	 */
+
 	class LoadAnalysisVideo: public UndoRedo::QUndoCommand
 	{
 		public: Memento::AnalysisTabMemento* memento;
@@ -60,3 +60,4 @@ namespace UndoRedo
 }
 
 #endif
+*/

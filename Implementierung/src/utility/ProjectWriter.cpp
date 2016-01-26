@@ -1,4 +1,4 @@
-#include <exception>
+/*#include <exception>
 
 #include "ProjectWriter.h"
 #include "Project.h"
@@ -14,3 +14,4 @@ void ProjectWriter::saveResults() {
 	throw "Not yet implemented";
 }
 
+*/

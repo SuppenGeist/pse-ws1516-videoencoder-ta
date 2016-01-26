@@ -1,4 +1,4 @@
-#include <exception>
+/*#include <exception>
 
 #include "FilterConfigurationLoader.h"
 #include "FilterList.h"
@@ -10,3 +10,4 @@ Model::FilterList FilterConfigurationLoader::getConfiguration() {
 	throw "Not yet implemented";
 }
 
+*/

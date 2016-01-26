@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 using namespace std;
 
@@ -29,7 +29,7 @@ namespace UndoRedo
 {
 	/**
 	 * This class is the undo command for removing a encoded video in the analysis tab.
-	 */
+
 	class RemoveVideo: public UndoRedo::QUndoCommand
 	{
 		private: GUI::AnalysisBox* anaBox;
@@ -56,3 +56,4 @@ namespace UndoRedo
 }
 
 #endif
+*/

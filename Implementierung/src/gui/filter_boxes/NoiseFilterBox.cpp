@@ -1,4 +1,4 @@
-#include <exception>
+/*/*#include <exception>
 
 #include "NoiseFilterBox.h"
 #include "QWidget.h"
@@ -7,3 +7,4 @@
 NoiseFilterBox::NoiseFilterBox(QWidget* parent) {
 }
 
+*/

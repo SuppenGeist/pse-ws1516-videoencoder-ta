@@ -1,4 +1,4 @@
-#include <exception>
+/*#include <exception>
 
 #include "LoadFilterVideo.h"
 #include "FilterTab.h"
@@ -17,3 +17,4 @@ void LoadFilterVideo::redo() {
 	throw "Not yet implemented";
 }
 
+*/

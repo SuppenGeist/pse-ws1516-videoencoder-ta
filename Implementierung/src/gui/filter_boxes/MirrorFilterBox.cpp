@@ -1,4 +1,4 @@
-#include <exception>
+/*/*#include <exception>
 
 #include "MirrorFilterBox.h"
 #include "QWidget.h"
@@ -7,3 +7,4 @@
 MirrorFilterBox::MirrorFilterBox(QWidget* parent) {
 }
 
+*/

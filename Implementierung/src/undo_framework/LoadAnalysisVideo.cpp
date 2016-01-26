@@ -1,4 +1,4 @@
-#include <exception>
+/*#include <exception>
 
 #include "LoadAnalysisVideo.h"
 #include "AnalysisTab.h"
@@ -17,3 +17,4 @@ void LoadAnalysisVideo::redo() {
 	throw "Not yet implemented";
 }
 
+*/

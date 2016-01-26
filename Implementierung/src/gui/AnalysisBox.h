@@ -1,5 +1,4 @@
-
-#include <exception>
+/*/*#include <exception>
 using namespace std;
 
 #ifndef __AnalysisBox_h__
@@ -44,7 +43,7 @@ namespace GUI
 {
 	/**
 	 * Shows the Analysis of a single encoded video.
-	 */
+
 	class AnalysisBox: public GUI::QFrame
 	{
 		private: GUI::Video* rawVideo;
@@ -127,3 +126,5 @@ namespace GUI
 }
 
 #endif
+*/
+*/

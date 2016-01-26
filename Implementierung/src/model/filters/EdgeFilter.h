@@ -1,4 +1,4 @@
-
+/*/*
 #include <exception>
 #include <string>
 using namespace std;
@@ -18,7 +18,7 @@ namespace Model
 {
 	/**
 	 * Filters everything but the edges out of the video.
-	 */
+
 	class EdgeFilter: public Model::Filter
 	{
 
@@ -31,3 +31,5 @@ namespace Model
 }
 
 #endif
+*/
+

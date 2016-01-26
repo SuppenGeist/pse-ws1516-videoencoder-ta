@@ -1,4 +1,4 @@
-#include <exception>
+/*#include <exception>
 
 #include "MainWindowMemento.h"
 #include "AnalysisTabMemento.h"
@@ -31,3 +31,4 @@ void MainWindowMemento::setFilterTabMemento(FilterTabMemento filterTabMemento) {
 	throw "Not yet implemented";
 }
 
+*/

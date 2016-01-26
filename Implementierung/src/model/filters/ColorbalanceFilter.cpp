@@ -1,4 +1,4 @@
-#include <exception>
+/*/*#include <exception>
 #include <string>
 
 #include "ColorbalanceFilter.h"
@@ -55,4 +55,6 @@ bool ColorbalanceFilter::getDarkPixels() {
 void ColorbalanceFilter::setDarkPixels(bool darkPixels) {
 	this->darkPixels = darkPixels;
 }
+
+*/
 

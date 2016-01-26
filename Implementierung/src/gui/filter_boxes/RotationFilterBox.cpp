@@ -1,4 +1,4 @@
-#include <exception>
+/*/*#include <exception>
 
 #include "RotationFilterBox.h"
 #include "QWidget.h"
@@ -7,3 +7,4 @@
 RotationFilterBox::RotationFilterBox(QWidget* parent) {
 }
 
+*/

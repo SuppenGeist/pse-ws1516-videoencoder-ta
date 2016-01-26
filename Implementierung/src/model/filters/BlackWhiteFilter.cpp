@@ -1,4 +1,4 @@
-#include <exception>
+/*/*#include <exception>
 #include <string>
 
 #include "BlackWhiteFilter.h"
@@ -14,4 +14,6 @@ string BlackWhiteFilter::getName() {
 string BlackWhiteFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
+
+*/
 

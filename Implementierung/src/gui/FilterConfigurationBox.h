@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 using namespace std;
 
@@ -22,7 +22,7 @@ namespace GUI
 {
 	/**
 	 * This class is the base class for the configuration boxes for the filters.
-	 */
+
 	class FilterConfigurationBox
 	{
 		protected: Model::Filter* filter;
@@ -47,3 +47,4 @@ namespace GUI
 }
 
 #endif
+*/

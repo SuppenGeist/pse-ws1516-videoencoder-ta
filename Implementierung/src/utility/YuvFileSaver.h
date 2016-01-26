@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 using namespace std;
 
@@ -20,7 +20,7 @@ namespace Utility
 {
 	/**
 	 * This is the base class for yuv savers.
-	 */
+
 	__abstract class YuvFileSaver
 	{
 		protected: int width;
@@ -44,3 +44,4 @@ namespace Utility
 }
 
 #endif
+*/

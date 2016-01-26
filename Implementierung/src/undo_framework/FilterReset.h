@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 using namespace std;
 
@@ -27,7 +27,7 @@ namespace UndoRedo
 {
 	/**
 	 * This class is the undo command for resting the filterlist in the filter tab.
-	 */
+
 	class FilterReset: public UndoRedo::QUndoCommand
 	{
 		private: GUI::FilterTab* filterTab;
@@ -53,3 +53,4 @@ namespace UndoRedo
 }
 
 #endif
+*/

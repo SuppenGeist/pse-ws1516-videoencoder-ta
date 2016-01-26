@@ -1,4 +1,4 @@
-#include <exception>
+/*#include <exception>
 #include <vector>
 
 #include "AVVideo.h"
@@ -39,3 +39,4 @@ int AVVideo::getNumberOfFrames() {
 	throw "Not yet implemented";
 }
 
+*/

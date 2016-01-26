@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 #include <vector>
 using namespace std;
@@ -43,7 +43,7 @@ namespace GUI
 {
 	/**
 	 * Contains and manages the AnalysisBoxes.
-	 */
+
 	class AnalysisBoxContainer: public GUI::QFrame
 	{
 		private: GUI::Video* rawVideo;
@@ -120,3 +120,4 @@ namespace GUI
 }
 
 #endif
+*/

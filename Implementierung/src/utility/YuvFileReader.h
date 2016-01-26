@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 using namespace std;
 
@@ -20,7 +20,7 @@ namespace Utility
 {
 	/**
 	 * This is the base class for all different yuv file readers.
-	 */
+
 	__abstract class YuvFileReader
 	{
 		protected: unique_ptr<QByteArray> binaryData;
@@ -54,3 +54,4 @@ namespace Utility
 }
 
 #endif
+*/

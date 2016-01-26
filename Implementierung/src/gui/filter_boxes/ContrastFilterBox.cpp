@@ -1,4 +1,4 @@
-#include <exception>
+/*/*#include <exception>
 
 #include "ContrastFilterBox.h"
 #include "QWidget.h"
@@ -7,3 +7,4 @@
 ContrastFilterBox::ContrastFilterBox(QWidget* parent) {
 }
 
+*/

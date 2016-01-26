@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 using namespace std;
 
@@ -22,7 +22,7 @@ namespace Memento
 {
 	/**
 	 * This class is the memento for the analysis tab.
-	 */
+
 	class AnalysisTabMemento
 	{
 		private: int currentVideoPosition;
@@ -90,3 +90,4 @@ namespace Memento
 }
 
 #endif
+*/

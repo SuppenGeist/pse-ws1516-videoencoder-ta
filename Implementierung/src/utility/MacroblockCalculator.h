@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 using namespace std;
 
@@ -25,7 +25,7 @@ namespace Utility
 {
 	/**
 	 * This class calculates the macroblocks of a video.
-	 */
+
 	class MacroblockCalculator
 	{
 		private: Model::AVVideo* video;
@@ -45,3 +45,4 @@ namespace Utility
 }
 
 #endif
+*/

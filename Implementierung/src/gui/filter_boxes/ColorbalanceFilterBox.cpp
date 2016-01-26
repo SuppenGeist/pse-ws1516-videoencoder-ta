@@ -1,4 +1,4 @@
-#include <exception>
+/*/*#include <exception>
 
 #include "ColorbalanceFilterBox.h"
 #include "QWidget.h"
@@ -7,3 +7,4 @@
 ColorbalanceFilterBox::ColorbalanceFilterBox(QWidget* parent) {
 }
 
+*/

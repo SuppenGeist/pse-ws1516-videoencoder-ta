@@ -1,4 +1,4 @@
-
+/*/*
 #include <exception>
 #include <string>
 using namespace std;
@@ -18,7 +18,7 @@ namespace Model
 {
 	/**
 	 * Inserts black blending into the video
-	 */
+
 	class BlendingFilter: public Model::Filter
 	{
 		private: bool inBlend;
@@ -73,3 +73,5 @@ namespace Model
 }
 
 #endif
+*/
+

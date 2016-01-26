@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 using namespace std;
 
@@ -22,7 +22,7 @@ namespace Utility
 {
 	/**
 	 * This class calculates the bitrate of a video.
-	 */
+
 	class BitrateCalculator
 	{
 		private: Model::AVVideo* video;
@@ -42,3 +42,4 @@ namespace Utility
 }
 
 #endif
+*/

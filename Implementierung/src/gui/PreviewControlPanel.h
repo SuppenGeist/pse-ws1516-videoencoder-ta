@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 using namespace std;
 
@@ -21,7 +21,7 @@ namespace GUI
 {
 	/**
 	 * This class is the control panel for the frame preview.
-	 */
+
 	class PreviewControlPanel: public GUI::QFrame, public GUI::ControlPanel
 	{
 		private: QPushButton* button_nextFrame;
@@ -66,3 +66,4 @@ namespace GUI
 }
 
 #endif
+*/
