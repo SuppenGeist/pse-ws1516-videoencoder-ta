@@ -17,3 +17,6 @@ type camelCaseName();
 
 #### Static Memberfunction Names
 static type CamelCaseName();
+
+## Gangdiagramm
+![Gangdiagramm](../Entwurf/Entwurfsheft/Projektplan_new.PNG)
