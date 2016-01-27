@@ -18,5 +18,54 @@ type camelCaseName();
 #### Static Memberfunction Names
 static type CamelCaseName();
 
+### Klassenschablone
+class Name {
+
+##### public:
+
+&nbsp;&nbsp;&nbsp;static const data fields
+
+&nbsp;&nbsp;&nbsp;static data fields
+
+&nbsp;&nbsp;&nbsp;data fields
+
+&nbsp;&nbsp;&nbsp;static memeber functions
+
+&nbsp;&nbsp;&nbsp;default constructor
+
+&nbsp;&nbsp;&nbsp;other constructors
+
+&nbsp;&nbsp;&nbsp;copy constructor
+
+&nbsp;&nbsp;&nbsp;move constructor
+
+&nbsp;&nbsp;&nbsp;destructor
+
+&nbsp;&nbsp;&nbsp;assignment operators
+
+&nbsp;&nbsp;&nbsp;member functions
+
+##### protected:
+
+&nbsp;&nbsp;&nbsp;data fields
+
+&nbsp;&nbsp;&nbsp;member functions
+
+##### private slots:
+
+&nbsp;&nbsp;&nbsp;member functions
+
+##### private:
+
+&nbsp;&nbsp;&nbsp;static const data fields
+
+&nbsp;&nbsp;&nbsp;static data fields
+
+&nbsp;&nbsp;&nbsp;data fields
+
+&nbsp;&nbsp;&nbsp;member functions
+
+}
+
 ## Gangdiagramm
 ![Gangdiagramm](../Entwurf/Entwurfsheft/Projektplan_new.PNG)
