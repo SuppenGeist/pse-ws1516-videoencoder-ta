@@ -1,42 +1,53 @@
-/*#include <exception>
+#include "Video.h"
+
+#include <QImage>
+
 #include <vector>
 
-#include "Video.h"
-#include "EncodedVideo.h"
+Model::Video::Video(int fps, int width, int height):fps_(fps),width_(width),height_(height) {
 
-Video::Video(int fps, int width, int height) {
 }
 
-int Video::getWidth() {
-	return this->width;
+int Model::Video::getWidth() const noexcept {
+    return width_;
 }
 
-int Video::getHeight() {
-	return this->height;
+int Model::Video::getHeight() const noexcept {
+    return height_;
 }
 
-int Video::getFps() {
-	return this->fps;
+int Model::Video::getFps() const noexcept {
+    return fps_;
 }
 
-QImage* Video::getFrame(int index) {
-	throw "Not yet implemented";
+QImage* Model::Video::getFrame(std::size_t index) noexcept {
+    if(index>=frames_.size())
+        return nullptr;
+    return &frames_[index];
 }
 
-void Video::insertFrame(int index, unique_ptrunique_ptr<QImage> frame) {
-	throw "Not yet implemented";
+void Model::Video::insertFrame(const QImage& frame, std::size_t index) {
+    if(index>=frames_.size())
+        return;
+    frames_.insert(frames_.begin()+index,frame);
 }
 
-void Video::removeFrame(int index) {
-	throw "Not yet implemented";
+void Model::Video::removeFrame(std::size_t index) {
+    if(index>=frames_.size())
+        return;
+    frames_.erase(frames_.begin()+index);
 }
 
-void Video::insertFrames(int index, vectorvector<unique_ptr<QImage> >& frames) {
-	throw "Not yet implemented";
+void Model::Video::appendFrame(const QImage& frame) {
+    frames_.push_back(frame);
 }
 
-int Video::getNumberOfFrames() {
-	throw "Not yet implemented";
+void Model::Video::insertFrames(const std::vector<QImage>& frames, std::size_t index) {
+    if(index>=frames_.size())
+        return;
+    frames_.insert(frames_.begin()+index,frames.begin(),frames.end());
 }
 
-*/
+std::size_t Model::Video::getNumberOfFrames() const noexcept {
+    return frames_.size();
+}

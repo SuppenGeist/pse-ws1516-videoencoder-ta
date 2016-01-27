@@ -45,11 +45,11 @@ namespace GUI
 
 
     private:
-        int xOffset_;
-        int yOffset_;
+        int         xOffset_;
+        int         yOffset_;
 
-        QImage currentFrame_;
-        QImage* originalFrame_;
+        QImage      currentFrame_;
+        QImage*     originalFrame_;
 
         /**
          * @brief updateOffset Updates the offset at which the image is drawn within the widget.
