@@ -1,6 +1,6 @@
 # Aenderungen am Entwurf
 Aenderungen am Entwurf werden hier dokumentiert. Jeder dokumentiert selbst, welche Aenderungen
-gemacht hat hat:
+ er gemacht hat hat:
 
 [Simon]()<br>
 [Sasha]()<br>
