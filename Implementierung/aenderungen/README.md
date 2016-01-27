@@ -2,7 +2,7 @@
 Aenderungen am Entwurf werden hier dokumentiert. Jeder dokumentiert selbst, welche Aenderungen
  er gemacht hat hat:
 
-[Simon]()<br>
+[Simon](simon.md)<br>
 [Sasha]()<br>
 [Carina]()<br>
 [Ben]()<br>
