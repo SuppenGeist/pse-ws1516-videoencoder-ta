@@ -1,12 +1,9 @@
-/*
-#include <exception>
-#include <vector>
-using namespace std;
-
 #ifndef __Timer_h__
 #define __Timer_h__
 
 #include "VideoPlayer.h"
+
+#include <QTimer>
 
 namespace GUI
 {
@@ -19,7 +16,7 @@ namespace GUI
 	/**
 	 * This class is the timer for the video player.
 	 * It handles the switching of the frames according to fps and speed.
-
+     */
 	class Timer
 	{
 		private: QTimer timer;
@@ -93,4 +90,3 @@ namespace GUI
 }
 
 #endif
-*/

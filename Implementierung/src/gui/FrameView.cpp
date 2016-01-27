@@ -26,8 +26,6 @@ void GUI::FrameView::clear() {
 }
 
 void GUI::FrameView::resizeEvent(QResizeEvent* event) {
-    Q_UNUSED(event);
-
     if( size().isEmpty() || !originalFrame_ )
         return;
 

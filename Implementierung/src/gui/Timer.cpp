@@ -1,50 +1,45 @@
-/*#include <exception>
-#include <vector>
-
 #include "Timer.h"
 #include "VideoPlayer.h"
 
-Timer::Timer(int fps) {
+GUI::Timer::Timer(int fps) {
 }
 
-void Timer::setFps(int fps) {
+void GUI::Timer::setFps(int fps) {
 	this->fps = fps;
 }
 
-void Timer::setSpeed(float speed) {
+void GUI::Timer::setSpeed(float speed) {
 	this->speed = speed;
 }
 
-float Timer::getSpeed() {
+float GUI::Timer::getSpeed() {
 	return this->speed;
 }
 
-int Timer::getFps() {
+int GUI::Timer::getFps() {
 	return this->fps;
 }
 
-void Timer::pause() {
+void GUI::Timer::pause() {
 	throw "Not yet implemented";
 }
 
-void Timer::start() {
+void GUI::Timer::start() {
 	throw "Not yet implemented";
 }
 
-void Timer::addPlayer(VideoPlayer& player) {
+void GUI::Timer::addPlayer(VideoPlayer& player) {
 	throw "Not yet implemented";
 }
 
-bool Timer::isPlaying() {
+bool GUI::Timer::isPlaying() {
 	throw "Not yet implemented";
 }
 
-void Timer::update() {
+void GUI::Timer::update() {
 	throw "Not yet implemented";
 }
 
-void Timer::removePlayer(VideoPlayer& player) {
+void GUI::Timer::removePlayer(VideoPlayer& player) {
 	throw "Not yet implemented";
 }
-
-*/

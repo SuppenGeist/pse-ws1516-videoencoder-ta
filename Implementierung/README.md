@@ -67,5 +67,8 @@ class Name {
 
 }
 
+### Sonstiges
+Wann immer moeglich forward declarationen anstatt includes verwenden.
+
 ## Gangdiagramm
 ![Gangdiagramm](../Entwurf/Entwurfsheft/Projektplan_new.PNG)

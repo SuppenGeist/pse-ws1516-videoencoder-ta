@@ -1,25 +1,19 @@
-/*
-#include <exception>
-#include <vector>
-using namespace std;
-
 #ifndef __VideoPlayer_h__
 #define __VideoPlayer_h__
 
-#include "ControlPanel.h"
-#include "Video.h"
-#include "FrameView.h"
-#include "Timer.h"
+#include <vector>
+#include <memory>
+
 #include "Player.h"
 
-namespace GUI
-{
-	class ControlPanel;
-	class Video;
-	class FrameView;
-	class Timer;
-	// class Player;
-	class VideoPlayer;
+namespace GUI {
+    class Timer;
+    class ControlPanel;
+    class FrameView;
+}
+
+namespace Model {
+    class Video;
 }
 
 namespace GUI
@@ -27,138 +21,163 @@ namespace GUI
 	/**
 	 * This class is a video player.
 	 * It provides a basic interface for handling playback of videos.
+     */
+    class VideoPlayer: public Player
+    {
+    public:
+        /**
+         * @brief VideoPlayer Constructor.
+         */
+        VideoPlayer();
 
-	class VideoPlayer: public GUI::Player
-	{
-		private: int position;
-		private: GUI::ControlPanel* players;
-		private: GUI::Video* video;
-		public: std::vector<GUI::FrameView*> views;
-		private: GUI::Timer* timer;
-		private: GUI::ControlPanel* masterPanel;
+        /**
+         * @brief ~VideoPlayer Destructor.
+         */
+        virtual ~VideoPlayer() {}
 
-		/// <summary>
-		/// Constructor.
-		/// </summary>
-		public: VideoPlayer();
+        /**
+         * Multiple views can be added.
+         * Is the view is already in the list nothing happens.
+         *
+         * @brief addView Adds a view.
+         * @param view The view to add.
+         */
+        void addView(FrameView& view);
 
-		/// <summary>
-		/// Adds a view.
-		/// Multiple views can be added.
-		/// </summary>
-		/// <param name="view">The view to add.</param>
-		public: void addView(GUI::FrameView& view);
+        /**
+         * @brief removeView Removes a view.
+         * @param view The view to remove.
+         */
+        void removeView(FrameView& view);
 
-		/// <summary>
-		/// Removes a view.
-		/// </summary>
-		/// <param name="view">The view to remove.</param>
-		public: void removeView(GUI::FrameView& view);
+        /**
+         * If a video was previously set the old video gets deleted.
+         *
+         * @brief setVideo Sets the video.
+         * @param video The video to play.
+         */
+        void setVideo(Model::Video& video) noexcept;
 
-		/// <summary>
-		/// Sets the video.
-		/// If a video was previously set the old video gets deleted,
-		/// </summary>
-		/// <param name="video">The video to play.</param>
-		public: void setVideo(GUI::Video& video);
+        /**
+         * If no video is set nullptr is returned.
+         *
+         * @brief getVideo Returns a pointer to the currently played video.
+         * @return Pointer to the current video.
+         */
+        Model::Video* getVideo() noexcept;
 
-		/// <summary>
-		/// Returns a pointer to the currently played video.
-		/// If no video is set nullptr is returned.
-		/// </summary>
-		/// <returns>Pointer to the current video.</returns>
-		public: GUI::Video* getVideo();
+        /**
+         * This method has to be called in order to be able to play the video.
+         * @brief setTimer Sets the timer for the player.
+         * @param timer The timer for the player.
+         */
+        void setTimer(std::shared_ptr<Timer> timer) noexcept;
 
-		/// <summary>
-		/// Sets the timer for the player.
-		/// This method has to be called in order to be able to play the video.
-		/// </summary>
-		/// <param name="timer">The timer for the player.</param>
-		public: void setTimer(shared_ptr<GUI::Timer> timer);
+        /**
+         * @brief clearTimer Clears the timer.
+         */
+        void clearTimer() noexcept;
 
-		/// <summary>
-		/// Clears the timer.
-		/// </summary>
-		public: void clearTimer();
+        /**
+         * If no timer is set 0 is returned.
+         *
+         * @brief getFps Returns the fps the player is currently playing at.
+         * @return The current fps of the player.
+         */
+        int getFps() const noexcept;
 
-		/// <summary>
-		/// Returns the fps the player is currently playing at.
-		/// </summary>
-		/// <returns>The current fps of the player.</returns>
-		public: int getFps();
+        /**
+         * This panel is the reference for video position and speed.
+         *
+         * @brief setMasterControlPanel Sets the MasterControlPanel.
+         * @param controlPanel The master control panel.
+         */
+        void setMasterControlPanel(ControlPanel& controlPanel) noexcept;
 
-		/// <summary>
-		/// Sets the MasterControlPanel. This panel is the reference for video position and speed.
-		/// </summary>
-		public: void setMasterControlPanel(GUI::ControlPanel& controlPanel);
+        /**
+         * If no timer is set nothing happens.
+         *
+         * @brief play Plays the video.
+         */
+        virtual void play() override;
 
-		/// <summary>
-		/// Plays the video.
-		/// </summary>
-		public: void play();
+        /**
+         * If no timer is set nothing happens.
+         *
+         * @brief pause Pauses the video.
+         */
+        virtual void pause() override;
 
-		/// <summary>
-		/// Pauses the video.
-		/// </summary>
-		public: void pause();
+        /**
+         * @brief stop Stops the video.
+         */
+        virtual void stop() override;
 
-		/// <summary>
-		/// Stops the video.
-		/// </summary>
-		public: void stop();
+        /**
+         * @brief nextFrame Shows the next frame.
+         */
+        virtual void nextFrame() override;
 
-		/// <summary>
-		/// Shows the next frame.
-		/// </summary>
-		public: void nextFrame();
+        /**
+         * @brief previousFrame Shows the previous frame.
+         */
+        virtual void previousFrame() override;
 
-		/// <summary>
-		/// Shows the previous frame.
-		/// </summary>
-		public: void previousFrame();
+        /**
+         * If no timer is set nothing happens.
+         *
+         * @brief setSpeed Sets the speed.
+         * @param speed The new speed.
+         */
+        virtual void setSpeed(float speed) override;
 
-		/// <summary>
-		/// Sets the speed.
-		/// </summary>
-		/// <param name="speed">The new speed.</param>
-		public: void setSpeed(float speed);
+        /**
+         * @brief setPosition Sets the position in the video.
+         * @param position The new position.
+         */
+        virtual void setPosition(std::size_t position) override;
 
-		/// <summary>
-		/// Sets the position in the video.
-		/// </summary>
-		/// <param name="position">The new position.</param>
-		public: void setPosition(int position);
+        /**
+         * @brief getPosition Returns the position in the video.
+         * @return The current position.
+         */
+        virtual std::size_t getPosition() const noexcept override;
 
-		/// <summary>
-		/// Returns the position in the video.
-		/// </summary>
-		/// <returns>The current position.</returns>
-		public: int getPosition();
+        /**
+         * If no timer is set 0 is returned.
+         *
+         * @brief getSpeed Returns the speed.
+         * @return The current speed.
+         */
+        virtual float getSpeed() const noexcept override;
 
-		/// <summary>
-		/// Returns the speed.
-		/// </summary>
-		/// <returns>The current speed.</returns>
-		public: float getSpeed();
+        /**
+         * If no timer is set false is returned.
+         *
+         * @brief isPlaying Whether the player is currently playing.
+         * @return True if the player is playing.
+         */
+        virtual bool isPlaying() const override;
 
-		/// <summary>
-		/// Whether the player is currently playing.
-		/// </summary>
-		/// <returns>True if the player is playing.</returns>
-		public: bool isPlaying();
+        /**
+         * @brief isStopped Whether the player is stopped.
+         * @return True if the player is stopped.
+         */
+        virtual bool isStopped() const override;
 
-		/// <summary>
-		/// Whether the player is stopped.
-		/// </summary>
-		/// <returns>True if the player is stopped.</returns>
-		public: bool isStopped();
+        /**
+         * @brief reset Resets the player.
+         */
+        virtual void reset() override;
 
-		/// <summary>
-		/// Resets the player.
-		/// </summary>
-		public: void reset();
+    private:
+        std::size_t             position_;
+        Model::Video*           video_;
+        std::vector<FrameView*> views_;
+        std::shared_ptr<Timer>  timer_;
+        ControlPanel*           masterPanel_;
 	};
 }
 
 #endif
-*/
+

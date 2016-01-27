@@ -1,6 +1,8 @@
 #ifndef __Player_h__
 #define __Player_h__
 
+#include <cstddef>
+
 namespace GUI
 {
 	/**
@@ -50,13 +52,13 @@ namespace GUI
          * @brief setPosition Sets the position in the video.
          * @param position The new position.
          */
-        virtual void setPosition(int position) = 0;
+        virtual void setPosition(std::size_t position) = 0;
 
         /**
          * @brief getPosition Returns the position in the video.
          * @return The current position.
          */
-        virtual int getPosition() const noexcept = 0;
+        virtual std::size_t getPosition() const noexcept = 0;
 
         /**
          * @brief getSpeed Returns the speed.
@@ -68,13 +70,13 @@ namespace GUI
          * @brief isPlaying Whether the player is currently playing.
          * @return True if the player is playing.
          */
-        virtual bool isPlaying() const noexcept = 0;
+        virtual bool isPlaying() const = 0;
 
         /**
          * @brief isStopped Whether the player is stopped.
          * @return True if the player is stopped.
          */
-        virtual bool isStopped() const noexcept = 0;
+        virtual bool isStopped() const = 0;
 
         /**
          * @brief reset Resets the player.
