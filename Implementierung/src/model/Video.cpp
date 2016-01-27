@@ -4,7 +4,7 @@
 
 #include <vector>
 
-Model::Video::Video(int fps, int width, int height):fps_(fps),width_(width),height_(height) {
+Model::Video::Video(int fps, int width, int height) noexcept :fps_(fps),width_(width),height_(height) {
 
 }
 

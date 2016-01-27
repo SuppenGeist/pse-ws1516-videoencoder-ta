@@ -20,7 +20,7 @@ namespace Model
          * @param width The width of the video.
          * @param height The height of the video.
          */
-        Video(int fps, int width, int height);
+        Video(int fps, int width, int height) noexcept;
 
         /**
          * @brief getWidth Returns the width of the video.

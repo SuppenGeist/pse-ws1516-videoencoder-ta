@@ -58,13 +58,13 @@ namespace GUI
          * @brief getPosition Returns the position in the video.
          * @return The current position.
          */
-        virtual std::size_t getPosition() const noexcept = 0;
+        virtual std::size_t getPosition() const = 0;
 
         /**
          * @brief getSpeed Returns the speed.
          * @return The current speed.
          */
-        virtual float getSpeed() const noexcept = 0;
+        virtual float getSpeed() const = 0;
 
         /**
          * @brief isPlaying Whether the player is currently playing.

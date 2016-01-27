@@ -1,7 +1,8 @@
 #include "Timer.h"
 #include "VideoPlayer.h"
-
+#include <QApplication>
 GUI::Timer::Timer(int fps) {
+    Q_UNUSED(fps);
 }
 
 void GUI::Timer::setFps(int fps) {
@@ -29,6 +30,7 @@ void GUI::Timer::start() {
 }
 
 void GUI::Timer::addPlayer(VideoPlayer& player) {
+    Q_UNUSED(player);
 	throw "Not yet implemented";
 }
 
@@ -41,5 +43,6 @@ void GUI::Timer::update() {
 }
 
 void GUI::Timer::removePlayer(VideoPlayer& player) {
+    Q_UNUSED(player);
 	throw "Not yet implemented";
 }

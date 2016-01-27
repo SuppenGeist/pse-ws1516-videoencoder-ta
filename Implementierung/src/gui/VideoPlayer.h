@@ -28,7 +28,7 @@ namespace GUI
         /**
          * @brief VideoPlayer Constructor.
          */
-        VideoPlayer();
+        VideoPlayer() noexcept;
 
         /**
          * @brief ~VideoPlayer Destructor.
@@ -99,29 +99,29 @@ namespace GUI
          *
          * @brief play Plays the video.
          */
-        virtual void play() override;
+        void play() override;
 
         /**
          * If no timer is set nothing happens.
          *
          * @brief pause Pauses the video.
          */
-        virtual void pause() override;
+        void pause() override;
 
         /**
          * @brief stop Stops the video.
          */
-        virtual void stop() override;
+        void stop() override;
 
         /**
          * @brief nextFrame Shows the next frame.
          */
-        virtual void nextFrame() override;
+        void nextFrame() override;
 
         /**
          * @brief previousFrame Shows the previous frame.
          */
-        virtual void previousFrame() override;
+        void previousFrame() override;
 
         /**
          * If no timer is set nothing happens.
@@ -129,7 +129,7 @@ namespace GUI
          * @brief setSpeed Sets the speed.
          * @param speed The new speed.
          */
-        virtual void setSpeed(float speed) override;
+        void setSpeed(float speed) override;
 
         /**
          * If no video is set nothing happens.
@@ -138,13 +138,13 @@ namespace GUI
          * @brief setPosition Sets the position in the video.
          * @param position The new position.
          */
-        virtual void setPosition(std::size_t position) override;
+        void setPosition(std::size_t position) override;
 
         /**
          * @brief getPosition Returns the position in the video.
          * @return The current position.
          */
-        virtual std::size_t getPosition() const noexcept override;
+        std::size_t getPosition() const noexcept override;
 
         /**
          * If no timer is set 0 is returned.
@@ -152,7 +152,7 @@ namespace GUI
          * @brief getSpeed Returns the speed.
          * @return The current speed.
          */
-        virtual float getSpeed() const noexcept override;
+        float getSpeed() const noexcept override;
 
         /**
          * If no timer is set false is returned.
@@ -160,18 +160,18 @@ namespace GUI
          * @brief isPlaying Whether the player is currently playing.
          * @return True if the player is playing.
          */
-        virtual bool isPlaying() const override;
+        bool isPlaying() const override;
 
         /**
          * @brief isStopped Whether the player is stopped.
          * @return True if the player is stopped.
          */
-        virtual bool isStopped() const override;
+        bool isStopped() const override;
 
         /**
          * @brief reset Resets the player.
          */
-        virtual void reset() override;
+        void reset() override;
 
     private:
         std::size_t             position_;
