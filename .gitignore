@@ -1,6 +1,9 @@
 *~
 .tags*
 
+#Qt Userproject
+*.user
+
 # Compiled Object files
 *.slo
 *.lo
