@@ -8,15 +8,8 @@
 #include <QRect>
 #include <QSize>
 
-GUI::FrameView::FrameView(QWidget* parent):QWidget(parent),xOffset_(0),yOffset_(0) {
-    setMinimumSize(100,100);
+GUI::FrameView::FrameView(QWidget* parent):QWidget(parent),xOffset_(0),yOffset_(0),originalFrame_(nullptr) {
     setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
-    originalFrame_=new QImage(100,100,QImage::Format_RGB888);
-    for(int i=0;i<100;i++) {
-        for(int k=0;k<100;k++) {
-            originalFrame_->setPixel(i,k,QColor(64, 255, 64).rgb());
-        }
-    }
 }
 
 void GUI::FrameView::setFrame(QImage& frame) {
