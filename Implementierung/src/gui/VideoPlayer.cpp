@@ -89,9 +89,11 @@ void GUI::VideoPlayer::setSpeed(float speed) {
 void GUI::VideoPlayer::setPosition(std::size_t position) {
     if(!video_)
         return;
+    if(video_->getNumberOfFrames()==0)
+        return;
 
     if(position>=video_->getNumberOfFrames())
-        position_=video_->getNumberOfFrames()-1;
+        position=video_->getNumberOfFrames()-1;
 
     position_=position;
     for(auto view:views_) {

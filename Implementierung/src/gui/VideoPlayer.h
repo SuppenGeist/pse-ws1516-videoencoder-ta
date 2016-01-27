@@ -133,6 +133,7 @@ namespace GUI
 
         /**
          * If no video is set nothing happens.
+         * If the video is empty nothing happens.
          *
          * @brief setPosition Sets the position in the video.
          * @param position The new position.
