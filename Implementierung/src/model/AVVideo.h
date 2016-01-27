@@ -1,12 +1,17 @@
-/*
+
 #include <exception>
 #include <vector>
+#include <memory>
+extern "C"{
+#include <libavcodec/avcodec.h>
+#include <libavformat/avformat.h>
+}
 using namespace std;
 
 #ifndef __AVVideo_h__
 #define __AVVideo_h__
 
-// #include "EncodedVideo.h"
+#include "EncodedVideo.h"
 
 namespace Model
 {
@@ -18,7 +23,7 @@ namespace Model
 {
 	/**
 	 * This class contains AVFrames from the ffmpeg library and manages them.
-
+         */
 	class AVVideo
 	{
 		private: std::vector<std::unique_ptr<AVFrame> > video;
@@ -66,9 +71,9 @@ namespace Model
 		/// If index < 0 then the frame gets pushed to the back.
 		/// If the index is greater than getNumberOfFrames() the frames gets pushed to the back.
 		/// </summary>
-		/// <param name="index">The index to insert the frame at.</param>
-		/// <param name="frame:std:">The frame to insert.</param>
-		public: void insertFrame(int index = -1, unique_ptr<AVFrame> frame:std:);
+                /// <param name="frame">The frame to insert.</param>
+                /// <param name="index">The index to insert the frame at.</param>
+                public: void insertFrame(unique_ptr<AVFrame> frame, int index = -1);
 
 		/// <summary>
 		/// Removes the frame at the given index.
@@ -81,9 +86,9 @@ namespace Model
 		/// Inserts a vector of frames at the given index.
 		/// If the index<0 or index is greater than getNumberOfFrames() then the frames are pushed to the back.
 		/// </summary>
-		/// <param name="index">The index to insert the frames at.</param>
-		/// <param name="frames:std:">The frames to insert.</param>
-		public: void insertFrames(int index = -1, vector<std::unique_ptr<AVFrame> >& frames:std:);
+                /// <param name="frames">The frames to insert.</param>
+                /// <param name="index">The index to insert the frames at.</param>
+                public: void insertFrames(vector<std::unique_ptr<AVFrame> >& frames, int index = -1);
 
 		/// <summary>
 		/// Returns the number of frames in the video.

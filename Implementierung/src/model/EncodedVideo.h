@@ -1,11 +1,11 @@
-/*
+
 #include <exception>
 using namespace std;
 
 #ifndef __EncodedVideo_h__
 #define __EncodedVideo_h__
 
-// #include "AnalysisBox.h"
+//#include "AnalysisBox.h"
 #include "Video.h"
 #include "AVVideo.h"
 #include "Graph.h"
@@ -26,6 +26,7 @@ namespace Model
 {
 	/**
 	 * This class contains all analysis info of an encoded video.
+         */
 
 	class EncodedVideo
 	{
@@ -179,4 +180,5 @@ namespace Model
 }
 
 #endif
+
 

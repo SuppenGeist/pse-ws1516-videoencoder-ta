@@ -1,8 +1,12 @@
-/*#include <exception>
+#include <exception>
 #include <vector>
+#include <memory>
 
 #include "AVVideo.h"
 #include "EncodedVideo.h"
+
+
+using namespace Model;
 
 AVVideo::AVVideo(int fps, int width, int height) {
 }
@@ -23,7 +27,7 @@ AVFrame* AVVideo::getFrame(int index) {
 	throw "Not yet implemented";
 }
 
-void AVVideo::insertFrame(int index, unique_ptrunique_ptr<AVFrame> frame:std:) {
+void AVVideo::insertFrame(unique_ptr<AVFrame> frame, int index) {
 	throw "Not yet implemented";
 }
 
@@ -31,7 +35,7 @@ void AVVideo::removeFrame(int index) {
 	throw "Not yet implemented";
 }
 
-void AVVideo::insertFrames(int index, vectorvector<std::unique_ptr<AVFrame> >& frames:std:) {
+void AVVideo::insertFrames(vector<unique_ptr<AVFrame>>& frames, int index) {
 	throw "Not yet implemented";
 }
 
@@ -39,4 +43,4 @@ int AVVideo::getNumberOfFrames() {
 	throw "Not yet implemented";
 }
 
-*/
+
