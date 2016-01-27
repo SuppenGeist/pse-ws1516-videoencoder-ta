@@ -6,9 +6,10 @@
 namespace GUI
 {
 /**
- * This class is the view used by the video player.
- * It automatically scales the frames passed to it.
-*/
+ * This class displays QImages.
+ * The width and height of the displayed image automatically scale with
+ * the size of the widget but the ratio is always preserved.
+ */
     class FrameView: public QWidget
 	{
     public:
@@ -19,13 +20,13 @@ namespace GUI
         FrameView(QWidget* parent = 0);
 
         /**
-         * @brief setFrame Sets the frame to show.
+         * @brief setFrame Sets the displayed frame.
          * @param frame The frame to show.
          */
         void setFrame(QImage& frame);
 
         /**
-         * @brief clear Clears the current frame so nothing is shown.
+         * @brief clear Clears the current frame so nothing is displayed.
          */
         void clear();
 
@@ -51,7 +52,7 @@ namespace GUI
         QImage* originalFrame_;
 
         /**
-         * @brief updateOffset Updates the offset at which the image is drawn.
+         * @brief updateOffset Updates the offset at which the image is drawn within the widget.
          */
         void updateOffset();
 	};
