@@ -1,30 +1,16 @@
-/*
-#include <exception>
-using namespace std;
-
 #ifndef __GlobalControlPanel_h__
 #define __GlobalControlPanel_h__
 
-// #include "AnalysisTab.h"
 #include "ControlPanel.h"
-
-namespace GUI
-{
-	class AnalysisTab;
-	// class ControlPanel;
-	class GlobalControlPanel;
-}
 
 namespace GUI
 {
 	/**
 	 * This control panel has no gui. Instead it has functions to control the video.
-
-	class GlobalControlPanel: public GUI::ControlPanel
-	{
-		public: GUI::AnalysisTab* globalControlPanel;
-
-		/// <summary>
+     */
+    class GlobalControlPanel: public ControlPanel
+    {
+        /// <summary>
 		/// Constructor.
 		/// </summary>
 		public: GlobalControlPanel();
@@ -64,8 +50,9 @@ namespace GUI
 		/// </summary>
 		/// <param name="position">The position to show.</param>
 		public: void setPosition(int position);
+
+        void setSpeed(float speed);
 	};
 }
 
 #endif
-*/

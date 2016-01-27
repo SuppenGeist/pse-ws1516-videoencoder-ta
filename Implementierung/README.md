@@ -70,6 +70,8 @@ class Name {
 ### Sonstiges
 * Wann immer moeglich forward declarationen anstatt includes verwenden.
 * Kein using namespace in header dateien verwenden.
+* Achtet auf const correctness.
+* Achtet auf exception safety.
 
 ## Gangdiagramm
 ![Gangdiagramm](../Entwurf/Entwurfsheft/Projektplan_new.PNG)

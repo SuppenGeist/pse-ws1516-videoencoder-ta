@@ -44,3 +44,15 @@ Aendere Parametertyp von setPosition int->std::size_t.
 Aendere Typ der Membervariable position_ int->std::size_t.
 <br><b>Grund:</b> Ueberlauf verhindern.
 <hr>
+## Forward Player
+Entferne Membervariable controlPanel.
+<br><b>Grund:</b> Wurde vergessen aus dem Entwurf zu entfernen.
+<hr>
+Mache Parameter von setForwardControlPaenl zu einem Pointer.
+<br><b>Grund:</b> Fehler im Entwurf. Sollte von Anfang an ein Pointer sein.
+<hr>
+## GlobalControlPanel
+Fuege Methode setSpeed hizu.
+<br><b>Grund:</b> Die Methode wird benoetigt, um eine Aenderung der Geschwindigkeit
+weiterleiten zu koennen.
+<hr>

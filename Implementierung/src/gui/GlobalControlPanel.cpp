@@ -1,38 +1,40 @@
-/*#include <exception>
-
 #include "GlobalControlPanel.h"
-#include "AnalysisTab.h"
 #include "ControlPanel.h"
+#include <QApplication>
 
-GlobalControlPanel::GlobalControlPanel() {
+GUI::GlobalControlPanel::GlobalControlPanel() {
 }
 
-void GlobalControlPanel::updateUi() {
+void GUI::GlobalControlPanel::updateUi() {
 	throw "Not yet implemented";
 }
 
-void GlobalControlPanel::play() {
+void GUI::GlobalControlPanel::play() {
 	throw "Not yet implemented";
 }
 
-void GlobalControlPanel::pause() {
+void GUI::GlobalControlPanel::pause() {
 	throw "Not yet implemented";
 }
 
-void GlobalControlPanel::stop() {
+void GUI::GlobalControlPanel::stop() {
 	throw "Not yet implemented";
 }
 
-void GlobalControlPanel::nextFrame() {
+void GUI::GlobalControlPanel::nextFrame() {
 	throw "Not yet implemented";
 }
 
-void GlobalControlPanel::previousFrame() {
+void GUI::GlobalControlPanel::previousFrame() {
 	throw "Not yet implemented";
 }
 
-void GlobalControlPanel::setPosition(int position) {
+void GUI::GlobalControlPanel::setPosition(int position) {
+    Q_UNUSED(position);
 	throw "Not yet implemented";
 }
 
-*/
+void GUI::GlobalControlPanel::setSpeed(float speed) {
+    Q_UNUSED(speed);
+    throw "Not yet implemented";
+}

@@ -1,62 +1,74 @@
-/*#include <exception>
-
 #include "ForwardPlayer.h"
-#include "ControlPanel.h"
-#include "Player.h"
 
-ForwardPlayer::ForwardPlayer() {
+#include <stdexcept>
+
+#include "GlobalControlPanel.h"
+
+GUI::ForwardPlayer::ForwardPlayer() noexcept {
 }
 
-void ForwardPlayer::setForwardControlPanel(ControlPanel panel) {
-	throw "Not yet implemented";
+void GUI::ForwardPlayer::setForwardControlPanel(GlobalControlPanel *panel) noexcept {
+    forwardPanel_=panel;
 }
 
-void ForwardPlayer::play() {
-	throw "Not yet implemented";
+void GUI::ForwardPlayer::play() {
+    if(!forwardPanel_)
+        return;
+    forwardPanel_->play();
 }
 
-void ForwardPlayer::pause() {
-	throw "Not yet implemented";
+void GUI::ForwardPlayer::pause() {
+    if(!forwardPanel_)
+        return;
+    forwardPanel_->pause();
 }
 
-void ForwardPlayer::stop() {
-	throw "Not yet implemented";
+void GUI::ForwardPlayer::stop() {
+    if(!forwardPanel_)
+        return;
+    forwardPanel_->stop();
 }
 
-void ForwardPlayer::nextFrame() {
-	throw "Not yet implemented";
+void GUI::ForwardPlayer::nextFrame() {
+    if(!forwardPanel_)
+        return;
+    forwardPanel_->nextFrame();
 }
 
-void ForwardPlayer::previousFrame() {
-	throw "Not yet implemented";
+void GUI::ForwardPlayer::previousFrame() {
+    if(!forwardPanel_)
+        return;
+    forwardPanel_->previousFrame();
 }
 
-void ForwardPlayer::setSpeed(float speed) {
-	throw "Not yet implemented";
+void GUI::ForwardPlayer::setSpeed(float speed) {
+    if(!forwardPanel_)
+        return;
+    forwardPanel_->setSpeed(speed);
 }
 
-void ForwardPlayer::setPosition(int position) {
-	throw "Not yet implemented";
+void GUI::ForwardPlayer::setPosition(std::size_t position) {
+    if(!forwardPanel_)
+        return;
+    forwardPanel_->setPosition(position);
 }
 
-int ForwardPlayer::getPosition() {
-	throw "Not yet implemented";
+std::size_t GUI::ForwardPlayer::getPosition() const {
+    throw std::logic_error("Dont call this method");
 }
 
-float ForwardPlayer::getSpeed() {
-	throw "Not yet implemented";
+float GUI::ForwardPlayer::getSpeed() const {
+    throw std::logic_error("Dont call this method");
 }
 
-bool ForwardPlayer::isPlaying() {
-	throw "Not yet implemented";
+bool GUI::ForwardPlayer::isPlaying() const {
+    throw std::logic_error("Dont call this method");
 }
 
-bool ForwardPlayer::isStopped() {
-	throw "Not yet implemented";
+bool GUI::ForwardPlayer::isStopped() const {
+    throw std::logic_error("Dont call this method");
 }
 
-void ForwardPlayer::reset() {
-	throw "Not yet implemented";
+void GUI::ForwardPlayer::reset() {
+    throw std::logic_error("Dont call this method");
 }
-
-*/

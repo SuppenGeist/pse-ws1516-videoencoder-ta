@@ -10,7 +10,7 @@
 #include "Timer.h"
 #include "Player.h"
 
-GUI::VideoPlayer::VideoPlayer():position_(0) {
+GUI::VideoPlayer::VideoPlayer() noexcept :position_(0) {
 }
 
 void GUI::VideoPlayer::addView(FrameView& view) {
