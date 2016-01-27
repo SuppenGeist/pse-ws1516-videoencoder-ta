@@ -132,6 +132,8 @@ namespace GUI
         virtual void setSpeed(float speed) override;
 
         /**
+         * If no video is set nothing happens.
+         *
          * @brief setPosition Sets the position in the video.
          * @param position The new position.
          */

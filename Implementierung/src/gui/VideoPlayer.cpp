@@ -77,7 +77,7 @@ void GUI::VideoPlayer::nextFrame() {
 }
 
 void GUI::VideoPlayer::previousFrame() {
-    setPosition(getPosition()-1);
+    setPosition(getPosition()==0?0:getPosition()-1);
 }
 
 void GUI::VideoPlayer::setSpeed(float speed) {
@@ -87,6 +87,12 @@ void GUI::VideoPlayer::setSpeed(float speed) {
 }
 
 void GUI::VideoPlayer::setPosition(std::size_t position) {
+    if(!video_)
+        return;
+
+    if(position>=video_->getNumberOfFrames())
+        position_=video_->getNumberOfFrames()-1;
+
     position_=position;
     for(auto view:views_) {
         view->setFrame(*(video_->getFrame(position_)));
