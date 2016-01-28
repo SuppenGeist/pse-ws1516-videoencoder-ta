@@ -5,7 +5,7 @@
 
 #include "Player.h"
 
-GUI::ControlPanel::ControlPanel() noexcept {
+GUI::ControlPanel::ControlPanel() noexcept:masterPlayer_(nullptr) {
 
 }
 

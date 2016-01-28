@@ -4,7 +4,7 @@
 
 #include "GlobalControlPanel.h"
 
-GUI::ForwardPlayer::ForwardPlayer() noexcept {
+GUI::ForwardPlayer::ForwardPlayer() noexcept:forwardPanel_(nullptr) {
 }
 
 void GUI::ForwardPlayer::setForwardControlPanel(GlobalControlPanel *panel) noexcept {

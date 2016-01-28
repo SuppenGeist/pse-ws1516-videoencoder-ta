@@ -22,7 +22,7 @@ GUI::PlayerControlPanel::PlayerControlPanel(QWidget* parent):QFrame(parent) {
 }
 
 void GUI::PlayerControlPanel::updateUi() {
-    Player *player;
+    Player *player=nullptr;
 
     if(masterPlayer_)
         player=masterPlayer_;
@@ -32,10 +32,9 @@ void GUI::PlayerControlPanel::updateUi() {
         else
             return;
     }
-    if(slider_timeline) {
-        slider_timeline->setMaximum(player->getNumberOfFrames());
-        slider_timeline->setValue(player->getPosition());
-    }
+
+    slider_timeline->setMaximum(player->getNumberOfFrames());
+    slider_timeline->setValue(player->getPosition());
 }
 
 void GUI::PlayerControlPanel::createUi() {

@@ -12,10 +12,13 @@
 
 GUI::PreviewControlPanel::PreviewControlPanel(QWidget* parent):QFrame(parent) {
     createUi();
+
+    connect(button_nextFrame,SIGNAL(clicked()),this,SLOT(nextFrame()));
+    connect(button_previousFrame,SIGNAL(clicked()),this,SLOT(previousFrame()));
 }
 
 void GUI::PreviewControlPanel::updateUi() {
-    Player *player;
+    Player *player=nullptr;
 
     if(masterPlayer_)
         player=masterPlayer_;
