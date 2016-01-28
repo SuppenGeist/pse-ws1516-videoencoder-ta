@@ -1,5 +1,7 @@
 #include "Timer.h"
 
+#include <algorithm>
+
 #include <QTimer>
 #include <QObject>
 
