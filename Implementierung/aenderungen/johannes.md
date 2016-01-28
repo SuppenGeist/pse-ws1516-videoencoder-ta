@@ -56,3 +56,7 @@ Fuege Methode setSpeed hizu.
 <br><b>Grund:</b> Die Methode wird benoetigt, um eine Aenderung der Geschwindigkeit
 weiterleiten zu koennen.
 <hr>
+## ControlPanel
+Mache masterPlayer protected
+<br><b>Grund:</b> Erbende Klassen koennen sont nicht auf den MasterPlayer zugreifen.
+<hr>
