@@ -1,25 +1,18 @@
-/*#include <exception>
+#include <exception>
 #include <string>
 #include <vector>
 
 #include "FilterTab.h"
-#include "QFrame.h"
-#include "VideoPlayer.h"
-#include "PreviewControlPanel.h"
+//#include "PreviewControlPanel.h"
 #include "FrameView.h"
-#include "PlayerControlPanel.h"
-#include "FilterContainerTab.h"
-#include "QWidget.h"
-#include "FilterTabMemento.h"
-#include "FilterList.h"
-#include "YuvVideo.h"
-#include "Filter.h"
-#include "LoadFilterVideo.h"
+//#include "PlayerControlPanel.h"
+//#include "FilterContainerTab.h"
+//#include "Filter.h"
 
-FilterTab::FilterTab(QWidget* parent) {
+GUI::FilterTab::FilterTab(QWidget* parent) {
 }
 
-Memento::FilterTabMemento FilterTab::getMemento() {
+/*Memento::FilterTabMemento FilterTab::getMemento() {
 	throw "Not yet implemented";
 }
 
@@ -31,80 +24,80 @@ void FilterTab::connectActions() {
 	throw "Not yet implemented";
 }
 
-void FilterTab::createUi() {
+void GUI::FilterTab::createUi() {
 	throw "Not yet implemented";
 }
 
-void FilterTab::up() {
+void GUI::FilterTab::up() {
 	throw "Not yet implemented";
 }
 
-void FilterTab::down() {
+void GUI::FilterTab::down() {
 	throw "Not yet implemented";
 }
 
-void FilterTab::remove() {
+void GUI::FilterTab::remove() {
 	throw "Not yet implemented";
 }
 
-void FilterTab::load() {
+void GUI::FilterTab::load() {
 	throw "Not yet implemented";
 }
 
-void FilterTab::apply() {
+void GUI::FilterTab::apply() {
 	throw "Not yet implemented";
 }
 
-void FilterTab::saveConf() {
+void GUI::FilterTab::saveConf() {
 	throw "Not yet implemented";
 }
 
-void FilterTab::loadConf() {
+void GUI::FilterTab::loadConf() {
 	throw "Not yet implemented";
 }
 
-void FilterTab::reset() {
+void GUI::FilterTab::reset() {
 	throw "Not yet implemented";
 }
 
-void FilterTab::save() {
+void GUI::FilterTab::save() {
 	throw "Not yet implemented";
 }
 
-void FilterTab::insertFilter(Filter filter, int index) {
+/*void GUI::FilterTab::insertFilter(Filter filter, int index) {
 	throw "Not yet implemented";
 }
-
-void FilterTab::listSelectionChanged(QModelIndex index) {
-	throw "Not yet implemented";
-}
-
-void FilterTab::removeFilter(string filterName) {
-	throw "Not yet implemented";
-}
-
-void FilterTab::showVideo() {
-	throw "Not yet implemented";
-}
-
-void FilterTab::showPreview() {
-	throw "Not yet implemented";
-}
-
-void FilterTab::resetFilters() {
-	throw "Not yet implemented";
-}
-
-void FilterTab::setFilterList(FilterList list) {
-	throw "Not yet implemented";
-}
-
-void FilterTab::setRawVideo(YuvVideo video) {
-	throw "Not yet implemented";
-}
-
-void FilterTab::moveFilter(int old, int new_3) {
-	throw "Not yet implemented";
-}
-
 */
+void GUI::FilterTab::listSelectionChanged(QModelIndex index) {
+	throw "Not yet implemented";
+}
+
+void GUI::FilterTab::removeFilter(string filterName) {
+	throw "Not yet implemented";
+}
+
+void GUI::FilterTab::showVideo() {
+	throw "Not yet implemented";
+}
+
+void GUI::FilterTab::showPreview() {
+	throw "Not yet implemented";
+}
+
+void GUI::FilterTab::resetFilters() {
+	throw "Not yet implemented";
+}
+/*
+void GUI::FilterTab::setFilterList(FilterList list) {
+	throw "Not yet implemented";
+}
+*/
+/*void GUI::FilterTab::setRawVideo(YuvVideo video) {
+	throw "Not yet implemented";
+}
+*/
+void GUI::FilterTab::moveFilter(int old, int new_3) {
+	throw "Not yet implemented";
+}
+
+

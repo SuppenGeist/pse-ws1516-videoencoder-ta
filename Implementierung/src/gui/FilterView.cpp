@@ -1,24 +1,25 @@
-/*#include <exception>
+#include <exception>
 
 #include "FilterView.h"
 #include "FilterTab.h"
 #include "QWidget.h"
 #include "Filter.h"
 
-FilterView::FilterView(QWidget* parent) {
+GUI::FilterView::FilterView(QWidget* parent) {
 }
 
-void FilterView::checkBoxStateChanged(int state) {
+void GUI::FilterView::checkBoxStateChanged(int state) {
 	throw "Not yet implemented";
 }
 
-void FilterView::setFilter(Filter filter) {
+/*
+ * void GUI::FilterView::setFilter(Filter filter) {
 	throw "Not yet implemented";
 }
+*/
 
-void FilterView::setFilterTab(FilterTab* filtertab) {
+void GUI::FilterView::setFilterTab(FilterTab* filtertab) {
 	this->filterTab = filtertab;
 }
 
 
-*/

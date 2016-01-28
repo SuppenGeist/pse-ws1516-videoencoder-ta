@@ -15,6 +15,7 @@ GUI::MainWindow::MainWindow(QWidget* parent) {
     action_redo=ui->actionRedo;
     action_undo=ui->actionUndo;
     connectActions();
+
 }
 
 /*Memento::MainWindowMemento MainWindow::getMemento() {
@@ -57,7 +58,7 @@ void GUI::MainWindow::createUi() {
 void GUI::MainWindow::connectActions() {
     connect(action_loadProject,SIGNAL(triggered()),this,SLOT(loadProject()));
     connect(action_newProject, SIGNAL(triggered()),this,SLOT(newProject()));
-    connect(action_saveProject,SIGNAL(triggered()),this, SLOT(saveProject());
+    connect(action_saveProject,SIGNAL(triggered()),this, SLOT(saveProject()));
     connect(action_redo,SIGNAL(triggered()),this, SLOT(redo()));
     connect(action_saveAs,SIGNAL(triggered()),this, SLOT(saveAs()));
     connect(action_undo,SIGNAL(triggered()),this, SLOT(undo()));

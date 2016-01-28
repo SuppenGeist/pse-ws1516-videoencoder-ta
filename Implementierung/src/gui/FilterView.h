@@ -1,13 +1,14 @@
-/*
+
 #include <exception>
 using namespace std;
 
 #ifndef __FilterView_h__
 #define __FilterView_h__
 
-// #include "FilterTab.h"
-// #include "QWidget.h"
+#include "FilterTab.h"
+#include "QWidget.h"
 #include "Filter.h"
+#include <QCheckBox>
 
 namespace GUI
 {
@@ -24,7 +25,7 @@ namespace GUI
 {
 	/**
 	 * Represents a selectable filter in the gui. Shows a example of the filter and  a checkbox as well as its name.
-
+    */
 	class FilterView
 	{
 		private: QCheckBox* checkbox;
@@ -67,4 +68,3 @@ namespace GUI
 }
 
 #endif
-*/

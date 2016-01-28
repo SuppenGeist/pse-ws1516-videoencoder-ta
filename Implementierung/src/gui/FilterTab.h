@@ -1,23 +1,27 @@
-/*
 #include <exception>
 #include <string>
 #include <vector>
+#include <QPushButton>
+#include <QListWidget>
+#include <QStringListModel>
+#include <QLabel>
+
 using namespace std;
 
 #ifndef __FilterTab_h__
 #define __FilterTab_h__
 
-// #include "QFrame.h"
+#include "QFrame.h"
 // #include "VideoPlayer.h"
 // #include "PreviewControlPanel.h"
 // #include "FrameView.h"
 // #include "PlayerControlPanel.h"
-#include "FilterContainerTab.h"
+//#include "FilterContainerTab.h"
 // #include "QWidget.h"
-#include "FilterTabMemento.h"
-#include "FilterList.h"
-#include "YuvVideo.h"
-#include "Filter.h"
+#include "memento/FilterTabMemento.h"
+//#include "FilterList.h"
+//#include "YuvVideo.h"
+//#include "Filter.h"
 // #include "LoadFilterVideo.h"
 
 namespace GUI
@@ -27,8 +31,7 @@ namespace GUI
 	class PreviewControlPanel;
 	class FrameView;
 	class PlayerControlPanel;
-	class FilterContainerTab;
-	class QWidget;
+    class FilterContainerTab;
 	class FilterTab;
 }
 namespace Memento
@@ -50,7 +53,7 @@ namespace GUI
 {
 	/**
 	 * This class is the tab to filter videos.
-
+    */
 	class FilterTab
 	{
 		private: QPushButton* button_up;
@@ -66,8 +69,7 @@ namespace GUI
 		private: QTabWidget* tab_filterTabs;
 		private: QLabel* label_filterOptions;
 		private: GUI::QFrame* frame_filterContainer;
-		private: QStringListModel* model_list;
-		public: UndoRedo::LoadFilterVideo* filterTab;
+        private: QStringListModel* model_list;
 		private: GUI::VideoPlayer* player;
 		private: GUI::PreviewControlPanel* previewPanel;
 		private: GUI::FrameView* frameView;
@@ -75,11 +77,12 @@ namespace GUI
 		private: Model::FilterList* filterList;
 		private: Model::YuvVideo* rawVideo;
 		private: std::vector<GUI::FilterContainerTab*> filterContainerTab;
+        public: UndoRedo::LoadFilterVideo* filterTab;
 
 		/// <summary>
 		/// Constructor.
 		/// </summary>
-		public: FilterTab(GUI::QWidget* parent);
+        public: FilterTab(QWidget* parent);
 
 		/// <summary>
 		/// Creates a memento which contains the state of this tab.
@@ -214,4 +217,4 @@ namespace GUI
 }
 
 #endif
-*/
+
