@@ -1,48 +1,61 @@
 #include "Timer.h"
+
+#include <QTimer>
+#include <QObject>
+
 #include "VideoPlayer.h"
-#include <QApplication>
-GUI::Timer::Timer(int fps) {
-    Q_UNUSED(fps);
+
+GUI::Timer::Timer(QObject *parent):QObject(parent),timer_(this),speed_(1.0),fps_(30) {
+    connect(&timer_,SIGNAL(timeout()),this,SLOT(update()));
 }
 
-void GUI::Timer::setFps(int fps) {
-	this->fps = fps;
+void GUI::Timer::setFps(int fps) noexcept {
+    if(fps<1)
+        return;
+    fps_ = fps;
 }
 
-void GUI::Timer::setSpeed(float speed) {
-	this->speed = speed;
+void GUI::Timer::setSpeed(float speed) noexcept {
+    if(speed_<=0.0)
+        return;
+    speed_ = speed;
 }
 
-float GUI::Timer::getSpeed() {
-	return this->speed;
+float GUI::Timer::getSpeed() const noexcept {
+    return speed_;
 }
 
-int GUI::Timer::getFps() {
-	return this->fps;
+int GUI::Timer::getFps() const noexcept {
+    return fps_;
 }
 
 void GUI::Timer::pause() {
-	throw "Not yet implemented";
+    timer_.stop();
 }
 
 void GUI::Timer::start() {
-	throw "Not yet implemented";
+    timer_.start(((double)1000/fps_)*speed_);
 }
 
 void GUI::Timer::addPlayer(VideoPlayer& player) {
-    Q_UNUSED(player);
-	throw "Not yet implemented";
+    if(std::find(players_.begin(), players_.end(), &player) == players_.end())
+        return;
+    players_.push_back(&player);
 }
 
 bool GUI::Timer::isPlaying() {
-	throw "Not yet implemented";
+    return timer_.isActive();
 }
 
 void GUI::Timer::update() {
-	throw "Not yet implemented";
+    for(auto player:players_) {
+        player->nextFrame();
+    }
 }
 
 void GUI::Timer::removePlayer(VideoPlayer& player) {
-    Q_UNUSED(player);
-	throw "Not yet implemented";
+    std::size_t pos = std::find(players_.begin(), players_.end(), &player) - players_.begin();
+    if(pos<players_.size()) {
+        players_.erase(players_.begin()+pos);
+    }
 }

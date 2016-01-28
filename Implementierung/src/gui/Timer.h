@@ -1,14 +1,14 @@
 #ifndef __Timer_h__
 #define __Timer_h__
 
-#include "VideoPlayer.h"
+#include <vector>
 
 #include <QTimer>
+#include <QObject>
 
 namespace GUI
 {
-	class VideoPlayer;
-	class Timer;
+    class VideoPlayer;
 }
 
 namespace GUI
@@ -17,75 +17,90 @@ namespace GUI
 	 * This class is the timer for the video player.
 	 * It handles the switching of the frames according to fps and speed.
      */
-	class Timer
-	{
-		private: QTimer timer;
-		private: float speed;
-		private: int fps;
+    class Timer : QObject
+    {
+        Q_OBJECT
+    public:
+        /**
+         * @brief Timer Constructor.
+         * @param fps The fps to play at.
+         */
+        Timer(QObject *parent=0);
 
-		/// <summary>
-		/// Constructor.
-		/// </summary>
-		/// <param name="fps">The fps to play at.</param>
-		public: Timer(int fps);
+        virtual ~Timer(){}
 
-		/// <summary>
-		/// Sets the fps for the timer.
-		/// </summary>
-		/// <param name="fps">The new fps.</param>
-		public: void setFps(int fps);
+        /**
+         * If fps is < 1 nothing happens.
+         * @brief setFps Sets the fps for the timer.
+         * @param fps The new fps.
+         */
+        void setFps(int fps) noexcept;
 
-		/// <summary>
-		/// Sets the speed to play at.
-		/// The default value is 1.0.
-		/// </summary>
-		/// <param name="speed">The new speed.</param>
-		public: void setSpeed(float speed);
+        /**
+         * If the speed <= 0 nothing happens.
+         *
+         * @brief setSpeed Sets the speed to play at.
+         * @param speed The new speed.
+         */
+        void setSpeed(float speed) noexcept;
 
-		/// <summary>
-		/// Returns the current speed the timer plays at.
-		/// </summary>
-		/// <returns>The current speed.</returns>
-		public: float getSpeed();
+        /**
+         * @brief getSpeed Returns the current speed the timer plays at.
+         * @return The current speed.
+         */
+        float getSpeed() const noexcept;
 
-		/// <summary>
-		/// Returns the current fps the timer plays at.
-		/// </summary>
-		/// <returns>The current fps.</returns>
-		public: int getFps();
+        /**
+         * @brief getFps Returns the current fps the timer plays at.
+         * @return The current fps.
+         */
+        int getFps() const noexcept;
 
-		/// <summary>
-		/// Stops the timer from switching frames.
-		/// </summary>
-		public: void pause();
+        /**
+         * @brief pause Stops the timer from switching frames.
+         */
+        void pause();
 
-		/// <summary>
-		/// Tells the timer to start switching frames.
-		/// </summary>
-		public: void start();
+        /**
+         * @brief start Tells the timer to start switching frames.
+         */
+        void start();
 
-		/// <summary>
-		/// Adds a player.
-		/// </summary>
-		/// <param name="player">The player to add.</param>
-		public: void addPlayer(GUI::VideoPlayer& player);
+        /**
+         * If the player is already in the list nothing happens.
+         *
+         * @brief addPlayer Adds a player.
+         * @param player The player to add.
+         */
+        void addPlayer(VideoPlayer& player);
 
-		/// <summary>
-		/// Whether the timer currently switches frames.
-		/// </summary>
-		/// <returns>true if the timer currently switches frames.</returns>
-		public: bool isPlaying();
+        /**
+         * @brief isPlaying Whether the timer currently switches frames.
+         * @return true if the timer currently switches frames.
+         */
+        bool isPlaying();
 
-		/// <summary>
-		/// This method switched the frames in all players.
-		/// </summary>
-		private: void update();
+        /**
+         * If the player is not in the list nothing happens.
+         *
+         * @brief removePlayer Removes a player from the list.
+         * @param player The player to remove.
+         */
+        void removePlayer(VideoPlayer& player);
 
-		/// <summary>
-		/// Removes a player from the list.
-		/// </summary>
-		/// <param name="player">The player to remove.</param>
-		public: void removePlayer(GUI::VideoPlayer& player);
+    public slots:
+        /**
+         * @brief update This method switched the frames in all players.
+         */
+        void update();
+
+    private:
+        QTimer                      timer_;
+        float                       speed_;
+        int                         fps_;
+        std::vector<VideoPlayer*>   players_;
+
+
 	};
 }
 
