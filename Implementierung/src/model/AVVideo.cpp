@@ -9,6 +9,10 @@
 using namespace Model;
 
 AVVideo::AVVideo(int fps, int width, int height) {
+    this->width = width;
+    this->fps = fps;
+    this->height = height;
+    video = * new vector<unique_ptr<AVFrame>>;
 }
 
 int AVVideo::getWidth() {
@@ -23,24 +27,27 @@ int AVVideo::getFps() {
 	return this->fps;
 }
 
+//TODO: Muss man hier einen Pointer auf den unique_ptr zurückgeben?
 AVFrame* AVVideo::getFrame(int index) {
-	throw "Not yet implemented";
+    return video.at(index);
 }
 
 void AVVideo::insertFrame(unique_ptr<AVFrame> frame, int index) {
-	throw "Not yet implemented";
+    video.insert(video.begin() + index, frame);
 }
 
 void AVVideo::removeFrame(int index) {
-	throw "Not yet implemented";
+    if(index < video.size())
+        video.erase(video.begin() + index);
 }
 
 void AVVideo::insertFrames(vector<unique_ptr<AVFrame>>& frames, int index) {
-	throw "Not yet implemented";
+    if(index <= video.size())
+        video.insert(video.begin() + index, frames.begin(), frames.end());
 }
 
 int AVVideo::getNumberOfFrames() {
-	throw "Not yet implemented";
+    return video.size();
 }
 
 
