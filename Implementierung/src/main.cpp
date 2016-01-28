@@ -1,8 +1,11 @@
 #include <QApplication>
+#include "gui/MainWindow.h"
 
-int main(int argc,char* argv[]) {
-    Q_UNUSED(argc);
-    Q_UNUSED(argv);
+int main(int argc, char *argv[])
+{
+    QApplication a(argc, argv);
+    GUI::MainWindow w;
+    w.show();
 
-    return 0;
+    return a.exec();
 }

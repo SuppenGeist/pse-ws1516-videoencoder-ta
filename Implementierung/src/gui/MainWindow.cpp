@@ -1,53 +1,69 @@
-/*#include <exception>
-
 #include "MainWindow.h"
 #include "QWidget.h"
-#include "MainWindowMemento.h"
-#include "Project.h"
+#include "memento/MainWindowMemento.h"
+#include "model/Project.h"
+#include "ui_mainwindow.h"
+GUI::MainWindow::MainWindow(QWidget* parent) {
+    ui = new Ui::MainWindow;
 
-MainWindow::MainWindow(QWidget* parent) {
+    ui->setupUi(this);
+    statusbar=ui->statusbar;
+    action_newProject=ui->actionNew;
+    action_loadProject=ui->actionLoad;
+    action_saveAs=ui->actionSaveAs;
+    action_saveProject=ui->actionSave;
+    action_redo=ui->actionRedo;
+    action_undo=ui->actionUndo;
+    connectActions();
 }
 
-Memento::MainWindowMemento MainWindow::getMemento() {
+/*Memento::MainWindowMemento MainWindow::getMemento() {
+	throw "Not yet implemented";
+
+}
+
+void GUI::MainWindow::restore(MainWindowMemento memento) {
+	throw "Not yet implemented";
+}
+*/
+void GUI::MainWindow::newProject() {
 	throw "Not yet implemented";
 }
 
-void MainWindow::restore(MainWindowMemento memento) {
+void GUI::MainWindow::undo() {
 	throw "Not yet implemented";
 }
 
-void MainWindow::newProject() {
+void GUI::MainWindow::saveAs() {
 	throw "Not yet implemented";
 }
 
-void MainWindow::undo() {
+void GUI::MainWindow::loadProject() {
+    throw "Not yet implemented";
+}
+
+void GUI::MainWindow::saveProject() {
 	throw "Not yet implemented";
 }
 
-void MainWindow::saveAs() {
+void GUI::MainWindow::redo() {
 	throw "Not yet implemented";
 }
 
-void MainWindow::loadProject() {
+void GUI::MainWindow::createUi() {
 	throw "Not yet implemented";
 }
 
-void MainWindow::saveProject() {
-	throw "Not yet implemented";
-}
+void GUI::MainWindow::connectActions() {
+    connect(action_loadProject,SIGNAL(triggered()),this,SLOT(loadProject()));
+    connect(action_newProject, SIGNAL(triggered()),this,SLOT(newProject()));
+    connect(action_saveProject,SIGNAL(triggered()),this, SLOT(saveProject());
+    connect(action_redo,SIGNAL(triggered()),this, SLOT(redo()));
+    connect(action_saveAs,SIGNAL(triggered()),this, SLOT(saveAs()));
+    connect(action_undo,SIGNAL(triggered()),this, SLOT(undo()));
 
-void MainWindow::redo() {
-	throw "Not yet implemented";
 }
-
-void MainWindow::createUi() {
-	throw "Not yet implemented";
-}
-
-void MainWindow::connectActions() {
-	throw "Not yet implemented";
-}
-
+/*
 void MainWindow::createMenuBar() {
 	throw "Not yet implemented";
 }
