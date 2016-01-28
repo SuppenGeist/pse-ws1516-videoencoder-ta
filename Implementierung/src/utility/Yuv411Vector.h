@@ -1,4 +1,4 @@
-/*
+
 
 #ifndef __Yuv411Vector_h__
 #define __Yuv411Vector_h__
@@ -10,8 +10,8 @@ namespace Utility
 
 namespace Utility
 {
-	/**
-	 * A Yuv411Vector.
+
+     // A Yuv411Vector.
 
 	class Yuv411Vector
 	{
@@ -25,4 +25,4 @@ namespace Utility
 }
 
 #endif
-*/
+
