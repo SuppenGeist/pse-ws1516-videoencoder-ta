@@ -26,7 +26,7 @@ namespace Model
          */
 	class AVVideo
 	{
-		private: std::vector<std::unique_ptr<AVFrame> > video;
+        private: vector<unique_ptr<AVFrame>> video;
 		private: int fps;
 		private: int width;
 		private: int height;
@@ -64,7 +64,7 @@ namespace Model
 		/// </summary>
 		/// <param name="index">the index of the frame to return</param>
 		/// <returns>The frame at the given index.</returns>
-		public: AVFrame* getFrame(int index);
+        public: AVFrame* getFrame(int index);
 
 		/// <summary>
 		/// Inserts a frame at the given index.
