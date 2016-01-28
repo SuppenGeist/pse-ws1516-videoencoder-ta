@@ -5,9 +5,6 @@ Benenne "repaintEvent" zu "paintEvent" um.<br>
 <b>Grund:</b> paintEvent ist der korrekte Name fuer die event-Methode.
 <hr>
 ## Video
-Speichere QImages nicht mehr in unique_ptr und aendere auch entsprechend
-die Methoden-Parameter.<br><b>Grund:</b> Einfachere Handhabung.
-<hr>
 Tausche Parameter der insertFrame Methode.
 <br><b>Grund:</b> Default argument ist sonst nicht machbar.
 <hr>
@@ -69,4 +66,8 @@ Entferne Methhode createActions.
 <hr>
 Fuege Membervariable button_pause hinzu.
 <br><b>Grund:</b> Wurde im Entwurf vergessen reinzumachen.
+<hr>
+## Timer
+Lasse Timer von QObject erben.
+<br><b>Grund:</b> Sonst lassen sich slots nicht realisieren.
 <hr>

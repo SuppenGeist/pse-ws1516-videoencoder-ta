@@ -4,6 +4,7 @@
 #include <QImage>
 
 #include <vector>
+#include <memory>
 
 namespace Model
 {
@@ -57,7 +58,7 @@ namespace Model
          * @param index The index to insert the frame at.
          * @param frame The frame to insert.
          */
-        void insertFrame(const QImage& frame, std::size_t index);
+        void insertFrame(std::unique_ptr<QImage> frame, std::size_t index);
 
         /**
          * If the index is invalid nothing happens.
@@ -75,7 +76,7 @@ namespace Model
          * @param index The index to insert the frames at.
          * @param frames The frames to insert.
          */
-        void insertFrames(const std::vector<QImage>& frames, std::size_t index);
+        void insertFrames(std::vector<std::unique_ptr<QImage>>& frames, std::size_t index);
 
         /**
          * The image is copied into the video.
@@ -83,7 +84,7 @@ namespace Model
          * @brief appendFrame Adds the frame to the end of the video.
          * @param frame The frame to append.
          */
-        void appendFrame(const QImage& frame);
+        void appendFrame(std::unique_ptr<QImage> frame);
 
         /**
          * @brief getNumberOfFrames Returns the number of frames in the video.
@@ -92,11 +93,10 @@ namespace Model
         std::size_t getNumberOfFrames() const noexcept;
 
     private:
-        std::vector<QImage>     frames_;
-
-        int                     fps_;
-        int                     width_;
-        int                     height_;
+        std::vector<std::unique_ptr<QImage>>    frames_;
+        int                                     fps_;
+        int                                     width_;
+        int                                     height_;
 	};
 }
 

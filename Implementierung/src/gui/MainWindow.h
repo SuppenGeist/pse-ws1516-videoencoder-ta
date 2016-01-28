@@ -1,4 +1,4 @@
-#include <exception>
+/*#include <exception>
 using namespace std;
 #ifndef __MainWindow_h__
 #define __MainWindow_h__
@@ -31,7 +31,7 @@ namespace GUI
 {
 	/**
 	 * This class is the main window that is shown.
-    */
+
     class MainWindow : public QMainWindow
     {
         Q_OBJECT
@@ -116,4 +116,4 @@ namespace GUI
 }
 
 #endif
-
+*/

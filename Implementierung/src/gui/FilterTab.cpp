@@ -9,8 +9,8 @@
 //#include "FilterContainerTab.h"
 //#include "Filter.h"
 
-GUI::FilterTab::FilterTab(QWidget* parent) {
-}
+//GUI::FilterTab::FilterTab(QWidget* parent) {
+//}
 
 /*Memento::FilterTabMemento FilterTab::getMemento() {
 	throw "Not yet implemented";
@@ -68,7 +68,7 @@ void GUI::FilterTab::save() {
 	throw "Not yet implemented";
 }
 */
-void GUI::FilterTab::listSelectionChanged(QModelIndex index) {
+/*void GUI::FilterTab::listSelectionChanged(QModelIndex index) {
 	throw "Not yet implemented";
 }
 
@@ -95,9 +95,9 @@ void GUI::FilterTab::setFilterList(FilterList list) {
 /*void GUI::FilterTab::setRawVideo(YuvVideo video) {
 	throw "Not yet implemented";
 }
-*/
+
 void GUI::FilterTab::moveFilter(int old, int new_3) {
 	throw "Not yet implemented";
 }
 
-
+*/

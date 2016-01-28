@@ -1,3 +1,8 @@
+/*
+
+#ifndef __FilterTab_h__
+#define __FilterTab_h__
+
 #include <exception>
 #include <string>
 #include <vector>
@@ -6,19 +11,12 @@
 #include <QStringListModel>
 #include <QLabel>
 
-using namespace std;
-
-#ifndef __FilterTab_h__
-#define __FilterTab_h__
-
-#include "QFrame.h"
 // #include "VideoPlayer.h"
 // #include "PreviewControlPanel.h"
 // #include "FrameView.h"
 // #include "PlayerControlPanel.h"
 //#include "FilterContainerTab.h"
 // #include "QWidget.h"
-#include "memento/FilterTabMemento.h"
 //#include "FilterList.h"
 //#include "YuvVideo.h"
 //#include "Filter.h"
@@ -53,7 +51,7 @@ namespace GUI
 {
 	/**
 	 * This class is the tab to filter videos.
-    */
+
 	class FilterTab
 	{
 		private: QPushButton* button_up;
@@ -218,3 +216,4 @@ namespace GUI
 
 #endif
 
+*/

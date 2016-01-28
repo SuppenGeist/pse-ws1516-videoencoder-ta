@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 using namespace std;
 
@@ -25,7 +25,7 @@ namespace GUI
 {
 	/**
 	 * Represents a selectable filter in the gui. Shows a example of the filter and  a checkbox as well as its name.
-    */
+
 	class FilterView
 	{
 		private: QCheckBox* checkbox;
@@ -68,3 +68,4 @@ namespace GUI
 }
 
 #endif
+*/

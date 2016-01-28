@@ -1,4 +1,4 @@
-#include <exception>
+/*#include <exception>
 
 #include "FilterView.h"
 #include "FilterTab.h"
@@ -16,10 +16,11 @@ void GUI::FilterView::checkBoxStateChanged(int state) {
  * void GUI::FilterView::setFilter(Filter filter) {
 	throw "Not yet implemented";
 }
-*/
+
 
 void GUI::FilterView::setFilterTab(FilterTab* filtertab) {
 	this->filterTab = filtertab;
 }
 
 
+*/
