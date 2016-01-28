@@ -29,7 +29,7 @@ namespace GUI
          *
          * @brief updateUi Updates the ui of the control panel.
          */
-        void updateUi();
+        void updateUi() override;
 
     private slots:
         /**

@@ -2,6 +2,7 @@
 
 #include <QFrame>
 #include <QVBoxLayout>
+#include <QHBoxLayout>
 #include <QPushButton>
 #include <QComboBox>
 #include <QSlider>
@@ -124,6 +125,8 @@ void GUI::PlayerControlPanel::nextFrame() {
     for(auto player:players_) {
         player->nextFrame();
     }
+
+    updateUi();
 }
 
 void GUI::PlayerControlPanel::previousFrame() {
@@ -133,6 +136,8 @@ void GUI::PlayerControlPanel::previousFrame() {
     for(auto player:players_) {
         player->previousFrame();
     }
+
+    updateUi();
 }
 
 void GUI::PlayerControlPanel::changeSpeed(int index) {

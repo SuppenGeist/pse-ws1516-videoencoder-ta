@@ -72,6 +72,7 @@ class Name {
 * Kein using namespace in header dateien verwenden.
 * Achtet auf const correctness.
 * Achtet auf exception safety.
+* Methoden die ueberschreiben mit override markieren.
 
 ## Gantt diagramm
 ![Gangdiagramm](../Entwurf/Entwurfsheft/Projektplan_new.PNG)

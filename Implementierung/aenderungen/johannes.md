@@ -61,7 +61,7 @@ Mache masterPlayer protected
 <br><b>Grund:</b> Erbende Klassen koennen sonst nicht auf den MasterPlayer zugreifen.
 <hr>
 ## PlayerControlPanel
-Entferne Methhode createActions.
+Entferne Methode createActions.
 <br><b>Grund:</b> Es gibt keine Actions mehr die erzeugt werden muessen.
 <hr>
 Fuege Membervariable button_pause hinzu.
@@ -70,4 +70,11 @@ Fuege Membervariable button_pause hinzu.
 ## Timer
 Lasse Timer von QObject erben.
 <br><b>Grund:</b> Sonst lassen sich slots nicht realisieren.
+<hr>
+## PreviewControlPanel
+Entferne Methode createActions.
+<br><b>Grund:</b> Es gibt keine Actions mehr die erzeugt werden muessen.
+<hr>
+Entferne Methode updateLabel.
+<br><b>Grund:</b> Die Methode macht dasselbe wie updateUi.
 <hr>
