@@ -29,7 +29,7 @@ int AVVideo::getFps() {
 
 //TODO: Muss man hier einen Pointer auf den unique_ptr zurückgeben?
 AVFrame* AVVideo::getFrame(int index) {
-    return video.at(index);
+    return video.at(index).get();
 }
 
 void AVVideo::insertFrame(unique_ptr<AVFrame> frame, int index) {
