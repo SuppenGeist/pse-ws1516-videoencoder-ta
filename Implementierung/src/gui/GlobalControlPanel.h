@@ -51,6 +51,8 @@ namespace GUI
 		/// <param name="position">The position to show.</param>
 		public: void setPosition(int position);
 
+
+
         void setSpeed(float speed);
 	};
 }

@@ -123,3 +123,9 @@ bool GUI::VideoPlayer::isStopped() const {
 void GUI::VideoPlayer::reset() {
 	throw "Not yet implemented";
 }
+
+std::size_t GUI::VideoPlayer::getNumberOfFrames() const {
+    if(!video_)
+        return 0;
+    return video_->getNumberOfFrames();
+}

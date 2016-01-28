@@ -40,6 +40,9 @@ Aendere Rueckgabetyp von getPosition int->std::size_t.
 Aendere Parametertyp von setPosition int->std::size_t.
 <br><b>Grund:</b> Ueberlauf verhindern.
 <hr>
+Fuege Methode getNumberOfFrames hinzu.
+<br><b>Grund:</b> Der PLayerControlPanel braucht die Methode um den Slider richtig zu updaten.
+<hr>
 ## VideoPlayer
 Aendere Typ der Membervariable position_ int->std::size_t.
 <br><b>Grund:</b> Ueberlauf verhindern.
@@ -58,5 +61,12 @@ weiterleiten zu koennen.
 <hr>
 ## ControlPanel
 Mache masterPlayer protected
-<br><b>Grund:</b> Erbende Klassen koennen sont nicht auf den MasterPlayer zugreifen.
+<br><b>Grund:</b> Erbende Klassen koennen sonst nicht auf den MasterPlayer zugreifen.
+<hr>
+## PlayerControlPanel
+Entferne Methhode createActions.
+<br><b>Grund:</b> Es gibt keine Actions mehr die erzeugt werden muessen.
+<hr>
+Fuege Membervariable button_pause hinzu.
+<br><b>Grund:</b> Wurde im Entwurf vergessen reinzumachen.
 <hr>

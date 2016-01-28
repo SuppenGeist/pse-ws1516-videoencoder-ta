@@ -82,6 +82,12 @@ namespace GUI
          * @brief reset Resets the player.
          */
         virtual void reset() = 0;
+
+        /**
+         * @brief getNumberOfFrames Returns the maximum number of frames.
+         * @return The number of frames.
+         */
+        virtual std::size_t getNumberOfFrames() const = 0;
 	};
 }
 
