@@ -72,3 +72,7 @@ bool GUI::ForwardPlayer::isStopped() const {
 void GUI::ForwardPlayer::reset() {
     throw std::logic_error("Dont call this method");
 }
+
+std::size_t GUI::ForwardPlayer::getNumberOfFrames() const {
+    throw std::logic_error("Dont call this method");
+}

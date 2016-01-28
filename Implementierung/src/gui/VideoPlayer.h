@@ -173,6 +173,12 @@ namespace GUI
          */
         void reset() override;
 
+        /**
+         * @brief getNumberOfFrames Returns the maximum number of frames.
+         * @return The number of frames.
+         */
+        std::size_t getNumberOfFrames() const override;
+
     private:
         std::size_t             position_;
         Model::Video*           video_;

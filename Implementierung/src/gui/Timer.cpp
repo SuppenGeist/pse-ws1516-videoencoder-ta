@@ -36,6 +36,8 @@ void GUI::Timer::pause() {
 }
 
 void GUI::Timer::start() {
+    if(isPlaying())
+        return;
     timer_.start(((double)1000/fps_)*speed_);
 }
 

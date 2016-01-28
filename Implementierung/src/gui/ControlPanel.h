@@ -29,6 +29,8 @@ namespace GUI
         virtual ~ControlPanel() {}
 
         /**
+         * This player must not be added with addVideoPlayer() again.
+         *
          * @brief setMasterVideoPlayer Sets the master video player.
          * @param player The master video player.
          */
