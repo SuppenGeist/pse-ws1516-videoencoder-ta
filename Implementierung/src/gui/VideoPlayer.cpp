@@ -51,6 +51,7 @@ int GUI::VideoPlayer::getFps() const noexcept {
 
 void GUI::VideoPlayer::setMasterControlPanel(ControlPanel& controlPanel) noexcept {
     masterPanel_=&controlPanel;
+    throw "Not yet implemented";
 }
 
 void GUI::VideoPlayer::play() {
@@ -121,4 +122,10 @@ bool GUI::VideoPlayer::isStopped() const {
 
 void GUI::VideoPlayer::reset() {
 	throw "Not yet implemented";
+}
+
+std::size_t GUI::VideoPlayer::getNumberOfFrames() const {
+    if(!video_)
+        return 0;
+    return video_->getNumberOfFrames();
 }

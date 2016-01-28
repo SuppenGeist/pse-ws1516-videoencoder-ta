@@ -106,6 +106,12 @@ namespace GUI
          */
         void reset() override;
 
+        /**
+         * Dont call this method.
+         * On a call a std::logic_error exception is thrown.
+         */
+        std::size_t getNumberOfFrames() const override;
+
     private:
         GlobalControlPanel* forwardPanel_;
 	};

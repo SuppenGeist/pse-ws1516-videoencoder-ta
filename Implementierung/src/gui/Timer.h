@@ -88,7 +88,7 @@ namespace GUI
          */
         void removePlayer(VideoPlayer& player);
 
-    public slots:
+    private slots:
         /**
          * @brief update This method switched the frames in all players.
          */

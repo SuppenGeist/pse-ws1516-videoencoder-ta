@@ -3,15 +3,9 @@
 
 #include <vector>
 
-#include "VideoPlayer.h"
-#include "Player.h"
-
 namespace GUI
 {
-	class ForwardPlayer;
-	class VideoPlayer;
-	class Player;
-	class ControlPanel;
+    class Player;
 }
 
 namespace GUI
@@ -21,40 +15,51 @@ namespace GUI
 	 * Control panels control videoplayers,
      */
     class ControlPanel
-	{
-		public: GUI::ForwardPlayer* forwardPanel;
-		public: GUI::VideoPlayer* masterPanel;
-		protected: std::vector<GUI::VideoPlayer*> players;
-		private: GUI::Player* masterPlayer;
+    {
 
-		/// <summary>
-		/// Constructor.
-		/// </summary>
-		public: ControlPanel();
+    public:
+        /**
+         * @brief ControlPanel Constructor.
+         */
+        ControlPanel() noexcept;
 
-		/// <summary>
-		/// Sets the master video player.
-		/// The master video player is the reference to where to set the position of the slider, if the video is played paused or stopped.
-		/// </summary>
-		/// <param name="player">The master video player.</param>
-        public: void setMasterVideoPlayer(Player& player);
+        /**
+         * @brief ~ControlPanel Destructor.
+         */
+        virtual ~ControlPanel() {}
 
-		/// <summary>
-		/// Adds the video player the list of players to notify.
-		/// </summary>
-		/// <param name="player">The player to add to the list.</param>
-        public: void addVideoPlayer(Player& player);
+        /**
+         * This player must not be added with addVideoPlayer() again.
+         *
+         * @brief setMasterVideoPlayer Sets the master video player.
+         * @param player The master video player.
+         */
+        void setMasterVideoPlayer(Player& player) noexcept;
 
-		/// <summary>
-		/// Updates the ui of the control panel.
-		/// </summary>
-		public: virtual void updateUi() = 0;
+        /**
+         * If the player is already in the list nothing happens.
+         *
+         * @brief addVideoPlayer Adds the video player the list of players to notify.
+         * @param player The player to add to the list.
+         */
+        void addVideoPlayer(Player& player);
 
-		/// <summary>
-		/// Removes the video player from the list of the players to notify.
-		/// </summary>
-		/// <param name="player">The player to remove.</param>
-        public: void removeVideoPlayer(Player& player);
+        /**
+         * @brief updateUi Updates the ui of the control panel.
+         */
+        virtual void updateUi() = 0;
+
+        /**
+         * If the player is not in th elist nothing happens.
+         *
+         * @brief removeVideoPlayer Removes the video player from the list of the players to notify.
+         * @param player The player to remove.
+         */
+        void removeVideoPlayer(Player& player);
+
+    protected:
+        std::vector<Player*>  players_;
+        Player*               masterPlayer_;
 	};
 }
 

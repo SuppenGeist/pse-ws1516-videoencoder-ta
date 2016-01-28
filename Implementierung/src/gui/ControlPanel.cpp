@@ -1,28 +1,33 @@
-#include <exception>
-#include <vector>
-
 #include "ControlPanel.h"
-#include "ForwardPlayer.h"
-#include "VideoPlayer.h"
-#include "Player.h"
-#include <QApplication>
 
-GUI::ControlPanel::ControlPanel() {
+#include <vector>
+#include <algorithm>
+
+#include "Player.h"
+
+GUI::ControlPanel::ControlPanel() noexcept {
+
 }
 
-void GUI::ControlPanel::setMasterVideoPlayer(GUI::Player& player) {
-    Q_UNUSED(player);
-	throw "Not yet implemented";
+void GUI::ControlPanel::setMasterVideoPlayer(GUI::Player& player) noexcept {
+    masterPlayer_=&player;
 }
 
 void GUI::ControlPanel::addVideoPlayer(GUI::Player& player) {
-    Q_UNUSED(player);
-	throw "Not yet implemented";
+    if(std::find(players_.begin(), players_.end(), &player) == players_.end())
+        return;
+
+    if(&player==masterPlayer_)
+        return;
+
+    players_.push_back(&player);
 }
 
 
 void GUI::ControlPanel::removeVideoPlayer(GUI::Player& player) {
-    Q_UNUSED(player);
-	throw "Not yet implemented";
+    std::size_t pos = std::find(players_.begin(), players_.end(), &player) - players_.begin();
+    if(pos<players_.size()) {
+        players_.erase(players_.begin()+pos);
+    }
 }
 

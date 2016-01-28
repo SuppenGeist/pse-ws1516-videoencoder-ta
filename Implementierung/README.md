@@ -73,5 +73,5 @@ class Name {
 * Achtet auf const correctness.
 * Achtet auf exception safety.
 
-## Gangdiagramm
+## Gantt diagramm
 ![Gangdiagramm](../Entwurf/Entwurfsheft/Projektplan_new.PNG)
