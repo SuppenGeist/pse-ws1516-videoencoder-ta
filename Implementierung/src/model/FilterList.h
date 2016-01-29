@@ -1,4 +1,4 @@
-/*
+
 #include <exception>
 #include <string>
 #include <vector>
@@ -7,10 +7,10 @@ using namespace std;
 #ifndef __FilterList_h__
 #define __FilterList_h__
 
-// #include "FilterApplier.h"
+#include "FilterApplier.h"
 #include "Filter.h"
-// #include "FilterReset.h"
-// #include "LoadFilterconfig.h"
+#include "FilterReset.h"
+#include "LoadFilterconfig.h"
 
 namespace Model
 {
@@ -27,16 +27,15 @@ namespace UndoRedo
 namespace Model
 {
 	/**
-	 * This class contains a filter configuration. Every filter can only be once in thi slist.
-
+     * This class contains a filter configuration. Every filter can only be once in this list.
+    */
 	class FilterList
-	{
-		private: vector filters:std:;
+    {
 		public: Model::FilterApplier* list;
 		public: UndoRedo::FilterReset* filterList;
 		public: UndoRedo::LoadFilterconfig* oldList;
 		public: UndoRedo::LoadFilterconfig* newList;
-		private: std::vector<Model::Filter*> filters;
+        private: std::vector<Model::Filter*> filters;
 
 		/// <summary>
 		/// Constructor.
@@ -81,7 +80,7 @@ namespace Model
 		/// </summary>
 		/// <param name="index">Index of the filter.</param>
 		/// <returns>The filter at the given index.</returns>
-		public: Model::Filter* getFIlterByIndex(int index);
+        public: Model::Filter* getFilterByIndex(int index);
 
 		/// <summary>
 		/// Returns the index of a filter.
