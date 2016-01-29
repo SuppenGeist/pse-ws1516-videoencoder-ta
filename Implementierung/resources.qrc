@@ -6,4 +6,7 @@
         <file>resources/icons/prev.png</file>
         <file>resources/icons/stop.png</file>
     </qresource>
+    <qresource prefix="/previewPic">
+        <file>resources/previewPic/flower_example.png</file>
+    </qresource>
 </RCC>

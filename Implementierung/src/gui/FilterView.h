@@ -1,4 +1,4 @@
-/*
+
 #include <exception>
 using namespace std;
 
@@ -9,11 +9,13 @@ using namespace std;
 #include "QWidget.h"
 #include "Filter.h"
 #include <QCheckBox>
-
+#include <QFrame.h>
+#include <QLabel>
+#include <QVBoxLayout>
 namespace GUI
 {
-	class FilterTab;
-	class QWidget;
+    class FilterTab;
+    class QWidget;
 	class FilterView;
 }
 namespace Model
@@ -25,18 +27,20 @@ namespace GUI
 {
 	/**
 	 * Represents a selectable filter in the gui. Shows a example of the filter and  a checkbox as well as its name.
-
-	class FilterView
+    */
+    class FilterView : public QFrame
 	{
 		private: QCheckBox* checkbox;
 		private: QLabel* preview;
 		private: GUI::FilterTab* filterTab;
 		private: Model::Filter* filter;
+    private: QWidget *verticalLayoutWidget;
+    private: QVBoxLayout *verticalLayout;
 
 		/// <summary>
 		/// Constructor.
 		/// </summary>
-		public: FilterView(GUI::QWidget* parent);
+        public: FilterView(QWidget* parent);
 
 		/// <summary>
 		/// Slot: connected with checkbox.stateChanged(state : int)
@@ -49,7 +53,7 @@ namespace GUI
 		/// Sets the filter this view represents.
 		/// </summary>
 		/// <param name="filter">The filter for this view.</param>
-		public: void setFilter(Model::Filter filter);
+        public: void setFilter(Model::Filter* filter);
 
 		/// <summary>
 		/// Sets the tab this view is contained in.
@@ -68,4 +72,4 @@ namespace GUI
 }
 
 #endif
-*/
+
