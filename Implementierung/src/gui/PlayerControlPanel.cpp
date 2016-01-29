@@ -49,7 +49,7 @@ void GUI::PlayerControlPanel::createUi() {
         button_previousFrame=new QPushButton;
         comboBox_speed=new QComboBox;
 
-        button_play->setIcon(QIcon(":/icons/resources/icons/stop.png"));
+        button_play->setIcon(QIcon(":/icons/resources/icons/play.png"));
         button_pause->setIcon(QIcon(":/icons/resources/icons/pause.png"));
         button_stop->setIcon(QIcon(":/icons/resources/icons/stop.png"));
         button_nextFrame->setIcon(QIcon(":/icons/resources/icons/next.png"));

@@ -1,40 +1,73 @@
 #include "GlobalControlPanel.h"
-#include "ControlPanel.h"
-#include <QApplication>
+
+#include "Player.h"
 
 GUI::GlobalControlPanel::GlobalControlPanel() {
 }
 
 void GUI::GlobalControlPanel::updateUi() {
-	throw "Not yet implemented";
+    //No gui to update
 }
 
 void GUI::GlobalControlPanel::play() {
-	throw "Not yet implemented";
+    if(masterPlayer_)
+        masterPlayer_->play();
+
+    for(auto player:players_) {
+        player->play();
+    }
 }
 
 void GUI::GlobalControlPanel::pause() {
-	throw "Not yet implemented";
+    if(masterPlayer_)
+        masterPlayer_->pause();
+
+    for(auto player:players_) {
+        player->pause();
+    }
 }
 
 void GUI::GlobalControlPanel::stop() {
-	throw "Not yet implemented";
+    if(masterPlayer_)
+        masterPlayer_->stop();
+
+    for(auto player:players_) {
+        player->stop();
+    }
 }
 
 void GUI::GlobalControlPanel::nextFrame() {
-	throw "Not yet implemented";
+    if(masterPlayer_)
+        masterPlayer_->nextFrame();
+
+    for(auto player:players_) {
+        player->nextFrame();
+    }
 }
 
 void GUI::GlobalControlPanel::previousFrame() {
-	throw "Not yet implemented";
+    if(masterPlayer_)
+        masterPlayer_->previousFrame();
+
+    for(auto player:players_) {
+        player->previousFrame();
+    }
 }
 
 void GUI::GlobalControlPanel::setPosition(int position) {
-    Q_UNUSED(position);
-	throw "Not yet implemented";
+    if(masterPlayer_)
+        masterPlayer_->setPosition(position);
+
+    for(auto player:players_) {
+        player->setPosition(position);
+    }
 }
 
 void GUI::GlobalControlPanel::setSpeed(float speed) {
-    Q_UNUSED(speed);
-    throw "Not yet implemented";
+    if(masterPlayer_)
+        masterPlayer_->setSpeed(speed);
+
+    for(auto player:players_) {
+        player->setSpeed(speed);
+    }
 }

@@ -10,49 +10,53 @@ namespace GUI
      */
     class GlobalControlPanel: public ControlPanel
     {
-        /// <summary>
-		/// Constructor.
-		/// </summary>
-		public: GlobalControlPanel();
+    public:
+        /**
+         * @brief GlobalControlPanel Constructor.
+         */
+        GlobalControlPanel();
 
-		/// <summary>
-		/// Updates the ui of the control panel.
-		/// </summary>
-		public: void updateUi();
+        /**
+         * @brief updateUi Updates the ui of the control panel.
+         */
+        void updateUi() override;
 
-		/// <summary>
-		/// Sends a play signal to the players.
-		/// </summary>
-		public: void play();
+        /**
+         * @brief play Sends a play signal to the players.
+         */
+        void play();
 
-		/// <summary>
-		/// Sends a pause signal to the players.
-		/// </summary>
-		public: void pause();
+        /**
+         * @brief pause Sends a pause signal to the players.
+         */
+        void pause();
 
-		/// <summary>
-		/// Sends a stop signal to the players.
-		/// </summary>
-		public: void stop();
+        /**
+         * @brief stop Sends a stop signal to the players.
+         */
+        void stop();
 
-		/// <summary>
-		/// Sends a nextFrame signal to the players.
-		/// </summary>
-		public: void nextFrame();
+        /**
+         * @brief nextFrame Sends a nextFrame signal to the players.
+         */
+        void nextFrame();
 
-		/// <summary>
-		/// Sends a previousFrame signal to the players.
-		/// </summary>
-		public: void previousFrame();
+        /**
+         * @brief previousFrame Sends a previousFrame signal to the players.
+         */
+        void previousFrame();
 
-		/// <summary>
-		/// Sends a setPosition signal to the players.
-		/// </summary>
-		/// <param name="position">The position to show.</param>
-		public: void setPosition(int position);
+        /**
+         * @brief setPosition Sends a setPosition signal to the players.
+         * @param position The position to show.
+         */
+        void setPosition(int position);
 
 
-
+        /**
+         * @brief setSpeed Sets the speed to play at.
+         * @param speed The new speed.
+         */
         void setSpeed(float speed);
 	};
 }
