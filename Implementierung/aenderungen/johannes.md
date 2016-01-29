@@ -78,3 +78,10 @@ Entferne Methode createActions.
 Entferne Methode updateLabel.
 <br><b>Grund:</b> Die Methode macht dasselbe wie updateUi.
 <hr>
+## YuvFileOpenDialog
+Aendere Datentyp von model_recentlyUsed QListViewModel->QStringListModel.
+<br><b>Grund:</b> QListViewModel gibt es garnicht.
+<hr>
+Aendere Datentyp von button_chooseFile Qbutton->QPushButton
+<br><b>Grund:</b> QButton gibt es garnicht.
+<hr>

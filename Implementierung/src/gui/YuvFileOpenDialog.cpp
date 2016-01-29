@@ -1,27 +1,28 @@
-/*#include <exception>
-
 #include "YuvFileOpenDialog.h"
-#include "QWidget.h"
-#include "QDialog.h"
 
-YuvFileOpenDialog::YuvFileOpenDialog(QWidget* parent) {
+#include <QWidget>
+#include <QDialog>
+
+GUI::YuvFileOpenDialog::YuvFileOpenDialog(QWidget* parent):QDialog(parent) {
+
 }
 
-QString YuvFileOpenDialog::getFilename() {
+QString GUI::YuvFileOpenDialog::getFilename() {
 	throw "Not yet implemented";
 }
 
-void YuvFileOpenDialog::createUi() {
+void GUI::YuvFileOpenDialog::createUi() {
 	throw "Not yet implemented";
 }
 
-void YuvFileOpenDialog::show() {
+void GUI::YuvFileOpenDialog::show() {
 	throw "Not yet implemented";
 }
 
-bool YuvFileOpenDialog::wasSuccessfull() {
+bool GUI::YuvFileOpenDialog::wasSuccessfull() {
 	throw "Not yet implemented";
 }
 
-
-*/
+void GUI::YuvFileOpenDialog::loadRecentlyUsed() {
+    throw "Not yet implemented";
+}

@@ -63,6 +63,8 @@ class Name {
 
 &nbsp;&nbsp;&nbsp;data fields
 
+&nbsp;&nbsp;&nbsp;static member functions
+
 &nbsp;&nbsp;&nbsp;member functions
 
 }

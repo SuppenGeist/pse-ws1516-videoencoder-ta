@@ -1,70 +1,66 @@
-/*
-#include <exception>
-using namespace std;
-
 #ifndef __YuvFileOpenDialog_h__
 #define __YuvFileOpenDialog_h__
 
-// #include "QWidget.h"
-#include "QDialog.h"
-
-namespace GUI
-{
-	class QWidget;
-	// class QDialog;
-	class YuvFileOpenDialog;
-}
+#include <QWidget>
+#include <QDialog>
+#include <QListView>
+#include <QStringListModel>
+#include <QLabel>
+#include <QPushButton>
 
 namespace GUI
 {
 	/**
 	 * This class is the dialog that gets shown when the user wants to select a yuv file to load.
+     */
+    class YuvFileOpenDialog: public QDialog
+    {
+        public:
+        /**
+         * @brief YuvFileOpenDialog Constructor.
+         * @param parent
+         */
+        YuvFileOpenDialog(QWidget* parent = 0);
 
-	class YuvFileOpenDialog: public GUI::QDialog
-	{
-		private: QPushButton* button_cancel;
-		private: QPushButton* button_ok;
-		private: QListView* listView_redcentlyUsed;
-		private: static QListViewModel* model_recentlyUsed;
-		private: QLabel* label_selectedFile;
-		private: QButton* button_chooseFile;
-		private: QLabel* label_recentlyUsed;
+        /**
+         * @brief getFilename Returns the absolute path to the file the user wants to open.
+         * @return Absolute path to the user chosen file.
+         */
+        QString getFilename();
 
-		/// <summary>
-		/// Constructor.
-		/// </summary>
-		public: YuvFileOpenDialog(GUI::QWidget* parent = 0);
+        /**
+         * @brief show Shows the dialog.
+         */
+        void show();
 
-		/// <summary>
-		/// Returns the absolute path to the file the user wants to open.
-		/// </summary>
-		/// <returns>Absolute path to the user chosen file.</returns>
-		public: QString getFilename();
+        /**
+         * @brief wasSuccessfull Whether the user clicked ok or cancel.
+         * @return True if the user clicked ok. false otherwise.
+         */
+        bool wasSuccessfull();
 
-		/// <summary>
-		/// Creates the ui.
-		/// </summary>
-		private: void createUi();
+    private:
+    static QStringListModel*    model_recentlyUsed;
 
-		/// <summary>
-		/// Shows the dialog.
-		/// </summary>
-		public: void show();
+    QPushButton*                button_cancel_;
+    QPushButton*                button_ok_;
+    QListView*                  listView_redcentlyUsed_;
+    QLabel*                     label_selectedFile_;
+    QPushButton*                button_chooseFile_;
+    QLabel*                     label_recentlyUsed_;
+    bool                        wasSuccesfull_;
 
-		/// <summary>
-		/// Whether the user clicked ok or cancel.
-		/// </summary>
-		/// <returns>True if the user clicked ok. false otherwise.</returns>
-		public: bool wasSuccessfull();
+    /**
+     * @brief loadRecentlyUsed Loads the recently opened yuv files.
+     */
+    static void loadRecentlyUsed();
 
-		/// <summary>
-		/// Loads the recently opened yuv files.
-		/// </summary>
-		private: static void loadRecentlyUsed() {
-			throw "Not yet implemented";
-		}
+    /**
+     * @brief createUi Creates the ui.
+     */
+    void createUi();
+
 	};
 }
 
 #endif
-*/

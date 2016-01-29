@@ -1,15 +1,15 @@
-#include <exception>
-
 #include "FilterView.h"
+
+#include <QWidget>
+
+
 #include "FilterTab.h"
-#include "QWidget.h"
-#include "Filter.h"
-#include "src/utility/filterapplier.h";
+#include "../model/filters/Filter.h"
 #include "src/model/FilterList.h"
 
 namespace GUI {
-FilterView::FilterView(QWidget* parent) {
-    setParent(parent);
+FilterView::FilterView(QWidget* parent):QFrame(parent) {
+    /*setParent(parent);
     resize(200,200);
 
     QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
@@ -38,18 +38,20 @@ FilterView::FilterView(QWidget* parent) {
             checkbox = new QCheckBox(verticalLayoutWidget);
             checkbox->setText(QString("test"));
             verticalLayout->addWidget(preview);
-            verticalLayout->addWidget(checkbox);
+            verticalLayout->addWidget(checkbox);*/
 }
 
 void GUI::FilterView::checkBoxStateChanged(int state) {
-    if(state = 0) {
+    Q_UNUSED(state);
+    /*if(state = 0) {
         filterTab->removeFilter(filter->getName());
     } else {
         filterTab->addFilter(filter);
-    }
+    }*/
 }
 
 void GUI::FilterView::setFilter(Model::Filter* filter) {
+    Q_UNUSED(filter);
     /*
     this->filter = filter;
     checkbox->setText(filter->getName());
@@ -69,7 +71,8 @@ void GUI::FilterView::setFilter(Model::Filter* filter) {
 
 
 void GUI::FilterView::setFilterTab(FilterTab* filtertab) {
-	this->filterTab = filtertab;
+    Q_UNUSED(filtertab);
+    //this->filterTab = filtertab;
 }
 
 }

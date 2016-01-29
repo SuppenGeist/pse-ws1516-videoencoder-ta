@@ -1,17 +1,14 @@
-
-#include <exception>
-using namespace std;
-
 #ifndef __FilterView_h__
 #define __FilterView_h__
 
-#include "FilterTab.h"
-#include "QWidget.h"
-#include "Filter.h"
+#include <QFrame>
+#include <QWidget>
 #include <QCheckBox>
-#include <QFrame.h>
 #include <QLabel>
-#include <QVBoxLayout>
+
+#include "FilterTab.h"
+#include "../model/filters/Filter.h"
+
 namespace GUI
 {
     class FilterTab;
@@ -33,9 +30,7 @@ namespace GUI
 		private: QCheckBox* checkbox;
 		private: QLabel* preview;
 		private: GUI::FilterTab* filterTab;
-		private: Model::Filter* filter;
-    private: QWidget *verticalLayoutWidget;
-    private: QVBoxLayout *verticalLayout;
+        private: Model::Filter* filter;
 
 		/// <summary>
 		/// Constructor.
