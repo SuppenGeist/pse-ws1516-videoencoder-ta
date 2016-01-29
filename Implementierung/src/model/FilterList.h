@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 #include <string>
 #include <vector>
@@ -28,7 +28,7 @@ namespace Model
 {
 	/**
      * This class contains a filter configuration. Every filter can only be once in this list.
-    */
+
 	class FilterList
     {
 		public: Model::FilterApplier* list;
@@ -92,4 +92,4 @@ namespace Model
 }
 
 #endif
-
+*/

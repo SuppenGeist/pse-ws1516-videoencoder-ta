@@ -1,4 +1,4 @@
-#include <exception>
+/*#include <exception>
 
 #include "FilterConfigurationSaver.h"
 #include "FilterList.h"
@@ -20,3 +20,4 @@ void FilterConfigurationSaver::save() {
 }
 
 
+*/
