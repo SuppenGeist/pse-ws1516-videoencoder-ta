@@ -45,8 +45,8 @@ void GUI::PreviewControlPanel::createUi() {
     button_previousFrame->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     label_position->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
-    button_nextFrame->setIcon(QIcon(":/icons/resources/next.png"));
-    button_previousFrame->setIcon(QIcon(":/icons/resources/prev.png"));
+    button_nextFrame->setIcon(QIcon(":/icons/resources/icons/next.png"));
+    button_previousFrame->setIcon(QIcon(":/icons/resources/icons/prev.png"));
 
     label_position->setAlignment(Qt::AlignCenter);
 

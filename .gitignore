@@ -3,6 +3,7 @@
 
 #Qt Userproject
 *.user
+build-*/
 
 # Compiled Object files
 *.slo
