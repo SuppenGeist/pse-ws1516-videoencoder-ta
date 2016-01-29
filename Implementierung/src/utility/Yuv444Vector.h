@@ -3,22 +3,22 @@
 #ifndef __Yuv444Vector_h__
 #define __Yuv444Vector_h__
 
-namespace Utility
-{
-	class Yuv444Vector;
+namespace Utility {
+class Yuv444Vector;
 }
 
-namespace Utility
-{
+namespace Utility {
 
-     // A Yuv444Vector.
+// A Yuv444Vector.
 
-	class Yuv444Vector
-	{
-		private: uint8_t y;
-		private: uint8_t u;
-		private: uint8_t v;
-	};
+class Yuv444Vector {
+  private:
+	uint8_t y;
+  private:
+	uint8_t u;
+  private:
+	uint8_t v;
+};
 }
 
 #endif

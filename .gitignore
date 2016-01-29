@@ -1,5 +1,6 @@
 *~
 .tags*
+*.working
 
 #Qt Userproject
 *.user

@@ -8,69 +8,70 @@
 #include <QRect>
 #include <QSize>
 
-GUI::FrameView::FrameView(QWidget* parent):QWidget(parent),xOffset_(0),yOffset_(0),originalFrame_(nullptr) {
-    setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
+GUI::FrameView::FrameView(QWidget* parent):QWidget(parent),xOffset_(0),yOffset_(0),
+	originalFrame_(nullptr) {
+	setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
 }
 
 void GUI::FrameView::setFrame(QImage& frame) {
-    currentFrame_=originalFrame_->scaled(width(),height(),Qt::KeepAspectRatio);
-    originalFrame_=&frame;
+	currentFrame_=originalFrame_->scaled(width(),height(),Qt::KeepAspectRatio);
+	originalFrame_=&frame;
 
-    updateOffset();
-    update();
+	updateOffset();
+	update();
 }
 
 void GUI::FrameView::clear() {
-    originalFrame_=nullptr;
-    update();
+	originalFrame_=nullptr;
+	update();
 }
 
 void GUI::FrameView::resizeEvent(QResizeEvent* event) {
-    if( size().isEmpty() || !originalFrame_ )
-        return;
+	if( size().isEmpty() || !originalFrame_ )
+		return;
 
-    QSize eRect=event->size();
-    currentFrame_=originalFrame_->scaled(eRect.width(),eRect.height(),Qt::KeepAspectRatio);
+	QSize eRect=event->size();
+	currentFrame_=originalFrame_->scaled(eRect.width(),eRect.height(),Qt::KeepAspectRatio);
 
-    updateOffset();
-    update();
+	updateOffset();
+	update();
 }
 
 void GUI::FrameView::paintEvent(QPaintEvent* event) {
-    if(visibleRegion().isEmpty())
-        return;
+	if(visibleRegion().isEmpty())
+		return;
 
-    if(size().isEmpty())
-        return;
+	if(size().isEmpty())
+		return;
 
-   QPainter p(this);
+	QPainter p(this);
 
-   //Draw the default background color
-   QColor defaultBackground(200,200,200);
-   p.fillRect(event->rect(),QBrush(defaultBackground));
+	//Draw the default background color
+	QColor defaultBackground(200,200,200);
+	p.fillRect(event->rect(),QBrush(defaultBackground));
 
-   //Draw the frame
-   if(originalFrame_) {
-       p.drawPixmap(xOffset_,yOffset_,currentFrame_.width(),currentFrame_.height(),QPixmap::fromImage(currentFrame_));
-   }
+	//Draw the frame
+	if(originalFrame_) {
+		p.drawPixmap(xOffset_,yOffset_,currentFrame_.width(),currentFrame_.height(),
+		             QPixmap::fromImage(currentFrame_));
+	}
 
-   p.end();
+	p.end();
 }
 
 void GUI::FrameView::updateOffset() {
-    if(!originalFrame_)
-        return;
+	if(!originalFrame_)
+		return;
 
-    if(width()>=currentFrame_.width()) {
-        int diff=width()-currentFrame_.width();
-        xOffset_=diff/2;
-        yOffset_=0;
-    }
-    else if(height()>=currentFrame_.height()){
-        int diff=height()-currentFrame_.height();
-        xOffset_=0;
-        yOffset_=diff/2;
-    }
+	if(width()>=currentFrame_.width()) {
+		int diff=width()-currentFrame_.width();
+		xOffset_=diff/2;
+		yOffset_=0;
+	} else if(height()>=currentFrame_.height()) {
+		int diff=height()-currentFrame_.height();
+		xOffset_=0;
+		yOffset_=diff/2;
+	}
 }
 
 

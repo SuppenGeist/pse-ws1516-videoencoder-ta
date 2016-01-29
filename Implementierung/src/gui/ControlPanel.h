@@ -3,64 +3,61 @@
 
 #include <vector>
 
-namespace GUI
-{
-    class Player;
+namespace GUI {
+class Player;
 }
 
-namespace GUI
-{
+namespace GUI {
+/**
+ * This class is the base class for control panels.
+ * Control panels control videoplayers,
+ */
+class ControlPanel {
+
+  public:
 	/**
-	 * This class is the base class for control panels.
-	 * Control panels control videoplayers,
-     */
-    class ControlPanel
-    {
+	 * @brief ControlPanel Constructor.
+	 */
+	ControlPanel() noexcept;
 
-    public:
-        /**
-         * @brief ControlPanel Constructor.
-         */
-        ControlPanel() noexcept;
+	/**
+	 * @brief ~ControlPanel Destructor.
+	 */
+	virtual ~ControlPanel() {}
 
-        /**
-         * @brief ~ControlPanel Destructor.
-         */
-        virtual ~ControlPanel() {}
+	/**
+	 * This player must not be added with addVideoPlayer() again.
+	 *
+	 * @brief setMasterVideoPlayer Sets the master video player.
+	 * @param player The master video player.
+	 */
+	void setMasterVideoPlayer(Player& player) noexcept;
 
-        /**
-         * This player must not be added with addVideoPlayer() again.
-         *
-         * @brief setMasterVideoPlayer Sets the master video player.
-         * @param player The master video player.
-         */
-        void setMasterVideoPlayer(Player& player) noexcept;
+	/**
+	 * If the player is already in the list nothing happens.
+	 *
+	 * @brief addVideoPlayer Adds the video player the list of players to notify.
+	 * @param player The player to add to the list.
+	 */
+	void addVideoPlayer(Player& player);
 
-        /**
-         * If the player is already in the list nothing happens.
-         *
-         * @brief addVideoPlayer Adds the video player the list of players to notify.
-         * @param player The player to add to the list.
-         */
-        void addVideoPlayer(Player& player);
+	/**
+	 * @brief updateUi Updates the ui of the control panel.
+	 */
+	virtual void updateUi() = 0;
 
-        /**
-         * @brief updateUi Updates the ui of the control panel.
-         */
-        virtual void updateUi() = 0;
+	/**
+	 * If the player is not in th elist nothing happens.
+	 *
+	 * @brief removeVideoPlayer Removes the video player from the list of the players to notify.
+	 * @param player The player to remove.
+	 */
+	void removeVideoPlayer(Player& player);
 
-        /**
-         * If the player is not in th elist nothing happens.
-         *
-         * @brief removeVideoPlayer Removes the video player from the list of the players to notify.
-         * @param player The player to remove.
-         */
-        void removeVideoPlayer(Player& player);
-
-    protected:
-        std::vector<Player*>  players_;
-        Player*               masterPlayer_;
-	};
+  protected:
+	std::vector<Player*>  players_;
+	Player*               masterPlayer_;
+};
 }
 
 #endif

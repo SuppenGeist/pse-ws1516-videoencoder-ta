@@ -11,76 +11,77 @@
 #include "Player.h"
 
 GUI::PreviewControlPanel::PreviewControlPanel(QWidget* parent):QFrame(parent) {
-    createUi();
+	createUi();
 
-    connect(button_nextFrame,SIGNAL(clicked()),this,SLOT(nextFrame()));
-    connect(button_previousFrame,SIGNAL(clicked()),this,SLOT(previousFrame()));
+	connect(button_nextFrame,SIGNAL(clicked()),this,SLOT(nextFrame()));
+	connect(button_previousFrame,SIGNAL(clicked()),this,SLOT(previousFrame()));
 }
 
 void GUI::PreviewControlPanel::updateUi() {
-    Player *player=nullptr;
+	Player *player=nullptr;
 
-    if(masterPlayer_)
-        player=masterPlayer_;
-    else {
-        if(players_.size()>0)
-            player=players_[0];
-        else
-            return;
-    }
-    label_position->setText(QString::number(player->getPosition())+"/"+QString::number(player->getNumberOfFrames()));
+	if(masterPlayer_)
+		player=masterPlayer_;
+	else {
+		if(players_.size()>0)
+			player=players_[0];
+		else
+			return;
+	}
+	label_position->setText(QString::number(player->getPosition())+"/"+QString::number(
+	                            player->getNumberOfFrames()));
 }
 
 void GUI::PreviewControlPanel::createUi() {
-    QHBoxLayout *h_layout=new QHBoxLayout;
+	QHBoxLayout *h_layout=new QHBoxLayout;
 
-    button_nextFrame=new QPushButton;
-    button_previousFrame=new QPushButton;
-    label_position=new QLabel("0/0");
+	button_nextFrame=new QPushButton;
+	button_previousFrame=new QPushButton;
+	label_position=new QLabel("0/0");
 
-    button_nextFrame->setFlat(true);
-    button_previousFrame->setFlat(true);
+	button_nextFrame->setFlat(true);
+	button_previousFrame->setFlat(true);
 
-    button_nextFrame->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    button_previousFrame->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    label_position->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+	button_nextFrame->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+	button_previousFrame->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+	label_position->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
-    button_nextFrame->setIcon(QIcon(":/icons/resources/icons/next.png"));
-    button_previousFrame->setIcon(QIcon(":/icons/resources/icons/prev.png"));
+	button_nextFrame->setIcon(QIcon(":/icons/resources/icons/next.png"));
+	button_previousFrame->setIcon(QIcon(":/icons/resources/icons/prev.png"));
 
-    label_position->setAlignment(Qt::AlignCenter);
+	label_position->setAlignment(Qt::AlignCenter);
 
-    QFont labelFont("Arial",15);
-    label_position->setFont(labelFont);
+	QFont labelFont("Arial",15);
+	label_position->setFont(labelFont);
 
-    h_layout->addWidget(button_previousFrame);
-    h_layout->addWidget(label_position);
-    h_layout->addWidget(button_nextFrame);
+	h_layout->addWidget(button_previousFrame);
+	h_layout->addWidget(label_position);
+	h_layout->addWidget(button_nextFrame);
 
-    setLayout(h_layout);
-    setStyleSheet("background: rgb(175, 175, 175)");
+	setLayout(h_layout);
+	setStyleSheet("background: rgb(175, 175, 175)");
 }
 
 void GUI::PreviewControlPanel::nextFrame() {
-    if(masterPlayer_)
-        masterPlayer_->nextFrame();
+	if(masterPlayer_)
+		masterPlayer_->nextFrame();
 
-    for(auto player:players_) {
-        player->nextFrame();
-    }
+	for(auto player:players_) {
+		player->nextFrame();
+	}
 
-    updateUi();
+	updateUi();
 }
 
 void GUI::PreviewControlPanel::previousFrame() {
-    if(masterPlayer_)
-        masterPlayer_->previousFrame();
+	if(masterPlayer_)
+		masterPlayer_->previousFrame();
 
-    for(auto player:players_) {
-        player->previousFrame();
-    }
+	for(auto player:players_) {
+		player->previousFrame();
+	}
 
-    updateUi();
+	updateUi();
 }
 
 
