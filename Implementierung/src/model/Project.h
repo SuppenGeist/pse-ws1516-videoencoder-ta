@@ -1,4 +1,4 @@
-/*
+#include <QString>
 #include <exception>
 using namespace std;
 
@@ -6,7 +6,7 @@ using namespace std;
 #define __Project_h__
 
 // #include "MainWindow.h"
-#include "MainWindowMemento.h"
+// #include "MainWindowMemento.h"
 
 namespace GUI
 {
@@ -23,8 +23,8 @@ namespace Model
 
 namespace Model
 {
-	/**
-	 * This class contains the different mementos.
+
+     /** This class contains the different mementos.
 
 	class Project
 	{
@@ -72,4 +72,4 @@ namespace Model
 }
 
 #endif
-*/
+
