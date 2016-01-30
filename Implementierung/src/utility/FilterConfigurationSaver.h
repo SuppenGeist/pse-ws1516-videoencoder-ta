@@ -21,14 +21,14 @@ namespace Utility
 	class FilterConfigurationSaver
 	{
         private: QFile fileout;
-        private: Model::FilterList filterList;
+        private: Model::FilterList& filterList;
 
 		/// <summary>
 		/// Constructor.
 		/// </summary>
 		/// <param name="file">Absolute path to the file to save to.</param>
 		/// <param name="filterList">The filterlist to save.</param>
-		public: FilterConfigurationSaver(QString file, Model::FilterList& filterList);
+        public: FilterConfigurationSaver(QString file, Model::FilterList& filterList_);
 
 		/// <summary>
 		/// Saves the filterlist.

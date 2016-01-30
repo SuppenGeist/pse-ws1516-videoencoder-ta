@@ -6,7 +6,7 @@
 #include "../model/filters/Filter.h"
 
 
-Utility::FilterConfigurationSaver::FilterConfigurationSaver(QString file, Model::FilterList& filterList) {
+Utility::FilterConfigurationSaver::FilterConfigurationSaver(QString file, Model::FilterList& filterList_): filterList(filterList_) {
 QFile fileout(file);
 }
 
