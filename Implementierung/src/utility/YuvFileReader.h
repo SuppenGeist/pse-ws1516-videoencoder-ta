@@ -1,11 +1,14 @@
-/*
+
 #include <exception>
+#include <QFile>
+#include <QDataStream>
+#include <memory>
 using namespace std;
 
 #ifndef __YuvFileReader_h__
 #define __YuvFileReader_h__
 
-#include "Video.h"
+//#include "Video.h"
 
 namespace GUI
 {
@@ -18,15 +21,18 @@ namespace Utility
 
 namespace Utility
 {
-	/**
-	 * This is the base class for all different yuv file readers.
 
-	__abstract class YuvFileReader
+     // This is the base class for all different yuv file readers.
+
+    class YuvFileReader
 	{
-		protected: unique_ptr<QByteArray> binaryData;
-		protected: int width;
-		protected: int height;
-		protected: unique_ptr<GUI::Video> video;
+    protected: unique_ptr<QByteArray> binaryData_;
+    protected: int width_;
+    protected: int height_;
+    protected: unique_ptr<GUI::Video> video_;
+    protected: QFile file_;
+    protected: QDataStream dataStream_;
+
 
 		/// <summary>
 		/// Constructor.
@@ -48,10 +54,10 @@ namespace Utility
 		/// <param name="value">The value to clamp.</param>
 		/// <returns>The clamped value.</returns>
 		public: static int clamp(int value) {
-			throw "Not yet implemented";
+            return value < 0 ? 0 : value > 255 ? 255 : value;
 		}
 	};
 }
 
 #endif
-*/
+

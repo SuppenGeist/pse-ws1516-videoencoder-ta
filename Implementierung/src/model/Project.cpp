@@ -1,8 +1,9 @@
-/*#include <exception>
+/*
+ * #include <exception>
 
 #include "Project.h"
-#include "MainWindow.h"
-#include "MainWindowMemento.h"
+//#include "MainWindow.h"
+//#include "MainWindowMemento.h"
 
 Project::Project(QString name) {
 }

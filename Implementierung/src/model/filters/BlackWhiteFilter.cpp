@@ -1,7 +1,7 @@
 #include <string>
 
 #include "BlackWhiteFilter.h"
-#include "../Filter.h"
+//#include "../Filter.h"
 
 Model::BlackWhiteFilter::BlackWhiteFilter() {
 
