@@ -223,18 +223,14 @@ SOURCES += \
     src/utility/RGBDifferenceCalculator.cpp \
     src/utility/RGBHistogrammCalculator.cpp \
     src/utility/VideoConverter.cpp \
-    src/utility/VideoLoader.cpp \
     src/utility/Yuv411FileReader.cpp \
     src/utility/Yuv411FileSaver.cpp \
-    src/utility/Yuv411Vector.cpp \
     src/utility/Yuv420FIleReader.cpp \
     src/utility/Yuv420FileSaver.cpp \
     src/utility/Yuv422FileReader.cpp \
     src/utility/Yuv422FileSaver.cpp \
-    src/utility/Yuv422Vector.cpp \
     src/utility/Yuv444FileReader.cpp \
     src/utility/Yuv444FileSaver.cpp \
-    src/utility/Yuv444Vector.cpp \
     src/utility/YuvFileReader.cpp \
     src/utility/YuvFileSaver.cpp \
     src/main.cpp
