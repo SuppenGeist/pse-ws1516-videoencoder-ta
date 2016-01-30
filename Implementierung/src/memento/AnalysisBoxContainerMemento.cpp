@@ -1,19 +1,16 @@
-/*#include <exception>
-#include <vector>
-
 #include "AnalysisBoxContainerMemento.h"
+
+#include <vector>
 #include "AnalysisBoxMemento.h"
 
-void AnalysisBoxContainerMemento::analyseBoxMemento() {
+void Memento::AnalysisBoxContainerMemento::analyseBoxMemento() {
 	throw "Not yet implemented";
 }
 
-vector<Memento::AnalysisBoxMemento> AnalysisBoxContainerMemento::getAnalysisBoxList() {
+vector<Memento::AnalysisBoxMemento> Memento::AnalysisBoxContainerMemento::getAnalysisBoxList() {
 	throw "Not yet implemented";
 }
 
-void AnalysisBoxContainerMemento::setAnalysisBoxList(vectorvector<Memento::AnalysisBoxMemento> analyseBoxList) {
+void Memento::AnalysisBoxContainerMemento::setAnalysisBoxList(std::vector<Memento::AnalysisBoxMemento> analyseBoxList) {
 	throw "Not yet implemented";
 }
-
-*/

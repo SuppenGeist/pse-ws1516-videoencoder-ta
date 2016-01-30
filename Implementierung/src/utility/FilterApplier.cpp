@@ -1,22 +1,21 @@
-/*#include <exception>
-
 #include "FilterApplier.h"
-#include "FilterList.h"
-#include "AVVideo.h"
 
-FilterApplier::FilterApplier(FilterList& list) {
+#include "../model/FilterList.h"
+#include "../model/AVVideo.h"
+
+class AVFrame;
+
+Utility::FilterApplier::FilterApplier(Model::FilterList& list) {
 }
 
-void FilterApplier::applyToVideo(AVVideo& target, AVVideo& video) {
+void Utility::FilterApplier::applyToVideo(Model::AVVideo& target, Model::AVVideo& video) {
 	throw "Not yet implemented";
 }
 
-void FilterApplier::initFilters() {
+void Utility::FilterApplier::initFilters() {
 	throw "Not yet implemented";
 }
 
-AVFrame FilterApplier::applyToFrame(AVFrame& frame) {
+AVFrame Utility::FilterApplier::applyToFrame(AVFrame& frame) {
 	throw "Not yet implemented";
 }
-
-*/

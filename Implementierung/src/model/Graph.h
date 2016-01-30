@@ -1,12 +1,7 @@
-/*
-#include <exception>
-#include <vector>
-using namespace std;
-
 #ifndef __Graph_h__
 #define __Graph_h__
 
-// #include "EncodedVideo.h"
+#include <vector>
 
 namespace Model
 {
@@ -18,10 +13,10 @@ namespace Model
 {
 	/**
 	 * This class is a graph.
-
+     */
 	class Graph
 	{
-		private: vector<double> graph;
+    private: std::vector<double> graph;
 		public: Model::EncodedVideo* bitrate;
 		public: Model::EncodedVideo* psnr;
 		public: Model::EncodedVideo* redHisto;
@@ -67,4 +62,3 @@ namespace Model
 }
 
 #endif
-*/

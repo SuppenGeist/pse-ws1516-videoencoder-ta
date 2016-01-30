@@ -1,25 +1,18 @@
-/*
-#include <exception>
-using namespace std;
-
 #ifndef __FilterApplier_h__
 #define __FilterApplier_h__
-
-#include "FilterList.h"
-#include "AVVideo.h"
 
 namespace Model
 {
 	class FilterList;
-	class AVVideo;
-	class FilterApplier;
+    class AVVideo;
 }
+class AVFrame;
 
-namespace Model
+namespace Utility
 {
 	/**
 	 * Applies filters of a given FilterList to a video.
-
+     */
 	class FilterApplier
 	{
 		private: Model::FilterList* list;
@@ -52,4 +45,3 @@ namespace Model
 }
 
 #endif
-*/

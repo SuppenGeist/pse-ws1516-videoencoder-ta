@@ -1,7 +1,3 @@
-/*
-#include <exception>
-using namespace std;
-
 #ifndef __MainWindowMemento_h__
 #define __MainWindowMemento_h__
 
@@ -19,7 +15,7 @@ namespace Memento
 {
 	/**
 	 * This class is the memento for the MainWindow.
-
+     */
 	class MainWindowMemento
 	{
 		private: int selectedTab;
@@ -70,4 +66,3 @@ namespace Memento
 }
 
 #endif
-*/

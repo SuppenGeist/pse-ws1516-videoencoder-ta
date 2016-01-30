@@ -1,42 +1,38 @@
-/*#include <exception>
-
 #include "AnalysisTabMemento.h"
-#include "AnalysisBoxContainerMemento.h"
-#include "LoadAnalysisVideo.h"
 
-AnalysisTabMemento::AnalysisTabMemento() {
+#include "AnalysisBoxContainerMemento.h"
+
+Memento::AnalysisTabMemento::AnalysisTabMemento() {
 }
 
-int AnalysisTabMemento::getCurrentVideoPosition() {
+int Memento::AnalysisTabMemento::getCurrentVideoPosition() {
 	return this->currentVideoPosition;
 }
 
-void AnalysisTabMemento::setCurrentVideoPosition(int currentVideoPosition) {
+void Memento::AnalysisTabMemento::setCurrentVideoPosition(int currentVideoPosition) {
 	this->currentVideoPosition = currentVideoPosition;
 }
 
-int AnalysisTabMemento::getCurrentlyShownAnalysisVideo() {
+int Memento::AnalysisTabMemento::getCurrentlyShownAnalysisVideo() {
 	throw "Not yet implemented";
 }
 
-void AnalysisTabMemento::setCurrentlyShownAnalysisVideo(int currentlyShownAnalysisVideo) {
+void Memento::AnalysisTabMemento::setCurrentlyShownAnalysisVideo(int currentlyShownAnalysisVideo) {
 	throw "Not yet implemented";
 }
 
-float AnalysisTabMemento::getCurrentSpeed() {
+float Memento::AnalysisTabMemento::getCurrentSpeed() {
 	return this->currentSpeed;
 }
 
-void AnalysisTabMemento::setCurrentSpeed(float currentSpeed) {
+void Memento::AnalysisTabMemento::setCurrentSpeed(float currentSpeed) {
 	this->currentSpeed = currentSpeed;
 }
 
-Memento::AnalysisBoxContainerMemento AnalysisTabMemento::getAnalysisBoxContainerMemento() {
+Memento::AnalysisBoxContainerMemento Memento::AnalysisTabMemento::getAnalysisBoxContainerMemento() {
 	throw "Not yet implemented";
 }
 
-void AnalysisTabMemento::setAnalysisBoxContainerMemento(AnalysisBoxContainerMemento analysisBoxContainerMemento) {
+void Memento::AnalysisTabMemento::setAnalysisBoxContainerMemento(AnalysisBoxContainerMemento analysisBoxContainerMemento) {
 	throw "Not yet implemented";
 }
-
-*/

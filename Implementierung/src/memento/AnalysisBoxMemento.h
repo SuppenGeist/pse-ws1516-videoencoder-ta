@@ -1,12 +1,8 @@
-/*
-#include <exception>
-using namespace std;
-
 #ifndef __AnalysisBoxMemento_h__
 #define __AnalysisBoxMemento_h__
 
-// #include "Video.h"
-#include "Graph.h"
+#include "../model/Graph.h"
+#include <QString>
 
 namespace GUI
 {
@@ -25,7 +21,7 @@ namespace Memento
 {
 	/**
 	 * This class is the memento for the AnalysisBox.
-
+     */
 	class AnalysisBoxMemento
 	{
 		private: QString videoPath;
@@ -115,4 +111,3 @@ namespace Memento
 }
 
 #endif
-*/

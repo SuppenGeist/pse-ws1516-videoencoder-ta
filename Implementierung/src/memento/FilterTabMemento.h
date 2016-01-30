@@ -1,39 +1,26 @@
-/*
-#include <exception>
-#include <string>
-using namespace std;
-
 #ifndef __FilterTabMemento_h__
 #define __FilterTabMemento_h__
 
-#include "FilterList.h"
-// #include "LoadFilterVideo.h"
+#include <string>
 
-namespace Memento
-{
-	class FilterTabMemento;
-}
+#include "../model/FilterList.h"
+
 namespace Model
 {
 	class FilterList;
-}
-namespace UndoRedo
-{
-	class LoadFilterVideo;
 }
 
 namespace Memento
 {
 	/**
 	 * This class is the memento for the FilterTab.
-
+     */
 	class FilterTabMemento
 	{
 		private: Model::FilterList filterList;
 		private: bool wasApplied;
 		private: int displayedFrame;
-		private: string loadedFile:std:;
-		public: UndoRedo::LoadFilterVideo* memento;
+    private: std::string loadedFile;
 
 		/// <summary>
 		/// Constructor.
@@ -80,15 +67,15 @@ namespace Memento
 		/// Returns the path to the currently loaded yuv file.
 		/// </summary>
 		/// <returns>Absolute path to the currently loaded yuv file.</returns>
-		public: string getLoadedFile();
+    public: std::string getLoadedFile();
 
 		/// <summary>
 		/// Sets the path to the currently loaded yuv file.
 		/// </summary>
 		/// <param name="loadedFile">Absolute path to the loaded yuv file.</param>
-		public: void setLoadedFile(string loadedFile);
+    public: void setLoadedFile(std::string loadedFile);
 	};
 }
 
 #endif
-*/
+

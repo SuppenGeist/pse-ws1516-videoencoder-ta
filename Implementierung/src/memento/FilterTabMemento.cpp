@@ -1,43 +1,40 @@
-/*#include <exception>
+#include "FilterTabMemento.h"
+
 #include <string>
 
-#include "FilterTabMemento.h"
-#include "FilterList.h"
-#include "LoadFilterVideo.h"
+#include "../model/FilterList.h"
 
-FilterTabMemento::FilterTabMemento() {
+Memento::FilterTabMemento::FilterTabMemento() {
 }
 
-Model::FilterList FilterTabMemento::getFilterList() {
+Model::FilterList Memento::FilterTabMemento::getFilterList() {
 	return this->filterList;
 }
 
-void FilterTabMemento::setFilterList(FilterList filterList) {
+void Memento::FilterTabMemento::setFilterList(Model::FilterList filterList) {
 	this->filterList = filterList;
 }
 
-bool FilterTabMemento::getWasApplied() {
+bool Memento::FilterTabMemento::getWasApplied() {
 	return this->wasApplied;
 }
 
-void FilterTabMemento::setWasApplied(bool wasApplied) {
+void Memento::FilterTabMemento::setWasApplied(bool wasApplied) {
 	this->wasApplied = wasApplied;
 }
 
-int FilterTabMemento::getDisplayedFrame() {
+int Memento::FilterTabMemento::getDisplayedFrame() {
 	return this->displayedFrame;
 }
 
-void FilterTabMemento::setDisplayedFrame(int displayedFrame) {
+void Memento::FilterTabMemento::setDisplayedFrame(int displayedFrame) {
 	this->displayedFrame = displayedFrame;
 }
 
-string FilterTabMemento::getLoadedFile() {
+std::string Memento::FilterTabMemento::getLoadedFile() {
 	throw "Not yet implemented";
 }
 
-void FilterTabMemento::setLoadedFile(string loadedFile) {
+void Memento::FilterTabMemento::setLoadedFile(std::string loadedFile) {
 	throw "Not yet implemented";
 }
-
-*/

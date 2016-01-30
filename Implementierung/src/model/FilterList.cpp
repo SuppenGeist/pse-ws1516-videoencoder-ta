@@ -1,13 +1,10 @@
-/*#include <exception>
+#include "FilterList.h"
+
 #include <string>
 #include <vector>
 #include <algorithm>
 
-#include "FilterList.h"
-#include "FilterApplier.h"
 #include "Filter.h"
-#include "FilterReset.h"
-#include "LoadFilterconfig.h"
 
 using namespace Model;
 
@@ -15,17 +12,17 @@ FilterList::FilterList() {
     filters = * new std::vector<Model::Filter*>;
 }
 
-Model::Filter* FilterList::getFilterByName(string name) {
-    for(int i=0; i<filters.size; i++){
+Model::Filter* FilterList::getFilterByName(std::string name) {
+    /*for(int i=0; i<filters.size; i++){
         if(filters.at(i).getName().compare(name) == 0){
         return actfilter;
         }
     }
-    return 0;
+    return 0;*/
 }
 
-void FilterList::removeFilter(string name) {
-    filters.erase(std::remove(filters.begin(), filters.end(), getFilterByName(name)), filters.end());
+void FilterList::removeFilter(std::string name) {
+    //filters.erase(std::remove(filters.begin(), filters.end(), getFilterByName(name)), filters.end());
 }
 
 void FilterList::moveFilter(int oldPosition, int newPosition) {
@@ -36,8 +33,8 @@ void FilterList::removeFilter(int position) {
     filters.erase(filters.begin()+ position);
 }
 
-void FilterList::addFilter(string name, int index) {
-    if(name.compare("BlackWhiteFilter") == 0){
+void FilterList::addFilter(std::string name, int index) {
+    /*if(name.compare("BlackWhiteFilter") == 0){
         filter = new BlackWhiteFilter();
     } else if(name.compare("BlendingFilter") == 0){
         filter = new BlendingFilter();
@@ -80,19 +77,17 @@ void FilterList::addFilter(string name, int index) {
     } else if(name.compare("ZoomFilter") == 0){
         filter = new ZoomFilter();
     }
-    filters.insert(index, filter);
+    filters.insert(index, filter);*/
 }
 
 Model::Filter* FilterList::getFilterByIndex(int index) {
     return filters.at(index);
 }
 
-int FilterList::getIndex(string name) {
-    int pos = std::find(filters.begin(), filters.end(), getFilterByName(name)) - filters.begin();
+int FilterList::getIndex(std::string name) {
+    /*int pos = std::find(filters.begin(), filters.end(), getFilterByName(name)) - filters.begin();
     if(pos >= filters.size()) {
         return "Filter not in list.";
     }
-    return pos;
+    return pos;*/
 }
-
-*/

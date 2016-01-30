@@ -1,30 +1,28 @@
-/*#include <exception>
+#include "Graph.h"
 #include <vector>
 
-#include "Graph.h"
+
 #include "EncodedVideo.h"
 
-Graph::Graph() {
+Model::Graph::Graph() {
 }
 
-void Graph::addValue(int x, double y) {
+void Model::Graph::addValue(int x, double y) {
 	throw "Not yet implemented";
 }
 
-void Graph::cut(int x) {
+void Model::Graph::cut(int x) {
 	throw "Not yet implemented";
 }
 
-double Graph::getValue(int x) {
+double Model::Graph::getValue(int x) {
 	throw "Not yet implemented";
 }
 
-int Graph::getLength() {
+int Model::Graph::getLength() {
 	throw "Not yet implemented";
 }
 
-void Graph::removeValue(int x) {
+void Model::Graph::removeValue(int x) {
 	throw "Not yet implemented";
 }
-
-*/

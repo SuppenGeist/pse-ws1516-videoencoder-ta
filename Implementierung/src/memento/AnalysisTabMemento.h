@@ -1,7 +1,3 @@
-/*
-#include <exception>
-using namespace std;
-
 #ifndef __AnalysisTabMemento_h__
 #define __AnalysisTabMemento_h__
 
@@ -22,7 +18,7 @@ namespace Memento
 {
 	/**
 	 * This class is the memento for the analysis tab.
-
+     */
 	class AnalysisTabMemento
 	{
 		private: int currentVideoPosition;
@@ -90,4 +86,4 @@ namespace Memento
 }
 
 #endif
-*/
+

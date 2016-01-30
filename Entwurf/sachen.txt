@@ -1,0 +1,28 @@
+Undo/Redo:
+filter hinzufügen
+filter entfernen
+filter position wechseln
+filter parameter ändern
+filter apply
+filter reset
+encodedes video laden
+encodedes entfernen
+kommentar geschrieben (wenn box verlassen)
+projekt laden (new projekt)
+
+
+save results:
+Für jedes geladene encodierte video:
+makroblock-video
+rgb-difference video
+psnr-graph
+rgb-histogramm
+kommentar
+bitrate
+
+save projekt:
+aktueller zustand des filter and artzefacts tabs:
+aktuelle filterconfiguration
+frame oder video wird angezeigt
+filter oder artefacts tab
+

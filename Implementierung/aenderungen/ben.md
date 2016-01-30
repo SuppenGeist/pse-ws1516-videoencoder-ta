@@ -1,5 +1,6 @@
+## Allgemein
+Fuege bei Attributen einen Unterstrich ( _ ) ans Ende der Namen hinzu.
 ## MainWindow
-füge ui hinzu
-<b>Grund:</b> Interface wird mit dem qtDesigner erstellt
-entferne menubar_project und menubar_edit und createMenubars()
-<b>Grund:</b> Wird von ui übernommen 
+Aendere Rueckgabetyp von getProject zu pointer.
+<br><b>Grund:</b> Es kann auch kein project geladen sein.
+<hr>

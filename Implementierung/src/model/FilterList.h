@@ -1,40 +1,21 @@
-/*
-#include <exception>
-#include <string>
-#include <vector>
-using namespace std;
-
 #ifndef __FilterList_h__
 #define __FilterList_h__
 
-#include "FilterApplier.h"
-#include "Filter.h"
-#include "FilterReset.h"
-#include "LoadFilterconfig.h"
+#include <string>
+#include <vector>
 
 namespace Model
 {
-	class FilterApplier;
-	class Filter;
-	class FilterList;
-}
-namespace UndoRedo
-{
-	class FilterReset;
-	class LoadFilterconfig;
+    class Filter;
 }
 
 namespace Model
 {
 	/**
      * This class contains a filter configuration. Every filter can only be once in this list.
-
-	class FilterList
+     */
+    class FilterList
     {
-		public: Model::FilterApplier* list;
-		public: UndoRedo::FilterReset* filterList;
-		public: UndoRedo::LoadFilterconfig* oldList;
-		public: UndoRedo::LoadFilterconfig* newList;
         private: std::vector<Model::Filter*> filters;
 
 		/// <summary>
@@ -47,13 +28,13 @@ namespace Model
 		/// </summary>
 		/// <param name="name">The name of the filter.</param>
 		/// <returns>The filter.</returns>
-		public: Model::Filter* getFilterByName(string name);
+    public: Model::Filter* getFilterByName(std::string name);
 
 		/// <summary>
 		/// Removes a filter.
 		/// </summary>
 		/// <param name="name">Name of the filter to remove.</param>
-		public: void removeFilter(string name);
+    public: void removeFilter(std::string name);
 
 		/// <summary>
 		/// Moves a filter to another position.
@@ -73,7 +54,7 @@ namespace Model
 		/// </summary>
 		/// <param name="name">Name of the filter to add.</param>
 		/// <param name="index">Index to insert the filter at.</param>
-		public: void addFilter(string name, int index = -1);
+    public: void addFilter(std::string name, int index = -1);
 
 		/// <summary>
 		/// Returns the filter at the given index.
@@ -87,9 +68,9 @@ namespace Model
 		/// </summary>
 		/// <param name="name">The name of the filter.</param>
 		/// <returns>The index.</returns>
-		public: int getIndex(string name);
+    public: int getIndex(std::string name);
 	};
 }
 
 #endif
-*/
+

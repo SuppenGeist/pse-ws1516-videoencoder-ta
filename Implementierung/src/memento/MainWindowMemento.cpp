@@ -1,34 +1,31 @@
-/*#include <exception>
-
 #include "MainWindowMemento.h"
+
 #include "AnalysisTabMemento.h"
 #include "FilterTabMemento.h"
 
-MainWindowMemento::MainWindowMemento() {
+Memento::MainWindowMemento::MainWindowMemento() {
 }
 
-int MainWindowMemento::getSelectedTab() {
+int Memento::MainWindowMemento::getSelectedTab() {
 	return this->selectedTab;
 }
 
-void MainWindowMemento::setSelectedTab(int selectedTab) {
+void Memento::MainWindowMemento::setSelectedTab(int selectedTab) {
 	this->selectedTab = selectedTab;
 }
 
-Memento::AnalysisTabMemento MainWindowMemento::getAnalysisTabMemento() {
+Memento::AnalysisTabMemento Memento::MainWindowMemento::getAnalysisTabMemento() {
 	throw "Not yet implemented";
 }
 
-void MainWindowMemento::setAnalysisTabMemento(AnalysisTabMemento analysisTabMeMento) {
+void Memento::MainWindowMemento::setAnalysisTabMemento(AnalysisTabMemento analysisTabMeMento) {
 	throw "Not yet implemented";
 }
 
-Memento::FilterTabMemento MainWindowMemento::getFilterTabMemento() {
+Memento::FilterTabMemento Memento::MainWindowMemento::getFilterTabMemento() {
 	throw "Not yet implemented";
 }
 
-void MainWindowMemento::setFilterTabMemento(FilterTabMemento filterTabMemento) {
+void Memento::MainWindowMemento::setFilterTabMemento(FilterTabMemento filterTabMemento) {
 	throw "Not yet implemented";
 }
-
-*/

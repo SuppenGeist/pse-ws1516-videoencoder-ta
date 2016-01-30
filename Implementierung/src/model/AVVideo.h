@@ -1,17 +1,20 @@
+#ifndef __AVVideo_h__
+#define __AVVideo_h__
 
 #include <exception>
 #include <vector>
 #include <memory>
 extern "C" {
-#include <libavcodec/avcodec.h>
-#include <libavformat/avformat.h>
+/*#include <libavcodec/avcodec.h>
+#include <libavformat/avformat.h>*/
 }
-using namespace std;
 
-#ifndef __AVVideo_h__
-#define __AVVideo_h__
+class AVFrame {
+
+};
 
 #include "EncodedVideo.h"
+
 
 namespace Model {
 class EncodedVideo;
@@ -24,7 +27,7 @@ namespace Model {
      */
 class AVVideo {
   private:
-	vector<unique_ptr<AVFrame>> video;
+    vector<unique_ptr<AVFrame>> video;
   private:
 	int fps;
   private:

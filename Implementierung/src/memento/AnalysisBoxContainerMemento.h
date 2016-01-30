@@ -1,4 +1,3 @@
-/*
 #include <exception>
 #include <vector>
 using namespace std;
@@ -18,7 +17,7 @@ namespace Memento
 {
 	/**
 	 * This class is the memento for the AnalysisBoxContainer.
-
+     */
 	class AnalysisBoxContainerMemento
 	{
 		private: std::vector<Memento::AnalysisBoxMemento*> mementoList;
@@ -43,4 +42,3 @@ namespace Memento
 }
 
 #endif
-*/
