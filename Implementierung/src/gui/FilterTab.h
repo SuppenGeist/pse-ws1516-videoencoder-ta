@@ -1,36 +1,27 @@
-/*
-
 #ifndef __FilterTab_h__
 #define __FilterTab_h__
 
-#include <exception>
 #include <string>
 #include <vector>
 #include <QPushButton>
 #include <QListWidget>
 #include <QStringListModel>
 #include <QLabel>
+#include <QFrame>
 
-// #include "VideoPlayer.h"
-// #include "PreviewControlPanel.h"
-// #include "FrameView.h"
-// #include "PlayerControlPanel.h"
-//#include "FilterContainerTab.h"
-// #include "QWidget.h"
-//#include "FilterList.h"
-//#include "YuvVideo.h"
-//#include "Filter.h"
-// #include "LoadFilterVideo.h"
 
+
+namespace Ui
+{
+    class FilterTab;
+}
 namespace GUI
 {
-	class QFrame;
 	class VideoPlayer;
 	class PreviewControlPanel;
 	class FrameView;
 	class PlayerControlPanel;
     class FilterContainerTab;
-	class FilterTab;
 }
 namespace Memento
 {
@@ -46,174 +37,174 @@ namespace UndoRedo
 {
 	class LoadFilterVideo;
 }
-
 namespace GUI
 {
 	/**
 	 * This class is the tab to filter videos.
-
-	class FilterTab
+    */
+    class FilterTab : public QFrame
 	{
-		private: QPushButton* button_up;
-		private: QPushButton* button_down;
-		private: QPushButton* button_remove;
-		private: QPushButton* button_load;
-		private: QPushButton* button_apply;
-		private: QPushButton* button_saveConf;
-		private: QPushButton* button_loadConf;
-		private: QPushButton* button_reset;
-		private: QPushButton* button_save;
-		private: QListWidget* list_filterList;
-		private: QTabWidget* tab_filterTabs;
-		private: QLabel* label_filterOptions;
-		private: GUI::QFrame* frame_filterContainer;
-        private: QStringListModel* model_list;
-		private: GUI::VideoPlayer* player;
-		private: GUI::PreviewControlPanel* previewPanel;
-		private: GUI::FrameView* frameView;
-		private: GUI::PlayerControlPanel* playerPanel;
-		private: Model::FilterList* filterList;
-		private: Model::YuvVideo* rawVideo;
-		private: std::vector<GUI::FilterContainerTab*> filterContainerTab;
-        public: UndoRedo::LoadFilterVideo* filterTab;
+        Q_OBJECT
 
-		/// <summary>
-		/// Constructor.
-		/// </summary>
-        public: FilterTab(QWidget* parent);
+public:
+    /**
+     *@brief Contructor
+     *
+    */
+    FilterTab(QWidget* parent);
 
-		/// <summary>
-		/// Creates a memento which contains the state of this tab.
-		/// </summary>
-		/// <returns>The created memento.</returns>
-		public: Memento::FilterTabMemento getMemento();
 
-		/// <summary>
-		/// Restores the tab based on the memento.
-		/// </summary>
-		/// <param name="memento">The memento which contains the state of the tab.</param>
-		public: void restore(Memento::FilterTabMemento memento);
 
-		/// <summary>
-		/// Connect the buttons to their slots in this class.
-		/// </summary>
-		private: void connectActions();
+    /**
+     * @brief removeFilter removes teh given filter form the filterList
+     * @param filterName name of the filter
+     */
+    void removeFilter(std::string filterName);
 
-		/// <summary>
-		/// Creates the user interface.
-		/// </summary>
-		private: void createUi();
 
-		/// <summary>
-		/// Slot: connected with button_up.pressed()
-		/// decreases the index of a filter in the list
-		/// </summary>
-		private: void up();
+        /**
+         * @brief showVideo Shows the video with the applied filters.
+         */
+        void showVideo();
 
-		/// <summary>
-		/// Slot: connected with button_down.pressed()
-		/// increases the index of a filter in the list
-		/// </summary>
-		private: void down();
+        /**
+         * @brief showPreview Shows the 5 frame preview.
+         */
+        void showPreview();
 
-		/// <summary>
-		/// Slot: connected with button_remove.pressed()
-		/// removes a filter from the list
-		/// </summary>
-		private: void remove();
+        /**
+         * @brief resetFilters Resets the filterlist.
+         */
+        void resetFilters();
 
-		/// <summary>
-		/// Slot: connected with button_load.pressed()
-		/// opens QFileDialog and opens the video in the selected path
-		/// </summary>
-		private: void load();
+        /**
+         * @brief setFilterList Sets the filterlist.
+         * @param list The filterlist to use.
+         */
+        void setFilterList(Model::FilterList list);
 
-		/// <summary>
-		/// Slot: connected with button_apply.pressed()
-		/// applies the filter list on the video and shows it
-		/// </summary>
-		private: void apply();
+        /**
+         * @brief setRawVideo Sets the video the filters are applied to. This operation resets the whole filtertab.
+         * @param video The video to apply the filters on.
+         */
+        void setRawVideo(Model::YuvVideo video);
 
-		/// <summary>
-		/// Slot: connected with button_saveConf.pressed()
-		/// opens QFileDialog and saves the filter configuration in the selected path
-		/// </summary>
-		private: void saveConf();
+        /**
+         * @brief moveFilter Moves a filter in the filterlist.
+         * @param old old  list index
+         * @param newIndex new  list index
+         */
+        void moveFilter(int oldIndex, int newIndex);
 
-		/// <summary>
-		/// Slot: connected with button_loadConf.pressed()
-		/// opens QFileDialog and loads the filter configuration in the selected path
-		/// </summary>
-		private: void loadConf();
+        /**
+         * @brief getMemento Creates a memento which contains the state of this tab.
+         * @return the created memento
+         */
+        Memento::FilterTabMemento getMemento();
 
-		/// <summary>
-		/// Slot: connected with button_reset.pressed()
-		/// resets the filter list
-		/// </summary>
-		private: void reset();
+        /**
+         * @brief restore Restores the tab based on the memento.
+         * @param memento The memento which contains the state of the tab.
+         */
+        void restore(Memento::FilterTabMemento memento);
 
-		/// <summary>
-		/// Slot: connected with button_save.pressed()
-		/// opens QFileDialog and saves the video with the filters used on it.
-		/// </summary>
-		private: void save();
+        /**
+         * @brief insertFilter Inserts a filter to the filterList. If index is -1 the the filter is added to the end.
+         * @param filter The filter to add.
+         * @param index The index to insert the filter at.
+         */
+        void insertFilter(Model::Filter& filter, int index = -1);
 
-		/// <summary>
-		/// Inserts a filter to the filterList. If index is -1 the the filter is added to the end.
-		/// </summary>
-		/// <param name="filter">The filter to add.</param>
-		/// <param name="index">The index to insert the filter at.</param>
-		public: void insertFilter(Model::Filter filter, int index = -1);
 
-		/// <summary>
-		/// Slot: connected with list_filterList.clicked(index : QModelIndex);
-		/// updates the filterConfigurationBox that is shown
-		/// </summary>
-		/// <param name="index">Index of the selected item.</param>
-		private: void listSelectionChanged(QModelIndex index);
+    private slots :
 
-		/// <summary>
-		/// Removes the filter with the name filterName in the filterlist.
-		/// </summary>
-		/// <param name="filterName">Name of the filter to remove.</param>
-		public: void removeFilter(string filterName);
+        /**
+         * @brief up increases the index of selected filter in the list
+         */
+        void up();
 
-		/// <summary>
-		/// Shows the video with the applied filters.
-		/// </summary>
-		public: void showVideo();
+        /**
+         * @brief down decreases the index of a filter in the list
+         */
+        void down();
 
-		/// <summary>
-		/// Shows the 5 frame preview.
-		/// </summary>
-		public: void showPreview();
+        /**
+         * @brief remove removes a filter from the list
+         */
+        void remove();
 
-		/// <summary>
-		/// Resets the filterlist.
-		/// </summary>
-		public: void resetFilters();
+        /**
+         * @brief load opens QFileDialog and opens the video in the selected path
+         */
+        void load();
 
-		/// <summary>
-		/// Sets the filterlist.
-		/// </summary>
-		/// <param name="list">The filterlist to use.</param>
-		public: void setFilterList(Model::FilterList list);
+        /**
+         * @brief apply applies the filter list on the video and shows it
+         */
+        void apply();
 
-		/// <summary>
-		/// Sets the video the filters are applied to. This operation resets the whole filtertab.
-		/// </summary>
-		/// <param name="video">The video to apply the filters on.</param>
-		public: void setRawVideo(Model::YuvVideo video);
+        /**
+         * @brief saveConf opens QFileDialog and saves the filter configuration in the selected path
+         */
+        void saveConf();
 
-		/// <summary>
-		/// Moves a filter in the filterlist.
-		/// </summary>
-		/// <param name="old">Old list index.</param>
-		/// <param name="new">New list index.</param>
-		public: void moveFilter(int old, int new_3);
-	};
+        /**
+         * @brief loadConf opens QFileDialog and loads the filter configuration in the selected path
+         */
+        void loadConf();
+
+        /**
+         * @brief reset resets the filter list
+         */
+        void reset();
+
+        /**
+         * @brief listSelectionChanged updates the filterConfigurationBox that is shown
+         * @param index Index of the selected item
+         */
+        void listSelectionChanged(QModelIndex* index);
+
+        /**
+         * @brief save opens QFileDialog and saves the video with the filters used on it.
+         */
+        void save();
+
+    private:
+        /**
+         * @brief connectAction sConnect the buttons to their slots in this class.
+         */
+        void connectActions();
+
+        /**
+         * @brief createUi Creates the user interface.
+         */
+        void createUi();
+    private: QPushButton* button_up;
+    private: QPushButton* button_down;
+    private: QPushButton* button_remove;
+    private: QPushButton* button_load;
+    private: QPushButton* button_apply;
+    private: QPushButton* button_saveConf;
+    private: QPushButton* button_loadConf;
+    private: QPushButton* button_reset;
+    private: QPushButton* button_save;
+    private: QListWidget* list_filterList;
+    private: QTabWidget* tab_filterTabs;
+    private: QLabel* label_filterOptions;
+    private: QFrame* frame_filterContainer;
+    private: QStringListModel* model_list;
+    private: GUI::VideoPlayer* player;
+    private: GUI::PreviewControlPanel* previewPanel;
+    private: GUI::FrameView* frameView;
+    private: GUI::PlayerControlPanel* playerPanel;
+    private: Model::FilterList* filterList;
+    private: Model::YuvVideo* rawVideo;
+    private: std::vector<GUI::FilterContainerTab*> filterContainerTab;
+    private:    Ui::FilterTab *ui;
+    public: UndoRedo::LoadFilterVideo* filterTab;
+    };
 }
 
 #endif
 
-*/
+

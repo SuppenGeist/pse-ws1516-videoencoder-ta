@@ -1,5 +1,3 @@
-#include <exception>
-using namespace std;
 #ifndef __MainWindow_h__
 #define __MainWindow_h__
 
@@ -8,6 +6,8 @@ using namespace std;
 #include <QMenuBar>
 #include <QTabWidget>
 #include <QMainWindow>
+
+#include "FilterTab.h"
 
 namespace Memento
 {
@@ -97,6 +97,8 @@ namespace GUI
     QAction* action_saveProject;
     QAction* action_redo;
     QTabWidget* tab_tabs;
+    FilterTab* filterTab;
+
 
     Ui::MainWindow *ui;
 

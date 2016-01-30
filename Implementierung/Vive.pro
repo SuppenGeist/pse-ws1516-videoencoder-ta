@@ -244,3 +244,4 @@ RESOURCES += \
 
 FORMS += \
     resources/forms/mainwindow.ui \
+    resources/forms/filtertab.ui \

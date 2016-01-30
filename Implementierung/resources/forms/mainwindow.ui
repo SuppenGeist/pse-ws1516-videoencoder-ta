@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>955</width>
+    <height>955</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,18 +19,48 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>801</width>
-      <height>561</height>
+      <width>950</width>
+      <height>920</height>
      </rect>
     </property>
-    <widget class="QWidget" name="tab">
+    <property name="minimumSize">
+     <size>
+      <width>950</width>
+      <height>920</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>950</width>
+      <height>920</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="Filtersandartefacts">
      <attribute name="title">
-      <string>Tab 1</string>
+      <string>Filters and artefacts</string>
      </attribute>
+     <widget class="QWidget" name="filterTab" native="true">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>951</width>
+        <height>831</height>
+       </rect>
+      </property>
+     </widget>
     </widget>
-    <widget class="QWidget" name="tab_2">
+    <widget class="QWidget" name="videoandanalysis">
      <attribute name="title">
-      <string>Tab 2</string>
+      <string>Video and analysis</string>
      </attribute>
     </widget>
    </widget>
@@ -40,9 +70,14 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
-     <height>21</height>
+     <width>955</width>
+     <height>23</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <widget class="QMenu" name="menuProject">
     <property name="title">

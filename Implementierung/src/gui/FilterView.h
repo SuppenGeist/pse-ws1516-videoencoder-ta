@@ -27,6 +27,7 @@ namespace GUI
     */
     class FilterView : public QFrame
 	{
+        Q_OBJECT
 		private: QCheckBox* checkbox;
 		private: QLabel* preview;
 		private: GUI::FilterTab* filterTab;

@@ -21,6 +21,7 @@ GUI::MainWindow::MainWindow(QWidget* parent):QMainWindow(parent) {
     action_redo=ui->actionRedo;
     action_undo=ui->actionUndo;
     connectActions();
+    filterTab = new FilterTab(ui->filterTab);
 
 }
 
