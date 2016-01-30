@@ -50,11 +50,10 @@ namespace Model
 		public: void removeFilter(int position);
 
 		/// <summary>
-		/// Inserts a filter at the given index. If the index is -1 then the filter is added to the end.
+        /// Inserts a filter to the end.
 		/// </summary>
 		/// <param name="name">Name of the filter to add.</param>
-		/// <param name="index">Index to insert the filter at.</param>
-    public: void addFilter(std::string name, int index = -1);
+    public: void addFilter(std::string name);
 
 		/// <summary>
 		/// Returns the filter at the given index.

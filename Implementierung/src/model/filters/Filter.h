@@ -1,4 +1,3 @@
-/*/*
 #include <exception>
 #include <string>
 using namespace std;
@@ -21,8 +20,8 @@ namespace Model
 {
 	/**
 	 * Baseclass for Filters.
-
-	__abstract class Filter
+    */
+    class Filter
 	{
 		public: UndoRedo::RemoveFilter* filter;
 
@@ -41,5 +40,5 @@ namespace Model
 }
 
 #endif
-*/
+
 

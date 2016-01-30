@@ -4,39 +4,42 @@
 #include <vector>
 #include <algorithm>
 
-#include "Filter.h"
+#include "filters/Filter.h"
+#include "filters/BlackWhiteFilter.h"
 
-using namespace Model;
 
-FilterList::FilterList() {
+
+Model::FilterList::FilterList() {
     filters = * new std::vector<Model::Filter*>;
 }
 
-Model::Filter* FilterList::getFilterByName(std::string name) {
-    /*for(int i=0; i<filters.size; i++){
-        if(filters.at(i).getName().compare(name) == 0){
-        return actfilter;
+Model::Filter* Model::FilterList::getFilterByName(std::string name) {
+    for(unsigned int i=0; i < filters.size(); i++){
+        if(filters.at(i)->getName().compare(name) == 0){
+        return filters.at(i);
         }
     }
-    return 0;*/
+
+    return 0;
 }
 
-void FilterList::removeFilter(std::string name) {
-    //filters.erase(std::remove(filters.begin(), filters.end(), getFilterByName(name)), filters.end());
+void Model::FilterList::removeFilter(std::string name) {
+    filters.erase(std::remove(filters.begin(), filters.end(), getFilterByName(name)), filters.end());
 }
 
-void FilterList::moveFilter(int oldPosition, int newPosition) {
+void Model::FilterList::moveFilter(int oldPosition, int newPosition) {
     iter_swap(filters.begin() + oldPosition, filters.begin() + newPosition);
 }
 
-void FilterList::removeFilter(int position) {
+void Model::FilterList::removeFilter(int position) {
     filters.erase(filters.begin()+ position);
 }
 
-void FilterList::addFilter(std::string name, int index) {
-    /*if(name.compare("BlackWhiteFilter") == 0){
-        filter = new BlackWhiteFilter();
-    } else if(name.compare("BlendingFilter") == 0){
+void Model::FilterList::addFilter(std::string name) {
+    if(name.compare("BlackWhiteFilter") == 0){
+        Model::BlackWhiteFilter* filter = new Model::BlackWhiteFilter();
+        filters.push_back(filter);
+    }/* else if(name.compare("BlendingFilter") == 0){
         filter = new BlendingFilter();
     } else if(name.compare("BlurFilter") == 0){
         filter = new BlurFilter();
@@ -76,18 +79,18 @@ void FilterList::addFilter(std::string name, int index) {
         filter = new VintageFilter();
     } else if(name.compare("ZoomFilter") == 0){
         filter = new ZoomFilter();
-    }
-    filters.insert(index, filter);*/
+    }*/
+
 }
 
-Model::Filter* FilterList::getFilterByIndex(int index) {
+Model::Filter* Model::FilterList::getFilterByIndex(int index) {
     return filters.at(index);
 }
 
-int FilterList::getIndex(std::string name) {
-    /*int pos = std::find(filters.begin(), filters.end(), getFilterByName(name)) - filters.begin();
+int Model::FilterList::getIndex(std::string name) {
+    unsigned int pos = std::find(filters.begin(), filters.end(), getFilterByName(name)) - filters.begin();
     if(pos >= filters.size()) {
-        return "Filter not in list.";
+        return -1;
     }
-    return pos;*/
+    return pos;
 }

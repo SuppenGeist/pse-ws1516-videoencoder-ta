@@ -1,19 +1,19 @@
-/*/*#include <exception>
 #include <string>
 
 #include "BlackWhiteFilter.h"
-#include "Filter.h"
+#include "../Filter.h"
 
-BlackWhiteFilter::BlackWhiteFilter() {
+Model::BlackWhiteFilter::BlackWhiteFilter() {
+
 }
 
-string BlackWhiteFilter::getName() {
+std::string Model::BlackWhiteFilter::getName() {
 	throw "Not yet implemented";
 }
 
-string BlackWhiteFilter::getFilterDescription() {
+std::string Model::BlackWhiteFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 
-*/
+
 

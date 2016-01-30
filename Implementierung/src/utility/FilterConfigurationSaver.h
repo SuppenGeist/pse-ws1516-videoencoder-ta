@@ -1,12 +1,9 @@
-/*
-#include <exception>
-using namespace std;
-
 #ifndef __FilterConfigurationSaver_h__
 #define __FilterConfigurationSaver_h__
 
-#include "FilterList.h"
-
+#include <exception>
+#include <QFile>
+#include "../model/FilterList.h"
 namespace Model
 {
 	class FilterList;
@@ -20,10 +17,11 @@ namespace Utility
 {
 	/**
 	 * This class can save a filterlist to a file.
-
+    */
 	class FilterConfigurationSaver
 	{
         private: QFile fileout;
+        private: Model::FilterList filterList;
 
 		/// <summary>
 		/// Constructor.
@@ -40,4 +38,4 @@ namespace Utility
 }
 
 #endif
-*/
+

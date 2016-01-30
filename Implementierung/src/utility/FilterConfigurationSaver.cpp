@@ -1,23 +1,27 @@
-/*#include <exception>
-
+#include <exception>
+#include <QTextStream>
+#include <QString>
 #include "FilterConfigurationSaver.h"
-#include "FilterList.h"
-using namespace Utility;
-using namespace Model;
+#include "../model/FilterList.h"
+#include "../model/filters/Filter.h"
 
-FilterConfigurationSaver::FilterConfigurationSaver(QString file, FilterList& filterList) {
+
+Utility::FilterConfigurationSaver::FilterConfigurationSaver(QString file, Model::FilterList& filterList) {
 QFile fileout(file);
 }
 
-void FilterConfigurationSaver::save() {
-        if (fileout.open(QFile::ReadWrite | QFile::Text)){
-         QTextStream out(&fileout);
-         for (int i; i<FilterList.size; i++){
-             file << filterList.at(i).getFilterDescription();
-         }
-         fileout.close();
+void Utility::FilterConfigurationSaver::save() {
+    if (fileout.open(QFile::ReadWrite | QFile::Text)){
+     QTextStream out(&fileout);
+     int i;
+     while (filterList.getFilterByIndex(i)!= 0){
+         QString str = QString::fromStdString(filterList.getFilterByIndex(i)->getFilterDescription());
+         out << str;
+         i++;
+     }
+     fileout.close();
     }
 }
 
 
-*/
+
