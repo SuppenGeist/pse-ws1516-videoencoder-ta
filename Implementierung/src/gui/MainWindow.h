@@ -17,6 +17,10 @@ namespace Model
 {
 	class Project;
 }
+namespace Ui
+{
+    class MainWindow;
+}
 
 namespace GUI
 {
@@ -46,7 +50,7 @@ namespace GUI
          */
         void restore(Memento::MainWindowMemento memento);
 
-        private slots:
+    private slots:
         /**
          * @brief newProject creates new project.
          */
@@ -84,6 +88,7 @@ namespace GUI
         Model::Project* getProject();
 
     private:
+
     QStatusBar* statusbar;
     QAction* action_newProject;
     QAction* action_undo;
@@ -93,7 +98,7 @@ namespace GUI
     QAction* action_redo;
     QTabWidget* tab_tabs;
 
-   //Ui::MainWindow *ui;
+    Ui::MainWindow *ui;
 
         Model::Project* loadedProject;
 

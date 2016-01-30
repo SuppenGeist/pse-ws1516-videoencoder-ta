@@ -240,4 +240,7 @@ SOURCES += \
     src/main.cpp
 
 RESOURCES += \
-    resources.qrc
+    resources.qrc \
+
+FORMS += \
+    resources/forms/mainwindow.ui \
