@@ -1,64 +1,68 @@
-/*
-#include <exception>
-#include <string>
-#include <vector>
-using namespace std;
-
 #ifndef __FilterContainerTab_h__
 #define __FilterContainerTab_h__
 
+#include <string>
+#include <vector>
+#include <QFrame>
+#include <QWidget>
+
 #include "FilterTab.h"
 #include "FilterView.h"
-// #include "QWidget.h"
-#include "Filter.h"
 
 namespace GUI
 {
 	class FilterTab;
-	class FilterView;
-	class QWidget;
-	class FilterContainerTab;
+    class FilterView;
 }
 namespace Model
 {
 	class Filter;
+}
+namespace Ui
+{
+    class FilterContainerTab;
 }
 
 namespace GUI
 {
 	/**
 	 * This class shows all the selectable filters.
-
-	class FilterContainerTab
+    */
+    class FilterContainerTab : public QFrame
 	{
-		private: GUI::FilterTab* parentTab;
-		private: GUI::FilterTab* filterContainerTab;
-		private: std::vector<GUI::FilterView*> filterViews;
+        public:
 
-		/// <summary>
-		/// Constructor.
-		/// </summary>
-		public: FilterContainerTab(GUI::QWidget* parent);
+        /**
+         * @brief FilterContainerTab constructor
+         * @param parent parent of this object
+         */
+        FilterContainerTab(QWidget* parent);
 
-		/// <summary>
-		/// Adds a selectable filter.
-		/// </summary>
-		/// <param name="filter">The new filter.</param>
-		public: void addFilter(Model::Filter filter);
+        /**
+         * @brief addFilter Adds a selectable filter.
+         * @param filter The new filter.
+         */
+        void addFilter(Model::Filter* filter);
 
-		/// <summary>
-		/// Sets the parent tab.
-		/// </summary>
-		/// <param name="parent">The parent tab.</param>
-		public: void setParentTab(GUI::FilterTab& parent);
+        /**
+         * @brief setParentTab Sets the parent tab.
+         * @param parent The parent tab.
+         */
+        void setParentTab(GUI::FilterTab& parent);
 
-		/// <summary>
-		/// Searches for the filterView with the filter filterName and unchecks it.
-		/// </summary>
-		/// <param name="filterName">The filter to uncheck.</param>
-		public: void uncheck(string filterName);
+        /**
+         * @brief uncheck Searches for the filterView with the filter filterName and unchecks it.
+         * @param filterName The filter to uncheck.
+         */
+        void uncheck(std::string filterName);
+
+    private:
+        GUI::FilterTab* parentTab;
+        GUI::FilterTab* filterContainerTab;
+        std::vector<GUI::FilterView*> filterViews;
+        Ui::FilterContainerTab* ui;
 	};
 }
 
 #endif
-*/
+

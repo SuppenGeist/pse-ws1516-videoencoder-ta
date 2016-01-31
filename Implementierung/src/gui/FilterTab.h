@@ -20,7 +20,7 @@ namespace GUI
 	class VideoPlayer;
 	class PreviewControlPanel;
 	class FrameView;
-	class PlayerControlPanel;
+    class PlayerControlPanel;
     class FilterContainerTab;
 }
 namespace Memento

@@ -1,19 +1,19 @@
-/*/*#include <exception>
+
 #include <string>
 
 #include "EdgeFilter.h"
 #include "Filter.h"
 
-EdgeFilter::EdgeFilter() {
+Model::EdgeFilter::EdgeFilter() {
 }
 
-string EdgeFilter::getFilterDescription() {
+string Model::EdgeFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 
-string EdgeFilter::getName() {
-	throw "Not yet implemented";
+string Model::EdgeFilter::getName() {
+    return "Edges";
 }
 
-*/
+
 

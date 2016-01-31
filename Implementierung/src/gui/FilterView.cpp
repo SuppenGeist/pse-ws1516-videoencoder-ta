@@ -9,7 +9,6 @@
 
 namespace GUI {
 FilterView::FilterView(QWidget* parent):QFrame(parent) {
-    /*setParent(parent);
     resize(200,200);
 
     QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
@@ -33,16 +32,15 @@ FilterView::FilterView(QWidget* parent):QFrame(parent) {
             preview->setSizePolicy(sizePolicy1);
             preview->setMinimumSize(QSize(200, 150));
             preview->setMaximumSize(QSize(200, 150));
-            preview->setPixmap(QPixmap(QString::fromUtf8(":previewPic/resources/previewPic/flower_example.png")));
+            preview->setPixmap(QPixmap(QString::fromUtf8(":pictures/resources/flower_example.png")));
             preview->setScaledContents(true);
             checkbox = new QCheckBox(verticalLayoutWidget);
             checkbox->setText(QString("test"));
             verticalLayout->addWidget(preview);
-            verticalLayout->addWidget(checkbox);*/
+            verticalLayout->addWidget(checkbox);
 }
 
 void GUI::FilterView::checkBoxStateChanged(int state) {
-    Q_UNUSED(state);
     /*if(state = 0) {
         filterTab->removeFilter(filter->getName());
     } else {
@@ -51,10 +49,10 @@ void GUI::FilterView::checkBoxStateChanged(int state) {
 }
 
 void GUI::FilterView::setFilter(Model::Filter* filter) {
-    Q_UNUSED(filter);
-    /*
+
     this->filter = filter;
-    checkbox->setText(filter->getName());
+    checkbox->setText(QString::fromStdString(filter->getName()));
+    /*
     Model::FilterList *filterlist = new Model::FilterList();
     filterlist->addFilter(filter->getName());
 

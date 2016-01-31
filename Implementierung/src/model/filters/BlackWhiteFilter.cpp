@@ -8,7 +8,7 @@ Model::BlackWhiteFilter::BlackWhiteFilter() {
 }
 
 std::string Model::BlackWhiteFilter::getName() {
-	throw "Not yet implemented";
+    return "BlackWhite";
 }
 
 std::string Model::BlackWhiteFilter::getFilterDescription() {

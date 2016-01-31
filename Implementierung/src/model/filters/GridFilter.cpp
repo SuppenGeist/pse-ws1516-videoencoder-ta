@@ -1,16 +1,16 @@
-/*/*#include <exception>
+
 #include <string>
 
 #include "GridFilter.h"
 #include "Filter.h"
 
-GridFilter::GridFilter() {
+Model::GridFilter::GridFilter() {
 }
 
-string GridFilter::getFilterDescription() {
+std::string Model::GridFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
-
+/*
 int GridFilter::getHorizontalLines() {
 	return this->horizontalLines;
 }
@@ -50,9 +50,9 @@ int GridFilter::getOpacity() {
 void GridFilter::setOpacity(int opacity) {
 	this->opacity = opacity;
 }
-
-string GridFilter::getName() {
-	throw "Not yet implemented";
+*/
+std::string Model::GridFilter::getName() {
+    return "Grid";
 }
 
-*/
+

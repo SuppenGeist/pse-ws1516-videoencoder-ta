@@ -5,6 +5,7 @@
 #include <QWidget>
 #include <QCheckBox>
 #include <QLabel>
+#include <QVBoxLayout>
 
 #include "FilterTab.h"
 #include "../model/filters/Filter.h"
@@ -12,7 +13,6 @@
 namespace GUI
 {
     class FilterTab;
-    class QWidget;
 	class FilterView;
 }
 namespace Model
@@ -28,42 +28,58 @@ namespace GUI
     class FilterView : public QFrame
 	{
         Q_OBJECT
-		private: QCheckBox* checkbox;
-		private: QLabel* preview;
-		private: GUI::FilterTab* filterTab;
-        private: Model::Filter* filter;
+
+    public:
+        /**
+         * @brief FilterViewCcontructor
+         * @param parent Parent of object
+         */
+        FilterView(QWidget* parent);
+
+        /**
+         * @brief setFilter Sets the filter this view represents.
+         * @param filter The filter for this view.
+         */
+        void setFilter(Model::Filter* filter);
+
+        /**
+         * @brief setFilterTab Sets the tab this view is contained in.
+         * @param filtertab The parent filtertab.
+         */
+        void setFilterTab(GUI::FilterTab* filtertab);
+
+
+        private:
+        /**
+         * @brief getDefaultImage Returns the default image on which the filter is applied as a preview.
+         * @return The default image.
+         */
+        static QImage getDefaultImage() {
+            throw "Not yet implemented";
+        }
+
+        /**
+         * @brief checkBoxStateChanged Does filterTab.addFilter(filter) or filterTab.removeFilter(filter.getName())
+         * @param state The state of the the checked checkbox
+         */
+        void checkBoxStateChanged(int state);
+
+
+
 
 		/// <summary>
-		/// Constructor.
+        ///
 		/// </summary>
-        public: FilterView(QWidget* parent);
+        /// <returns></returns>
 
-		/// <summary>
-		/// Slot: connected with checkbox.stateChanged(state : int)
-		/// does filterTab.addFilter(filter)
-		/// or filterTab.removeFilter(filter.getName())
-		/// </summary>
-		private: void checkBoxStateChanged(int state);
+        private:
+            QCheckBox* checkbox;
+            QLabel* preview;
+            GUI::FilterTab* filterTab;
+            Model::Filter* filter;
+            QWidget* verticalLayoutWidget;
+            QVBoxLayout* verticalLayout;
 
-		/// <summary>
-		/// Sets the filter this view represents.
-		/// </summary>
-		/// <param name="filter">The filter for this view.</param>
-        public: void setFilter(Model::Filter* filter);
-
-		/// <summary>
-		/// Sets the tab this view is contained in.
-		/// </summary>
-		/// <param name="filtertab">The parent filtertab.</param>
-		public: void setFilterTab(GUI::FilterTab* filtertab);
-
-		/// <summary>
-		/// Returns the default image on which the filter is applied as a preview.
-		/// </summary>
-		/// <returns>The default image.</returns>
-		private: static QImage getDefaultImage() {
-			throw "Not yet implemented";
-		}
 	};
 }
 

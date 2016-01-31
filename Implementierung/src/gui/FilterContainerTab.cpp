@@ -1,26 +1,36 @@
-/*#include <exception>
+#include "FilterContainerTab.h"
+
+#include <exception>
 #include <string>
 #include <vector>
+#include <QWidget.h>
 
-#include "FilterContainerTab.h"
 #include "FilterTab.h"
 #include "FilterView.h"
-#include "QWidget.h"
-#include "Filter.h"
+#include "../model/filters/Filter.h"
+#include "ui_filtercontainertab.h"
 
-FilterContainerTab::FilterContainerTab(QWidget* parent) {
+GUI::FilterContainerTab::FilterContainerTab(QWidget* parent):QFrame(parent) {
+    ui = new Ui::FilterContainerTab;
+    ui->setupUi(this);
+
+
 }
 
-void FilterContainerTab::addFilter(Filter filter) {
+void GUI::FilterContainerTab::addFilter(Model::Filter* filter) {
+    FilterView *v = new FilterView(this);
+    ui->container->addWidget(v);
+    v->setFilter(filter);
+    v->setFilterTab(parentTab);
+    int b = size().width();
+    resize(215+b, 200);
+}
+
+void GUI::FilterContainerTab::setParentTab(FilterTab& parent) {
 	throw "Not yet implemented";
 }
 
-void FilterContainerTab::setParentTab(FilterTab& parent) {
+void GUI::FilterContainerTab::uncheck(string filterName) {
 	throw "Not yet implemented";
 }
 
-void FilterContainerTab::uncheck(string filterName) {
-	throw "Not yet implemented";
-}
-
-*/

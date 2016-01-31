@@ -7,10 +7,12 @@
 //#include "PreviewControlPanel.h"
 #include "FrameView.h"
 //#include "PlayerControlPanel.h"
-//#include "FilterContainerTab.h"
-//#include "Filter.h"
-
+#include "FilterContainerTab.h"
 #include "ui_filtertab.h"
+
+#include "../model/filters/BlackWhiteFilter.h"
+#include "../model/filters/GridFilter.h"
+#include "../model/filters/EdgeFilter.h"
 
 GUI::FilterTab::FilterTab(QWidget* parent):QFrame(parent) {
     GUI::FilterTab::createUi();
@@ -52,6 +54,36 @@ void GUI::FilterTab::createUi() {
     button_save = ui->saveVideo;
     button_saveConf = ui->saveConfig;
     button_up = ui->up;
+
+   filterContainerTab.push_back(new FilterContainerTab(ui->scrollAreaFilters));
+   filterContainerTab.push_back(new FilterContainerTab(ui->scrollAreaArtefacts));
+
+   filterContainerTab[0]->addFilter(new Model::BlackWhiteFilter());
+   /*filterContainerTab[0]->addFilter(new Model::BlendingFilter());
+   filterContainerTab[0]->addFilter(new Model::BlurFilter());
+   filterContainerTab[0]->addFilter(new Model::BorderFilter());
+   filterContainerTab[0]->addFilter(new Model::BrightnessFilter());
+   filterContainerTab[0]->addFilter(new Model::ColorbalanceFilter());
+   filterContainerTab[0]->addFilter(new Model::ContrastFilter());
+   filterContainerTab[0]->addFilter(new Model::MirrorFilter());
+   filterContainerTab[0]->addFilter(new Model::NegativeFilter());
+   filterContainerTab[0]->addFilter(new Model::NoiseFilter());
+   filterContainerTab[0]->addFilter(new Model::PosterFilter());
+   filterContainerTab[0]->addFilter(new Model::RectangleFilter());
+   filterContainerTab[0]->addFilter(new Model::RGBFilter());
+   filterContainerTab[0]->addFilter(new Model::RotationFilter());
+   filterContainerTab[0]->addFilter(new Model::SaturationFilter());
+   filterContainerTab[0]->addFilter(new Model::ScaleFilter)();
+   filterContainerTab[0]->addFilter(new Model::SepiaFilter());
+   filterContainerTab[0]->addFilter(new Model::SharpnessFilter());
+   filterContainerTab[0]->addFilter(new Model::VintageFilter());
+   filterContainerTab[0]->addFilter(new Model::ZoomFilter());
+   */
+
+   filterContainerTab[1]->addFilter(new Model::EdgeFilter());
+   filterContainerTab[1]->addFilter(new Model::EdgeFilter());
+   filterContainerTab[1]->addFilter(new Model::EdgeFilter());
+   filterContainerTab[1]->addFilter(new Model::GridFilter());
 
 }
 

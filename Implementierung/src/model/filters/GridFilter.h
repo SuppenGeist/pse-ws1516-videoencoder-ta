@@ -1,10 +1,10 @@
-/*/*
-#include <exception>
-#include <string>
-using namespace std;
-
 #ifndef __GridFilter_h__
 #define __GridFilter_h__
+
+#include <string>
+
+
+
 
 #include "Filter.h"
 
@@ -18,12 +18,12 @@ namespace Model
 {
 	/**
 	 * Inserts a grid into the video as an overlay.
-
+    */
 	class GridFilter: public Model::Filter
 	{
 		private: int horizontalLines;
 		private: int verticalLines;
-		private: QRgb color;
+        //private: QRgb color;
 		private: int thickness;
 		private: int opacity;
 
@@ -33,7 +33,7 @@ namespace Model
 		public: GridFilter();
 
 		public: string getFilterDescription();
-
+/*
 		/// <summary>
 		/// Returns the number of horizontal drawn lines.
 		/// </summary>
@@ -93,11 +93,11 @@ namespace Model
 		/// </summary>
 		/// <param name="opacity">The grids opacity.</param>
 		public: void setOpacity(int opacity);
-
-		public: string getName();
+*/
+    public: std::string getName();
 	};
 }
 
 #endif
-*/
+
 
