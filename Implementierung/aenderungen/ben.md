@@ -9,3 +9,8 @@ Aendere Rueckgabetyp von getProject zu pointer.
 moveFilter(int old, int new) zu moveFilter(int oldIndex, newIndex) umbenannt
 <b>Grund:</b> "new" ist kein guter Name für einen Parameter.
 <hr>
+
+##FilterView
+füge methode uncheck() hinzu
+<b>Grund</b> keine möglichkeit die checkbox von FilterCOntainerTab aus zu erreichen.
+<hr>

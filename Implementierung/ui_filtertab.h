@@ -14,6 +14,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QFrame>
+#include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QPushButton>
@@ -28,7 +29,6 @@ QT_BEGIN_NAMESPACE
 class Ui_FilterTab
 {
 public:
-    QListWidget *listWidget;
     QTabWidget *tabWidget;
     QWidget *tab;
     QScrollArea *scrollAreaFilters;
@@ -52,6 +52,9 @@ public:
     QPushButton *saveConfig;
     QSpacerItem *verticalSpacer_3;
     QPushButton *reset;
+    QListWidget *listWidget;
+    QGroupBox *groupBox;
+    QFrame *frame;
 
     void setupUi(QFrame *FilterTab)
     {
@@ -70,40 +73,54 @@ public:
         FilterTab->setFont(font);
         FilterTab->setFrameShape(QFrame::StyledPanel);
         FilterTab->setFrameShadow(QFrame::Raised);
-        listWidget = new QListWidget(FilterTab);
-        listWidget->setObjectName(QStringLiteral("listWidget"));
-        listWidget->setGeometry(QRect(10, 10, 231, 531));
         tabWidget = new QTabWidget(FilterTab);
         tabWidget->setObjectName(QStringLiteral("tabWidget"));
-        tabWidget->setGeometry(QRect(10, 550, 921, 281));
+        tabWidget->setGeometry(QRect(10, 640, 921, 241));
         tab = new QWidget();
         tab->setObjectName(QStringLiteral("tab"));
         scrollAreaFilters = new QScrollArea(tab);
         scrollAreaFilters->setObjectName(QStringLiteral("scrollAreaFilters"));
-        scrollAreaFilters->setGeometry(QRect(0, 0, 921, 251));
-        scrollAreaFilters->setMinimumSize(QSize(921, 251));
-        scrollAreaFilters->setMaximumSize(QSize(921, 251));
+        scrollAreaFilters->setGeometry(QRect(0, 0, 921, 210));
+        QSizePolicy sizePolicy1(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(scrollAreaFilters->sizePolicy().hasHeightForWidth());
+        scrollAreaFilters->setSizePolicy(sizePolicy1);
+        scrollAreaFilters->setMinimumSize(QSize(0, 210));
+        scrollAreaFilters->setMaximumSize(QSize(921, 210));
+        scrollAreaFilters->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         scrollAreaFilters->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
         scrollAreaFilters->setSizeAdjustPolicy(QAbstractScrollArea::AdjustToContents);
         scrollAreaFilters->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 919, 232));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 919, 191));
+        QSizePolicy sizePolicy2(QSizePolicy::Expanding, QSizePolicy::Preferred);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(scrollAreaWidgetContents->sizePolicy().hasHeightForWidth());
+        scrollAreaWidgetContents->setSizePolicy(sizePolicy2);
         scrollAreaFilters->setWidget(scrollAreaWidgetContents);
         tabWidget->addTab(tab, QString());
         tab_2 = new QWidget();
         tab_2->setObjectName(QStringLiteral("tab_2"));
         scrollAreaArtefacts = new QScrollArea(tab_2);
         scrollAreaArtefacts->setObjectName(QStringLiteral("scrollAreaArtefacts"));
-        scrollAreaArtefacts->setGeometry(QRect(0, 0, 921, 251));
-        scrollAreaArtefacts->setMinimumSize(QSize(921, 251));
-        scrollAreaArtefacts->setMaximumSize(QSize(921, 251));
+        scrollAreaArtefacts->setGeometry(QRect(0, 0, 921, 210));
+        sizePolicy1.setHeightForWidth(scrollAreaArtefacts->sizePolicy().hasHeightForWidth());
+        scrollAreaArtefacts->setSizePolicy(sizePolicy1);
+        scrollAreaArtefacts->setMinimumSize(QSize(0, 210));
+        scrollAreaArtefacts->setMaximumSize(QSize(921, 210));
+        scrollAreaArtefacts->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         scrollAreaArtefacts->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
         scrollAreaArtefacts->setSizeAdjustPolicy(QAbstractScrollArea::AdjustToContents);
         scrollAreaArtefacts->setWidgetResizable(true);
+        scrollAreaArtefacts->setAlignment(Qt::AlignHCenter|Qt::AlignTop);
         scrollAreaWidgetContents_2 = new QWidget();
         scrollAreaWidgetContents_2->setObjectName(QStringLiteral("scrollAreaWidgetContents_2"));
-        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 919, 232));
+        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 919, 191));
+        sizePolicy2.setHeightForWidth(scrollAreaWidgetContents_2->sizePolicy().hasHeightForWidth());
+        scrollAreaWidgetContents_2->setSizePolicy(sizePolicy2);
         scrollAreaArtefacts->setWidget(scrollAreaWidgetContents_2);
         tabWidget->addTab(tab_2, QString());
         videoPlayer = new QWidget(FilterTab);
@@ -111,7 +128,7 @@ public:
         videoPlayer->setGeometry(QRect(460, 20, 461, 371));
         panel = new QWidget(FilterTab);
         panel->setObjectName(QStringLiteral("panel"));
-        panel->setGeometry(QRect(460, 410, 461, 91));
+        panel->setGeometry(QRect(460, 500, 461, 91));
         verticalLayoutWidget = new QWidget(FilterTab);
         verticalLayoutWidget->setObjectName(QStringLiteral("verticalLayoutWidget"));
         verticalLayoutWidget->setGeometry(QRect(250, 10, 201, 361));
@@ -355,6 +372,17 @@ public:
 
         verticalLayout->addWidget(reset);
 
+        listWidget = new QListWidget(FilterTab);
+        listWidget->setObjectName(QStringLiteral("listWidget"));
+        listWidget->setGeometry(QRect(10, 10, 231, 581));
+        groupBox = new QGroupBox(FilterTab);
+        groupBox->setObjectName(QStringLiteral("groupBox"));
+        groupBox->setGeometry(QRect(250, 380, 201, 211));
+        frame = new QFrame(groupBox);
+        frame->setObjectName(QStringLiteral("frame"));
+        frame->setGeometry(QRect(0, 20, 201, 191));
+        frame->setFrameShape(QFrame::StyledPanel);
+        frame->setFrameShadow(QFrame::Raised);
 
         retranslateUi(FilterTab);
 
@@ -378,6 +406,7 @@ public:
         loadConfig->setText(QApplication::translate("FilterTab", "Load configuration", 0));
         saveConfig->setText(QApplication::translate("FilterTab", "Save configuration", 0));
         reset->setText(QApplication::translate("FilterTab", "Reset", 0));
+        groupBox->setTitle(QApplication::translate("FilterTab", "Filter/Artefact options:", 0));
     } // retranslateUi
 
 };

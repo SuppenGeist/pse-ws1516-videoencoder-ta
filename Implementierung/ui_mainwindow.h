@@ -73,7 +73,7 @@ public:
         Filtersandartefacts->setObjectName(QStringLiteral("Filtersandartefacts"));
         filterTab = new QWidget(Filtersandartefacts);
         filterTab->setObjectName(QStringLiteral("filterTab"));
-        filterTab->setGeometry(QRect(0, 0, 951, 831));
+        filterTab->setGeometry(QRect(0, 0, 951, 881));
         tab_tabs->addTab(Filtersandartefacts, QString());
         videoandanalysis = new QWidget();
         videoandanalysis->setObjectName(QStringLiteral("videoandanalysis"));

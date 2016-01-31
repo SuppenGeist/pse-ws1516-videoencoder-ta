@@ -19,6 +19,7 @@ GUI::FilterContainerTab::FilterContainerTab(QWidget* parent):QFrame(parent) {
 
 void GUI::FilterContainerTab::addFilter(Model::Filter* filter) {
     FilterView *v = new FilterView(this);
+    v->setObjectName(QString::fromStdString(filter->getName()));
     ui->container->addWidget(v);
     v->setFilter(filter);
     v->setFilterTab(parentTab);
@@ -30,7 +31,7 @@ void GUI::FilterContainerTab::setParentTab(FilterTab& parent) {
 	throw "Not yet implemented";
 }
 
-void GUI::FilterContainerTab::uncheck(string filterName) {
-	throw "Not yet implemented";
+void GUI::FilterContainerTab::uncheck(std::string filterName) {
+    findChild<GUI::FilterView*>(QString::fromStdString(filterName))->uncheck();
 }
 

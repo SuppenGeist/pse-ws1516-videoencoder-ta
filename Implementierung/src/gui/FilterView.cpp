@@ -39,13 +39,16 @@ FilterView::FilterView(QWidget* parent):QFrame(parent) {
             verticalLayout->addWidget(preview);
             verticalLayout->addWidget(checkbox);
 }
+ void FilterView::uncheck() {
+     checkbox->setChecked(0);
+ }
 
 void GUI::FilterView::checkBoxStateChanged(int state) {
-    /*if(state = 0) {
-        filterTab->removeFilter(filter->getName());
+    if(state = 0) {
+        //filterTab->removeFilter(filter->getName());
     } else {
-        filterTab->addFilter(filter);
-    }*/
+        //filterTab->insertFilter(filter);
+    }
 }
 
 void GUI::FilterView::setFilter(Model::Filter* filter) {

@@ -48,6 +48,10 @@ namespace GUI
          */
         void setFilterTab(GUI::FilterTab* filtertab);
 
+        /**
+         * @brief uncheck Unchecks the checkbox
+         */
+        void uncheck();
 
         private:
         /**
