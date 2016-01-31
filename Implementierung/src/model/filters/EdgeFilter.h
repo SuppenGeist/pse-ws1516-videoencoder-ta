@@ -2,7 +2,6 @@
 #define __EdgeFilter_h__
 
 
-#include <string>
 
 
 

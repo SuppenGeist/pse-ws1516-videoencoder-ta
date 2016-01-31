@@ -1,6 +1,6 @@
 #include <exception>
 #include <string>
-using namespace std;
+
 
 #ifndef __BlurFilter_h__
 #define __BlurFilter_h__
@@ -57,10 +57,10 @@ class BlurFilter: public Model::Filter {
 	void setIntensity(int intensity);
 
   public:
-	string getFilterDescription();
+    std::string getFilterDescription();
 
   public:
-	string getName();
+    std::string getName();
 
   public:
 	void restoreFilter(QString description);

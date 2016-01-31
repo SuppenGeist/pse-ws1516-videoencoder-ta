@@ -1,6 +1,6 @@
 #include <exception>
-#include <string>
-using namespace std;
+
+
 
 #ifndef __ColorbalanceFilter_h__
 #define __ColorbalanceFilter_h__
@@ -93,10 +93,10 @@ class ColorbalanceFilter: public Model::Filter {
 	void setMediumPixels(bool mediumPixels);
 
   public:
-	string getFilterDescription();
+    std::string getFilterDescription();
 
   public:
-	string getName();
+    std::string getName();
 
 	/// <summary>
 	/// Whether the drak pixels shall be changed.

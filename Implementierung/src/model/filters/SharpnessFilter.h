@@ -1,6 +1,6 @@
 #include <exception>
 #include <string>
-using namespace std;
+
 
 #ifndef __SharpnessFilter_h__
 #define __SharpnessFilter_h__
@@ -27,7 +27,7 @@ class SharpnessFilter: public Model::Filter {
 	SharpnessFilter();
 
   public:
-	string getFilterDescription();
+    std::string getFilterDescription();
 
 	/// <summary>
 	/// Returns the intensity of the sharpness.
@@ -37,7 +37,7 @@ class SharpnessFilter: public Model::Filter {
 	int getIntensity();
 
   public:
-	string getName();
+    std::string getName();
 
 	/// <summary>
 	/// Sets the intensity of the sharpness.

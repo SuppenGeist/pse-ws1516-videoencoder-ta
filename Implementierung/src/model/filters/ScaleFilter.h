@@ -1,6 +1,6 @@
 #include <exception>
 #include <QString>
-using namespace std;
+
 
 #ifndef __ScaleFilter_h__
 #define __ScaleFilter_h__
@@ -33,7 +33,7 @@ class ScaleFilter: public Model::Filter {
 	ScaleFilter();
 
   public:
-	string getFilterDescription();
+    std::string getFilterDescription();
 
 	/// <summary>
 	/// Whether the ration is preserved.
@@ -50,7 +50,7 @@ class ScaleFilter: public Model::Filter {
 	void setKeepRatio(bool keepRatio);
 
   public:
-	string getName();
+    std::string getName();
 
 	/// <summary>
 	/// Returns the new width.

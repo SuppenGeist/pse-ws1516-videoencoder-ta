@@ -1,6 +1,6 @@
 #include <exception>
 #include <string>
-using namespace std;
+
 
 #ifndef __RectangleFilter_h__
 #define __RectangleFilter_h__
@@ -37,7 +37,7 @@ class RectangleFilter: public Model::Filter {
 	RectangleFilter();
 
   public:
-	string getFilterDescription();
+    std::string getFilterDescription();
 
 	/// <summary>
 	/// Returns the color of the rectangle.
@@ -89,7 +89,7 @@ class RectangleFilter: public Model::Filter {
 	int getX();
 
   public:
-	string getName();
+    std::string getName();
 
 	/// <summary>
 	/// Sets the start position on the x axis.

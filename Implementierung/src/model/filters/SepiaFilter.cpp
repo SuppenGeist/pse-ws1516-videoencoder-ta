@@ -7,12 +7,12 @@
 Model::SepiaFilter::SepiaFilter() {
 }
 
-string Model::SepiaFilter::getName() {
+std::string Model::SepiaFilter::getName() {
 	return "Sepia";
 }
 
-string Model::SepiaFilter::getFilterDescription() {
-	string str = "colorchannelmixer=.393:.769:.189:0:.349:.686:.168:0:.272:.534:.131";
+std::string Model::SepiaFilter::getFilterDescription() {
+    std::string str = "colorchannelmixer=.393:.769:.189:0:.349:.686:.168:0:.272:.534:.131";
 	return str;
 }
 

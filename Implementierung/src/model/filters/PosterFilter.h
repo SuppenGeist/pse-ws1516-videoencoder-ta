@@ -1,6 +1,6 @@
 #include <exception>
 #include <string>
-using namespace std;
+
 
 #ifndef __PosterFilter_h__
 #define __PosterFilter_h__
@@ -27,7 +27,7 @@ class PosterFilter: public Model::Filter {
 	PosterFilter();
 
   public:
-	string getFilterDescription();
+    std::string getFilterDescription();
 
 	/// <summary>
 	/// Returns the maximum number of colors.
@@ -37,7 +37,7 @@ class PosterFilter: public Model::Filter {
 	int getNumberOfColors();
 
   public:
-	string getName();
+    std::string getName();
 
 	/// <summary>
 	/// Sets the maximum number of colors.

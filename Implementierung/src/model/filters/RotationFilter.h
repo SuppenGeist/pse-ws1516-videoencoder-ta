@@ -1,6 +1,6 @@
 #include <exception>
 #include <string>
-using namespace std;
+
 
 #ifndef __RotationFilter_h__
 #define __RotationFilter_h__
@@ -27,7 +27,7 @@ class RotationFilter: public Model::Filter {
 	RotationFilter();
 
   public:
-	string getFilterDescription();
+    std::string getFilterDescription();
 
 	/// <summary>
 	/// Returns the angle of the rotation.
@@ -37,7 +37,7 @@ class RotationFilter: public Model::Filter {
 	int getAngle();
 
   public:
-	string getName();
+    std::string getName();
 
 	/// <summary>
 	/// Sets the angle of the rotation.

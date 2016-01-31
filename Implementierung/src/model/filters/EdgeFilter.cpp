@@ -7,11 +7,11 @@
 Model::EdgeFilter::EdgeFilter() {
 }
 
-string Model::EdgeFilter::getFilterDescription() {
+std::string Model::EdgeFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 
-string Model::EdgeFilter::getName() {
+std::string Model::EdgeFilter::getName() {
 	return "Edge";
 }
 

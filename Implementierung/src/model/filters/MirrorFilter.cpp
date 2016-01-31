@@ -8,11 +8,11 @@
 Model::MirrorFilter::MirrorFilter() {
 }
 
-string Model::MirrorFilter::getFilterDescription() {
+std::string Model::MirrorFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 
-string Model::MirrorFilter::getName() {
+std::string Model::MirrorFilter::getName() {
 	return "Mirror";
 }
 

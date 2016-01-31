@@ -1,8 +1,7 @@
 #ifndef __GridFilter_h__
 #define __GridFilter_h__
 
-#include <string>
-
+#include <QColor>
 
 
 
@@ -36,7 +35,7 @@ class GridFilter: public Model::Filter {
 	GridFilter();
 
   public:
-	string getFilterDescription();
+    std::string getFilterDescription();
 
 	/// <summary>
 	/// Returns the number of horizontal drawn lines.

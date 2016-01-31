@@ -1,6 +1,6 @@
 #include <exception>
 #include <string>
-using namespace std;
+
 
 #ifndef __ContrastFilter_h__
 #define __ContrastFilter_h__
@@ -41,10 +41,10 @@ class ContrastFilter: public Model::Filter {
 	int getIntensity();
 
   public:
-	string getName();
+    std::string getName();
 
   public:
-	string getFilterDescription();
+    std::string getFilterDescription();
 
   public:
 	void restoreFilter(QString description);

@@ -7,7 +7,7 @@
 Model::RectangleFilter::RectangleFilter() {
 }
 
-string Model::RectangleFilter::getFilterDescription() {
+std::string Model::RectangleFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 
@@ -39,7 +39,7 @@ int Model::RectangleFilter::getX() {
 	return this->x;
 }
 
-string Model::RectangleFilter::getName() {
+std::string Model::RectangleFilter::getName() {
 	return "Rectangle";
 }
 

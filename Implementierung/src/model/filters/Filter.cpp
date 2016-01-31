@@ -5,11 +5,11 @@
 //#include "RemoveFilter.h"
 
 
-string Model::Filter::getName() {
+std::string Model::Filter::getName() {
 	return "Filter";
 }
 
-string Model::Filter::getFilterDescription() {
+std::string Model::Filter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 

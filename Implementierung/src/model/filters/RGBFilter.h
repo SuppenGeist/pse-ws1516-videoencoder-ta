@@ -1,7 +1,7 @@
 
 #include <exception>
 #include <string>
-using namespace std;
+
 
 #ifndef __RGBFilter_h__
 #define __RGBFilter_h__
@@ -30,7 +30,7 @@ class RGBFilter: public Model::Filter {
 	RGBFilter();
 
   public:
-	string getFilterDescription();
+    std::string getFilterDescription();
 
 	/// <summary>
 	/// Returns the color that is not filtered out.
@@ -47,7 +47,7 @@ class RGBFilter: public Model::Filter {
 	void setColor(Model::BasicColor color);
 
   public:
-	string getName();
+    std::string getName();
 
   public:
 	void restoreFilter(QString description);

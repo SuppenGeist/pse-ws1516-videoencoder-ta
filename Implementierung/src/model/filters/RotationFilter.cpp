@@ -7,7 +7,7 @@
 Model::RotationFilter::RotationFilter() {
 }
 
-string Model::RotationFilter::getFilterDescription() {
+std::string Model::RotationFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 
@@ -15,7 +15,7 @@ int Model::RotationFilter::getAngle() {
 	return this->angle;
 }
 
-string Model::RotationFilter::getName() {
+std::string Model::RotationFilter::getName() {
 	return "Rotation";
 }
 

@@ -1,6 +1,6 @@
 #include <exception>
-#include <string>
-using namespace std;
+
+
 
 #ifndef __BrightnessFilter_h__
 #define __BrightnessFilter_h__
@@ -41,10 +41,10 @@ class BrightnessFilter: public Model::Filter {
 	void setIntensity(int intensity);
 
   public:
-	string getName();
+    std::string getName();
 
   public:
-	string getFilterDescription();
+    std::string getFilterDescription();
 
   public:
 	void restoreFilter(QString description);

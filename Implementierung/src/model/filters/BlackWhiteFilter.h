@@ -1,6 +1,6 @@
 #include <exception>
 #include <string>
-using namespace std;
+
 
 #ifndef __BlackWhiteFilter_h__
 #define __BlackWhiteFilter_h__
@@ -25,10 +25,10 @@ class BlackWhiteFilter: public Model::Filter {
 	BlackWhiteFilter();
 
   public:
-	string getName();
+    std::string getName();
 
   public:
-	string getFilterDescription();
+    std::string getFilterDescription();
 
   public:
 	void restoreFilter(QString description);

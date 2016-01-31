@@ -1,6 +1,6 @@
 #include <exception>
 #include <string>
-using namespace std;
+
 
 #ifndef __NoiseFilter_h__
 #define __NoiseFilter_h__
@@ -31,7 +31,7 @@ class NoiseFilter: public Model::Filter {
 	NoiseFilter();
 
   public:
-	string getFilterDescription();
+    std::string getFilterDescription();
 
 	/// <summary>
 	/// Returns the NoiseMode.
@@ -55,7 +55,7 @@ class NoiseFilter: public Model::Filter {
 	int getIntensity();
 
   public:
-	string getName();
+    std::string getName();
 
 	/// <summary>
 	/// Sets the intensity of the noise.

@@ -1,7 +1,7 @@
 #include <exception>
-#include <string>
+
 #include <QColor>
-using namespace std;
+
 
 #ifndef __BorderFilter_h__
 #define __BorderFilter_h__
@@ -122,10 +122,10 @@ class BorderFilter: public Model::Filter {
 	void setColor(QRgb color);
 
   public:
-	string getName();
+    std::string getName();
 
   public:
-	string getFilterDescription();
+    std::string getFilterDescription();
 
   public:
 	void restoreFilter(QString description);

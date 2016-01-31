@@ -1,6 +1,5 @@
 #include <exception>
 #include <string>
-using namespace std;
 
 #ifndef __BlendingFilter_h__
 #define __BlendingFilter_h__
@@ -73,10 +72,10 @@ class BlendingFilter: public Model::Filter {
 	void setEndFrame(int endFrame);
 
   public:
-	string getName();
+    std::string getName();
 
   public:
-	string getFilterDescription();
+    std::string getFilterDescription();
 
   public:
 	void restoreFilter(QString description);

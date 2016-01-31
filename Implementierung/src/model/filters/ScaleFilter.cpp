@@ -7,12 +7,12 @@
 Model::ScaleFilter::ScaleFilter() {
 }
 
-string Model::ScaleFilter::getFilterDescription() {
+std::string Model::ScaleFilter::getFilterDescription() {
 	std::string str = std::string(getName());
 	str+="=";
-	str+=to_string(getWidth());
+    str+=std::to_string(getWidth());
 	str+=":";
-	str+=to_string(getHeight());
+    str+=std::to_string(getHeight());
 	return str;
 }
 
@@ -24,7 +24,7 @@ void Model::ScaleFilter::setKeepRatio(bool keepRatio) {
 	this->keepRatio = keepRatio;
 }
 
-string Model::ScaleFilter::getName() {
+std::string Model::ScaleFilter::getName() {
 	return "Scale";
 }
 

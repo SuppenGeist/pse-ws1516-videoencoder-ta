@@ -7,7 +7,7 @@
 Model::SharpnessFilter::SharpnessFilter() {
 }
 
-string Model::SharpnessFilter::getFilterDescription() {
+std::string Model::SharpnessFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 
@@ -15,7 +15,7 @@ int Model::SharpnessFilter::getIntensity() {
 	return this->intensity;
 }
 
-string Model::SharpnessFilter::getName() {
+std::string Model::SharpnessFilter::getName() {
 	return "Sharpness";
 }
 

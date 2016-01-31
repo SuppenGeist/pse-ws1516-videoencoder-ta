@@ -7,7 +7,7 @@
 Model::PosterFilter::PosterFilter() {
 }
 
-string Model::PosterFilter::getFilterDescription() {
+std::string Model::PosterFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 
@@ -15,7 +15,7 @@ int Model::PosterFilter::getNumberOfColors() {
 	return this->numberOfColors;
 }
 
-string Model::PosterFilter::getName() {
+std::string Model::PosterFilter::getName() {
 	return "Poster";
 }
 

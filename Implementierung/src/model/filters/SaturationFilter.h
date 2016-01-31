@@ -1,6 +1,6 @@
 #include <exception>
 #include <string>
-using namespace std;
+
 
 #ifndef __SaturationFilter_h__
 #define __SaturationFilter_h__
@@ -27,7 +27,7 @@ class SaturationFilter: public Model::Filter {
 	SaturationFilter();
 
   public:
-	string getFilterDescription();
+    std::string getFilterDescription();
 
 	/// <summary>
 	/// Returns the intensity of the saturation.
@@ -37,7 +37,7 @@ class SaturationFilter: public Model::Filter {
 	int getIntensity();
 
   public:
-	string getName();
+    std::string getName();
 
 	/// <summary>
 	/// Sets the intensity of the saturation.

@@ -7,12 +7,12 @@
 Model::VintageFilter::VintageFilter() {
 }
 
-string Model::VintageFilter::getName() {
+std::string Model::VintageFilter::getName() {
 	return "Vintage";
 }
 
-string Model::VintageFilter::getFilterDescription() {
-	string str = "curves=vintage";
+std::string Model::VintageFilter::getFilterDescription() {
+    std::string str = "curves=vintage";
 	return str;
 }
 

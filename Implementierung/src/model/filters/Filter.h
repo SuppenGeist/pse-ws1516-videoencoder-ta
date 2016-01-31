@@ -1,6 +1,6 @@
 #include <exception>
 #include <QString>
-using namespace std;
+
 
 #ifndef __Filter_h__
 #define __Filter_h__
@@ -27,14 +27,14 @@ class Filter {
 	/// </summary>
 	/// <returns>The string for the ffmpeg library.</returns>
   public:
-	virtual string getFilterDescription() = 0;
+    virtual std::string getFilterDescription() = 0;
 
 	/// <summary>
 	/// Returns the name of the filter.
 	/// </summary>
 	/// <returns>The filtername.</returns>
   public:
-	virtual string getName() = 0;
+    virtual std::string getName() = 0;
 
 
   public:

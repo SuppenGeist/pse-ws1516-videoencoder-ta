@@ -1,6 +1,6 @@
 #include <exception>
 #include <string>
-using namespace std;
+
 
 #ifndef __MirrorFilter_h__
 #define __MirrorFilter_h__
@@ -29,10 +29,10 @@ class MirrorFilter: public Model::Filter {
 	MirrorFilter();
 
   public:
-	string getFilterDescription();
+    std::string getFilterDescription();
 
   public:
-	string getName();
+    std::string getName();
 
 	/// <summary>
 	/// Returns the MirrorMode.

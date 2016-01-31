@@ -7,11 +7,11 @@
 Model::ZoomFilter::ZoomFilter() {
 }
 
-string Model::ZoomFilter::getName() {
+std::string Model::ZoomFilter::getName() {
 	return "Zoom";
 }
 
-string Model::ZoomFilter::getFilterDescription() {
+std::string Model::ZoomFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 
