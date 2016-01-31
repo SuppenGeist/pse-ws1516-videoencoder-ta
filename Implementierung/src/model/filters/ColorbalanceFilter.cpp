@@ -1,60 +1,60 @@
-/*/*#include <exception>
+#include <exception>
 #include <string>
 
 #include "ColorbalanceFilter.h"
-#include "BasicColor.h"
+#include "../../Utility/BasicColor.h"
 #include "Filter.h"
 
-ColorbalanceFilter::ColorbalanceFilter() {
+Model::ColorbalanceFilter::ColorbalanceFilter() {
 }
 
-Model::BasicColor ColorbalanceFilter::getColor() {
+Model::BasicColor Model::ColorbalanceFilter::getColor() {
 	throw "Not yet implemented";
 }
 
-void ColorbalanceFilter::setColor(BasicColor color) {
+void Model::ColorbalanceFilter::setColor(BasicColor color) {
 	throw "Not yet implemented";
 }
 
-int ColorbalanceFilter::getIntensity() {
+int Model::ColorbalanceFilter::getIntensity() {
 	return this->intensity;
 }
 
-void ColorbalanceFilter::setIntensity(int intensity) {
+void Model::ColorbalanceFilter::setIntensity(int intensity) {
 	this->intensity = intensity;
 }
 
-bool ColorbalanceFilter::getBrightPixels() {
+bool Model::ColorbalanceFilter::getBrightPixels() {
 	return this->brightPixels;
 }
 
-void ColorbalanceFilter::setBrightPixels(bool brightPixels) {
+void Model::ColorbalanceFilter::setBrightPixels(bool brightPixels) {
 	this->brightPixels = brightPixels;
 }
 
-bool ColorbalanceFilter::getMediumPixels() {
+bool Model::ColorbalanceFilter::getMediumPixels() {
 	return this->mediumPixels;
 }
 
-void ColorbalanceFilter::setMediumPixels(bool mediumPixels) {
+void Model::ColorbalanceFilter::setMediumPixels(bool mediumPixels) {
 	this->mediumPixels = mediumPixels;
 }
 
-string ColorbalanceFilter::getFilterDescription() {
+string Model::ColorbalanceFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 
-string ColorbalanceFilter::getName() {
-	throw "Not yet implemented";
+string Model::ColorbalanceFilter::getName() {
+    return "Colorbalance";
 }
 
-bool ColorbalanceFilter::getDarkPixels() {
+bool Model::ColorbalanceFilter::getDarkPixels() {
 	return this->darkPixels;
 }
 
-void ColorbalanceFilter::setDarkPixels(bool darkPixels) {
+void Model::ColorbalanceFilter::setDarkPixels(bool darkPixels) {
 	this->darkPixels = darkPixels;
 }
 
-*/
+
 

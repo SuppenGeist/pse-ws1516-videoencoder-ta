@@ -1,4 +1,4 @@
-/*
+
 #ifndef __BasicColor_h__
 #define __BasicColor_h__
 
@@ -18,4 +18,4 @@ namespace Model
 }
 
 #endif
-*/
+

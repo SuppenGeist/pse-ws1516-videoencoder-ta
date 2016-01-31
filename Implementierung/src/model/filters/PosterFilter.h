@@ -1,4 +1,3 @@
-/*/*
 #include <exception>
 #include <string>
 using namespace std;
@@ -18,7 +17,7 @@ namespace Model
 {
 	/**
 	 * Reduces the maximum number of colors in the video.
-
+    */
 	class PosterFilter: public Model::Filter
 	{
 		private: int numberOfColors;
@@ -47,5 +46,5 @@ namespace Model
 }
 
 #endif
-*/
+
 

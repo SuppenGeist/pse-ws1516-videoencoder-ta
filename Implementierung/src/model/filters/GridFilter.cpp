@@ -1,6 +1,6 @@
 
 #include <string>
-
+#include <QColor>
 #include "GridFilter.h"
 #include "Filter.h"
 
@@ -10,47 +10,47 @@ Model::GridFilter::GridFilter() {
 std::string Model::GridFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
-/*
-int GridFilter::getHorizontalLines() {
+
+int Model::GridFilter::getHorizontalLines() {
 	return this->horizontalLines;
 }
 
-void GridFilter::setHorizontalLines(int horizontalLines) {
+void Model::GridFilter::setHorizontalLines(int horizontalLines) {
 	this->horizontalLines = horizontalLines;
 }
 
-int GridFilter::getVerticalLines() {
+int Model::GridFilter::getVerticalLines() {
 	return this->verticalLines;
 }
 
-void GridFilter::setVerticalLines(int verticalLines) {
+void Model::GridFilter::setVerticalLines(int verticalLines) {
 	this->verticalLines = verticalLines;
 }
 
-QRgb GridFilter::getColor() {
+QRgb Model::GridFilter::getColor() {
 	return this->color;
 }
 
-void GridFilter::setColor(QRgb color) {
+void Model::GridFilter::setColor(QRgb color) {
 	this->color = color;
 }
 
-int GridFilter::getThickness() {
+int Model::GridFilter::getThickness() {
 	return this->thickness;
 }
 
-void GridFilter::setThickness(int thickness) {
+void Model::GridFilter::setThickness(int thickness) {
 	this->thickness = thickness;
 }
 
-int GridFilter::getOpacity() {
+int Model::GridFilter::getOpacity() {
 	return this->opacity;
 }
 
-void GridFilter::setOpacity(int opacity) {
+void Model::GridFilter::setOpacity(int opacity) {
 	this->opacity = opacity;
 }
-*/
+
 std::string Model::GridFilter::getName() {
     return "Grid";
 }

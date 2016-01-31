@@ -1,4 +1,4 @@
-/*
+
 #ifndef __MirrorMode_h__
 #define __MirrorMode_h__
 
@@ -17,4 +17,4 @@ namespace Model
 }
 
 #endif
-*/
+

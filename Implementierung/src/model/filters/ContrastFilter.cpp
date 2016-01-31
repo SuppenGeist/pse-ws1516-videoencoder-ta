@@ -1,27 +1,27 @@
-/*/*#include <exception>
+#include <exception>
 #include <string>
 
 #include "ContrastFilter.h"
 #include "Filter.h"
 
-ContrastFilter::ContrastFilter() {
+Model::ContrastFilter::ContrastFilter() {
 }
 
-void ContrastFilter::setIntensity(int intensity) {
+void Model::ContrastFilter::setIntensity(int intensity) {
 	this->intensity = intensity;
 }
 
-int ContrastFilter::getIntensity() {
+int Model::ContrastFilter::getIntensity() {
 	return this->intensity;
 }
 
-string ContrastFilter::getName() {
+string Model::ContrastFilter::getName() {
+    return "Contrast";
+}
+
+string Model::ContrastFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 
-string ContrastFilter::getFilterDescription() {
-	throw "Not yet implemented";
-}
 
-*/
 

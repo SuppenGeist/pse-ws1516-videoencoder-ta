@@ -1,27 +1,27 @@
-/*/*#include <exception>
+#include <exception>
 #include <string>
 
 #include "MirrorFilter.h"
-#include "MirrorMode.h"
+#include "../MirrorMode.h"
 #include "Filter.h"
 
-MirrorFilter::MirrorFilter() {
+Model::MirrorFilter::MirrorFilter() {
 }
 
-string MirrorFilter::getFilterDescription() {
+string Model::MirrorFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 
-string MirrorFilter::getName() {
+string Model::MirrorFilter::getName() {
+    return "Mirror";
+}
+
+Model::MirrorMode Model::MirrorFilter::getMode() {
 	throw "Not yet implemented";
 }
 
-Model::MirrorMode MirrorFilter::getMode() {
+void Model::MirrorFilter::setMode(MirrorMode mode) {
 	throw "Not yet implemented";
 }
 
-void MirrorFilter::setMode(MirrorMode mode) {
-	throw "Not yet implemented";
-}
 
-*/

@@ -1,4 +1,3 @@
-/*/*
 #include <exception>
 #include <string>
 using namespace std;
@@ -6,7 +5,7 @@ using namespace std;
 #ifndef __ColorbalanceFilter_h__
 #define __ColorbalanceFilter_h__
 
-#include "BasicColor.h"
+#include "../../Utility/BasicColor.h"
 #include "Filter.h"
 
 namespace Model
@@ -20,7 +19,7 @@ namespace Model
 {
 	/**
 	 * Adjusts the colorbalance of the video for the 3 basic colors.
-
+    */
 	class ColorbalanceFilter: public Model::Filter
 	{
 		private: int intensity;
@@ -101,5 +100,5 @@ namespace Model
 }
 
 #endif
-*/
+
 

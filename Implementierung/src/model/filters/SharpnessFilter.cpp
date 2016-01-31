@@ -1,26 +1,26 @@
-/*/*#include <exception>
+#include <exception>
 #include <string>
 
 #include "SharpnessFilter.h"
 #include "Filter.h"
 
-SharpnessFilter::SharpnessFilter() {
+Model::SharpnessFilter::SharpnessFilter() {
 }
 
-string SharpnessFilter::getFilterDescription() {
+string Model::SharpnessFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 
-int SharpnessFilter::getIntensity() {
+int Model::SharpnessFilter::getIntensity() {
 	return this->intensity;
 }
 
-string SharpnessFilter::getName() {
-	throw "Not yet implemented";
+string Model::SharpnessFilter::getName() {
+    return "Sharpness";
 }
 
-void SharpnessFilter::setIntensity(int intensity) {
+void Model::SharpnessFilter::setIntensity(int intensity) {
 	this->intensity = intensity;
 }
 
-*/
+

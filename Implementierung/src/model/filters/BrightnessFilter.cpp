@@ -1,27 +1,27 @@
-/*/*#include <exception>
+#include <exception>
 #include <string>
 
 #include "BrightnessFilter.h"
 #include "Filter.h"
 
-BrightnessFilter::BrightnessFilter() {
+Model::BrightnessFilter::BrightnessFilter() {
 }
 
-int BrightnessFilter::getIntensity() {
+int Model::BrightnessFilter::getIntensity() {
 	return this->intensity;
 }
 
-void BrightnessFilter::setIntensity(int intensity) {
+void Model::BrightnessFilter::setIntensity(int intensity) {
 	this->intensity = intensity;
 }
 
-string BrightnessFilter::getName() {
+string Model::BrightnessFilter::getName() {
+    return "Brightness";
+}
+
+string Model::BrightnessFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 
-string BrightnessFilter::getFilterDescription() {
-	throw "Not yet implemented";
-}
 
-*/
 

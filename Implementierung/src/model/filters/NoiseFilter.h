@@ -1,4 +1,3 @@
-/*/*
 #include <exception>
 #include <string>
 using namespace std;
@@ -6,7 +5,7 @@ using namespace std;
 #ifndef __NoiseFilter_h__
 #define __NoiseFilter_h__
 
-#include "NoiseMode.h"
+#include "../NoiseMode.h"
 #include "Filter.h"
 
 namespace Model
@@ -20,7 +19,7 @@ namespace Model
 {
 	/**
 	 * Inserts noise into the video.
-
+    */
 	class NoiseFilter: public Model::Filter
 	{
 		private: int intensity;
@@ -62,5 +61,5 @@ namespace Model
 }
 
 #endif
-*/
+
 

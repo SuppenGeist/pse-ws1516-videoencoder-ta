@@ -1,35 +1,35 @@
-/*/*#include <exception>
+#include <exception>
 #include <string>
 
 #include "NoiseFilter.h"
-#include "NoiseMode.h"
+#include "../NoiseMode.h"
 #include "Filter.h"
 
-NoiseFilter::NoiseFilter() {
+Model::NoiseFilter::NoiseFilter() {
 }
 
-string NoiseFilter::getFilterDescription() {
+string Model::NoiseFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 
-Model::NoiseMode NoiseFilter::getMode() {
+Model::NoiseMode Model::NoiseFilter::getMode() {
 	throw "Not yet implemented";
 }
 
-void NoiseFilter::setMode(NoiseMode mode) {
+void Model::NoiseFilter::setMode(NoiseMode mode) {
 	throw "Not yet implemented";
 }
 
-int NoiseFilter::getIntensity() {
+int Model::NoiseFilter::getIntensity() {
 	return this->intensity;
 }
 
-string NoiseFilter::getName() {
-	throw "Not yet implemented";
+string Model::NoiseFilter::getName() {
+    return "Noise";
 }
 
-void NoiseFilter::setIntensity(int intensity) {
+void Model::NoiseFilter::setIntensity(int intensity) {
 	this->intensity = intensity;
 }
 
-*/
+

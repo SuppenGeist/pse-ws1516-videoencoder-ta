@@ -1,67 +1,68 @@
-/*/*#include <exception>
+#include <exception>
 #include <string>
+#include <QColor>
 
 #include "BorderFilter.h"
 #include "Filter.h"
 
-BorderFilter::BorderFilter() {
+Model::BorderFilter::BorderFilter() {
 }
 
-bool BorderFilter::getTop() {
+bool Model::BorderFilter::getTop() {
 	return this->top;
 }
 
-void BorderFilter::setTop(bool top) {
+void Model::BorderFilter::setTop(bool top) {
 	this->top = top;
 }
 
-bool BorderFilter::getBottom() {
+bool Model::BorderFilter::getBottom() {
 	return this->bottom;
 }
 
-void BorderFilter::setBottom(bool bottom) {
+void Model::BorderFilter::setBottom(bool bottom) {
 	this->bottom = bottom;
 }
 
-bool BorderFilter::getRight() {
+bool Model::BorderFilter::getRight() {
 	return this->right;
 }
 
-void BorderFilter::setRight(bool right) {
+void Model::BorderFilter::setRight(bool right) {
 	this->right = right;
 }
 
-bool BorderFilter::getLeft() {
+bool Model::BorderFilter::getLeft() {
 	return this->left;
 }
 
-void BorderFilter::setLeft(bool left) {
+void Model::BorderFilter::setLeft(bool left) {
 	this->left = left;
 }
 
-int BorderFilter::getThickness() {
+int Model::BorderFilter::getThickness() {
 	return this->thickness;
 }
 
-void BorderFilter::setThickness(int thickness) {
+void Model::BorderFilter::setThickness(int thickness) {
 	this->thickness = thickness;
 }
 
-QRgb BorderFilter::getColor() {
+QRgb Model::BorderFilter::getColor() {
 	return this->color;
 }
 
-void BorderFilter::setColor(QRgb color) {
+void Model::BorderFilter::setColor(QRgb color) {
 	this->color = color;
 }
 
-string BorderFilter::getName() {
+string Model::BorderFilter::getName() {
+    return "Border";
+}
+
+string Model::BorderFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 
-string BorderFilter::getFilterDescription() {
-	throw "Not yet implemented";
-}
 
-*/
 

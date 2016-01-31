@@ -1,4 +1,3 @@
-/*/*
 #include <exception>
 #include <string>
 using namespace std;
@@ -18,7 +17,7 @@ namespace Model
 {
 	/**
 	 * Blurs the video.
-
+    */
 	class BlurFilter: public Model::Filter
 	{
 		private: bool preserveEdges;
@@ -60,5 +59,5 @@ namespace Model
 }
 
 #endif
-*/
+
 

@@ -1,4 +1,3 @@
-/*/*
 #include <exception>
 #include <string>
 using namespace std;
@@ -18,7 +17,7 @@ namespace Model
 {
 	/**
 	 * Converts the video into it's negative.
-
+    */
 	class NegativeFilter: public Model::Filter
 	{
 
@@ -34,4 +33,3 @@ namespace Model
 }
 
 #endif
-*/

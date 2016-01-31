@@ -1,26 +1,26 @@
-/*/*#include <exception>
+#include <exception>
 #include <string>
 
 #include "SaturationFilter.h"
 #include "Filter.h"
 
-SaturationFilter::SaturationFilter() {
+Model::SaturationFilter::SaturationFilter() {
 }
 
-string SaturationFilter::getFilterDescription() {
+string Model::SaturationFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 
-int SaturationFilter::getIntensity() {
+int Model::SaturationFilter::getIntensity() {
 	return this->intensity;
 }
 
-string SaturationFilter::getName() {
-	throw "Not yet implemented";
+string Model::SaturationFilter::getName() {
+    return "Saturation";
 }
 
-void SaturationFilter::setIntensity(int intensity) {
+void Model::SaturationFilter::setIntensity(int intensity) {
 	this->intensity = intensity;
 }
 
-*/
+

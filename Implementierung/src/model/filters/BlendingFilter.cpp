@@ -1,43 +1,43 @@
-/*/*#include <exception>
+#include <exception>
 #include <string>
 
 #include "BlendingFilter.h"
 #include "Filter.h"
 
-BlendingFilter::BlendingFilter() {
+Model::BlendingFilter::BlendingFilter() {
 }
 
-bool BlendingFilter::getInBlend() {
+bool Model::BlendingFilter::getInBlend() {
 	return this->inBlend;
 }
 
-void BlendingFilter::setInBlend(bool inBlend) {
+void Model::BlendingFilter::setInBlend(bool inBlend) {
 	this->inBlend = inBlend;
 }
 
-int BlendingFilter::getStartFrame() {
+int Model::BlendingFilter::getStartFrame() {
 	return this->startFrame;
 }
 
-void BlendingFilter::setStartFrame(int startFrame) {
+void Model::BlendingFilter::setStartFrame(int startFrame) {
 	this->startFrame = startFrame;
 }
 
-int BlendingFilter::getEndFrame() {
+int Model::BlendingFilter::getEndFrame() {
 	return this->endFrame;
 }
 
-void BlendingFilter::setEndFrame(int endFrame) {
+void Model::BlendingFilter::setEndFrame(int endFrame) {
 	this->endFrame = endFrame;
 }
 
-string BlendingFilter::getName() {
+string Model::BlendingFilter::getName() {
+    return "Blending";
+}
+
+string Model::BlendingFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 
-string BlendingFilter::getFilterDescription() {
-	throw "Not yet implemented";
-}
 
-*/
 

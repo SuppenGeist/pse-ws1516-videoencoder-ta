@@ -1,4 +1,3 @@
-/*/*
 #include <exception>
 #include <string>
 using namespace std;
@@ -18,7 +17,7 @@ namespace Model
 {
 	/**
 	 * Rotates the video.
-
+    */
 	class RotationFilter: public Model::Filter
 	{
 		private: int angle;
@@ -47,5 +46,5 @@ namespace Model
 }
 
 #endif
-*/
+
 

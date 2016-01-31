@@ -1,26 +1,26 @@
-/*/*#include <exception>
+#include <exception>
 #include <string>
 
 #include "RotationFilter.h"
 #include "Filter.h"
 
-RotationFilter::RotationFilter() {
+Model::RotationFilter::RotationFilter() {
 }
 
-string RotationFilter::getFilterDescription() {
+string Model::RotationFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 
-int RotationFilter::getAngle() {
+int Model::RotationFilter::getAngle() {
 	return this->angle;
 }
 
-string RotationFilter::getName() {
-	throw "Not yet implemented";
+string Model::RotationFilter::getName() {
+    return "Rotation";
 }
 
-void RotationFilter::setAngle(int angle) {
+void Model::RotationFilter::setAngle(int angle) {
 	this->angle = angle;
 }
 
-*/
+

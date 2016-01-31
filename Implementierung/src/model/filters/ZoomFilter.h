@@ -1,4 +1,3 @@
-/*/*
 #include <exception>
 #include <string>
 using namespace std;
@@ -18,7 +17,7 @@ namespace Model
 {
 	/**
 	 * Zooms into the center of the video.
-
+    */
 	class ZoomFilter: public Model::Filter
 	{
 		private: int intensity;
@@ -47,5 +46,5 @@ namespace Model
 }
 
 #endif
-*/
+
 

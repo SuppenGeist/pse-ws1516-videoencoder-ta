@@ -1,34 +1,33 @@
-/*/*#include <exception>
+#include <exception>
 #include <string>
 
 #include "BlurFilter.h"
 #include "Filter.h"
 
-BlurFilter::BlurFilter() {
+Model::BlurFilter::BlurFilter() {
 }
 
-bool BlurFilter::getPreserveEdges() {
+bool Model::BlurFilter::getPreserveEdges() {
 	return this->preserveEdges;
 }
 
-void BlurFilter::setPreserveEdges(bool preserveEdges) {
+void Model::BlurFilter::setPreserveEdges(bool preserveEdges) {
 	this->preserveEdges = preserveEdges;
 }
 
-int BlurFilter::getIntensity() {
+int Model::BlurFilter::getIntensity() {
 	return this->intensity;
 }
 
-void BlurFilter::setIntensity(int intensity) {
+void Model::BlurFilter::setIntensity(int intensity) {
 	this->intensity = intensity;
 }
 
-string BlurFilter::getFilterDescription() {
+string Model::BlurFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 
-string BlurFilter::getName() {
-	throw "Not yet implemented";
+string Model::BlurFilter::getName() {
+    return "Blur";
 }
 
-*/

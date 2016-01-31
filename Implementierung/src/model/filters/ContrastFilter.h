@@ -1,4 +1,3 @@
-/*/*
 #include <exception>
 #include <string>
 using namespace std;
@@ -18,7 +17,7 @@ namespace Model
 {
 	/**
 	 * Adjusts the contrast of the video.
-
+    */
 	class ContrastFilter: public Model::Filter
 	{
 		private: int intensity;
@@ -47,5 +46,5 @@ namespace Model
 }
 
 #endif
-*/
+
 

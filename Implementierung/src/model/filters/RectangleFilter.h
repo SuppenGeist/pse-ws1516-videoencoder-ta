@@ -1,4 +1,3 @@
-/*/*
 #include <exception>
 #include <string>
 using namespace std;
@@ -18,7 +17,7 @@ namespace Model
 {
 	/**
 	 * Inserts a filled rectangle with a given color into the video
-
+    */
 	class RectangleFilter: public Model::Filter
 	{
 		private: QRgb color;
@@ -112,5 +111,5 @@ namespace Model
 }
 
 #endif
-*/
+
 

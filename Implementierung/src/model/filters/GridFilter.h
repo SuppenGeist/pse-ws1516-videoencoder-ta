@@ -23,7 +23,7 @@ namespace Model
 	{
 		private: int horizontalLines;
 		private: int verticalLines;
-        //private: QRgb color;
+        private: QRgb color;
 		private: int thickness;
 		private: int opacity;
 
@@ -33,7 +33,7 @@ namespace Model
 		public: GridFilter();
 
 		public: string getFilterDescription();
-/*
+
 		/// <summary>
 		/// Returns the number of horizontal drawn lines.
 		/// </summary>
@@ -93,7 +93,7 @@ namespace Model
 		/// </summary>
 		/// <param name="opacity">The grids opacity.</param>
 		public: void setOpacity(int opacity);
-*/
+
     public: std::string getName();
 	};
 }

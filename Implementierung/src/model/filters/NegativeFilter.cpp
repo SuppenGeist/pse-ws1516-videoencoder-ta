@@ -1,18 +1,18 @@
-/*/*#include <exception>
+#include <exception>
 #include <string>
 
 #include "NegativeFilter.h"
 #include "Filter.h"
 
-NegativeFilter::NegativeFilter() {
+Model::NegativeFilter::NegativeFilter() {
 }
 
-string NegativeFilter::getFilterDescription() {
+string Model::NegativeFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 
-string NegativeFilter::getName() {
-	throw "Not yet implemented";
+string Model::NegativeFilter::getName() {
+    return "Negative";
 }
 
-*/
+

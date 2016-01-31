@@ -1,27 +1,27 @@
-/*/*#include <exception>
+#include <exception>
 #include <string>
 
 #include "RGBFilter.h"
-#include "BasicColor.h"
+#include "../../utility/BasicColor.h"
 #include "Filter.h"
 
-RGBFilter::RGBFilter() {
+Model::RGBFilter::RGBFilter() {
 }
 
-string RGBFilter::getFilterDescription() {
+string Model::RGBFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 
-Model::BasicColor RGBFilter::getColor() {
+Model::BasicColor Model::RGBFilter::getColor() {
 	throw "Not yet implemented";
 }
 
-void RGBFilter::setColor(BasicColor color) {
-	throw "Not yet implemented";
+void Model::RGBFilter::setColor(BasicColor color) {
+    throw "Not yet implemented";
 }
 
-string RGBFilter::getName() {
-	throw "Not yet implemented";
+string Model::RGBFilter::getName() {
+    return "RGB";
 }
 
-*/
+

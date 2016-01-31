@@ -1,18 +1,18 @@
-/*/*#include <exception>
+#include <exception>
 #include <string>
 
 #include "SepiaFilter.h"
 #include "Filter.h"
 
-SepiaFilter::SepiaFilter() {
+Model::SepiaFilter::SepiaFilter() {
 }
 
-string SepiaFilter::getName() {
+string Model::SepiaFilter::getName() {
+    return "Sepia";
+}
+
+string Model::SepiaFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 
-string SepiaFilter::getFilterDescription() {
-	throw "Not yet implemented";
-}
 
-*/

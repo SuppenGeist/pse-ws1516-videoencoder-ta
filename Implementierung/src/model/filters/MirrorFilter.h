@@ -1,4 +1,3 @@
-/*/*
 #include <exception>
 #include <string>
 using namespace std;
@@ -6,7 +5,7 @@ using namespace std;
 #ifndef __MirrorFilter_h__
 #define __MirrorFilter_h__
 
-#include "MirrorMode.h"
+#include "../MirrorMode.h"
 #include "Filter.h"
 
 namespace Model
@@ -20,7 +19,7 @@ namespace Model
 {
 	/**
 	 * Mirrors the video horizontally or vertically.
-
+    */
 	class MirrorFilter: public Model::Filter
 	{
 		private: Model::MirrorMode* mode;
@@ -49,5 +48,5 @@ namespace Model
 }
 
 #endif
-*/
+
 

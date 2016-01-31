@@ -6,7 +6,7 @@
 
 
 string Model::Filter::getName() {
-	throw "Not yet implemented";
+    return "Filter";
 }
 
 string Model::Filter::getFilterDescription(){

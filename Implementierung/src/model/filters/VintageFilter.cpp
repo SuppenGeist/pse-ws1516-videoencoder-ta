@@ -1,18 +1,18 @@
-/*/*#include <exception>
+#include <exception>
 #include <string>
 
 #include "VintageFilter.h"
 #include "Filter.h"
 
-VintageFilter::VintageFilter() {
+Model::VintageFilter::VintageFilter() {
 }
 
-string VintageFilter::getName() {
+string Model::VintageFilter::getName() {
+    return "Vintage";
+}
+
+string Model::VintageFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 
-string VintageFilter::getFilterDescription() {
-	throw "Not yet implemented";
-}
 
-*/

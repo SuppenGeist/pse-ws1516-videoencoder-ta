@@ -1,26 +1,26 @@
-/*/*#include <exception>
+#include <exception>
 #include <string>
 
 #include "ZoomFilter.h"
 #include "Filter.h"
 
-ZoomFilter::ZoomFilter() {
+Model::ZoomFilter::ZoomFilter() {
 }
 
-string ZoomFilter::getName() {
+string Model::ZoomFilter::getName() {
+    return "Zoom";
+}
+
+string Model::ZoomFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 
-string ZoomFilter::getFilterDescription() {
-	throw "Not yet implemented";
-}
-
-int ZoomFilter::getIntensity() {
+int Model::ZoomFilter::getIntensity() {
 	return this->intensity;
 }
 
-void ZoomFilter::setIntensity(int intensity) {
+void Model::ZoomFilter::setIntensity(int intensity) {
 	this->intensity = intensity;
 }
 
-*/
+

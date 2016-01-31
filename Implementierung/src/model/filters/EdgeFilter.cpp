@@ -12,7 +12,7 @@ string Model::EdgeFilter::getFilterDescription() {
 }
 
 string Model::EdgeFilter::getName() {
-    return "Edges";
+    return "Edge";
 }
 
 
