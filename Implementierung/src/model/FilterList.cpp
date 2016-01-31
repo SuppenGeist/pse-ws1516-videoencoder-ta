@@ -36,7 +36,7 @@ void Model::FilterList::removeFilter(int position) {
 }
 
 void Model::FilterList::addFilter(std::string name) {
-    if(name.compare("BlackWhiteFilter") == 0){
+    if(name.compare("BlackWhite") == 0){
         Model::BlackWhiteFilter* filter = new Model::BlackWhiteFilter();
         filters.push_back(filter);
     }/* else if(name.compare("BlendingFilter") == 0){

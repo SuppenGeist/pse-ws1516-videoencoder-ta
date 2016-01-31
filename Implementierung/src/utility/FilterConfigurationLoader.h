@@ -1,11 +1,8 @@
-/*
-#include <exception>
-using namespace std;
-
 #ifndef __FilterConfigurationLoader_h__
 #define __FilterConfigurationLoader_h__
 
-#include "FilterList.h"
+#include <exception>
+#include <QFile>
 
 namespace Model
 {
@@ -20,10 +17,11 @@ namespace Utility
 {
 	/**
 	 * This class can load a Filterlist from a file.
-
+    */
 	class FilterConfigurationLoader
 	{
-		private: QFile file;
+    private: QFile file;
+    private: Model::FilterList* filterList;
 
 		/// <summary>
 		/// Constructor.
@@ -35,9 +33,9 @@ namespace Utility
 		/// Loads the filterlist.
 		/// </summary>
 		/// <returns>The loaded filterlist.</returns>
-		public: Model::FilterList getConfiguration();
+        public: Model::FilterList* getConfiguration();
 	};
 }
 
 #endif
-*/
+
