@@ -15,16 +15,11 @@ void Model::BrightnessFilter::setIntensity(int intensity) {
 	this->intensity = intensity;
 }
 
-<<<<<<< HEAD
-std::string Model::BrightnessFilter::getName() {
-    return "Brightness";
-=======
 string Model::BrightnessFilter::getName() {
 	return "Brightness";
->>>>>>> origin/master
 }
 
-std::string Model::BrightnessFilter::getFilterDescription() {
+string Model::BrightnessFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 

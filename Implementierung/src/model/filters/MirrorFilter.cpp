@@ -8,17 +8,12 @@
 Model::MirrorFilter::MirrorFilter() {
 }
 
-std::string Model::MirrorFilter::getFilterDescription() {
+string Model::MirrorFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 
-<<<<<<< HEAD
-std::string Model::MirrorFilter::getName() {
-    return "Mirror";
-=======
 string Model::MirrorFilter::getName() {
 	return "Mirror";
->>>>>>> origin/master
 }
 
 Model::MirrorMode Model::MirrorFilter::getMode() {

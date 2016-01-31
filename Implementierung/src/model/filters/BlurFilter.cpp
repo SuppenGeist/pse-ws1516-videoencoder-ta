@@ -23,17 +23,12 @@ void Model::BlurFilter::setIntensity(int intensity) {
 	this->intensity = intensity;
 }
 
-std::string Model::BlurFilter::getFilterDescription() {
+string Model::BlurFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 
-<<<<<<< HEAD
-std::string Model::BlurFilter::getName() {
-    return "Blur";
-=======
 string Model::BlurFilter::getName() {
 	return "Blur";
->>>>>>> origin/master
 }
 
 void Model::BlurFilter::restoreFilter(QString description) {

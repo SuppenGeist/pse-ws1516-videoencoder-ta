@@ -8,7 +8,7 @@
 Model::NoiseFilter::NoiseFilter() {
 }
 
-std::string Model::NoiseFilter::getFilterDescription() {
+string Model::NoiseFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 
@@ -24,13 +24,8 @@ int Model::NoiseFilter::getIntensity() {
 	return this->intensity;
 }
 
-<<<<<<< HEAD
-std::string Model::NoiseFilter::getName() {
-    return "Noise";
-=======
 string Model::NoiseFilter::getName() {
 	return "Noise";
->>>>>>> origin/master
 }
 
 void Model::NoiseFilter::setIntensity(int intensity) {

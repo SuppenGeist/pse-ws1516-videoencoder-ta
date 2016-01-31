@@ -15,16 +15,11 @@ int Model::ContrastFilter::getIntensity() {
 	return this->intensity;
 }
 
-<<<<<<< HEAD
-std::string Model::ContrastFilter::getName() {
-    return "Contrast";
-=======
 string Model::ContrastFilter::getName() {
 	return "Contrast";
->>>>>>> origin/master
 }
 
-std::string Model::ContrastFilter::getFilterDescription() {
+string Model::ContrastFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 

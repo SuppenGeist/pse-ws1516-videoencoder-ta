@@ -7,7 +7,7 @@
 Model::SaturationFilter::SaturationFilter() {
 }
 
-std::string Model::SaturationFilter::getFilterDescription() {
+string Model::SaturationFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 
@@ -15,13 +15,8 @@ int Model::SaturationFilter::getIntensity() {
 	return this->intensity;
 }
 
-<<<<<<< HEAD
-std::string Model::SaturationFilter::getName() {
-    return "Saturation";
-=======
 string Model::SaturationFilter::getName() {
 	return "Saturation";
->>>>>>> origin/master
 }
 
 void Model::SaturationFilter::setIntensity(int intensity) {

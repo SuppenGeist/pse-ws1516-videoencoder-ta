@@ -1,6 +1,6 @@
 #include <exception>
 #include <string>
-
+using namespace std;
 
 #ifndef __ZoomFilter_h__
 #define __ZoomFilter_h__
@@ -12,42 +12,6 @@ namespace Model {
 class ZoomFilter;
 }
 
-<<<<<<< HEAD
-namespace Model
-{
-	/**
-	 * Zooms into the center of the video.
-    */
-	class ZoomFilter: public Model::Filter
-	{
-		private: int intensity;
-
-		/// <summary>
-		/// Constructor.
-		/// </summary>
-		public: ZoomFilter();
-
-        public: std::string getName();
-
-        public: std::string getFilterDescription();
-
-		/// <summary>
-		/// Returns the intensity of the zoom.
-		/// </summary>
-		/// <returns>The zoom intensity.</returns>
-		public: int getIntensity();
-
-		/// <summary>
-		/// Sets the intensity of the zoom.
-		/// </summary>
-		/// <param name="intensity">The new intensity.</param>
-		public: void setIntensity(int intensity);
-
-        public: void restoreFilter(QString description);
-
-        public: QString getSaveString();
-	};
-=======
 namespace Model {
 /**
  * Zooms into the center of the video.
@@ -88,7 +52,6 @@ class ZoomFilter: public Model::Filter {
   public:
 	QString getSaveString();
 };
->>>>>>> origin/master
 }
 
 #endif

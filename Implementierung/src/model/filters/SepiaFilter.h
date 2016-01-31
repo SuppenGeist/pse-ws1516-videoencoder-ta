@@ -1,6 +1,6 @@
 #include <exception>
 #include <string>
-
+using namespace std;
 
 #ifndef __SepiaFilter_h__
 #define __SepiaFilter_h__
@@ -21,17 +21,11 @@ class SepiaFilter: public Model::Filter {
   public:
 	SepiaFilter();
 
-<<<<<<< HEAD
-        public: std::string getName();
-
-        public: std::string getFilterDescription();
-=======
   public:
 	string getName();
 
   public:
 	string getFilterDescription();
->>>>>>> origin/master
 
   public:
 	void restoreFilter(QString description);

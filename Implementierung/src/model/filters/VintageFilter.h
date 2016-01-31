@@ -1,6 +1,6 @@
 #include <exception>
 #include <string>
-
+using namespace std;
 
 #ifndef __VintageFilter_h__
 #define __VintageFilter_h__
@@ -21,17 +21,11 @@ class VintageFilter: public Model::Filter {
   public:
 	VintageFilter();
 
-<<<<<<< HEAD
-        public: std::string getName();
-
-        public: std::string getFilterDescription();
-=======
   public:
 	string getName();
 
   public:
 	string getFilterDescription();
->>>>>>> origin/master
 
   public:
 	void restoreFilter(QString description);

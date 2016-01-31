@@ -31,16 +31,11 @@ void Model::BlendingFilter::setEndFrame(int endFrame) {
 	this->endFrame = endFrame;
 }
 
-<<<<<<< HEAD
-std::string Model::BlendingFilter::getName() {
-    return "Blending";
-=======
 string Model::BlendingFilter::getName() {
 	return "Blending";
->>>>>>> origin/master
 }
 
-std::string Model::BlendingFilter::getFilterDescription() {
+string Model::BlendingFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 

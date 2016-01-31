@@ -40,17 +40,12 @@ void Model::ColorbalanceFilter::setMediumPixels(bool mediumPixels) {
 	this->mediumPixels = mediumPixels;
 }
 
-std::string Model::ColorbalanceFilter::getFilterDescription() {
+string Model::ColorbalanceFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 
-<<<<<<< HEAD
-std::string Model::ColorbalanceFilter::getName() {
-    return "Colorbalance";
-=======
 string Model::ColorbalanceFilter::getName() {
 	return "Colorbalance";
->>>>>>> origin/master
 }
 
 bool Model::ColorbalanceFilter::getDarkPixels() {
