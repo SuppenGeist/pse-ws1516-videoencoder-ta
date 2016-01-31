@@ -85,3 +85,57 @@ Aendere Datentyp von model_recentlyUsed QListViewModel->QStringListModel.
 Aendere Datentyp von button_chooseFile Qbutton->QPushButton
 <br><b>Grund:</b> QButton gibt es garnicht.
 <hr>
+Fuege slot chooseFile() fuer button_selectFile hinzu.
+<br><b>Grund:</b> Wurde vergessen.
+<hr>
+Fuege slot selectionChanged(QItemSelection) fuer listView_recenltyUsed hinzu.
+<br><b>Grund:</b> Wurde vergessen.
+<hr>
+Aendere Methode loadRecentlyUsed zu getListModel.
+<br><b>Grund:</b> Bessere Kontrolle ueber das statische Model.
+<hr>
+Entferne Methode show.
+<br><b>Grund:</b> Die Methode ist ueberfluessig, da es schon exec gibt.
+<hr>
+Fuege Methode saveListModel hinzu.
+<br><b>Grund:</b> Das Model muss auch gespeichert werden.
+<hr>
+Fuege static attribute MAX_SAVED_ENTRIES hinzu.
+<br><b>Grund:</b> Mehr dynamik beim recently used kram.
+<hr>
+Fuege static attribute SAVE_FILENAME hinzu.
+<br><b>Grund:</b> Mehr dynamik beim recently used kram.
+<hr>
+Entferne Attribut wasSuccessful und Methode wasSuccessful.
+<br><b>Grund:</b> Funktionalitaet wird von QDialog uebernommen.
+<hr>
+Fuege Methode hasFinished hinzu.
+<br><b>Grund:</b> Wird benoetigt um recentlyUsed zu speichern.
+<hr>
+## PixelSheme
+Remove this class. Change classes that used this class so that they now use YuvType.
+<br><b>Grund:</b> Klasse ist redundant mit YuvType.
+<hr>
+## YuvInfoFialog
+Aendere Typ QWidget zu QLabel von allen Atrributen diemit label_ beginnen.
+<br><b>Grund:</b> Sollte QLabel von anfang an sein.
+<hr>
+Entferne Methode show.
+<br><b>Grund:</b> Die Methode ist ueberfluessig, da es schon exec gibt.
+<hr>
+Fuege slot pixelShemeSelectionChanged() fuer comboBox_pixelSheme hinzu.
+<br><b>Grund:</b> Wenn Yuv 420 ausgewaehlt is, gibt es keine compression. Darauf muss reagiert
+werden.
+<hr>
+Fuege Attribut wasSuccessful hinzu.
+<br><b>Grund:</b> Wurde im Entwurf vergessen. Sollt von anfang an dabei sein.
+<hr>
+Fuege Attribut compressionList_ hinzu.
+<br><b>Grund:</b> Magic numbers im code vermeiden.
+<hr>
+Fuege Attribut pixelShemeList_ hinzu.
+<br><b>Grund:</b> Magic numbers im code vermeiden.
+<hr>
+Entferne Attribut wasSuccessful und Methode wasSuccessful.
+<br><b>Grund:</b> Funktionalitaet wird von QDialog uebernommen.
+<hr>

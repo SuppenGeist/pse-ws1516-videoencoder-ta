@@ -1,99 +1,99 @@
-/*
-#include <exception>
-using namespace std;
-
 #ifndef __YuvInfoDialog_h__
 #define __YuvInfoDialog_h__
 
-// #include "QWidget.h"
-#include "PixelSheme.h"
-#include "QDialog.h"
-#include "Compression.h"
+#include <QLineEdit>
+#include <QLabel>
+#include <QComboBox>
+#include <QPushButton>
+#include <QDialog>
+#include <QWidget>
+#include <QStringList>
 
-namespace GUI
-{
-	class QWidget;
-	// enum PixelSheme;
-	// class QDialog;
-	class YuvInfoDialog;
-}
+
 namespace Utility
 {
-	// enum Compression;
+    enum class Compression;
+    enum class YuvType;
 }
 
 namespace GUI
 {
 	/**
 	 * This class is the dialog that gets shown to ask the user for additional information about the yuv file he wants to load.
-
-	class YuvInfoDialog: public GUI::QDialog
+     */
+    class YuvInfoDialog: public QDialog
 	{
-		private: QLineEdit* lineEdit_width;
-		private: QLineEdit* lineEdit_height;
-		private: QLineEdit* lineEdit_fps;
-		private: QComboBox* comboBox_pixelSheme;
-		private: QComboBox* comboBox_compression;
-		private: GUI::QWidget* label_resolution;
-		private: GUI::QWidget* label_fps;
-		private: GUI::QWidget* label_compression;
-		private: GUI::QWidget* label_pixelSheme;
-		private: QPushButton* button_ok;
-		private: QPushButton* button_cancel;
-		private: GUI::QWidget* label_x;
+        Q_OBJECT
 
-		/// <summary>
-		/// Constructor.
-		/// </summary>
-		public: YuvInfoDialog(GUI::QWidget* parent);
+        public:
+        /**
+         * @brief YuvInfoDialog Constructor.
+         * @param parent
+         */
+        YuvInfoDialog(QWidget* parent=0);
 
-		/// <summary>
-		/// Returns the fps the user entered.
-		/// </summary>
-		/// <returns>The fps.</returns>
-		public: int getFps();
+        /**
+         * @brief getFps Returns the fps the user entered.
+         * If an error occurs while parsing the user input the default value 30 is returned.
+         * @return The fps.
+         */
+        int getFps();
 
-		/// <summary>
-		/// Returns the width the user entered.
-		/// </summary>
-		/// <returns>The width.</returns>
-		public: int getWidth();
+        /**
+         * @brief getWidth Returns the width the user entered.
+         * If the user input is not valid -1 is returned.
+         * @return The width.
+         */
+        int getWidth();
 
-		/// <summary>
-		/// Returns the height the user entered.
-		/// </summary>
-		/// <returns>The height.</returns>
-		public: int getHeight();
+        /**
+         * @brief getHeight Returns the height the user entered.
+         * If the user input is not valid -1 is returned.
+         * @return The height.
+         */
+        int getHeight();
 
-		/// <summary>
-		/// Returns the compression the user entered.
-		/// </summary>
-		/// <returns>The compression.</returns>
-		public: Utility::Compression getCompression();
+        /**
+         * @brief getCompression Returns the compression the user entered.
+         * @return The compression.
+         */
+        Utility::Compression getCompression();
 
-		/// <summary>
-		/// Returns the pixelsheme the user entered.
-		/// </summary>
-		/// <returns>The pixelsheme.</returns>
-		public: GUI::PixelSheme getPixelSheme();
+        /**
+         * @brief getPixelSheme Returns the pixelsheme the user entered.
+         * @return The pixelsheme.
+         */
+        Utility::YuvType getPixelSheme();
 
-		/// <summary>
-		/// Whether the user clicked ok or cancel.
-		/// </summary>
-		/// <returns>True if the user clicked ok. false otherwise.</returns>
-		public: bool wasSuccessful();
+    private slots:
 
-		/// <summary>
-		/// Creates the gui.
-		/// </summary>
-		private: void createUi();
+        /**
+         * @brief pixelShemeSelectionChanged Slot for comboBox_pixelSheme slectionChanged() signal.
+         * @param selection
+         */
+        void pixelShemeSelectionChanged(int selection);
 
-		/// <summary>
-		/// Shows the dialog.
-		/// </summary>
-		public: void show();
+    private:
+        QLineEdit*      lineEdit_width_;
+        QLineEdit*      lineEdit_height_;
+        QLineEdit*      lineEdit_fps_;
+        QComboBox*      comboBox_pixelSheme_;
+        QComboBox*      comboBox_compression_;
+        QLabel*         label_resolution_;
+        QLabel*         label_fps_;
+        QLabel*         label_compression_;
+        QLabel*         label_pixelSheme_;
+        QLabel*         label_x_;
+        QPushButton*    button_ok_;
+        QPushButton*    button_cancel_;
+        QStringList     compressionList_;
+        QStringList     pixelShemeList_;
+
+        /**
+         * @brief createUi Creates the gui.
+         */
+        void createUi();
 	};
 }
 
 #endif
-*/

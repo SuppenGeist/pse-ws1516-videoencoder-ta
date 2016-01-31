@@ -24,6 +24,10 @@ namespace GUI
          * @brief MAX_SAVED_ENTRIES Maximum number saved as recently used.
          */
         static constexpr int MAX_SAVED_ENTRIES=10;
+
+        /**
+         * @brief SAVE_FILENAME The file the receblty used files are saved in.
+         */
         static const QString SAVE_FILENAME;
 
         /**
@@ -33,24 +37,30 @@ namespace GUI
         YuvFileOpenDialog(QWidget* parent = 0);
 
         /**
-         * @brief getFilename Returns the absolute path to the file the user wants to open.
+         * @brief getFilename Returns the absolute path to the file the user wants to open. The path is valid or an empty string is returned.
          * @return Absolute path to the user chosen file.
          */
         QString getFilename();
 
-        /**
-         * @brief wasSuccessfull Whether the user clicked ok or cancel.
-         * @return True if the user clicked ok. false otherwise.
-         */
-        bool wasSuccessfull();
-
     private slots:
-        void ok();
-        void cancel();
+        /**
+         * @brief chooseFile Slot for button_chooseFile clicked() signal.
+         */
         void chooseFile();
+        /**
+         * @brief selectionChanged Slot for listView_recentlyUsed selctionChanged() signal.
+         * @param selection
+         */
         void selectionChanged(const QItemSelection& selection);
 
+        /**
+         * @brief hasFinished Slot for the finished() slot of the dialog.
+         * @param result
+         */
+        void hasFinished(int result);
+
     private:
+
     static QStringListModel*    model_recentlyUsed_;
 
     QPushButton*                button_cancel_;
@@ -60,8 +70,6 @@ namespace GUI
     QPushButton*                button_chooseFile_;
     QLabel*                     label_recentlyUsed_;
     QLineEdit*                  lineEdit_selectedFile_;
-
-    bool                        wasSuccesfull_;
 
     /**
      * @brief getListModel Loads the recently opened yuv files and puts them in the model.

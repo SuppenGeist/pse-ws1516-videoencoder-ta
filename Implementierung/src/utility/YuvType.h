@@ -1,13 +1,12 @@
-
 #ifndef __YuvType_h__
 #define __YuvType_h__
 
 namespace Utility {
-// enum YuvType;
-}
 
-namespace Utility {
-enum YuvType {
+/**
+ * @brief The YuvType enum contains the 4 yuv type this program can deal with.
+ */
+enum class YuvType {
 	YUV420,
 	YUV444,
 	YUV411,

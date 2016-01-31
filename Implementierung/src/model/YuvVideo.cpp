@@ -8,7 +8,7 @@
 #include "Compression.h"
 #include "YuvType.h"
 
-YuvVideo::YuvVideo(QString path, PixelSheme type, int width, int height, int fps) {
+YuvVideo::YuvVideo(QString path, YuvType type, int width, int height, int fps) {
 }
 
 QString YuvVideo::getPath() {

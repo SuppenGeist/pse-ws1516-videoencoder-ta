@@ -47,7 +47,7 @@ namespace Model
 		public: Utility::Compression* compression;
 		public: GUI::Video* displayVideo;
 		public: Model::AVVideo* avVideo;
-		private: GUI::PixelSheme* yuvType;
+        private: GUI::YuvType* yuvType;
 
 		/// <summary>
 		/// Constructor.

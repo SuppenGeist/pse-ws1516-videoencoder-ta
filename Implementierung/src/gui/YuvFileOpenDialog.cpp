@@ -15,25 +15,32 @@
 #include <QStringList>
 #include <QFileDialog>
 #include <QRegExp>
+#include <QFrame>
 
 QStringListModel* GUI::YuvFileOpenDialog::model_recentlyUsed_=nullptr;
 const QString GUI::YuvFileOpenDialog::SAVE_FILENAME="yuv_recently_used.data";
 
-GUI::YuvFileOpenDialog::YuvFileOpenDialog(QWidget* parent):QDialog(parent),wasSuccesfull_(false) {
+GUI::YuvFileOpenDialog::YuvFileOpenDialog(QWidget* parent):QDialog(parent) {
     createUi();
 
     listView_recentlyUsed_->setModel(getListModel());
 
-    connect(button_ok_,SIGNAL(clicked()),this,SLOT(ok()));
-    connect(button_cancel_,SIGNAL(clicked()),this,SLOT(cancel()));
+    connect(button_ok_,SIGNAL(clicked()),this,SLOT(accept()));
+    connect(button_cancel_,SIGNAL(clicked()),this,SLOT(reject()));
     connect(button_chooseFile_,SIGNAL(clicked()),this,SLOT(chooseFile()));
     connect(listView_recentlyUsed_->selectionModel(),SIGNAL(selectionChanged(QItemSelection,QItemSelection)),this,SLOT(selectionChanged(QItemSelection)));
+    connect(this,SIGNAL(finished(int)),this,SLOT(hasFinished(int)));
 
 
 }
 
 QString GUI::YuvFileOpenDialog::getFilename() {
-    return lineEdit_selectedFile_->text();
+    QFileInfo fileToCheck(lineEdit_selectedFile_->text());
+
+    if(fileToCheck.exists()&&fileToCheck.isFile()) {
+        return lineEdit_selectedFile_->text();
+    }
+    return tr("");
 }
 
 void GUI::YuvFileOpenDialog::createUi() {
@@ -62,6 +69,11 @@ void GUI::YuvFileOpenDialog::createUi() {
     h_chooseFile->addWidget(lineEdit_selectedFile_);
     h_chooseFile->addWidget(button_chooseFile_);
 
+    QFrame* line=new QFrame;
+    line->setFrameShape(QFrame::HLine);
+    line->setFrameShadow(QFrame::Sunken);
+    line->setGeometry(QRect(0,0,500,2));
+
     QHBoxLayout* h_buttons=new QHBoxLayout;
     h_buttons->addSpacing(300);
     h_buttons->addWidget(button_cancel_);
@@ -70,7 +82,8 @@ void GUI::YuvFileOpenDialog::createUi() {
     v_content->addLayout(v_recentlyUsed);
     v_content->addSpacing(20);
     v_content->addLayout(h_chooseFile);
-    v_content->addSpacing(20);
+    v_content->addSpacing(10);
+    v_content->addWidget(line);
     v_content->addLayout(h_buttons);
     setLayout(v_content);
 
@@ -78,24 +91,10 @@ void GUI::YuvFileOpenDialog::createUi() {
     setFixedWidth(500);
 }
 
-bool GUI::YuvFileOpenDialog::wasSuccessfull() {
-    return wasSuccesfull_;
-}
-
-void GUI::YuvFileOpenDialog::ok()
-{
-    saveListModel(getFilename());
-
-    wasSuccesfull_=true;
-
-    YuvFileOpenDialog::close();
-}
-
-void GUI::YuvFileOpenDialog::cancel()
-{
-    wasSuccesfull_=false;
-
-    YuvFileOpenDialog::close();
+void GUI::YuvFileOpenDialog::hasFinished(int result) {
+    if(result==QDialog::Accepted) {
+        saveListModel(getFilename());
+    }
 }
 
 void GUI::YuvFileOpenDialog::chooseFile()

@@ -110,7 +110,6 @@ HEADERS += \
     src/utility/FilterConfigurationLoader.h \
     src/utility/FilterConfigurationSaver.h \
     src/utility/MacroblockCalculator.h \
-    src/utility/PixelSheme.h \
     src/utility/ProjectReader.h \
     src/utility/ProjectWriter.h \
     src/utility/PsnrCalculator.h \
@@ -226,7 +225,6 @@ SOURCES += \
     src/utility/FilterConfigurationLoader.cpp \
     src/utility/FilterConfigurationSaver.cpp \
     src/utility/MacroblockCalculator.cpp \
-    src/utility/PixelSheme.cpp \
     src/utility/ProjectReader.cpp \
     src/utility/ProjectWriter.cpp \
     src/utility/PsnrCalculator.cpp \
