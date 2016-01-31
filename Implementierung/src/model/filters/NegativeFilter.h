@@ -1,6 +1,5 @@
 #include <exception>
 #include <string>
-using namespace std;
 
 #ifndef __NegativeFilter_h__
 #define __NegativeFilter_h__
@@ -24,11 +23,17 @@ class NegativeFilter: public Model::Filter {
   public:
 	NegativeFilter();
 
+<<<<<<< HEAD
+        public: std::string getFilterDescription();
+
+        public: std::string getName();
+=======
   public:
 	string getFilterDescription();
 
   public:
 	string getName();
+>>>>>>> origin/master
 
   public:
 	void restoreFilter(QString description);

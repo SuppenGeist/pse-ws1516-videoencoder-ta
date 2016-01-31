@@ -8,7 +8,7 @@
 Model::RGBFilter::RGBFilter() {
 }
 
-string Model::RGBFilter::getFilterDescription() {
+std::string Model::RGBFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 
@@ -20,8 +20,13 @@ void Model::RGBFilter::setColor(BasicColor color) {
 	throw "Not yet implemented";
 }
 
+<<<<<<< HEAD
+std::string Model::RGBFilter::getName() {
+    return "RGB";
+=======
 string Model::RGBFilter::getName() {
 	return "RGB";
+>>>>>>> origin/master
 }
 
 void Model::RGBFilter::restoreFilter(QString description) {

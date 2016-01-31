@@ -1,6 +1,6 @@
 #include <exception>
 #include <string>
-using namespace std;
+
 
 #ifndef __MirrorFilter_h__
 #define __MirrorFilter_h__
@@ -14,6 +14,42 @@ namespace Model {
 class MirrorFilter;
 }
 
+<<<<<<< HEAD
+namespace Model
+{
+	/**
+	 * Mirrors the video horizontally or vertically.
+    */
+	class MirrorFilter: public Model::Filter
+	{
+		private: Model::MirrorMode* mode;
+
+		/// <summary>
+		/// Constructor.
+		/// </summary>
+		public: MirrorFilter();
+
+        public: std::string getFilterDescription();
+
+        public: std::string getName();
+
+		/// <summary>
+		/// Returns the MirrorMode.
+		/// </summary>
+		/// <returns>The MirrorMode.</returns>
+		public: Model::MirrorMode getMode();
+
+		/// <summary>
+		/// Sets the MirrorMode.
+		/// </summary>
+		/// <param name="mode">The MirrorMode.</param>
+		public: void setMode(Model::MirrorMode mode);
+
+        public: void restoreFilter(QString description);
+
+        public: QString getSaveString();
+	};
+=======
 namespace Model {
 /**
  * Mirrors the video horizontally or vertically.
@@ -54,6 +90,7 @@ class MirrorFilter: public Model::Filter {
   public:
 	QString getSaveString();
 };
+>>>>>>> origin/master
 }
 
 #endif

@@ -7,11 +7,16 @@
 Model::ZoomFilter::ZoomFilter() {
 }
 
+<<<<<<< HEAD
+std::string Model::ZoomFilter::getName() {
+    return "Zoom";
+=======
 string Model::ZoomFilter::getName() {
 	return "Zoom";
+>>>>>>> origin/master
 }
 
-string Model::ZoomFilter::getFilterDescription() {
+std::string Model::ZoomFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 

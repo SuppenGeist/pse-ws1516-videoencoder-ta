@@ -56,11 +56,16 @@ void Model::BorderFilter::setColor(QRgb color) {
 	this->color = color;
 }
 
+<<<<<<< HEAD
+std::string Model::BorderFilter::getName() {
+    return "Border";
+=======
 string Model::BorderFilter::getName() {
 	return "Border";
+>>>>>>> origin/master
 }
 
-string Model::BorderFilter::getFilterDescription() {
+std::string Model::BorderFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 
