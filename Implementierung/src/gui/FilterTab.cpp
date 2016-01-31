@@ -3,16 +3,37 @@
 #include <string>
 #include <vector>
 #include <QFrame>
+#include <QStringListModel>
 
-//#include "PreviewControlPanel.h"
+#include "PreviewControlPanel.h"
 #include "FrameView.h"
 //#include "PlayerControlPanel.h"
 #include "FilterContainerTab.h"
 #include "ui_filtertab.h"
+#include "../model/FilterList.h"
 
 #include "../model/filters/BlackWhiteFilter.h"
 #include "../model/filters/GridFilter.h"
 #include "../model/filters/EdgeFilter.h"
+#include "../model/filters/BlendingFilter.h"
+#include "../model/filters/BlurFilter.h"
+#include "../model/filters/BorderFilter.h"
+#include "../model/filters/BrightnessFilter.h"
+#include "../model/filters/ColorbalanceFilter.h"
+#include "../model/filters/ContrastFilter.h"
+#include "../model/filters/MirrorFilter.h"
+#include "../model/filters/NegativeFilter.h"
+#include "../model/filters/NoiseFilter.h"
+#include "../model/filters/PosterFilter.h"
+#include "../model/filters/RectangleFilter.h"
+#include "../model/filters/RGBFilter.h"
+#include "../model/filters/RotationFilter.h"
+#include "../model/filters/SaturationFilter.h"
+#include "../model/filters/ScaleFilter.h"
+#include "../model/filters/SepiaFilter.h"
+#include "../model/filters/SharpnessFilter.h"
+#include "../model/filters/VintageFilter.h"
+#include "../model/filters/ZoomFilter.h"
 
 GUI::FilterTab::FilterTab(QWidget* parent):QFrame(parent) {
     GUI::FilterTab::createUi();
@@ -57,9 +78,11 @@ void GUI::FilterTab::createUi() {
 
    filterContainerTab.push_back(new FilterContainerTab(ui->scrollAreaFilters));
    filterContainerTab.push_back(new FilterContainerTab(ui->scrollAreaArtefacts));
+   ui->scrollAreaArtefacts->setWidget(filterContainerTab[1]);
+   ui->scrollAreaFilters->setWidget(filterContainerTab[0]);
 
    filterContainerTab[0]->addFilter(new Model::BlackWhiteFilter());
-   /*filterContainerTab[0]->addFilter(new Model::BlendingFilter());
+   filterContainerTab[0]->addFilter(new Model::BlendingFilter());
    filterContainerTab[0]->addFilter(new Model::BlurFilter());
    filterContainerTab[0]->addFilter(new Model::BorderFilter());
    filterContainerTab[0]->addFilter(new Model::BrightnessFilter());
@@ -73,17 +96,16 @@ void GUI::FilterTab::createUi() {
    filterContainerTab[0]->addFilter(new Model::RGBFilter());
    filterContainerTab[0]->addFilter(new Model::RotationFilter());
    filterContainerTab[0]->addFilter(new Model::SaturationFilter());
-   filterContainerTab[0]->addFilter(new Model::ScaleFilter)();
+   filterContainerTab[0]->addFilter(new Model::ScaleFilter());
    filterContainerTab[0]->addFilter(new Model::SepiaFilter());
    filterContainerTab[0]->addFilter(new Model::SharpnessFilter());
    filterContainerTab[0]->addFilter(new Model::VintageFilter());
    filterContainerTab[0]->addFilter(new Model::ZoomFilter());
-   */
 
    filterContainerTab[1]->addFilter(new Model::EdgeFilter());
-   filterContainerTab[1]->addFilter(new Model::EdgeFilter());
-   filterContainerTab[1]->addFilter(new Model::EdgeFilter());
    filterContainerTab[1]->addFilter(new Model::GridFilter());
+
+   ui->panel = new PreviewControlPanel();
 
 }
 
@@ -92,7 +114,10 @@ void GUI::FilterTab::up() {
 }
 
 void GUI::FilterTab::down() {
-	throw "Not yet implemented";
+    int index = list_filterList->currentIndex().row();
+    filterList->moveFilter(index, index+1);
+    ui->listWidget->insertItem(index+1,ui->listWidget->takeItem(index));
+
 }
 
 void GUI::FilterTab::remove() {

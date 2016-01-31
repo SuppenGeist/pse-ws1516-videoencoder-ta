@@ -6,22 +6,12 @@
 
 #include "ui_mainwindow.h"
 #include "../memento/MainWindowMemento.h"
+#include "../undo_framework/UndoStack.h"
 
 
 GUI::MainWindow::MainWindow(QWidget* parent):QMainWindow(parent) {
-    ui = new Ui::MainWindow;
-
-    ui->setupUi(this);
-
-    statusbar=ui->statusbar;
-    action_newProject=ui->actionNew;
-    action_loadProject=ui->actionLoad;
-    action_saveAs=ui->actionSaveAs;
-    action_saveProject=ui->actionSave;
-    action_redo=ui->actionRedo;
-    action_undo=ui->actionUndo;
+    createUi();
     connectActions();
-    filterTab = new FilterTab(ui->filterTab);
 
 }
 
@@ -38,7 +28,7 @@ void GUI::MainWindow::newProject() {
 }
 
 void GUI::MainWindow::undo() {
-	throw "Not yet implemented";
+    UndoRedo::UndoStack::getUndoStack();
 }
 
 void GUI::MainWindow::saveAs() {
@@ -54,11 +44,23 @@ void GUI::MainWindow::saveProject() {
 }
 
 void GUI::MainWindow::redo() {
-	throw "Not yet implemented";
+    UndoRedo::UndoStack::getUndoStack().redo();
 }
 
 void GUI::MainWindow::createUi() {
-	throw "Not yet implemented";
+    ui = new Ui::MainWindow;
+
+    ui->setupUi(this);
+
+    statusbar=ui->statusbar;
+    action_newProject=ui->actionNew;
+    action_loadProject=ui->actionLoad;
+    action_saveAs=ui->actionSaveAs;
+    action_saveProject=ui->actionSave;
+    action_redo=ui->actionRedo;
+    action_undo=ui->actionUndo;
+    filterTab = new FilterTab(ui->filterTab);
+
 }
 
 void GUI::MainWindow::connectActions() {
@@ -68,6 +70,7 @@ void GUI::MainWindow::connectActions() {
     connect(action_redo,SIGNAL(triggered()),this, SLOT(redo()));
     connect(action_saveAs,SIGNAL(triggered()),this, SLOT(saveAs()));
     connect(action_undo,SIGNAL(triggered()),this, SLOT(undo()));
+
 
 }
 

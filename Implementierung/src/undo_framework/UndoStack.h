@@ -1,10 +1,7 @@
-
-#include <exception>
-using namespace std;
-
 #ifndef __UndoStack_h__
 #define __UndoStack_h__
 
+#include <QUndoStack>
 namespace UndoRedo
 {
 	class UndoStack;
