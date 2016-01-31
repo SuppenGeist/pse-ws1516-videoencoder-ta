@@ -1,11 +1,11 @@
-/*
+
 #include <exception>
 using namespace std;
 
 #ifndef __Yuv444FileReader_h__
 #define __Yuv444FileReader_h__
 
-#include "Video.h"
+#include "../model/Video.h"
 #include "Compression.h"
 #include "Yuv444Vector.h"
 #include "YuvFileReader.h"
@@ -42,7 +42,7 @@ namespace Utility
 		/// <param name="compression">Compression of the file.</param>
 		public: Yuv444FileReader(QString filename, int width, int height, Utility::Compression compression);
 
-		public: unique_ptr<GUI::Video> read();
+        public: unique_ptr<Model::Video> read();
 
 		/// <summary>
 		/// Converts a Yuv444Vector to a Rgb888 pixel.
@@ -50,14 +50,13 @@ namespace Utility
 		/// <param name="vector">The vector to convert.</param>
 		/// <returns>The computed pixel.</returns>
 		public: static QRgb yuv444ToRgb888(Utility::Yuv444Vector vector) {
-            uint8_t c = vector.y - 16;
-            uint8_t d = vector.u - 128;
-            uint8_t e = vector.v - 128;
+            uint8_t c = vector.getY() - 16;
+            uint8_t d = vector.getU() - 128;
+            uint8_t e = vector.getV() - 128;
             uint8_t r = clamp((298 * c + 409 * e + 128) >> 8);
             uint8_t g = clamp((298 * c - 100 * d - 208 * e + 128) >> 8);
             uint8_t b = clamp ((298 * c + 516 * d + 128) >> 8);
-            QRgb qRgb(r,g,b);
-            return qRgb;
+            return qRgb(r,g,b);
 		}
 
 		/// <summary>
@@ -81,4 +80,4 @@ namespace Utility
 }
 
 #endif
-*/
+
