@@ -7,6 +7,8 @@
 #include <QStringListModel>
 #include <QLabel>
 #include <QPushButton>
+#include <QLineEdit>
+#include <QString>
 
 namespace GUI
 {
@@ -15,7 +17,15 @@ namespace GUI
      */
     class YuvFileOpenDialog: public QDialog
     {
+        Q_OBJECT
+
         public:
+        /**
+         * @brief MAX_SAVED_ENTRIES Maximum number saved as recently used.
+         */
+        static constexpr int MAX_SAVED_ENTRIES=10;
+        static const QString SAVE_FILENAME;
+
         /**
          * @brief YuvFileOpenDialog Constructor.
          * @param parent
@@ -29,31 +39,40 @@ namespace GUI
         QString getFilename();
 
         /**
-         * @brief show Shows the dialog.
-         */
-        void show();
-
-        /**
          * @brief wasSuccessfull Whether the user clicked ok or cancel.
          * @return True if the user clicked ok. false otherwise.
          */
         bool wasSuccessfull();
 
+    private slots:
+        void ok();
+        void cancel();
+        void chooseFile();
+        void selectionChanged(const QItemSelection& selection);
+
     private:
-    static QStringListModel*    model_recentlyUsed;
+    static QStringListModel*    model_recentlyUsed_;
 
     QPushButton*                button_cancel_;
     QPushButton*                button_ok_;
-    QListView*                  listView_redcentlyUsed_;
+    QListView*                  listView_recentlyUsed_;
     QLabel*                     label_selectedFile_;
     QPushButton*                button_chooseFile_;
     QLabel*                     label_recentlyUsed_;
+    QLineEdit*                  lineEdit_selectedFile_;
+
     bool                        wasSuccesfull_;
 
     /**
-     * @brief loadRecentlyUsed Loads the recently opened yuv files.
+     * @brief getListModel Loads the recently opened yuv files and puts them in the model.
      */
-    static void loadRecentlyUsed();
+    static QStringListModel* getListModel();
+
+    /**
+     * @brief saveListModel Saves the list model.
+     * @param selectedFile The new file to add to the model.
+     */
+    static void saveListModel(QString selectedFile);
 
     /**
      * @brief createUi Creates the ui.
