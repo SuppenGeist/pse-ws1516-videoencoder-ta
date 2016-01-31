@@ -1,5 +1,6 @@
 #include <exception>
 #include <string>
+#include <QColor>
 using namespace std;
 
 #ifndef __BorderFilter_h__
@@ -107,6 +108,8 @@ namespace Model
 		public: string getName();
 
 		public: string getFilterDescription();
+
+        public: void restoreFilter(string description);
 	};
 }
 

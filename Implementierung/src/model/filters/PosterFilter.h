@@ -42,6 +42,8 @@ namespace Model
 		/// </summary>
 		/// <param name="numberOfColors">Maximum number of colors.</param>
 		public: void setNumberOfColors(int numberOfColors);
+
+        public: void restoreFilter(string description);
 	};
 }
 

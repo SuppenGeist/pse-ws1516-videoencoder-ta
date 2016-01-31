@@ -36,6 +36,9 @@ namespace Model
 		/// </summary>
 		/// <returns>The filtername.</returns>
 		public: virtual string getName() = 0;
+
+
+        public: void restoreFilter(string description);
 	};
 }
 

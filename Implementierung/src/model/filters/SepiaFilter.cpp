@@ -15,4 +15,6 @@ string Model::SepiaFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 
-
+void Model::SepiaFilter::restoreFilter(string description){
+    throw "Not yet implemented";
+}

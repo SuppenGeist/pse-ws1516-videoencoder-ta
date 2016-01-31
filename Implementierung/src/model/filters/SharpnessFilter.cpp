@@ -23,4 +23,6 @@ void Model::SharpnessFilter::setIntensity(int intensity) {
 	this->intensity = intensity;
 }
 
-
+void Model::SharpnessFilter::restoreFilter(string description){
+    throw "Not yet implemented";
+}

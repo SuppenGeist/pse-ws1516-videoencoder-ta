@@ -44,6 +44,8 @@ namespace Model
 		/// </summary>
 		/// <param name="mode">The MirrorMode.</param>
 		public: void setMode(Model::MirrorMode mode);
+
+        public: void restoreFilter(string description);
 	};
 }
 

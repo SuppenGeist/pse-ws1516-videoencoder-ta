@@ -2,25 +2,25 @@
 #include <QTextStream>
 #include "FilterConfigurationLoader.h"
 #include "../model/FilterList.h"
+#include "../model/filters/Filter.h"
 
-using namespace Utility;
-
-FilterConfigurationLoader::FilterConfigurationLoader(QString path) {
+Utility::FilterConfigurationLoader::FilterConfigurationLoader(QString path) {
 QFile file(path);
 }
 
-Model::FilterList* FilterConfigurationLoader::getConfiguration() {
+Model::FilterList* Utility::FilterConfigurationLoader::getConfiguration() {
     if( !file.open( QIODevice::ReadOnly | QIODevice::Text ) )
         qFatal( "Could not open the file" );
 
         QTextStream stream( &file );
-        filterList = new Model::FilterList();
+        Model::FilterList* filterList = new Model::FilterList();
 
         while( !stream.atEnd() )
         {
             QString line = stream.readLine();
-            QList<QString> lstLine = line.split("=");
-            filterList->addFilter(lstLine[0].toStdString());
+            filterList->addFilter(line.section("=",0,0).toStdString());
+            filterList->getFilterByName(line.section("=",0,0).toStdString())->restoreFilter(line.section("=",1).toStdString());
+
         }
 
         file.close();

@@ -55,4 +55,6 @@ std::string Model::GridFilter::getName() {
     return "Grid";
 }
 
-
+void Model::GridFilter::restoreFilter(string description){
+    throw "Not yet implemented";
+}

@@ -64,5 +64,6 @@ string Model::BorderFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 
-
-
+void Model::BorderFilter::restoreFilter(string description){
+    throw "Not yet implemented";
+}

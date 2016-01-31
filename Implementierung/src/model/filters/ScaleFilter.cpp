@@ -47,4 +47,6 @@ void Model::ScaleFilter::setRatio(int ratio) {
 	this->ratio = ratio;
 }
 
-
+void Model::ScaleFilter::restoreFilter(string description){
+    throw "Not yet implemented";
+}

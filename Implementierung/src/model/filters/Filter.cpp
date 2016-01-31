@@ -12,3 +12,7 @@ string Model::Filter::getName() {
 string Model::Filter::getFilterDescription(){
     throw "Not yet implemented";
 }
+
+void Model::Filter::restoreFilter(string description){
+    throw "Not yet implemented";
+}

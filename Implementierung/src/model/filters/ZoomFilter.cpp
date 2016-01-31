@@ -23,4 +23,6 @@ void Model::ZoomFilter::setIntensity(int intensity) {
 	this->intensity = intensity;
 }
 
-
+void Model::ZoomFilter::restoreFilter(string description){
+    throw "Not yet implemented";
+}

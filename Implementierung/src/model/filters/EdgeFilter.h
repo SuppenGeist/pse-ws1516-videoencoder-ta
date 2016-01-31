@@ -27,6 +27,8 @@ namespace Model
     public: std::string getFilterDescription();
 
     public: std::string getName();
+
+        public: void restoreFilter(string description);
 	};
 }
 

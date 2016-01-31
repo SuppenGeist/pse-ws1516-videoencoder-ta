@@ -6,8 +6,27 @@
 
 #include "filters/Filter.h"
 #include "filters/BlackWhiteFilter.h"
-
-
+#include "filters/BlendingFilter.h"
+#include "filters/BlurFilter.h"
+#include "filters/BorderFilter.h"
+#include "filters/BrightnessFilter.h"
+#include "filters/ColorbalanceFilter.h"
+#include "filters/ContrastFilter.h"
+#include "filters/EdgeFilter.h"
+#include "filters/GridFilter.h"
+#include "filters/MirrorFilter.h"
+#include "filters/NegativeFilter.h"
+#include "filters/NoiseFilter.h"
+#include "filters/PosterFilter.h"
+#include "filters/RectangleFilter.h"
+#include "filters/RGBFilter.h"
+#include "filters/RotationFilter.h"
+#include "filters/SaturationFilter.h"
+#include "filters/ScaleFilter.h"
+#include "filters/SepiaFilter.h"
+#include "filters/SharpnessFilter.h"
+#include "filters/VintageFilter.h"
+#include "filters/ZoomFilter.h"
 
 Model::FilterList::FilterList() {
     filters = * new std::vector<Model::Filter*>;
@@ -39,47 +58,67 @@ void Model::FilterList::addFilter(std::string name) {
     if(name.compare("BlackWhite") == 0){
         Model::BlackWhiteFilter* filter = new Model::BlackWhiteFilter();
         filters.push_back(filter);
-    }/* else if(name.compare("BlendingFilter") == 0){
-        filter = new BlendingFilter();
-    } else if(name.compare("BlurFilter") == 0){
-        filter = new BlurFilter();
-    } else if(name.compare("BorderFilter") == 0){
-        filter = new BorderFilter();
-    } else if(name.compare("BrightnessFilter") == 0){
-        filter = new BrightnessFilter();
-    } else if(name.compare("ColorbalanceFilter") == 0){
-        filter = new ColorbalanceFilter();
-    } else if(name.compare("ContrastFilter") == 0){
-        filter = new ContrastFilter();
-    } else if(name.compare("GridFilter") == 0){
-        filter = new GridFilter();
-    } else if(name.compare("MirrorFilter") == 0){
-        filter = new MirrorFilter();
-    } else if(name.compare("NegativeFilter") == 0){
-        filter = new NegativeFilter();
-    } else if(name.compare("NoiseFilter") == 0){
-        filter = new NoiseFilter();
-    } else if(name.compare("PosterFilter") == 0){
-        filter = new PosterFilter();
-    } else if(name.compare("RGBFilter") == 0){
-        filter = new RGBFilter();
-    } else if(name.compare("PosterFilter") == 0){
-        filter = new PosterFilter();
-    } else if(name.compare("RotationFilter") == 0){
-        filter = new RotationFilter();
-    } else if(name.compare("SaturationFilter") == 0){
-        filter = new SaturationFilter();
-    } else if(name.compare("ScaleFilter") == 0){
-        filter = new ScaleFilter();
-    } else if(name.compare("SepiaFilter") == 0){
-        filter = new SepiaFilter();
-    } else if(name.compare("SharpnessFilter") == 0){
-        filter = new SharpnessFilter();
-    } else if(name.compare("VintageFilter") == 0){
-        filter = new VintageFilter();
-    } else if(name.compare("ZoomFilter") == 0){
-        filter = new ZoomFilter();
-    }*/
+    } else if(name.compare("Blending") == 0){
+        Model::BlendingFilter* filter = new Model::BlendingFilter();
+        filters.push_back(filter);
+    } else if(name.compare("Blur") == 0){
+        Model::BlurFilter* filter = new Model::BlurFilter();
+        filters.push_back(filter);
+    } else if(name.compare("Border") == 0){
+        Model::BorderFilter* filter = new Model::BorderFilter();
+        filters.push_back(filter);
+    } else if(name.compare("Brightness") == 0){
+        Model::BrightnessFilter* filter = new Model::BrightnessFilter();
+        filters.push_back(filter);
+    } else if(name.compare("Colorbalance") == 0){
+        Model::ColorbalanceFilter* filter = new Model::ColorbalanceFilter();
+        filters.push_back(filter);
+    } else if(name.compare("Contrast") == 0){
+        Model::ContrastFilter* filter = new Model::ContrastFilter();
+        filters.push_back(filter);
+    } else if(name.compare("Grid") == 0){
+        Model::GridFilter* filter = new Model::GridFilter();
+        filters.push_back(filter);
+    } else if(name.compare("Mirror") == 0){
+        Model::MirrorFilter* filter = new Model::MirrorFilter();
+        filters.push_back(filter);
+    } else if(name.compare("Negative") == 0){
+        Model::NegativeFilter* filter = new Model::NegativeFilter();
+        filters.push_back(filter);
+    } else if(name.compare("Noise") == 0){
+        Model::NoiseFilter* filter = new Model::NoiseFilter();
+        filters.push_back(filter);
+    } else if(name.compare("Poster") == 0){
+        Model::PosterFilter* filter = new Model::PosterFilter();
+        filters.push_back(filter);
+    } else if(name.compare("RGB") == 0){
+        Model::RGBFilter* filter = new Model::RGBFilter();
+        filters.push_back(filter);
+    } else if(name.compare("Poster") == 0){
+        Model::PosterFilter* filter = new Model::PosterFilter();
+        filters.push_back(filter);
+    } else if(name.compare("Rotation") == 0){
+        Model::RotationFilter* filter = new Model::RotationFilter();
+        filters.push_back(filter);
+    } else if(name.compare("Saturation") == 0){
+        Model::SaturationFilter* filter = new Model::SaturationFilter();
+        filters.push_back(filter);
+    } else if(name.compare("Scale") == 0){
+        Model::ScaleFilter* filter = new Model::ScaleFilter();
+        filters.push_back(filter);
+    } else if(name.compare("Sepia") == 0){
+        Model::SepiaFilter* filter = new Model::SepiaFilter();
+        filters.push_back(filter);
+    } else if(name.compare("Sharpness") == 0){
+        Model::SharpnessFilter* filter = new Model::SharpnessFilter();
+        filters.push_back(filter);
+    } else if(name.compare("Vintage") == 0){
+        Model::VintageFilter* filter = new Model::VintageFilter();
+        filters.push_back(filter);
+    } else if(name.compare("Zoom") == 0){
+        Model::ZoomFilter* filter = new Model::ZoomFilter();
+        filters.push_back(filter);
+    }
 
 }
 

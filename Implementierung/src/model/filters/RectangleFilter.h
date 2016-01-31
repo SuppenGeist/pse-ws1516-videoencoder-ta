@@ -107,6 +107,8 @@ namespace Model
 		/// </summary>
 		/// <param name="opacity">The new opacity of the rectangle.</param>
 		public: void setOpacity(int opacity);
+
+        public: void restoreFilter(string description);
 	};
 }
 

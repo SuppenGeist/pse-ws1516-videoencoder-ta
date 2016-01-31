@@ -29,6 +29,8 @@ namespace Model
 		public: string getFilterDescription();
 
 		public: string getName();
+
+        public: void restoreFilter(string description);
 	};
 }
 

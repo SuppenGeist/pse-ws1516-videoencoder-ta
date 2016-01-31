@@ -45,6 +45,8 @@ namespace Model
 		public: void setColor(Model::BasicColor color);
 
 		public: string getName();
+
+        public: void restoreFilter(string description);
 	};
 }
 

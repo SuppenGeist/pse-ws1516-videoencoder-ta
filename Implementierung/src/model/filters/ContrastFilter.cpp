@@ -23,5 +23,7 @@ string Model::ContrastFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 
-
+void Model::ContrastFilter::restoreFilter(string description){
+    throw "Not yet implemented";
+}
 

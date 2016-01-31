@@ -56,5 +56,8 @@ void Model::ColorbalanceFilter::setDarkPixels(bool darkPixels) {
 	this->darkPixels = darkPixels;
 }
 
+void Model::ColorbalanceFilter::restoreFilter(string description){
+    throw "Not yet implemented";
+}
 
 

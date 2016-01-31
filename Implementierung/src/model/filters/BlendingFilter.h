@@ -68,6 +68,8 @@ namespace Model
 		public: string getName();
 
 		public: string getFilterDescription();
+
+        public: void restoreFilter(string description);
 	};
 }
 

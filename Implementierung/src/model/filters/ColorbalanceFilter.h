@@ -96,6 +96,8 @@ namespace Model
 		/// </summary>
 		/// <param name="darkPixels">True if the dark pixels are changed.</param>
 		public: void setDarkPixels(bool darkPixels);
+
+    public: void restoreFilter(string description);
 	};
 }
 

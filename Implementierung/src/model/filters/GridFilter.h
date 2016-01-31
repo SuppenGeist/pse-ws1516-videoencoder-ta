@@ -95,6 +95,8 @@ namespace Model
 		public: void setOpacity(int opacity);
 
     public: std::string getName();
+
+       public: void restoreFilter(string description);
 	};
 }
 

@@ -23,5 +23,7 @@ string Model::BrightnessFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 
-
+void Model::BrightnessFilter::restoreFilter(string description){
+    throw "Not yet implemented";
+}
 

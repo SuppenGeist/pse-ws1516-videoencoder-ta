@@ -40,4 +40,6 @@ string Model::BlendingFilter::getFilterDescription() {
 }
 
 
-
+void Model::BlendingFilter::restoreFilter(string description){
+    throw "Not yet implemented";
+}

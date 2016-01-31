@@ -57,6 +57,8 @@ namespace Model
 		/// </summary>
 		/// <param name="intensity">The new intensity of the noise.</param>
 		public: void setIntensity(int intensity);
+
+        public: void restoreFilter(string description);
 	};
 }
 

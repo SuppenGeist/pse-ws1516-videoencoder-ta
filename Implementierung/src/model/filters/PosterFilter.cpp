@@ -23,4 +23,6 @@ void Model::PosterFilter::setNumberOfColors(int numberOfColors) {
 	this->numberOfColors = numberOfColors;
 }
 
-
+void Model::PosterFilter::restoreFilter(string description){
+    throw "Not yet implemented";
+}

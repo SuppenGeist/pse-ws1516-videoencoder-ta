@@ -14,6 +14,8 @@ std::string Model::BlackWhiteFilter::getName() {
 std::string Model::BlackWhiteFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
-
+void Model::BlackWhiteFilter::restoreFilter(string description){
+    throw "Not yet implemented";
+}
 
 

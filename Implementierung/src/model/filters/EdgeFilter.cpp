@@ -15,5 +15,7 @@ string Model::EdgeFilter::getName() {
     return "Edge";
 }
 
-
+void Model::EdgeFilter::restoreFilter(string description){
+    throw "Not yet implemented";
+}
 

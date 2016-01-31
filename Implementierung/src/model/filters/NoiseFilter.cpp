@@ -32,4 +32,6 @@ void Model::NoiseFilter::setIntensity(int intensity) {
 	this->intensity = intensity;
 }
 
-
+void Model::NoiseFilter::restoreFilter(string description){
+    throw "Not yet implemented";
+}

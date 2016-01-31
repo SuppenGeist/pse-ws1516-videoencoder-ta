@@ -31,3 +31,6 @@ string Model::BlurFilter::getName() {
     return "Blur";
 }
 
+void Model::BlurFilter::restoreFilter(string description){
+    throw "Not yet implemented";
+}

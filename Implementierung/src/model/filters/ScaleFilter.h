@@ -81,6 +81,8 @@ namespace Model
 		/// </summary>
 		/// <param name="ratio">The ration.</param>
 		public: void setRatio(int ratio);
+
+        public: void restoreFilter(string description);
 	};
 }
 

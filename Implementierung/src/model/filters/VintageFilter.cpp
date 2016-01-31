@@ -15,4 +15,6 @@ string Model::VintageFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 
-
+void Model::VintageFilter::restoreFilter(string description){
+    throw "Not yet implemented";
+}

@@ -23,4 +23,6 @@ void Model::RotationFilter::setAngle(int angle) {
 	this->angle = angle;
 }
 
-
+void Model::RotationFilter::restoreFilter(string description){
+    throw "Not yet implemented";
+}
