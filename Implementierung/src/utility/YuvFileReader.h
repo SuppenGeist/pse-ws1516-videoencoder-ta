@@ -1,4 +1,4 @@
-
+/*
 #include <exception>
 #include <QFile>
 #include <QDataStream>
@@ -8,9 +8,9 @@ using namespace std;
 #ifndef __YuvFileReader_h__
 #define __YuvFileReader_h__
 
-//#include "Video.h"
+#include "Video.h"
 
-namespace GUI
+namespace Model
 {
 	class Video;
 }
@@ -26,12 +26,13 @@ namespace Utility
 
     class YuvFileReader
 	{
-    protected: unique_ptr<QByteArray> binaryData_;
-    protected: int width_;
-    protected: int height_;
-    protected: unique_ptr<GUI::Video> video_;
-    protected: QFile file_;
-    protected: QDataStream dataStream_;
+    protected: unique_ptr<QByteArray> binaryData;
+    protected: int width;
+    protected: int height;
+    protected: unique_ptr<GUI::Video> video;
+    protected: QFile file;
+    protected: QDataStream dataStream;
+    protected: QByteArray buffer;
 
 
 		/// <summary>
@@ -60,4 +61,4 @@ namespace Utility
 }
 
 #endif
-
+*/

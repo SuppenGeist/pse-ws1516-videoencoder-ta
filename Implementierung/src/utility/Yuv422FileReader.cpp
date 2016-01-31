@@ -23,8 +23,8 @@ Utility::Yuv422Vector Yuv422FileReader::readNextVectorPacked() {
 	throw "Not yet implemented";
 }
 
-Utility::Yuv422Vector Yuv422FileReader::readNextVectorPlanar() {
-	throw "Not yet implemented";
-}
+//Utility::Yuv422Vector Yuv422FileReader::readNextVectorPlanar() {
+//	throw "Not yet implemented";
+//}
 
 */
