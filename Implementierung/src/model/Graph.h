@@ -5,59 +5,56 @@
 
 namespace Model
 {
-	class EncodedVideo;
-	class Graph;
-}
-
-namespace Model
-{
 	/**
 	 * This class is a graph.
+     * Only integer x values and doubley values are supported.
+     * x and y values must both be greater or equal to zero.
      */
 	class Graph
-	{
-    private: std::vector<double> graph;
-		public: Model::EncodedVideo* bitrate;
-		public: Model::EncodedVideo* psnr;
-		public: Model::EncodedVideo* redHisto;
-		public: Model::EncodedVideo* greenHisto;
-		public: Model::EncodedVideo* blueHiso;
+    {
 
-		/// <summary>
-		/// Constructor.
-		/// </summary>
-		public: Graph();
+        public:
+        /**
+         * @brief Graph Constructor.
+         */
+        Graph();
 
-		/// <summary>
-		/// Adds a value pair.
-		/// </summary>
-		/// <param name="x">Value on the x-axes.</param>
-		/// <param name="y">Value on the y-axes.</param>
-		public: void addValue(int x, double y);
+        /**
+         * @brief addValue Adds a value pair.
+         * @param x Value on the x-axes.
+         * @param y Value on the y-axes.
+         */
+        void addValue(std::size_t x, double y);
 
-		/// <summary>
-		/// Cuts the number of vectors down up to a certain value x.
-		/// </summary>
-		/// <param name="x">The last x-value in the cut down vectors.</param>
-		public: void cut(int x);
+        /**
+         * @brief cut Cuts the number of vectors down up to a certain value x. x is included.
+         * @param x The last x-value in the cut down vectors.
+         */
+        void cut(std::size_t x);
 
-		/// <summary>
-		/// Returns the y-value to a specific x-value.
-		/// </summary>
-		/// <param name="x">The x value.</param>
-		public: double getValue(int x);
+        /**
+         * @brief getValue Returns the y-value to a specific x-value.
+         * If x is less than 0 or greater or equal to getLength then -1 is returned.
+         * @param x The x value.
+         * @return
+         */
+        double getValue(std::size_t x);
 
-		/// <summary>
-		/// Returns the biggest x value.
-		/// </summary>
-		/// <returns>The biggest x value.</returns>
-		public: int getLength();
+        /**
+         * @brief getLength Returns the biggest x value with a valid corresponding y value.
+         * @return The biggest x value.
+         */
+        int getLength();
 
-		/// <summary>
-		/// Removes the corresponding y value.
-		/// </summary>
-		/// <param name="x">The x value whose y value shall be removed.</param>
-		public: void removeValue(int x);
+        /**
+         * @brief removeValue Removes the corresponding y value to -1 .
+         * @param x The x value whose y value shall be set to -1.
+         */
+        void removeValue(std::size_t x);
+
+
+    private:
+        std::vector<double> graph_;
 	};
 }
 

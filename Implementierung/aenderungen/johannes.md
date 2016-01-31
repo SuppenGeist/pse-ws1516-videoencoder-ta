@@ -139,3 +139,16 @@ Fuege Attribut pixelShemeList_ hinzu.
 Entferne Attribut wasSuccessful und Methode wasSuccessful.
 <br><b>Grund:</b> Funktionalitaet wird von QDialog uebernommen.
 <hr>
+## Graph
+Aendere parameter x von der Methode changeValue vom typ int->std::size_t.
+<br><b>Grund:</b> Ueberlauf verhindern.
+<hr>
+Aendere parameter von der Methode cut vom typ int->std::size_t.
+<br><b>Grund:</b> Ueberlauf verhindern.
+<hr>
+Aendere parameter von der Methode getValue vom typ int->std::size_t.
+<br><b>Grund:</b> Ueberlauf verhindern.
+<hr>
+Aendere parameter von der Methode removeValue vom typ int->std::size_t.
+<br><b>Grund:</b> Ueberlauf verhindern.
+<hr>
