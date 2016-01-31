@@ -6,6 +6,10 @@ using namespace std;
 
 #include "../model/AVVideo.h"
 
+extern "C" {
+#include <libavcodec/avcodec.h>
+}
+
 namespace Model
 {
 	class AVVideo;
