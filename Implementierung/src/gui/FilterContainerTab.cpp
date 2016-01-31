@@ -11,20 +11,20 @@
 #include "ui_filtercontainertab.h"
 
 GUI::FilterContainerTab::FilterContainerTab(QWidget* parent):QFrame(parent) {
-    ui = new Ui::FilterContainerTab;
-    ui->setupUi(this);
+	ui = new Ui::FilterContainerTab;
+	ui->setupUi(this);
 
 
 }
 
 void GUI::FilterContainerTab::addFilter(Model::Filter* filter) {
-    FilterView *v = new FilterView(this);
-    v->setObjectName(QString::fromStdString(filter->getName()));
-    ui->container->addWidget(v);
-    v->setFilter(filter);
-    v->setFilterTab(parentTab);
-    int b = size().width();
-    resize(215+b, 200);
+	FilterView *v = new FilterView(this);
+	v->setObjectName(QString::fromStdString(filter->getName()));
+	ui->container->addWidget(v);
+	v->setFilter(filter);
+	v->setFilterTab(parentTab);
+	int b = size().width();
+	resize(215+b, 200);
 }
 
 void GUI::FilterContainerTab::setParentTab(FilterTab& parent) {
@@ -32,6 +32,6 @@ void GUI::FilterContainerTab::setParentTab(FilterTab& parent) {
 }
 
 void GUI::FilterContainerTab::uncheck(std::string filterName) {
-    findChild<GUI::FilterView*>(QString::fromStdString(filterName))->uncheck();
+	findChild<GUI::FilterView*>(QString::fromStdString(filterName))->uncheck();
 }
 

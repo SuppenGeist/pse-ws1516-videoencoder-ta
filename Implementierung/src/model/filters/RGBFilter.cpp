@@ -17,17 +17,17 @@ Model::BasicColor Model::RGBFilter::getColor() {
 }
 
 void Model::RGBFilter::setColor(BasicColor color) {
-    throw "Not yet implemented";
+	throw "Not yet implemented";
 }
 
 string Model::RGBFilter::getName() {
-    return "RGB";
+	return "RGB";
 }
 
-void Model::RGBFilter::restoreFilter(QString description){
-    throw "Not yet implemented";
+void Model::RGBFilter::restoreFilter(QString description) {
+	throw "Not yet implemented";
 }
 
-QString Model::RGBFilter::getSaveString(){
+QString Model::RGBFilter::getSaveString() {
 
 }

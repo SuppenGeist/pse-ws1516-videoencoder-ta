@@ -9,59 +9,54 @@
 #include "FilterTab.h"
 #include "FilterView.h"
 
-namespace GUI
-{
-	class FilterTab;
-    class FilterView;
+namespace GUI {
+class FilterTab;
+class FilterView;
 }
-namespace Model
-{
-	class Filter;
+namespace Model {
+class Filter;
 }
-namespace Ui
-{
-    class FilterContainerTab;
+namespace Ui {
+class FilterContainerTab;
 }
 
-namespace GUI
-{
+namespace GUI {
+/**
+ * This class shows all the selectable filters.
+*/
+class FilterContainerTab : public QFrame {
+  public:
+
 	/**
-	 * This class shows all the selectable filters.
-    */
-    class FilterContainerTab : public QFrame
-	{
-        public:
+	 * @brief FilterContainerTab constructor
+	 * @param parent parent of this object
+	 */
+	FilterContainerTab(QWidget* parent);
 
-        /**
-         * @brief FilterContainerTab constructor
-         * @param parent parent of this object
-         */
-        FilterContainerTab(QWidget* parent);
+	/**
+	 * @brief addFilter Adds a selectable filter.
+	 * @param filter The new filter.
+	 */
+	void addFilter(Model::Filter* filter);
 
-        /**
-         * @brief addFilter Adds a selectable filter.
-         * @param filter The new filter.
-         */
-        void addFilter(Model::Filter* filter);
+	/**
+	 * @brief setParentTab Sets the parent tab.
+	 * @param parent The parent tab.
+	 */
+	void setParentTab(GUI::FilterTab& parent);
 
-        /**
-         * @brief setParentTab Sets the parent tab.
-         * @param parent The parent tab.
-         */
-        void setParentTab(GUI::FilterTab& parent);
+	/**
+	 * @brief uncheck Searches for the filterView with the filter filterName and unchecks it.
+	 * @param filterName The filter to uncheck.
+	 */
+	void uncheck(std::string filterName);
 
-        /**
-         * @brief uncheck Searches for the filterView with the filter filterName and unchecks it.
-         * @param filterName The filter to uncheck.
-         */
-        void uncheck(std::string filterName);
-
-    private:
-        GUI::FilterTab* parentTab;
-        GUI::FilterTab* filterContainerTab;
-        std::vector<GUI::FilterView*> filterViews;
-        Ui::FilterContainerTab* ui;
-	};
+  private:
+	GUI::FilterTab* parentTab;
+	GUI::FilterTab* filterContainerTab;
+	std::vector<GUI::FilterView*> filterViews;
+	Ui::FilterContainerTab* ui;
+};
 }
 
 #endif

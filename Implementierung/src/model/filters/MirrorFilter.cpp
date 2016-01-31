@@ -13,7 +13,7 @@ string Model::MirrorFilter::getFilterDescription() {
 }
 
 string Model::MirrorFilter::getName() {
-    return "Mirror";
+	return "Mirror";
 }
 
 Model::MirrorMode Model::MirrorFilter::getMode() {
@@ -24,10 +24,10 @@ void Model::MirrorFilter::setMode(MirrorMode mode) {
 	throw "Not yet implemented";
 }
 
-void Model::MirrorFilter::restoreFilter(QString description){
-    throw "Not yet implemented";
+void Model::MirrorFilter::restoreFilter(QString description) {
+	throw "Not yet implemented";
 }
 
-QString Model::MirrorFilter::getSaveString(){
+QString Model::MirrorFilter::getSaveString() {
 
 }

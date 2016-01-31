@@ -28,13 +28,13 @@ string Model::BlurFilter::getFilterDescription() {
 }
 
 string Model::BlurFilter::getName() {
-    return "Blur";
+	return "Blur";
 }
 
-void Model::BlurFilter::restoreFilter(QString description){
-    throw "Not yet implemented";
+void Model::BlurFilter::restoreFilter(QString description) {
+	throw "Not yet implemented";
 }
 
-QString Model::BlurFilter::getSaveString(){
+QString Model::BlurFilter::getSaveString() {
 
 }

@@ -25,17 +25,17 @@ int Model::NoiseFilter::getIntensity() {
 }
 
 string Model::NoiseFilter::getName() {
-    return "Noise";
+	return "Noise";
 }
 
 void Model::NoiseFilter::setIntensity(int intensity) {
 	this->intensity = intensity;
 }
 
-void Model::NoiseFilter::restoreFilter(QString description){
-    throw "Not yet implemented";
+void Model::NoiseFilter::restoreFilter(QString description) {
+	throw "Not yet implemented";
 }
 
-QString Model::NoiseFilter::getSaveString(){
+QString Model::NoiseFilter::getSaveString() {
 
 }

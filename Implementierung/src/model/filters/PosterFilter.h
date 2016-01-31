@@ -7,46 +7,51 @@ using namespace std;
 
 #include "Filter.h"
 
-namespace Model
-{
-	// class Filter;
-	class PosterFilter;
+namespace Model {
+// class Filter;
+class PosterFilter;
 }
 
-namespace Model
-{
-	/**
-	 * Reduces the maximum number of colors in the video.
-    */
-	class PosterFilter: public Model::Filter
-	{
-		private: int numberOfColors;
+namespace Model {
+/**
+ * Reduces the maximum number of colors in the video.
+*/
+class PosterFilter: public Model::Filter {
+  private:
+	int numberOfColors;
 
-		/// <summary>
-		/// Constructor.
-		/// </summary>
-		public: PosterFilter();
+	/// <summary>
+	/// Constructor.
+	/// </summary>
+  public:
+	PosterFilter();
 
-		public: string getFilterDescription();
+  public:
+	string getFilterDescription();
 
-		/// <summary>
-		/// Returns the maximum number of colors.
-		/// </summary>
-		/// <returns>Maximum number of colors.</returns>
-		public: int getNumberOfColors();
+	/// <summary>
+	/// Returns the maximum number of colors.
+	/// </summary>
+	/// <returns>Maximum number of colors.</returns>
+  public:
+	int getNumberOfColors();
 
-		public: string getName();
+  public:
+	string getName();
 
-		/// <summary>
-		/// Sets the maximum number of colors.
-		/// </summary>
-		/// <param name="numberOfColors">Maximum number of colors.</param>
-		public: void setNumberOfColors(int numberOfColors);
+	/// <summary>
+	/// Sets the maximum number of colors.
+	/// </summary>
+	/// <param name="numberOfColors">Maximum number of colors.</param>
+  public:
+	void setNumberOfColors(int numberOfColors);
 
-        public: void restoreFilter(QString description);
+  public:
+	void restoreFilter(QString description);
 
-        public: QString getSaveString();
-	};
+  public:
+	QString getSaveString();
+};
 }
 
 #endif

@@ -7,30 +7,32 @@ using namespace std;
 
 #include "Filter.h"
 
-namespace Model
-{
-	// class Filter;
-	class VintageFilter;
+namespace Model {
+// class Filter;
+class VintageFilter;
 }
 
-namespace Model
-{
-	/**
-	 * Adjusts the colors of the video to make it look vintage.
-    */
-	class VintageFilter: public Model::Filter
-	{
+namespace Model {
+/**
+ * Adjusts the colors of the video to make it look vintage.
+*/
+class VintageFilter: public Model::Filter {
 
-		public: VintageFilter();
+  public:
+	VintageFilter();
 
-		public: string getName();
+  public:
+	string getName();
 
-		public: string getFilterDescription();
+  public:
+	string getFilterDescription();
 
-        public: void restoreFilter(QString description);
+  public:
+	void restoreFilter(QString description);
 
-        public: QString getSaveString();
-	};
+  public:
+	QString getSaveString();
+};
 }
 
 #endif

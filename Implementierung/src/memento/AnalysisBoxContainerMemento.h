@@ -7,38 +7,39 @@ using namespace std;
 
 #include "AnalysisBoxMemento.h"
 
-namespace Memento
-{
-	class AnalysisBoxMemento;
-	class AnalysisBoxContainerMemento;
+namespace Memento {
+class AnalysisBoxMemento;
+class AnalysisBoxContainerMemento;
 }
 
-namespace Memento
-{
-	/**
-	 * This class is the memento for the AnalysisBoxContainer.
-     */
-	class AnalysisBoxContainerMemento
-	{
-		private: std::vector<Memento::AnalysisBoxMemento*> mementoList;
+namespace Memento {
+/**
+ * This class is the memento for the AnalysisBoxContainer.
+ */
+class AnalysisBoxContainerMemento {
+  private:
+	std::vector<Memento::AnalysisBoxMemento*> mementoList;
 
-		/// <summary>
-		/// Constructor.
-		/// </summary>
-		public: void analyseBoxMemento();
+	/// <summary>
+	/// Constructor.
+	/// </summary>
+  public:
+	void analyseBoxMemento();
 
-		/// <summary>
-		/// Returns a list of AnalysisBox mementos.
-		/// </summary>
-		/// <returns>The list of AnalysisBoxMemento.</returns>
-		public: vector<Memento::AnalysisBoxMemento> getAnalysisBoxList();
+	/// <summary>
+	/// Returns a list of AnalysisBox mementos.
+	/// </summary>
+	/// <returns>The list of AnalysisBoxMemento.</returns>
+  public:
+	vector<Memento::AnalysisBoxMemento> getAnalysisBoxList();
 
-		/// <summary>
-		/// Sets the list of AnalysisBoxMemento
-		/// </summary>
-		/// <param name="analyseBoxList">The list of the mementos.</param>
-		public: void setAnalysisBoxList(vector<Memento::AnalysisBoxMemento> analyseBoxList);
-	};
+	/// <summary>
+	/// Sets the list of AnalysisBoxMemento
+	/// </summary>
+	/// <param name="analyseBoxList">The list of the mementos.</param>
+  public:
+	void setAnalysisBoxList(vector<Memento::AnalysisBoxMemento> analyseBoxList);
+};
 }
 
 #endif

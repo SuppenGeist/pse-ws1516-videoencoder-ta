@@ -7,46 +7,51 @@ using namespace std;
 
 #include "Filter.h"
 
-namespace Model
-{
-	// class Filter;
-	class SaturationFilter;
+namespace Model {
+// class Filter;
+class SaturationFilter;
 }
 
-namespace Model
-{
-	/**
-	 * Adjusts the saturation of the video.
-    */
-	class SaturationFilter: public Model::Filter
-	{
-		private: int intensity;
+namespace Model {
+/**
+ * Adjusts the saturation of the video.
+*/
+class SaturationFilter: public Model::Filter {
+  private:
+	int intensity;
 
-		/// <summary>
-		/// Constructor.
-		/// </summary>
-		public: SaturationFilter();
+	/// <summary>
+	/// Constructor.
+	/// </summary>
+  public:
+	SaturationFilter();
 
-		public: string getFilterDescription();
+  public:
+	string getFilterDescription();
 
-		/// <summary>
-		/// Returns the intensity of the saturation.
-		/// </summary>
-		/// <returns>The intensity.</returns>
-		public: int getIntensity();
+	/// <summary>
+	/// Returns the intensity of the saturation.
+	/// </summary>
+	/// <returns>The intensity.</returns>
+  public:
+	int getIntensity();
 
-		public: string getName();
+  public:
+	string getName();
 
-		/// <summary>
-		/// Sets the intensity of the saturation.
-		/// </summary>
-		/// <param name="intensity">The new intensity,</param>
-		public: void setIntensity(int intensity);
+	/// <summary>
+	/// Sets the intensity of the saturation.
+	/// </summary>
+	/// <param name="intensity">The new intensity,</param>
+  public:
+	void setIntensity(int intensity);
 
-        public: void restoreFilter(QString description);
+  public:
+	void restoreFilter(QString description);
 
-        public: QString getSaveString();
-	};
+  public:
+	QString getSaveString();
+};
 }
 
 #endif

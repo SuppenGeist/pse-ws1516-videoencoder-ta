@@ -8,30 +8,32 @@
 
 #include "Filter.h"
 
-namespace Model
-{
-	// class Filter;
-	class EdgeFilter;
+namespace Model {
+// class Filter;
+class EdgeFilter;
 }
 
-namespace Model
-{
-	/**
-	 * Filters everything but the edges out of the video.
-    */
-	class EdgeFilter: public Model::Filter
-	{
+namespace Model {
+/**
+ * Filters everything but the edges out of the video.
+*/
+class EdgeFilter: public Model::Filter {
 
-		public: EdgeFilter();
+  public:
+	EdgeFilter();
 
-    public: std::string getFilterDescription();
+  public:
+	std::string getFilterDescription();
 
-    public: std::string getName();
+  public:
+	std::string getName();
 
-        public: void restoreFilter(QString description);
+  public:
+	void restoreFilter(QString description);
 
-        public: QString getSaveString();
-	};
+  public:
+	QString getSaveString();
+};
 }
 
 #endif

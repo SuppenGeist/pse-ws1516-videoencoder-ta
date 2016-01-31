@@ -57,17 +57,17 @@ void Model::BorderFilter::setColor(QRgb color) {
 }
 
 string Model::BorderFilter::getName() {
-    return "Border";
+	return "Border";
 }
 
 string Model::BorderFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 
-void Model::BorderFilter::restoreFilter(QString description){
-    throw "Not yet implemented";
+void Model::BorderFilter::restoreFilter(QString description) {
+	throw "Not yet implemented";
 }
 
-QString Model::BorderFilter::getSaveString(){
+QString Model::BorderFilter::getSaveString() {
 
 }

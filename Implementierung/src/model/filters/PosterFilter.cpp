@@ -8,7 +8,7 @@ Model::PosterFilter::PosterFilter() {
 }
 
 string Model::PosterFilter::getFilterDescription() {
-    throw "Not yet implemented";
+	throw "Not yet implemented";
 }
 
 int Model::PosterFilter::getNumberOfColors() {
@@ -16,17 +16,17 @@ int Model::PosterFilter::getNumberOfColors() {
 }
 
 string Model::PosterFilter::getName() {
-    return "Poster";
+	return "Poster";
 }
 
 void Model::PosterFilter::setNumberOfColors(int numberOfColors) {
 	this->numberOfColors = numberOfColors;
 }
 
-void Model::PosterFilter::restoreFilter(QString description){
-    throw "Not yet implemented";
+void Model::PosterFilter::restoreFilter(QString description) {
+	throw "Not yet implemented";
 }
 
-QString Model::PosterFilter::getSaveString(){
+QString Model::PosterFilter::getSaveString() {
 
 }

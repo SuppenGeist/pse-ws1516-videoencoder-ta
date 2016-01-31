@@ -7,33 +7,35 @@ using namespace std;
 
 #include "Filter.h"
 
-namespace Model
-{
-	// class Filter;
-	class BlackWhiteFilter;
+namespace Model {
+// class Filter;
+class BlackWhiteFilter;
 }
 
-namespace Model
-{
-	/**
-	 * Converts the video to a black and white video.
-    */
-    class BlackWhiteFilter: public Model::Filter
-	{
+namespace Model {
+/**
+ * Converts the video to a black and white video.
+*/
+class BlackWhiteFilter: public Model::Filter {
 
-		/// <summary>
-		/// Constructor.
-		/// </summary>
-		public: BlackWhiteFilter();
+	/// <summary>
+	/// Constructor.
+	/// </summary>
+  public:
+	BlackWhiteFilter();
 
-		public: string getName();
+  public:
+	string getName();
 
-		public: string getFilterDescription();
+  public:
+	string getFilterDescription();
 
-        public: void restoreFilter(QString description);
+  public:
+	void restoreFilter(QString description);
 
-        public: QString getSaveString();
-	};
+  public:
+	QString getSaveString();
+};
 }
 
 #endif

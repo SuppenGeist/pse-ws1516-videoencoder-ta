@@ -10,37 +10,36 @@ extern "C" {
 #include <libavcodec/avcodec.h>
 }
 
-namespace Model
-{
-	class AVVideo;
+namespace Model {
+class AVVideo;
 }
-namespace Utility
-{
-	class VideoLoader;
+namespace Utility {
+class VideoLoader;
 }
 
-namespace Utility
-{
-	/**
-	 * This class can load a encoded video.
-     */
+namespace Utility {
+/**
+ * This class can load a encoded video.
+ */
 
-	class VideoLoader
-	{
-		private: QString path;
+class VideoLoader {
+  private:
+	QString path;
 
-		/// <summary>
-		/// Constructor.
-		/// </summary>
-		/// <param name="path">Absolute path to the video to load.</param>
-		public: VideoLoader(QString path);
+	/// <summary>
+	/// Constructor.
+	/// </summary>
+	/// <param name="path">Absolute path to the video to load.</param>
+  public:
+	VideoLoader(QString path);
 
-		/// <summary>
-		/// Loads the video and generates the AVVideo.
-		/// </summary>
-		/// <returns>The loaded video.</returns>
-    public: unique_ptr<Model::AVVideo> loadVideo();
-	};
+	/// <summary>
+	/// Loads the video and generates the AVVideo.
+	/// </summary>
+	/// <returns>The loaded video.</returns>
+  public:
+	unique_ptr<Model::AVVideo> loadVideo();
+};
 }
 
 #endif

@@ -10,8 +10,8 @@
 
 
 GUI::MainWindow::MainWindow(QWidget* parent):QMainWindow(parent) {
-    createUi();
-    connectActions();
+	createUi();
+	connectActions();
 
 }
 
@@ -28,7 +28,7 @@ void GUI::MainWindow::newProject() {
 }
 
 void GUI::MainWindow::undo() {
-    UndoRedo::UndoStack::getUndoStack();
+	UndoRedo::UndoStack::getUndoStack();
 }
 
 void GUI::MainWindow::saveAs() {
@@ -36,7 +36,7 @@ void GUI::MainWindow::saveAs() {
 }
 
 void GUI::MainWindow::loadProject() {
-    throw "Not yet implemented";
+	throw "Not yet implemented";
 }
 
 void GUI::MainWindow::saveProject() {
@@ -44,32 +44,32 @@ void GUI::MainWindow::saveProject() {
 }
 
 void GUI::MainWindow::redo() {
-    UndoRedo::UndoStack::getUndoStack().redo();
+	UndoRedo::UndoStack::getUndoStack().redo();
 }
 
 void GUI::MainWindow::createUi() {
-    ui = new Ui::MainWindow;
+	ui = new Ui::MainWindow;
 
-    ui->setupUi(this);
+	ui->setupUi(this);
 
-    statusbar=ui->statusbar;
-    action_newProject=ui->actionNew;
-    action_loadProject=ui->actionLoad;
-    action_saveAs=ui->actionSaveAs;
-    action_saveProject=ui->actionSave;
-    action_redo=ui->actionRedo;
-    action_undo=ui->actionUndo;
-    filterTab = new FilterTab(ui->filterTab);
+	statusbar=ui->statusbar;
+	action_newProject=ui->actionNew;
+	action_loadProject=ui->actionLoad;
+	action_saveAs=ui->actionSaveAs;
+	action_saveProject=ui->actionSave;
+	action_redo=ui->actionRedo;
+	action_undo=ui->actionUndo;
+	filterTab = new FilterTab(ui->filterTab);
 
 }
 
 void GUI::MainWindow::connectActions() {
-    connect(action_loadProject,SIGNAL(triggered()),this,SLOT(loadProject()));
-    connect(action_newProject, SIGNAL(triggered()),this,SLOT(newProject()));
-    connect(action_saveProject,SIGNAL(triggered()),this, SLOT(saveProject()));
-    connect(action_redo,SIGNAL(triggered()),this, SLOT(redo()));
-    connect(action_saveAs,SIGNAL(triggered()),this, SLOT(saveAs()));
-    connect(action_undo,SIGNAL(triggered()),this, SLOT(undo()));
+	connect(action_loadProject,SIGNAL(triggered()),this,SLOT(loadProject()));
+	connect(action_newProject, SIGNAL(triggered()),this,SLOT(newProject()));
+	connect(action_saveProject,SIGNAL(triggered()),this, SLOT(saveProject()));
+	connect(action_redo,SIGNAL(triggered()),this, SLOT(redo()));
+	connect(action_saveAs,SIGNAL(triggered()),this, SLOT(saveAs()));
+	connect(action_undo,SIGNAL(triggered()),this, SLOT(undo()));
 
 
 }

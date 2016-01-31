@@ -3,59 +3,57 @@
 
 #include <vector>
 
-namespace Model
-{
+namespace Model {
+/**
+ * This class is a graph.
+ * Only integer x values and doubley values are supported.
+ * x and y values must both be greater or equal to zero.
+ */
+class Graph {
+
+  public:
 	/**
-	 * This class is a graph.
-     * Only integer x values and doubley values are supported.
-     * x and y values must both be greater or equal to zero.
-     */
-	class Graph
-    {
+	 * @brief Graph Constructor.
+	 */
+	Graph();
 
-        public:
-        /**
-         * @brief Graph Constructor.
-         */
-        Graph();
+	/**
+	 * @brief addValue Adds a value pair.
+	 * @param x Value on the x-axes.
+	 * @param y Value on the y-axes.
+	 */
+	void addValue(std::size_t x, double y);
 
-        /**
-         * @brief addValue Adds a value pair.
-         * @param x Value on the x-axes.
-         * @param y Value on the y-axes.
-         */
-        void addValue(std::size_t x, double y);
+	/**
+	 * @brief cut Cuts the number of vectors down up to a certain value x. x is included.
+	 * @param x The last x-value in the cut down vectors.
+	 */
+	void cut(std::size_t x);
 
-        /**
-         * @brief cut Cuts the number of vectors down up to a certain value x. x is included.
-         * @param x The last x-value in the cut down vectors.
-         */
-        void cut(std::size_t x);
+	/**
+	 * @brief getValue Returns the y-value to a specific x-value.
+	 * If x is less than 0 or greater or equal to getLength then -1 is returned.
+	 * @param x The x value.
+	 * @return
+	 */
+	double getValue(std::size_t x);
 
-        /**
-         * @brief getValue Returns the y-value to a specific x-value.
-         * If x is less than 0 or greater or equal to getLength then -1 is returned.
-         * @param x The x value.
-         * @return
-         */
-        double getValue(std::size_t x);
+	/**
+	 * @brief getLength Returns the biggest x value with a valid corresponding y value.
+	 * @return The biggest x value.
+	 */
+	int getLength();
 
-        /**
-         * @brief getLength Returns the biggest x value with a valid corresponding y value.
-         * @return The biggest x value.
-         */
-        int getLength();
-
-        /**
-         * @brief removeValue Removes the corresponding y value to -1 .
-         * @param x The x value whose y value shall be set to -1.
-         */
-        void removeValue(std::size_t x);
+	/**
+	 * @brief removeValue Removes the corresponding y value to -1 .
+	 * @param x The x value whose y value shall be set to -1.
+	 */
+	void removeValue(std::size_t x);
 
 
-    private:
-        std::vector<double> graph_;
-	};
+  private:
+	std::vector<double> graph_;
+};
 }
 
 #endif

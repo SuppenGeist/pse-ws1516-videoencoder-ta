@@ -7,46 +7,51 @@ using namespace std;
 
 #include "Filter.h"
 
-namespace Model
-{
-	// class Filter;
-	class ZoomFilter;
+namespace Model {
+// class Filter;
+class ZoomFilter;
 }
 
-namespace Model
-{
-	/**
-	 * Zooms into the center of the video.
-    */
-	class ZoomFilter: public Model::Filter
-	{
-		private: int intensity;
+namespace Model {
+/**
+ * Zooms into the center of the video.
+*/
+class ZoomFilter: public Model::Filter {
+  private:
+	int intensity;
 
-		/// <summary>
-		/// Constructor.
-		/// </summary>
-		public: ZoomFilter();
+	/// <summary>
+	/// Constructor.
+	/// </summary>
+  public:
+	ZoomFilter();
 
-		public: string getName();
+  public:
+	string getName();
 
-		public: string getFilterDescription();
+  public:
+	string getFilterDescription();
 
-		/// <summary>
-		/// Returns the intensity of the zoom.
-		/// </summary>
-		/// <returns>The zoom intensity.</returns>
-		public: int getIntensity();
+	/// <summary>
+	/// Returns the intensity of the zoom.
+	/// </summary>
+	/// <returns>The zoom intensity.</returns>
+  public:
+	int getIntensity();
 
-		/// <summary>
-		/// Sets the intensity of the zoom.
-		/// </summary>
-		/// <param name="intensity">The new intensity.</param>
-		public: void setIntensity(int intensity);
+	/// <summary>
+	/// Sets the intensity of the zoom.
+	/// </summary>
+	/// <param name="intensity">The new intensity.</param>
+  public:
+	void setIntensity(int intensity);
 
-        public: void restoreFilter(QString description);
+  public:
+	void restoreFilter(QString description);
 
-        public: QString getSaveString();
-	};
+  public:
+	QString getSaveString();
+};
 }
 
 #endif

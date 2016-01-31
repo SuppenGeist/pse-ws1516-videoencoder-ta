@@ -40,7 +40,7 @@ int Model::RectangleFilter::getX() {
 }
 
 string Model::RectangleFilter::getName() {
-    return "Rectangle";
+	return "Rectangle";
 }
 
 void Model::RectangleFilter::setX(int x) {
@@ -63,10 +63,10 @@ void Model::RectangleFilter::setOpacity(int opacity) {
 	this->opacity = opacity;
 }
 
-void Model::RectangleFilter::restoreFilter(QString description){
-    throw "Not yet implemented";
+void Model::RectangleFilter::restoreFilter(QString description) {
+	throw "Not yet implemented";
 }
 
-QString Model::RectangleFilter::getSaveString(){
+QString Model::RectangleFilter::getSaveString() {
 
 }

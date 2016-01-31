@@ -11,6 +11,7 @@ vector<Memento::AnalysisBoxMemento> Memento::AnalysisBoxContainerMemento::getAna
 	throw "Not yet implemented";
 }
 
-void Memento::AnalysisBoxContainerMemento::setAnalysisBoxList(std::vector<Memento::AnalysisBoxMemento> analyseBoxList) {
+void Memento::AnalysisBoxContainerMemento::setAnalysisBoxList(
+    std::vector<Memento::AnalysisBoxMemento> analyseBoxList) {
 	throw "Not yet implemented";
 }

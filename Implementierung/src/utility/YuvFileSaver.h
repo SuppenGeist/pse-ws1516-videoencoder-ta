@@ -4,43 +4,40 @@
 #include <QFile>
 #include <QDataStream>
 
-namespace Model
-{
-	class Video;
+namespace Model {
+class Video;
 }
 
-namespace Utility
-{
+namespace Utility {
+/**
+ * This is the base class for yuv savers.
+ */
+class YuvFileSaver {
+  public:
 	/**
-	 * This is the base class for yuv savers.
-     */
-    class YuvFileSaver
-    {
-    public:
-        /**
-         * @brief YuvFileSaver Constructor.
-         * @param filename Absolute path to the file to save to.
-         * @param video The video to save.
-         */
-        YuvFileSaver(QString filename, Model::Video& video);
+	 * @brief YuvFileSaver Constructor.
+	 * @param filename Absolute path to the file to save to.
+	 * @param video The video to save.
+	 */
+	YuvFileSaver(QString filename, Model::Video& video);
 
-        /**
-         * @brief ~YuvFileSaver Destructor.
-         */
-        virtual ~YuvFileSaver();
+	/**
+	 * @brief ~YuvFileSaver Destructor.
+	 */
+	virtual ~YuvFileSaver();
 
-        /**
-         * @brief save Saves the video to the file.
-         */
-        virtual void save() = 0;
+	/**
+	 * @brief save Saves the video to the file.
+	 */
+	virtual void save() = 0;
 
-    protected:
-        int             width_;
-        int             height_;
-        Model::Video*   video_;
-        QFile           file_;
-        QDataStream     dataStream_;
-	};
+  protected:
+	int             width_;
+	int             height_;
+	Model::Video*   video_;
+	QFile           file_;
+	QDataStream     dataStream_;
+};
 }
 
 #endif

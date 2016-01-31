@@ -16,17 +16,17 @@ int Model::SharpnessFilter::getIntensity() {
 }
 
 string Model::SharpnessFilter::getName() {
-    return "Sharpness";
+	return "Sharpness";
 }
 
 void Model::SharpnessFilter::setIntensity(int intensity) {
 	this->intensity = intensity;
 }
 
-void Model::SharpnessFilter::restoreFilter(QString description){
-    throw "Not yet implemented";
+void Model::SharpnessFilter::restoreFilter(QString description) {
+	throw "Not yet implemented";
 }
 
-QString Model::SharpnessFilter::getSaveString(){
+QString Model::SharpnessFilter::getSaveString() {
 
 }

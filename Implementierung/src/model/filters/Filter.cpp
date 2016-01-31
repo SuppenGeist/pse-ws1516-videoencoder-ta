@@ -6,17 +6,17 @@
 
 
 string Model::Filter::getName() {
-    return "Filter";
+	return "Filter";
 }
 
-string Model::Filter::getFilterDescription(){
-    throw "Not yet implemented";
+string Model::Filter::getFilterDescription() {
+	throw "Not yet implemented";
 }
 
-void Model::Filter::restoreFilter(QString description){
-    throw "Not yet implemented";
+void Model::Filter::restoreFilter(QString description) {
+	throw "Not yet implemented";
 }
 
-QString Model::Filter::getSaveString(){
+QString Model::Filter::getSaveString() {
 
 }

@@ -16,17 +16,17 @@ int Model::SaturationFilter::getIntensity() {
 }
 
 string Model::SaturationFilter::getName() {
-    return "Saturation";
+	return "Saturation";
 }
 
 void Model::SaturationFilter::setIntensity(int intensity) {
 	this->intensity = intensity;
 }
 
-void Model::SaturationFilter::restoreFilter(QString description){
-    throw "Not yet implemented";
+void Model::SaturationFilter::restoreFilter(QString description) {
+	throw "Not yet implemented";
 }
 
-QString Model::SaturationFilter::getSaveString(){
+QString Model::SaturationFilter::getSaveString() {
 
 }

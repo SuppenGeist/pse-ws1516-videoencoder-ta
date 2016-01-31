@@ -12,13 +12,13 @@ string Model::NegativeFilter::getFilterDescription() {
 }
 
 string Model::NegativeFilter::getName() {
-    return "Negative";
+	return "Negative";
 }
 
-void Model::NegativeFilter::restoreFilter(QString description){
-    throw "Not yet implemented";
+void Model::NegativeFilter::restoreFilter(QString description) {
+	throw "Not yet implemented";
 }
 
-QString Model::NegativeFilter::getSaveString(){
+QString Model::NegativeFilter::getSaveString() {
 
 }

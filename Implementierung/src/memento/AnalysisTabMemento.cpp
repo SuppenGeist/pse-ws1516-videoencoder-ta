@@ -33,6 +33,7 @@ Memento::AnalysisBoxContainerMemento Memento::AnalysisTabMemento::getAnalysisBox
 	throw "Not yet implemented";
 }
 
-void Memento::AnalysisTabMemento::setAnalysisBoxContainerMemento(AnalysisBoxContainerMemento analysisBoxContainerMemento) {
+void Memento::AnalysisTabMemento::setAnalysisBoxContainerMemento(AnalysisBoxContainerMemento
+        analysisBoxContainerMemento) {
 	throw "Not yet implemented";
 }

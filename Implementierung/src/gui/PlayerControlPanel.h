@@ -68,13 +68,13 @@ class PlayerControlPanel: public QFrame, public ControlPanel {
 	void changeTimeline(int value);
 
   private:
-    QPushButton*    button_play_;
-    QPushButton*    button_stop_;
-    QPushButton*    button_nextFrame_;
-    QPushButton*    button_previousFrame_;
-    QPushButton*    button_pause_;
-    QComboBox*      comboBox_speed_;
-    QSlider*        slider_timeline_;
+	QPushButton*    button_play_;
+	QPushButton*    button_stop_;
+	QPushButton*    button_nextFrame_;
+	QPushButton*    button_previousFrame_;
+	QPushButton*    button_pause_;
+	QComboBox*      comboBox_speed_;
+	QSlider*        slider_timeline_;
 
 	/**
 	 * @brief createUi Creates the ui.

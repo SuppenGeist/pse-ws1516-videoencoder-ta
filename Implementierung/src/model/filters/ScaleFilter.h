@@ -7,85 +7,99 @@ using namespace std;
 
 #include "Filter.h"
 
-namespace Model
-{
-	// class Filter;
-	class ScaleFilter;
+namespace Model {
+// class Filter;
+class ScaleFilter;
 }
 
-namespace Model
-{
-	/**
-	 * Scales the video.
-    */
-	class ScaleFilter: public Model::Filter
-	{
-		private: bool keepRatio;
-		private: int width;
-		private: int height;
-		private: int ratio;
+namespace Model {
+/**
+ * Scales the video.
+*/
+class ScaleFilter: public Model::Filter {
+  private:
+	bool keepRatio;
+  private:
+	int width;
+  private:
+	int height;
+  private:
+	int ratio;
 
-		/// <summary>
-		/// Constructor.
-		/// </summary>
-		public: ScaleFilter();
+	/// <summary>
+	/// Constructor.
+	/// </summary>
+  public:
+	ScaleFilter();
 
-		public: string getFilterDescription();
+  public:
+	string getFilterDescription();
 
-		/// <summary>
-		/// Whether the ration is preserved.
-		/// </summary>
-		/// <returns>True if the ration is preserved.</returns>
-		public: bool getKeepRatio();
+	/// <summary>
+	/// Whether the ration is preserved.
+	/// </summary>
+	/// <returns>True if the ration is preserved.</returns>
+  public:
+	bool getKeepRatio();
 
-		/// <summary>
-		/// Sets whether the ration is preserved.
-		/// </summary>
-		/// <param name="keepRatio">True if the ration is preserved.</param>
-		public: void setKeepRatio(bool keepRatio);
+	/// <summary>
+	/// Sets whether the ration is preserved.
+	/// </summary>
+	/// <param name="keepRatio">True if the ration is preserved.</param>
+  public:
+	void setKeepRatio(bool keepRatio);
 
-		public: string getName();
+  public:
+	string getName();
 
-		/// <summary>
-		/// Returns the new width.
-		/// </summary>
-		/// <returns>The new width.</returns>
-		public: int getWidth();
+	/// <summary>
+	/// Returns the new width.
+	/// </summary>
+	/// <returns>The new width.</returns>
+  public:
+	int getWidth();
 
-		/// <summary>
-		/// Sets the new width,
-		/// </summary>
-		/// <param name="width">The new width.</param>
-		public: void setWidth(int width);
+	/// <summary>
+	/// Sets the new width,
+	/// </summary>
+	/// <param name="width">The new width.</param>
+  public:
+	void setWidth(int width);
 
-		/// <summary>
-		/// Returns the new height.
-		/// </summary>
-		/// <returns>The new height.</returns>
-		public: int getHeight();
+	/// <summary>
+	/// Returns the new height.
+	/// </summary>
+	/// <returns>The new height.</returns>
+  public:
+	int getHeight();
 
-		/// <summary>
-		/// Sets the new height.
-		/// </summary>
-		/// <param name="height">The new height.</param>
-		public: void setHeight(int height);
+	/// <summary>
+	/// Sets the new height.
+	/// </summary>
+	/// <param name="height">The new height.</param>
+  public:
+	void setHeight(int height);
 
-		/// <summary>
-		/// Returns the ratio of the scaling.
-		/// </summary>
-		/// <returns>The ration.</returns>
-		public: int getRatio();
+	/// <summary>
+	/// Returns the ratio of the scaling.
+	/// </summary>
+	/// <returns>The ration.</returns>
+  public:
+	int getRatio();
 
-		/// <summary>
-		/// Sets the ration of the scaling.
-		/// </summary>
-		/// <param name="ratio">The ration.</param>
-		public: void setRatio(int ratio);
+	/// <summary>
+	/// Sets the ration of the scaling.
+	/// </summary>
+	/// <param name="ratio">The ration.</param>
+  public:
+	void setRatio(int ratio);
 
-        public: void restoreFilter(QString description);
+  public:
+	void restoreFilter(QString description);
 
-        public: QString getSaveString();
-	};
+  public:
+	QString getSaveString();
+};
 }
 
 #endif

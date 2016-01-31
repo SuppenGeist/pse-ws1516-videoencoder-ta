@@ -8,18 +8,18 @@ Model::VintageFilter::VintageFilter() {
 }
 
 string Model::VintageFilter::getName() {
-    return "Vintage";
+	return "Vintage";
 }
 
 string Model::VintageFilter::getFilterDescription() {
-    string str = "curves=vintage";
-    return str;
+	string str = "curves=vintage";
+	return str;
 }
 
-void Model::VintageFilter::restoreFilter(QString description){
+void Model::VintageFilter::restoreFilter(QString description) {
 //nothing to save
 }
 
-QString Model::VintageFilter::getSaveString(){
+QString Model::VintageFilter::getSaveString() {
 //nothing to save
 }

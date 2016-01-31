@@ -32,7 +32,7 @@ void Model::BlendingFilter::setEndFrame(int endFrame) {
 }
 
 string Model::BlendingFilter::getName() {
-    return "Blending";
+	return "Blending";
 }
 
 string Model::BlendingFilter::getFilterDescription() {
@@ -40,10 +40,10 @@ string Model::BlendingFilter::getFilterDescription() {
 }
 
 
-void Model::BlendingFilter::restoreFilter(QString description){
-    throw "Not yet implemented";
+void Model::BlendingFilter::restoreFilter(QString description) {
+	throw "Not yet implemented";
 }
 
-QString Model::BlendingFilter::getSaveString(){
+QString Model::BlendingFilter::getSaveString() {
 
 }

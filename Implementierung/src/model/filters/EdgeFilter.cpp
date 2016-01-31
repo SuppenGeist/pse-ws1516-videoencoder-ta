@@ -12,13 +12,13 @@ string Model::EdgeFilter::getFilterDescription() {
 }
 
 string Model::EdgeFilter::getName() {
-    return "Edge";
+	return "Edge";
 }
 
-void Model::EdgeFilter::restoreFilter(QString description){
-    throw "Not yet implemented";
+void Model::EdgeFilter::restoreFilter(QString description) {
+	throw "Not yet implemented";
 }
 
-QString Model::EdgeFilter::getSaveString(){
+QString Model::EdgeFilter::getSaveString() {
 
 }

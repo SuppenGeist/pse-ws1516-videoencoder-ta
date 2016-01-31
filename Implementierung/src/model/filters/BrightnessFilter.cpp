@@ -16,17 +16,17 @@ void Model::BrightnessFilter::setIntensity(int intensity) {
 }
 
 string Model::BrightnessFilter::getName() {
-    return "Brightness";
+	return "Brightness";
 }
 
 string Model::BrightnessFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 
-void Model::BrightnessFilter::restoreFilter(QString description){
-    throw "Not yet implemented";
+void Model::BrightnessFilter::restoreFilter(QString description) {
+	throw "Not yet implemented";
 }
 
-QString Model::BrightnessFilter::getSaveString(){
+QString Model::BrightnessFilter::getSaveString() {
 
 }

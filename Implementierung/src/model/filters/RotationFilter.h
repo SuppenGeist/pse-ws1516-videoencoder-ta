@@ -7,46 +7,51 @@ using namespace std;
 
 #include "Filter.h"
 
-namespace Model
-{
-	// class Filter;
-	class RotationFilter;
+namespace Model {
+// class Filter;
+class RotationFilter;
 }
 
-namespace Model
-{
-	/**
-	 * Rotates the video.
-    */
-	class RotationFilter: public Model::Filter
-	{
-		private: int angle;
+namespace Model {
+/**
+ * Rotates the video.
+*/
+class RotationFilter: public Model::Filter {
+  private:
+	int angle;
 
-		/// <summary>
-		/// Constructor.
-		/// </summary>
-		public: RotationFilter();
+	/// <summary>
+	/// Constructor.
+	/// </summary>
+  public:
+	RotationFilter();
 
-		public: string getFilterDescription();
+  public:
+	string getFilterDescription();
 
-		/// <summary>
-		/// Returns the angle of the rotation.
-		/// </summary>
-		/// <returns>The rotation angle.</returns>
-		public: int getAngle();
+	/// <summary>
+	/// Returns the angle of the rotation.
+	/// </summary>
+	/// <returns>The rotation angle.</returns>
+  public:
+	int getAngle();
 
-		public: string getName();
+  public:
+	string getName();
 
-		/// <summary>
-		/// Sets the angle of the rotation.
-		/// </summary>
-		/// <param name="angle">The new rotation angle.</param>
-		public: void setAngle(int angle);
+	/// <summary>
+	/// Sets the angle of the rotation.
+	/// </summary>
+	/// <param name="angle">The new rotation angle.</param>
+  public:
+	void setAngle(int angle);
 
-        public: void restoreFilter(QString description);
+  public:
+	void restoreFilter(QString description);
 
-        public: QString getSaveString();
-	};
+  public:
+	QString getSaveString();
+};
 }
 
 #endif

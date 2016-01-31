@@ -23,7 +23,7 @@ namespace Model {
      */
 class AVVideo {
   private:
-    vector<unique_ptr<AVFrame>> video;
+	vector<unique_ptr<AVFrame>> video;
   private:
 	int fps;
   private:

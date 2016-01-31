@@ -8,47 +8,52 @@ using namespace std;
 #include "../MirrorMode.h"
 #include "Filter.h"
 
-namespace Model
-{
-	// enum MirrorMode;
-	// class Filter;
-	class MirrorFilter;
+namespace Model {
+// enum MirrorMode;
+// class Filter;
+class MirrorFilter;
 }
 
-namespace Model
-{
-	/**
-	 * Mirrors the video horizontally or vertically.
-    */
-	class MirrorFilter: public Model::Filter
-	{
-		private: Model::MirrorMode* mode;
+namespace Model {
+/**
+ * Mirrors the video horizontally or vertically.
+*/
+class MirrorFilter: public Model::Filter {
+  private:
+	Model::MirrorMode* mode;
 
-		/// <summary>
-		/// Constructor.
-		/// </summary>
-		public: MirrorFilter();
+	/// <summary>
+	/// Constructor.
+	/// </summary>
+  public:
+	MirrorFilter();
 
-		public: string getFilterDescription();
+  public:
+	string getFilterDescription();
 
-		public: string getName();
+  public:
+	string getName();
 
-		/// <summary>
-		/// Returns the MirrorMode.
-		/// </summary>
-		/// <returns>The MirrorMode.</returns>
-		public: Model::MirrorMode getMode();
+	/// <summary>
+	/// Returns the MirrorMode.
+	/// </summary>
+	/// <returns>The MirrorMode.</returns>
+  public:
+	Model::MirrorMode getMode();
 
-		/// <summary>
-		/// Sets the MirrorMode.
-		/// </summary>
-		/// <param name="mode">The MirrorMode.</param>
-		public: void setMode(Model::MirrorMode mode);
+	/// <summary>
+	/// Sets the MirrorMode.
+	/// </summary>
+	/// <param name="mode">The MirrorMode.</param>
+  public:
+	void setMode(Model::MirrorMode mode);
 
-        public: void restoreFilter(QString description);
+  public:
+	void restoreFilter(QString description);
 
-        public: QString getSaveString();
-	};
+  public:
+	QString getSaveString();
+};
 }
 
 #endif

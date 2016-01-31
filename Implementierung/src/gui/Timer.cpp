@@ -16,7 +16,7 @@ void GUI::Timer::setFps(int fps) noexcept {
 		return;
 	fps_ = fps;
 
-    start();
+	start();
 }
 
 void GUI::Timer::setSpeed(float speed) noexcept {
@@ -24,7 +24,7 @@ void GUI::Timer::setSpeed(float speed) noexcept {
 		return;
 	speed_ = speed;
 
-    start();
+	start();
 }
 
 float GUI::Timer::getSpeed() const noexcept {

@@ -16,17 +16,17 @@ int Model::RotationFilter::getAngle() {
 }
 
 string Model::RotationFilter::getName() {
-    return "Rotation";
+	return "Rotation";
 }
 
 void Model::RotationFilter::setAngle(int angle) {
 	this->angle = angle;
 }
 
-void Model::RotationFilter::restoreFilter(QString description){
-    throw "Not yet implemented";
+void Model::RotationFilter::restoreFilter(QString description) {
+	throw "Not yet implemented";
 }
 
-QString Model::RotationFilter::getSaveString(){
+QString Model::RotationFilter::getSaveString() {
 
 }

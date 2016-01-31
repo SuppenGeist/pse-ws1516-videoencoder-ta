@@ -7,30 +7,32 @@ using namespace std;
 
 #include "Filter.h"
 
-namespace Model
-{
-	// class Filter;
-	class SepiaFilter;
+namespace Model {
+// class Filter;
+class SepiaFilter;
 }
 
-namespace Model
-{
-	/**
-	 * Converts the video into sepia.
-    */
-	class SepiaFilter: public Model::Filter
-	{
+namespace Model {
+/**
+ * Converts the video into sepia.
+*/
+class SepiaFilter: public Model::Filter {
 
-		public: SepiaFilter();
+  public:
+	SepiaFilter();
 
-		public: string getName();
+  public:
+	string getName();
 
-		public: string getFilterDescription();
+  public:
+	string getFilterDescription();
 
-        public: void restoreFilter(QString description);
+  public:
+	void restoreFilter(QString description);
 
-        public: QString getSaveString();
-	};
+  public:
+	QString getSaveString();
+};
 }
 
 #endif

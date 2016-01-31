@@ -45,7 +45,7 @@ string Model::ColorbalanceFilter::getFilterDescription() {
 }
 
 string Model::ColorbalanceFilter::getName() {
-    return "Colorbalance";
+	return "Colorbalance";
 }
 
 bool Model::ColorbalanceFilter::getDarkPixels() {
@@ -56,10 +56,10 @@ void Model::ColorbalanceFilter::setDarkPixels(bool darkPixels) {
 	this->darkPixels = darkPixels;
 }
 
-void Model::ColorbalanceFilter::restoreFilter(QString description){
-    throw "Not yet implemented";
+void Model::ColorbalanceFilter::restoreFilter(QString description) {
+	throw "Not yet implemented";
 }
 
-QString Model::ColorbalanceFilter::getSaveString(){
+QString Model::ColorbalanceFilter::getSaveString() {
 
 }

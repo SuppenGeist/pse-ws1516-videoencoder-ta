@@ -8,7 +8,7 @@ Model::ZoomFilter::ZoomFilter() {
 }
 
 string Model::ZoomFilter::getName() {
-    return "Zoom";
+	return "Zoom";
 }
 
 string Model::ZoomFilter::getFilterDescription() {
@@ -23,10 +23,10 @@ void Model::ZoomFilter::setIntensity(int intensity) {
 	this->intensity = intensity;
 }
 
-void Model::ZoomFilter::restoreFilter(QString description){
-    throw "Not yet implemented";
+void Model::ZoomFilter::restoreFilter(QString description) {
+	throw "Not yet implemented";
 }
 
-QString Model::ZoomFilter::getSaveString(){
+QString Model::ZoomFilter::getSaveString() {
 
 }

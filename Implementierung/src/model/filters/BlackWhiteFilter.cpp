@@ -8,16 +8,16 @@ Model::BlackWhiteFilter::BlackWhiteFilter() {
 }
 
 std::string Model::BlackWhiteFilter::getName() {
-    return "BlackWhite";
+	return "BlackWhite";
 }
 
 std::string Model::BlackWhiteFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
-void Model::BlackWhiteFilter::restoreFilter(QString description){
-    throw "Not yet implemented";
+void Model::BlackWhiteFilter::restoreFilter(QString description) {
+	throw "Not yet implemented";
 }
 
-QString Model::BlackWhiteFilter::getSaveString(){
+QString Model::BlackWhiteFilter::getSaveString() {
 
 }

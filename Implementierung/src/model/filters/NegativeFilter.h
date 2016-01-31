@@ -7,33 +7,35 @@ using namespace std;
 
 #include "Filter.h"
 
-namespace Model
-{
-	// class Filter;
-	class NegativeFilter;
+namespace Model {
+// class Filter;
+class NegativeFilter;
 }
 
-namespace Model
-{
-	/**
-	 * Converts the video into it's negative.
-    */
-	class NegativeFilter: public Model::Filter
-	{
+namespace Model {
+/**
+ * Converts the video into it's negative.
+*/
+class NegativeFilter: public Model::Filter {
 
-		/// <summary>
-		/// Constructor.
-		/// </summary>
-		public: NegativeFilter();
+	/// <summary>
+	/// Constructor.
+	/// </summary>
+  public:
+	NegativeFilter();
 
-		public: string getFilterDescription();
+  public:
+	string getFilterDescription();
 
-		public: string getName();
+  public:
+	string getName();
 
-        public: void restoreFilter(QString description);
+  public:
+	void restoreFilter(QString description);
 
-        public: QString getSaveString();
-	};
+  public:
+	QString getSaveString();
+};
 }
 
 #endif

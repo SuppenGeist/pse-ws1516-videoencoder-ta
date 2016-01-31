@@ -8,12 +8,12 @@ Model::ScaleFilter::ScaleFilter() {
 }
 
 string Model::ScaleFilter::getFilterDescription() {
-    std::string str = std::string(getName());
-    str+="=";
-    str+=to_string(getWidth());
-    str+=":";
-    str+=to_string(getHeight());
-    return str;
+	std::string str = std::string(getName());
+	str+="=";
+	str+=to_string(getWidth());
+	str+=":";
+	str+=to_string(getHeight());
+	return str;
 }
 
 bool Model::ScaleFilter::getKeepRatio() {
@@ -25,7 +25,7 @@ void Model::ScaleFilter::setKeepRatio(bool keepRatio) {
 }
 
 string Model::ScaleFilter::getName() {
-    return "Scale";
+	return "Scale";
 }
 
 int Model::ScaleFilter::getWidth() {
@@ -52,23 +52,23 @@ void Model::ScaleFilter::setRatio(int ratio) {
 	this->ratio = ratio;
 }
 
-void Model::ScaleFilter::restoreFilter(QString description){
-    QStringList list  = description.split(";");
-    setWidth(list[1].QString::toInt());
-    setHeight(list[2].QString::toInt());
-    setKeepRatio(list[3].QString::toInt());
-    setRatio(list[4].QString::toInt());
+void Model::ScaleFilter::restoreFilter(QString description) {
+	QStringList list  = description.split(";");
+	setWidth(list[1].QString::toInt());
+	setHeight(list[2].QString::toInt());
+	setKeepRatio(list[3].QString::toInt());
+	setRatio(list[4].QString::toInt());
 }
 
-QString Model::ScaleFilter::getSaveString(){
-    QString str = QString::fromStdString(getName());
-    str+=";";
-    str+=QString::number(getWidth());
-    str+=";";
-    str+=QString::number(getHeight());
-    str+=";";
-    str+=QString::number(getKeepRatio());
-    str+=";";
-    str+=QString::number(getRatio());
-    return str;
+QString Model::ScaleFilter::getSaveString() {
+	QString str = QString::fromStdString(getName());
+	str+=";";
+	str+=QString::number(getWidth());
+	str+=";";
+	str+=QString::number(getHeight());
+	str+=";";
+	str+=QString::number(getKeepRatio());
+	str+=";";
+	str+=QString::number(getRatio());
+	return str;
 }

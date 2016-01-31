@@ -52,13 +52,13 @@ void Model::GridFilter::setOpacity(int opacity) {
 }
 
 std::string Model::GridFilter::getName() {
-    return "Grid";
+	return "Grid";
 }
 
-void Model::GridFilter::restoreFilter(QString description){
-    throw "Not yet implemented";
+void Model::GridFilter::restoreFilter(QString description) {
+	throw "Not yet implemented";
 }
 
-QString Model::GridFilter::getSaveString(){
+QString Model::GridFilter::getSaveString() {
 
 }

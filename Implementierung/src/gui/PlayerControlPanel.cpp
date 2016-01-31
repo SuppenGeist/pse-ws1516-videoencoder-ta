@@ -12,13 +12,13 @@
 GUI::PlayerControlPanel::PlayerControlPanel(QWidget* parent):QFrame(parent) {
 	createUi();
 
-    connect(button_play_,SIGNAL(clicked()),this,SLOT(play()));
-    connect(button_pause_,SIGNAL(clicked()),this,SLOT(pause()));
-    connect(button_stop_,SIGNAL(clicked()),this,SLOT(stop()));
-    connect(button_nextFrame_,SIGNAL(clicked()),this,SLOT(nextFrame()));
-    connect(button_previousFrame_,SIGNAL(clicked()),this,SLOT(previousFrame()));
-    connect(comboBox_speed_,SIGNAL(currentIndexChanged(int)),this,SLOT(changeSpeed(int)));
-    connect(slider_timeline_,SIGNAL(valueChanged(int)),this,SLOT(changeTimeline(int)));
+	connect(button_play_,SIGNAL(clicked()),this,SLOT(play()));
+	connect(button_pause_,SIGNAL(clicked()),this,SLOT(pause()));
+	connect(button_stop_,SIGNAL(clicked()),this,SLOT(stop()));
+	connect(button_nextFrame_,SIGNAL(clicked()),this,SLOT(nextFrame()));
+	connect(button_previousFrame_,SIGNAL(clicked()),this,SLOT(previousFrame()));
+	connect(comboBox_speed_,SIGNAL(currentIndexChanged(int)),this,SLOT(changeSpeed(int)));
+	connect(slider_timeline_,SIGNAL(valueChanged(int)),this,SLOT(changeTimeline(int)));
 }
 
 void GUI::PlayerControlPanel::updateUi() {
@@ -33,8 +33,8 @@ void GUI::PlayerControlPanel::updateUi() {
 			return;
 	}
 
-    slider_timeline_->setMaximum(player->getNumberOfFrames());
-    slider_timeline_->setValue(player->getPosition());
+	slider_timeline_->setMaximum(player->getNumberOfFrames());
+	slider_timeline_->setValue(player->getPosition());
 }
 
 void GUI::PlayerControlPanel::createUi() {
@@ -42,50 +42,50 @@ void GUI::PlayerControlPanel::createUi() {
 
 	QHBoxLayout *h_layout=new QHBoxLayout;
 
-    button_play_=new QPushButton;
-    button_pause_=new QPushButton;
-    button_stop_=new QPushButton;
-    button_nextFrame_=new QPushButton;
-    button_previousFrame_=new QPushButton;
-    comboBox_speed_=new QComboBox;
+	button_play_=new QPushButton;
+	button_pause_=new QPushButton;
+	button_stop_=new QPushButton;
+	button_nextFrame_=new QPushButton;
+	button_previousFrame_=new QPushButton;
+	comboBox_speed_=new QComboBox;
 
-    button_play_->setIcon(QIcon(":/icons/resources/icons/play.png"));
-    button_pause_->setIcon(QIcon(":/icons/resources/icons/pause.png"));
-    button_stop_->setIcon(QIcon(":/icons/resources/icons/stop.png"));
-    button_nextFrame_->setIcon(QIcon(":/icons/resources/icons/next.png"));
-    button_previousFrame_->setIcon(QIcon(":/icons/resources/icons/prev.png"));
+	button_play_->setIcon(QIcon(":/icons/resources/icons/play.png"));
+	button_pause_->setIcon(QIcon(":/icons/resources/icons/pause.png"));
+	button_stop_->setIcon(QIcon(":/icons/resources/icons/stop.png"));
+	button_nextFrame_->setIcon(QIcon(":/icons/resources/icons/next.png"));
+	button_previousFrame_->setIcon(QIcon(":/icons/resources/icons/prev.png"));
 
-    button_play_->setFlat(true);
-    button_pause_->setFlat(true);
-    button_stop_->setFlat(true);
-    button_nextFrame_->setFlat(true);
-    button_previousFrame_->setFlat(true);
+	button_play_->setFlat(true);
+	button_pause_->setFlat(true);
+	button_stop_->setFlat(true);
+	button_nextFrame_->setFlat(true);
+	button_previousFrame_->setFlat(true);
 
-    button_play_->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    button_pause_->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    button_stop_->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    button_nextFrame_->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    button_previousFrame_->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+	button_play_->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+	button_pause_->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+	button_stop_->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+	button_nextFrame_->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+	button_previousFrame_->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
 	QStringList speedItems = QStringList() << tr("0.25x") <<tr("0.50x") << tr("0.75x") << tr("1.00x") <<
 	                         tr("1.25x") << tr("1.50x") << tr("1.75x") << tr("2.00x");
-    comboBox_speed_->addItems(speedItems);
-    comboBox_speed_->setCurrentIndex(3);
-    comboBox_speed_->setMinimumWidth(80);
+	comboBox_speed_->addItems(speedItems);
+	comboBox_speed_->setCurrentIndex(3);
+	comboBox_speed_->setMinimumWidth(80);
 
-    h_layout->addWidget(button_play_);
-    h_layout->addWidget(button_pause_);
-    h_layout->addWidget(button_stop_);
-    h_layout->addWidget(button_previousFrame_);
-    h_layout->addWidget(button_nextFrame_);
-    h_layout->addWidget(comboBox_speed_);
+	h_layout->addWidget(button_play_);
+	h_layout->addWidget(button_pause_);
+	h_layout->addWidget(button_stop_);
+	h_layout->addWidget(button_previousFrame_);
+	h_layout->addWidget(button_nextFrame_);
+	h_layout->addWidget(comboBox_speed_);
 
 	v_layout->addLayout(h_layout);
 
 
-    slider_timeline_=new QSlider(Qt::Horizontal);
+	slider_timeline_=new QSlider(Qt::Horizontal);
 
-    v_layout->addWidget(slider_timeline_);
+	v_layout->addWidget(slider_timeline_);
 
 	setLayout(v_layout);
 	setStyleSheet("background: rgb(175, 175, 175)");

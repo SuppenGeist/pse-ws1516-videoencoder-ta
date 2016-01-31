@@ -16,17 +16,17 @@ int Model::ContrastFilter::getIntensity() {
 }
 
 string Model::ContrastFilter::getName() {
-    return "Contrast";
+	return "Contrast";
 }
 
 string Model::ContrastFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 
-void Model::ContrastFilter::restoreFilter(QString description){
-    throw "Not yet implemented";
+void Model::ContrastFilter::restoreFilter(QString description) {
+	throw "Not yet implemented";
 }
 
-QString Model::ContrastFilter::getSaveString(){
+QString Model::ContrastFilter::getSaveString() {
 
 }
