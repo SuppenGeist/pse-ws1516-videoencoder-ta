@@ -2,7 +2,7 @@
 #include <string>
 
 #include "ColorbalanceFilter.h"
-#include "../../Utility/BasicColor.h"
+#include "../../utility/BasicColor.h"
 #include "Filter.h"
 
 Model::ColorbalanceFilter::ColorbalanceFilter() {

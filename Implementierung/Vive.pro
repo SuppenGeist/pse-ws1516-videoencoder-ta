@@ -4,6 +4,16 @@ QT+= core gui widgets
 
 CONFIG+=c++14
 
+unix: CONFIG += link_pkgconfig
+unix: PKGCONFIG += libavcodec
+
+unix: PKGCONFIG += libavformat
+
+unix: PKGCONFIG += libavutil
+unix: PKGCONFIG += libswscale
+
+LIBS += -ldl
+
 HEADERS += \
     src/gui/AnalysisBox.h \
     src/gui/AnalysisBoxContainer.h \

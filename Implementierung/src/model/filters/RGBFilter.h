@@ -6,7 +6,7 @@ using namespace std;
 #ifndef __RGBFilter_h__
 #define __RGBFilter_h__
 
-#include "../../Utility/BasicColor.h"
+#include "../../utility/BasicColor.h"
 #include "Filter.h"
 
 namespace Model

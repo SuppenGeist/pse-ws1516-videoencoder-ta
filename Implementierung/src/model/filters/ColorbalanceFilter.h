@@ -5,7 +5,7 @@ using namespace std;
 #ifndef __ColorbalanceFilter_h__
 #define __ColorbalanceFilter_h__
 
-#include "../../Utility/BasicColor.h"
+#include "../../utility/BasicColor.h"
 #include "Filter.h"
 
 namespace Model
