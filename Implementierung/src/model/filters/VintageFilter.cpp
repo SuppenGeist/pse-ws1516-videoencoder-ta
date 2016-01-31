@@ -12,9 +12,14 @@ string Model::VintageFilter::getName() {
 }
 
 string Model::VintageFilter::getFilterDescription() {
-	throw "Not yet implemented";
+    string str = "curves=vintage";
+    return str;
 }
 
-void Model::VintageFilter::restoreFilter(string description){
-    throw "Not yet implemented";
+void Model::VintageFilter::restoreFilter(QString description){
+//nothing to save
+}
+
+QString Model::VintageFilter::getSaveString(){
+//nothing to save
 }

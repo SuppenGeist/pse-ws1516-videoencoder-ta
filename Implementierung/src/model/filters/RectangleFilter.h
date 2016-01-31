@@ -108,7 +108,9 @@ namespace Model
 		/// <param name="opacity">The new opacity of the rectangle.</param>
 		public: void setOpacity(int opacity);
 
-        public: void restoreFilter(string description);
+        public: void restoreFilter(QString description);
+
+        public: QString getSaveString();
 	};
 }
 

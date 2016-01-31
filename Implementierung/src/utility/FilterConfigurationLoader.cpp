@@ -18,8 +18,8 @@ Model::FilterList* Utility::FilterConfigurationLoader::getConfiguration() {
         while( !stream.atEnd() )
         {
             QString line = stream.readLine();
-            filterList->addFilter(line.section("=",0,0).toStdString());
-            filterList->getFilterByName(line.section("=",0,0).toStdString())->restoreFilter(line.section("=",1).toStdString());
+            filterList->addFilter(line.section(";",0,0).toStdString());
+            filterList->getFilterByName(line.section(";",0,0).toStdString())->restoreFilter(line);
 
         }
 

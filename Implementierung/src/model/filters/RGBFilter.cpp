@@ -24,6 +24,10 @@ string Model::RGBFilter::getName() {
     return "RGB";
 }
 
-void Model::RGBFilter::restoreFilter(string description){
+void Model::RGBFilter::restoreFilter(QString description){
     throw "Not yet implemented";
+}
+
+QString Model::RGBFilter::getSaveString(){
+
 }

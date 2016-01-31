@@ -15,7 +15,10 @@ string Model::EdgeFilter::getName() {
     return "Edge";
 }
 
-void Model::EdgeFilter::restoreFilter(string description){
+void Model::EdgeFilter::restoreFilter(QString description){
     throw "Not yet implemented";
 }
 
+QString Model::EdgeFilter::getSaveString(){
+
+}

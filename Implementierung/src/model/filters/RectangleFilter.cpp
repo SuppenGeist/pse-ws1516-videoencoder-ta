@@ -63,6 +63,10 @@ void Model::RectangleFilter::setOpacity(int opacity) {
 	this->opacity = opacity;
 }
 
-void Model::RectangleFilter::restoreFilter(string description){
+void Model::RectangleFilter::restoreFilter(QString description){
     throw "Not yet implemented";
+}
+
+QString Model::RectangleFilter::getSaveString(){
+
 }

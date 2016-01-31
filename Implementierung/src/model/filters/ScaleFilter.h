@@ -1,5 +1,5 @@
 #include <exception>
-#include <string>
+#include <QString>
 using namespace std;
 
 #ifndef __ScaleFilter_h__
@@ -82,7 +82,9 @@ namespace Model
 		/// <param name="ratio">The ration.</param>
 		public: void setRatio(int ratio);
 
-        public: void restoreFilter(string description);
+        public: void restoreFilter(QString description);
+
+        public: QString getSaveString();
 	};
 }
 

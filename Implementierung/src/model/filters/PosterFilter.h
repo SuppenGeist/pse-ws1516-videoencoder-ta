@@ -43,7 +43,9 @@ namespace Model
 		/// <param name="numberOfColors">Maximum number of colors.</param>
 		public: void setNumberOfColors(int numberOfColors);
 
-        public: void restoreFilter(string description);
+        public: void restoreFilter(QString description);
+
+        public: QString getSaveString();
 	};
 }
 

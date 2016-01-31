@@ -13,6 +13,10 @@ string Model::Filter::getFilterDescription(){
     throw "Not yet implemented";
 }
 
-void Model::Filter::restoreFilter(string description){
+void Model::Filter::restoreFilter(QString description){
     throw "Not yet implemented";
+}
+
+QString Model::Filter::getSaveString(){
+
 }

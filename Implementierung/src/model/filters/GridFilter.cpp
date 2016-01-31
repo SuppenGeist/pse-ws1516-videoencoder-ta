@@ -55,6 +55,10 @@ std::string Model::GridFilter::getName() {
     return "Grid";
 }
 
-void Model::GridFilter::restoreFilter(string description){
+void Model::GridFilter::restoreFilter(QString description){
     throw "Not yet implemented";
+}
+
+QString Model::GridFilter::getSaveString(){
+
 }

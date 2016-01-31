@@ -46,7 +46,9 @@ namespace Model
 
 		public: string getName();
 
-        public: void restoreFilter(string description);
+        public: void restoreFilter(QString description);
+
+        public: QString getSaveString();
 	};
 }
 

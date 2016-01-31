@@ -45,7 +45,9 @@ namespace Model
 		/// <param name="mode">The MirrorMode.</param>
 		public: void setMode(Model::MirrorMode mode);
 
-        public: void restoreFilter(string description);
+        public: void restoreFilter(QString description);
+
+        public: QString getSaveString();
 	};
 }
 

@@ -12,9 +12,14 @@ string Model::SepiaFilter::getName() {
 }
 
 string Model::SepiaFilter::getFilterDescription() {
-	throw "Not yet implemented";
+    string str = "colorchannelmixer=.393:.769:.189:0:.349:.686:.168:0:.272:.534:.131";
+    return str;
 }
 
-void Model::SepiaFilter::restoreFilter(string description){
-    throw "Not yet implemented";
+void Model::SepiaFilter::restoreFilter(QString description){
+//nothing to save
+}
+
+QString Model::SepiaFilter::getSaveString(){
+//nothing to save
 }

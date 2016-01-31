@@ -64,6 +64,10 @@ string Model::BorderFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 
-void Model::BorderFilter::restoreFilter(string description){
+void Model::BorderFilter::restoreFilter(QString description){
     throw "Not yet implemented";
+}
+
+QString Model::BorderFilter::getSaveString(){
+
 }

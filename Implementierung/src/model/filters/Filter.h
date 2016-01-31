@@ -1,5 +1,5 @@
 #include <exception>
-#include <string>
+#include <QString>
 using namespace std;
 
 #ifndef __Filter_h__
@@ -38,7 +38,9 @@ namespace Model
 		public: virtual string getName() = 0;
 
 
-        public: void restoreFilter(string description);
+        public: virtual void restoreFilter(QString description) = 0;
+
+        public: virtual QString getSaveString() = 0;
 	};
 }
 

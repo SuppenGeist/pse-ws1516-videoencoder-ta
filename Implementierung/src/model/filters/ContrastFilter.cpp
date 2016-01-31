@@ -23,7 +23,10 @@ string Model::ContrastFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 
-void Model::ContrastFilter::restoreFilter(string description){
+void Model::ContrastFilter::restoreFilter(QString description){
     throw "Not yet implemented";
 }
 
+QString Model::ContrastFilter::getSaveString(){
+
+}

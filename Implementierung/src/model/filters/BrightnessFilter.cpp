@@ -23,7 +23,10 @@ string Model::BrightnessFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 
-void Model::BrightnessFilter::restoreFilter(string description){
+void Model::BrightnessFilter::restoreFilter(QString description){
     throw "Not yet implemented";
 }
 
+QString Model::BrightnessFilter::getSaveString(){
+
+}

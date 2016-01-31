@@ -23,6 +23,10 @@ void Model::SaturationFilter::setIntensity(int intensity) {
 	this->intensity = intensity;
 }
 
-void Model::SaturationFilter::restoreFilter(string description){
+void Model::SaturationFilter::restoreFilter(QString description){
     throw "Not yet implemented";
+}
+
+QString Model::SaturationFilter::getSaveString(){
+
 }

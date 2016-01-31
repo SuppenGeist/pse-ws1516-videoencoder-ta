@@ -43,7 +43,9 @@ namespace Model
 		/// <param name="angle">The new rotation angle.</param>
 		public: void setAngle(int angle);
 
-        public: void restoreFilter(string description);
+        public: void restoreFilter(QString description);
+
+        public: QString getSaveString();
 	};
 }
 

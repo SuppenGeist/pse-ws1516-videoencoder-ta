@@ -15,6 +15,10 @@ string Model::NegativeFilter::getName() {
     return "Negative";
 }
 
-void Model::NegativeFilter::restoreFilter(string description){
+void Model::NegativeFilter::restoreFilter(QString description){
     throw "Not yet implemented";
+}
+
+QString Model::NegativeFilter::getSaveString(){
+
 }

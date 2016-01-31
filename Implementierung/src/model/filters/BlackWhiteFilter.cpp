@@ -1,4 +1,4 @@
-#include <string>
+#include <QString>
 
 #include "BlackWhiteFilter.h"
 //#include "../Filter.h"
@@ -14,8 +14,10 @@ std::string Model::BlackWhiteFilter::getName() {
 std::string Model::BlackWhiteFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
-void Model::BlackWhiteFilter::restoreFilter(string description){
+void Model::BlackWhiteFilter::restoreFilter(QString description){
     throw "Not yet implemented";
 }
 
+QString Model::BlackWhiteFilter::getSaveString(){
 
+}

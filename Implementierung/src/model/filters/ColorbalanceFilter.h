@@ -97,7 +97,9 @@ namespace Model
 		/// <param name="darkPixels">True if the dark pixels are changed.</param>
 		public: void setDarkPixels(bool darkPixels);
 
-    public: void restoreFilter(string description);
+    public: void restoreFilter(QString description);
+
+        public: QString getSaveString();
 	};
 }
 

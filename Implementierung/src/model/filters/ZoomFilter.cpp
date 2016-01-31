@@ -23,6 +23,10 @@ void Model::ZoomFilter::setIntensity(int intensity) {
 	this->intensity = intensity;
 }
 
-void Model::ZoomFilter::restoreFilter(string description){
+void Model::ZoomFilter::restoreFilter(QString description){
     throw "Not yet implemented";
+}
+
+QString Model::ZoomFilter::getSaveString(){
+
 }

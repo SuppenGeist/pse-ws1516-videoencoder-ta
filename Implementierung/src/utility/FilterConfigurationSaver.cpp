@@ -15,7 +15,7 @@ void Utility::FilterConfigurationSaver::save() {
      QTextStream out(&fileout);
      int i;
      while (filterList.getFilterByIndex(i)!= 0){
-         QString str = QString::fromStdString(filterList.getFilterByIndex(i)->getFilterDescription());
+         QString str = QString(filterList.getFilterByIndex(i)->getSaveString());
          out << str << "\r\n";
          i++;
      }
