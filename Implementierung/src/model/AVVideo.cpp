@@ -1,6 +1,4 @@
-/*#include <exception>
-#include <vector>
-#include <memory>
+#include <exception>
 
 #include "AVVideo.h"
 #include "EncodedVideo.h"
@@ -12,7 +10,6 @@ AVVideo::AVVideo(int fps, int width, int height) {
     this->width = width;
     this->fps = fps;
     this->height = height;
-    video = * new vector<unique_ptr<AVFrame>>;
 }
 
 int AVVideo::getWidth() {
@@ -32,7 +29,7 @@ AVFrame* AVVideo::getFrame(int index) {
 }
 
 void AVVideo::insertFrame(unique_ptr<AVFrame> frame, int index) {
-    video.insert(video.begin() + index, frame);
+    video.insert(video.begin() + index, move(frame));
 }
 
 void AVVideo::removeFrame(int index) {
@@ -41,12 +38,16 @@ void AVVideo::removeFrame(int index) {
 }
 
 void AVVideo::insertFrames(vector<unique_ptr<AVFrame>>& frames, int index) {
-    if(index <= video.size())
-        video.insert(video.begin() + index, frames.begin(), frames.end());
+    if(index <= video.size()){
+        int i = index;
+        for(vector<unique_ptr<AVFrame>>::iterator it = frames.begin(); it != frames.end(); ++it){
+            video.insert(video.begin() + i++, move(*it));
+        }
+
+    }
 }
 
 int AVVideo::getNumberOfFrames() {
     return video.size();
 }
-*/
 

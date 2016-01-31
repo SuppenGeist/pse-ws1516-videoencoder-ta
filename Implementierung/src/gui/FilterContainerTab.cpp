@@ -3,7 +3,7 @@
 #include <exception>
 #include <string>
 #include <vector>
-#include <QWidget.h>
+//#include <QWidget.h>
 
 #include "FilterTab.h"
 #include "FilterView.h"

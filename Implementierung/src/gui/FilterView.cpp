@@ -5,7 +5,7 @@
 
 #include "FilterTab.h"
 #include "../model/filters/Filter.h"
-#include "src/model/FilterList.h"
+#include "../model/FilterList.h"
 
 namespace GUI {
 FilterView::FilterView(QWidget* parent):QFrame(parent) {

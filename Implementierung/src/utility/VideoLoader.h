@@ -1,11 +1,10 @@
-/*
-#include <exception>
-using namespace std;
 
+#include <memory>
+using namespace std;
 #ifndef __VideoLoader_h__
 #define __VideoLoader_h__
 
-#include "AVVideo.h"
+#include "../model/AVVideo.h"
 
 namespace Model
 {
@@ -20,6 +19,7 @@ namespace Utility
 {
 	/**
 	 * This class can load a encoded video.
+     */
 
 	class VideoLoader
 	{
@@ -35,9 +35,9 @@ namespace Utility
 		/// Loads the video and generates the AVVideo.
 		/// </summary>
 		/// <returns>The loaded video.</returns>
-		public: std::uinque_ptr<Model::AVVideo> loadVideo();
+    public: unique_ptr<Model::AVVideo> loadVideo();
 	};
 }
 
 #endif
-*/
+
