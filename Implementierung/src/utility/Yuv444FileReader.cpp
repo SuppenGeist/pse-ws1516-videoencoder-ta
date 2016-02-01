@@ -33,13 +33,13 @@ unique_ptr<QImage> Utility::Yuv444FileReader::parseNextFrame() {
 }
 
 Utility::Yuv444Vector Utility::Yuv444FileReader::readNextVectorPacked() {
-    char *temp = new char[3];
+    /*char *temp = new char[3];
     dataStream.readRawData(temp, 3);
     buffer.append(temp, 3);
     delete [] temp;
-    Yuv444Vector vect = Yuv444Vector(buffer[position],buffer[position+1],buffer[position+2]);
+    Yuv444Vector vect(buffer[position],buffer[position+1],buffer[position+2]);
     position += 3;
-    return vect;
+    return vect;*/
 }
 
 //Utility::Yuv444Vector Yuv444FileReader::readNextVectorPlanar() {
