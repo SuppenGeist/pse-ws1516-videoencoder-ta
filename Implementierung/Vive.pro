@@ -232,6 +232,7 @@ SOURCES += \
     src/utility/RGBDifferenceCalculator.cpp \
     src/utility/RGBHistogrammCalculator.cpp \
     src/utility/VideoConverter.cpp \
+    src/utility/VideoLoader.cpp \
     src/utility/Yuv411FileReader.cpp \
     src/utility/Yuv411FileSaver.cpp \
     src/utility/Yuv420FileSaver.cpp \
