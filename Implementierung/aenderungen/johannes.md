@@ -227,3 +227,9 @@ Fuege Methode clamp hinzu
 Aendere Parameter von Methode drawGraph zu referenz und mache attribut graph zu pointer.
 <br><b>Grund:</b> Unnoetiges kopieren verhindenrn,
 <hr>
+Fuege Methode setMarkDistance und attribute markDistanceX_ und marDistanceY_ hinzu.
+<br><b>Grund:</b> Mehr Kontrolle fuer den user.
+<hr>
+Fuege Methode updateLabelSize.
+<br><b>Grund:</b> Codedopplung vermeiden.
+<hr>

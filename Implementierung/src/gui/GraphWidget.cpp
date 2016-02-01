@@ -30,6 +30,7 @@ GUI::GraphWidget::GraphWidget(QWidget *parent):QGraphicsView(parent),controlPane
     setMaxYValue(-1);
     setMarkLength(5,3);
     setShowLabels(true);
+    setMarkDistance(30,20);
 
     buildScene();
     setScene(scene_);
@@ -37,8 +38,8 @@ GUI::GraphWidget::GraphWidget(QWidget *parent):QGraphicsView(parent),controlPane
 
 void GUI::GraphWidget::drawGraph(Model::Graph& graph) {
     graph_=&graph;
-    buildScene();
-    update();
+
+    updateLabelSizes();
 }
 
 void GUI::GraphWidget::setLinePen(QPen linePen)
@@ -62,14 +63,10 @@ void GUI::GraphWidget::setControlPanel(GlobalControlPanel& panel) {
 
 void GUI::GraphWidget::setAxisLabels(QString xLabel, QString yLabel)
 {
-    QGraphicsTextItem xLab(xLabel);
-    QGraphicsTextItem yLab(yLabel);
-
     xLabel_=xLabel;
     yLabel_=yLabel;
 
-    xLabelHeight_=xLab.document()->size().height();
-    yLabelWidth_=yLab.document()->size().width();
+    updateLabelSizes();
 }
 
 void GUI::GraphWidget::setIsFilled(bool isFilled)
@@ -102,6 +99,16 @@ void GUI::GraphWidget::setMarkLength(int xMarkLen, int yMarkLen)
 void GUI::GraphWidget::setBackgroundColor(QColor bColor)
 {
     scene_->setBackgroundBrush(QBrush(bColor,Qt::SolidPattern));
+}
+
+void GUI::GraphWidget::setMarkDistance(int disX, int disY)
+{
+    if(disX>0) {
+        markDistanceX_=disX;
+    }
+    if(disY>0) {
+        markDistanceY_=disY;
+    }
 }
 
 void GUI::GraphWidget::mouseReleaseEvent(QMouseEvent* event) {
@@ -234,11 +241,8 @@ void GUI::GraphWidget::buildScene()
     double space_y=((double)width_y)/max_y_val;
 
     if(showLabels_) {
-        static const int minimumPixelX=30;
-        static const int minimumPixelY=20;
-
-        int xMarks=clamp(width_x/minimumPixelX,max_x_val,1);
-        int yMarks=clamp(width_y/minimumPixelY,max_y_val,1);
+        int xMarks=clamp(width_x/markDistanceX_,max_x_val,1);
+        int yMarks=clamp(width_y/markDistanceY_,max_y_val,1);
 
         int ratioX=(qCeil((width_x/(space_x*xMarks))));
         int ratioY=(qCeil((width_y/(space_y*yMarks))));
@@ -254,6 +258,7 @@ void GUI::GraphWidget::buildScene()
             yMarks--;
         }
 
+        //If u change the font size in the setAxisLabels and drawGraph method.
         QFont labelFont;
         labelFont.setPixelSize(7);
 
@@ -267,7 +272,6 @@ void GUI::GraphWidget::buildScene()
 
             auto lab=scene_->addText(QString::number(i*ratioY),labelFont);
             lab->setPos(point2_x-lab->document()->size().width(),point2_y-lab->document()->size().height()/2);
-
         }
         for(int i=0;i<=xMarks;i++) {
             double point1_x=zero_x+i*xMarkWidth;
@@ -282,7 +286,7 @@ void GUI::GraphWidget::buildScene()
         }
 
         auto xLab=scene_->addText(xLabel_);
-        xLab->setPos(zero_x+width_x-xLab->document()->size().width(),vheight-xLabelHeight_);
+        xLab->setPos(zero_x+width_x-xLab->document()->size().width(),vheight-xLabelHeight_+4);
         auto yLab=scene_->addText(yLabel_);
         yLab->setPos(0,0);
 
@@ -347,4 +351,22 @@ int GUI::GraphWidget::clamp(int val, int max, int min)
         return min;
     return val;
 
+}
+
+void GUI::GraphWidget::updateLabelSizes()
+{
+    QGraphicsTextItem xLab(xLabel_);
+    QGraphicsTextItem yLab(yLabel_);
+
+    xLabelHeight_=xLab.document()->size().height();
+    yLabelWidth_=yLab.document()->size().width();
+
+    if(graph_) {
+        double val=graph_->getBiggestValue();
+        QGraphicsTextItem yval(QString::number(qCeil(val)));
+        QFont f;
+        f.setPixelSize(7);
+        yval.setFont(f);
+        yLabelWidth_+=yval.document()->size().width()-7;
+    }
 }

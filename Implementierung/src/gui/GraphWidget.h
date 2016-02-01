@@ -107,6 +107,13 @@ namespace GUI
          */
         void setBackgroundColor(QColor bColor);
 
+        /**
+         * @brief setMarkDistance Sets the distance between the marks.
+         * @param disX Distance on the x axis.
+         * @param disY Distance on the y axis.
+         */
+        void setMarkDistance(int disX,int disY);
+
         protected:
         /**
          * @brief mouseReleaseEvent This method is called if the was a click on the widget.
@@ -139,6 +146,8 @@ namespace GUI
         int                         xLabelHeight_;
         int                         yLabelWidth_;
         bool                        showLabels_;
+        int                         markDistanceX_;
+        int                         markDistanceY_;
 
         /**
          * @brief buildScene Creates the GraphicsScene.
@@ -153,6 +162,11 @@ namespace GUI
          * @return  The clamped value.
          */
         int clamp(int val,int max,int min);
+
+        /**
+         * @brief updateLabelSizes Updates the sizes of the labels.
+         */
+        void updateLabelSizes();
 	};
 }
 
