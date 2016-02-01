@@ -7,6 +7,7 @@
 #include <QMouseEvent>
 #include <QResizeEvent>
 #include <QGraphicsScene>
+#include <QGraphicsTextItem>
 
 #include "../model/Graph.h"
 
@@ -53,6 +54,13 @@ namespace GUI
          */
         void setControlPanel(GlobalControlPanel* panel);
 
+        /**
+         * @brief setAchsisLabels Sets the labels of the achsis
+         * @param xLabel x-achsis label.
+         * @param yLabel y-achsis label;
+         */
+        void setAchsisLabels(QString xLabel,QString yLabel);
+
         protected:
         /**
          * @brief mouseReleaseEvent This method is called if the was a click on the widget.
@@ -73,11 +81,23 @@ namespace GUI
         Model::Graph                graph_;
         QGraphicsScene*             scene_;
         bool                        isFilled_;
+        int                         marginWidth_;
+        int                         marginHeight_;
+        double                      maxY_;
+        int                         markLenX_;
+        int                         markLenY_;
+        QString                     xLabel_;
+        QString                     yLabel_;
+        int                         xLabelHeight_;
+        int                         yLabelWidth_;
+        bool                        showLabels_;
 
         /**
          * @brief buildScene Creates the GrpahicsScene.
          */
         void buildScene();
+
+        int clamp(int val,int max,int min);
 	};
 }
 
