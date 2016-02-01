@@ -29,8 +29,8 @@ double Model::Graph::getValue(std::size_t x) {
 
 int Model::Graph::getLength() {
 	for(std::size_t i=graph_.size(); i!=0; i--) {
-		if(graph_[i-1]!=-1)
-			return i+1;
+        if(graph_[i-1]!=-1)
+            return i;
 	}
 	return 0;
 }
@@ -39,4 +39,14 @@ void Model::Graph::removeValue(std::size_t x) {
 	if(x<graph_.size()) {
 		graph_[x]=-1;
 	}
+}
+
+double Model::Graph::getBiggestValue() {
+    double biggestVal=0;
+    for(auto val:graph_) {
+        if(val>biggestVal) {
+            biggestVal=val;
+        }
+    }
+    return biggestVal;
 }

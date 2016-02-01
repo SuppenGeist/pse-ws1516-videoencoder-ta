@@ -50,6 +50,12 @@ class Graph {
 	 */
 	void removeValue(std::size_t x);
 
+    /**
+     * @brief getBiggestValue Returns the biggest value.
+     * @return
+     */
+    double getBiggestValue();
+
 
   private:
 	std::vector<double> graph_;

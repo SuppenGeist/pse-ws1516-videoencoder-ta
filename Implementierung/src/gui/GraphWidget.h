@@ -1,78 +1,84 @@
-/*
-#include <exception>
-using namespace std;
-
 #ifndef __GraphWidget_h__
 #define __GraphWidget_h__
 
-// #include "AnalysisBox.h"
-// #include "GlobalControlPanel.h"
-#include "Graph.h"
+#include <QRgb>
+#include <QWidget>
+#include <QGraphicsView>
+#include <QMouseEvent>
+#include <QResizeEvent>
+#include <QGraphicsScene>
 
-namespace GUI
-{
-	class AnalysisBox;
-	class GlobalControlPanel;
-	class GraphWidget;
-}
-namespace Model
-{
-	class Graph;
+#include "../model/Graph.h"
+
+namespace GUI {
+    class GlobalControlPanel;
 }
 
 namespace GUI
 {
 	/**
 	 * This class is a widget to draw graphs.
-
-	class GraphWidget
+     */
+    class GraphWidget:public QGraphicsView
 	{
-		private: QRgb lineColor;
-		private: QRgb fillColor;
-		private: GloablControlPanel* controlPanel;
-		public: GUI::AnalysisBox* psnrGraph;
-		public: GUI::AnalysisBox* bitrateGraph;
-		public: GUI::AnalysisBox* redHistogramm;
-		public: GUI::AnalysisBox* blueHistogramm;
-		public: GUI::AnalysisBox* greenHistogramm;
-		public: Model::Graph* graph;
 
-		/// <summary>
-		/// Constructor.
-		/// </summary>
-		public: GraphWidget();
+        public:
+        /**
+         * @brief GraphWidget Constructor.
+         */
+        GraphWidget(QWidget* parent=0);
 
-		/// <summary>
-		/// Draws a graph to the widget.
-		/// </summary>
-		/// <param name="graph">The graph to draw.</param>
-		/// <param name="filled">Whether the area under the graph is filled.</param>
-		public: void drawGraph(Model::Graph graph, bool filled);
+        /**
+         * @brief drawGraph Draws a graph to the widget.
+         * @param graph The graph to draw.
+         * @param filled Whether the area under the graph is filled.
+         */
+        void drawGraph(Model::Graph graph, bool filled);
 
-		/// <summary>
-		/// Determines the color of the graph line.
-		/// </summary>
-		/// <param name="color">The color in which the line is shown.</param>
-		public: void setLineColor(QRgb color);
+        /**
+         * @brief setLineColor Determines the color of the graph line.
+         * @param color The color in which the line is shown.
+         */
+        void setLineColor(QRgb color);
 
-		/// <summary>
-		/// Determines the color of the area beneath the graph line.
-		/// </summary>
-		/// <param name="color">The color in which the area beneath the graph line is filled.</param>
-		public: void setFillColor(QRgb color);
+        /**
+         * @brief setFillColor Determines the color of the area beneath the graph line.
+         * @param color The color in which the area beneath the graph line is filled.
+         */
+        void setFillColor(QRgb color);
 
-		/// <summary>
-		/// Sets the GlobalControlPanel to notify if a click on the graph was performed.
-		/// </summary>
-		/// <param name="panel">The panel to notify.</param>
-		public: void setControlPanel(GUI::GlobalControlPanel* panel);
+        /**
+         * @brief setControlPanel Sets the GlobalControlPanel to notify if a click on the graph was performed.
+         * @param panel The panel to notify.
+         */
+        void setControlPanel(GlobalControlPanel* panel);
 
-		/// <summary>
-		/// This method is called if the was a click on the widget.
-		/// </summary>
-		protected: void mouseReleaseEvent(QMouseEvent* event);
+        protected:
+        /**
+         * @brief mouseReleaseEvent This method is called if the was a click on the widget.
+         * @param event
+         */
+        void mouseReleaseEvent(QMouseEvent* event);
+
+        /**
+         * @brief resizeEvent This methods reacts to the change of the size.
+         * @param event
+         */
+        void resizeEvent(QResizeEvent* event);
+
+    private:
+        QRgb                        lineColor_;
+        QRgb                        fillColor_;
+        GlobalControlPanel*         controlPanel_;
+        Model::Graph                graph_;
+        QGraphicsScene*             scene_;
+        bool                        isFilled_;
+
+        /**
+         * @brief buildScene Creates the GrpahicsScene.
+         */
+        void buildScene();
 	};
 }
 
 #endif
-*/
