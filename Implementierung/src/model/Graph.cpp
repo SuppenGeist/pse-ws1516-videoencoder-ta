@@ -6,7 +6,7 @@ Model::Graph::Graph() {
 
 }
 
-void Model::Graph::addValue(std::size_t x, double y) {
+void Model::Graph::setValue(std::size_t x, double y) {
 	if(x>=graph_.size()) {
 		for(std::size_t i=graph_.size(); i<x+1; i++) {
 			graph_.push_back(-1);
@@ -27,7 +27,7 @@ double Model::Graph::getValue(std::size_t x) {
 	return graph_[x];
 }
 
-int Model::Graph::getLength() {
+std::size_t Model::Graph::getSize() {
 	for(std::size_t i=graph_.size(); i!=0; i--) {
         if(graph_[i-1]!=-1)
             return i;

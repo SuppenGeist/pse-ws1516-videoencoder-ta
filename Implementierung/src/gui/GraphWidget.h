@@ -1,18 +1,19 @@
 #ifndef __GraphWidget_h__
 #define __GraphWidget_h__
 
-#include <QRgb>
 #include <QWidget>
 #include <QGraphicsView>
 #include <QMouseEvent>
 #include <QResizeEvent>
+#include <QPen>
+#include <QBrush>
 #include <QGraphicsScene>
-#include <QGraphicsTextItem>
-
-#include "../model/Graph.h"
 
 namespace GUI {
     class GlobalControlPanel;
+}
+namespace Model {
+    class Graph;
 }
 
 namespace GUI
@@ -34,32 +35,77 @@ namespace GUI
          * @param graph The graph to draw.
          * @param filled Whether the area under the graph is filled.
          */
-        void drawGraph(Model::Graph graph, bool filled);
+        void drawGraph(Model::Graph& graph);
 
         /**
-         * @brief setLineColor Determines the color of the graph line.
-         * @param color The color in which the line is shown.
+         * @brief setLineColor Sets the pen which is used to draw the graph line.
+         * @param color The pen to use.
          */
-        void setLineColor(QRgb color);
+        void setLinePen(QPen linePen);
 
         /**
-         * @brief setFillColor Determines the color of the area beneath the graph line.
-         * @param color The color in which the area beneath the graph line is filled.
+         * @brief setFillPen Sets the pen which is used to draw the polygon lines which fill the graph.
+         * @param fillPen The pen to use.
          */
-        void setFillColor(QRgb color);
+        void setFillPen(QPen fillPen);
+
+        /**
+         * @brief setFillBrush The brish which is used to fill the graph.
+         * @param fillBrush The brush to use.
+         */
+        void setFillBrush(QBrush fillBrush);
 
         /**
          * @brief setControlPanel Sets the GlobalControlPanel to notify if a click on the graph was performed.
          * @param panel The panel to notify.
          */
-        void setControlPanel(GlobalControlPanel* panel);
+        void setControlPanel(GlobalControlPanel& panel);
 
         /**
-         * @brief setAchsisLabels Sets the labels of the achsis
+         * @brief setAchsisLabels Sets the labels of the achsis.
          * @param xLabel x-achsis label.
          * @param yLabel y-achsis label;
          */
-        void setAchsisLabels(QString xLabel,QString yLabel);
+        void setAxisLabels(QString xLabel,QString yLabel);
+
+        /**
+         * @brief setIsFilles Sets if the grah gets filled.
+         * @param isFilled true if the graph gets filled
+         */
+        void setIsFilled(bool isFilled);
+
+        /**
+         * @brief setMargin Sets the margin for the scene.
+         * @param marginX The margin on the x axis.
+         * @param marginY The margin on the y axis.
+         */
+        void setMargin(int marginX,int marginY);
+
+        /**
+         * @brief setShowLabels Sets whether the axis labels are shown or not.
+         * @param showLabels true if the labels are shown.
+         */
+        void setShowLabels(bool showLabels);
+
+        /**
+         * @brief setMaxYValue Sets the maximum y value to show.
+         * A negative value means no max y value.
+         * @param value the maximum y value.
+         */
+        void setMaxYValue(double value);
+
+        /**
+         * @brief setMarkLength Sets the length of the marks.
+         * @param xMarkLen Marks on the x axis.
+         * @param yMarkLen Marks on the y axis.
+         */
+        void setMarkLength(int xMarkLen,int yMarkLen);
+
+        /**
+         * @brief setBackgroundColot Sets the backgroundcolor of the widget.
+         * @param bColor The backgroundcolor.
+         */
+        void setBackgroundColor(QColor bColor);
 
         protected:
         /**
@@ -75,28 +121,37 @@ namespace GUI
         void resizeEvent(QResizeEvent* event);
 
     private:
-        QRgb                        lineColor_;
-        QRgb                        fillColor_;
+        QPen                        linePen_;
+        QPen                        fillPen_;
+        QBrush                      fillBrush_;
         GlobalControlPanel*         controlPanel_;
-        Model::Graph                graph_;
+        Model::Graph*               graph_;
         QGraphicsScene*             scene_;
+        QFont                       axisLabelFont_;
+        QString                     xLabel_;
+        QString                     yLabel_;
         bool                        isFilled_;
         int                         marginWidth_;
         int                         marginHeight_;
         double                      maxY_;
         int                         markLenX_;
         int                         markLenY_;
-        QString                     xLabel_;
-        QString                     yLabel_;
         int                         xLabelHeight_;
         int                         yLabelWidth_;
         bool                        showLabels_;
 
         /**
-         * @brief buildScene Creates the GrpahicsScene.
+         * @brief buildScene Creates the GraphicsScene.
          */
         void buildScene();
 
+        /**
+         * @brief clamp Clamps the value to the given index.
+         * @param val The value to clamp.
+         * @param max Maxvalue.
+         * @param min Minvalue.
+         * @return  The clamped value.
+         */
         int clamp(int val,int max,int min);
 	};
 }

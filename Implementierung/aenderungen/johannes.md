@@ -140,7 +140,10 @@ Entferne Attribut wasSuccessful und Methode wasSuccessful.
 <br><b>Grund:</b> Funktionalitaet wird von QDialog uebernommen.
 <hr>
 ## Graph
-Aendere parameter x von der Methode changeValue vom typ int->std::size_t.
+Benenne Methode addValue zu setValue um.
+<br><b>Grund:</b> Besserer name.
+<hr>
+Aendere parameter x von der Methode setValue vom typ int->std::size_t.
 <br><b>Grund:</b> Ueberlauf verhindern.
 <hr>
 Aendere parameter von der Methode cut vom typ int->std::size_t.
@@ -151,4 +154,76 @@ Aendere parameter von der Methode getValue vom typ int->std::size_t.
 <hr>
 Aendere parameter von der Methode removeValue vom typ int->std::size_t.
 <br><b>Grund:</b> Ueberlauf verhindern.
+<hr>
+Fuege Methode getBiggestValue hinzu.
+<br><b>Grund:</b> GraphWidget braucht diese Methode um den Graphen korrekt zeichnen zu
+koennen.
+<hr>
+Bennene Methode getLength zu getSize um.
+<br><b>Grund:</b> Besserer name.
+<hr>
+Aendere Rueckgabetyp von der Methode getSize vom typ int->std::size_t.
+<br><b>Grund:</b> Ueberlauf verhindern.
+<hr>
+## GraphWidget
+Fuege resizeEvent methode hinzu.
+<br><b>Grund:</b> Wird benoetigt um auf Aenderung der Groese reagieren zu koennen.
+<hr>
+Fuege Attribut isFilled_ mit setter hinzu.
+<br><b>Grund:</b> Mehr kontroll fue der user.
+<hr>
+Fuege Konstruktorparameter parent hinzu.
+<br><b>Grund:</b> Wird gebraucht fuer qts memory management.
+<hr>
+Fuege buildScene methode hinzu.
+<br><b>Grund:</b> Kapsele das bauen der Szene.
+<hr>
+Fuege Attribut scene_ hizu.
+<br><b>Grund:</b> Die Szene die monentan gezeichnet wird.
+<hr>
+Aendere Parameter von setControlPanel von pointer zu referenz.
+<br><b>Grund:</b> Es soll kein nullptr uebergebenw erden.
+<hr>
+Entferne parameter isFilled von drawGraph.
+<br><b>Grund:</b> Ein einheitlicheres interface.
+<hr>
+Entferne Methode setLineColor
+<br><b>Grund:</b> Wurde ersetzt.
+<hr>
+Entferne Methode setFillColor
+<br><b>Grund:</b> Wurde ersetzt.
+<hr>
+Fuege Methode setLinePen und attribut linePen_ hinzu
+<br><b>Grund:</b> Mehr Kontrolle fuer den user.
+<hr>
+Fuege Methode setFillPen und attribut fillPen_ hinzu
+<br><b>Grund:</b> Mehr Kontrolle fuer den user.
+<hr>
+Fuege Methode setFillBrush und attribut fillBrush_ hinzu
+<br><b>Grund:</b> Mehr Kontrolle fuer den user.
+<hr>
+Fuege Methode setAxisLabels und attribute xLabel_ und yLabel_ sowie
+xLabelHeight_ und xLabelWidth_ hinzu.
+<br><b>Grund:</b> Mehr Kontrolle fuer den user.
+<hr>
+Fuege Methode setMargin und attribute marginWidth_ und marginHeight_ hinzu.
+<br><b>Grund:</b> Mehr Kontrolle fuer den user.
+<hr>
+Fuege Methode setShowLabels und Attribut showLabels_ hinzu.
+<br><b>Grund:</b> Mehr Kontrolle fuer den user.
+<hr>
+Fuege Methode setMaxYVale und attribut maxY_ hinzu.
+<br><b>Grund:</b> Mehr Kontrolle fuer den user.
+<hr>
+Fuege Methode setMarkLength und attribute markLenX_ und markLenY_ hinzu.
+<br><b>Grund:</b> Mehr Kontrolle fuer den user.
+<hr>
+Fuege Methode setBackgroundColor hinzu.
+<br><b>Grund:</b> Mehr Kontrolle fuer den user.
+<hr>
+Fuege Methode clamp hinzu
+<br><b>Grund:</b> Wird fue berrehnungen beim zeichnen benoetigt.
+<hr>
+Aendere Parameter von Methode drawGraph zu referenz und mache attribut graph zu pointer.
+<br><b>Grund:</b> Unnoetiges kopieren verhindenrn,
 <hr>
