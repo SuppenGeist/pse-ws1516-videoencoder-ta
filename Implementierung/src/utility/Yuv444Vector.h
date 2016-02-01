@@ -12,27 +12,27 @@ namespace Utility {
 // A Yuv444Vector.
 
 class Yuv444Vector {
-public:
+
     /// <summary>
     /// Constructor.
     /// </summary>
-    Yuv444Vector(char y, char u, char v);
+public: Yuv444Vector(char y, char u, char v);
 
     /// <summary>
     /// Returns y value.
     /// </summary>
     /// <returns>y value of 444vector.</returns>
-    uint8_t getY();
+public:  uint8_t getY();
     /// <summary>
     /// Returns y value.
     /// </summary>
     /// <returns>y value of 444vector.</returns>
-    uint8_t getU();
+public: uint8_t getU();
     /// <summary>
     /// Returns y value.
     /// </summary>
     /// <returns>y value of 444vector.</returns>
-    uint8_t getV();
+public: uint8_t getV();
 
 private:
     uint8_t y;
