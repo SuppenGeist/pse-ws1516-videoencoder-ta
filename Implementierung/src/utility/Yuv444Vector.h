@@ -16,7 +16,7 @@ public:
     /// <summary>
     /// Constructor.
     /// </summary>
-    Yuv444Vector(uint8_t y, uint8_t u, uint8_t v);
+    Yuv444Vector(char y, char u, char v);
 
     /// <summary>
     /// Returns y value.

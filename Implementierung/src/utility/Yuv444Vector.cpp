@@ -1,6 +1,6 @@
 #include "Yuv444Vector.h"
 
-Utility::Yuv444Vector::Yuv444Vector(uint8_t y,uint8_t u,uint8_t v){
+Utility::Yuv444Vector::Yuv444Vector(char y,char u,char v){
     this->y = y;
     this->u = u;
     this->v = v;
