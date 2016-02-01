@@ -239,6 +239,7 @@ SOURCES += \
     src/utility/Yuv422FileSaver.cpp \
     src/utility/Yuv444FileReader.cpp \
     src/utility/Yuv444FileSaver.cpp \
+    src/utility/Yuv444Vector.cpp \
     src/utility/YuvFileReader.cpp \
     src/utility/YuvFileSaver.cpp \
     src/main.cpp
