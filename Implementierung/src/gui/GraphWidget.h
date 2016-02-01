@@ -89,13 +89,6 @@ namespace GUI
         void setShowLabels(bool showLabels);
 
         /**
-         * @brief setMaxYValue Sets the maximum y value to show.
-         * A negative value means no max y value.
-         * @param value the maximum y value.
-         */
-        void setMaxYValue(double value);
-
-        /**
          * @brief setMarkLength Sets the length of the marks.
          * @param xMarkLen Marks on the x axis.
          * @param yMarkLen Marks on the y axis.

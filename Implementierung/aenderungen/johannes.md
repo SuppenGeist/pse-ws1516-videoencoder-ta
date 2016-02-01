@@ -212,9 +212,6 @@ Fuege Methode setMargin und attribute marginWidth_ und marginHeight_ hinzu.
 Fuege Methode setShowLabels und Attribut showLabels_ hinzu.
 <br><b>Grund:</b> Mehr Kontrolle fuer den user.
 <hr>
-Fuege Methode setMaxYVale und attribut maxY_ hinzu.
-<br><b>Grund:</b> Mehr Kontrolle fuer den user.
-<hr>
 Fuege Methode setMarkLength und attribute markLenX_ und markLenY_ hinzu.
 <br><b>Grund:</b> Mehr Kontrolle fuer den user.
 <hr>
