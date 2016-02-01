@@ -7,6 +7,7 @@
 #include <QResizeEvent>
 #include <QPen>
 #include <QBrush>
+#include <QFont>
 #include <QGraphicsScene>
 
 namespace GUI {
@@ -114,6 +115,18 @@ namespace GUI
          */
         void setMarkDistance(int disX,int disY);
 
+        /**
+         * @brief setLabelFont Sets the font for the axis labels.
+         * @param labelFont The font to use.
+         */
+        void setLabelFont(QFont labelFont);
+
+        /**
+         * @brief setMarkFont Sets the font for the marks.
+         * @param markFont The font to use.
+         */
+        void setMarkFont(QFont markFont);
+
         protected:
         /**
          * @brief mouseReleaseEvent This method is called if the was a click on the widget.
@@ -137,6 +150,8 @@ namespace GUI
         QFont                       axisLabelFont_;
         QString                     xLabel_;
         QString                     yLabel_;
+        QFont                       labelFont_;
+        QFont                       markFont_;
         bool                        isFilled_;
         int                         marginWidth_;
         int                         marginHeight_;

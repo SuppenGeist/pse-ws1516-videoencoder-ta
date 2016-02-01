@@ -233,3 +233,9 @@ Fuege Methode setMarkDistance und attribute markDistanceX_ und marDistanceY_ hin
 Fuege Methode updateLabelSize.
 <br><b>Grund:</b> Codedopplung vermeiden.
 <hr>
+Fuege Methode setLabelFont und attribut labelFont_ hinzu..
+<br><b>Grund:</b> Mehr Kontrolle fuer den user.
+<hr>
+Fuege Methode setMarkFont und attribut markFont_ hinzu..
+<br><b>Grund:</b> Mehr Kontrolle fuer den user.
+<hr>
