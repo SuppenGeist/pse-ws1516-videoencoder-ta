@@ -12,7 +12,6 @@
 #include <QPolygon>
 #include <QtCore/qmath.h>
 #include <QGraphicsTextItem>
-#include <QDebug>
 #include <QTextDocument>
 
 #include "GlobalControlPanel.h"
@@ -168,9 +167,9 @@ void GUI::GraphWidget::setMarkFont(QFont markFont)
 }
 
 void GUI::GraphWidget::mouseReleaseEvent(QMouseEvent* event) {
-    //if(!controlPanel_) {
-    //    return;
-    //}
+    if(!controlPanel_) {
+        return;
+    }
 
     int x=event->pos().x();
     int y=event->pos().y();
@@ -224,8 +223,7 @@ void GUI::GraphWidget::mouseReleaseEvent(QMouseEvent* event) {
     if(x>frame*space_x+space_x/2) {
         frame++;
     }
-    //controlPanel_->setPosition(frame);
-    qDebug()<<frame;
+    controlPanel_->setPosition(frame);
 }
 
 void GUI::GraphWidget::resizeEvent(QResizeEvent* event) {
