@@ -9,7 +9,7 @@
 // #include "AnalysisBoxContainer.h"
 // #include "VideoPlayer.h"
 // #include "GraphWidget.h"
-#include "QWidget.h"
+#include <QWidget>
 #include "Timer.h"
 
 namespace GUI

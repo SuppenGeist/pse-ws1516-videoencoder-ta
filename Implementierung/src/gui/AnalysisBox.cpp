@@ -3,9 +3,9 @@
 #include "AnalysisBoxContainer.h"
 #include "VideoPlayer.h"
 #include "GraphWidget.h"
-#include "QWidget.h"
+#include <QWidget>
 #include "Timer.h"
-#include "QFrame.h"
+#include <QFrame>
 #include "../memento/AnalysisBoxMemento.h"
 #include "../model/EncodedVideo.h"
 #include "../undo_framework/RemoveVideo.h"
