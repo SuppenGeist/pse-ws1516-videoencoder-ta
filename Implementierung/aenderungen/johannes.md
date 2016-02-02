@@ -257,6 +257,9 @@ Aendere Parameter index von insertFrames int->std::size_t
 Aendere Parameter index von removeFrame int->std::size_t
 <br><b>Grund:</b> Ueberlauf verhindern.
 <hr>
+Aendere Rueckgabetyp von getNumberOfFrames int->std::size_t
+<br><b>Grund:</b> Ueberlauf verhindern.
+<hr>
 Aendere Parameter index von insertFrame int->std::size_t
 <br><b>Grund:</b> Ueberlauf verhindern.
 <hr>

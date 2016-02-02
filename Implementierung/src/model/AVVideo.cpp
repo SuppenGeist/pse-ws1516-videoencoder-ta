@@ -53,7 +53,7 @@ bool Model::AVVideo::insertFrames(std::vector<std::unique_ptr<AVFrame>>& frames,
     return returnVal;
 }
 
-int Model::AVVideo::getNumberOfFrames() {
+std::size_t Model::AVVideo::getNumberOfFrames() {
     return video_.size();
 }
 

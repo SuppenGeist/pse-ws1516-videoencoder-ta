@@ -72,8 +72,6 @@ class Name {
 ### Sonstiges
 * Wann immer moeglich forward declarationen anstatt includes verwenden.
 * Kein using namespace in header dateien verwenden.
-* Achtet auf const correctness.
-* Achtet auf exception safety.
 * Methoden die ueberschreiben mit override markieren.
 
 ## Gantt diagramm

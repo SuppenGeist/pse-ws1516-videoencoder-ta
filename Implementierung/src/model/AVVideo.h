@@ -77,7 +77,7 @@ class AVVideo {
      * @brief getNumberOfFrames Returns the number of frames in the video.
      * @return The number of frames in the video.
      */
-    int getNumberOfFrames();
+    std::size_t getNumberOfFrames();
 
 private:
   std::vector<std::unique_ptr<AVFrame>> video_;
