@@ -105,7 +105,7 @@ void GUI::FilterTab::createUi() {
 	filterContainerTab[1]->addFilter(new Model::EdgeFilter());
 	filterContainerTab[1]->addFilter(new Model::GridFilter());
 
-	ui->panel = new PreviewControlPanel();
+    previewPanel = new PreviewControlPanel(ui->panel);
 
 }
 

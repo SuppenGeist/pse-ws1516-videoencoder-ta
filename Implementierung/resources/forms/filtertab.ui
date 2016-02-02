@@ -193,7 +193,7 @@
   <widget class="QWidget" name="panel" native="true">
    <property name="geometry">
     <rect>
-     <x>460</x>
+     <x>470</x>
      <y>500</y>
      <width>461</width>
      <height>91</height>

@@ -1,30 +1,24 @@
-/*/*#include <exception>
-using namespace std;
-
 #ifndef __AnalysisBox_h__
 #define __AnalysisBox_h__
 
+#include <QFrame>
+#include <QTabWidget>
+#include <QPushButton>
+#include <QTextEdit>
 // #include "Video.h"
 // #include "AnalysisBoxContainer.h"
 // #include "VideoPlayer.h"
 // #include "GraphWidget.h"
-// #include "QWidget.h"
+#include "QWidget.h"
 #include "Timer.h"
-#include "QFrame.h"
-#include "AnalysisBoxMemento.h"
-#include "EncodedVideo.h"
-// #include "RemoveVideo.h"
 
 namespace GUI
 {
-	class Video;
 	class AnalysisBoxContainer;
-	class VideoPlayer;
-	class GraphWidget;
-	class QWidget;
-	class Timer;
-	// class QFrame;
-	class AnalysisBox;
+    class VideoPlayer;
+    class Timer;
+    class GlobalControlPanel;
+    class GraphWidget;
 }
 namespace Memento
 {
@@ -32,6 +26,7 @@ namespace Memento
 }
 namespace Model
 {
+    class Video;
 	class EncodedVideo;
 }
 namespace UndoRedo
@@ -43,27 +38,27 @@ namespace GUI
 {
 	/**
 	 * Shows the Analysis of a single encoded video.
-
-	class AnalysisBox: public GUI::QFrame
+    */
+    class AnalysisBox: public QFrame
 	{
-		private: GUI::Video* rawVideo;
+    private: Model::Video* rawVideo;
 		private: int currentlyPlayedVideo;
 		private: QTabWidget* tabs;
 		private: QPushButton* button_close;
 		private: QTextEdit* textEdit_comment;
-		private: GloablControlPanel* controlPanel;
+        private: GlobalControlPanel* controlPanel;
 		private: GUI::AnalysisBoxContainer* boxes;
-		public: UndoRedo::RemoveVideo* anaBox;
+        public:  UndoRedo::RemoveVideo* anaBox;
 		private: GUI::VideoPlayer* plainVideoPlayer;
 		private: GUI::VideoPlayer* analysisVideoPlayer;
-		private: GUI::GraphWidget* psnrGraph;
+        private: GUI::GraphWidget* psnrGraph;
 		private: GUI::GraphWidget* bitrateGraph;
 		private: GUI::GraphWidget* redHistogramm;
 		private: GUI::GraphWidget* blueHistogramm;
 		private: GUI::GraphWidget* greenHistogramm;
 		private: Model::EncodedVideo* video;
 
-		public: AnalysisBox(GUI::QWidget* parent);
+        public: AnalysisBox(QWidget* parent);
 
 		/// <summary>
 		/// Creates a memento which contains the state of the box.
@@ -81,19 +76,19 @@ namespace GUI
 		/// Sets the timer for the videoplayer.
 		/// </summary>
 		/// <param name="timer:std:">The timer for the videoplayer.</param>
-		public: void setTimer(shared_ptr<GUI::Timer> timer:std:);
+        //public: void setTimer(shared_ptr<GUI::Timer> timer:std:);
 
 		/// <summary>
 		/// Sets the rawvideo the encoded video is compared to.
 		/// </summary>
 		/// <param name="video">The rawvideo.</param>
-		public: void setRawVideo(GUI::Video* video);
+        public: void setRawVideo(Model::Video* video);
 
 		/// <summary>
 		/// Sets the GlobalControlPanel.
 		/// </summary>
 		/// <param name="panel">The GlobalControlPanel.</param>
-		public: void setControlPanel(Player::GlobalControlPanel* panel);
+        public: void setControlPanel(GUI::GlobalControlPanel* panel);
 
 		/// <summary>
 		/// Shows the macroblock video. The rgb difference video is no longer shown.
@@ -126,5 +121,4 @@ namespace GUI
 }
 
 #endif
-*/
-*/
+

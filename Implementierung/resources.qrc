@@ -5,6 +5,7 @@
         <file>resources/icons/play.png</file>
         <file>resources/icons/prev.png</file>
         <file>resources/icons/stop.png</file>
+        <file>resources/icons/close.png</file>
     </qresource>
     <qresource prefix="/pictures">
         <file>resources/flower_example.png</file>

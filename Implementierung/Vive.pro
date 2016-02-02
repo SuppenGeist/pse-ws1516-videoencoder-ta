@@ -12,7 +12,7 @@ unix: PKGCONFIG += libavformat
 unix: PKGCONFIG += libavutil
 unix: PKGCONFIG += libswscale
 
-LIBS += -ldl
+unix: LIBS += -ldl
 
 HEADERS += \
     src/gui/AnalysisBox.h \
@@ -254,3 +254,6 @@ FORMS += \
     resources/forms/mainwindow.ui \
     resources/forms/filtertab.ui \
     resources/forms/filtercontainertab.ui \
+    resources/forms/analysistab.ui \
+    resources/forms/analysisbox.ui \
+    resources/forms/analysisboxcontainer.ui
