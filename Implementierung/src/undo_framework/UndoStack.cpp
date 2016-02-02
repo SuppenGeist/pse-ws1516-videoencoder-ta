@@ -1,8 +1,13 @@
-/*#include <exception>
-
 #include "UndoStack.h"
-UndoStack::UndoStack() {
+
+#include <QUndoStack>
+
+QUndoStack UndoRedo::UndoStack::undoStack_;
+
+UndoRedo::UndoStack::UndoStack() {
+
 }
 
-
-*/
+QUndoStack& UndoRedo::UndoStack::getUndoStack() {
+    return undoStack_;
+}
