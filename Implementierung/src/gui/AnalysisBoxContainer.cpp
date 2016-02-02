@@ -1,58 +1,59 @@
-/*#include <exception>
-#include <vector>
-
 #include "AnalysisBoxContainer.h"
-#include "Video.h"
+
+#include <vector>
+#include <QWidget.h>
+#include <QFrame.h>
+
+
+#include "../model/Video.h"
 #include "Timer.h"
 #include "AnalysisTab.h"
 #include "AnalysisBox.h"
-#include "QWidget.h"
-#include "QFrame.h"
-#include "AnalysisBoxContainerMemento.h"
-#include "EncodedVideo.h"
-#include "RemoveVideo.h"
+#include "../memento/AnalysisBoxContainerMemento.h"
+#include "../model/EncodedVideo.h"
+#include "../undo_framework/RemoveVideo.h"
 
-AnalysisBoxContainer::AnalysisBoxContainer(QWidget* parent) {
+GUI::AnalysisBoxContainer::AnalysisBoxContainer(QWidget* parent) {
 }
 
-Memento::AnalysisBoxContainerMemento AnalysisBoxContainer::getMemento() {
+Memento::AnalysisBoxContainerMemento GUI::AnalysisBoxContainer::getMemento() {
 	throw "Not yet implemented";
 }
 
-void AnalysisBoxContainer::restore(AnalysisBoxContainerMemento memento) {
+void GUI::AnalysisBoxContainer::restore(Memento::AnalysisBoxContainerMemento memento) {
 	throw "Not yet implemented";
 }
 
-void AnalysisBoxContainer::addVideo(QString path) {
+void GUI::AnalysisBoxContainer::addVideo(QString path) {
 	throw "Not yet implemented";
 }
 
-void AnalysisBoxContainer::setRawVideo(Video* video) {
+void GUI::AnalysisBoxContainer::setRawVideo(Video* video) {
 	this->rawVideo = video;
 }
 
-void AnalysisBoxContainer::setTimer(shared_ptrshared_ptr<GUI::Timer> timer:std:) {
+/*void GUI::AnalysisBoxContainer::setTimer(shared_ptrshared_ptr<GUI::Timer> timer:std:) {
 	throw "Not yet implemented";
-}
+} */
 
-void AnalysisBoxContainer::setControlPanel(Player::GlobalControlPanel* panel) {
+void GUI::AnalysisBoxContainer::setControlPanel(GUI::GlobalControlPanel* panel) {
 	this->controlPanel = panel;
 }
 
-void AnalysisBoxContainer::showMacroBlockVideos() {
+void GUI::AnalysisBoxContainer::showMacroBlockVideos() {
 	throw "Not yet implemented";
 }
 
-void AnalysisBoxContainer::showRGBDifferenceVideos() {
+void GUI::AnalysisBoxContainer::showRGBDifferenceVideos() {
 	throw "Not yet implemented";
 }
 
-void AnalysisBoxContainer::removeBox(AnalysisBox& box) {
+void GUI::AnalysisBoxContainer::removeBox(AnalysisBox& box) {
 	throw "Not yet implemented";
 }
 
-GUI::AnalysisBox* AnalysisBoxContainer::addVideo(EncodedVideo video) {
+GUI::AnalysisBox* GUI::AnalysisBoxContainer::addVideo(Model::EncodedVideo video) {
 	throw "Not yet implemented";
 }
 
-*/
+

@@ -1,4 +1,7 @@
-/*#include <exception>
+#include <exception>
+
+#include <QWidget.h>
+#include <QFrame.h>
 
 #include "AnalysisTab.h"
 #include "VideoPlayer.h"
@@ -7,41 +10,43 @@
 #include "Timer.h"
 #include "AnalysisBoxContainer.h"
 #include "GlobalControlPanel.h"
-#include "QWidget.h"
-#include "QFrame.h"
-#include "AnalysisTabMemento.h"
-#include "YuvVideo.h"
-#include "LoadAnalysisVideo.h"
+#include "../memento/AnalysisTabMemento.h"
+#include "../model/YuvVideo.h"
+#include "../undo_framework//LoadAnalysisVideo.h"
+#include "ui_analysistab.h"
 
-AnalysisTab::AnalysisTab(QWidget* parent) {
+GUI::AnalysisTab::AnalysisTab(QWidget* parent) : QFrame(parent) {
+
+    ui = new Ui::AnalysisTab;
+    ui->setupUi(this);
+
 }
 
-Memento::AnalysisTabMemento AnalysisTab::getMemento() {
+Memento::AnalysisTabMemento GUI::AnalysisTab::getMemento() {
 	throw "Not yet implemented";
 }
 
-void AnalysisTab::restore(AnalysisTabMemento memento) {
+void GUI::AnalysisTab::restore(Memento::AnalysisTabMemento memento) {
 	throw "Not yet implemented";
 }
 
-void AnalysisTab::analyseTypChanged(int index) {
+void GUI::AnalysisTab::analyseTypChanged(int index) {
 	throw "Not yet implemented";
 }
 
-void AnalysisTab::addVideo() {
+void GUI::AnalysisTab::addVideo() {
 	throw "Not yet implemented";
 }
 
-void AnalysisTab::loadRawVideo() {
+void GUI::AnalysisTab::loadRawVideo() {
 	throw "Not yet implemented";
 }
 
-void AnalysisTab::saveResults() {
+void GUI::AnalysisTab::saveResults() {
 	throw "Not yet implemented";
 }
 
-void AnalysisTab::setRawVideo(YuvVideo video) {
+/*void GUI::AnalysisTab::setRawVideo(Model::YuvVideo video) {
 	throw "Not yet implemented";
-}
+}*/
 
-*/

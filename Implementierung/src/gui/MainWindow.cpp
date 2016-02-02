@@ -3,8 +3,9 @@
 #include <QWidget>
 #include <QMainWindow>
 
-
 #include "ui_mainwindow.h"
+#include "FilterTab.h"
+#include "AnalysisTab.h"
 #include "../memento/MainWindowMemento.h"
 #include "../undo_framework/UndoStack.h"
 
@@ -59,7 +60,8 @@ void GUI::MainWindow::createUi() {
 	action_saveProject=ui->actionSave;
 	action_redo=ui->actionRedo;
 	action_undo=ui->actionUndo;
-	filterTab = new FilterTab(ui->filterTab);
+    filterTab = new GUI::FilterTab(ui->filterTab);
+    analysisTab = new GUI::AnalysisTab(ui->analysisTab);
 
 }
 

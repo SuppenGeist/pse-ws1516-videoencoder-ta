@@ -5,16 +5,19 @@
 #include <QTabWidget>
 #include <QPushButton>
 #include <QTextEdit>
+#include <QWidget>
 // #include "Video.h"
 // #include "AnalysisBoxContainer.h"
 // #include "VideoPlayer.h"
 // #include "GraphWidget.h"
-#include <QWidget>
 #include "Timer.h"
-
+namespace Ui
+{
+class AnalysisBox;
+}
 namespace GUI
 {
-	class AnalysisBoxContainer;
+    class AnalysisBoxContainer;
     class VideoPlayer;
     class Timer;
     class GlobalControlPanel;
@@ -22,103 +25,117 @@ namespace GUI
 }
 namespace Memento
 {
-	class AnalysisBoxMemento;
+    class AnalysisBoxMemento;
 }
 namespace Model
 {
     class Video;
-	class EncodedVideo;
+    class EncodedVideo;
 }
 namespace UndoRedo
 {
-	class RemoveVideo;
+    class RemoveVideo;
 }
 
 namespace GUI
 {
-	/**
-	 * Shows the Analysis of a single encoded video.
+    /**
+     * Shows the Analysis of a single encoded video.
     */
     class AnalysisBox: public QFrame
-	{
-    private: Model::Video* rawVideo;
-		private: int currentlyPlayedVideo;
-		private: QTabWidget* tabs;
-		private: QPushButton* button_close;
-		private: QTextEdit* textEdit_comment;
-        private: GlobalControlPanel* controlPanel;
-		private: GUI::AnalysisBoxContainer* boxes;
-        public:  UndoRedo::RemoveVideo* anaBox;
-		private: GUI::VideoPlayer* plainVideoPlayer;
-		private: GUI::VideoPlayer* analysisVideoPlayer;
-        private: GUI::GraphWidget* psnrGraph;
-		private: GUI::GraphWidget* bitrateGraph;
-		private: GUI::GraphWidget* redHistogramm;
-		private: GUI::GraphWidget* blueHistogramm;
-		private: GUI::GraphWidget* greenHistogramm;
-		private: Model::EncodedVideo* video;
+    {
 
-        public: AnalysisBox(QWidget* parent);
 
-		/// <summary>
-		/// Creates a memento which contains the state of the box.
-		/// </summary>
-		/// <returns>The created memento.</returns>
-		public: Memento::AnalysisBoxMemento getMemento();
+        public:
 
-		/// <summary>
-		/// Restores the box based on the memento.
-		/// </summary>
-		/// <param name="memento">The memento which contains the state of the box.</param>
-		public: void restore(Memento::AnalysisBoxMemento memento);
+        /**
+         * @brief AnalysisBox Constructor
+         * @param parent The parent of this Object
+         */
+        AnalysisBox(QWidget* parent);
 
-		/// <summary>
-		/// Sets the timer for the videoplayer.
-		/// </summary>
-		/// <param name="timer:std:">The timer for the videoplayer.</param>
-        //public: void setTimer(shared_ptr<GUI::Timer> timer:std:);
+        /**
+     * @brief getMemento Creates a memento which contains the state of the box.
+     * @return The created memento.
+     */
+    Memento::AnalysisBoxMemento getMemento();
 
-		/// <summary>
-		/// Sets the rawvideo the encoded video is compared to.
-		/// </summary>
-		/// <param name="video">The rawvideo.</param>
-        public: void setRawVideo(Model::Video* video);
+    /**
+     * @brief restore Restores the box based on the memento.
+     * @param memento The memento which contains the state of the box.
+     */
+    void restore(Memento::AnalysisBoxMemento memento);
 
-		/// <summary>
-		/// Sets the GlobalControlPanel.
-		/// </summary>
-		/// <param name="panel">The GlobalControlPanel.</param>
-        public: void setControlPanel(GUI::GlobalControlPanel* panel);
+        /// <summary>
+        /// Sets the timer for the videoplayer.
+        /// </summary>
+        /// <param name="timer:std:">The timer for the videoplayer.</param>
+        //void setTimer(shared_ptr<GUI::Timer> timer:std:);
 
-		/// <summary>
-		/// Shows the macroblock video. The rgb difference video is no longer shown.
-		/// </summary>
-		public: void showMacroBlockVideo();
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="video">.</param>
+    /**
+     * @brief setRawVideo Sets the rawvideo the encoded video is compared to.
+     * @param video The rawvideo
+     */
+    void setRawVideo(Model::Video* video);
 
-		/// <summary>
-		/// Shows the rgb difference video. The macroblock video is no longer shown.
-		/// </summary>
-		public: void showRGBDifferenceVideo();
+    /**
+     * @brief setControlPanel Sets the GlobalControlPanel.
+     * @param panel The GlobalControlPanel.
+     */
+    void setControlPanel(GUI::GlobalControlPanel* panel);
 
-		/// <summary>
-		/// Slot: connected to button_close.pressed()
-		/// removes this box from AnalysisBoxContainer
-		/// </summary>
-		private: void close();
+    /**
+     * @brief showMacroBlockVideo Shows the macroblock video. The rgb difference video is no longer shown.
+     */
+    void showMacroBlockVideo();
 
-		/// <summary>
-		/// Slot: connected with textEdit_comment
-		/// updates QUndoStack
-		/// </summary>
-		private: void textChanged();
+    /**
+     * @brief showRGBDifferenceVideo Shows the rgb difference video. The macroblock video is no longer shown.
+     */
+    void showRGBDifferenceVideo();
 
-		/// <summary>
-		/// Sets the video this box shall present.
-		/// </summary>
-		/// <param name="video">The video to present.</param>
-		public: void setAnalyseVideo(Model::EncodedVideo video);
-	};
+    /**
+     * @brief close removes this box from AnalysisBoxContainer
+     */
+    void close();
+
+    /**
+     * @brief textChanged updates QUndoStack
+     */
+    void textChanged();
+
+    /**
+     * @brief setAnalyseVideo Sets the video this box shall present.
+     * @param video The video to present.
+     */
+    void setAnalyseVideo(Model::EncodedVideo video);
+
+
+
+    public:
+        UndoRedo::RemoveVideo* anaBox;
+    private:
+        Model::Video* rawVideo;
+    int currentlyPlayedVideo;
+    QTabWidget* tabs;
+    QPushButton* button_close;
+    QTextEdit* textEdit_comment;
+    GlobalControlPanel* controlPanel;
+    GUI::AnalysisBoxContainer* boxes;
+    GUI::VideoPlayer* plainVideoPlayer;
+    GUI::VideoPlayer* analysisVideoPlayer;
+    GUI::GraphWidget* psnrGraph;
+    GUI::GraphWidget* bitrateGraph;
+    GUI::GraphWidget* redHistogramm;
+    GUI::GraphWidget* blueHistogramm;
+    GUI::GraphWidget* greenHistogramm;
+    Model::EncodedVideo* video;
+    Ui::AnalysisBox* ui;
+    };
 }
 
 #endif
-

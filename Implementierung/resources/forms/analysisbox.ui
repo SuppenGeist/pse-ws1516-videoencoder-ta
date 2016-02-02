@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>941</width>
+    <width>931</width>
     <height>250</height>
    </rect>
   </property>
@@ -24,7 +24,7 @@
     <rect>
      <x>10</x>
      <y>0</y>
-     <width>921</width>
+     <width>911</width>
      <height>241</height>
     </rect>
    </property>
@@ -44,7 +44,7 @@
    <widget class="QWidget" name="analysisVideo" native="true">
     <property name="geometry">
      <rect>
-      <x>660</x>
+      <x>640</x>
       <y>20</y>
       <width>251</width>
       <height>221</height>
@@ -56,7 +56,7 @@
      <rect>
       <x>270</x>
       <y>20</y>
-      <width>381</width>
+      <width>361</width>
       <height>101</height>
      </rect>
     </property>
@@ -79,7 +79,7 @@
      <rect>
       <x>270</x>
       <y>130</y>
-      <width>381</width>
+      <width>361</width>
       <height>111</height>
      </rect>
     </property>
@@ -87,7 +87,7 @@
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>900</x>
+      <x>890</x>
       <y>0</y>
       <width>25</width>
       <height>25</height>

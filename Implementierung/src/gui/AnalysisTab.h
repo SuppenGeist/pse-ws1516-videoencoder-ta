@@ -1,22 +1,18 @@
-/*
-#include <exception>
-using namespace std;
-
 #ifndef __AnalysisTab_h__
 #define __AnalysisTab_h__
 
-// #include "VideoPlayer.h"
-// #include "FrameView.h"
-// #include "PlayerControlPanel.h"
-// #include "Timer.h"
-// #include "AnalysisBoxContainer.h"
-// #include "GlobalControlPanel.h"
-// #include "QWidget.h"
-#include "QFrame.h"
-#include "AnalysisTabMemento.h"
-#include "YuvVideo.h"
-// #include "LoadAnalysisVideo.h"
 
+#include <QWidget>
+#include <QFrame>
+#include <QPushButton>
+#include <QComboBox>
+#include <QLabel>
+#include <QScrollArea>
+
+namespace Ui
+{
+class AnalysisTab;
+}
 namespace GUI
 {
 	class VideoPlayer;
@@ -24,10 +20,7 @@ namespace GUI
 	class PlayerControlPanel;
 	class Timer;
 	class AnalysisBoxContainer;
-	class GlobalControlPanel;
-	class QWidget;
-	// class QFrame;
-	class AnalysisTab;
+    class GlobalControlPanel;
 }
 namespace Memento
 {
@@ -46,29 +39,14 @@ namespace GUI
 {
 	/**
 	 * The tab that shows videos and analyses them.
-
-	class AnalysisTab: public GUI::QFrame
-	{
-		private: QPushButton* button_save;
-		private: QComboBox* comboBox_analyseTyp;
-		private: QScrollArea* scrollArea_analyseVideos;
-		private: QLabel* label_rawVideo;
-		private: QPushButton* button_addRawVideo;
-		private: QTabWidget* tab_properties;
-		private: QPushButton* button_addVideo;
-		public: UndoRedo::LoadAnalysisVideo* anaTab;
-		private: GUI::VideoPlayer* player;
-		public: GUI::FrameView* rawVideoView;
-		private: GUI::PlayerControlPanel* controlPanel;
-		private: GUI::Timer* playerTimer;
-		private: GUI::AnalysisBoxContainer* analysisBoxContainer;
-		private: Model::YuvVideo* rawVideo;
-		private: GUI::GlobalControlPanel* globalControlPanel;
+*/
+    class AnalysisTab: public QFrame
+    {
 
 		/// <summary>
 		/// Constructor.
 		/// </summary>
-		public: AnalysisTab(GUI::QWidget* parent);
+        public: AnalysisTab(QWidget* parent);
 
 		/// <summary>
 		/// Creates a memento which contains the state of this tab.
@@ -111,8 +89,28 @@ namespace GUI
 		/// </summary>
 		/// <param name="video">The new raw video.</param>
 		public: void setRawVideo(Model::YuvVideo video);
+
+    public:
+        GUI::FrameView* rawVideoView;
+        UndoRedo::LoadAnalysisVideo* anaTab;
+
+    private:
+        QPushButton* button_save;
+    QComboBox* comboBox_analyseTyp;
+    QScrollArea* scrollArea_analyseVideos;
+    QLabel* label_rawVideo;
+    QPushButton* button_addRawVideo;
+    QTabWidget* tab_properties;
+    QPushButton* button_addVideo;
+    GUI::VideoPlayer* player;
+    GUI::PlayerControlPanel* controlPanel;
+    GUI::Timer* playerTimer;
+    GUI::AnalysisBoxContainer* analysisBoxContainer;
+    Model::YuvVideo* rawVideo;
+    GUI::GlobalControlPanel* globalControlPanel;
+    Ui::AnalysisTab* ui;
 	};
 }
 
 #endif
-*/
+
