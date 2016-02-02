@@ -1,7 +1,7 @@
 #include <exception>
 
-#include <QWidget.h>
-#include <QFrame.h>
+#include <QWidget>
+#include <QFrame>
 
 #include "AnalysisTab.h"
 #include "VideoPlayer.h"

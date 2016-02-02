@@ -1,6 +1,8 @@
 #ifndef __FilterTab_h__
 #define __FilterTab_h__
 
+#include <memory>
+
 #include <QPushButton>
 #include <QWidget>
 #include <QFrame>
@@ -8,6 +10,8 @@
 #include <QStringListModel>
 #include <QLabel>
 #include <QTabWidget>
+
+#include "../model/YuvVideo.h"
 
 namespace GUI {
 class VideoPlayer;
@@ -23,7 +27,6 @@ class FilterTabMemento;
 
 namespace Model {
 class FilterList;
-class YuvVideo;
 class Filter;
 }
 
@@ -74,7 +77,13 @@ class FilterTab : public QFrame {
 	 * @brief setRawVideo Sets the video the filters are applied to. This operation resets the whole filtertab.
 	 * @param video The video to apply the filters on.
 	 */
-	void setRawVideo(Model::YuvVideo video);
+    void setRawVideo(std::unique_ptr<Model::YuvVideo> video);
+
+    /**
+     * @brief releaseVideo releases the Video
+     * @return
+     */
+    std::unique_ptr<Model::YuvVideo> releaseVideo();
 
 	/**
 	 * @brief moveFilter Moves a filter in the filterlist.
@@ -87,13 +96,13 @@ class FilterTab : public QFrame {
 	 * @brief getMemento Creates a memento which contains the state of this tab.
 	 * @return the created memento
 	 */
-	Memento::FilterTabMemento getMemento();
+    std::unique_ptr<Memento::FilterTabMemento> getMemento();
 
 	/**
 	 * @brief restore Restores the tab based on the memento.
 	 * @param memento The memento which contains the state of the tab.
 	 */
-	void restore(Memento::FilterTabMemento memento);
+    void restore(Memento::FilterTabMemento& memento);
 
 	/**
 	 * @brief insertFilter Inserts a filter to the filterList. If index is -1 the the filter is added to the end.
@@ -179,7 +188,7 @@ class FilterTab : public QFrame {
     PlayerControlPanel*                 playerPanel_;
 
     Model::FilterList*                  filterList_;
-    Model::YuvVideo*                    rawVideo_;
+    std::unique_ptr<Model::YuvVideo>    rawVideo_;
 
 
     /**

@@ -1,63 +1,50 @@
-/*
-#include <exception>
-using namespace std;
-
 #ifndef __LoadFilterVideo_h__
 #define __LoadFilterVideo_h__
 
-// #include "FilterTab.h"
-#include "FilterTabMemento.h"
-#include "YuvVideo.h"
-#include "QUndoCommand.h"
+#include <QUndoCommand>
+
+#include <memory>
+
+#include "../model/YuvVideo.h"
+#include "../memento/FilterTabMemento.h"
 
 namespace GUI
 {
 	class FilterTab;
-}
-namespace Memento
-{
-	class FilterTabMemento;
-}
-namespace Model
-{
-	class YuvVideo;
-}
-namespace UndoRedo
-{
-	// class QUndoCommand;
-	class LoadFilterVideo;
 }
 
 namespace UndoRedo
 {
 	/**
 	 * This class is the undo command for loading a raw video in the filtertab.
+     */
+    class LoadFilterVideo: public QUndoCommand
+    {
+        public:
+        /**
+         * @brief LoadFilterVideo Constuctor.
+         * @param filterTab The filtertab to operate on.
+         * @param video The video to use.
+         * @param memento The memento before the new video is loaded.
+         */
+        LoadFilterVideo(GUI::FilterTab& filterTab, std::unique_ptr<Model::YuvVideo> video, std::unique_ptr<Memento::FilterTabMemento> memento);
 
-	class LoadFilterVideo: public UndoRedo::QUndoCommand
-	{
-		private: Memento::FilterTabMemento* memento;
-		private: GUI::FilterTab* filterTab;
-		private: Model::YuvVideo* video;
+        /**
+         * @brief undo Removes current video to which filters can be applied and loads previous video.
+         */
+        void undo();
 
-		/// <summary>
-		/// Constuctor.
-		/// </summary>
-		/// <param name="filterTab">The filtertab to operate on.</param>
-		/// <param name="video">The video to use.</param>
-		/// <param name="memento">The memento before the new video is loaded.</param>
-		public: LoadFilterVideo(GUI::FilterTab* filterTab, Model::YuvVideo video, Memento::FilterTabMemento memento);
+        /**
+         * @brief redo Loads video to which filter can be applied.
+         */
+        void redo();
 
-		/// <summary>
-		/// Removes current video to which filters can be applied and loads previous video.
-		/// </summary>
-		public: void undo();
 
-		/// <summary>
-		/// Loads video to which filter can be applied.
-		/// </summary>
-		public: void redo();
+    private:
+        std::unique_ptr<Memento::FilterTabMemento>  memento_;
+        GUI::FilterTab*                             filterTab_;
+        std::unique_ptr<Model::YuvVideo>            video_;
 	};
 }
 
 #endif
-*/

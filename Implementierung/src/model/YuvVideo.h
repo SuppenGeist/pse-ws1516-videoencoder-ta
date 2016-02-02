@@ -50,7 +50,7 @@ namespace Model
 		/// <param name="width">Width of the video.</param>
 		/// <param name="height">Height of the video.</param>
 		/// <param name="fps">Fps of the video.</param>
-    public: YuvVideo(QString path, Utility::YuvType type, int width, int height, int fps);
+    public: YuvVideo(QString path, Utility::YuvType type,Utility::Compression compression, int width, int height, int fps);
 
 		/// <summary>
 		/// Returns the path to the video.

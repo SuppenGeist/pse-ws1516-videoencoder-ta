@@ -1,20 +1,22 @@
-/*#include <exception>
-
 #include "LoadFilterVideo.h"
-#include "FilterTab.h"
-#include "FilterTabMemento.h"
-#include "YuvVideo.h"
-#include "QUndoCommand.h"
 
-LoadFilterVideo::LoadFilterVideo(FilterTab* filterTab, YuvVideo video, FilterTabMemento memento) {
+#include <memory>
+
+#include "../gui/FilterTab.h"
+#include "../memento/FilterTabMemento.h"
+#include "../model/YuvVideo.h"
+
+UndoRedo::LoadFilterVideo::LoadFilterVideo(GUI::FilterTab& filterTab, std::unique_ptr<Model::YuvVideo> video, std::unique_ptr<Memento::FilterTabMemento> memento):memento_(std::move(memento)),filterTab_(&filterTab),video_(std::move(video)) {
+
 }
 
-void LoadFilterVideo::undo() {
-	throw "Not yet implemented";
+void UndoRedo::LoadFilterVideo::undo() {
+    video_=filterTab_->releaseVideo();
+    filterTab_->restore(*memento_);
 }
 
-void LoadFilterVideo::redo() {
-	throw "Not yet implemented";
+void UndoRedo::LoadFilterVideo::redo() {
+    filterTab_->setRawVideo(std::move(video_));
 }
 
-*/
+

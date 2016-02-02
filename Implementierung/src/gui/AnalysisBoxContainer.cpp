@@ -1,8 +1,8 @@
 #include "AnalysisBoxContainer.h"
 
 #include <vector>
-#include <QWidget.h>
-#include <QFrame.h>
+#include <QWidget>
+#include <QFrame>
 
 
 #include "../model/Video.h"

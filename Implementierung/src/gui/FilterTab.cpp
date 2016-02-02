@@ -20,6 +20,10 @@
 #include "FrameView.h"
 #include "PlayerControlPanel.h"
 #include "FilterContainerTab.h"
+#include "YuvFileOpenDialog.h"
+#include "YuvInfoDialog.h"
+#include "../undo_framework/UndoStack.h"
+#include "../undo_framework/LoadFilterVideo.h"
 
 GUI::FilterTab::FilterTab(QWidget* parent):QFrame(parent) {
     createUi();
@@ -27,12 +31,11 @@ GUI::FilterTab::FilterTab(QWidget* parent):QFrame(parent) {
 }
 
 
-Memento::FilterTabMemento GUI::FilterTab::getMemento() {
-	throw "Not yet implemented";
+std::unique_ptr<Memento::FilterTabMemento> GUI::FilterTab::getMemento() {
+    return std::make_unique<Memento::FilterTabMemento>();
 }
 
-void GUI::FilterTab::restore(Memento::FilterTabMemento memento) {
-	throw "Not yet implemented";
+void GUI::FilterTab::restore(Memento::FilterTabMemento &memento) {
 }
 
 
@@ -203,6 +206,45 @@ void GUI::FilterTab::remove() {
 }
 
 void GUI::FilterTab::load() {
+    YuvFileOpenDialog fileOpenDiag(this);
+
+    int result=fileOpenDiag.exec();
+
+    if(!(result==QDialog::Accepted))
+        return;
+
+    auto path=fileOpenDiag.getFilename();
+
+    if(path.isEmpty())
+         return;
+
+    std::unique_ptr<YuvInfoDialog> infoDialog;
+    bool inputValid=true;
+    do {
+        infoDialog=std::make_unique<YuvInfoDialog>(this);
+        inputValid=true;
+
+        result=infoDialog->exec();
+        if(!(result==QDialog::Accepted))
+            return;
+
+        if(infoDialog->getFps()<=0) {
+            inputValid=false;
+            continue;
+        }
+        if(infoDialog->getHeight()<=0) {
+            inputValid=false;
+            continue;
+        }
+        if(infoDialog->getWidth()<=0) {
+            inputValid=false;
+            continue;
+        }
+
+    }while(!inputValid);
+
+    auto yuvVideo=std::make_unique<Model::YuvVideo>(path,infoDialog->getPixelSheme(),infoDialog->getCompression(),infoDialog->getWidth(),infoDialog->getHeight(),infoDialog->getFps());
+    UndoRedo::UndoStack::getUndoStack().push(new UndoRedo::LoadFilterVideo(*this,std::move(yuvVideo),std::move(getMemento())));
 }
 
 void GUI::FilterTab::apply() {
@@ -248,8 +290,16 @@ void GUI::FilterTab::setFilterList(Model::FilterList list) {
 	throw "Not yet implemented";
 }
 
-void GUI::FilterTab::setRawVideo(Model::YuvVideo video) {
-	throw "Not yet implemented";
+void GUI::FilterTab::setRawVideo(std::unique_ptr<Model::YuvVideo> video) {
+    reset();
+    rawVideo_=std::move(video);
+}
+
+std::unique_ptr<Model::YuvVideo> GUI::FilterTab::releaseVideo()
+{
+    auto video=std::move(rawVideo_);
+    reset();
+    return std::move(video);
 }
 
 void GUI::FilterTab::moveFilter(int old, int new_3) {

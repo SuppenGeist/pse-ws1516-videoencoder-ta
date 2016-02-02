@@ -5,7 +5,7 @@
 #include "../utility/YuvType.h"
 #include "../utility/Compression.h"
 
-Model::YuvVideo::YuvVideo(QString path, Utility::YuvType type, int width, int height, int fps) {
+Model::YuvVideo::YuvVideo(QString path, Utility::YuvType type, Utility::Compression compression, int width, int height, int fps) {
 }
 
 QString Model::YuvVideo::getPath() {
