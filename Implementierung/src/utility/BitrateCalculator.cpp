@@ -1,5 +1,10 @@
 #include "BitrateCalculator.h"
 
+extern "C" {
+#include <libavcodec/avcodec.h>
+#include <libavformat/avformat.h>
+}
+
 #include "../model/AVVideo.h"
 #include "../model/Graph.h"
 
