@@ -3,7 +3,7 @@
 
 namespace Model
 {
-	class AVVideo;
+    class Video;
 	class Graph;
 }
 
@@ -20,7 +20,7 @@ namespace Utility
          * @param referenceVideo The reference video for the psnr calculation.
          * @param compareVideo The video that is compared to the reference video.
          */
-        PsnrCalculator(Model::AVVideo& referenceVideo, Model::AVVideo& compareVideo);
+        PsnrCalculator(Model::Video& referenceVideo, Model::Video& compareVideo);
 
         /**
          * @brief calculate Calculates the psnr graph.
@@ -30,13 +30,8 @@ namespace Utility
 
         private:
 
-        Model::AVVideo* referenceVideo_;
-        Model::AVVideo* video_;
-
-        /**
-         * @brief init Initializes the ffmpeg psnr filter.
-         */
-        void init();
+        Model::Video* referenceVideo_;
+        Model::Video* video_;
 
 	};
 }

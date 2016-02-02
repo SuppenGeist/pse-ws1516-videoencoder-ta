@@ -1,9 +1,9 @@
 #include "meansquareerrorcalculator.h"
 
-#include "model/Graph.h"
-#include "model/AVVideo.h"
+#include "../model/Graph.h"
+#include "../model/Video.h"
 
-MeanSquareErrorCalculator::MeanSquareErrorCalculator(Model::AVVideo &video1, Model::AVVideo &video2):video1_(&video1),video2_(&video2)
+MeanSquareErrorCalculator::MeanSquareErrorCalculator(Model::Video &video1, Model::Video &video2):video1_(&video1),video2_(&video2)
 {
 
 }

@@ -240,3 +240,10 @@ Fuege Methode setMarkFont und attribut markFont_ hinzu.
 erstelle diese Klasse neu.
 <br><b>Grund:</b> psnr baut auf mse auf.
 <hr>
+## PsnrCalculator
+Benutze Video anstatt AVVideo.
+<br><b>Grund:</b> Details von AVFrame werden nicht gebraucht.
+<hr>
+Entferne init methode.
+<br><b>Grund:</b> Nichts zum initialisieren da.
+<hr>
