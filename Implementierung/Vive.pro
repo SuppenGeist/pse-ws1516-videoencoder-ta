@@ -245,6 +245,7 @@ SOURCES += \
     src/utility/YuvFileSaver.cpp \
     src/main.cpp \
     src/utility/meansquareerrorcalculator.cpp \
+    src/utility/Yuv422Vector.cpp
 
 RESOURCES += \
     resources.qrc \
