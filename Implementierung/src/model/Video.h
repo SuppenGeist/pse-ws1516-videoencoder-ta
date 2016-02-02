@@ -49,14 +49,14 @@ class Video {
 	QImage* getFrame(std::size_t index) noexcept;
 
 	/**
-	 * If the index is invalid nothing happens.
-	 * The image is copied into the video.
+     * If the index is invalid nothing happens.
 	 *
 	 * @brief insertFrame Inserts a frame at the given index.
+     * If the width and height of the frame dont match the size of the video false is returned.
 	 * @param index The index to insert the frame at.
 	 * @param frame The frame to insert.
 	 */
-	void insertFrame(std::unique_ptr<QImage> frame, std::size_t index);
+    bool insertFrame(std::unique_ptr<QImage> frame, std::size_t index);
 
 	/**
 	 * If the index is invalid nothing happens.
@@ -67,14 +67,15 @@ class Video {
 	void removeFrame(std::size_t index);
 
 	/**
-	 * If the index is invalid nothing happens.
-	 * The images are copied into the video.
+     * If the index is invalid false is returned.
 	 *
 	 * @brief insertFrames Inserts a vector of frames at the given index.
+     * If the width and height of one frame dont match the size of the video false is returned.
+     * All frames that match the size of the video are inserted either way.
 	 * @param index The index to insert the frames at.
 	 * @param frames The frames to insert.
 	 */
-	void insertFrames(std::vector<std::unique_ptr<QImage>>& frames, std::size_t index);
+    bool insertFrames(std::vector<std::unique_ptr<QImage>>& frames, std::size_t index);
 
 	/**
 	 * The image is copied into the video.

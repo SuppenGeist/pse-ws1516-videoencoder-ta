@@ -1,53 +1,59 @@
-#include <exception>
-
 #include "AVVideo.h"
-#include "EncodedVideo.h"
 
 
-using namespace Model;
+Model::AVVideo::AVVideo(int fps, int width, int height):fps_(fps),width_(width),height_(height) {
 
-AVVideo::AVVideo(int fps, int width, int height) {
-	this->width = width;
-	this->fps = fps;
-	this->height = height;
 }
 
-int AVVideo::getWidth() {
-	return this->width;
+int Model::AVVideo::getWidth() {
+    return width_;
 }
 
-int AVVideo::getHeight() {
-	return this->height;
+int Model::AVVideo::getHeight() {
+    return height_;
 }
 
-int AVVideo::getFps() {
-	return this->fps;
+int Model::AVVideo::getFps() {
+    return fps_;
 }
 
-AVFrame* AVVideo::getFrame(int index) {
-	return video.at(index).get();
+AVFrame* Model::AVVideo::getFrame(std::size_t index) {
+    if(index>=video_.size())
+        return nullptr;
+
+    return video_[index].get();
 }
 
-void AVVideo::insertFrame(unique_ptr<AVFrame> frame, int index) {
-	video.insert(video.begin() + index, move(frame));
+bool Model::AVVideo::insertFrame(std::unique_ptr<AVFrame> frame, std::size_t index) {
+    if(frame->width!=width_||frame->height!=height_)
+        return false;
+
+    if(index>video_.size())
+        return false;
+
+    video_.insert(video_.begin() + index, std::move(frame));
+
+    return true;
 }
 
-void AVVideo::removeFrame(int index) {
-	if(index < video.size())
-		video.erase(video.begin() + index);
+void Model::AVVideo::removeFrame(std::size_t index) {
+    if(index < video_.size())
+        video_.erase(video_.begin() + index);
 }
 
-void AVVideo::insertFrames(vector<unique_ptr<AVFrame>>& frames, int index) {
-	if(index <= video.size()) {
-		int i = index;
-		for(vector<unique_ptr<AVFrame>>::iterator it = frames.begin(); it != frames.end(); ++it) {
-			video.insert(video.begin() + i++, move(*it));
-		}
+bool Model::AVVideo::insertFrames(std::vector<std::unique_ptr<AVFrame>>& frames, std::size_t index) {
+    bool returnVal=true;
 
-	}
+    if(index>video_.size())
+        return false;
+
+    for(std::size_t i=index;i<index+frames.size();i++) {
+        returnVal&=insertFrame(std::move(frames[i-index]),i);
+    }
+    return returnVal;
 }
 
-int AVVideo::getNumberOfFrames() {
-	return video.size();
+int Model::AVVideo::getNumberOfFrames() {
+    return video_.size();
 }
 

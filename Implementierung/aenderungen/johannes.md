@@ -30,6 +30,9 @@ Aendere Parametertyp von removeFrame int->std::size_t.
 Aendere Rueckgabetyp von getNumberOfFrames int->std::size_t.
 <br><b>Grund:</b> Ueberlauf verhindern.
 <hr>
+Aendere Rueckgabetyp von insertFrame und insertFrames void->bool.
+<br><b>Grund:</b> Rueckmeldung fue dern user.
+<hr>
 ## Player
 Aendere Rueckgabetyp von getPosition int->std::size_t.
 <br><b>Grund:</b> Ueberlauf verhindern.
@@ -246,4 +249,20 @@ Benutze Video anstatt AVVideo.
 <hr>
 Entferne init methode.
 <br><b>Grund:</b> Nichts zum initialisieren da.
+<hr>
+## AVVideo
+Aendere Parameter index von insertFrames int->std::size_t
+<br><b>Grund:</b> Ueberlauf verhindern.
+<hr>
+Aendere Parameter index von removeFrame int->std::size_t
+<br><b>Grund:</b> Ueberlauf verhindern.
+<hr>
+Aendere Parameter index von insertFrame int->std::size_t
+<br><b>Grund:</b> Ueberlauf verhindern.
+<hr>
+Aendere Parameter index von getFrame int->std::size_t
+<br><b>Grund:</b> Ueberlauf verhindern.
+<hr>
+Aendere rueckgabetyp von insertFrame void->bool.
+<br><b>Grund:</b> Rueckmeldung fuer aufrufer.
 <hr>

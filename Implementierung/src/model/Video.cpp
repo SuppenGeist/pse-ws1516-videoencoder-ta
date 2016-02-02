@@ -28,10 +28,16 @@ QImage* Model::Video::getFrame(std::size_t index) noexcept {
 	return frames_[index].get();
 }
 
-void Model::Video::insertFrame(std::unique_ptr<QImage> frame, std::size_t index) {
-	if(index>=frames_.size())
-		return;
-	frames_.insert(frames_.begin()+index,std::move(frame));
+bool Model::Video::insertFrame(std::unique_ptr<QImage> frame, std::size_t index) {
+    if(frame->width()!=width_||frame->height()!=height_)
+        return false;
+
+    if(index>frames_.size())
+        return false;
+
+    frames_.insert(frames_.begin() + index, std::move(frame));
+
+    return true;
 }
 
 void Model::Video::removeFrame(std::size_t index) {
@@ -44,11 +50,16 @@ void Model::Video::appendFrame(std::unique_ptr<QImage> frame) {
 	frames_.push_back(std::move(frame));
 }
 
-void Model::Video::insertFrames(std::vector<std::unique_ptr<QImage> >& frames, std::size_t index) {
-	if(index>=frames_.size())
-		return;
-	frames_.insert(frames_.begin()+index,std::make_move_iterator(frames.begin()),
-	               std::make_move_iterator(frames.end()));
+bool Model::Video::insertFrames(std::vector<std::unique_ptr<QImage> >& frames, std::size_t index) {
+    bool returnVal=true;
+
+    if(index>frames_.size())
+        return false;
+
+    for(std::size_t i=index;i<index+frames.size();i++) {
+        returnVal&=insertFrame(std::move(frames[i-index]),i);
+    }
+    return returnVal;
 }
 
 std::size_t Model::Video::getNumberOfFrames() const noexcept {
