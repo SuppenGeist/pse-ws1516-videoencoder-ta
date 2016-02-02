@@ -1,19 +1,14 @@
 #ifndef __FilterTab_h__
 #define __FilterTab_h__
 
-#include <string>
-#include <vector>
 #include <QPushButton>
+#include <QWidget>
+#include <QFrame>
 #include <QListWidget>
 #include <QStringListModel>
 #include <QLabel>
-#include <QFrame>
+#include <QTabWidget>
 
-
-
-namespace Ui {
-class FilterTab;
-}
 namespace GUI {
 class VideoPlayer;
 class PreviewControlPanel;
@@ -21,17 +16,17 @@ class FrameView;
 class PlayerControlPanel;
 class FilterContainerTab;
 }
+
 namespace Memento {
 class FilterTabMemento;
 }
+
 namespace Model {
 class FilterList;
 class YuvVideo;
 class Filter;
 }
-namespace UndoRedo {
-class LoadFilterVideo;
-}
+
 namespace GUI {
 /**
  * This class is the tab to filter videos.
@@ -45,7 +40,6 @@ class FilterTab : public QFrame {
 	 *
 	*/
 	FilterTab(QWidget* parent);
-
 
 
 	/**
@@ -163,61 +157,41 @@ class FilterTab : public QFrame {
 	void save();
 
   private:
-	/**
-	 * @brief connectAction sConnect the buttons to their slots in this class.
-	 */
-	void connectActions();
+    QPushButton*                        button_up_;
+    QPushButton*                        button_down_;
+    QPushButton*                        button_remove_;
+    QPushButton*                        button_load_;
+    QPushButton*                        button_apply_;
+    QPushButton*                        button_saveConf_;
+    QPushButton*                        button_loadConf_;
+    QPushButton*                        button_reset_;
+    QPushButton*                        button_save_;
+    QLabel*                             label_selectedFilters_;
+    QListWidget*                        list_filterList_;
+    QTabWidget*                         filterTabs_;
+    QLabel*                             label_filterOptions_;
+    QStringListModel*                   model_list_;
+    std::vector<FilterContainerTab*>    filterContainerTab_;
 
-	/**
-	 * @brief createUi Creates the user interface.
-	 */
-	void createUi();
-  private:
-	QPushButton* button_up;
-  private:
-	QPushButton* button_down;
-  private:
-	QPushButton* button_remove;
-  private:
-	QPushButton* button_load;
-  private:
-	QPushButton* button_apply;
-  private:
-	QPushButton* button_saveConf;
-  private:
-	QPushButton* button_loadConf;
-  private:
-	QPushButton* button_reset;
-  private:
-	QPushButton* button_save;
-  private:
-	QListWidget* list_filterList;
-  private:
-	QTabWidget* tab_filterTabs;
-  private:
-	QLabel* label_filterOptions;
-  private:
-	QFrame* frame_filterContainer;
-  private:
-	QStringListModel* model_list;
-  private:
-	GUI::VideoPlayer* player;
-  private:
-	GUI::PreviewControlPanel* previewPanel;
-  private:
-	GUI::FrameView* frameView;
-  private:
-	GUI::PlayerControlPanel* playerPanel;
-  private:
-	Model::FilterList* filterList;
-  private:
-	Model::YuvVideo* rawVideo;
-  private:
-	std::vector<GUI::FilterContainerTab*> filterContainerTab;
-  private:
-	Ui::FilterTab *ui;
-  public:
-	UndoRedo::LoadFilterVideo* filterTab;
+    VideoPlayer*                        player_;
+    PreviewControlPanel*                previewPanel_;
+    FrameView*                          frameView_;
+    PlayerControlPanel*                 playerPanel_;
+
+    Model::FilterList*                  filterList_;
+    Model::YuvVideo*                    rawVideo_;
+
+
+    /**
+     * @brief connectAction sConnect the buttons to their slots in this class.
+     */
+    void connectActions();
+
+    /**
+     * @brief createUi Creates the user interface.
+     */
+    void createUi();
+
 };
 }
 

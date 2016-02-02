@@ -1,16 +1,9 @@
-/*
-#include <exception>
-using namespace std;
-
 #ifndef __YuvVideo_h__
 #define __YuvVideo_h__
 
 #include "Video.h"
-#include "PixelSheme.h"
 #include "AVVideo.h"
 // #include "LoadFilterVideo.h"
-#include "Compression.h"
-#include "YuvType.h"
 
 namespace GUI
 {
@@ -28,15 +21,15 @@ namespace UndoRedo
 }
 namespace Utility
 {
-	// enum Compression;
-	// enum YuvType;
+    enum class Compression;
+    enum class YuvType;
 }
 
 namespace Model
 {
 	/**
 	 * This class holds a yuv video with all its properties.
-
+     */
 	class YuvVideo
 	{
 		private: QString path;
@@ -47,7 +40,7 @@ namespace Model
 		public: Utility::Compression* compression;
 		public: GUI::Video* displayVideo;
 		public: Model::AVVideo* avVideo;
-        private: GUI::YuvType* yuvType;
+        private: Utility::YuvType* yuvType;
 
 		/// <summary>
 		/// Constructor.
@@ -57,7 +50,7 @@ namespace Model
 		/// <param name="width">Width of the video.</param>
 		/// <param name="height">Height of the video.</param>
 		/// <param name="fps">Fps of the video.</param>
-		public: YuvVideo(QString path, GUI::PixelSheme type, int width, int height, int fps);
+    public: YuvVideo(QString path, Utility::YuvType type, int width, int height, int fps);
 
 		/// <summary>
 		/// Returns the path to the video.
@@ -97,4 +90,3 @@ namespace Model
 }
 
 #endif
-*/

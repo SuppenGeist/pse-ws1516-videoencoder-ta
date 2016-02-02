@@ -1,162 +1,234 @@
 #include "FilterTab.h"
 
 #include <string>
-#include <vector>
+
+#include <QWidget>
 #include <QFrame>
-#include <QStringListModel>
+#include <QModelIndex>
+#include <QPushButton>
+#include <QHBoxLayout>
+#include <QVBoxLayout>
+#include <QString>
+#include <QListWidget>
+#include <QSpacerItem>
+#include <QTabWidget>
 
-#include "PreviewControlPanel.h"
-#include "FrameView.h"
-//#include "PlayerControlPanel.h"
-#include "FilterContainerTab.h"
-#include "ui_filtertab.h"
+#include "../memento/FilterTabMemento.h"
 #include "../model/FilterList.h"
-
-#include "../model/filters/BlackWhiteFilter.h"
-#include "../model/filters/GridFilter.h"
-#include "../model/filters/EdgeFilter.h"
-#include "../model/filters/BlendingFilter.h"
-#include "../model/filters/BlurFilter.h"
-#include "../model/filters/BorderFilter.h"
-#include "../model/filters/BrightnessFilter.h"
-#include "../model/filters/ColorbalanceFilter.h"
-#include "../model/filters/ContrastFilter.h"
-#include "../model/filters/MirrorFilter.h"
-#include "../model/filters/NegativeFilter.h"
-#include "../model/filters/NoiseFilter.h"
-#include "../model/filters/PosterFilter.h"
-#include "../model/filters/RectangleFilter.h"
-#include "../model/filters/RGBFilter.h"
-#include "../model/filters/RotationFilter.h"
-#include "../model/filters/SaturationFilter.h"
-#include "../model/filters/ScaleFilter.h"
-#include "../model/filters/SepiaFilter.h"
-#include "../model/filters/SharpnessFilter.h"
-#include "../model/filters/VintageFilter.h"
-#include "../model/filters/ZoomFilter.h"
+#include "../model/filters/Filter.h"
+#include "../model/YuvVideo.h"
+#include "FrameView.h"
+#include "PlayerControlPanel.h"
+#include "FilterContainerTab.h"
 
 GUI::FilterTab::FilterTab(QWidget* parent):QFrame(parent) {
-	GUI::FilterTab::createUi();
-	GUI::FilterTab::connectActions();
+    createUi();
+    connectActions();
 }
 
-/*
- Memento::FilterTabMemento GUI::FilterTab::getMemento() {
+
+Memento::FilterTabMemento GUI::FilterTab::getMemento() {
 	throw "Not yet implemented";
 }
 
-void GUI::FilterTab::restore(FilterTabMemento memento) {
+void GUI::FilterTab::restore(Memento::FilterTabMemento memento) {
 	throw "Not yet implemented";
 }
-*/
+
 
 void GUI::FilterTab::connectActions() {
-	connect(button_apply,SIGNAL(clicked()),this,SLOT(apply()));
-	connect(button_down,SIGNAL(clicked()),this,SLOT(down()));
-	connect(button_load,SIGNAL(clicked()),this,SLOT(load()));
-	connect(button_loadConf,SIGNAL(clicked()),this,SLOT(loadConf()));
-	connect(button_remove,SIGNAL(clicked()),this,SLOT(remove()));
-	connect(button_reset,SIGNAL(clicked()),this,SLOT(reset()));
-	connect(button_save,SIGNAL(clicked()),this,SLOT(save()));
-	connect(button_saveConf,SIGNAL(clicked()),this,SLOT(saveConf()));
-	connect(button_up,SIGNAL(clicked()),this,SLOT(up()));
+    connect(button_apply_,SIGNAL(clicked()),this,SLOT(apply()));
+    connect(button_down_,SIGNAL(clicked()),this,SLOT(down()));
+    connect(button_load_,SIGNAL(clicked()),this,SLOT(load()));
+    connect(button_loadConf_,SIGNAL(clicked()),this,SLOT(loadConf()));
+    connect(button_remove_,SIGNAL(clicked()),this,SLOT(remove()));
+    connect(button_reset_,SIGNAL(clicked()),this,SLOT(reset()));
+    connect(button_save_,SIGNAL(clicked()),this,SLOT(save()));
+    connect(button_saveConf_,SIGNAL(clicked()),this,SLOT(saveConf()));
+    connect(button_up_,SIGNAL(clicked()),this,SLOT(up()));
 }
 
 void GUI::FilterTab::createUi() {
-	ui = new Ui::FilterTab;
-	ui->setupUi(this);
+    button_apply_=new QPushButton(tr("Apply to video"));
+    button_down_=new QPushButton(tr("Filter down"));
+    button_loadConf_=new QPushButton(tr("Load configuration"));
+    button_load_=new QPushButton(tr("Load video"));
+    button_remove_=new QPushButton(tr("Remove filter"));
+    button_reset_=new QPushButton(tr("Reset"));
+    button_saveConf_=new QPushButton(tr("Save configuration"));
+    button_save_=new QPushButton(tr("Save video"));
+    button_up_=new QPushButton(tr("Filter up"));
 
-	button_apply = ui->apply;
-	button_down = ui->down;
-	button_load = ui->loadVideo;
-	button_loadConf = ui->loadConfig;
-	button_remove = ui->remove;
-	button_reset = ui->reset;
-	button_save = ui->saveVideo;
-	button_saveConf = ui->saveConfig;
-	button_up = ui->up;
+    button_apply_->setFlat(true);
+    button_down_->setFlat(true);
+    button_loadConf_->setFlat(true);
+    button_load_->setFlat(true);
+    button_remove_->setFlat(true);
+    button_reset_->setFlat(true);
+    button_saveConf_->setFlat(true);
+    button_save_->setFlat(true);
+    button_up_->setFlat(true);
 
-	filterContainerTab.push_back(new FilterContainerTab(ui->scrollAreaFilters));
-	filterContainerTab.push_back(new FilterContainerTab(ui->scrollAreaArtefacts));
-	ui->scrollAreaArtefacts->setWidget(filterContainerTab[1]);
-	ui->scrollAreaFilters->setWidget(filterContainerTab[0]);
+    QString styleSheet_buttonGroup("QPushButton {"
+                                      "color: rgb(255, 255, 255);"
+                                      "border-color: rgb(69, 62, 62);"
+                                      "background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #88d, stop: 0.1 #99e, stop: 0.49 #77c);"
+                                      "background: rgb(115, 115, 115);"
+                                      "border-width: 1px;"
+                                      "border-color:rgb(255, 255, 255);"
+                                      "border-style: outset;"
+                                      "border-radius: 7;"
+                                      "padding: 3px;"
+                                      "font-size: 18px;"
+                                      "padding-left: 5px;"
+                                      "padding-right: 5px;"
+                                   "}"
+                                   "QPushButton:pressed {"
+                                      "background-color: rgb(69, 62, 62);"
+                                      "border-style: inset;"
+                                  "}"
+    );
 
-	filterContainerTab[0]->addFilter(new Model::BlackWhiteFilter());
-	filterContainerTab[0]->addFilter(new Model::BlendingFilter());
-	filterContainerTab[0]->addFilter(new Model::BlurFilter());
-	filterContainerTab[0]->addFilter(new Model::BorderFilter());
-	filterContainerTab[0]->addFilter(new Model::BrightnessFilter());
-	filterContainerTab[0]->addFilter(new Model::ColorbalanceFilter());
-	filterContainerTab[0]->addFilter(new Model::ContrastFilter());
-	filterContainerTab[0]->addFilter(new Model::MirrorFilter());
-	filterContainerTab[0]->addFilter(new Model::NegativeFilter());
-	filterContainerTab[0]->addFilter(new Model::NoiseFilter());
-	filterContainerTab[0]->addFilter(new Model::PosterFilter());
-	filterContainerTab[0]->addFilter(new Model::RectangleFilter());
-	filterContainerTab[0]->addFilter(new Model::RGBFilter());
-	filterContainerTab[0]->addFilter(new Model::RotationFilter());
-	filterContainerTab[0]->addFilter(new Model::SaturationFilter());
-	filterContainerTab[0]->addFilter(new Model::ScaleFilter());
-	filterContainerTab[0]->addFilter(new Model::SepiaFilter());
-	filterContainerTab[0]->addFilter(new Model::SharpnessFilter());
-	filterContainerTab[0]->addFilter(new Model::VintageFilter());
-	filterContainerTab[0]->addFilter(new Model::ZoomFilter());
+    button_apply_->setStyleSheet(styleSheet_buttonGroup);
+    button_down_->setStyleSheet(styleSheet_buttonGroup);
+    button_loadConf_->setStyleSheet(styleSheet_buttonGroup);
+    button_load_->setStyleSheet(styleSheet_buttonGroup);
+    button_remove_->setStyleSheet(styleSheet_buttonGroup);
+    button_reset_->setStyleSheet(styleSheet_buttonGroup);
+    button_saveConf_->setStyleSheet(styleSheet_buttonGroup);
+    button_save_->setStyleSheet(styleSheet_buttonGroup);
+    button_up_->setStyleSheet(styleSheet_buttonGroup);
 
-	filterContainerTab[1]->addFilter(new Model::EdgeFilter());
-	filterContainerTab[1]->addFilter(new Model::GridFilter());
+    label_selectedFilters_=new QLabel(tr("Selected filters:"));
+    label_filterOptions_=new QLabel(tr("Filter options:"));
 
-    previewPanel = new PreviewControlPanel(ui->panel);
+    list_filterList_=new QListWidget;
+    list_filterList_->setMaximumWidth(400);
+    list_filterList_->setMinimumWidth(250);
 
+    frameView_=new FrameView;
+    frameView_->setMaximumWidth(600);
+    frameView_->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Expanding);
+
+    playerPanel_=new PlayerControlPanel;
+    playerPanel_->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Minimum);
+    playerPanel_->setMaximumWidth(600);
+
+    filterTabs_=new QTabWidget;
+    FilterContainerTab* filterTab=new FilterContainerTab;
+
+    FilterContainerTab* artefactsTab=new FilterContainerTab;
+
+    filterContainerTab_.push_back(filterTab);
+    filterContainerTab_.push_back(artefactsTab);
+
+    filterTabs_->addTab(filterContainerTab_[0],tr("Filters"));
+    filterTabs_->addTab(filterContainerTab_[1],tr("Artefacts"));
+    filterTabs_->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Minimum);
+
+
+    //build gui
+    QVBoxLayout* v_content=new QVBoxLayout;
+
+    v_content->addWidget(label_selectedFilters_);
+
+    QHBoxLayout* h_list_button_player_filterconf=new QHBoxLayout;
+
+    h_list_button_player_filterconf->addWidget(list_filterList_);
+    h_list_button_player_filterconf->addSpacing(20);
+
+    QVBoxLayout* v_player_buttons_filterconf=new QVBoxLayout;
+
+    QHBoxLayout* h_buttons_player=new QHBoxLayout;
+
+    QVBoxLayout* v_buttonBlock=new QVBoxLayout;
+    v_buttonBlock->addWidget(button_load_);
+    v_buttonBlock->addWidget(button_apply_);
+    v_buttonBlock->addWidget(button_save_);
+    v_buttonBlock->addSpacing(20);
+    v_buttonBlock->addWidget(button_up_);
+    v_buttonBlock->addWidget(button_down_);
+    v_buttonBlock->addWidget(button_remove_);
+    v_buttonBlock->addSpacing(20);
+    v_buttonBlock->addWidget(button_loadConf_);
+    v_buttonBlock->addWidget(button_saveConf_);
+    v_buttonBlock->addSpacing(20);
+    v_buttonBlock->addWidget(button_reset_);
+
+    h_buttons_player->addLayout(v_buttonBlock);
+    h_buttons_player->addSpacing(30);
+    QSpacerItem* sp=new QSpacerItem(0,0,QSizePolicy::MinimumExpanding,QSizePolicy::MinimumExpanding);
+    h_buttons_player->addSpacerItem(sp);
+
+    QVBoxLayout* v_player=new QVBoxLayout;
+    v_player->addWidget(frameView_);
+    v_player->addWidget(playerPanel_);
+
+    h_buttons_player->addLayout(v_player,1);
+    QSpacerItem* sp1=new QSpacerItem(0,0,QSizePolicy::MinimumExpanding,QSizePolicy::MinimumExpanding);
+    h_buttons_player->addSpacerItem(sp1);
+
+    v_player_buttons_filterconf->addLayout(h_buttons_player);
+
+    v_player_buttons_filterconf->addSpacing(20);
+    v_player_buttons_filterconf->addWidget(label_filterOptions_);
+
+    QFrame* buffer=new QFrame;
+    buffer->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
+    buffer->setStyleSheet("background: rgb(200, 200, 200)");
+    buffer->setMinimumHeight(50);
+    buffer->setMaximumWidth(300);
+
+    v_player_buttons_filterconf->addWidget(buffer);
+
+    h_list_button_player_filterconf->addLayout(v_player_buttons_filterconf,1);
+
+    v_content->addLayout(h_list_button_player_filterconf);
+
+    v_content->addSpacing(30);
+
+    v_content->addWidget(filterTabs_);
+
+    setLayout(v_content);
 }
 
 void GUI::FilterTab::up() {
-	throw "Not yet implemented";
 }
 
 void GUI::FilterTab::down() {
-	int index = list_filterList->currentIndex().row();
-	filterList->moveFilter(index, index+1);
-	ui->listWidget->insertItem(index+1,ui->listWidget->takeItem(index));
 
 }
 
 void GUI::FilterTab::remove() {
-	throw "Not yet implemented";
 }
 
 void GUI::FilterTab::load() {
-	throw "Not yet implemented";
 }
 
 void GUI::FilterTab::apply() {
-	throw "Not yet implemented";
 }
 
 void GUI::FilterTab::saveConf() {
-	throw "Not yet implemented";
 }
 
 void GUI::FilterTab::loadConf() {
-	throw "Not yet implemented";
 }
 
 void GUI::FilterTab::reset() {
-	throw "Not yet implemented";
 }
 
 void GUI::FilterTab::save() {
+}
+
+void GUI::FilterTab::insertFilter(Model::Filter& filter, int index) {
 	throw "Not yet implemented";
 }
 
-/*void GUI::FilterTab::insertFilter(Filter filter, int index) {
-	throw "Not yet implemented";
-}
-*/
 void GUI::FilterTab::listSelectionChanged(QModelIndex* index) {
 	throw "Not yet implemented";
 }
-/*
-void GUI::FilterTab::removeFilter(string filterName) {
+
+void GUI::FilterTab::removeFilter(std::string filterName) {
 	throw "Not yet implemented";
 }
 
@@ -172,16 +244,14 @@ void GUI::FilterTab::resetFilters() {
 	throw "Not yet implemented";
 }
 
-void GUI::FilterTab::setFilterList(FilterList list) {
+void GUI::FilterTab::setFilterList(Model::FilterList list) {
 	throw "Not yet implemented";
 }
 
-/*void GUI::FilterTab::setRawVideo(YuvVideo video) {
+void GUI::FilterTab::setRawVideo(Model::YuvVideo video) {
 	throw "Not yet implemented";
 }
 
 void GUI::FilterTab::moveFilter(int old, int new_3) {
 	throw "Not yet implemented";
 }
-
-*/

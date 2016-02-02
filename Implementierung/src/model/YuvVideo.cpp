@@ -1,38 +1,33 @@
-/*#include <exception>
-
 #include "YuvVideo.h"
-#include "Video.h"
-#include "PixelSheme.h"
-#include "AVVideo.h"
-#include "LoadFilterVideo.h"
-#include "Compression.h"
-#include "YuvType.h"
 
-YuvVideo::YuvVideo(QString path, YuvType type, int width, int height, int fps) {
+#include <QString>
+
+#include "../utility/YuvType.h"
+#include "../utility/Compression.h"
+
+Model::YuvVideo::YuvVideo(QString path, Utility::YuvType type, int width, int height, int fps) {
 }
 
-QString YuvVideo::getPath() {
+QString Model::YuvVideo::getPath() {
 	return this->path;
 }
 
-Utility::Compression YuvVideo::getCompression() {
+Utility::Compression Model::YuvVideo::getCompression() {
 	throw "Not yet implemented";
 }
 
-Utility::YuvType YuvVideo::getYuvType() {
+Utility::YuvType Model::YuvVideo::getYuvType() {
 	throw "Not yet implemented";
 }
 
-Model::AVVideo& YuvVideo::getAvVideo() {
+Model::AVVideo& Model::YuvVideo::getAvVideo() {
 	throw "Not yet implemented";
 }
 
-GUI::Video& YuvVideo::getVideo() {
+GUI::Video& Model::YuvVideo::getVideo() {
 	throw "Not yet implemented";
 }
 
-void YuvVideo::loadVideo() {
+void Model::YuvVideo::loadVideo() {
 	throw "Not yet implemented";
 }
-
-*/

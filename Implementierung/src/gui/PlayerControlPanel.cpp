@@ -61,11 +61,11 @@ void GUI::PlayerControlPanel::createUi() {
 	button_nextFrame_->setFlat(true);
 	button_previousFrame_->setFlat(true);
 
-	button_play_->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-	button_pause_->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-	button_stop_->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-	button_nextFrame_->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-	button_previousFrame_->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    button_play_->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
+    button_pause_->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
+    button_stop_->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
+    button_nextFrame_->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
+    button_previousFrame_->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
 
 	QStringList speedItems = QStringList() << tr("0.25x") <<tr("0.50x") << tr("0.75x") << tr("1.00x") <<
 	                         tr("1.25x") << tr("1.50x") << tr("1.75x") << tr("2.00x");
