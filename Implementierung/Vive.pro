@@ -130,7 +130,8 @@ HEADERS += \
     src/utility/Yuv444Vector.h \
     src/utility/YuvFileReader.h \
     src/utility/YuvFileSaver.h \
-    src/utility/YuvType.h
+    src/utility/YuvType.h \
+    src/utility/meansquareerrorcalculator.h \
 
 SOURCES += \
     src/gui/AnalysisBox.cpp \
@@ -242,7 +243,8 @@ SOURCES += \
     src/utility/Yuv444Vector.cpp \
     src/utility/YuvFileReader.cpp \
     src/utility/YuvFileSaver.cpp \
-    src/main.cpp
+    src/main.cpp \
+    src/utility/meansquareerrorcalculator.cpp \
 
 RESOURCES += \
     resources.qrc \
@@ -250,4 +252,4 @@ RESOURCES += \
 FORMS += \
     resources/forms/mainwindow.ui \
     resources/forms/filtertab.ui \
-    resources/forms/filtercontainertab.ui
+    resources/forms/filtercontainertab.ui \

@@ -233,6 +233,10 @@ Fuege Methode updateLabelSize.
 Fuege Methode setLabelFont und attribut labelFont_ hinzu..
 <br><b>Grund:</b> Mehr Kontrolle fuer den user.
 <hr>
-Fuege Methode setMarkFont und attribut markFont_ hinzu..
+Fuege Methode setMarkFont und attribut markFont_ hinzu.
 <br><b>Grund:</b> Mehr Kontrolle fuer den user.
+<hr>
+## MeanSquareErrorCalculator
+erstelle diese Klasse neu.
+<br><b>Grund:</b> psnr baut auf mse auf.
 <hr>

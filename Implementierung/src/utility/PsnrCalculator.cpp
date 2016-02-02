@@ -1,18 +1,19 @@
-/*#include <exception>
-
 #include "PsnrCalculator.h"
-#include "AVVideo.h"
-#include "Graph.h"
 
-PsnrCalculator::PsnrCalculator(AVVideo& referenceVideo, AVVideo& compareVideo) {
+#include "../model/AVVideo.h"
+#include "../model/Graph.h"
+
+Utility::PsnrCalculator::PsnrCalculator(Model::AVVideo& referenceVideo, Model::AVVideo& compareVideo):referenceVideo_(&referenceVideo),video_(&compareVideo) {
+    init();
 }
 
-Model::Graph PsnrCalculator::calculate() {
-	throw "Not yet implemented";
+Model::Graph Utility::PsnrCalculator::calculate() {
+    Model::Graph psnrGraph;
+
+
+    return std::move(psnrGraph);
 }
 
-void PsnrCalculator::init() {
-	throw "Not yet implemented";
-}
+void Utility::PsnrCalculator::init() {
 
-*/
+}
