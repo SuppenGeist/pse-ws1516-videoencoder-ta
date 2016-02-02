@@ -118,8 +118,10 @@ void GUI::YuvFileOpenDialog::saveListModel(QString selectedFile) {
 		if(recentlyUsedFiles.contains(selectedFile)) {
 			recentlyUsedFiles.removeAt(recentlyUsedFiles.indexOf(QRegExp(selectedFile)));
 		}
-		recentlyUsedFiles.prepend(selectedFile);
-	}
+        recentlyUsedFiles.prepend(selectedFile);
+
+        model_recentlyUsed_->setStringList(recentlyUsedFiles);
+    }
 
 	QFile outputFile(SAVE_FILENAME);
 	if(outputFile.open(QIODevice::ReadWrite)) {
