@@ -25,6 +25,10 @@ std::unique_ptr<Model::Video> Utility::Yuv444FileReader::read() {
     std::unique_ptr<QImage> frame;
     while((frame=parseNextFrame()).get()) {
         video_->appendFrame(std::move(frame));
+
+        if(compression_==Compression::PLANAR) {
+            position_=0;
+        }
     }
 
     return std::move(video_);
@@ -64,7 +68,7 @@ std::unique_ptr<QImage> Utility::Yuv444FileReader::parseNextFrame() {
 }
 
 Utility::Yuv444Vector Utility::Yuv444FileReader::readNextVectorPacked(bool &success) {
-    if(position_+3>=binaryData_.size()) {
+    if(position_+3>binaryData_.size()) {
         success=false;
         return Yuv444Vector(0,0,0);
     }
@@ -79,35 +83,22 @@ Utility::Yuv444Vector Utility::Yuv444FileReader::readNextVectorPacked(bool &succ
 }
 
 QRgb Utility::Yuv444FileReader::Yuv444ToRgb888(Yuv444Vector& vector) {
-    int c = vector.getY() - 16;
-    int d = vector.getU() - 128;
-    int e = vector.getV() - 128;
+    int y=vector.getY();
+    int u=vector.getU();
+    int v=vector.getV();
 
-    /*int r = clamp((298 * c + 409 * e + 128) >> 8);
-    int g = clamp((298 * c - 100 * d - 208 * e + 128) >> 8);
-    int b = clamp ((298 * c + 516 * d + 128) >> 8);*/
+    int r=y + ( ( 1436 * ( v - 128) ) >> 10 );
+    int g=y - ( ( 352 * ( u - 128 ) + 731 * ( v - 128 ) ) >> 10 );
+    int b=y + ( ( 1812 * ( u - 128 ) ) >> 10 );
 
-    int r = 1.164*c+2.115*e;
-    int g = 1.164*c-0.534*e-0.213*d;
-    int b = 1.164*c+1.793*d;
-
-    /*int r = 1.164*c+2.018*e;
-    int g = 1.164*c-0.813*e-0.391*d;
-    int b = 1.164*c+2.018*d;*/
-
-    /* int y=vector.getV();
-    int r=y+1.371*e;
-    int g=y-0.698*e-0.336*d;
-    int b=1y+1.732*d;*/
-
-    return qRgb(r,g,b);
+    return qRgb(clamp(r),clamp(g),clamp(b));
 }
 
 Utility::Yuv444Vector Utility::Yuv444FileReader::readNextVectorPlanar(bool &success) {
     int frameIndex=video_->getNumberOfFrames();
     int numberOfPixels=width_*height_;
 
-    if(3*frameIndex*numberOfPixels+2*numberOfPixels+position_>=binaryData_.size()) {
+    if(3*frameIndex*numberOfPixels+2*numberOfPixels+position_>binaryData_.size()) {
         success=false;
         return Yuv444Vector(0,0,0);
     }
