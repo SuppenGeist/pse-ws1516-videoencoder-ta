@@ -1,7 +1,7 @@
 ##YUVFileReader
-added QFile and QDataStream, reason: Needed to open and read yuv file
-added QByteArray, reason: need a buffer to read file
-
+added QFile, reason: Needed to open and read yuv file
+added QByteArray, reason: needed as a buffer to read file
+added std::unique_ptr<QImage> image, reason: needed to parse frames
 
 ##YUV444Vector
 added getters to make attributes accessible 

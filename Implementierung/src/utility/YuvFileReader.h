@@ -43,6 +43,7 @@ namespace Utility
         int                             height_;
         int                             fps_;
         std::unique_ptr<Model::Video>   video;
+        std::unique_ptr<QImage>         image;
         QFile                           file_;
 	};
 }
