@@ -3,6 +3,7 @@
 #include <vector>
 #include <algorithm>
 #include <memory>
+#include <QDebug>
 
 #include "ControlPanel.h"
 #include "../model/Video.h"
@@ -15,8 +16,8 @@ position_(0),video_(nullptr),masterPanel_(nullptr) {
 }
 
 void GUI::VideoPlayer::addView(FrameView& view) {
-	if(std::find(views_.begin(), views_.end(), &view) == views_.end())
-		return;
+    if(std::find(views_.begin(), views_.end(), &view) != views_.end())
+        return;
 	views_.push_back(&view);
 }
 
@@ -28,8 +29,9 @@ void GUI::VideoPlayer::removeView(FrameView& view) {
 }
 
 void GUI::VideoPlayer::setVideo(Model::Video& video) noexcept {
-	video_=&video;
-	stop();
+    stop();
+    video_=&video;
+    setPosition(0);
 }
 
 Model::Video* GUI::VideoPlayer::getVideo() noexcept {
