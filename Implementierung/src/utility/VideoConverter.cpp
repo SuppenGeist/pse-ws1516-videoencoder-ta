@@ -4,8 +4,12 @@ static unique_ptr<QImage> convertAVFrameToQImage(AVFrame& frame, int width, int 
 
 }
 
-static unique_ptr<Model::Video> convertAVVideoToVideo(Model::AVVideo& video){
-
+static unique_ptr<Model::Video> convertAVVideoToVideo(Model::AVVideo& avvideo){
+    unique_ptr<Model::Video> video = make_unique<Model::Video>(avvideo.getFps(), avvideo.getWidth(), avvideo.getHeight());
+    for(int i = 0; i < avvideo.getNumberOfFrames(); i++) {
+        video->appendFrame(convertAVFrameToQImage(*avvideo.getFrame(i), avvideo.getWidth(), avvideo.getHeight()));
+    }
+    return video;
 }
 
 static unique_ptr<AVFrame> convertQImageToAVFrame(QImage& image){
