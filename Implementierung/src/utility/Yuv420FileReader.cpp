@@ -24,7 +24,7 @@ std::unique_ptr<Model::Video> Utility::Yuv420FileReader::read() {
     while((frame=parseNextFrame()).get()) {
         video_->appendFrame(std::move(frame));
     }
-    qDebug()<<video_->getNumberOfFrames();
+
     return std::move(video_);
 }
 
@@ -51,7 +51,7 @@ std::unique_ptr<QImage> Utility::Yuv420FileReader::parseNextFrame() {
 Utility::Yuv444Vector Utility::Yuv420FileReader::readNextVector(bool& success) {
     int frameNumber=video_->getNumberOfFrames();
 
-    if((frameNumber+1)*width_*height_*1.5>=binaryData_.size()) {
+    if((frameNumber+1)*width_*height_*1.5>binaryData_.size()) {
            success=false;
            return Yuv444Vector(0,0,0);
     }
@@ -61,8 +61,9 @@ Utility::Yuv444Vector Utility::Yuv420FileReader::readNextVector(bool& success) {
     int yp=position_/width_;
 
     auto y=binaryData_[offset+yp*width_+xp];
-    auto u=binaryData_[offset+(yp/2)*(width_/2)+(xp/2)+width_*height_];
-    auto v=binaryData_[offset+(yp/2)*(width_/2)+(xp/2)+width_*height_+(width_*height_/4)];
+    int offset1=(yp/2)*(width_/2)+(xp/2)+width_*height_;
+    auto u=binaryData_[offset+offset1];
+    auto v=binaryData_[offset+offset1+(width_*height_/4)];
 
     position_++;
 

@@ -307,3 +307,11 @@ Fuege bool parameter zu readNextVectorPacked und readNextVectorPlanar hinzu.
 Fuege bool parameter zu readNextVector hinzu.
 <br><b>Grund:</b> Rueckmeldung, ob es einen naechsten vector gab.
 <hr>
+#Yuv422FileReader
+Fuege bool parameter zu readNextVectorPacked und readNextVectorPlanar hinzu.
+<br><b>Grund:</b> Rueckmeldung, ob es einen naechsten vector gab.
+<hr>
+#Yuv411FileReader
+Fuege bool parameter zu readNextVectorPacked und readNextVectorPlanar hinzu.
+<br><b>Grund:</b> Rueckmeldung, ob es einen naechsten vector gab.
+<hr>

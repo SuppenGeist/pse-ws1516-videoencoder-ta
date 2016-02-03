@@ -22,44 +22,52 @@ namespace Utility
      */
     class Yuv411FileReader: public YuvFileReader
 	{
-		private: int position;
-		private: Utility::Compression compression;
 
-		/// <summary>
-		/// Constructor.
-		/// </summary>
-		/// <param name="filename">Absolute path to the file to load.</param>
-		/// <param name="width">Width of the video.</param>
-		/// <param name="height">Height of the video.</param>
-		/// <param name="compression">The compression of the file.</param>
-        public: Yuv411FileReader(QString filename, int width, int height,int fps, Utility::Compression compression);
+        public:
+        /**
+         * @brief Yuv411FileReader Constructor.
+         * @param filename Absolute path to the file to load.
+         * @param width Width of the video.
+         * @param height Height of the video.
+         * @param fps
+         * @param compression The compression of the file.
+         */
+        Yuv411FileReader(QString filename, int width, int height,int fps, Utility::Compression compression);
 
-    public: std::unique_ptr<Model::Video> read();
+        /**
+         * @brief read Reads the file in
+         * @return
+         */
+        std::unique_ptr<Model::Video> read();
 
-		/// <summary>
-		/// Converts a Yuv411Vector to the corresponding Rgb88 pixels.
-		/// </summary>
-		/// <param name="vector">The vector to convert.</param>
-		/// <returns>The computed rgb888 pixels.</returns>
-        public: static std::vector<QRgb> yuv411ToRgb888(Yuv411Vector vector);
+        /**
+         * @brief yuv411ToRgb888 Converts a Yuv411Vector to the corresponding Rgb88 pixels.
+         * @param vector The vector to convert.
+         * @return The computed rgb888 pixels.
+         */
+        static std::vector<QRgb> Yuv411ToRgb888(Yuv411Vector vector);
 
-		/// <summary>
-		/// Parses the next frame.
-		/// </summary>
-		/// <returns>The parsed frame.</returns>
-    private: std::unique_ptr<QImage> parseNextFrame();
+    private:
+        int         position_;
+        Compression compression_;
 
-		/// <summary>
-		/// Reads the next vector from a packed file.
-		/// </summary>
-		/// <returns>The new vector.</returns>
-		private: Utility::Yuv411Vector readNextVectorPacked();
+        /**
+         * @brief parseNextFrame Parses the next frame.
+         * @return The parsed frame.
+         */
+        std::unique_ptr<QImage> parseNextFrame();
 
-		/// <summary>
-		/// Reads the next vector from a planar file.
-		/// </summary>
-		/// <returns>The new vector.</returns>
-		private: Utility::Yuv411Vector readNextVectorPlanar();
+        /**
+         * @brief readNextVectorPacked Reads the next vector from a packed file.
+         * @return The new vector.
+         */
+        Yuv411Vector readNextVectorPacked(bool& success);
+
+        /**
+         * @brief readNextVectorPlanar Reads the next vector from a planar file.
+         * @return The new vector.
+         */
+        Yuv411Vector readNextVectorPlanar(bool& success);
 	};
 }
 

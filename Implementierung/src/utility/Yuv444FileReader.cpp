@@ -97,15 +97,16 @@ QRgb Utility::Yuv444FileReader::Yuv444ToRgb888(Yuv444Vector& vector) {
 Utility::Yuv444Vector Utility::Yuv444FileReader::readNextVectorPlanar(bool &success) {
     int frameIndex=video_->getNumberOfFrames();
     int numberOfPixels=width_*height_;
+    int offset=3*frameIndex*numberOfPixels;
 
-    if(3*frameIndex*numberOfPixels+2*numberOfPixels+position_>binaryData_.size()) {
+    if(offset+2*numberOfPixels+position_>binaryData_.size()) {
         success=false;
         return Yuv444Vector(0,0,0);
     }
 
-    auto y=binaryData_[3*frameIndex*numberOfPixels+position_];
-    auto u=binaryData_[3*frameIndex*numberOfPixels+numberOfPixels+position_];
-    auto v=binaryData_[3*frameIndex*numberOfPixels+2*numberOfPixels+position_];
+    auto y=binaryData_[offset+position_];
+    auto u=binaryData_[offset+numberOfPixels+position_];
+    auto v=binaryData_[offset+2*numberOfPixels+position_];
 
     position_++;
     success=true;
