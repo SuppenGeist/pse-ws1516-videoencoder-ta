@@ -14,8 +14,8 @@ GUI::FrameView::FrameView(QWidget* parent):QWidget(parent),xOffset_(0),yOffset_(
 }
 
 void GUI::FrameView::setFrame(QImage& frame) {
-	currentFrame_=originalFrame_->scaled(width(),height(),Qt::KeepAspectRatio);
-	originalFrame_=&frame;
+    originalFrame_=&frame;
+    currentFrame_=originalFrame_->scaled(width(),height(),Qt::KeepAspectRatio);
 
 	updateOffset();
 	update();
@@ -63,15 +63,19 @@ void GUI::FrameView::updateOffset() {
 	if(!originalFrame_)
 		return;
 
-	if(width()>=currentFrame_.width()) {
+    if(width()>currentFrame_.width()) {
 		int diff=width()-currentFrame_.width();
 		xOffset_=diff/2;
 		yOffset_=0;
-	} else if(height()>=currentFrame_.height()) {
+    } else if(height()>currentFrame_.height()) {
 		int diff=height()-currentFrame_.height();
 		xOffset_=0;
 		yOffset_=diff/2;
 	}
+    else{
+        xOffset_=0;
+        yOffset_=0;
+    }
 }
 
 

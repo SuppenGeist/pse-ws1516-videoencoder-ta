@@ -299,3 +299,7 @@ Fuege getter fuer width, height und fps hinzu.
 Fuege parameter fps als Konstruktorparameter hinzu und alle implikationen.
 <br><b>Grund:</b> Fps wird benoetigt um das video zu instaiieren.
 <hr>
+#Yuv444FileReader
+Fuege bool parameter zu readNextVectorPacked und readNextVectorPlanar hinzu.
+<br><b>Grund:</b> Rueckmeldung, ob es einen naechsten vector gab.
+<hr>

@@ -50,7 +50,7 @@ namespace Utility
          * @param vector The vector to convert.
          * @return The computed pixel.
          */
-        static QRgb Yuv444ToRgb888(Yuv444Vector vector);
+        static QRgb Yuv444ToRgb888(Yuv444Vector &vector);
 
     private:
         int         position_;
@@ -66,13 +66,13 @@ namespace Utility
          * @brief readNextVectorPacked Reads the next vector from a packed file.
          * @return The new vector.
          */
-        Yuv444Vector readNextVectorPacked();
+        Yuv444Vector readNextVectorPacked(bool& success);
 
         /**
          * @brief readNextVectorPlanar Reads the next vector from a planar file.
          * @return The new vector.
          */
-        Yuv444Vector readNextVectorPlanar();
+        Yuv444Vector readNextVectorPlanar(bool& success);
 	};
 }
 

@@ -8,6 +8,7 @@
 #include <QPushButton>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
+#include <QDebug>
 #include <QString>
 #include <QListWidget>
 #include <QSpacerItem>

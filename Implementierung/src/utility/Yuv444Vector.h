@@ -22,48 +22,48 @@ public:
      * @param u
      * @param v
      */
-    Yuv444Vector(uint8_t y, uint8_t u, uint8_t v);
+    Yuv444Vector(char y, char u, char v);
 
     /**
      * @brief getY Returns y value.
      * @return
      */
-    uint8_t getY();
+    char getY();
 
     /**
      * @brief getU Returns u value.
      * @return
      */
-    uint8_t getU();
+    char getU();
 
     /**
      * @brief getV Returns v value.
      * @return
      */
-    uint8_t getV();
+    char getV();
 
     /**
      * @brief setY Sets the y value.
      * @param y
      */
-    void setY(uint8_t y);
+    void setY(char y);
 
     /**
      * @brief setU Sets the u value.
      * @param u
      */
-    void setU(uint8_t u);
+    void setU(char u);
 
     /**
      * @brief setV Sets the v value.
      * @param v
      */
-    void setV(uint8_t v);
+    void setV(char v);
 
 private:
-    uint8_t y_;
-    uint8_t u_;
-    uint8_t v_;
+    char y_;
+    char u_;
+    char v_;
 };
 }
 
