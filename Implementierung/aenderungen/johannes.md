@@ -269,3 +269,29 @@ Aendere Parameter index von getFrame int->std::size_t
 Aendere rueckgabetyp von insertFrame void->bool.
 <br><b>Grund:</b> Rueckmeldung fuer aufrufer.
 <hr>
+## Yuv422Vector
+Fuege Konstruktor und getter und setter fuer die attribute hinzu.
+<br><b>Grund:</b> Wurde im Entwurf aus zeitgruenden nicht gemacht.
+<hr>
+## Yuv422FileSaver
+Fuege Attribut compression_ hinzu.
+<br><b>Grund:</b> Wurde im Entwurf vergessen.
+<hr>
+## FilterTab
+Aendere parametertyp von filter von insertFilter zu referenz.
+<br><b>Grund:</b> C++ saays so.
+<hr>
+Fuege attribut label_selectedFilters_ hinzu.
+<br><b>Grund:</b> Im Entwurf vergessen.
+<hr>
+Fuege methode releaseVideo hinzu.
+<br><b>Grund:</b> Wird benoetigt um nicht zu viele kopien von dem grosen yuv video haben
+zu muessen.
+<hr>
+## YuvVideo
+Fuege parameter compression in kontruktor hinzu.
+<br><b>Grund:</b> Wurde im Entwurf vergessen.
+<hr>
+Fuege getter fuer width, height und fps hinzu.
+<br><b>Grund:</b> Besseres interface fue user.
+<hr>

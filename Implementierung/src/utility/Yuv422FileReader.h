@@ -1,34 +1,25 @@
-/*
-#include <exception>
-#include <vector>
-using namespace std;
-
 #ifndef __Yuv422FileReader_h__
 #define __Yuv422FileReader_h__
 
-#include "Video.h"
-#include "Compression.h"
-#include "Yuv422Vector.h"
+#include <QImage>
+
+#include <memory>
+
+#include "../model/Video.h"
 #include "YuvFileReader.h"
 
-namespace GUI
-{
-	class Video;
-}
 namespace Utility
 {
-	// enum Compression;
-	class Yuv422Vector;
-	// class YuvFileReader;
-	class Yuv422FileReader;
+    enum class Compression;
+    class Yuv422Vector;
 }
 
 namespace Utility
 {
 	/**
 	 * This class can read yuv 422 files.
-
-	class Yuv422FileReader: public Utility::YuvFileReader
+     */
+    class Yuv422FileReader: public YuvFileReader
 	{
 		private: int position;
 		private: Utility::Compression compression;
@@ -40,38 +31,35 @@ namespace Utility
 		/// <param name="width">Width of the video.</param>
 		/// <param name="height">Height of the video.</param>
 		/// <param name="compression">Compression of the file.</param>
-		public: Yuv422FileReader(QString filename, int width, int height, Utility::Compression compression);
+        public: Yuv422FileReader(QString filename, int width, int height, Compression compression);
 
-		public: unique_ptr<GUI::Video> read();
+    public: std::unique_ptr<Model::Video> read();
 
 		/// <summary>
 		/// Converts a Yuv422Vector the Rgb888 pixels
 		/// </summary>
 		/// <param name="vector">The vector to convert.</param>
 		/// <returns>The computed rgb888 pixels.</returns>
-		public: static vector<QRgb> yuv422ToRgb888(Utility::Yuv422Vector vector) {
-			throw "Not yet implemented";
-		}
+    public: static std::vector<QRgb> yuv422ToRgb888(Yuv422Vector vector);
 
 		/// <summary>
 		/// Parses the next frame.
 		/// </summary>
 		/// <returns>The parsed frame.</returns>
-		private: unique_ptr<QImage> parseNextFrame();
+    private: std::unique_ptr<QImage> parseNextFrame();
 
 		/// <summary>
 		/// Reads the next vector from a packed file.
 		/// </summary>
 		/// <returns>The new vector.</returns>
-		private: Utility::Yuv422Vector readNextVectorPacked();
+        private: Yuv422Vector readNextVectorPacked();
 
 		/// <summary>
 		/// Reads the next vector from a planar file.
 		/// </summary>
 		/// <returns>The new vector.</returns>
-		private: Utility::Yuv422Vector readNextVectorPlanar();
+        private: Yuv422Vector readNextVectorPlanar();
 	};
 }
 
 #endif
-*/

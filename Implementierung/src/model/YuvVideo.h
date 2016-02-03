@@ -1,24 +1,13 @@
 #ifndef __YuvVideo_h__
 #define __YuvVideo_h__
 
+#include <memory>
+
+#include <QString>
+
 #include "Video.h"
 #include "AVVideo.h"
-// #include "LoadFilterVideo.h"
 
-namespace GUI
-{
-	class Video;
-	// enum PixelSheme;
-}
-namespace Model
-{
-	class AVVideo;
-	class YuvVideo;
-}
-namespace UndoRedo
-{
-	class LoadFilterVideo;
-}
 namespace Utility
 {
     enum class Compression;
@@ -31,61 +20,82 @@ namespace Model
 	 * This class holds a yuv video with all its properties.
      */
 	class YuvVideo
-	{
-		private: QString path;
-		private: int height;
-		private: int width;
-		private: int fps;
-		public: UndoRedo::LoadFilterVideo* video;
-		public: Utility::Compression* compression;
-		public: GUI::Video* displayVideo;
-		public: Model::AVVideo* avVideo;
-        private: Utility::YuvType* yuvType;
+    {
 
-		/// <summary>
-		/// Constructor.
-		/// </summary>
-		/// <param name="path">Path to the yuv file.</param>
-		/// <param name="type">Pixelsheme of the yuv video.</param>
-		/// <param name="width">Width of the video.</param>
-		/// <param name="height">Height of the video.</param>
-		/// <param name="fps">Fps of the video.</param>
-    public: YuvVideo(QString path, Utility::YuvType type,Utility::Compression compression, int width, int height, int fps);
+    public:
+        /**
+         * @brief YuvVideo Constructor.
+         * @param path Path to the yuv file.
+         * @param type Pixelsheme of the yuv video.
+         * @param compression Compression mode of the video.
+         * @param width Width of the video.
+         * @param height Height of the video.
+         * @param fps Fps of the video.
+         */
+        YuvVideo(QString path, Utility::YuvType type,Utility::Compression compression, int width, int height, int fps);
 
-		/// <summary>
-		/// Returns the path to the video.
-		/// </summary>
-		/// <returns>Path to the video.</returns>
-		public: QString getPath();
+        /**
+         * @brief getPath Returns the path to the video.
+         * @return Path to the video.
+         */
+        QString getPath();
 
-		/// <summary>
-		/// Returns the compression of the video.
-		/// </summary>
-		/// <returns>The compression of the video.</returns>
-		public: Utility::Compression getCompression();
+        /**
+         * @brief getCompression Returns the compression of the video.
+         * @return The compression of the video.
+         */
+        Utility::Compression getCompression();
 
-		/// <summary>
-		/// Returns the pixel sheme of the video.
-		/// </summary>
-		/// <returns>The pixel scheme.</returns>
-		public: Utility::YuvType getYuvType();
+        /**
+         * @brief getYuvType Returns the pixel sheme of the video.
+         * @return The pixel scheme.
+         */
+        Utility::YuvType getYuvType();
 
-		/// <summary>
-		/// Returns the AVVideo.
-		/// </summary>
-		/// <returns>The AVVideo.</returns>
-		public: Model::AVVideo& getAvVideo();
+        /**
+         * @brief getWidth Returns the width of the video.
+         * @return
+         */
+        int getWidth();
 
-		/// <summary>
-		/// Returns the Video.
-		/// </summary>
-		/// <returns>The Video.</returns>
-		public: GUI::Video& getVideo();
+        /**
+         * @brief getHeight Returns the height of the video.
+         * @return
+         */
+        int getHeight();
 
-		/// <summary>
-		/// Loads the video from the file.
-		/// </summary>
-		private: void loadVideo();
+        /**
+         * @brief getFps Return sthe fps of the video.
+         * @return
+         */
+        int getFps();
+
+        /**
+         * @brief getAvVideo Returns the AVVideo.
+         * @return The AVVideo.
+         */
+        Model::AVVideo& getAvVideo();
+
+        /**
+         * @brief getVideo Returns the Video.
+         * @return The Video.
+         */
+        Model::Video& getVideo();
+
+    private:
+        QString                             path_;
+        int                                 height_;
+        int                                 width_;
+        int                                 fps_;
+        Utility::Compression                compression_;
+        std::unique_ptr<Model::Video>       displayVideo_;
+        std::unique_ptr<Model::AVVideo>     avVideo_;
+        Utility::YuvType                    yuvType_;
+
+        /**
+         * @brief loadVideo Loads the video from the file.
+         */
+        void loadVideo();
 	};
 }
 

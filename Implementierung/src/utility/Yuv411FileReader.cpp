@@ -1,30 +1,36 @@
-/*#include <exception>
+#include "Yuv411FileReader.h"
+
+#include <memory>
 #include <vector>
 
-#include "Yuv411FileReader.h"
-#include "Video.h"
+#include <QString>
+#include <QImage>
+
 #include "Compression.h"
 #include "Yuv411Vector.h"
 #include "YuvFileReader.h"
+#include "../model/Video.h"
 
-Yuv411FileReader::Yuv411FileReader(QString filename, int width, int height, Compression compression) {
+Utility::Yuv411FileReader::Yuv411FileReader(QString filename, int width, int height, Compression compression):YuvFileReader(filename,width,height) {
 }
 
-unique_ptr<GUI::Video> Yuv411FileReader::read() {
+std::unique_ptr<Model::Video> Utility::Yuv411FileReader::read() {
 	throw "Not yet implemented";
 }
 
 
-unique_ptr<QImage> Yuv411FileReader::parseNextFrame() {
+std::unique_ptr<QImage> Utility::Yuv411FileReader::parseNextFrame() {
 	throw "Not yet implemented";
 }
 
-Utility::Yuv411Vector Yuv411FileReader::readNextVectorPacked() {
+Utility::Yuv411Vector Utility::Yuv411FileReader::readNextVectorPacked() {
 	throw "Not yet implemented";
 }
 
-Utility::Yuv411Vector Yuv411FileReader::readNextVectorPlanar() {
+Utility::Yuv411Vector Utility::Yuv411FileReader::readNextVectorPlanar() {
 	throw "Not yet implemented";
 }
 
-*/
+std::vector<QRgb> Utility::Yuv411FileReader::yuv411ToRgb888(Yuv411Vector vector) {
+
+}

@@ -120,7 +120,6 @@ HEADERS += \
     src/utility/Yuv411FileReader.h \
     src/utility/Yuv411FileSaver.h \
     src/utility/Yuv411Vector.h \
-    src/utility/Yuv420FIleReader.h \
     src/utility/Yuv420FileSaver.h \
     src/utility/Yuv422FileReader.h \
     src/utility/Yuv422FileSaver.h \
@@ -132,6 +131,7 @@ HEADERS += \
     src/utility/YuvFileSaver.h \
     src/utility/YuvType.h \
     src/utility/meansquareerrorcalculator.h \
+    src/utility/Yuv420FileReader.h
 
 SOURCES += \
     src/gui/AnalysisBox.cpp \
@@ -234,7 +234,6 @@ SOURCES += \
     src/utility/VideoConverter.cpp \
     src/utility/Yuv411FileReader.cpp \
     src/utility/Yuv411FileSaver.cpp \
-    src/utility/Yuv420FIleReader.cpp \
     src/utility/Yuv420FileSaver.cpp \
     src/utility/Yuv422FileReader.cpp \
     src/utility/Yuv422FileSaver.cpp \
@@ -245,7 +244,8 @@ SOURCES += \
     src/utility/YuvFileSaver.cpp \
     src/main.cpp \
     src/utility/meansquareerrorcalculator.cpp \
-    src/utility/Yuv422Vector.cpp
+    src/utility/Yuv422Vector.cpp \
+    src/utility/Yuv420FileReader.cpp
 
 RESOURCES += \
     resources.qrc \

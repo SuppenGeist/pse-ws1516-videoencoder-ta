@@ -1,31 +1,25 @@
-/*
-#include <exception>
-using namespace std;
-
 #ifndef __Yuv420FIleReader_h__
 #define __Yuv420FIleReader_h__
 
-#include "Video.h"
+#include <memory>
+
+#include <QImage>
+
+#include "../model/Video.h"
 #include "Yuv444Vector.h"
 #include "YuvFileReader.h"
 
-namespace GUI
-{
-	class Video;
-}
 namespace Utility
 {
-	class Yuv444Vector;
-	// class YuvFileReader;
-	class Yuv420FIleReader;
+    class Yuv444Vector;
 }
 
 namespace Utility
 {
 	/**
 	 * This class can read Yuv 420 files.
-
-	class Yuv420FIleReader: public Utility::YuvFileReader
+     */
+    class Yuv420FileReader: public YuvFileReader
 	{
 		private: int position;
 
@@ -35,9 +29,9 @@ namespace Utility
 		/// <param name="filename">Absolute path to the file to load.</param>
 		/// <param name="width">Width of the video.</param>
 		/// <param name="height">Height of the video.</param>
-		public: void yuv420FileReader(QString filename, int width, int height);
+        public: Yuv420FileReader(QString filename, int width, int height);
 
-		public: unique_ptr<GUI::Video> read();
+    public: std::unique_ptr<Model::Video> read();
 
 		/// <summary>
 		/// Parses the next frame.
@@ -54,4 +48,3 @@ namespace Utility
 }
 
 #endif
-*/

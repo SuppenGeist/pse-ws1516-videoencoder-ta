@@ -1,25 +1,17 @@
-/*
-#include <exception>
-#include <vector>
-using namespace std;
-
 #ifndef __Yuv411FileReader_h__
 #define __Yuv411FileReader_h__
 
-#include "Video.h"
-#include "Compression.h"
-#include "Yuv411Vector.h"
-#include "YuvFileReader.h"
+#include <vector>
 
-namespace GUI
-{
-	class Video;
-}
+#include <QColor>
+
+#include "YuvFileReader.h"
+#include "../model/Video.h"
+
 namespace Utility
 {
-	// enum Compression;
-	class Yuv411Vector;
-	// class YuvFileReader;
+    enum class Compression;
+    class Yuv411Vector;
 	class Yuv411FileReader;
 }
 
@@ -27,8 +19,8 @@ namespace Utility
 {
 	/**
 	 * This class is able to read Yuv 411 files.
-
-	class Yuv411FileReader: public Utility::YuvFileReader
+     */
+    class Yuv411FileReader: public YuvFileReader
 	{
 		private: int position;
 		private: Utility::Compression compression;
@@ -42,16 +34,14 @@ namespace Utility
 		/// <param name="compression">The compression of the file.</param>
 		public: Yuv411FileReader(QString filename, int width, int height, Utility::Compression compression);
 
-		public: unique_ptr<GUI::Video> read();
+    public: std::unique_ptr<Model::Video> read();
 
 		/// <summary>
 		/// Converts a Yuv411Vector to the corresponding Rgb88 pixels.
 		/// </summary>
 		/// <param name="vector">The vector to convert.</param>
 		/// <returns>The computed rgb888 pixels.</returns>
-		public: static std::vector<QRgb> yuv411ToRgb888(Yuv11Vector vector) {
-			throw "Not yet implemented";
-		}
+        public: static std::vector<QRgb> yuv411ToRgb888(Yuv411Vector vector);
 
 		/// <summary>
 		/// Parses the next frame.
@@ -74,4 +64,3 @@ namespace Utility
 }
 
 #endif
-*/
