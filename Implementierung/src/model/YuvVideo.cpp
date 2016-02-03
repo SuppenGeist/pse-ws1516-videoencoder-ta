@@ -61,16 +61,16 @@ void Model::YuvVideo::loadVideo() {
 
     switch(yuvType_) {
     case Utility::YuvType::YUV411:
-        fileReader=std::make_unique<Utility::Yuv411FileReader>(path_,width_,height_,compression_);
+        fileReader=std::make_unique<Utility::Yuv411FileReader>(path_,width_,height_,fps_,compression_);
         break;
     case Utility::YuvType::YUV420:
-        fileReader=std::make_unique<Utility::Yuv420FileReader>(path_,width_,height_);
+        fileReader=std::make_unique<Utility::Yuv420FileReader>(path_,width_,height_,fps_);
         break;
     case Utility::YuvType::YUV422:
-        fileReader=std::make_unique<Utility::Yuv422FileReader>(path_,width_,height_,compression_);
+        fileReader=std::make_unique<Utility::Yuv422FileReader>(path_,width_,height_,fps_,compression_);
         break;
     case Utility::YuvType::YUV444:
-        fileReader=std::make_unique<Utility::Yuv444FileReader>(path_,width_,height_,compression_);
+        fileReader=std::make_unique<Utility::Yuv444FileReader>(path_,width_,height_,fps_,compression_);
         break;
     default:
         throw std::logic_error("Should not get here");

@@ -22,7 +22,7 @@ namespace Utility
          * @param width The width of the video.
          * @param height The height of the video.
          */
-        YuvFileReader(QString filename, int width, int height);
+        YuvFileReader(QString filename, int width, int height,int fps);
 
         /**
          * @brief read Reads the file in.
@@ -41,6 +41,7 @@ namespace Utility
         QByteArray                      binaryData_;
         int                             width_;
         int                             height_;
+        int                             fps_;
         std::unique_ptr<Model::Video>   video;
         QFile                           file_;
 	};

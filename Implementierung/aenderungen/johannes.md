@@ -295,3 +295,7 @@ Fuege parameter compression in kontruktor hinzu.
 Fuege getter fuer width, height und fps hinzu.
 <br><b>Grund:</b> Besseres interface fue user.
 <hr>
+##YuvFileReader
+Fuege parameter fps als Konstruktorparameter hinzu und alle implikationen.
+<br><b>Grund:</b> Fps wird benoetigt um das video zu instaiieren.
+<hr>

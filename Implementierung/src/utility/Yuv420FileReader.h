@@ -29,7 +29,7 @@ namespace Utility
 		/// <param name="filename">Absolute path to the file to load.</param>
 		/// <param name="width">Width of the video.</param>
 		/// <param name="height">Height of the video.</param>
-        public: Yuv420FileReader(QString filename, int width, int height);
+        public: Yuv420FileReader(QString filename, int width, int height,int fps);
 
     public: std::unique_ptr<Model::Video> read();
 

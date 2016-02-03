@@ -11,7 +11,7 @@
 #include "YuvFileReader.h"
 #include "../model/Video.h"
 
-Utility::Yuv411FileReader::Yuv411FileReader(QString filename, int width, int height, Compression compression):YuvFileReader(filename,width,height) {
+Utility::Yuv411FileReader::Yuv411FileReader(QString filename, int width, int height, int fps,Compression compression):YuvFileReader(filename,width,height,fps) {
 }
 
 std::unique_ptr<Model::Video> Utility::Yuv411FileReader::read() {

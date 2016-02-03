@@ -32,7 +32,7 @@ namespace Utility
 		/// <param name="width">Width of the video.</param>
 		/// <param name="height">Height of the video.</param>
 		/// <param name="compression">The compression of the file.</param>
-		public: Yuv411FileReader(QString filename, int width, int height, Utility::Compression compression);
+        public: Yuv411FileReader(QString filename, int width, int height,int fps, Utility::Compression compression);
 
     public: std::unique_ptr<Model::Video> read();
 

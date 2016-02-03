@@ -9,7 +9,7 @@
 #include "YuvFileReader.h"
 #include "../model/Video.h"
 
-Utility::Yuv420FileReader::Yuv420FileReader(QString filename, int width, int height):YuvFileReader(filename,width,height) {
+Utility::Yuv420FileReader::Yuv420FileReader(QString filename, int width, int height, int fps):YuvFileReader(filename,width,height,fps) {
 
 }
 

@@ -1,15 +1,14 @@
-
-#include <exception>
-using namespace std;
-
 #ifndef __Yuv444FileReader_h__
 #define __Yuv444FileReader_h__
 
-#include "../model/Video.h"
-#include "Compression.h"
-#include "Yuv444Vector.h"
-#include "YuvFileReader.h"
+#include <memory>
+
+#include <QImage>
+#include <QString>
 #include <QColor>
+
+#include "YuvFileReader.h"
+#include "../model/Video.h"
 
 namespace Model
 {
@@ -17,10 +16,8 @@ namespace Model
 }
 namespace Utility
 {
-	// enum Compression;
-	class Yuv444Vector;
-	// class YuvFileReader;
-	class Yuv444FileReader;
+    enum class Compression;
+    class Yuv444Vector;
 }
 
 namespace Utility
@@ -28,54 +25,54 @@ namespace Utility
 
      /// This class can read Yuv 444 files.
 
-	class Yuv444FileReader: public Utility::YuvFileReader
+    class Yuv444FileReader: public YuvFileReader
 	{
-		private: int position;
-		private: Utility::Compression compression;
 
-		/// <summary>
-		/// Constructor.
-		/// </summary>
-		/// <param name="filename">Absolute path to the file to load.</param>
-		/// <param name="width">Width of the video.</param>
-		/// <param name="height">Height of the video.</param>
-		/// <param name="compression">Compression of the file.</param>
-		public: Yuv444FileReader(QString filename, int width, int height, Utility::Compression compression);
 
-        public: unique_ptr<Model::Video> read();
+        public:
+        /**
+         * @brief Yuv444FileReader Constructor.
+         * @param filename Absolute path to the file to load.
+         * @param width Width of the video.
+         * @param height Height of the video.
+         * @param compression Compression of the file.
+         */
+        Yuv444FileReader(QString filename, int width, int height, int fps, Compression compression);
 
-		/// <summary>
-		/// Converts a Yuv444Vector to a Rgb888 pixel.
-		/// </summary>
-		/// <param name="vector">The vector to convert.</param>
-		/// <returns>The computed pixel.</returns>
-		public: static QRgb yuv444ToRgb888(Utility::Yuv444Vector vector) {
-            uint8_t c = vector.getY() - 16;
-            uint8_t d = vector.getU() - 128;
-            uint8_t e = vector.getV() - 128;
-            uint8_t r = clamp((298 * c + 409 * e + 128) >> 8);
-            uint8_t g = clamp((298 * c - 100 * d - 208 * e + 128) >> 8);
-            uint8_t b = clamp ((298 * c + 516 * d + 128) >> 8);
-            return qRgb(r,g,b);
-		}
+        /**
+         * @brief read Reads the file.
+         * @return
+         */
+        std::unique_ptr<Model::Video> read();
 
-		/// <summary>
-		/// Parses the next frame.
-		/// </summary>
-		/// <returns>The parsed frame.</returns>
-		private: unique_ptr<QImage> parseNextFrame();
+        /**
+         * @brief yuv444ToRgb888 Converts a Yuv444Vector to a Rgb888 pixel.
+         * @param vector The vector to convert.
+         * @return The computed pixel.
+         */
+        static QRgb Yuv444ToRgb888(Yuv444Vector vector);
 
-		/// <summary>
-		/// Reads the next vector from a packed file.
-		/// </summary>
-		/// <returns>The new vector.</returns>
-		private: Utility::Yuv444Vector readNextVectorPacked();
+    private:
+        int         position_;
+        Compression compression_;
 
-		/// <summary>
-		/// Reads the next vector from a planar file.
-		/// </summary>
-		/// <returns>The new vector.</returns>
-		private: Utility::Yuv444Vector readNextVectorPlanar();
+        /**
+         * @brief parseNextFrame Parses the next frame.
+         * @return The parsed frame.
+         */
+        std::unique_ptr<QImage> parseNextFrame();
+
+        /**
+         * @brief readNextVectorPacked Reads the next vector from a packed file.
+         * @return The new vector.
+         */
+        Yuv444Vector readNextVectorPacked();
+
+        /**
+         * @brief readNextVectorPlanar Reads the next vector from a planar file.
+         * @return The new vector.
+         */
+        Yuv444Vector readNextVectorPlanar();
 	};
 }
 

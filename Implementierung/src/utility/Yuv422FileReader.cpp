@@ -10,7 +10,7 @@
 #include "Yuv422Vector.h"
 #include "YuvFileReader.h"
 
-Utility::Yuv422FileReader::Yuv422FileReader(QString filename, int width, int height, Compression compression):YuvFileReader(filename,width,height) {
+Utility::Yuv422FileReader::Yuv422FileReader(QString filename, int width, int height,int fps, Compression compression):YuvFileReader(filename,width,height,fps) {
 }
 
 std::unique_ptr<Model::Video> Utility::Yuv422FileReader::read() {
