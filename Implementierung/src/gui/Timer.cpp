@@ -4,6 +4,7 @@
 
 #include <QTimer>
 #include <QObject>
+#include <QDebug>
 
 #include "VideoPlayer.h"
 
@@ -16,7 +17,10 @@ void GUI::Timer::setFps(int fps) noexcept {
 		return;
 	fps_ = fps;
 
+    if(isPlaying()) {
+    pause();
 	start();
+    }
 }
 
 void GUI::Timer::setSpeed(float speed) noexcept {
@@ -24,7 +28,10 @@ void GUI::Timer::setSpeed(float speed) noexcept {
 		return;
 	speed_ = speed;
 
-	start();
+    if(isPlaying()) {
+        pause();
+        start();
+    }
 }
 
 float GUI::Timer::getSpeed() const noexcept {
@@ -41,12 +48,12 @@ void GUI::Timer::pause() {
 
 void GUI::Timer::start() {
 	if(isPlaying())
-		return;
+        return;
 	timer_.start(((double)1000/fps_)*speed_);
 }
 
 void GUI::Timer::addPlayer(VideoPlayer& player) {
-	if(std::find(players_.begin(), players_.end(), &player) == players_.end())
+    if(std::find(players_.begin(), players_.end(), &player) != players_.end())
 		return;
 	players_.push_back(&player);
 }
@@ -62,7 +69,7 @@ void GUI::Timer::update() {
 }
 
 void GUI::Timer::removePlayer(VideoPlayer& player) {
-	std::size_t pos = std::find(players_.begin(), players_.end(), &player) - players_.begin();
+    std::size_t pos = std::find(players_.begin(), players_.end(), &player) - players_.begin();
 	if(pos<players_.size()) {
 		players_.erase(players_.begin()+pos);
 	}

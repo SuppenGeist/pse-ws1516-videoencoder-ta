@@ -35,7 +35,8 @@ GUI::FilterTab::FilterTab(QWidget* parent):QFrame(parent) {
     player_=std::make_unique<VideoPlayer>();
     player_->addView(*frameView_);
     player_->setTimer(std::make_shared<Timer>());
-    playerPanel_->addVideoPlayer(*player_);
+    playerPanel_->setMasterVideoPlayer(*player_);
+    player_->setMasterControlPanel(*playerPanel_);
 }
 
 

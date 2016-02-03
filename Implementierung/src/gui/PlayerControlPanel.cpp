@@ -29,12 +29,59 @@ void GUI::PlayerControlPanel::updateUi() {
 	else {
 		if(players_.size()>0)
 			player=players_[0];
-		else
+        else {
+            button_nextFrame_->setEnabled(false);
+            button_pause_->setEnabled(false);
+            button_play_->setEnabled(false);
+            button_previousFrame_->setEnabled(false);
+            button_stop_->setEnabled(false);
+            slider_timeline_->setRange(0,0);
 			return;
+        }
 	}
 
-	slider_timeline_->setMaximum(player->getNumberOfFrames());
+    slider_timeline_->setRange(0,player->getNumberOfFrames()-1);
 	slider_timeline_->setValue(player->getPosition());
+
+
+    if(player->getPosition()==0) {
+        button_previousFrame_->setEnabled(false);
+        if(player->getNumberOfFrames()>1) {
+            button_nextFrame_->setEnabled(true);
+        }
+        else {
+            button_nextFrame_->setEnabled(false);
+        }
+    }
+    else if(player->getPosition()==player->getNumberOfFrames()-1) {
+        button_nextFrame_->setEnabled(false);
+        button_previousFrame_->setEnabled(true);
+    }
+    else {
+        button_nextFrame_->setEnabled(true);
+        button_previousFrame_->setEnabled(true);
+    }
+
+    if(player->isPlaying()) {
+        button_play_->setEnabled(false);
+        button_pause_->setEnabled(true);
+    }
+    else
+    {
+        if(player->getNumberOfFrames()>1&&player->getPosition()!=player->getNumberOfFrames()-1) {
+            button_play_->setEnabled(true);
+        }
+        else {
+            button_play_->setEnabled(false);
+        }
+        button_pause_->setEnabled(false);
+        if(player->isStopped()) {
+            button_stop_->setEnabled(false);
+        }
+        else {
+            button_stop_->setEnabled(true);
+        }
+    }
 }
 
 void GUI::PlayerControlPanel::createUi() {
@@ -144,28 +191,28 @@ void GUI::PlayerControlPanel::changeSpeed(int index) {
 	float newSpeed=1.0;
 
 	switch(index) {
-	case 0:
+    case 7:
 		newSpeed=0.25;
 		break;
-	case 1:
+    case 6:
 		newSpeed=0.50;
 		break;
-	case 2:
+    case 5:
 		newSpeed=0.75;
 		break;
-	case 3:
+    case 4:
 		newSpeed=1.0;
 		break;
-	case 4:
+    case 3:
 		newSpeed=1.25;
 		break;
-	case 5:
+    case 2:
 		newSpeed=1.5;
 		break;
-	case 6:
+    case 1:
 		newSpeed=1.75;
 		break;
-	case 7:
+    case 0:
 		newSpeed=2.0;
 		break;
 	default:
