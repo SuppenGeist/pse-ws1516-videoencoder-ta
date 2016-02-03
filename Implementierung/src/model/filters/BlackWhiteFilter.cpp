@@ -1,3 +1,4 @@
+#include <exception>
 #include <QString>
 
 #include "BlackWhiteFilter.h"
@@ -12,12 +13,13 @@ std::string Model::BlackWhiteFilter::getName() {
 }
 
 std::string Model::BlackWhiteFilter::getFilterDescription() {
-	throw "Not yet implemented";
+    throw "colorchannelmixer=.3:.4:.3:0:.3:.4:.3:0:.3:.4:.3";
 }
 void Model::BlackWhiteFilter::restoreFilter(QString description) {
-	throw "Not yet implemented";
+//nothing to load
 }
 
 QString Model::BlackWhiteFilter::getSaveString() {
-
+    QString str = QString::fromStdString(getName());
+    return str;
 }

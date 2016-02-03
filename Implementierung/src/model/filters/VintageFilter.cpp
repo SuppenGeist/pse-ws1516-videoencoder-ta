@@ -17,9 +17,10 @@ std::string Model::VintageFilter::getFilterDescription() {
 }
 
 void Model::VintageFilter::restoreFilter(QString description) {
-//nothing to save
+//nothing to load
 }
 
 QString Model::VintageFilter::getSaveString() {
-//nothing to save
+    QString str = QString::fromStdString(getName());
+    return str;
 }

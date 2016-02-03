@@ -8,11 +8,11 @@ Model::ScaleFilter::ScaleFilter() {
 }
 
 std::string Model::ScaleFilter::getFilterDescription() {
-	std::string str = std::string(getName());
+    std::string str = std::string("scale");
 	str+="=";
-    str+=std::to_string(getWidth());
+    str+=std::to_string(width);
 	str+=":";
-    str+=std::to_string(getHeight());
+    str+=std::to_string(height);
 	return str;
 }
 
@@ -63,12 +63,12 @@ void Model::ScaleFilter::restoreFilter(QString description) {
 QString Model::ScaleFilter::getSaveString() {
 	QString str = QString::fromStdString(getName());
 	str+=";";
-	str+=QString::number(getWidth());
+    str+=QString::number(width);
 	str+=";";
-	str+=QString::number(getHeight());
+    str+=QString::number(height);
 	str+=";";
-	str+=QString::number(getKeepRatio());
+    str+=QString::number(keepRatio);
 	str+=";";
-	str+=QString::number(getRatio());
+    str+=QString::number(ratio);
 	return str;
 }

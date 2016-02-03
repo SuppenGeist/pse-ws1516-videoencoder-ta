@@ -1,6 +1,6 @@
 #include <exception>
-#include <string>
-
+#include <QString>
+#include <QStringList>
 #include "BlurFilter.h"
 #include "Filter.h"
 
@@ -24,7 +24,15 @@ void Model::BlurFilter::setIntensity(int intensity) {
 }
 
 std::string Model::BlurFilter::getFilterDescription() {
-	throw "Not yet implemented";
+    std::string str = std::string("");
+    if(preserveEdges){
+    str += "smartblur";
+    } else{
+    str += "boxblur";
+    }
+    str += "=";
+    str+=std::to_string(intensity);
+    return str;
 }
 
 std::string Model::BlurFilter::getName() {
@@ -32,9 +40,16 @@ std::string Model::BlurFilter::getName() {
 }
 
 void Model::BlurFilter::restoreFilter(QString description) {
-	throw "Not yet implemented";
+    QStringList list  = description.split(";");
+    setPreserveEdges(list[1].QString::toInt());
+    setIntensity(list[2].QString::toInt());
 }
 
 QString Model::BlurFilter::getSaveString() {
-
+    QString str = QString::fromStdString(getName());
+    str+=";";
+    str+=QString::number(preserveEdges);
+    str+=";";
+    str+=QString::number(intensity);
+    return str;
 }
