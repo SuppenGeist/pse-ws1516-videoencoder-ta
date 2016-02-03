@@ -5,7 +5,7 @@ using namespace std;
 #define __VideoLoader_h__
 
 #include "../model/AVVideo.h"
-
+#include <QString>
 extern "C" {
 #include <libavcodec/avcodec.h>
 }
