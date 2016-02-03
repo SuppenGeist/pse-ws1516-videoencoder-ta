@@ -8,3 +8,7 @@ added getters to make attributes accessible
 added constructor
 
 
+##YUV411Vector
+added setters and getters 
+made attributes private
+added constructors
