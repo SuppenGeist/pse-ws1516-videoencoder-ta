@@ -17,30 +17,31 @@ Utility::Yuv444FileReader::Yuv444FileReader(QString filename, int width, int hei
 
 std::unique_ptr<Model::Video> Utility::Yuv444FileReader::read() {
 
+    video = std::make_unique<Model::Video>(fps_,width_,height_);
+    position_ = 0;
+    while (position_ <= binaryData_.size()){
+        video->appendFrame(parseNextFrame());
+    }
+    //return video;
 }
 
 
 std::unique_ptr<QImage> Utility::Yuv444FileReader::parseNextFrame() {
-    /*throw "Not yet implemented";
-    QImage image(width_, height_, QImage::Format_RGB888);
+    std::unique_ptr<QImage> image(new QImage(width_, height_, QImage::Format_RGB888));
     QRgb rgb;
     for (int i = 0; i < width_; i++){
-        rgb = yuv444ToRgb888(readNextVectorPacked());
+        rgb = Yuv444ToRgb888(readNextVectorPacked());
         for (int j = 0; j < height_; j++){
-        image.setPixel(i,j,rgb);
-
+        image->setPixel(i,j,rgb);
         }
-    }*/
+    }
+    return image;
 }
 
 Utility::Yuv444Vector Utility::Yuv444FileReader::readNextVectorPacked() {
-    /*char *temp = new char[3];
-    dataStream.readRawData(temp, 3);
-    buffer.append(temp, 3);
-    delete [] temp;
-    Yuv444Vector vect(buffer[position],buffer[position+1],buffer[position+2]);
-    position += 3;
-    return vect;*/
+    Yuv444Vector vector(binaryData_[position_],binaryData_[position_+1],binaryData_[position_+2]);
+    position_ += 3;
+    return vector;
 }
 
 QRgb Utility::Yuv444FileReader::Yuv444ToRgb888(Yuv444Vector vector) {
