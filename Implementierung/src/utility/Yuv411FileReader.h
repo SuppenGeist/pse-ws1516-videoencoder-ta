@@ -47,7 +47,7 @@ namespace Utility
 		/// Parses the next frame.
 		/// </summary>
 		/// <returns>The parsed frame.</returns>
-		private: unique_ptr<QImage> parseNextFrame();
+    private: std::unique_ptr<QImage> parseNextFrame();
 
 		/// <summary>
 		/// Reads the next vector from a packed file.

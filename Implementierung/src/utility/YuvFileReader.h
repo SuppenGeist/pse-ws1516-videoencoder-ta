@@ -1,62 +1,48 @@
-
-#include <exception>
-#include <QFile>
-#include <QDataStream>
-#include <memory>
-using namespace std;
-
 #ifndef __YuvFileReader_h__
 #define __YuvFileReader_h__
 
-#include "../model/Video.h"
+#include <QFile>
+#include <QByteArray>
 
-namespace Model
-{
-	class Video;
-}
-namespace Utility
-{
-	class YuvFileReader;
-}
+#include <memory>
+
+#include "../model/Video.h"
 
 namespace Utility
 {
 
      // This is the base class for all different yuv file readers.
-
     class YuvFileReader
-	{
-    protected: unique_ptr<QByteArray> binaryData;
-    protected: int width;
-    protected: int height;
-    protected: unique_ptr<Model::Video> video;
-    protected: QFile file;
-    protected: QDataStream dataStream;
-    protected: QByteArray buffer;
+    {
 
+        public:
+        /**
+         * @brief YuvFileReader Constructor.
+         * @param filename The absolute path to the file to load.
+         * @param width The width of the video.
+         * @param height The height of the video.
+         */
+        YuvFileReader(QString filename, int width, int height);
 
-		/// <summary>
-		/// Constructor.
-		/// </summary>
-		/// <param name="filename">The absolute path to the file to load.</param>
-		/// <param name="width">The width of the video.</param>
-		/// <param name="height">The height of the video.</param>
-		public: YuvFileReader(QString filename, int width, int height);
+        /**
+         * @brief read Reads the file in.
+         * @return The complete video.
+         */
+        virtual std::unique_ptr<Model::Video> read() = 0;
 
-		/// <summary>
-		/// Reads the file in.
-		/// </summary>
-		/// <returns>The complete video.</returns>
-        public: virtual unique_ptr<Model::Video> read() = 0;
+        /**
+         * @brief clamp Clamps the given value to the range [0,255].
+         * @param value <param name="value">The value to clamp.</param>
+         * @return The clamped value.
+         */
+        static int clamp(int value);
 
-		/// <summary>
-		/// Clamps the given value to the range [0,255].
-		/// </summary>
-		/// <param name="value">The value to clamp.</param>
-		/// <returns>The clamped value.</returns>
-		public: static int clamp(int value) {
-            return value < 0 ? 0 : value > 255 ? 255 : value;
-		}
+    protected:
+        QByteArray                      binaryData_;
+        int                             width_;
+        int                             height_;
+        std::unique_ptr<Model::Video>   video;
+        QFile                           file_;
 	};
 }
 
