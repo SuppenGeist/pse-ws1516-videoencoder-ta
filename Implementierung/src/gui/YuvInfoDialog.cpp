@@ -153,6 +153,7 @@ void GUI::YuvInfoDialog::createUi() {
 
 	if(comboBox_pixelSheme_->currentText()=="420") {
 		comboBox_compression_->setEnabled(false);
+        comboBox_compression_->setCurrentIndex(1);
 	}
 
 	setWindowTitle(tr("Fileinfo for the YUV video"));

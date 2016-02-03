@@ -101,6 +101,8 @@ void GUI::VideoPlayer::setPosition(std::size_t position) {
 	for(auto view:views_) {
 		view->setFrame(*(video_->getFrame(position_)));
 	}
+    if(masterPanel_)
+        masterPanel_->updateUi();
 }
 
 std::size_t GUI::VideoPlayer::getPosition() const noexcept {
@@ -122,7 +124,11 @@ bool GUI::VideoPlayer::isStopped() const {
 }
 
 void GUI::VideoPlayer::reset() {
-	throw "Not yet implemented";
+    stop();
+    video_=nullptr;
+    for(auto view:views_) {
+        view->clear();
+    }
 }
 
 std::size_t GUI::VideoPlayer::getNumberOfFrames() const {

@@ -24,10 +24,17 @@
 #include "YuvInfoDialog.h"
 #include "../undo_framework/UndoStack.h"
 #include "../undo_framework/LoadFilterVideo.h"
+#include "VideoPlayer.h"
+#include "Timer.h"
 
 GUI::FilterTab::FilterTab(QWidget* parent):QFrame(parent) {
     createUi();
     connectActions();
+
+    player_=std::make_unique<VideoPlayer>();
+    player_->addView(*frameView_);
+    player_->setTimer(std::make_shared<Timer>());
+    playerPanel_->addVideoPlayer(*player_);
 }
 
 
@@ -257,6 +264,7 @@ void GUI::FilterTab::loadConf() {
 }
 
 void GUI::FilterTab::reset() {
+    player_->reset();
 }
 
 void GUI::FilterTab::save() {
@@ -293,6 +301,7 @@ void GUI::FilterTab::setFilterList(Model::FilterList list) {
 void GUI::FilterTab::setRawVideo(std::unique_ptr<Model::YuvVideo> video) {
     reset();
     rawVideo_=std::move(video);
+    player_->setVideo(rawVideo_->getVideo());
 }
 
 std::unique_ptr<Model::YuvVideo> GUI::FilterTab::releaseVideo()

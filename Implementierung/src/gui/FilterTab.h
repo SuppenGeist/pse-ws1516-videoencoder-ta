@@ -12,9 +12,9 @@
 #include <QTabWidget>
 
 #include "../model/YuvVideo.h"
+#include "VideoPlayer.h"
 
 namespace GUI {
-class VideoPlayer;
 class PreviewControlPanel;
 class FrameView;
 class PlayerControlPanel;
@@ -182,7 +182,7 @@ class FilterTab : public QFrame {
     QStringListModel*                   model_list_;
     std::vector<FilterContainerTab*>    filterContainerTab_;
 
-    VideoPlayer*                        player_;
+    std::unique_ptr<VideoPlayer>        player_;
     PreviewControlPanel*                previewPanel_;
     FrameView*                          frameView_;
     PlayerControlPanel*                 playerPanel_;
