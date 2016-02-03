@@ -6,7 +6,6 @@
 #include <QImage>
 
 #include "../model/Video.h"
-#include "Yuv444Vector.h"
 #include "YuvFileReader.h"
 
 namespace Utility
@@ -20,30 +19,38 @@ namespace Utility
 	 * This class can read Yuv 420 files.
      */
     class Yuv420FileReader: public YuvFileReader
-	{
-		private: int position;
+    {
+        public:
+        /**
+         * @brief Yuv420FileReader Constructor.
+         * @param filename Absolute path to the file to load.
+         * @param width Width of the video.
+         * @param height Height of the video.
+         * @param fps
+         */
+        Yuv420FileReader(QString filename, int width, int height,int fps);
 
-		/// <summary>
-		/// Constructor.
-		/// </summary>
-		/// <param name="filename">Absolute path to the file to load.</param>
-		/// <param name="width">Width of the video.</param>
-		/// <param name="height">Height of the video.</param>
-        public: Yuv420FileReader(QString filename, int width, int height,int fps);
+        /**
+     * @brief read Reads the file in.
+     * @return
+     */
+    std::unique_ptr<Model::Video> read();
 
-    public: std::unique_ptr<Model::Video> read();
+    private:
 
-		/// <summary>
-		/// Parses the next frame.
-		/// </summary>
-		/// <returns>The parsed frame.</returns>
-		private: std::unique_ptr<QImage> parseNextFrame();
+        int position_;
+    /**
+     * @brief parseNextFrame Parses the next frame.
+     * @return The parsed frame.
+     */
+    std::unique_ptr<QImage> parseNextFrame();
 
-		/// <summary>
-		/// Reads the next Yuv 444 vector.
-		/// </summary>
-		/// <returns>The new vector.</returns>
-		private: Utility::Yuv444Vector readNextVector();
+        /**
+         * @brief readNextVector Reads the next Yuv 444 vector.
+         * @param success
+         * @return The new vector.
+         */
+        Yuv444Vector readNextVector(bool& success);
 	};
 }
 

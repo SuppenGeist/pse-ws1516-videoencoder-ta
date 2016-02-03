@@ -303,3 +303,7 @@ Fuege parameter fps als Konstruktorparameter hinzu und alle implikationen.
 Fuege bool parameter zu readNextVectorPacked und readNextVectorPlanar hinzu.
 <br><b>Grund:</b> Rueckmeldung, ob es einen naechsten vector gab.
 <hr>
+#Yuv420FileReader
+Fuege bool parameter zu readNextVector hinzu.
+<br><b>Grund:</b> Rueckmeldung, ob es einen naechsten vector gab.
+<hr>

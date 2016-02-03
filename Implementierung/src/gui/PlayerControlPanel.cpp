@@ -65,6 +65,7 @@ void GUI::PlayerControlPanel::updateUi() {
     if(player->isPlaying()) {
         button_play_->setEnabled(false);
         button_pause_->setEnabled(true);
+        button_stop_->setEnabled(true);
     }
     else
     {
@@ -166,11 +167,14 @@ void GUI::PlayerControlPanel::stop() {
 }
 
 void GUI::PlayerControlPanel::nextFrame() {
-	if(masterPlayer_)
+    if(masterPlayer_) {
 		masterPlayer_->nextFrame();
+        masterPlayer_->pause();
+    }
 
 	for(auto player:players_) {
 		player->nextFrame();
+        player->pause();
 	}
 
 	updateUi();
@@ -182,6 +186,7 @@ void GUI::PlayerControlPanel::previousFrame() {
 
 	for(auto player:players_) {
 		player->previousFrame();
+        player->pause();
 	}
 
 	updateUi();
