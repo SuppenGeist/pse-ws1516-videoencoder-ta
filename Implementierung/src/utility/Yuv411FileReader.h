@@ -32,39 +32,36 @@ class Yuv411FileReader: public YuvFileReader {
     Yuv411FileReader(QString filename, int width, int height, Utility::Compression compression);
 
 	/**
-	 * @brief read Reads the file in
-	 * @return
-	 */
-    void read(Model::Video* target) override;
-
-	/**
 	 * @brief yuv411ToRgb888 Converts a Yuv411Vector to the corresponding Rgb88 pixels.
 	 * @param vector The vector to convert.
 	 * @return The computed rgb888 pixels.
 	 */
 	static std::vector<QRgb> Yuv411ToRgb888(Yuv411Vector vector);
 
+protected:
+    /**
+     * @brief parseNextFrame Parses the next frame.
+     * @return The parsed frame.
+     */
+    std::unique_ptr<QImage> parseNextFrame();
+
   private:
 	int         position_;
 	Compression compression_;
 
-	/**
-	 * @brief parseNextFrame Parses the next frame.
-	 * @return The parsed frame.
-	 */
-	std::unique_ptr<QImage> parseNextFrame();
+
 
 	/**
 	 * @brief readNextVectorPacked Reads the next vector from a packed file.
 	 * @return The new vector.
 	 */
-	Yuv411Vector readNextVectorPacked(bool& success);
+    Yuv411Vector readNextVectorPacked();
 
 	/**
 	 * @brief readNextVectorPlanar Reads the next vector from a planar file.
 	 * @return The new vector.
 	 */
-	Yuv411Vector readNextVectorPlanar(bool& success);
+    Yuv411Vector readNextVectorPlanar();
 };
 }
 

@@ -1,8 +1,10 @@
 #ifndef __YuvFileReader_h__
 #define __YuvFileReader_h__
 
+#include <memory>
+
 #include <QFile>
-#include <QByteArray>
+#include <QDataStream>
 
 #include "../model/Video.h"
 
@@ -18,13 +20,16 @@ class YuvFileReader {
 	 * @param width The width of the video.
 	 * @param height The height of the video.
 	 */
-    YuvFileReader(QString filename, int width, int height);
+    YuvFileReader(QString filename, int width, int height,int frameSize);
 
 	/**
 	 * @brief read Reads the file in.
 	 * @return The complete video.
 	 */
-    virtual void read(Model::Video* target) = 0;
+    void read(Model::Video* target);
+
+protected:
+    virtual std::unique_ptr<QImage> parseNextFrame()=0;
 
 	/**
 	 * @brief clamp Clamps the given value to the range [0,255].
@@ -34,11 +39,13 @@ class YuvFileReader {
 	static int clamp(int value);
 
   protected:
-    QByteArray      binaryData_;
-    int             width_;
-    int             height_;
-    Model::Video*   video_;
-    QFile           file_;
+    unsigned char*   binaryData_;
+    QDataStream                    dataStream_;
+    int                            width_;
+    int                            height_;
+    Model::Video*                  video_;
+    QFile                          file_;
+    int                            frameSize_;
 };
 }
 

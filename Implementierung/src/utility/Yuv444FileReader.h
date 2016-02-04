@@ -35,11 +35,6 @@ class Yuv444FileReader: public YuvFileReader {
 	 */
     Yuv444FileReader(QString filename, int width, int height, Compression compression);
 
-	/**
-	 * @brief read Reads the file.
-	 * @return
-	 */
-    void read(Model::Video* target);
 
 	/**
 	 * @brief yuv444ToRgb888 Converts a Yuv444Vector to a Rgb888 pixel.
@@ -48,27 +43,30 @@ class Yuv444FileReader: public YuvFileReader {
 	 */
 	static QRgb Yuv444ToRgb888(Yuv444Vector &vector);
 
+protected:
+    /**
+     * @brief parseNextFrame Parses the next frame.
+     * @return The parsed frame.
+     */
+    std::unique_ptr<QImage> parseNextFrame();
+
   private:
 	int         position_;
 	Compression compression_;
 
-	/**
-	 * @brief parseNextFrame Parses the next frame.
-	 * @return The parsed frame.
-	 */
-	std::unique_ptr<QImage> parseNextFrame();
+
 
 	/**
 	 * @brief readNextVectorPacked Reads the next vector from a packed file.
 	 * @return The new vector.
 	 */
-	Yuv444Vector readNextVectorPacked(bool& success);
+    Yuv444Vector readNextVectorPacked();
 
 	/**
 	 * @brief readNextVectorPlanar Reads the next vector from a planar file.
 	 * @return The new vector.
 	 */
-	Yuv444Vector readNextVectorPlanar(bool& success);
+    Yuv444Vector readNextVectorPlanar();
 };
 }
 

@@ -27,27 +27,24 @@ class Yuv420FileReader: public YuvFileReader {
 	 */
     Yuv420FileReader(QString filename, int width, int height);
 
-	/**
-	* @brief read Reads the file in.
-	* @return
-	*/
-    void read(Model::Video* target) override;
+protected:
+    /**
+     * @brief parseNextFrame Parses the next frame.
+     * @return The parsed frame.
+     */
+    std::unique_ptr<QImage> parseNextFrame();
 
   private:
 
 	int position_;
-	/**
-	 * @brief parseNextFrame Parses the next frame.
-	 * @return The parsed frame.
-	 */
-	std::unique_ptr<QImage> parseNextFrame();
+
 
 	/**
 	 * @brief readNextVector Reads the next Yuv 444 vector.
 	 * @param success
 	 * @return The new vector.
 	 */
-	Yuv444Vector readNextVector(bool& success);
+    Yuv444Vector readNextVector();
 };
 }
 
