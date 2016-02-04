@@ -2,7 +2,6 @@
 #define __FilterTab_h__
 
 #include <memory>
-#include <thread>
 
 #include <QPushButton>
 #include <QWidget>

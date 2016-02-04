@@ -24,7 +24,9 @@ Model::YuvVideo::YuvVideo(QString path, Utility::YuvType type, Utility::Compress
 
 Model::YuvVideo::~YuvVideo()
 {
-
+    if(fileReader_.get()) {
+        fileReader_->stopReading();
+    }
 }
 
 QString Model::YuvVideo::getPath() {
@@ -63,6 +65,9 @@ Model::Video& Model::YuvVideo::getVideo() {
 
 
 void Model::YuvVideo::loadVideo() {
+    if(fileReader_.get()) {
+        fileReader_->stopReading();
+    }
 	switch(yuvType_) {
 	case Utility::YuvType::YUV411:
         fileReader_=std::make_unique<Utility::Yuv411FileReader>(path_,width_,height_,compression_);
@@ -80,9 +85,7 @@ void Model::YuvVideo::loadVideo() {
 		throw std::logic_error("Should not get here");
 	}
     displayVideo_=std::make_unique<Video>(fps_,width_,height_);
-    //fileLoader_.join();
-    fileLoader_=std::thread(&Utility::YuvFileReader::read,fileReader_.get(),displayVideo_.get());
-    fileLoader_.detach();
+    fileReader_->read(displayVideo_.get());
 }
 
 

@@ -2,6 +2,7 @@
 #define __YuvFileReader_h__
 
 #include <memory>
+#include <thread>
 
 #include <QFile>
 #include <QDataStream>
@@ -22,11 +23,17 @@ class YuvFileReader {
 	 */
     YuvFileReader(QString filename, int width, int height,int frameSize);
 
+    ~YuvFileReader();
+
 	/**
 	 * @brief read Reads the file in.
 	 * @return The complete video.
 	 */
     void read(Model::Video* target);
+
+    void stopReading();
+
+    bool isRunning();
 
 protected:
     virtual std::unique_ptr<QImage> parseNextFrame()=0;
@@ -46,6 +53,13 @@ protected:
     Model::Video*                  video_;
     QFile                          file_;
     int                            frameSize_;
+
+private:
+    bool                           isRunning_;
+    std::thread                     reader_;
+
+    void readP();
+
 };
 }
 

@@ -4,7 +4,6 @@
 #include <memory>
 
 #include <QString>
-#include <thread>
 
 #include "Video.h"
 #include "AVVideo.h"
@@ -92,8 +91,7 @@ class YuvVideo {
 	Utility::Compression                compression_;
 	std::unique_ptr<Model::Video>       displayVideo_;
 	std::unique_ptr<Model::AVVideo>     avVideo_;
-	Utility::YuvType                    yuvType_;
-    std::thread                         fileLoader_;
+    Utility::YuvType                    yuvType_;
     std::unique_ptr<Utility::YuvFileReader> fileReader_;
 
 	/**

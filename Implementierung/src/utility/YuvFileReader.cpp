@@ -1,15 +1,23 @@
 #include "YuvFileReader.h"
 
 #include <memory>
+#include <thread>
 
 #include <QFile>
 #include <QDataStream>
 
 #include "../model/Video.h"
 
-Utility::YuvFileReader::YuvFileReader(QString filename, int width, int height, int frameSize): file_(filename),width_(width),height_(height),frameSize_(frameSize) {
+Utility::YuvFileReader::YuvFileReader(QString filename, int width, int height, int frameSize): file_(filename),width_(width),height_(height),frameSize_(frameSize),isRunning_(false) {
 	file_.open(QIODevice::ReadOnly);
     dataStream_.setDevice(&file_);
+}
+
+Utility::YuvFileReader::~YuvFileReader()
+{
+    if(isRunning()) {
+        stopReading();
+    }
 }
 
 void Utility::YuvFileReader::read(Model::Video *target)
@@ -18,13 +26,18 @@ void Utility::YuvFileReader::read(Model::Video *target)
         return;
     video_=target;
 
-    std::unique_ptr<QImage> frame;
-    while(!dataStream_.atEnd()) {
-        binaryData_=new unsigned char[frameSize_];
-        dataStream_.readRawData(reinterpret_cast<char*>(binaryData_),frameSize_);
-        target->appendFrame(std::move(parseNextFrame()));
-        delete [] binaryData_;
-    }
+    reader_=std::thread(&YuvFileReader::readP,this);
+}
+
+void Utility::YuvFileReader::stopReading()
+{
+    isRunning_=false;
+    reader_.join();
+}
+
+bool Utility::YuvFileReader::isRunning()
+{
+    return isRunning_;
 }
 
 int Utility::YuvFileReader::clamp(int value) {
@@ -32,5 +45,18 @@ int Utility::YuvFileReader::clamp(int value) {
 		return 0;
 	if(value>255)
 		return 255;
-	return value;
+    return value;
+}
+
+void Utility::YuvFileReader::readP()
+{
+    std::unique_ptr<QImage> frame;
+    isRunning_=true;
+    while(!dataStream_.atEnd()&&isRunning_) {
+        binaryData_=new unsigned char[frameSize_];
+        dataStream_.readRawData(reinterpret_cast<char*>(binaryData_),frameSize_);
+        video_->appendFrame(std::move(parseNextFrame()));
+        delete [] binaryData_;
+    }
+    isRunning_=false;
 }
