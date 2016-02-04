@@ -33,13 +33,13 @@ class Yuv444FileReader: public YuvFileReader {
 	 * @param height Height of the video.
 	 * @param compression Compression of the file.
 	 */
-	Yuv444FileReader(QString filename, int width, int height, int fps, Compression compression);
+    Yuv444FileReader(QString filename, int width, int height, Compression compression);
 
 	/**
 	 * @brief read Reads the file.
 	 * @return
 	 */
-	std::unique_ptr<Model::Video> read();
+    void read(Model::Video* target);
 
 	/**
 	 * @brief yuv444ToRgb888 Converts a Yuv444Vector to a Rgb888 pixel.

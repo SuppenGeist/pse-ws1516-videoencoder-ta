@@ -296,8 +296,8 @@ Fuege getter fuer width, height und fps hinzu.
 <br><b>Grund:</b> Besseres interface fue user.
 <hr>
 ##YuvFileReader
-Fuege parameter fps als Konstruktorparameter hinzu und alle implikationen.
-<br><b>Grund:</b> Fps wird benoetigt um das video zu instaiieren.
+Mache read zu void rueckgabetyp und Video* als parameter. Und alle implikatrionen.
+<br><b>Grund:</b> Ermoegliche threadiing.
 <hr>
 #Yuv444FileReader
 Fuege bool parameter zu readNextVectorPacked und readNextVectorPlanar hinzu.

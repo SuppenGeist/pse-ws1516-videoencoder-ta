@@ -5,6 +5,7 @@
 #include <QPushButton>
 #include <QComboBox>
 #include <QSlider>
+#include <QTimer>
 
 #include "ControlPanel.h"
 
@@ -21,13 +22,6 @@ class PlayerControlPanel: public QFrame, public ControlPanel {
 	 */
 	PlayerControlPanel(QWidget* parent = 0);
 
-	/**
-	 * If no master player is set the first player of the player list is taken.
-	 * If this list is empty nothing happens.
-	 *
-	 * @brief updateUi Updates the ui of the control panel.
-	 */
-	void updateUi() override;
 
   private slots:
 	/**
@@ -67,6 +61,15 @@ class PlayerControlPanel: public QFrame, public ControlPanel {
 	 */
 	void changeTimeline(int value);
 
+public slots:
+    /**
+     * If no master player is set the first player of the player list is taken.
+     * If this list is empty nothing happens.
+     *
+     * @brief updateUi Updates the ui of the control panel.
+     */
+    void updateUi() override;
+
   private:
 	QPushButton*    button_play_;
 	QPushButton*    button_stop_;
@@ -75,6 +78,7 @@ class PlayerControlPanel: public QFrame, public ControlPanel {
 	QPushButton*    button_pause_;
 	QComboBox*      comboBox_speed_;
 	QSlider*        slider_timeline_;
+    QTimer          updater_;
 
 	/**
 	 * @brief createUi Creates the ui.

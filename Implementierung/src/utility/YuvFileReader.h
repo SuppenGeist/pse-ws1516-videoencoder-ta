@@ -4,8 +4,6 @@
 #include <QFile>
 #include <QByteArray>
 
-#include <memory>
-
 #include "../model/Video.h"
 
 namespace Utility {
@@ -20,13 +18,13 @@ class YuvFileReader {
 	 * @param width The width of the video.
 	 * @param height The height of the video.
 	 */
-	YuvFileReader(QString filename, int width, int height,int fps);
+    YuvFileReader(QString filename, int width, int height);
 
 	/**
 	 * @brief read Reads the file in.
 	 * @return The complete video.
 	 */
-	virtual std::unique_ptr<Model::Video> read() = 0;
+    virtual void read(Model::Video* target) = 0;
 
 	/**
 	 * @brief clamp Clamps the given value to the range [0,255].
@@ -36,12 +34,11 @@ class YuvFileReader {
 	static int clamp(int value);
 
   protected:
-	QByteArray                      binaryData_;
-	int                             width_;
-	int                             height_;
-	int                             fps_;
-	std::unique_ptr<Model::Video>   video_;
-	QFile                           file_;
+    QByteArray      binaryData_;
+    int             width_;
+    int             height_;
+    Model::Video*   video_;
+    QFile           file_;
 };
 }
 

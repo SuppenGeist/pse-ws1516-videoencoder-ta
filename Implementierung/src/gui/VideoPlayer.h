@@ -4,6 +4,9 @@
 #include <vector>
 #include <memory>
 
+#include <QTimer>
+#include <QObject>
+
 #include "Player.h"
 
 namespace GUI {
@@ -21,7 +24,8 @@ namespace GUI {
  * This class is a video player.
  * It provides a basic interface for handling playback of videos.
  */
-class VideoPlayer: public Player {
+class VideoPlayer: public QObject,public Player {
+    Q_OBJECT
   public:
 	/**
 	 * @brief VideoPlayer Constructor.
@@ -177,12 +181,18 @@ class VideoPlayer: public Player {
 	 */
 	std::size_t getNumberOfFrames() const override;
 
+private slots:
+
+    void updateViews();
+
   private:
 	std::size_t             position_;
 	Model::Video*           video_;
 	std::vector<FrameView*> views_;
 	std::shared_ptr<Timer>  timer_;
 	ControlPanel*           masterPanel_;
+    QTimer                  viewUpdater_;
+
 };
 }
 

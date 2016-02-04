@@ -4,6 +4,7 @@
 #include <vector>
 
 #include <QImage>
+#include <QDebug>
 #include <QColor>
 
 #include "../model/Video.h"
@@ -13,25 +14,24 @@
 #include "Yuv444FileReader.h"
 #include "Yuv444Vector.h"
 
-Utility::Yuv422FileReader::Yuv422FileReader(QString filename, int width, int height,int fps,
-        Compression compression):YuvFileReader(filename,width,height,fps),compression_(compression) {
+Utility::Yuv422FileReader::Yuv422FileReader(QString filename, int width, int height,
+        Compression compression):YuvFileReader(filename,width,height),compression_(compression) {
 }
 
-std::unique_ptr<Model::Video> Utility::Yuv422FileReader::read() {
-	video_=std::make_unique<Model::Video>(fps_,width_,height_);
+void Utility::Yuv422FileReader::read(Model::Video* target) {
+    position_=0;
 
-	position_=0;
+    if(!target)
+        return;
+    video_=target;
 
 	std::unique_ptr<QImage> frame;
 	while((frame=parseNextFrame()).get()) {
-		video_->appendFrame(std::move(frame));
-
+        target->appendFrame(std::move(frame));
 		if(compression_==Compression::PLANAR) {
 			position_=0;
 		}
-	}
-
-	return std::move(video_);
+    }
 }
 
 

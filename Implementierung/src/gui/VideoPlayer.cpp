@@ -13,6 +13,8 @@
 
 GUI::VideoPlayer::VideoPlayer() noexcept :
 position_(0),video_(nullptr),masterPanel_(nullptr) {
+    connect(&viewUpdater_,SIGNAL(timeout()),this,SLOT(updateViews()));
+    viewUpdater_.start(500);
 }
 
 void GUI::VideoPlayer::addView(FrameView& view) {
@@ -32,7 +34,10 @@ void GUI::VideoPlayer::setVideo(Model::Video& video) noexcept {
 	stop();
 	video_=&video;
 	setPosition(0);
-	timer_->setFps(video.getFps());
+    if(timer_.get())
+        timer_->setFps(video.getFps());
+    if(masterPanel_)
+        masterPanel_->updateUi();
 }
 
 Model::Video* GUI::VideoPlayer::getVideo() noexcept {
@@ -158,5 +163,18 @@ void GUI::VideoPlayer::reset() {
 std::size_t GUI::VideoPlayer::getNumberOfFrames() const {
 	if(!video_)
 		return 0;
-	return video_->getNumberOfFrames();
+    return video_->getNumberOfFrames();
+}
+
+void GUI::VideoPlayer::updateViews()
+{
+    if(!isPlaying())  {
+        if(video_) {
+        if(video_->getNumberOfFrames()>0) {
+            for(auto view:views_) {
+                view->setFrame(*(video_->getFrame(position_)));
+            }
+        }
+        }
+    }
 }

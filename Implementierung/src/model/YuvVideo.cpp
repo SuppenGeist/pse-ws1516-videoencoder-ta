@@ -2,6 +2,7 @@
 
 #include <memory>
 #include <stdexcept>
+#include <thread>
 
 #include <QString>
 
@@ -18,6 +19,11 @@
 Model::YuvVideo::YuvVideo(QString path, Utility::YuvType type, Utility::Compression compression,
                           int width, int height, int fps):path_(path),height_(height),width_(width),fps_(fps),
 	compression_(compression),yuvType_(type) {
+
+}
+
+Model::YuvVideo::~YuvVideo()
+{
 
 }
 
@@ -55,25 +61,28 @@ Model::Video& Model::YuvVideo::getVideo() {
 	return *displayVideo_.get();
 }
 
-void Model::YuvVideo::loadVideo() {
-	std::unique_ptr<Utility::YuvFileReader> fileReader;
 
+void Model::YuvVideo::loadVideo() {
 	switch(yuvType_) {
 	case Utility::YuvType::YUV411:
-		fileReader=std::make_unique<Utility::Yuv411FileReader>(path_,width_,height_,fps_,compression_);
+        fileReader_=std::make_unique<Utility::Yuv411FileReader>(path_,width_,height_,compression_);
 		break;
 	case Utility::YuvType::YUV420:
-		fileReader=std::make_unique<Utility::Yuv420FileReader>(path_,width_,height_,fps_);
+        fileReader_=std::make_unique<Utility::Yuv420FileReader>(path_,width_,height_);
 		break;
 	case Utility::YuvType::YUV422:
-		fileReader=std::make_unique<Utility::Yuv422FileReader>(path_,width_,height_,fps_,compression_);
+        fileReader_=std::make_unique<Utility::Yuv422FileReader>(path_,width_,height_,compression_);
 		break;
 	case Utility::YuvType::YUV444:
-		fileReader=std::make_unique<Utility::Yuv444FileReader>(path_,width_,height_,fps_,compression_);
+        fileReader_=std::make_unique<Utility::Yuv444FileReader>(path_,width_,height_,compression_);
 		break;
 	default:
 		throw std::logic_error("Should not get here");
 	}
-
-	displayVideo_=fileReader->read();
+    displayVideo_=std::make_unique<Video>(fps_,width_,height_);
+    //fileLoader_.join();
+    fileLoader_=std::thread(&Utility::YuvFileReader::read,fileReader_.get(),displayVideo_.get());
+    fileLoader_.detach();
 }
+
+

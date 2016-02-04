@@ -2,7 +2,8 @@ greaterThan(QT_MAJOR_VERSION, 5)
 
 QT+= core gui widgets
 
-CONFIG+=c++14
+QMAKE_CXXFLAGS += -std=c++14 -pthread
+LIBS += -pthread
 
 unix: CONFIG += link_pkgconfig
 unix: PKGCONFIG += libavcodec
@@ -131,7 +132,7 @@ HEADERS += \
     src/utility/YuvFileSaver.h \
     src/utility/YuvType.h \
     src/utility/meansquareerrorcalculator.h \
-    src/utility/Yuv420FileReader.h
+    src/utility/Yuv420FileReader.h \
 
 SOURCES += \
     src/gui/AnalysisBox.cpp \
@@ -246,7 +247,8 @@ SOURCES += \
     src/main.cpp \
     src/utility/meansquareerrorcalculator.cpp \
     src/utility/Yuv422Vector.cpp \
-    src/utility/Yuv420FileReader.cpp
+    src/utility/Yuv420FileReader.cpp \
+    src/utility/Yuv411Vector.cpp
 
 RESOURCES += \
     resources.qrc \

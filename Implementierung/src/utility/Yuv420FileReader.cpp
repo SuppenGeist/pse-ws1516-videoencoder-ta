@@ -11,22 +11,21 @@
 #include "../model/Video.h"
 #include "Yuv444FileReader.h"
 
-Utility::Yuv420FileReader::Yuv420FileReader(QString filename, int width, int height,
-        int fps):YuvFileReader(filename,width,height,fps) {
+Utility::Yuv420FileReader::Yuv420FileReader(QString filename, int width, int height):YuvFileReader(filename,width,height) {
 
 }
 
-std::unique_ptr<Model::Video> Utility::Yuv420FileReader::read() {
-	video_=std::make_unique<Model::Video>(fps_,width_,height_);
+void Utility::Yuv420FileReader::read(Model::Video* target) {
+    position_=0;
 
-	position_=0;
+    if(!target)
+        return;
+    video_=target;
 
-	std::unique_ptr<QImage> frame;
-	while((frame=parseNextFrame()).get()) {
-		video_->appendFrame(std::move(frame));
-	}
-
-	return std::move(video_);
+    std::unique_ptr<QImage> frame;
+    while((frame=parseNextFrame()).get()) {
+        target->appendFrame(std::move(frame));
+    }
 }
 
 std::unique_ptr<QImage> Utility::Yuv420FileReader::parseNextFrame() {

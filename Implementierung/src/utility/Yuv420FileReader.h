@@ -25,13 +25,13 @@ class Yuv420FileReader: public YuvFileReader {
 	 * @param height Height of the video.
 	 * @param fps
 	 */
-	Yuv420FileReader(QString filename, int width, int height,int fps);
+    Yuv420FileReader(QString filename, int width, int height);
 
 	/**
 	* @brief read Reads the file in.
 	* @return
 	*/
-	std::unique_ptr<Model::Video> read();
+    void read(Model::Video* target) override;
 
   private:
 

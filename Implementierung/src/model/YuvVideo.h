@@ -4,9 +4,11 @@
 #include <memory>
 
 #include <QString>
+#include <thread>
 
 #include "Video.h"
 #include "AVVideo.h"
+#include "../utility/YuvFileReader.h"
 
 namespace Utility {
 enum class Compression;
@@ -31,6 +33,8 @@ class YuvVideo {
 	 */
 	YuvVideo(QString path, Utility::YuvType type,Utility::Compression compression, int width,
 	         int height, int fps);
+
+    ~YuvVideo();
 
 	/**
 	 * @brief getPath Returns the path to the video.
@@ -89,6 +93,8 @@ class YuvVideo {
 	std::unique_ptr<Model::Video>       displayVideo_;
 	std::unique_ptr<Model::AVVideo>     avVideo_;
 	Utility::YuvType                    yuvType_;
+    std::thread                         fileLoader_;
+    std::unique_ptr<Utility::YuvFileReader> fileReader_;
 
 	/**
 	 * @brief loadVideo Loads the video from the file.

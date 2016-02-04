@@ -12,6 +12,7 @@
 #include <QString>
 #include <QListWidget>
 #include <QSpacerItem>
+#include <QTimer>
 #include <QTabWidget>
 
 #include "../memento/FilterTabMemento.h"
@@ -201,7 +202,7 @@ void GUI::FilterTab::createUi() {
 
 	v_content->addWidget(filterTabs_);
 
-	setLayout(v_content);
+    setLayout(v_content);
 }
 
 void GUI::FilterTab::up() {
@@ -259,6 +260,7 @@ void GUI::FilterTab::load() {
 }
 
 void GUI::FilterTab::apply() {
+
 }
 
 void GUI::FilterTab::saveConf() {
@@ -305,7 +307,7 @@ void GUI::FilterTab::setFilterList(Model::FilterList list) {
 void GUI::FilterTab::setRawVideo(std::unique_ptr<Model::YuvVideo> video) {
 	reset();
 	rawVideo_=std::move(video);
-	player_->setVideo(rawVideo_->getVideo());
+    player_->setVideo(rawVideo_->getVideo());
 }
 
 std::unique_ptr<Model::YuvVideo> GUI::FilterTab::releaseVideo() {

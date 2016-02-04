@@ -2,6 +2,7 @@
 #define __FilterTab_h__
 
 #include <memory>
+#include <thread>
 
 #include <QPushButton>
 #include <QWidget>
@@ -188,7 +189,7 @@ class FilterTab : public QFrame {
 	PlayerControlPanel*                 playerPanel_;
 
 	Model::FilterList*                  filterList_;
-	std::unique_ptr<Model::YuvVideo>    rawVideo_;
+    std::unique_ptr<Model::YuvVideo>    rawVideo_;
 
 
 	/**
@@ -199,7 +200,7 @@ class FilterTab : public QFrame {
 	/**
 	 * @brief createUi Creates the user interface.
 	 */
-	void createUi();
+    void createUi();
 
 };
 }

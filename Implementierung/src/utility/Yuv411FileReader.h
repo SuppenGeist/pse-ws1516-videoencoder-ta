@@ -29,13 +29,13 @@ class Yuv411FileReader: public YuvFileReader {
 	 * @param fps
 	 * @param compression The compression of the file.
 	 */
-	Yuv411FileReader(QString filename, int width, int height,int fps, Utility::Compression compression);
+    Yuv411FileReader(QString filename, int width, int height, Utility::Compression compression);
 
 	/**
 	 * @brief read Reads the file in
 	 * @return
 	 */
-	std::unique_ptr<Model::Video> read();
+    void read(Model::Video* target) override;
 
 	/**
 	 * @brief yuv411ToRgb888 Converts a Yuv411Vector to the corresponding Rgb88 pixels.
