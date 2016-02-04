@@ -29,10 +29,10 @@ class MirrorFilter: public Model::Filter {
 	MirrorFilter();
 
   public:
-    std::string getFilterDescription();
+	std::string getFilterDescription();
 
   public:
-    std::string getName();
+	std::string getName();
 
 	/// <summary>
 	/// Returns the MirrorMode.

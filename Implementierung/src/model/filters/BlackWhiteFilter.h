@@ -25,10 +25,10 @@ class BlackWhiteFilter: public Model::Filter {
 	BlackWhiteFilter();
 
   public:
-    std::string getName();
+	std::string getName();
 
   public:
-    std::string getFilterDescription();
+	std::string getFilterDescription();
 
   public:
 	void restoreFilter(QString description);

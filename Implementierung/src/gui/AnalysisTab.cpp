@@ -17,8 +17,8 @@
 
 GUI::AnalysisTab::AnalysisTab(QWidget* parent) : QFrame(parent) {
 
-    ui = new Ui::AnalysisTab;
-    ui->setupUi(this);
+	ui = new Ui::AnalysisTab;
+	ui->setupUi(this);
 
 }
 

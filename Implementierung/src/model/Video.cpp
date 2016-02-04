@@ -29,15 +29,15 @@ QImage* Model::Video::getFrame(std::size_t index) noexcept {
 }
 
 bool Model::Video::insertFrame(std::unique_ptr<QImage> frame, std::size_t index) {
-    if(frame->width()!=width_||frame->height()!=height_)
-        return false;
+	if(frame->width()!=width_||frame->height()!=height_)
+		return false;
 
-    if(index>frames_.size())
-        return false;
+	if(index>frames_.size())
+		return false;
 
-    frames_.insert(frames_.begin() + index, std::move(frame));
+	frames_.insert(frames_.begin() + index, std::move(frame));
 
-    return true;
+	return true;
 }
 
 void Model::Video::removeFrame(std::size_t index) {
@@ -51,15 +51,15 @@ void Model::Video::appendFrame(std::unique_ptr<QImage> frame) {
 }
 
 bool Model::Video::insertFrames(std::vector<std::unique_ptr<QImage> >& frames, std::size_t index) {
-    bool returnVal=true;
+	bool returnVal=true;
 
-    if(index>frames_.size())
-        return false;
+	if(index>frames_.size())
+		return false;
 
-    for(std::size_t i=index;i<index+frames.size();i++) {
-        returnVal&=insertFrame(std::move(frames[i-index]),i);
-    }
-    return returnVal;
+	for(std::size_t i=index; i<index+frames.size(); i++) {
+		returnVal&=insertFrame(std::move(frames[i-index]),i);
+	}
+	return returnVal;
 }
 
 std::size_t Model::Video::getNumberOfFrames() const noexcept {

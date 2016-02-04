@@ -19,11 +19,11 @@ class Graph {
 
 	/**
 	 * @brief addValue Adds a value pair.
-     * The graph is automatically to the given x extended.
+	 * The graph is automatically to the given x extended.
 	 * @param x Value on the x-axes.
 	 * @param y Value on the y-axes.
 	 */
-    void setValue(std::size_t x, double y);
+	void setValue(std::size_t x, double y);
 
 	/**
 	 * @brief cut Cuts the number of vectors down up to a certain value x. x is included.
@@ -43,7 +43,7 @@ class Graph {
 	 * @brief getLength Returns the biggest x value with a valid corresponding y value.
 	 * @return The biggest x value.
 	 */
-    std::size_t getSize();
+	std::size_t getSize();
 
 	/**
 	 * @brief removeValue Removes the corresponding y value to -1 .
@@ -51,11 +51,11 @@ class Graph {
 	 */
 	void removeValue(std::size_t x);
 
-    /**
-     * @brief getBiggestValue Returns the biggest value.
-     * @return
-     */
-    double getBiggestValue();
+	/**
+	 * @brief getBiggestValue Returns the biggest value.
+	 * @return
+	 */
+	double getBiggestValue();
 
 
   private:

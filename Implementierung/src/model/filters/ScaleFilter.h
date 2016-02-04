@@ -33,7 +33,7 @@ class ScaleFilter: public Model::Filter {
 	ScaleFilter();
 
   public:
-    std::string getFilterDescription();
+	std::string getFilterDescription();
 
 	/// <summary>
 	/// Whether the ration is preserved.
@@ -50,7 +50,7 @@ class ScaleFilter: public Model::Filter {
 	void setKeepRatio(bool keepRatio);
 
   public:
-    std::string getName();
+	std::string getName();
 
 	/// <summary>
 	/// Returns the new width.

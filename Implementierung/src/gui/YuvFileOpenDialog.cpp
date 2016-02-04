@@ -57,7 +57,7 @@ void GUI::YuvFileOpenDialog::createUi() {
 	lineEdit_selectedFile_=new QLineEdit;
 
 	lineEdit_selectedFile_->setStyleSheet("QLineEdit { background: rgb(255, 255, 255); }");
-    listView_recentlyUsed_->setEditTriggers(QAbstractItemView::NoEditTriggers);
+	listView_recentlyUsed_->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
 	QVBoxLayout* v_content=new QVBoxLayout;
 
@@ -89,7 +89,7 @@ void GUI::YuvFileOpenDialog::createUi() {
 	setLayout(v_content);
 
 	setWindowTitle("Load YUV file");
-    setMinimumWidth(500);
+	setMinimumWidth(500);
 }
 
 void GUI::YuvFileOpenDialog::hasFinished(int result) {
@@ -118,10 +118,10 @@ void GUI::YuvFileOpenDialog::saveListModel(QString selectedFile) {
 		if(recentlyUsedFiles.contains(selectedFile)) {
 			recentlyUsedFiles.removeAt(recentlyUsedFiles.indexOf(QRegExp(selectedFile)));
 		}
-        recentlyUsedFiles.prepend(selectedFile);
+		recentlyUsedFiles.prepend(selectedFile);
 
-        model_recentlyUsed_->setStringList(recentlyUsedFiles);
-    }
+		model_recentlyUsed_->setStringList(recentlyUsedFiles);
+	}
 
 	QFile outputFile(SAVE_FILENAME);
 	if(outputFile.open(QIODevice::ReadWrite)) {

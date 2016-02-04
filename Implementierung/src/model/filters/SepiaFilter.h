@@ -22,10 +22,10 @@ class SepiaFilter: public Model::Filter {
 	SepiaFilter();
 
   public:
-    std::string getName();
+	std::string getName();
 
   public:
-    std::string getFilterDescription();
+	std::string getFilterDescription();
 
   public:
 	void restoreFilter(QString description);

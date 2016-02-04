@@ -25,10 +25,10 @@ class NegativeFilter: public Model::Filter {
 	NegativeFilter();
 
   public:
-    std::string getFilterDescription();
+	std::string getFilterDescription();
 
   public:
-    std::string getName();
+	std::string getName();
 
   public:
 	void restoreFilter(QString description);

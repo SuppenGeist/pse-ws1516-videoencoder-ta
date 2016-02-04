@@ -21,20 +21,20 @@ std::string Model::BrightnessFilter::getName() {
 }
 
 std::string Model::BrightnessFilter::getFilterDescription() {
-    std::string str = std::string("eq=contrast=1:");
-    str+= "brightness";
-    str+=std::to_string(intensity);
-    return str;
+	std::string str = std::string("eq=contrast=1:");
+	str+= "brightness";
+	str+=std::to_string(intensity);
+	return str;
 }
 
 void Model::BrightnessFilter::restoreFilter(QString description) {
-    QStringList list  = description.split(";");
-    setIntensity(list[1].QString::toInt());
+	QStringList list  = description.split(";");
+	setIntensity(list[1].QString::toInt());
 }
 
 QString Model::BrightnessFilter::getSaveString() {
-    QString str = QString::fromStdString(getName());
-    str+=";";
-    str+=QString::number(intensity);
-    return str;
+	QString str = QString::fromStdString(getName());
+	str+=";";
+	str+=QString::number(intensity);
+	return str;
 }

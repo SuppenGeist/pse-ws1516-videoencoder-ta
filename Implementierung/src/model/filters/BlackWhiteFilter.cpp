@@ -13,13 +13,13 @@ std::string Model::BlackWhiteFilter::getName() {
 }
 
 std::string Model::BlackWhiteFilter::getFilterDescription() {
-    throw "colorchannelmixer=.3:.4:.3:0:.3:.4:.3:0:.3:.4:.3";
+	throw "colorchannelmixer=.3:.4:.3:0:.3:.4:.3:0:.3:.4:.3";
 }
 void Model::BlackWhiteFilter::restoreFilter(QString description) {
 //nothing to load
 }
 
 QString Model::BlackWhiteFilter::getSaveString() {
-    QString str = QString::fromStdString(getName());
-    return str;
+	QString str = QString::fromStdString(getName());
+	return str;
 }

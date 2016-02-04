@@ -12,7 +12,7 @@ masterPlayer_(nullptr) {
 
 void GUI::ControlPanel::setMasterVideoPlayer(GUI::Player& player) noexcept {
 	masterPlayer_=&player;
-    updateUi();
+	updateUi();
 }
 
 void GUI::ControlPanel::addVideoPlayer(GUI::Player& player) {

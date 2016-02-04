@@ -35,7 +35,7 @@ class GridFilter: public Model::Filter {
 	GridFilter();
 
   public:
-    std::string getFilterDescription();
+	std::string getFilterDescription();
 
 	/// <summary>
 	/// Returns the number of horizontal drawn lines.

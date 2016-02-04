@@ -16,8 +16,8 @@ position_(0),video_(nullptr),masterPanel_(nullptr) {
 }
 
 void GUI::VideoPlayer::addView(FrameView& view) {
-    if(std::find(views_.begin(), views_.end(), &view) != views_.end())
-        return;
+	if(std::find(views_.begin(), views_.end(), &view) != views_.end())
+		return;
 	views_.push_back(&view);
 }
 
@@ -29,10 +29,10 @@ void GUI::VideoPlayer::removeView(FrameView& view) {
 }
 
 void GUI::VideoPlayer::setVideo(Model::Video& video) noexcept {
-    stop();
-    video_=&video;
-    setPosition(0);
-    timer_->setFps(video.getFps());
+	stop();
+	video_=&video;
+	setPosition(0);
+	timer_->setFps(video.getFps());
 }
 
 Model::Video* GUI::VideoPlayer::getVideo() noexcept {
@@ -40,17 +40,17 @@ Model::Video* GUI::VideoPlayer::getVideo() noexcept {
 }
 
 void GUI::VideoPlayer::setTimer(std::shared_ptr<GUI::Timer> timer) noexcept {
-    if(timer_.get())
-        timer_->removePlayer(*this);
+	if(timer_.get())
+		timer_->removePlayer(*this);
 	timer_=timer;
-    timer_->addPlayer(*this);
+	timer_->addPlayer(*this);
 }
 
 void GUI::VideoPlayer::clearTimer() noexcept {
-    if(!timer_.get())
-        return;
-    timer_->removePlayer(*this);
-    timer_.reset();
+	if(!timer_.get())
+		return;
+	timer_->removePlayer(*this);
+	timer_.reset();
 }
 
 int GUI::VideoPlayer::getFps() const noexcept {
@@ -60,17 +60,17 @@ int GUI::VideoPlayer::getFps() const noexcept {
 }
 
 void GUI::VideoPlayer::setMasterControlPanel(ControlPanel& controlPanel) noexcept {
-    masterPanel_=&controlPanel;
-    masterPanel_->updateUi();
+	masterPanel_=&controlPanel;
+	masterPanel_->updateUi();
 }
 
 void GUI::VideoPlayer::play() {
 	if(!timer_.get())
-        return;
+		return;
 	timer_->start();
 
-    if(masterPanel_)
-        masterPanel_->updateUi();
+	if(masterPanel_)
+		masterPanel_->updateUi();
 }
 
 void GUI::VideoPlayer::pause() {
@@ -78,8 +78,8 @@ void GUI::VideoPlayer::pause() {
 		return;
 	timer_->pause();
 
-    if(masterPanel_)
-        masterPanel_->updateUi();
+	if(masterPanel_)
+		masterPanel_->updateUi();
 }
 
 void GUI::VideoPlayer::stop() {
@@ -88,16 +88,16 @@ void GUI::VideoPlayer::stop() {
 	timer_->pause();
 	setPosition(0);
 
-    if(masterPanel_)
-        masterPanel_->updateUi();
+	if(masterPanel_)
+		masterPanel_->updateUi();
 }
 
 void GUI::VideoPlayer::nextFrame() {
-    setPosition(getPosition()+1);
+	setPosition(getPosition()+1);
 }
 
 void GUI::VideoPlayer::previousFrame() {
-    setPosition(getPosition()==0?0:getPosition()-1);
+	setPosition(getPosition()==0?0:getPosition()-1);
 }
 
 void GUI::VideoPlayer::setSpeed(float speed) {
@@ -112,17 +112,17 @@ void GUI::VideoPlayer::setPosition(std::size_t position) {
 	if(video_->getNumberOfFrames()==0)
 		return;
 
-    if(position>=video_->getNumberOfFrames()) {
+	if(position>=video_->getNumberOfFrames()) {
 		position=video_->getNumberOfFrames()-1;
-        pause();
-    }
+		pause();
+	}
 
 	position_=position;
 	for(auto view:views_) {
 		view->setFrame(*(video_->getFrame(position_)));
 	}
-    if(masterPanel_)
-        masterPanel_->updateUi();
+	if(masterPanel_)
+		masterPanel_->updateUi();
 }
 
 std::size_t GUI::VideoPlayer::getPosition() const noexcept {
@@ -144,15 +144,15 @@ bool GUI::VideoPlayer::isStopped() const {
 }
 
 void GUI::VideoPlayer::reset() {
-    stop();
-    position_=0;
-    video_=nullptr;
-    for(auto view:views_) {
-        view->clear();
-    }
+	stop();
+	position_=0;
+	video_=nullptr;
+	for(auto view:views_) {
+		view->clear();
+	}
 
-    if(masterPanel_)
-        masterPanel_->updateUi();
+	if(masterPanel_)
+		masterPanel_->updateUi();
 }
 
 std::size_t GUI::VideoPlayer::getNumberOfFrames() const {

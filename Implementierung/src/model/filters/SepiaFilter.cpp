@@ -12,7 +12,7 @@ std::string Model::SepiaFilter::getName() {
 }
 
 std::string Model::SepiaFilter::getFilterDescription() {
-    std::string str = "colorchannelmixer=.393:.769:.189:0:.349:.686:.168:0:.272:.534:.131";
+	std::string str = "colorchannelmixer=.393:.769:.189:0:.349:.686:.168:0:.272:.534:.131";
 	return str;
 }
 
@@ -21,6 +21,6 @@ void Model::SepiaFilter::restoreFilter(QString description) {
 }
 
 QString Model::SepiaFilter::getSaveString() {
-    QString str = QString::fromStdString(getName());
-    return str;
+	QString str = QString::fromStdString(getName());
+	return str;
 }

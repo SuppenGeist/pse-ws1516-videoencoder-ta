@@ -37,7 +37,7 @@ class RectangleFilter: public Model::Filter {
 	RectangleFilter();
 
   public:
-    std::string getFilterDescription();
+	std::string getFilterDescription();
 
 	/// <summary>
 	/// Returns the color of the rectangle.
@@ -89,7 +89,7 @@ class RectangleFilter: public Model::Filter {
 	int getX();
 
   public:
-    std::string getName();
+	std::string getName();
 
 	/// <summary>
 	/// Sets the start position on the x axis.

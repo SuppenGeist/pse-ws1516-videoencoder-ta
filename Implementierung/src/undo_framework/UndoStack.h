@@ -9,19 +9,19 @@ namespace UndoRedo {
 */
 class UndoStack {
   public:
-    /**
-     * @brief getUndoStack Returns the undo stack to operate on.
-     * @return The undo stack.
-     */
-    static QUndoStack& getUndoStack();
+	/**
+	 * @brief getUndoStack Returns the undo stack to operate on.
+	 * @return The undo stack.
+	 */
+	static QUndoStack& getUndoStack();
 
-private:
-  static QUndoStack undoStack_;
+  private:
+	static QUndoStack undoStack_;
 
-  /**
-   * @brief UndoStack Constructor.
-   */
-  UndoStack();
+	/**
+	 * @brief UndoStack Constructor.
+	 */
+	UndoStack();
 };
 }
 

@@ -30,7 +30,7 @@ class RGBFilter: public Model::Filter {
 	RGBFilter();
 
   public:
-    std::string getFilterDescription();
+	std::string getFilterDescription();
 
 	/// <summary>
 	/// Returns the color that is not filtered out.
@@ -47,7 +47,7 @@ class RGBFilter: public Model::Filter {
 	void setColor(Model::BasicColor color);
 
   public:
-    std::string getName();
+	std::string getName();
 
   public:
 	void restoreFilter(QString description);

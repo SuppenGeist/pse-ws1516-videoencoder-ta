@@ -122,10 +122,10 @@ class BorderFilter: public Model::Filter {
 	void setColor(QRgb color);
 
   public:
-    std::string getName();
+	std::string getName();
 
   public:
-    std::string getFilterDescription();
+	std::string getFilterDescription();
 
   public:
 	void restoreFilter(QString description);

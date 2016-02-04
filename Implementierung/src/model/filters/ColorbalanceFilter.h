@@ -93,10 +93,10 @@ class ColorbalanceFilter: public Model::Filter {
 	void setMediumPixels(bool mediumPixels);
 
   public:
-    std::string getFilterDescription();
+	std::string getFilterDescription();
 
   public:
-    std::string getName();
+	std::string getName();
 
 	/// <summary>
 	/// Whether the drak pixels shall be changed.

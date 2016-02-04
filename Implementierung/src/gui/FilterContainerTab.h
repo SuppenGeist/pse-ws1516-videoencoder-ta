@@ -31,7 +31,7 @@ class FilterContainerTab : public QFrame {
 	 * @brief FilterContainerTab constructor
 	 * @param parent parent of this object
 	 */
-    FilterContainerTab(QWidget* parent=0);
+	FilterContainerTab(QWidget* parent=0);
 
 	/**
 	 * @brief addFilter Adds a selectable filter.

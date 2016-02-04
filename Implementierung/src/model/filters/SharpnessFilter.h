@@ -27,7 +27,7 @@ class SharpnessFilter: public Model::Filter {
 	SharpnessFilter();
 
   public:
-    std::string getFilterDescription();
+	std::string getFilterDescription();
 
 	/// <summary>
 	/// Returns the intensity of the sharpness.
@@ -37,7 +37,7 @@ class SharpnessFilter: public Model::Filter {
 	int getIntensity();
 
   public:
-    std::string getName();
+	std::string getName();
 
 	/// <summary>
 	/// Sets the intensity of the sharpness.

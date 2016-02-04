@@ -27,7 +27,7 @@ class SaturationFilter: public Model::Filter {
 	SaturationFilter();
 
   public:
-    std::string getFilterDescription();
+	std::string getFilterDescription();
 
 	/// <summary>
 	/// Returns the intensity of the saturation.
@@ -37,7 +37,7 @@ class SaturationFilter: public Model::Filter {
 	int getIntensity();
 
   public:
-    std::string getName();
+	std::string getName();
 
 	/// <summary>
 	/// Sets the intensity of the saturation.

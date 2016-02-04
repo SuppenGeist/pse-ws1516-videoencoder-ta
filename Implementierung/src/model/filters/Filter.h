@@ -27,14 +27,14 @@ class Filter {
 	/// </summary>
 	/// <returns>The string for the ffmpeg library.</returns>
   public:
-    virtual std::string getFilterDescription() = 0;
+	virtual std::string getFilterDescription() = 0;
 
 	/// <summary>
 	/// Returns the name of the filter.
 	/// </summary>
 	/// <returns>The filtername.</returns>
   public:
-    virtual std::string getName() = 0;
+	virtual std::string getName() = 0;
 
 
   public:

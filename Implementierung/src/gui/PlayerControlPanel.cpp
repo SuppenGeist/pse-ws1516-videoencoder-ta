@@ -29,60 +29,53 @@ void GUI::PlayerControlPanel::updateUi() {
 	else {
 		if(players_.size()>0)
 			player=players_[0];
-        else {
-            button_nextFrame_->setEnabled(false);
-            button_pause_->setEnabled(false);
-            button_play_->setEnabled(false);
-            button_previousFrame_->setEnabled(false);
-            button_stop_->setEnabled(false);
-            slider_timeline_->setRange(0,0);
+		else {
+			button_nextFrame_->setEnabled(false);
+			button_pause_->setEnabled(false);
+			button_play_->setEnabled(false);
+			button_previousFrame_->setEnabled(false);
+			button_stop_->setEnabled(false);
+			slider_timeline_->setRange(0,0);
 			return;
-        }
+		}
 	}
 
-    slider_timeline_->setRange(0,player->getNumberOfFrames()-1);
+	slider_timeline_->setRange(0,player->getNumberOfFrames()-1);
 	slider_timeline_->setValue(player->getPosition());
 
 
-    if(player->getPosition()==0) {
-        button_previousFrame_->setEnabled(false);
-        if(player->getNumberOfFrames()>1) {
-            button_nextFrame_->setEnabled(true);
-        }
-        else {
-            button_nextFrame_->setEnabled(false);
-        }
-    }
-    else if(player->getPosition()==player->getNumberOfFrames()-1) {
-        button_nextFrame_->setEnabled(false);
-        button_previousFrame_->setEnabled(true);
-    }
-    else {
-        button_nextFrame_->setEnabled(true);
-        button_previousFrame_->setEnabled(true);
-    }
+	if(player->getPosition()==0) {
+		button_previousFrame_->setEnabled(false);
+		if(player->getNumberOfFrames()>1) {
+			button_nextFrame_->setEnabled(true);
+		} else {
+			button_nextFrame_->setEnabled(false);
+		}
+	} else if(player->getPosition()==player->getNumberOfFrames()-1) {
+		button_nextFrame_->setEnabled(false);
+		button_previousFrame_->setEnabled(true);
+	} else {
+		button_nextFrame_->setEnabled(true);
+		button_previousFrame_->setEnabled(true);
+	}
 
-    if(player->isPlaying()) {
-        button_play_->setEnabled(false);
-        button_pause_->setEnabled(true);
-        button_stop_->setEnabled(true);
-    }
-    else
-    {
-        if(player->getNumberOfFrames()>1&&player->getPosition()!=player->getNumberOfFrames()-1) {
-            button_play_->setEnabled(true);
-        }
-        else {
-            button_play_->setEnabled(false);
-        }
-        button_pause_->setEnabled(false);
-        if(player->isStopped()) {
-            button_stop_->setEnabled(false);
-        }
-        else {
-            button_stop_->setEnabled(true);
-        }
-    }
+	if(player->isPlaying()) {
+		button_play_->setEnabled(false);
+		button_pause_->setEnabled(true);
+		button_stop_->setEnabled(true);
+	} else {
+		if(player->getNumberOfFrames()>1&&player->getPosition()!=player->getNumberOfFrames()-1) {
+			button_play_->setEnabled(true);
+		} else {
+			button_play_->setEnabled(false);
+		}
+		button_pause_->setEnabled(false);
+		if(player->isStopped()) {
+			button_stop_->setEnabled(false);
+		} else {
+			button_stop_->setEnabled(true);
+		}
+	}
 }
 
 void GUI::PlayerControlPanel::createUi() {
@@ -109,11 +102,11 @@ void GUI::PlayerControlPanel::createUi() {
 	button_nextFrame_->setFlat(true);
 	button_previousFrame_->setFlat(true);
 
-    button_play_->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
-    button_pause_->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
-    button_stop_->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
-    button_nextFrame_->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
-    button_previousFrame_->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
+	button_play_->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
+	button_pause_->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
+	button_stop_->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
+	button_nextFrame_->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
+	button_previousFrame_->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
 
 	QStringList speedItems = QStringList() << tr("0.25x") <<tr("0.50x") << tr("0.75x") << tr("1.00x") <<
 	                         tr("1.25x") << tr("1.50x") << tr("1.75x") << tr("2.00x");
@@ -167,14 +160,14 @@ void GUI::PlayerControlPanel::stop() {
 }
 
 void GUI::PlayerControlPanel::nextFrame() {
-    if(masterPlayer_) {
+	if(masterPlayer_) {
 		masterPlayer_->nextFrame();
-        masterPlayer_->pause();
-    }
+		masterPlayer_->pause();
+	}
 
 	for(auto player:players_) {
 		player->nextFrame();
-        player->pause();
+		player->pause();
 	}
 
 	updateUi();
@@ -186,7 +179,7 @@ void GUI::PlayerControlPanel::previousFrame() {
 
 	for(auto player:players_) {
 		player->previousFrame();
-        player->pause();
+		player->pause();
 	}
 
 	updateUi();
@@ -196,28 +189,28 @@ void GUI::PlayerControlPanel::changeSpeed(int index) {
 	float newSpeed=1.0;
 
 	switch(index) {
-    case 7:
+	case 7:
 		newSpeed=0.25;
 		break;
-    case 6:
+	case 6:
 		newSpeed=0.50;
 		break;
-    case 5:
+	case 5:
 		newSpeed=0.75;
 		break;
-    case 4:
+	case 4:
 		newSpeed=1.0;
 		break;
-    case 3:
+	case 3:
 		newSpeed=1.25;
 		break;
-    case 2:
+	case 2:
 		newSpeed=1.5;
 		break;
-    case 1:
+	case 1:
 		newSpeed=1.75;
 		break;
-    case 0:
+	case 0:
 		newSpeed=2.0;
 		break;
 	default:

@@ -31,7 +31,7 @@ class NoiseFilter: public Model::Filter {
 	NoiseFilter();
 
   public:
-    std::string getFilterDescription();
+	std::string getFilterDescription();
 
 	/// <summary>
 	/// Returns the NoiseMode.
@@ -55,7 +55,7 @@ class NoiseFilter: public Model::Filter {
 	int getIntensity();
 
   public:
-    std::string getName();
+	std::string getName();
 
 	/// <summary>
 	/// Sets the intensity of the noise.

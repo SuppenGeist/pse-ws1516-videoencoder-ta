@@ -12,7 +12,7 @@ std::string Model::VintageFilter::getName() {
 }
 
 std::string Model::VintageFilter::getFilterDescription() {
-    std::string str = "curves=vintage";
+	std::string str = "curves=vintage";
 	return str;
 }
 
@@ -21,6 +21,6 @@ void Model::VintageFilter::restoreFilter(QString description) {
 }
 
 QString Model::VintageFilter::getSaveString() {
-    QString str = QString::fromStdString(getName());
-    return str;
+	QString str = QString::fromStdString(getName());
+	return str;
 }

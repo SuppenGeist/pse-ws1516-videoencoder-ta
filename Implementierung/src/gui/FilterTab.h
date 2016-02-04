@@ -77,13 +77,13 @@ class FilterTab : public QFrame {
 	 * @brief setRawVideo Sets the video the filters are applied to. This operation resets the whole filtertab.
 	 * @param video The video to apply the filters on.
 	 */
-    void setRawVideo(std::unique_ptr<Model::YuvVideo> video);
+	void setRawVideo(std::unique_ptr<Model::YuvVideo> video);
 
-    /**
-     * @brief releaseVideo releases the Video
-     * @return
-     */
-    std::unique_ptr<Model::YuvVideo> releaseVideo();
+	/**
+	 * @brief releaseVideo releases the Video
+	 * @return
+	 */
+	std::unique_ptr<Model::YuvVideo> releaseVideo();
 
 	/**
 	 * @brief moveFilter Moves a filter in the filterlist.
@@ -96,13 +96,13 @@ class FilterTab : public QFrame {
 	 * @brief getMemento Creates a memento which contains the state of this tab.
 	 * @return the created memento
 	 */
-    std::unique_ptr<Memento::FilterTabMemento> getMemento();
+	std::unique_ptr<Memento::FilterTabMemento> getMemento();
 
 	/**
 	 * @brief restore Restores the tab based on the memento.
 	 * @param memento The memento which contains the state of the tab.
 	 */
-    void restore(Memento::FilterTabMemento& memento);
+	void restore(Memento::FilterTabMemento& memento);
 
 	/**
 	 * @brief insertFilter Inserts a filter to the filterList. If index is -1 the the filter is added to the end.
@@ -166,40 +166,40 @@ class FilterTab : public QFrame {
 	void save();
 
   private:
-    QPushButton*                        button_up_;
-    QPushButton*                        button_down_;
-    QPushButton*                        button_remove_;
-    QPushButton*                        button_load_;
-    QPushButton*                        button_apply_;
-    QPushButton*                        button_saveConf_;
-    QPushButton*                        button_loadConf_;
-    QPushButton*                        button_reset_;
-    QPushButton*                        button_save_;
-    QLabel*                             label_selectedFilters_;
-    QListWidget*                        list_filterList_;
-    QTabWidget*                         filterTabs_;
-    QLabel*                             label_filterOptions_;
-    QStringListModel*                   model_list_;
-    std::vector<FilterContainerTab*>    filterContainerTab_;
+	QPushButton*                        button_up_;
+	QPushButton*                        button_down_;
+	QPushButton*                        button_remove_;
+	QPushButton*                        button_load_;
+	QPushButton*                        button_apply_;
+	QPushButton*                        button_saveConf_;
+	QPushButton*                        button_loadConf_;
+	QPushButton*                        button_reset_;
+	QPushButton*                        button_save_;
+	QLabel*                             label_selectedFilters_;
+	QListWidget*                        list_filterList_;
+	QTabWidget*                         filterTabs_;
+	QLabel*                             label_filterOptions_;
+	QStringListModel*                   model_list_;
+	std::vector<FilterContainerTab*>    filterContainerTab_;
 
-    std::unique_ptr<VideoPlayer>        player_;
-    PreviewControlPanel*                previewPanel_;
-    FrameView*                          frameView_;
-    PlayerControlPanel*                 playerPanel_;
+	std::unique_ptr<VideoPlayer>        player_;
+	PreviewControlPanel*                previewPanel_;
+	FrameView*                          frameView_;
+	PlayerControlPanel*                 playerPanel_;
 
-    Model::FilterList*                  filterList_;
-    std::unique_ptr<Model::YuvVideo>    rawVideo_;
+	Model::FilterList*                  filterList_;
+	std::unique_ptr<Model::YuvVideo>    rawVideo_;
 
 
-    /**
-     * @brief connectAction sConnect the buttons to their slots in this class.
-     */
-    void connectActions();
+	/**
+	 * @brief connectAction sConnect the buttons to their slots in this class.
+	 */
+	void connectActions();
 
-    /**
-     * @brief createUi Creates the user interface.
-     */
-    void createUi();
+	/**
+	 * @brief createUi Creates the user interface.
+	 */
+	void createUi();
 
 };
 }

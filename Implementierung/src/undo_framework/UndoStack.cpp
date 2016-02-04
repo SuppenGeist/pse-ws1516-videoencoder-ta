@@ -9,5 +9,5 @@ UndoRedo::UndoStack::UndoStack() {
 }
 
 QUndoStack& UndoRedo::UndoStack::getUndoStack() {
-    return undoStack_;
+	return undoStack_;
 }

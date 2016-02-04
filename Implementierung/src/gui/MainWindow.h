@@ -7,8 +7,7 @@
 #include <QTabWidget>
 #include <QMainWindow>
 
-namespace GUI
-{
+namespace GUI {
 class FilterTab;
 class AnalysisTab;
 }
@@ -96,7 +95,7 @@ class MainWindow : public QMainWindow {
 	QAction* action_redo;
 	QTabWidget* tab_tabs;
 	FilterTab* filterTab;
-    AnalysisTab* analysisTab;
+	AnalysisTab* analysisTab;
 
 
 	Ui::MainWindow *ui;
