@@ -19,8 +19,6 @@ Utility::Yuv411FileReader::Yuv411FileReader(QString filename, int width, int hei
 }
 
 std::unique_ptr<Model::Video> Utility::Yuv411FileReader::read() {
-    throw std::logic_error("Not tested yer");
-
     video_=std::make_unique<Model::Video>(fps_,width_,height_);
 
     position_=0;
@@ -78,12 +76,12 @@ Utility::Yuv411Vector Utility::Yuv411FileReader::readNextVectorPacked(bool &succ
         return Yuv411Vector(0,0,0,0,0,0);
     }
 
-    auto y1=binaryData_[position_];
+    auto u=binaryData_[position_];
+    auto y1=binaryData_[position_+1];
     auto y2=binaryData_[position_+2];
-    auto u=binaryData_[position_+3];
+    auto v=binaryData_[position_+3];
     auto y3=binaryData_[position_+4];
     auto y4=binaryData_[position_+5];
-    auto v=binaryData_[position_+6];
 
     position_+=6;
     success=true;
@@ -91,7 +89,25 @@ Utility::Yuv411Vector Utility::Yuv411FileReader::readNextVectorPacked(bool &succ
 }
 
 Utility::Yuv411Vector Utility::Yuv411FileReader::readNextVectorPlanar(bool &success) {
+    int frameIndex=video_->getNumberOfFrames();
+    int numberOfPixels=width_*height_;
+    int offset=frameIndex*1.5*numberOfPixels;
 
+    if(offset+numberOfPixels+position_>binaryData_.size()) {
+        success=false;
+        return Yuv411Vector(0,0,0,0,0,0);
+    }
+
+    auto y1=binaryData_[offset+position_];
+    auto y2=binaryData_[offset+position_+1];
+    auto y3=binaryData_[offset+position_+2];
+    auto y4=binaryData_[offset+position_+3];
+    auto u=binaryData_[offset+numberOfPixels+position_/4];
+    auto v=binaryData_[offset+numberOfPixels+numberOfPixels/4+position_/4];
+
+    position_+=4;
+    success=true;
+    return Yuv411Vector(u,y1,y2,v,y3,y4);
 }
 
 std::vector<QRgb> Utility::Yuv411FileReader::Yuv411ToRgb888(Yuv411Vector vector) {

@@ -72,10 +72,10 @@ Utility::Yuv422Vector Utility::Yuv422FileReader::readNextVectorPacked(bool &succ
         return Yuv422Vector(0,0,0,0);
     }
 
-    auto y1=binaryData_[position_];
-    auto u=binaryData_[position_+1];
-    auto y2=binaryData_[position_+2];
-    auto v=binaryData_[position_+3];
+    auto u=binaryData_[position_];
+    auto y1=binaryData_[position_+1];
+    auto v=binaryData_[position_+2];
+    auto y2=binaryData_[position_+3];
 
     position_+=4;
     success=true;
