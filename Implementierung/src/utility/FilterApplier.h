@@ -1,48 +1,52 @@
 #ifndef __FilterApplier_h__
 #define __FilterApplier_h__
 
+#include <memory>
+
+extern "C" {
+#include <libavcodec/avcodec.h>
+#include <libavformat/avformat.h>
+}
+
 namespace Model {
 class FilterList;
 class AVVideo;
 }
-class AVFrame;
 
 namespace Utility {
 /**
  * Applies filters of a given FilterList to a video.
  */
 class FilterApplier {
-  private:
-	Model::FilterList* list;
-
-	/// <summary>
-	/// Constructor.
-	/// </summary>
-	/// <param name="list">The list with the filters to apply.</param>
   public:
-	FilterApplier(Model::FilterList& list);
+    /**
+     * @brief FilterApplier Constructor.
+     * @param list The list with the filters to apply.
+     */
+    FilterApplier(Model::FilterList& list);
 
-	/// <summary>
-	/// Applies the given filters to the video.
-	/// </summary>
-	/// <param name="target">The video to which the new frames are added to.</param>
-	/// <param name="video">The video to apply the filters on.</param>
-  public:
-	void applyToVideo(Model::AVVideo& target, Model::AVVideo& video);
+    /**
+     * @brief applyToVideo Applies the given filters to the video.
+     * @param target The video to which the new frames are added to.
+     * @param video The video to apply the filters on.
+     */
+    void applyToVideo(Model::AVVideo& target, Model::AVVideo& video);
 
-	/// <summary>
-	/// Initializes the filters.
-	/// </summary>
   private:
-	void initFilters();
+    /**
+     * @brief initFilters Initializes the filters.
+     */
+    void initFilters();
 
-	/// <summary>
-	/// Applies the filters to one frame.
-	/// </summary>
-	/// <param name="frame">The frame to apply the filters on.</param>
-	/// <returns>The filtered frame.</returns>
   private:
-	AVFrame applyToFrame(AVFrame& frame);
+    Model::FilterList* list_;
+
+    /**
+     * @brief applyToFrame Applies the filters to one frame.
+     * @param frame The frame to apply the filters on.
+     * @return The filtered frame.
+     */
+    std::unique_ptr<AVFrame> applyToFrame(AVFrame& frame);
 };
 }
 

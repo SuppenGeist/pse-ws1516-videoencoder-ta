@@ -270,7 +270,7 @@ void GUI::FilterTab::loadConf() {
 }
 
 void GUI::FilterTab::reset() {
-	player_->reset();
+    player_->reset();
 }
 
 void GUI::FilterTab::save() {

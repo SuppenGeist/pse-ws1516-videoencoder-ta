@@ -1,79 +1,58 @@
 #ifndef __FilterList_h__
 #define __FilterList_h__
 
-#include <string>
+#include <memory>
 #include <vector>
+
+#include <QString>
 
 namespace Model {
 class Filter;
 }
 
 namespace Model {
+
 /**
  * This class contains a filter configuration. Every filter can only be once in this list.
  */
 class FilterList {
-  private:
-	std::vector<Model::Filter*> filters;
 
-	/// <summary>
-	/// Constructor.
-	/// </summary>
   public:
-	FilterList();
+    /**
+     * @brief FilterList Constructor.
+     */
+    FilterList();
 
-	/// <summary>
-	/// Returns a filter by its name.
-	/// </summary>
-	/// <param name="name">The name of the filter.</param>
-	/// <returns>The filter.</returns>
-  public:
-	Model::Filter* getFilterByName(std::string name);
+    /**
+     * @brief moveFilter Moves a filter to another position.
+     * @param oldPosition The old position.
+     * @param newPosition The new position.
+     */
+    void swapFilter(std::size_t oldPosition, std::size_t newPosition);
 
-	/// <summary>
-	/// Removes a filter.
-	/// </summary>
-	/// <param name="name">Name of the filter to remove.</param>
-  public:
-	void removeFilter(std::string name);
+    /**
+     * @brief removeFilter Removes a filter.
+     * @param position Position of the filter to remove.
+     */
+    void removeFilter(std::size_t position);
 
-	/// <summary>
-	/// Moves a filter to another position.
-	/// </summary>
-	/// <param name="oldPosition">The old position.</param>
-	/// <param name="newPosition">The new position.</param>
-  public:
-	void moveFilter(int oldPosition, int newPosition);
+    /**
+     * @brief addFilter Inserts a filter to the end.
+     * @param name Name of the filter to add.
+     */
+    void addFilter(QString name);
 
-	/// <summary>
-	/// Removes a filter.
-	/// </summary>
-	/// <param name="position">Position of the filter to remove.</param>
-  public:
-	void removeFilter(int position);
+    /**
+     * @brief getFilter Returns the filter at the given index.
+     * @param index Index of the filter.
+     * @return The filter at the given index.
+     */
+    Model::Filter* getFilter(std::size_t index);
 
-	/// <summary>
-	/// Inserts a filter to the end.
-	/// </summary>
-	/// <param name="name">Name of the filter to add.</param>
-  public:
-	void addFilter(std::string name);
+    std::size_t getSize();
 
-	/// <summary>
-	/// Returns the filter at the given index.
-	/// </summary>
-	/// <param name="index">Index of the filter.</param>
-	/// <returns>The filter at the given index.</returns>
-  public:
-	Model::Filter* getFilterByIndex(int index);
-
-	/// <summary>
-	/// Returns the index of a filter.
-	/// </summary>
-	/// <param name="name">The name of the filter.</param>
-	/// <returns>The index.</returns>
-  public:
-	int getIndex(std::string name);
+private:
+  std::vector<std::unique_ptr<Filter>> filters_;
 };
 }
 

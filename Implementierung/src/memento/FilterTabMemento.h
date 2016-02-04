@@ -15,7 +15,7 @@ namespace Memento {
  */
 class FilterTabMemento {
   private:
-	Model::FilterList filterList;
+    Model::FilterList* filterList;
   private:
 	bool wasApplied;
   private:
@@ -34,14 +34,14 @@ class FilterTabMemento {
 	/// </summary>
 	/// <returns>List of the selected filters.</returns>
   public:
-	Model::FilterList getFilterList();
+    Model::FilterList *getFilterList();
 
 	/// <summary>
 	/// Sets the list of the currently selected filters.
 	/// </summary>
 	/// <param name="filterList">List of the selected filters.</param>
   public:
-	void setFilterList(Model::FilterList filterList);
+    void setFilterList(Model::FilterList* filterList);
 
 	/// <summary>
 	/// Whether the filter were already applied.

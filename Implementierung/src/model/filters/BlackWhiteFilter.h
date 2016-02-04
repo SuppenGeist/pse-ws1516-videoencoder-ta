@@ -5,6 +5,8 @@
 #ifndef __BlackWhiteFilter_h__
 #define __BlackWhiteFilter_h__
 
+#include <QString>
+
 #include "Filter.h"
 
 namespace Model {
@@ -22,6 +24,8 @@ class BlackWhiteFilter: public Model::Filter {
 	/// Constructor.
 	/// </summary>
   public:
+    static const QString FILTERNAME;
+
 	BlackWhiteFilter();
 
   public:

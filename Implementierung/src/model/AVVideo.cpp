@@ -51,7 +51,15 @@ bool Model::AVVideo::insertFrames(std::vector<std::unique_ptr<AVFrame>>& frames,
 	for(std::size_t i=index; i<index+frames.size(); i++) {
 		returnVal&=insertFrame(std::move(frames[i-index]),i);
 	}
-	return returnVal;
+    return returnVal;
+}
+
+bool Model::AVVideo::appendFrame(std::unique_ptr<AVFrame> frame)
+{
+    if(frame->width!=width_||frame->height!=height_)
+        return false;
+
+    video_.push_back(std::move(frame));
 }
 
 std::size_t Model::AVVideo::getNumberOfFrames() {

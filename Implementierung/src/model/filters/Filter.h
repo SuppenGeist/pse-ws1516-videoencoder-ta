@@ -1,18 +1,10 @@
-#include <exception>
-#include <QString>
-
-
 #ifndef __Filter_h__
 #define __Filter_h__
 
-// #include "RemoveFilter.h"
+#include <string>
+#include <memory>
 
-namespace Model {
-class Filter;
-}
-namespace UndoRedo {
-class RemoveFilter;
-}
+#include <QString>
 
 namespace Model {
 /**
@@ -20,28 +12,29 @@ namespace Model {
 */
 class Filter {
   public:
-	UndoRedo::RemoveFilter* filter;
+    static std::unique_ptr<Filter> createFilter(QString filtername);
 
-	/// <summary>
-	/// Returns the string that the ffmpeg library needs to apply the filter to a video.
-	/// </summary>
-	/// <returns>The string for the ffmpeg library.</returns>
-  public:
-	virtual std::string getFilterDescription() = 0;
+    Filter();
 
-	/// <summary>
-	/// Returns the name of the filter.
-	/// </summary>
-	/// <returns>The filtername.</returns>
-  public:
-	virtual std::string getName() = 0;
+    virtual ~Filter();
 
+    /**
+     * @brief getFilterDescription Returns the string that the ffmpeg library needs to apply the filter to a video.
+     * @return The string for the ffmpeg library.
+     */
+    virtual std::string getFilterDescription() = 0;
 
-  public:
-	virtual void restoreFilter(QString description) = 0;
+    /**
+     * @brief restoreFilter
+     * @param description
+     */
+    virtual void restoreFilter(QString description) = 0;
 
-  public:
-	virtual QString getSaveString() = 0;
+    /**
+     * @brief getSaveString
+     * @return
+     */
+    virtual QString getSaveString() = 0;
 };
 }
 

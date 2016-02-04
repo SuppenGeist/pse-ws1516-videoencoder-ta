@@ -4,6 +4,8 @@
 #include "BlackWhiteFilter.h"
 //#include "../Filter.h"
 
+const QString Model::BlackWhiteFilter::FILTERNAME="Black/White";
+
 Model::BlackWhiteFilter::BlackWhiteFilter() {
 
 }

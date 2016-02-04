@@ -68,7 +68,7 @@ class MainWindowMemento {
 	/// </summary>
 	/// <param name="filterTabMemento">The FilterTabMemento.</param>
   public:
-	void setFilterTabMemento(Memento::FilterTabMemento filterTabMemento);
+    void setFilterTabMemento(FilterTabMemento *filterTabMemento);
 };
 }
 

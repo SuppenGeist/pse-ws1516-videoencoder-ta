@@ -83,7 +83,7 @@ class Video {
 	 * @brief appendFrame Adds the frame to the end of the video.
 	 * @param frame The frame to append.
 	 */
-	void appendFrame(std::unique_ptr<QImage> frame);
+    bool appendFrame(std::unique_ptr<QImage> frame);
 
 	/**
 	 * @brief getNumberOfFrames Returns the number of frames in the video.

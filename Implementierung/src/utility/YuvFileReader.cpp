@@ -31,8 +31,10 @@ void Utility::YuvFileReader::read(Model::Video *target)
 
 void Utility::YuvFileReader::stopReading()
 {
+    if(isRunning_) {
     isRunning_=false;
     reader_.join();
+    }
 }
 
 bool Utility::YuvFileReader::isRunning()

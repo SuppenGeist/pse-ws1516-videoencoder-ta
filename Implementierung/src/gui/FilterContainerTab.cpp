@@ -1,37 +1,33 @@
 #include "FilterContainerTab.h"
 
-#include <exception>
-#include <string>
 #include <vector>
-//#include <QWidget.h>
 
-#include "FilterTab.h"
+#include <QFrame>
+#include <QWidget>
+#include <QHBoxLayout>
+
 #include "FilterView.h"
-#include "../model/filters/Filter.h"
-#include "ui_filtercontainertab.h"
+#include "FilterTab.h"
 
 GUI::FilterContainerTab::FilterContainerTab(QWidget* parent):QFrame(parent) {
-	ui = new Ui::FilterContainerTab;
-	ui->setupUi(this);
+    setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
 
-
+    createUi();
 }
 
-void GUI::FilterContainerTab::addFilter(Model::Filter* filter) {
-	FilterView *v = new FilterView(this);
-	v->setObjectName(QString::fromStdString(filter->getName()));
-	ui->container->addWidget(v);
-	v->setFilter(filter);
-	v->setFilterTab(parentTab);
-	int b = size().width();
-	resize(215+b, 200);
+void GUI::FilterContainerTab::addFilter(QString filtername) {
+    FilterView *view = new FilterView;
+    view->setFilter(filtername);
+    view->setFilterTab(*parentTab_);
+    container_->addWidget(view);
 }
 
 void GUI::FilterContainerTab::setParentTab(FilterTab& parent) {
-	throw "Not yet implemented";
+    parentTab_=&parent;
 }
 
-void GUI::FilterContainerTab::uncheck(std::string filterName) {
-	findChild<GUI::FilterView*>(QString::fromStdString(filterName))->uncheck();
+void GUI::FilterContainerTab::createUi()
+{
+    container_=new QHBoxLayout;
+    setLayout(container_);
 }
-

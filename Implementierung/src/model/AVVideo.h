@@ -73,6 +73,8 @@ class AVVideo {
 	 */
 	bool insertFrames(std::vector<std::unique_ptr<AVFrame> >& frames, std::size_t index);
 
+    bool appendFrame(std::unique_ptr<AVFrame> frame);
+
 	/**
 	 * @brief getNumberOfFrames Returns the number of frames in the video.
 	 * @return The number of frames in the video.

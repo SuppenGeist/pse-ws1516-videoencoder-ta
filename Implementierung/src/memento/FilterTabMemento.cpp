@@ -7,11 +7,11 @@
 Memento::FilterTabMemento::FilterTabMemento() {
 }
 
-Model::FilterList Memento::FilterTabMemento::getFilterList() {
+Model::FilterList* Memento::FilterTabMemento::getFilterList() {
 	return this->filterList;
 }
 
-void Memento::FilterTabMemento::setFilterList(Model::FilterList filterList) {
+void Memento::FilterTabMemento::setFilterList(Model::FilterList *filterList) {
 	this->filterList = filterList;
 }
 

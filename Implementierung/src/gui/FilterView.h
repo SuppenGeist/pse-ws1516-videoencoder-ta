@@ -1,21 +1,20 @@
 #ifndef __FilterView_h__
 #define __FilterView_h__
 
+#include <memory>
+
 #include <QFrame>
 #include <QWidget>
-#include <QCheckBox>
-#include <QLabel>
+#include <QPushButton>
 #include <QVBoxLayout>
+#include <QImage>
 
-#include "FilterTab.h"
 #include "../model/filters/Filter.h"
+#include "FrameView.h"
 
 namespace GUI {
 class FilterTab;
 class FilterView;
-}
-namespace Model {
-class Filter;
 }
 
 namespace GUI {
@@ -30,55 +29,38 @@ class FilterView : public QFrame {
 	 * @brief FilterViewCcontructor
 	 * @param parent Parent of object
 	 */
-	FilterView(QWidget* parent);
+    FilterView(QWidget* parent=0);
 
 	/**
 	 * @brief setFilter Sets the filter this view represents.
 	 * @param filter The filter for this view.
 	 */
-	void setFilter(Model::Filter* filter);
+    void setFilter(QString filtername);
 
 	/**
 	 * @brief setFilterTab Sets the tab this view is contained in.
 	 * @param filtertab The parent filtertab.
 	 */
-	void setFilterTab(GUI::FilterTab* filtertab);
+    void setFilterTab(FilterTab& filtertab);
 
-	/**
-	 * @brief uncheck Unchecks the checkbox
-	 */
-	void uncheck();
+private slots:
+    void buttonPressed();
 
   private:
-	/**
-	 * @brief getDefaultImage Returns the default image on which the filter is applied as a preview.
-	 * @return The default image.
-	 */
-	static QImage getDefaultImage() {
-		throw "Not yet implemented";
-	}
+    static std::unique_ptr<QImage> defaultImage_;
 
-	/**
-	 * @brief checkBoxStateChanged Does filterTab.addFilter(filter) or filterTab.removeFilter(filter.getName())
-	 * @param state The state of the the checked checkbox
-	 */
-	void checkBoxStateChanged(int state);
+    QPushButton*                    button_addFilter_;
+    FilterTab*                      filterTab_;
+    FrameView*                      filterView_;
+    std::unique_ptr<Model::Filter>  filter_;
 
+    /**
+     * @brief getDefaultImage Returns the default image on which the filter is applied as a preview.
+     * @return The default image.
+     */
+    static QImage& getDefaultImage();
 
-
-
-	/// <summary>
-	///
-	/// </summary>
-	/// <returns></returns>
-
-  private:
-	QCheckBox* checkbox;
-	QLabel* preview;
-	GUI::FilterTab* filterTab;
-	Model::Filter* filter;
-	QWidget* verticalLayoutWidget;
-	QVBoxLayout* verticalLayout;
+    void createUi();
 
 };
 }
