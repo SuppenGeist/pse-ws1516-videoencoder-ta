@@ -1,14 +1,17 @@
-#include <exception>
-#include <string>
-
 #include "ZoomFilter.h"
+
+#include <QString>
+#include <QStringList>
+
 #include "Filter.h"
+
+const QString Model::ZoomFilter::FILTERNAME="Zoom";
 
 Model::ZoomFilter::ZoomFilter() {
 }
 
 QString Model::ZoomFilter::getName() {
-	return "Zoom";
+    return FILTERNAME;
 }
 
 std::string Model::ZoomFilter::getFilterDescription() {
@@ -24,9 +27,13 @@ void Model::ZoomFilter::setIntensity(int intensity) {
 }
 
 void Model::ZoomFilter::restoreFilter(QString description) {
-	throw "Not yet implemented";
+    QStringList list  = description.split(";");
+    setIntensity(list[1].QString::toInt());
 }
 
 QString Model::ZoomFilter::getSaveString() {
-
+    QString str(getName());
+    str+=";";
+    str+=QString::number(intensity);
+    return str;
 }

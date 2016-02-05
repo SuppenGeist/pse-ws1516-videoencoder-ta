@@ -17,6 +17,8 @@ namespace Model {
  * Rotates the video.
 */
 class RotationFilter: public Model::Filter {
+  public:
+    static const QString FILTERNAME;
   private:
 	int angle;
 

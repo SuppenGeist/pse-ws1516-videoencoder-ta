@@ -1,14 +1,16 @@
-#include <exception>
-#include <string>
-
 #include "SepiaFilter.h"
+
+#include <QString>
+
 #include "Filter.h"
+
+const QString Model::SepiaFilter::FILTERNAME="Sepia";
 
 Model::SepiaFilter::SepiaFilter() {
 }
 
 QString Model::SepiaFilter::getName() {
-	return "Sepia";
+    return FILTERNAME;
 }
 
 std::string Model::SepiaFilter::getFilterDescription() {
@@ -17,10 +19,10 @@ std::string Model::SepiaFilter::getFilterDescription() {
 }
 
 void Model::SepiaFilter::restoreFilter(QString description) {
-//nothing to save
+    //nothing to load
 }
 
 QString Model::SepiaFilter::getSaveString() {
-    QString str = QString(getName());
+    QString str(getName());
     return str;
 }

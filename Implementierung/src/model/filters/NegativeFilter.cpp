@@ -1,8 +1,11 @@
-#include <exception>
-#include <string>
-
 #include "NegativeFilter.h"
+
+#include <QString>
+#include <QStringList>
+
 #include "Filter.h"
+
+const QString Model::NegativeFilter::FILTERNAME="Negative";
 
 Model::NegativeFilter::NegativeFilter() {
 }
@@ -12,13 +15,14 @@ std::string Model::NegativeFilter::getFilterDescription() {
 }
 
 QString Model::NegativeFilter::getName() {
-	return "Negative";
+    return FILTERNAME;
 }
 
 void Model::NegativeFilter::restoreFilter(QString description) {
-	throw "Not yet implemented";
+    //nothing to load
 }
 
 QString Model::NegativeFilter::getSaveString() {
-
+    QString str(getName());
+    return str;
 }

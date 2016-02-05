@@ -1,8 +1,11 @@
-#include <exception>
+#include "BlurFilter.h"
+
 #include <QString>
 #include <QStringList>
-#include "BlurFilter.h"
+
 #include "Filter.h"
+
+const QString Model::BlurFilter::FILTERNAME="Blur";
 
 Model::BlurFilter::BlurFilter() {
 }
@@ -36,7 +39,7 @@ std::string Model::BlurFilter::getFilterDescription() {
 }
 
 QString Model::BlurFilter::getName() {
-	return "Blur";
+    return FILTERNAME;
 }
 
 void Model::BlurFilter::restoreFilter(QString description) {
@@ -46,7 +49,7 @@ void Model::BlurFilter::restoreFilter(QString description) {
 }
 
 QString Model::BlurFilter::getSaveString() {
-    QString str = QString(getName());
+    QString str(getName());
     str+=";";
     str+=QString::number(preserveEdges);
     str+=";";

@@ -1,8 +1,11 @@
-#include <exception>
-#include <string>
-
 #include "PosterFilter.h"
+
+#include <QString>
+#include <QStringList>
+
 #include "Filter.h"
+
+const QString Model::PosterFilter::FILTERNAME="Poster";
 
 Model::PosterFilter::PosterFilter() {
 }
@@ -16,7 +19,7 @@ int Model::PosterFilter::getNumberOfColors() {
 }
 
 QString Model::PosterFilter::getName() {
-	return "Poster";
+    return FILTERNAME;
 }
 
 void Model::PosterFilter::setNumberOfColors(int numberOfColors) {
@@ -24,9 +27,13 @@ void Model::PosterFilter::setNumberOfColors(int numberOfColors) {
 }
 
 void Model::PosterFilter::restoreFilter(QString description) {
-	throw "Not yet implemented";
+    QStringList list  = description.split(";");
+    setNumberOfColors(list[1].QString::toInt());
 }
 
 QString Model::PosterFilter::getSaveString() {
-
+    QString str(getName());
+    str+=";";
+    str+=QString::number(numberOfColors);
+    return str;
 }

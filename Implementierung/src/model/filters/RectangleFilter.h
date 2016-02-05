@@ -1,6 +1,6 @@
 #include <exception>
 #include <string>
-
+#include <QColor>
 
 #ifndef __RectangleFilter_h__
 #define __RectangleFilter_h__
@@ -17,6 +17,8 @@ namespace Model {
  * Inserts a filled rectangle with a given color into the video
 */
 class RectangleFilter: public Model::Filter {
+  public:
+    static const QString FILTERNAME;
   private:
 	QRgb color;
   private:

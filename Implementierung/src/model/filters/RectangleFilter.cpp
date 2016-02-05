@@ -1,8 +1,12 @@
-#include <exception>
-#include <string>
-#include <QColor>
 #include "RectangleFilter.h"
+
+#include <QString>
+#include <QStringList>
+#include <QColor>
+
 #include "Filter.h"
+
+const QString Model::RectangleFilter::FILTERNAME="Rectangle";
 
 Model::RectangleFilter::RectangleFilter() {
 }
@@ -40,7 +44,7 @@ int Model::RectangleFilter::getX() {
 }
 
 QString Model::RectangleFilter::getName() {
-	return "Rectangle";
+    return FILTERNAME;
 }
 
 void Model::RectangleFilter::setX(int x) {

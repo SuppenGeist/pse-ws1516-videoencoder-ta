@@ -1,9 +1,11 @@
-#include <exception>
+#include "BrightnessFilter.h"
+
 #include <QString>
 #include <QStringList>
 
-#include "BrightnessFilter.h"
 #include "Filter.h"
+
+const QString Model::BrightnessFilter::FILTERNAME="Brightness";
 
 Model::BrightnessFilter::BrightnessFilter() {
 }
@@ -17,7 +19,7 @@ void Model::BrightnessFilter::setIntensity(int intensity) {
 }
 
 QString Model::BrightnessFilter::getName() {
-	return "Brightness";
+    return FILTERNAME;
 }
 
 std::string Model::BrightnessFilter::getFilterDescription() {
@@ -33,7 +35,7 @@ void Model::BrightnessFilter::restoreFilter(QString description) {
 }
 
 QString Model::BrightnessFilter::getSaveString() {
-    QString str = QString(getName());
+    QString str(getName());
     str+=";";
     str+=QString::number(intensity);
     return str;

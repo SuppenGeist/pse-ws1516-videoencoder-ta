@@ -17,6 +17,8 @@ namespace Model {
  * Adjusts the contrast of the video.
 */
 class ContrastFilter: public Model::Filter {
+  public:
+    static const QString FILTERNAME;
   private:
 	int intensity;
 

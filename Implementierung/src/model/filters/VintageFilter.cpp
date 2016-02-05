@@ -1,14 +1,16 @@
-#include <exception>
-#include <string>
-
 #include "VintageFilter.h"
+
+#include <QString>
+
 #include "Filter.h"
+
+const QString Model::VintageFilter::FILTERNAME="Vintage";
 
 Model::VintageFilter::VintageFilter() {
 }
 
 QString Model::VintageFilter::getName() {
-	return "Vintage";
+    return FILTERNAME;
 }
 
 std::string Model::VintageFilter::getFilterDescription() {
@@ -17,10 +19,10 @@ std::string Model::VintageFilter::getFilterDescription() {
 }
 
 void Model::VintageFilter::restoreFilter(QString description) {
-//nothing to load
+    //nothing to load
 }
 
 QString Model::VintageFilter::getSaveString() {
-    QString str = QString(getName());
+    QString str(getName());
     return str;
 }

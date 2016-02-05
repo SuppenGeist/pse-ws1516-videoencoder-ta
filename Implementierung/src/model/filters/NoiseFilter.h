@@ -19,6 +19,8 @@ namespace Model {
  * Inserts noise into the video.
 */
 class NoiseFilter: public Model::Filter {
+  public:
+    static const QString FILTERNAME;
   private:
 	int intensity;
   private:

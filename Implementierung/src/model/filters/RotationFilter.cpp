@@ -1,8 +1,11 @@
-#include <exception>
-#include <string>
-
 #include "RotationFilter.h"
+
+#include <QString>
+#include <QStringList>
+
 #include "Filter.h"
+
+const QString Model::RotationFilter::FILTERNAME="Rotation";
 
 Model::RotationFilter::RotationFilter() {
 }
@@ -16,7 +19,7 @@ int Model::RotationFilter::getAngle() {
 }
 
 QString Model::RotationFilter::getName() {
-	return "Rotation";
+    return FILTERNAME;
 }
 
 void Model::RotationFilter::setAngle(int angle) {
@@ -24,9 +27,13 @@ void Model::RotationFilter::setAngle(int angle) {
 }
 
 void Model::RotationFilter::restoreFilter(QString description) {
-	throw "Not yet implemented";
+    QStringList list  = description.split(";");
+    setAngle(list[1].QString::toInt());
 }
 
 QString Model::RotationFilter::getSaveString() {
-
+    QString str(getName());
+    str+=";";
+    str+=QString::number(angle);
+    return str;
 }

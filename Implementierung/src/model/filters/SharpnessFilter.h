@@ -17,6 +17,8 @@ namespace Model {
  * Sharpens the video.
 */
 class SharpnessFilter: public Model::Filter {
+  public:
+    static const QString FILTERNAME;
   private:
 	int intensity;
 

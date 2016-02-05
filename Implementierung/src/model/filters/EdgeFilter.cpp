@@ -1,8 +1,11 @@
-
-#include <string>
-
 #include "EdgeFilter.h"
+
+#include <QString>
+#include <QStringList>
+
 #include "Filter.h"
+
+const QString Model::EdgeFilter::FILTERNAME="Edge";
 
 Model::EdgeFilter::EdgeFilter() {
 }
@@ -12,13 +15,14 @@ std::string Model::EdgeFilter::getFilterDescription() {
 }
 
 QString Model::EdgeFilter::getName() {
-	return "Edge";
+    return FILTERNAME;
 }
 
 void Model::EdgeFilter::restoreFilter(QString description) {
-	throw "Not yet implemented";
+    //nothing to load
 }
 
 QString Model::EdgeFilter::getSaveString() {
-
+    QString str(getName());
+    return str;
 }

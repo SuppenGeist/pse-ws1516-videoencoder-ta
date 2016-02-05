@@ -17,6 +17,8 @@ namespace Model {
  * Converts the video into sepia.
 */
 class SepiaFilter: public Model::Filter {
+  public:
+    static const QString FILTERNAME;
 
   public:
 	SepiaFilter();

@@ -17,6 +17,8 @@ namespace Model {
  * Filters everything but the edges out of the video.
 */
 class EdgeFilter: public Model::Filter {
+  public:
+    static const QString FILTERNAME;
 
   public:
 	EdgeFilter();

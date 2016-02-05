@@ -17,6 +17,8 @@ namespace Model {
  * Scales the video.
 */
 class ScaleFilter: public Model::Filter {
+  public:
+    static const QString FILTERNAME;
   private:
 	bool keepRatio;
   private:

@@ -18,6 +18,8 @@ namespace Model {
  * Inserts border into the video
 */
 class BorderFilter: public Model::Filter {
+  public:
+    static const QString FILTERNAME;
   private:
 	bool top;
   private:

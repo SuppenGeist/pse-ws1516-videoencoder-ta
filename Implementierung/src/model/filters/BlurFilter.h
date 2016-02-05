@@ -17,6 +17,8 @@ namespace Model {
  * Blurs the video.
 */
 class BlurFilter: public Model::Filter {
+  public:
+    static const QString FILTERNAME;
   private:
 	bool preserveEdges;
   private:

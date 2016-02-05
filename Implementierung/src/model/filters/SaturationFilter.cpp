@@ -1,8 +1,11 @@
-#include <exception>
-#include <string>
-
 #include "SaturationFilter.h"
+
+#include <QString>
+#include <QStringList>
+
 #include "Filter.h"
+
+const QString Model::SaturationFilter::FILTERNAME="Saturation";
 
 Model::SaturationFilter::SaturationFilter() {
 }
@@ -16,7 +19,7 @@ int Model::SaturationFilter::getIntensity() {
 }
 
 QString Model::SaturationFilter::getName() {
-	return "Saturation";
+    return FILTERNAME;
 }
 
 void Model::SaturationFilter::setIntensity(int intensity) {
@@ -24,9 +27,14 @@ void Model::SaturationFilter::setIntensity(int intensity) {
 }
 
 void Model::SaturationFilter::restoreFilter(QString description) {
-	throw "Not yet implemented";
+    QStringList list  = description.split(";");
+    setIntensity(list[1].QString::toInt());
 }
 
 QString Model::SaturationFilter::getSaveString() {
+    QString str(getName());
+    str+=";";
+    str+=QString::number(intensity);
+    return str;
 
 }

@@ -20,6 +20,8 @@ namespace Model {
  * Filters the video by a given channel (red, green or blue).
 */
 class RGBFilter: public Model::Filter {
+  public:
+    static const QString FILTERNAME;
   private:
 	Model::BasicColor* color;
 

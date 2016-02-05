@@ -15,8 +15,8 @@ namespace Model {
 */
 class BlackWhiteFilter: public Filter {
 
-  public:
-    static const QString FILTERNAME;
+public:
+  static const QString FILTERNAME;
 
     /**
      * @brief BlackWhiteFilter Constructor.

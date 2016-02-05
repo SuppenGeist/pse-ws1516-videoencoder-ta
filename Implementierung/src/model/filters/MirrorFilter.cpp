@@ -1,9 +1,12 @@
-#include <exception>
-#include <string>
-
 #include "MirrorFilter.h"
+
+#include <QString>
+#include <QStringList>
+
 #include "../MirrorMode.h"
 #include "Filter.h"
+
+const QString Model::MirrorFilter::FILTERNAME="Mirror";
 
 Model::MirrorFilter::MirrorFilter() {
 }
@@ -13,7 +16,7 @@ std::string Model::MirrorFilter::getFilterDescription() {
 }
 
 QString Model::MirrorFilter::getName() {
-	return "Mirror";
+    return FILTERNAME;
 }
 
 Model::MirrorMode Model::MirrorFilter::getMode() {

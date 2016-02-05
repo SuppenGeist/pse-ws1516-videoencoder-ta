@@ -17,6 +17,8 @@ namespace Model {
  * Reduces the maximum number of colors in the video.
 */
 class PosterFilter: public Model::Filter {
+  public:
+    static const QString FILTERNAME;
   private:
 	int numberOfColors;
 

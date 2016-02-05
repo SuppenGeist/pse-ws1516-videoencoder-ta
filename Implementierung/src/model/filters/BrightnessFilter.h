@@ -17,6 +17,8 @@ namespace Model {
  * Adjusts the video brightness.
 */
 class BrightnessFilter: public Model::Filter {
+  public:
+    static const QString FILTERNAME;
   private:
 	int intensity;
 

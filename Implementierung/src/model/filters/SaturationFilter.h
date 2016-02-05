@@ -17,6 +17,8 @@ namespace Model {
  * Adjusts the saturation of the video.
 */
 class SaturationFilter: public Model::Filter {
+  public:
+    static const QString FILTERNAME;
   private:
 	int intensity;
 

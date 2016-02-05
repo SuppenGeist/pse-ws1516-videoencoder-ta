@@ -1,8 +1,11 @@
-#include <exception>
+#include "ScaleFilter.h"
+
 #include <QString>
 #include <QStringList>
-#include "ScaleFilter.h"
+
 #include "Filter.h"
+
+const QString Model::ScaleFilter::FILTERNAME="Scale";
 
 Model::ScaleFilter::ScaleFilter() {
 }
@@ -25,7 +28,7 @@ void Model::ScaleFilter::setKeepRatio(bool keepRatio) {
 }
 
 QString Model::ScaleFilter::getName() {
-	return "Scale";
+    return FILTERNAME;
 }
 
 int Model::ScaleFilter::getWidth() {
@@ -61,7 +64,7 @@ void Model::ScaleFilter::restoreFilter(QString description) {
 }
 
 QString Model::ScaleFilter::getSaveString() {
-    QString str = QString(getName());
+    QString str(getName());
     str+=";";
     str+=QString::number(width);
     str+=";";

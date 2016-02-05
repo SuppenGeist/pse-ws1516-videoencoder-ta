@@ -1,8 +1,11 @@
-#include <exception>
-#include <string>
-
 #include "ContrastFilter.h"
+
+#include <QString>
+#include <QStringList>
+
 #include "Filter.h"
+
+const QString Model::ContrastFilter::FILTERNAME="Contrast";
 
 Model::ContrastFilter::ContrastFilter() {
 }
@@ -16,7 +19,7 @@ int Model::ContrastFilter::getIntensity() {
 }
 
 QString Model::ContrastFilter::getName() {
-	return "Contrast";
+    return FILTERNAME;
 }
 
 std::string Model::ContrastFilter::getFilterDescription() {
@@ -32,7 +35,7 @@ void Model::ContrastFilter::restoreFilter(QString description) {
 }
 
 QString Model::ContrastFilter::getSaveString() {
-    QString str = QString(getName());
+    QString str(getName());
     str+=";";
     str+=QString::number(intensity);
     return str;

@@ -16,6 +16,8 @@ namespace Model {
  * Inserts black blending into the video
 */
 class BlendingFilter: public Model::Filter {
+  public:
+    static const QString FILTERNAME;
   private:
 	bool inBlend;
   private:

@@ -1,9 +1,12 @@
-#include <exception>
-#include <string>
-
 #include "ColorbalanceFilter.h"
+
+#include <QString>
+#include <QStringList>
+
 #include "../../utility/BasicColor.h"
 #include "Filter.h"
+
+const QString Model::ColorbalanceFilter::FILTERNAME="Colorbalance";
 
 Model::ColorbalanceFilter::ColorbalanceFilter() {
 }
@@ -45,7 +48,7 @@ std::string Model::ColorbalanceFilter::getFilterDescription() {
 }
 
 QString Model::ColorbalanceFilter::getName() {
-	return "Colorbalance";
+    return FILTERNAME;
 }
 
 bool Model::ColorbalanceFilter::getDarkPixels() {

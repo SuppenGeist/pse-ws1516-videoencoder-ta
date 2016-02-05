@@ -1,9 +1,12 @@
-#include <exception>
-#include <string>
-
 #include "NoiseFilter.h"
+
+#include <QString>
+#include <QStringList>
+
 #include "../NoiseMode.h"
 #include "Filter.h"
+
+const QString Model::NoiseFilter::FILTERNAME="Noise";
 
 Model::NoiseFilter::NoiseFilter() {
 }
@@ -25,7 +28,7 @@ int Model::NoiseFilter::getIntensity() {
 }
 
 QString Model::NoiseFilter::getName() {
-	return "Noise";
+    return FILTERNAME;
 }
 
 void Model::NoiseFilter::setIntensity(int intensity) {
@@ -37,5 +40,4 @@ void Model::NoiseFilter::restoreFilter(QString description) {
 }
 
 QString Model::NoiseFilter::getSaveString() {
-
 }

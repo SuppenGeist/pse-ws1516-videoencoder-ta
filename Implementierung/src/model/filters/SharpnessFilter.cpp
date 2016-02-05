@@ -1,8 +1,11 @@
-#include <exception>
-#include <string>
-
 #include "SharpnessFilter.h"
+
+#include <QString>
+#include <QStringList>
+
 #include "Filter.h"
+
+const QString Model::SharpnessFilter::FILTERNAME="Sharpness";
 
 Model::SharpnessFilter::SharpnessFilter() {
 }
@@ -16,7 +19,7 @@ int Model::SharpnessFilter::getIntensity() {
 }
 
 QString Model::SharpnessFilter::getName() {
-	return "Sharpness";
+    return FILTERNAME;
 }
 
 void Model::SharpnessFilter::setIntensity(int intensity) {
@@ -24,9 +27,13 @@ void Model::SharpnessFilter::setIntensity(int intensity) {
 }
 
 void Model::SharpnessFilter::restoreFilter(QString description) {
-	throw "Not yet implemented";
+    QStringList list  = description.split(";");
+    setIntensity(list[1].QString::toInt());
 }
 
 QString Model::SharpnessFilter::getSaveString() {
-
+    QString str(getName());
+    str+=";";
+    str+=QString::number(intensity);
+    return str;
 }

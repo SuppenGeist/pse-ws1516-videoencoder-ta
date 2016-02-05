@@ -1,9 +1,12 @@
-#include <exception>
-#include <string>
-
 #include "RGBFilter.h"
+
+#include <QString>
+#include <QStringList>
+
 #include "../../utility/BasicColor.h"
 #include "Filter.h"
+
+const QString Model::RGBFilter::FILTERNAME="RGB";
 
 Model::RGBFilter::RGBFilter() {
 }
@@ -21,7 +24,7 @@ void Model::RGBFilter::setColor(BasicColor color) {
 }
 
 QString Model::RGBFilter::getName() {
-	return "RGB";
+    return FILTERNAME;
 }
 
 void Model::RGBFilter::restoreFilter(QString description) {
@@ -29,5 +32,4 @@ void Model::RGBFilter::restoreFilter(QString description) {
 }
 
 QString Model::RGBFilter::getSaveString() {
-
 }

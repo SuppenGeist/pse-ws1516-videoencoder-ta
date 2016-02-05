@@ -1,8 +1,12 @@
-
-#include <string>
-#include <QColor>
 #include "GridFilter.h"
+
+#include <QString>
+#include <QStringList>
+#include <QColor>
+
 #include "Filter.h"
+
+const QString Model::GridFilter::FILTERNAME="Grid";
 
 Model::GridFilter::GridFilter() {
 }
@@ -52,13 +56,29 @@ void Model::GridFilter::setOpacity(int opacity) {
 }
 
 QString Model::GridFilter::getName() {
-	return "Grid";
+    return FILTERNAME;
 }
 
 void Model::GridFilter::restoreFilter(QString description) {
-	throw "Not yet implemented";
+    QStringList list  = description.split(";");
+    setHorizontalLines(list[1].QString::toInt());
+    setVerticalLines(list[2].QString::toInt());
+    setThickness(list[3].QString::toInt());
+    setOpacity(list[4].QString::toInt());
+    setColor(list[5].QString::toInt());
 }
 
 QString Model::GridFilter::getSaveString() {
-
+    QString str(getName());
+    str+=";";
+    str+=QString::number(horizontalLines);
+    str+=";";
+    str+=QString::number(verticalLines);
+    str+=";";
+    str+=QString::number(thickness);
+    str+=";";
+    str+=QString::number(opacity);
+    str+=";";
+    str+=QString::number(color);
+    return str;
 }

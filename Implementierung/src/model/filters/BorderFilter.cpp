@@ -1,9 +1,12 @@
-#include <exception>
-#include <string>
+#include "BorderFilter.h"
+
+#include <QString>
+#include <QStringList>
 #include <QColor>
 
-#include "BorderFilter.h"
 #include "Filter.h"
+
+const QString Model::BorderFilter::FILTERNAME="Border";
 
 Model::BorderFilter::BorderFilter() {
 }
@@ -57,7 +60,7 @@ void Model::BorderFilter::setColor(QRgb color) {
 }
 
 QString Model::BorderFilter::getName() {
-	return "Border";
+    return FILTERNAME;
 }
 
 std::string Model::BorderFilter::getFilterDescription() {

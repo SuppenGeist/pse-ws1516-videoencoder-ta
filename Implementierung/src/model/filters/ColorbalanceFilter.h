@@ -19,6 +19,8 @@ namespace Model {
  * Adjusts the colorbalance of the video for the 3 basic colors.
 */
 class ColorbalanceFilter: public Model::Filter {
+  public:
+    static const QString FILTERNAME;
   private:
 	int intensity;
   private:

@@ -17,6 +17,8 @@ namespace Model {
  * Zooms into the center of the video.
 */
 class ZoomFilter: public Model::Filter {
+  public:
+    static const QString FILTERNAME;
   private:
 	int intensity;
 

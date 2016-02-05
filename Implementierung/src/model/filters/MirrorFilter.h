@@ -19,6 +19,8 @@ namespace Model {
  * Mirrors the video horizontally or vertically.
 */
 class MirrorFilter: public Model::Filter {
+  public:
+    static const QString FILTERNAME;
   private:
 	Model::MirrorMode* mode;
 

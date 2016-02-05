@@ -1,8 +1,11 @@
-#include <exception>
-#include <QString>
-
 #include "BlendingFilter.h"
+
+#include <QString>
+#include <QStringList>
+
 #include "Filter.h"
+
+const QString Model::BlendingFilter::FILTERNAME="Blending";
 
 Model::BlendingFilter::BlendingFilter() {
 }
@@ -32,7 +35,7 @@ void Model::BlendingFilter::setEndFrame(int endFrame) {
 }
 
 QString Model::BlendingFilter::getName() {
-	return "Blending";
+    return FILTERNAME;
 }
 
 std::string Model::BlendingFilter::getFilterDescription() {

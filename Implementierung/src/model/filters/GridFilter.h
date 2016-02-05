@@ -17,6 +17,8 @@ namespace Model {
  * Inserts a grid into the video as an overlay.
 */
 class GridFilter: public Model::Filter {
+  public:
+    static const QString FILTERNAME;
   private:
 	int horizontalLines;
   private:
