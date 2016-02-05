@@ -14,3 +14,12 @@ moveFilter(int old, int new) zu moveFilter(int oldIndex, newIndex) umbenannt
 füge methode uncheck() hinzu
 <b>Grund</b> keine möglichkeit die checkbox von FilterCOntainerTab aus zu erreichen.
 <hr>
+
+##AnalyisTab
+füge ui hinzu
+<b>Grund</b> Einfacher das interface zu gestalten
+ändere controlpanel zu playerPanel_  
+ändere yuvVideo zu rawVideo
+ändere player und rawVideo zu unique_ptr
+<b>Grund</b> Gleiche funktion wie im filtertab, leichtere Orientierung
+
