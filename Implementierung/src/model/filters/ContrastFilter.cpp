@@ -27,8 +27,8 @@ std::string Model::ContrastFilter::getFilterDescription() {
 }
 
 void Model::ContrastFilter::restoreFilter(QString description) {
-    QStringList list  = description.split(";");
-    setIntensity(list[1].QString::toInt());
+    //QStringList list  = description.split(";");
+    //setIntensity(list[1].QString::toInt());
 }
 
 QString Model::ContrastFilter::getSaveString() {

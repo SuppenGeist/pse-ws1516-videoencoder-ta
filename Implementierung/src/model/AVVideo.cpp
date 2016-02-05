@@ -1,8 +1,19 @@
 #include "AVVideo.h"
 
+extern "C" {
+#include <libavcodec/avcodec.h>
+#include <libavformat/avformat.h>
+}
 
 Model::AVVideo::AVVideo(int fps, int width, int height):fps_(fps),width_(width),height_(height) {
 
+}
+
+Model::AVVideo::~AVVideo()
+{
+    for(auto frame:video_) {
+        av_frame_free(&frame);
+    }
 }
 
 int Model::AVVideo::getWidth() {
@@ -21,27 +32,29 @@ AVFrame* Model::AVVideo::getFrame(std::size_t index) {
 	if(index>=video_.size())
 		return nullptr;
 
-	return video_[index].get();
+    return video_[index];
 }
 
-bool Model::AVVideo::insertFrame(std::unique_ptr<AVFrame> frame, std::size_t index) {
+bool Model::AVVideo::insertFrame(AVFrame *frame, std::size_t index) {
 	if(frame->width!=width_||frame->height!=height_)
 		return false;
 
 	if(index>video_.size())
 		return false;
 
-	video_.insert(video_.begin() + index, std::move(frame));
+    video_.insert(video_.begin() + index, frame);
 
 	return true;
 }
 
 void Model::AVVideo::removeFrame(std::size_t index) {
-	if(index < video_.size())
+    if(index < video_.size()) {
+        av_frame_free(&video_[index]);
 		video_.erase(video_.begin() + index);
+    }
 }
 
-bool Model::AVVideo::insertFrames(std::vector<std::unique_ptr<AVFrame>>& frames,
+bool Model::AVVideo::insertFrames(std::vector<AVFrame*>& frames,
                                   std::size_t index) {
 	bool returnVal=true;
 
@@ -49,17 +62,17 @@ bool Model::AVVideo::insertFrames(std::vector<std::unique_ptr<AVFrame>>& frames,
 		return false;
 
 	for(std::size_t i=index; i<index+frames.size(); i++) {
-		returnVal&=insertFrame(std::move(frames[i-index]),i);
+        returnVal&=insertFrame(frames[i-index],i);
 	}
     return returnVal;
 }
 
-bool Model::AVVideo::appendFrame(std::unique_ptr<AVFrame> frame)
+bool Model::AVVideo::appendFrame(AVFrame* frame)
 {
     if(frame->width!=width_||frame->height!=height_)
         return false;
 
-    video_.push_back(std::move(frame));
+    video_.push_back(frame);
 }
 
 std::size_t Model::AVVideo::getNumberOfFrames() {
