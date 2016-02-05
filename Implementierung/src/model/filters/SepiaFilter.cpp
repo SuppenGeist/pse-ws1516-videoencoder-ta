@@ -21,4 +21,6 @@ void Model::SepiaFilter::restoreFilter(QString description) {
 }
 
 QString Model::SepiaFilter::getSaveString() {
+    QString str = QString(getName());
+    return str;
 }

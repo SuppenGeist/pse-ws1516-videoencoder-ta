@@ -46,4 +46,10 @@ void Model::BlurFilter::restoreFilter(QString description) {
 }
 
 QString Model::BlurFilter::getSaveString() {
+    QString str = QString(getName());
+    str+=";";
+    str+=QString::number(preserveEdges);
+    str+=";";
+    str+=QString::number(intensity);
+    return str;
 }

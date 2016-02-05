@@ -33,4 +33,8 @@ void Model::BrightnessFilter::restoreFilter(QString description) {
 }
 
 QString Model::BrightnessFilter::getSaveString() {
+    QString str = QString(getName());
+    str+=";";
+    str+=QString::number(intensity);
+    return str;
 }

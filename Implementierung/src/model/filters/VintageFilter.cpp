@@ -21,4 +21,6 @@ void Model::VintageFilter::restoreFilter(QString description) {
 }
 
 QString Model::VintageFilter::getSaveString() {
+    QString str = QString(getName());
+    return str;
 }

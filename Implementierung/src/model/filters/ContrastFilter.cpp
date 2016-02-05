@@ -20,13 +20,20 @@ QString Model::ContrastFilter::getName() {
 }
 
 std::string Model::ContrastFilter::getFilterDescription() {
-	throw "Not yet implemented";
+    std::string str = std::string("eq=");
+    str+= "contrast:";
+    str+=std::to_string(intensity);
+    return str;
 }
 
 void Model::ContrastFilter::restoreFilter(QString description) {
-	throw "Not yet implemented";
+    QStringList list  = description.split(";");
+    setIntensity(list[1].QString::toInt());
 }
 
 QString Model::ContrastFilter::getSaveString() {
-
+    QString str = QString(getName());
+    str+=";";
+    str+=QString::number(intensity);
+    return str;
 }

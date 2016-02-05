@@ -61,4 +61,14 @@ void Model::ScaleFilter::restoreFilter(QString description) {
 }
 
 QString Model::ScaleFilter::getSaveString() {
+    QString str = QString(getName());
+    str+=";";
+    str+=QString::number(width);
+    str+=";";
+    str+=QString::number(height);
+    str+=";";
+    str+=QString::number(keepRatio);
+    str+=";";
+    str+=QString::number(ratio);
+    return str;
 }

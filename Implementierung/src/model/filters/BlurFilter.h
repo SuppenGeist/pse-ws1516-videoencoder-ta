@@ -22,37 +22,37 @@ class BlurFilter: public Model::Filter {
   private:
 	int intensity;
 
-	/// <summary>
-	/// Constructor.
-	/// </summary>
+    /**
+     * @brief BlurFilter Constructor.
+     */
   public:
 	BlurFilter();
 
-	/// <summary>
-	/// Whether edges shall be preserved when blurring.
-	/// </summary>
-	/// <returns>true if the edges are preserved.</returns>
+    /**
+    * Whether edges shall be preserved when blurring.
+    */
   public:
 	bool getPreserveEdges();
 
-	/// <summary>
-	/// Sets whether the edges shall be preserved when blurring.
-	/// </summary>
-	/// <param name="preserveEdges">True if the edges shall be preserved.</param>
+    /**
+    * Sets whether the edges shall be preserved when blurring.
+    *
+    * @param preserveEdges.
+    */
   public:
 	void setPreserveEdges(bool preserveEdges);
 
-	/// <summary>
-	/// Returns the intensity of the blurring.
-	/// </summary>
-	/// <returns>The intensity of the blurring.</returns>
+    /**
+      *@brief getIntensity.
+      *@return
+      */
   public:
 	int getIntensity();
 
-	/// <summary>
-	/// Sets the intensity of the blurring.
-	/// </summary>
-	/// <param name="intensity">The intensity of the blurring.</param>
+    /**
+    * @brief setIntensity;
+    * @param intensity of the blurring.
+    */
   public:
 	void setIntensity(int intensity);
 
