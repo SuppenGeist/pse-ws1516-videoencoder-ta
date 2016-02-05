@@ -18,6 +18,8 @@ GUI::AnalysisBoxContainer::AnalysisBoxContainer(QWidget* parent) : QFrame(parent
 
     ui = new Ui::AnalysisBoxContainer;
     ui->setupUi(this);
+    AnalysisBox *a = new AnalysisBox(this);
+    //ui->verticalLayout->addWidget(a);
 }
 
 Memento::AnalysisBoxContainerMemento GUI::AnalysisBoxContainer::getMemento() {
@@ -29,7 +31,8 @@ void GUI::AnalysisBoxContainer::restore(Memento::AnalysisBoxContainerMemento mem
 }
 
 void GUI::AnalysisBoxContainer::addVideo(QString path) {
-	throw "Not yet implemented";
+
+    resize(height()+250,width());
 }
 
 void GUI::AnalysisBoxContainer::setRawVideo(Video* video) {

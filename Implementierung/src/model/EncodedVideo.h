@@ -12,12 +12,11 @@ using namespace std;
 
 namespace GUI {
 class AnalysisBox;
-class Video;
 }
 namespace Model {
 class AVVideo;
 class Graph;
-class EncodedVideo;
+class Video;
 }
 
 namespace Model {
@@ -39,11 +38,11 @@ class EncodedVideo {
   public:
 	Model::AVVideo* avVideo;
   public:
-	GUI::Video* displayVideo;
+    Model::Video* displayVideo;
   public:
-	GUI::Video* macroblockVideo;
+    Model::Video* macroblockVideo;
   public:
-	GUI::Video* rgbDiffVideo;
+    Model::Video* rgbDiffVideo;
   public:
 	Model::Graph* bitrate;
   public:
@@ -137,7 +136,7 @@ class EncodedVideo {
 	/// </summary>
 	/// <returns>The macroblock video.</returns>
   public:
-	GUI::Video& getMacroBlockVideo();
+    Model::Video& getMacroBlockVideo();
 
 	/// <summary>
 	/// Returns the video which shows the rgb difference to another video.
@@ -145,14 +144,14 @@ class EncodedVideo {
 	/// <param name="reference">The video to compare to.</param>
 	/// <returns>The rgb diff video.</returns>
   public:
-	GUI::Video& getRgbDiffVideo(GUI::Video* reference = 0);
+    Model::Video& getRgbDiffVideo(GUI::Video* reference = 0);
 
 	/// <summary>
 	/// Returns the Video.
 	/// </summary>
 	/// <returns>The Video.</returns>
   public:
-	GUI::Video& getVideo();
+    Model::Video& getVideo();
 
 	/// <summary>
 	/// Loads the video from the file.

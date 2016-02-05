@@ -6,6 +6,7 @@
 #include <QPushButton>
 #include <QTextEdit>
 #include <QWidget>
+#include <memory>
 // #include "Video.h"
 // #include "AnalysisBoxContainer.h"
 // #include "VideoPlayer.h"
@@ -59,16 +60,13 @@ class AnalysisBox: public QFrame {
 	 */
 	void restore(Memento::AnalysisBoxMemento memento);
 
-	/// <summary>
-	/// Sets the timer for the videoplayer.
-	/// </summary>
-	/// <param name="timer:std:">The timer for the videoplayer.</param>
-	//void setTimer(shared_ptr<GUI::Timer> timer:std:);
+    /**
+     * @brief setTimer Sets the timer for the videoplayer.
+     * @param timer The timer for the videoplayer.
+     */
+    void setTimer(std::shared_ptr<GUI::Timer> timer);
 
-	/// <summary>
-	///
-	/// </summary>
-	/// <param name="video">.</param>
+
 	/**
 	 * @brief setRawVideo Sets the rawvideo the encoded video is compared to.
 	 * @param video The rawvideo
@@ -105,29 +103,29 @@ class AnalysisBox: public QFrame {
 	 * @brief setAnalyseVideo Sets the video this box shall present.
 	 * @param video The video to present.
 	 */
-	void setAnalyseVideo(Model::EncodedVideo video);
+    void setAnalyseVideo(std::unique_ptr<Model::EncodedVideo> video);
 
 
 
   public:
-	UndoRedo::RemoveVideo* anaBox;
+    UndoRedo::RemoveVideo* anaBox_;
   private:
-	Model::Video* rawVideo;
-	int currentlyPlayedVideo;
-	QTabWidget* tabs;
-	QPushButton* button_close;
-	QTextEdit* textEdit_comment;
-	GlobalControlPanel* controlPanel;
-	GUI::AnalysisBoxContainer* boxes;
-	GUI::VideoPlayer* plainVideoPlayer;
-	GUI::VideoPlayer* analysisVideoPlayer;
-	GUI::GraphWidget* psnrGraph;
-	GUI::GraphWidget* bitrateGraph;
-	GUI::GraphWidget* redHistogramm;
-	GUI::GraphWidget* blueHistogramm;
-	GUI::GraphWidget* greenHistogramm;
-	Model::EncodedVideo* video;
-	Ui::AnalysisBox* ui;
+    Model::Video* rawVideo_;
+    int currentlyPlayedVideo_;
+    QTabWidget* tabs_;
+    QPushButton* button_close_;
+    QTextEdit* textEdit_comment_;
+    GlobalControlPanel* playerPanel_;
+    GUI::AnalysisBoxContainer* boxes_;
+    std::unique_ptr<VideoPlayer> plainVideoPlayer_;
+    std::unique_ptr<VideoPlayer> analysisVideoPlayer_;
+    GUI::GraphWidget* psnrGraph_;
+    GUI::GraphWidget* bitrateGraph_;
+    GUI::GraphWidget* redHistogramm_;
+    GUI::GraphWidget* blueHistogramm_;
+    GUI::GraphWidget* greenHistogramm_;
+    std::unique_ptr<Model::EncodedVideo> video_;
+    Ui::AnalysisBox* ui_;
 };
 }
 

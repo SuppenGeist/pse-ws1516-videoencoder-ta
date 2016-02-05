@@ -81,7 +81,8 @@ private slots:
 
     /**
      * @brief analyseTypChanged tells AnalysisBox to showMacroBlocks() or showRGBDiff()
-     * @param index The new type.
+     * @param index The new type. 0 = Macroblock, 1 = RGB_Diff
+     *
      */
     void analyseTypChanged(int index);
 
