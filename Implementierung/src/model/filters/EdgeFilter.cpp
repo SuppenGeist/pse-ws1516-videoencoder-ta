@@ -23,6 +23,5 @@ void Model::EdgeFilter::restoreFilter(QString description) {
 }
 
 QString Model::EdgeFilter::getSaveString() {
-    QString str(getName());
-    return str;
+    //nothing to save
 }

@@ -28,12 +28,10 @@ void Model::RotationFilter::setAngle(int angle) {
 
 void Model::RotationFilter::restoreFilter(QString description) {
     QStringList list  = description.split(";");
-    setAngle(list[1].QString::toInt());
+    setAngle(list[0].QString::toInt());
 }
 
 QString Model::RotationFilter::getSaveString() {
-    QString str(getName());
-    str+=";";
-    str+=QString::number(angle);
+    QString str = QString::number(angle);
     return str;
 }

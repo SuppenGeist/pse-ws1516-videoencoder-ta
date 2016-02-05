@@ -31,12 +31,10 @@ std::string Model::BrightnessFilter::getFilterDescription() {
 
 void Model::BrightnessFilter::restoreFilter(QString description) {
 	QStringList list  = description.split(";");
-	setIntensity(list[1].QString::toInt());
+    setIntensity(list[0].QString::toInt());
 }
 
 QString Model::BrightnessFilter::getSaveString() {
-    QString str(getName());
-    str+=";";
-    str+=QString::number(intensity);
+    QString str =QString::number(intensity);
     return str;
 }

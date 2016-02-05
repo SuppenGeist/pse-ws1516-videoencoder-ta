@@ -28,12 +28,10 @@ void Model::SharpnessFilter::setIntensity(int intensity) {
 
 void Model::SharpnessFilter::restoreFilter(QString description) {
     QStringList list  = description.split(";");
-    setIntensity(list[1].QString::toInt());
+    setIntensity(list[0].QString::toInt());
 }
 
 QString Model::SharpnessFilter::getSaveString() {
-    QString str(getName());
-    str+=";";
-    str+=QString::number(intensity);
+    QString str = QString::number(intensity);
     return str;
 }

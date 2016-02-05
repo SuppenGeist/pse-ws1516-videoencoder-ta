@@ -44,14 +44,12 @@ QString Model::BlurFilter::getName() {
 
 void Model::BlurFilter::restoreFilter(QString description) {
 	QStringList list  = description.split(";");
-	setPreserveEdges(list[1].QString::toInt());
-	setIntensity(list[2].QString::toInt());
+    setPreserveEdges(list[0].QString::toInt());
+    setIntensity(list[1].QString::toInt());
 }
 
 QString Model::BlurFilter::getSaveString() {
-    QString str(getName());
-    str+=";";
-    str+=QString::number(preserveEdges);
+    QString str =QString::number(preserveEdges);
     str+=";";
     str+=QString::number(intensity);
     return str;

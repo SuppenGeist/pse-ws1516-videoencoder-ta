@@ -32,4 +32,5 @@ void Model::RGBFilter::restoreFilter(QString description) {
 }
 
 QString Model::RGBFilter::getSaveString() {
+
 }

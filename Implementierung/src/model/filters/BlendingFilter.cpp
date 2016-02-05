@@ -44,9 +44,17 @@ std::string Model::BlendingFilter::getFilterDescription() {
 
 
 void Model::BlendingFilter::restoreFilter(QString description) {
-	throw "Not yet implemented";
+    QStringList list  = description.split(";");
+    setInBlend(list[0].QString::toInt());
+    setStartFrame(list[1].QString::toInt());
+    setEndFrame(list[2].QString::toInt());
 }
 
 QString Model::BlendingFilter::getSaveString() {
-
+    QString str = QString::number(inBlend);
+    str+=";";
+    str+=QString::number(startFrame);
+    str+=";";
+    str+=QString::number(endFrame);
+    return str;
 }

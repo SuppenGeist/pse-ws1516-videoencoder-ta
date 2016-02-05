@@ -68,9 +68,26 @@ void Model::RectangleFilter::setOpacity(int opacity) {
 }
 
 void Model::RectangleFilter::restoreFilter(QString description) {
-	throw "Not yet implemented";
+    QStringList list  = description.split(";");
+    setWidth(list[0].QString::toInt());
+    setHeight(list[1].QString::toInt());
+    setX(list[2].QString::toInt());
+    setY(list[3].QString::toInt());
+    setOpacity(list[4].QString::toInt());
+    setColor(list[5].QString::toInt());
 }
 
 QString Model::RectangleFilter::getSaveString() {
-
+    QString str =QString::number(width);
+    str+=";";
+    str+=QString::number(height);
+    str+=";";
+    str+=QString::number(x);
+    str+=";";
+    str+=QString::number(y);
+    str+=";";
+    str+=QString::number(opacity);
+    str+=";";
+    str+=QString::number(color);
+    return str;
 }

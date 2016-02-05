@@ -61,17 +61,15 @@ QString Model::GridFilter::getName() {
 
 void Model::GridFilter::restoreFilter(QString description) {
     QStringList list  = description.split(";");
-    setHorizontalLines(list[1].QString::toInt());
-    setVerticalLines(list[2].QString::toInt());
-    setThickness(list[3].QString::toInt());
-    setOpacity(list[4].QString::toInt());
-    setColor(list[5].QString::toInt());
+    setHorizontalLines(list[0].QString::toInt());
+    setVerticalLines(list[1].QString::toInt());
+    setThickness(list[2].QString::toInt());
+    setOpacity(list[3].QString::toInt());
+    setColor(list[4].QString::toInt());
 }
 
 QString Model::GridFilter::getSaveString() {
-    QString str(getName());
-    str+=";";
-    str+=QString::number(horizontalLines);
+    QString str = QString::number(horizontalLines);
     str+=";";
     str+=QString::number(verticalLines);
     str+=";";

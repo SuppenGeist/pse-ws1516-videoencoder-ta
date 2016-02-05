@@ -23,6 +23,5 @@ void Model::NegativeFilter::restoreFilter(QString description) {
 }
 
 QString Model::NegativeFilter::getSaveString() {
-    QString str(getName());
-    return str;
+    //nothing to save
 }

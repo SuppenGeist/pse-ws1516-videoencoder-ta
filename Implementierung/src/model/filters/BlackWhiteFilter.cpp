@@ -22,5 +22,5 @@ void Model::BlackWhiteFilter::restoreFilter(QString description) {
 }
 
 QString Model::BlackWhiteFilter::getSaveString() {
-    return "Black/White";
+    //nothing to save
 }

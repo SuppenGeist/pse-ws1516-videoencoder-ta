@@ -28,12 +28,10 @@ void Model::PosterFilter::setNumberOfColors(int numberOfColors) {
 
 void Model::PosterFilter::restoreFilter(QString description) {
     QStringList list  = description.split(";");
-    setNumberOfColors(list[1].QString::toInt());
+    setNumberOfColors(list[0].QString::toInt());
 }
 
 QString Model::PosterFilter::getSaveString() {
-    QString str(getName());
-    str+=";";
-    str+=QString::number(numberOfColors);
+    QString str = QString::number(numberOfColors);
     return str;
 }

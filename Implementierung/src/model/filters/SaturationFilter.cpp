@@ -28,13 +28,11 @@ void Model::SaturationFilter::setIntensity(int intensity) {
 
 void Model::SaturationFilter::restoreFilter(QString description) {
     QStringList list  = description.split(";");
-    setIntensity(list[1].QString::toInt());
+    setIntensity(list[0].QString::toInt());
 }
 
 QString Model::SaturationFilter::getSaveString() {
-    QString str(getName());
-    str+=";";
-    str+=QString::number(intensity);
+    QString str = QString::number(intensity);
     return str;
 
 }
