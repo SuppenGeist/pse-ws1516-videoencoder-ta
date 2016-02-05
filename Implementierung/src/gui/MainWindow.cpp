@@ -61,8 +61,7 @@ void GUI::MainWindow::createUi() {
 	action_redo=ui->actionRedo;
 	action_undo=ui->actionUndo;
 	filterTab = new GUI::FilterTab(ui->filterTab);
-	//analysisTab = new GUI::AnalysisTab(ui->analysisTab);
-
+    analysisTab = new GUI::AnalysisTab(ui->analysisTab);
 }
 
 void GUI::MainWindow::connectActions() {

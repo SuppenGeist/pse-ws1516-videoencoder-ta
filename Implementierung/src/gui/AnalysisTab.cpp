@@ -1,9 +1,10 @@
-#include <exception>
+#include "AnalysisTab.h"
 
 #include <QWidget>
 #include <QFrame>
+#include <memory>
+#include <QDebug>
 
-#include "AnalysisTab.h"
 #include "VideoPlayer.h"
 #include "FrameView.h"
 #include "PlayerControlPanel.h"
@@ -20,33 +21,44 @@ GUI::AnalysisTab::AnalysisTab(QWidget* parent) : QFrame(parent) {
 	ui = new Ui::AnalysisTab;
 	ui->setupUi(this);
 
+    analysisBoxContainer = new GUI::AnalysisBoxContainer(ui->scrollArea);
+
+    connect(ui->save,SIGNAL(clicked()),this,SLOT(saveResults()));
+    connect(ui->addVideo,SIGNAL(clicked()),this,SLOT(addVideo()));
+
+    playerPanel_ =new PlayerControlPanel(ui->panel);
+    player_=std::make_unique<VideoPlayer>();
+    FrameView* frameView_ = new FrameView;
+    ui->rawVidCon->addWidget(frameView_);
+    frameView_->setMaximumWidth(600);
+    frameView_->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Expanding);
+    player_->addView(*frameView_);
+    player_->setTimer(std::make_shared<Timer>());
+    playerPanel_->setMasterVideoPlayer(*player_);
+    player_->setMasterControlPanel(*playerPanel_);
+
 }
 
 Memento::AnalysisTabMemento GUI::AnalysisTab::getMemento() {
-	throw "Not yet implemented";
 }
 
 void GUI::AnalysisTab::restore(Memento::AnalysisTabMemento memento) {
-	throw "Not yet implemented";
 }
 
 void GUI::AnalysisTab::analyseTypChanged(int index) {
-	throw "Not yet implemented";
 }
 
 void GUI::AnalysisTab::addVideo() {
-	throw "Not yet implemented";
 }
 
 void GUI::AnalysisTab::loadRawVideo() {
-	throw "Not yet implemented";
 }
 
 void GUI::AnalysisTab::saveResults() {
-	throw "Not yet implemented";
 }
 
-/*void GUI::AnalysisTab::setRawVideo(Model::YuvVideo video) {
-	throw "Not yet implemented";
-}*/
+void GUI::AnalysisTab::setRawVideo(std::unique_ptr<Model::YuvVideo> video) {
+    rawVideo_=std::move(video);
+    player_->setVideo(rawVideo_->getVideo());
+}
 

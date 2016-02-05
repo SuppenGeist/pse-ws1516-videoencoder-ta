@@ -12,8 +12,12 @@
 #include "../memento/AnalysisBoxContainerMemento.h"
 #include "../model/EncodedVideo.h"
 #include "../undo_framework/RemoveVideo.h"
+#include "ui_analysisboxcontainer.h"
 
-GUI::AnalysisBoxContainer::AnalysisBoxContainer(QWidget* parent) {
+GUI::AnalysisBoxContainer::AnalysisBoxContainer(QWidget* parent) : QFrame(parent) {
+
+    ui = new Ui::AnalysisBoxContainer;
+    ui->setupUi(this);
 }
 
 Memento::AnalysisBoxContainerMemento GUI::AnalysisBoxContainer::getMemento() {

@@ -41,7 +41,7 @@
      </font>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="Filtersandartefacts">
      <attribute name="title">
@@ -81,7 +81,7 @@
      <x>0</x>
      <y>0</y>
      <width>955</width>
-     <height>23</height>
+     <height>24</height>
     </rect>
    </property>
    <property name="font">
