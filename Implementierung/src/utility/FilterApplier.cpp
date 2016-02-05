@@ -20,7 +20,7 @@ Utility::FilterApplier::FilterApplier(Model::FilterList& list):list_(&list) {
 
 void Utility::FilterApplier::applyToVideo(Model::AVVideo& target, Model::AVVideo& video) {
     for(std::size_t i=0;i<video.getNumberOfFrames();i++) {
-        target.appendFrame(std::move(applyToFrame(*video.getFrame(i))));
+        //target.appendFrame(std::move(applyToFrame(*video.getFrame(i))));
     }
 }
 

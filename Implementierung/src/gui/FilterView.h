@@ -31,6 +31,8 @@ class FilterView : public QFrame {
 	 */
     FilterView(QWidget* parent=0);
 
+    ~FilterView();
+
 	/**
 	 * @brief setFilter Sets the filter this view represents.
 	 * @param filter The filter for this view.
@@ -53,6 +55,7 @@ private slots:
     FilterTab*                      filterTab_;
     FrameView*                      filterView_;
     std::unique_ptr<Model::Filter>  filter_;
+    std::unique_ptr<QImage>         filterImage_;
 
     /**
      * @brief getDefaultImage Returns the default image on which the filter is applied as a preview.

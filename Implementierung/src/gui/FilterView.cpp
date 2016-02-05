@@ -9,11 +9,13 @@
 #include <QVBoxLayout>
 #include <QPushButton>
 #include <QImage>
+#include <QDebug>
 
 
 #include "FilterTab.h"
 #include "../model/filters/Filter.h"
 #include "FrameView.h"
+#include "../utility/VideoConverter.h"
 
 std::unique_ptr<QImage> GUI::FilterView::defaultImage_;
 
@@ -23,6 +25,11 @@ GUI::FilterView::FilterView(QWidget* parent):QFrame(parent) {
     setFixedHeight(210);
 
     createUi();
+}
+
+GUI::FilterView::~FilterView()
+{
+    filterView_->clear();
 }
 
 
@@ -47,7 +54,12 @@ QImage& GUI::FilterView::getDefaultImage() {
 void GUI::FilterView::createUi() {
     filterView_=new FrameView;
     filterView_->setFixedSize(QSize(150,150));
-    filterView_->setFrame(getDefaultImage());
+
+    auto av=Utility::VideoConverter::convertQImageToAVFrame(getDefaultImage());
+    qDebug()<<"-----------";
+    filterImage_=Utility::VideoConverter::convertAVFrameToQImage(*av);
+
+    filterView_->setFrame(*filterImage_.get());
 
     QString stylesheet("QPushButton {"
                                    "color: rgb(0, 0, 0);"
