@@ -56,7 +56,7 @@ void Model::BorderFilter::setColor(QRgb color) {
 	this->color = color;
 }
 
-std::string Model::BorderFilter::getName() {
+QString Model::BorderFilter::getName() {
 	return "Border";
 }
 

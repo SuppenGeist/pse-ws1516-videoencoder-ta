@@ -60,7 +60,7 @@ class BlurFilter: public Model::Filter {
 	std::string getFilterDescription();
 
   public:
-	std::string getName();
+    QString getName();
 
   public:
 	void restoreFilter(QString description);

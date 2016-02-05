@@ -39,7 +39,7 @@ int Model::RectangleFilter::getX() {
 	return this->x;
 }
 
-std::string Model::RectangleFilter::getName() {
+QString Model::RectangleFilter::getName() {
 	return "Rectangle";
 }
 

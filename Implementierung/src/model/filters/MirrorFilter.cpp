@@ -12,7 +12,7 @@ std::string Model::MirrorFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 
-std::string Model::MirrorFilter::getName() {
+QString Model::MirrorFilter::getName() {
 	return "Mirror";
 }
 

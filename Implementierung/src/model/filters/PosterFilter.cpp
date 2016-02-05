@@ -15,7 +15,7 @@ int Model::PosterFilter::getNumberOfColors() {
 	return this->numberOfColors;
 }
 
-std::string Model::PosterFilter::getName() {
+QString Model::PosterFilter::getName() {
 	return "Poster";
 }
 

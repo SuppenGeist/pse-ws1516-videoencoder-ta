@@ -6,6 +6,7 @@
 #include <QFrame>
 #include <QWidget>
 #include <QHBoxLayout>
+#include <QVBoxLayout>
 
 namespace GUI {
 class FilterTab;
@@ -43,6 +44,7 @@ class FilterContainerTab : public QFrame {
   private:
     FilterTab*                  parentTab_;
     QHBoxLayout*                container_;
+    QHBoxLayout*                filterContainer_;
     std::vector<FilterView*>    filterViews_;
 
     void createUi();

@@ -11,7 +11,7 @@ std::string Model::NegativeFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 
-std::string Model::NegativeFilter::getName() {
+QString Model::NegativeFilter::getName() {
 	return "Negative";
 }
 

@@ -14,6 +14,7 @@
 #include <QSpacerItem>
 #include <QTimer>
 #include <QTabWidget>
+#include <QScrollArea>
 
 #include "../memento/FilterTabMemento.h"
 #include "../model/FilterList.h"
@@ -28,6 +29,8 @@
 #include "../undo_framework/LoadFilterVideo.h"
 #include "VideoPlayer.h"
 #include "Timer.h"
+
+#include "../model/filters/BlackWhiteFilter.h"
 
 GUI::FilterTab::FilterTab(QWidget* parent):QFrame(parent) {
 	createUi();
@@ -135,8 +138,20 @@ void GUI::FilterTab::createUi() {
 	filterContainerTab_.push_back(filterTab);
 	filterContainerTab_.push_back(artefactsTab);
 
-	filterTabs_->addTab(filterContainerTab_[0],tr("Filters"));
-	filterTabs_->addTab(filterContainerTab_[1],tr("Artefacts"));
+    filterTab->addFilter(Model::BlackWhiteFilter::FILTERNAME);
+
+    QScrollArea* scrollArea_filters=new QScrollArea;
+    scrollArea_filters->setWidget(filterTab);
+    scrollArea_filters->setVerticalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAlwaysOff);
+    scrollArea_filters->setFixedHeight(245);
+
+    QScrollArea* scrollArea_artefacts=new QScrollArea;
+    scrollArea_artefacts->setWidget(artefactsTab);
+    scrollArea_artefacts->setVerticalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAlwaysOff);
+    scrollArea_artefacts->setFixedHeight(245);
+
+    filterTabs_->addTab(scrollArea_filters,tr("Filters"));
+    filterTabs_->addTab(scrollArea_artefacts,tr("Artefacts"));
 	filterTabs_->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Minimum);
 
 
@@ -198,7 +213,7 @@ void GUI::FilterTab::createUi() {
 
 	v_content->addLayout(h_list_button_player_filterconf);
 
-	v_content->addSpacing(30);
+    v_content->addSpacing(20);
 
 	v_content->addWidget(filterTabs_);
 

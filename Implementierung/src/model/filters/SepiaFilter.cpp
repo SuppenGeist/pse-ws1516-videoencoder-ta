@@ -7,7 +7,7 @@
 Model::SepiaFilter::SepiaFilter() {
 }
 
-std::string Model::SepiaFilter::getName() {
+QString Model::SepiaFilter::getName() {
 	return "Sepia";
 }
 
@@ -21,6 +21,4 @@ void Model::SepiaFilter::restoreFilter(QString description) {
 }
 
 QString Model::SepiaFilter::getSaveString() {
-	QString str = QString::fromStdString(getName());
-	return str;
 }

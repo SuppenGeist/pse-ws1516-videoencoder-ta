@@ -41,7 +41,7 @@ class BrightnessFilter: public Model::Filter {
 	void setIntensity(int intensity);
 
   public:
-	std::string getName();
+    QString getName();
 
   public:
 	std::string getFilterDescription();

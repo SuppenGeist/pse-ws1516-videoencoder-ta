@@ -72,7 +72,7 @@ class BlendingFilter: public Model::Filter {
 	void setEndFrame(int endFrame);
 
   public:
-	std::string getName();
+    QString getName();
 
   public:
 	std::string getFilterDescription();

@@ -96,7 +96,7 @@ class ColorbalanceFilter: public Model::Filter {
 	std::string getFilterDescription();
 
   public:
-	std::string getName();
+    QString getName();
 
 	/// <summary>
 	/// Whether the drak pixels shall be changed.

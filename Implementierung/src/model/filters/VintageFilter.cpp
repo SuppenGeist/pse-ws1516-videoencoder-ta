@@ -7,7 +7,7 @@
 Model::VintageFilter::VintageFilter() {
 }
 
-std::string Model::VintageFilter::getName() {
+QString Model::VintageFilter::getName() {
 	return "Vintage";
 }
 
@@ -21,6 +21,4 @@ void Model::VintageFilter::restoreFilter(QString description) {
 }
 
 QString Model::VintageFilter::getSaveString() {
-	QString str = QString::fromStdString(getName());
-	return str;
 }

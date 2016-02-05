@@ -89,7 +89,7 @@ class RectangleFilter: public Model::Filter {
 	int getX();
 
   public:
-	std::string getName();
+    QString getName();
 
 	/// <summary>
 	/// Sets the start position on the x axis.

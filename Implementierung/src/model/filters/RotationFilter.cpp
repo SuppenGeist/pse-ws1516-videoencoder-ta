@@ -15,7 +15,7 @@ int Model::RotationFilter::getAngle() {
 	return this->angle;
 }
 
-std::string Model::RotationFilter::getName() {
+QString Model::RotationFilter::getName() {
 	return "Rotation";
 }
 

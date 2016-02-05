@@ -31,7 +31,7 @@ void Model::BlendingFilter::setEndFrame(int endFrame) {
 	this->endFrame = endFrame;
 }
 
-std::string Model::BlendingFilter::getName() {
+QString Model::BlendingFilter::getName() {
 	return "Blending";
 }
 

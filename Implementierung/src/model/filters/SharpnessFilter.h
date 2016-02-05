@@ -37,7 +37,7 @@ class SharpnessFilter: public Model::Filter {
 	int getIntensity();
 
   public:
-	std::string getName();
+    QString getName();
 
 	/// <summary>
 	/// Sets the intensity of the sharpness.

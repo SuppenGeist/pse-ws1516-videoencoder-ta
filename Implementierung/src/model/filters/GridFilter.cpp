@@ -51,7 +51,7 @@ void Model::GridFilter::setOpacity(int opacity) {
 	this->opacity = opacity;
 }
 
-std::string Model::GridFilter::getName() {
+QString Model::GridFilter::getName() {
 	return "Grid";
 }
 

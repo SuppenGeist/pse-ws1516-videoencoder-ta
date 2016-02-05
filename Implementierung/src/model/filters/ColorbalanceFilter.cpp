@@ -44,7 +44,7 @@ std::string Model::ColorbalanceFilter::getFilterDescription() {
 	throw "Not yet implemented";
 }
 
-std::string Model::ColorbalanceFilter::getName() {
+QString Model::ColorbalanceFilter::getName() {
 	return "Colorbalance";
 }
 

@@ -15,7 +15,7 @@ int Model::SharpnessFilter::getIntensity() {
 	return this->intensity;
 }
 
-std::string Model::SharpnessFilter::getName() {
+QString Model::SharpnessFilter::getName() {
 	return "Sharpness";
 }
 

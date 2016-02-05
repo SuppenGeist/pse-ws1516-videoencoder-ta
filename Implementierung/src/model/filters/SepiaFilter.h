@@ -22,7 +22,7 @@ class SepiaFilter: public Model::Filter {
 	SepiaFilter();
 
   public:
-	std::string getName();
+    QString getName();
 
   public:
 	std::string getFilterDescription();

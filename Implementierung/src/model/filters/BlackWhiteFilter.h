@@ -10,35 +10,42 @@
 #include "Filter.h"
 
 namespace Model {
-// class Filter;
-class BlackWhiteFilter;
-}
-
-namespace Model {
 /**
  * Converts the video to a black and white video.
 */
-class BlackWhiteFilter: public Model::Filter {
+class BlackWhiteFilter: public Filter {
 
-	/// <summary>
-	/// Constructor.
-	/// </summary>
   public:
     static const QString FILTERNAME;
 
-	BlackWhiteFilter();
+    /**
+     * @brief BlackWhiteFilter Constructor.
+     */
+    BlackWhiteFilter();
 
-  public:
-	std::string getName();
+    /**
+     * @brief getName
+     * @return
+     */
+    QString getName();
 
-  public:
-	std::string getFilterDescription();
+    /**
+     * @brief getFilterDescription
+     * @return
+     */
+    std::string getFilterDescription();
 
-  public:
-	void restoreFilter(QString description);
+    /**
+     * @brief restoreFilter
+     * @param description
+     */
+    void restoreFilter(QString description);
 
-  public:
-	QString getSaveString();
+    /**
+     * @brief getSaveString
+     * @return
+     */
+    QString getSaveString();
 };
 }
 

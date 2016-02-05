@@ -20,7 +20,7 @@ void Model::RGBFilter::setColor(BasicColor color) {
 	throw "Not yet implemented";
 }
 
-std::string Model::RGBFilter::getName() {
+QString Model::RGBFilter::getName() {
 	return "RGB";
 }
 

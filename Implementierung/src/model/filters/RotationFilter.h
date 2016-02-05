@@ -37,7 +37,7 @@ class RotationFilter: public Model::Filter {
 	int getAngle();
 
   public:
-	std::string getName();
+    QString getName();
 
 	/// <summary>
 	/// Sets the angle of the rotation.

@@ -37,7 +37,7 @@ class PosterFilter: public Model::Filter {
 	int getNumberOfColors();
 
   public:
-	std::string getName();
+    QString getName();
 
 	/// <summary>
 	/// Sets the maximum number of colors.

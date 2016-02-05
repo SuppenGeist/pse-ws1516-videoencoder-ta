@@ -1,8 +1,8 @@
-#include <exception>
+#include "BlackWhiteFilter.h"
+
 #include <QString>
 
-#include "BlackWhiteFilter.h"
-//#include "../Filter.h"
+#include "Filter.h"
 
 const QString Model::BlackWhiteFilter::FILTERNAME="Black/White";
 
@@ -10,18 +10,17 @@ Model::BlackWhiteFilter::BlackWhiteFilter() {
 
 }
 
-std::string Model::BlackWhiteFilter::getName() {
-	return "BlackWhite";
+QString Model::BlackWhiteFilter::getName() {
+    return FILTERNAME;
 }
 
 std::string Model::BlackWhiteFilter::getFilterDescription() {
 	throw "colorchannelmixer=.3:.4:.3:0:.3:.4:.3:0:.3:.4:.3";
 }
 void Model::BlackWhiteFilter::restoreFilter(QString description) {
-//nothing to load
+    //nothing to load
 }
 
 QString Model::BlackWhiteFilter::getSaveString() {
-	QString str = QString::fromStdString(getName());
-	return str;
+    return "";
 }

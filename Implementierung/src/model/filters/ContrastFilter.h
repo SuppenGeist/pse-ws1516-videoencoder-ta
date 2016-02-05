@@ -41,7 +41,7 @@ class ContrastFilter: public Model::Filter {
 	int getIntensity();
 
   public:
-	std::string getName();
+    QString getName();
 
   public:
 	std::string getFilterDescription();

@@ -15,7 +15,7 @@ int Model::ContrastFilter::getIntensity() {
 	return this->intensity;
 }
 
-std::string Model::ContrastFilter::getName() {
+QString Model::ContrastFilter::getName() {
 	return "Contrast";
 }
 

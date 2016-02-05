@@ -22,7 +22,7 @@ class VintageFilter: public Model::Filter {
 	VintageFilter();
 
   public:
-	std::string getName();
+    QString getName();
 
   public:
 	std::string getFilterDescription();

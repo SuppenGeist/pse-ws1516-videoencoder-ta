@@ -32,7 +32,7 @@ class MirrorFilter: public Model::Filter {
 	std::string getFilterDescription();
 
   public:
-	std::string getName();
+    QString getName();
 
 	/// <summary>
 	/// Returns the MirrorMode.

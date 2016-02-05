@@ -7,7 +7,7 @@
 Model::ZoomFilter::ZoomFilter() {
 }
 
-std::string Model::ZoomFilter::getName() {
+QString Model::ZoomFilter::getName() {
 	return "Zoom";
 }
 

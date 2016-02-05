@@ -24,7 +24,7 @@ void Model::ScaleFilter::setKeepRatio(bool keepRatio) {
 	this->keepRatio = keepRatio;
 }
 
-std::string Model::ScaleFilter::getName() {
+QString Model::ScaleFilter::getName() {
 	return "Scale";
 }
 
@@ -61,14 +61,4 @@ void Model::ScaleFilter::restoreFilter(QString description) {
 }
 
 QString Model::ScaleFilter::getSaveString() {
-	QString str = QString::fromStdString(getName());
-	str+=";";
-	str+=QString::number(width);
-	str+=";";
-	str+=QString::number(height);
-	str+=";";
-	str+=QString::number(keepRatio);
-	str+=";";
-	str+=QString::number(ratio);
-	return str;
 }

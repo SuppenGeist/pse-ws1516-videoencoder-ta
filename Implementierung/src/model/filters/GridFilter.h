@@ -108,7 +108,7 @@ class GridFilter: public Model::Filter {
 	void setOpacity(int opacity);
 
   public:
-	std::string getName();
+    QString getName();
 
   public:
 	void restoreFilter(QString description);

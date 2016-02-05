@@ -16,7 +16,7 @@ void Model::BrightnessFilter::setIntensity(int intensity) {
 	this->intensity = intensity;
 }
 
-std::string Model::BrightnessFilter::getName() {
+QString Model::BrightnessFilter::getName() {
 	return "Brightness";
 }
 
@@ -33,8 +33,4 @@ void Model::BrightnessFilter::restoreFilter(QString description) {
 }
 
 QString Model::BrightnessFilter::getSaveString() {
-	QString str = QString::fromStdString(getName());
-	str+=";";
-	str+=QString::number(intensity);
-	return str;
 }

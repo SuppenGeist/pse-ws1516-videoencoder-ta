@@ -50,7 +50,7 @@ class ScaleFilter: public Model::Filter {
 	void setKeepRatio(bool keepRatio);
 
   public:
-	std::string getName();
+    QString getName();
 
 	/// <summary>
 	/// Returns the new width.

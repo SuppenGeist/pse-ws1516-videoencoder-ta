@@ -15,7 +15,7 @@ int Model::SaturationFilter::getIntensity() {
 	return this->intensity;
 }
 
-std::string Model::SaturationFilter::getName() {
+QString Model::SaturationFilter::getName() {
 	return "Saturation";
 }
 

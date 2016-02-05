@@ -47,7 +47,7 @@ class RGBFilter: public Model::Filter {
 	void setColor(Model::BasicColor color);
 
   public:
-	std::string getName();
+    QString getName();
 
   public:
 	void restoreFilter(QString description);

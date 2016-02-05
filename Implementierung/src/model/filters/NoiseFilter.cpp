@@ -24,7 +24,7 @@ int Model::NoiseFilter::getIntensity() {
 	return this->intensity;
 }
 
-std::string Model::NoiseFilter::getName() {
+QString Model::NoiseFilter::getName() {
 	return "Noise";
 }
 

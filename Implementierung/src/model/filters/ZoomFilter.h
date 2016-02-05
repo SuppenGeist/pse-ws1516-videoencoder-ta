@@ -27,7 +27,7 @@ class ZoomFilter: public Model::Filter {
 	ZoomFilter();
 
   public:
-	string getName();
+    QString getName();
 
   public:
 	string getFilterDescription();
