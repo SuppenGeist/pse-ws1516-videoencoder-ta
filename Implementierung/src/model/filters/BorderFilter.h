@@ -79,19 +79,18 @@ class BorderFilter: public Model::Filter {
      * @brief setThickness Sets the thickness of the border.
      * @param thickness The thickness.
      */
-	void setThickness(int thickness);
+    void setThickness(int thickness);
 
     /**
      * @brief getColor Returns the color of the border.
      * @return The border color.
      */
-	QRgb getColor();
-
+    QColor getColor();
     /**
      * @brief setColor Sets the color of the border,
      * @param color The new border color.
      */
-	void setColor(QRgb color);
+    void setColor(QColor color);
 
     /**
      * @brief getName
@@ -123,7 +122,7 @@ private:
     bool    right_;
     bool    left_;
     int     thickness_;
-    QRgb    color_;
+    QColor    color_;
 };
 }
 

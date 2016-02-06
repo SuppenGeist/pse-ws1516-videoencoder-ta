@@ -11,7 +11,9 @@ Model::SharpnessFilter::SharpnessFilter() {
 }
 
 std::string Model::SharpnessFilter::getFilterDescription() {
-	throw "Not yet implemented";
+    std::string str = std::string("unsharp=la=");
+    str+=std::to_string(intensity);
+    return str;
 }
 
 int Model::SharpnessFilter::getIntensity() {

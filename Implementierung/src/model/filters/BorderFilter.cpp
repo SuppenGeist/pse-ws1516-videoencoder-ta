@@ -11,7 +11,7 @@
 
 const QString Model::BorderFilter::FILTERNAME="Border";
 
-Model::BorderFilter::BorderFilter():top_(true),bottom_(true),right_(true),left_(true),thickness_(15),color_(qRgb(0,0,0)) {
+Model::BorderFilter::BorderFilter():top_(true),bottom_(true),right_(true),left_(true),thickness_(15),color_(QColor(0,0,0)) {
 
 }
 
@@ -57,11 +57,11 @@ void Model::BorderFilter::setThickness(int thickness) {
     thickness_ = thickness;
 }
 
-QRgb Model::BorderFilter::getColor() {
+QColor Model::BorderFilter::getColor() {
     return color_;
 }
 
-void Model::BorderFilter::setColor(QRgb color) {
+void Model::BorderFilter::setColor(QColor color) {
     color_ = color;
 }
 
@@ -73,7 +73,7 @@ std::string Model::BorderFilter::getFilterDescription() {
     std::string str;
     std::string thickness=std::to_string(thickness_);
     std::stringstream colorbuff;
-    colorbuff<<"0x"<<std::hex<<std::setfill('0')<<std::setw(2)<<qRed(color_)<<std::setfill('0')<<std::setw(2)<<qGreen(color_)<<std::setfill('0')<<std::setw(2)<<qBlue(color_);
+    colorbuff<<"0x"<<std::hex<<std::setfill('0')<<std::setw(2)<<color_.red()<<std::setfill('0')<<std::setw(2)<<color_.green()<<std::setfill('0')<<std::setw(2)<<color_.blue();
     std::string color=colorbuff.str();
 
     if(top_) {
@@ -120,12 +120,12 @@ void Model::BorderFilter::restoreFilter(QString description) {
     QStringList list  = description.split(";");
     if(list.size()!=6)
         return;
-    setTop(list[0].QString::toInt());
-    setBottom(list[1].QString::toInt());
-    setRight(list[2].QString::toInt());
-    setLeft(list[3].QString::toInt());
-    setThickness(list[4].QString::toInt());
-    setColor(list[5].QString::toInt());
+    setTop(list[0].toInt());
+    setBottom(list[1].toInt());
+    setRight(list[2].toInt());
+    setLeft(list[3].toInt());
+    setThickness(list[4].toInt());
+    setColor(QColor(list[5]));
 }
 
 QString Model::BorderFilter::getSaveString() {
@@ -139,7 +139,6 @@ QString Model::BorderFilter::getSaveString() {
     str+=";";
     str+=QString::number(thickness_);
     str+=";";
-    str+=QString::number(color_);
-
+    str+=color_.name();
     return str;
 }

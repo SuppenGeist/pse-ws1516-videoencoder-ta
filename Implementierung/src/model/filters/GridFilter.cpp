@@ -12,7 +12,25 @@ Model::GridFilter::GridFilter() {
 }
 
 std::string Model::GridFilter::getFilterDescription() {
-	throw "Not yet implemented";
+    std::string str = std::string("drawgrid");
+    str+="=";
+    str+="w";
+    str+="=";
+    str+=std::to_string(horizontalLines);
+    str+=":";
+    str+="h";
+    str+="=";
+    str+=std::to_string(verticalLines);
+    str+=":";
+    str+="t";
+    str+="=";
+    str+=std::to_string(thickness);
+    str+="c";
+    str+="=";
+    str+=color.QColor::name().toStdString();
+    str+="@";
+    str+=std::to_string(opacity);
+    return str;
 }
 
 int Model::GridFilter::getHorizontalLines() {
@@ -31,11 +49,11 @@ void Model::GridFilter::setVerticalLines(int verticalLines) {
 	this->verticalLines = verticalLines;
 }
 
-QRgb Model::GridFilter::getColor() {
+QColor Model::GridFilter::getColor() {
 	return this->color;
 }
 
-void Model::GridFilter::setColor(QRgb color) {
+void Model::GridFilter::setColor(QColor color) {
 	this->color = color;
 }
 
@@ -65,7 +83,7 @@ void Model::GridFilter::restoreFilter(QString description) {
     setVerticalLines(list[1].QString::toInt());
     setThickness(list[2].QString::toInt());
     setOpacity(list[3].QString::toInt());
-    setColor(list[4].QString::toInt());
+    setColor(QColor(list[4]));
 }
 
 QString Model::GridFilter::getSaveString() {
@@ -77,6 +95,6 @@ QString Model::GridFilter::getSaveString() {
     str+=";";
     str+=QString::number(opacity);
     str+=";";
-    str+=QString::number(color);
+    str+=color.QColor::name();
     return str;
 }

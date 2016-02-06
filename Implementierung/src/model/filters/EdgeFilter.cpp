@@ -11,7 +11,7 @@ Model::EdgeFilter::EdgeFilter() {
 }
 
 std::string Model::EdgeFilter::getFilterDescription() {
-	throw "Not yet implemented";
+    return "edgedetect";
 }
 
 QString Model::EdgeFilter::getName() {

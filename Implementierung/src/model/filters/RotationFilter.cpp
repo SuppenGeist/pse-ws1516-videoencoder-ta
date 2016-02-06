@@ -11,7 +11,9 @@ Model::RotationFilter::RotationFilter() {
 }
 
 std::string Model::RotationFilter::getFilterDescription() {
-	throw "Not yet implemented";
+    std::string str = std::string("rotate");
+    str+="=";
+    str+=std::to_string(angle);;
 }
 
 int Model::RotationFilter::getAngle() {
