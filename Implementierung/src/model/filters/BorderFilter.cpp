@@ -3,7 +3,6 @@
 #include <QString>
 #include <QStringList>
 #include <QColor>
-#include <QDebug>
 
 #include <string>
 #include <iomanip>
@@ -111,7 +110,6 @@ std::string Model::BorderFilter::getFilterDescription() {
         str+="width="+thickness+":";
         str+="color="+color;
     }
-    qDebug()<<QString::fromStdString(str);
     return str;
 }
 
