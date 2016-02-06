@@ -11,13 +11,14 @@
 // #include "AnalysisBoxContainer.h"
 // #include "VideoPlayer.h"
 // #include "GraphWidget.h"
+#include "../model/EncodedVideo.h"
 #include "Timer.h"
+#include "VideoPlayer.h"
 namespace Ui {
 class AnalysisBox;
 }
 namespace GUI {
 class AnalysisBoxContainer;
-class VideoPlayer;
 class Timer;
 class GlobalControlPanel;
 class GraphWidget;
@@ -27,7 +28,6 @@ class AnalysisBoxMemento;
 }
 namespace Model {
 class Video;
-class EncodedVideo;
 }
 namespace UndoRedo {
 class RemoveVideo;
@@ -39,7 +39,7 @@ namespace GUI {
 */
 class AnalysisBox: public QFrame {
 
-
+    Q_OBJECT
   public:
 
 	/**
@@ -90,22 +90,21 @@ class AnalysisBox: public QFrame {
 	void showRGBDifferenceVideo();
 
 	/**
-	 * @brief close removes this box from AnalysisBoxContainer
-	 */
-	void close();
-
-	/**
-	 * @brief textChanged updates QUndoStack
-	 */
-	void textChanged();
-
-	/**
 	 * @brief setAnalyseVideo Sets the video this box shall present.
 	 * @param video The video to present.
 	 */
     void setAnalyseVideo(std::unique_ptr<Model::EncodedVideo> video);
 
+private slots:
+    /**
+     * @brief close removes this box from AnalysisBoxContainer
+     */
+    void close();
 
+    /**
+     * @brief textChanged updates QUndoStack
+     */
+    void textChanged();
 
   public:
     UndoRedo::RemoveVideo* anaBox_;

@@ -1,7 +1,3 @@
-
-#include <exception>
-using namespace std;
-
 #ifndef __EncodedVideo_h__
 #define __EncodedVideo_h__
 
@@ -144,7 +140,7 @@ class EncodedVideo {
 	/// <param name="reference">The video to compare to.</param>
 	/// <returns>The rgb diff video.</returns>
   public:
-    Model::Video& getRgbDiffVideo(GUI::Video* reference = 0);
+    Model::Video& getRgbDiffVideo(Model::Video* reference = 0);
 
 	/// <summary>
 	/// Returns the Video.
@@ -199,14 +195,14 @@ class EncodedVideo {
 	/// </summary>
 	/// <param name="video">The macroblcok video.</param>
   public:
-	void setMacroblockVideo(GUI::Video video);
+    void setMacroblockVideo(Model::Video video);
 
 	/// <summary>
 	/// Sets the video that shows a rgb differenece to another video.
 	/// </summary>
 	/// <param name="video">The rgb diff video.</param>
   public:
-	void setRgbDiffVideo(GUI::Video video);
+    void setRgbDiffVideo(Model::Video video);
 };
 }
 
