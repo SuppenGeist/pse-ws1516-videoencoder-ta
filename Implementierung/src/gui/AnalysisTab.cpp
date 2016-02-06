@@ -21,7 +21,9 @@ GUI::AnalysisTab::AnalysisTab(QWidget* parent) : QFrame(parent) {
 	ui = new Ui::AnalysisTab;
 	ui->setupUi(this);
 
-    analysisBoxContainer = new GUI::AnalysisBoxContainer(ui->scrollArea);
+    analysisBoxContainer = new GUI::AnalysisBoxContainer(this);
+
+    ui->scrollArea->setWidget(analysisBoxContainer);
 
     connect(ui->save,SIGNAL(clicked()),this,SLOT(saveResults()));
     connect(ui->addVideo,SIGNAL(clicked()),this,SLOT(addVideo()));
