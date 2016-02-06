@@ -201,10 +201,10 @@ void GUI::FilterTab::createUi() {
     filterTab->addFilter(Model::ContrastFilter::FILTERNAME);
     filterTab->addFilter(Model::EdgeFilter::FILTERNAME);
     filterTab->addFilter(Model::GrayscaleFilter::FILTERNAME);
-    filterTab->addFilter(Model::GridFilter::FILTERNAME);
     filterTab->addFilter(Model::NegativeFilter::FILTERNAME);
 
     artefactsTab->addFilter(Model::BorderFilter::FILTERNAME);
+    artefactsTab->addFilter(Model::GridFilter::FILTERNAME);
 
     QScrollArea* scrollArea_filters=new QScrollArea;
     scrollArea_filters->setWidget(filterTab);

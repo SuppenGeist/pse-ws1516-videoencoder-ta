@@ -17,7 +17,7 @@ QString Model::GrayscaleFilter::getName() {
 }
 
 std::string Model::GrayscaleFilter::getFilterDescription() {
-    return "lutyuv=u=128:v=128";
+    return "colorchannelmixer=',3':',4':',3':0:',3':',4':',3':0:',3':',4':',3'";
 }
 void Model::GrayscaleFilter::restoreFilter(QString description) {
     //nothing to load
