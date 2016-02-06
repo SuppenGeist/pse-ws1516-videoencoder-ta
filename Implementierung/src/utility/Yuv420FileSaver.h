@@ -1,27 +1,26 @@
-/*
-#include <exception>
-using namespace std;
-
 #ifndef __Yuv420FileSaver_h__
 #define __Yuv420FileSaver_h__
 
-#include "Video.h"
+#include <exception>
+#include "../model/Video.h"
 #include "YuvFileSaver.h"
 
-namespace GUI
+using namespace std;
+
+namespace Model
 {
 	class Video;
 }
 namespace Utility
 {
-	// class YuvFileSaver;
+    class YuvFileSaver;
 	class Yuv420FileSaver;
 }
 
 namespace Utility
 {
-	/**
-	 * This class can save videos in the yuv 420 format.
+
+    //This class can save videos in the yuv 420 format.
 
 	class Yuv420FileSaver: public Utility::YuvFileSaver
 	{
@@ -31,7 +30,7 @@ namespace Utility
 		/// </summary>
 		/// <param name="filename">Absolute path to the file to save to.</param>
 		/// <param name="video">The video to save.</param>
-		public: Yuv420FileSaver(QString filename, GUI::Video& video);
+        public: Yuv420FileSaver(QString filename, Model::Video& video);
 
 		public: void save();
 
@@ -45,4 +44,4 @@ namespace Utility
 }
 
 #endif
-*/
+
