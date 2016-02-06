@@ -6,9 +6,9 @@
 
 
 #include "Filter.h"
-//NOT FINISHED
+
 namespace Model {
-// class Filter;
+
 class GridFilter;
 }
 
@@ -19,104 +19,98 @@ namespace Model {
 class GridFilter: public Model::Filter {
   public:
     static const QString FILTERNAME;
-  private:
-	int horizontalLines;
-  private:
-	int verticalLines;
-  private:
-    QColor color;
-  private:
-	int thickness;
-  private:
-	int opacity;
 
-	/// <summary>
-	/// Constructor.
-	/// </summary>
-  public:
+    /**
+     * @brief BorderFilter Constructor.
+     */
 	GridFilter();
 
-  public:
+
 	std::string getFilterDescription();
 
-	/// <summary>
-	/// Returns the number of horizontal drawn lines.
-	/// </summary>
-	/// <returns>Number of horizontal lines.</returns>
-  public:
-	int getHorizontalLines();
+    /**
+    * @brief Returns the horizontal number cells.
+    * @return horizontal Number of cells
+    */
+    int getHorizontalCells();
 
-	/// <summary>
-	/// Sets the number of horizontal drawn lines.
-	/// </summary>
-	/// <param name="horizontalLines">Number of horizontal lines.</param>
-  public:
-	void setHorizontalLines(int horizontalLines);
+    /**
+    * @brief Sets the horizontal number of cells.
+    * @param horizontal Number of cells
+    */
+    void setHorizontalCells(int horizontalCells);
 
-	/// <summary>
-	/// Returns the number of vertical drawn lines.
-	/// </summary>
-	/// <returns>Number of vertical lines.</returns>
-  public:
-	int getVerticalLines();
+    /**
+    * @brief Returns the vertical number of cells.
+    * @return vertical Number of cells
+    */
+    int getVerticalCells();
 
-	/// <summary>
-	/// Sets the number of vertical drawn lines.
-	/// </summary>
-	/// <param name="verticalLines">Number of vertical drawn lines.</param>
-  public:
-	void setVerticalLines(int verticalLines);
+    /**
+    * @brief Sets the vertical number of cells.
+    * @param vertical Number of cells
+    */
+    void setVerticalCells(int verticalCells);
 
-	/// <summary>
-	/// Returns the color of the grid.
-	/// </summary>
-	/// <returns>The gridcolor.</returns>
-  public:
+    /**
+     *@brief Returns the color of the grid.
+     *@return The gridcolor
+     */
     QColor getColor();
 
-	/// <summary>
-	/// Sets the color of the grid.
-	/// </summary>
-	/// <param name="color">The gridcolor.</param>
-  public:
+    /**
+     *@brief Sets the color of the grid.
+     *@param The gridcolor
+     */
     void setColor(QColor color);
 
-	/// <summary>
-	/// Returns the thickness of the drawn lines.
-	/// </summary>
-	/// <returns>The line thickness.</returns>
-  public:
+    /**
+     *@brief Returns the thickness of the drawn lines.
+     *@return The line thickness.
+     */
 	int getThickness();
 
-	/// <summary>
-	/// Sets the thickness of the drawn lines.
-	/// </summary>
-	/// <param name="thickness">The thickness of the drawn lines.</param>
-  public:
+    /**
+     *@brief Sets the thickness of the drawn lines.
+     *@param The line thickness.
+     */
 	void setThickness(int thickness);
 
-	/// <summary>
-	/// Returns the opacity of the grid.
-	/// </summary>
-	/// <returns>The grids opacity.</returns>
-  public:
-	int getOpacity();
+    /**
+     *@brief Returns the opacity of the grid.
+     *@return The grids opacity.
+     */
+    int getOpacity();
 
-	/// <summary>
-	/// Sets the opacity of the grid.
-	/// </summary>
-	/// <param name="opacity">The grids opacity.</param>
-  public:
-	void setOpacity(int opacity);
+    /**
+     *@brief Sets the opacity of the grid.
+     *@param The grids opacity.
+     */
+    void setOpacity(int opacity);
 
-  public:
+    /**
+     * @brief getName
+     * @return
+     */
     QString getName();
 
-  public:
+    /**
+     * @brief restoreFilter
+     * @param description
+     */
 	void restoreFilter(QString description);
 
-  public:
+    /**
+     * @brief getSaveString
+     * @return
+     */
 	QString getSaveString();
+private:
+    int    horizontalCells_;
+    int    verticalCells_;
+    int    opacity_;
+    int     thickness_;
+    QColor    color_;
 };
 }
 

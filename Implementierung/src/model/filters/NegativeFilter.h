@@ -6,9 +6,9 @@
 #define __NegativeFilter_h__
 
 #include "Filter.h"
-//NOT FINISHED
+
 namespace Model {
-// class Filter;
+
 class NegativeFilter;
 }
 
@@ -20,22 +20,30 @@ class NegativeFilter: public Model::Filter {
   public:
     static const QString FILTERNAME;
 
-	/// <summary>
-	/// Constructor.
-	/// </summary>
-  public:
+    /**
+     * @brief BorderFilter Constructor.
+     */
 	NegativeFilter();
 
-  public:
+
 	std::string getFilterDescription();
 
-  public:
+    /**
+     * @brief getName
+     * @return
+     */
     QString getName();
 
-  public:
+    /**
+     * @brief restoreFilter
+     * @param description
+     */
 	void restoreFilter(QString description);
 
-  public:
+    /**
+     * @brief getSaveString
+     * @return
+     */
 	QString getSaveString();
 };
 }

@@ -6,9 +6,9 @@
 
 
 #include "Filter.h"
-//NOT FINISHED
+
 namespace Model {
-// class Filter;
+
 class EdgeFilter;
 }
 
@@ -20,19 +20,33 @@ class EdgeFilter: public Model::Filter {
   public:
     static const QString FILTERNAME;
 
-  public:
+    /**
+     * @brief EdgeFilter Constructor.
+     */
 	EdgeFilter();
 
-  public:
+    /**
+     * @brief getFilterDescription
+     * @return
+     */
 	std::string getFilterDescription();
 
-  public:
+    /**
+     * @brief getName
+     * @return
+     */
     QString getName();
 
-  public:
+    /**
+     * @brief restoreFilter
+     * @param description
+     */
 	void restoreFilter(QString description);
 
-  public:
+    /**
+     * @brief getSaveString
+     * @return
+     */
 	QString getSaveString();
 };
 }

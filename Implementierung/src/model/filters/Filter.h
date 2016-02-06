@@ -24,6 +24,10 @@ class Filter {
      */
     virtual std::string getFilterDescription() = 0;
 
+    /**
+     * @brief getName
+     * @return
+     */
     virtual QString getName()=0;
 
     /**

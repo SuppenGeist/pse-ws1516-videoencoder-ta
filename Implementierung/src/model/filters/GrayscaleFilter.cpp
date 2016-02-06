@@ -17,7 +17,7 @@ QString Model::GrayscaleFilter::getName() {
 }
 
 std::string Model::GrayscaleFilter::getFilterDescription() {
-    return "null";
+    return "lutyuv=u=128:v=128";
 }
 void Model::GrayscaleFilter::restoreFilter(QString description) {
     //nothing to load

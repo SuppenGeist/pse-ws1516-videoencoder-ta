@@ -45,6 +45,12 @@
 #include "../model/filters/BrightnessFilter.h"
 #include "../model/filters/ColorbalanceFilter.h"
 #include "../model/filters/ContrastFilter.h"
+#include "../model/filters/EdgeFilter.h"
+#include "../model/filters/GrayscaleFilter.h"
+#include "../model/filters/GridFilter.h"
+#include "../model/filters/MirrorFilter.h"
+#include "../model/filters/NegativeFilter.h"
+
 
 extern "C" {
 #include <libavutil/pixfmt.h>
@@ -193,6 +199,10 @@ void GUI::FilterTab::createUi() {
     filterTab->addFilter(Model::BrightnessFilter::FILTERNAME);
     filterTab->addFilter(Model::ColorbalanceFilter::FILTERNAME);
     filterTab->addFilter(Model::ContrastFilter::FILTERNAME);
+    filterTab->addFilter(Model::EdgeFilter::FILTERNAME);
+    filterTab->addFilter(Model::GrayscaleFilter::FILTERNAME);
+    filterTab->addFilter(Model::GridFilter::FILTERNAME);
+    filterTab->addFilter(Model::NegativeFilter::FILTERNAME);
 
     artefactsTab->addFilter(Model::BorderFilter::FILTERNAME);
 

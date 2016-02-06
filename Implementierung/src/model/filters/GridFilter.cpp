@@ -3,74 +3,78 @@
 #include <QString>
 #include <QStringList>
 #include <QColor>
+#include <iomanip>
 
 #include "Filter.h"
 
 const QString Model::GridFilter::FILTERNAME="Grid";
 
-Model::GridFilter::GridFilter() {
+Model::GridFilter::GridFilter():horizontalCells_(3),verticalCells_(5),thickness_(10),color_(QColor(0,0,0)),opacity_(255) {
 }
 
 std::string Model::GridFilter::getFilterDescription() {
+    std::stringstream stream;
+    stream << std::hex << opacity_;
     std::string str = std::string("drawgrid");
     str+="=";
     str+="w";
     str+="=";
-    str+=std::to_string(horizontalLines);
+    str+="iw/"+ std::to_string(horizontalCells_);
     str+=":";
     str+="h";
     str+="=";
-    str+=std::to_string(verticalLines);
+    str+="ih/"+std::to_string(verticalCells_);
     str+=":";
     str+="t";
     str+="=";
-    str+=std::to_string(thickness);
+    str+=std::to_string(thickness_);
+    str+=":";
     str+="c";
     str+="=";
-    str+=color.QColor::name().toStdString();
-    str+="@";
-    str+=std::to_string(opacity);
+    str+=color_.name().toUtf8().constData();
+    str+="@0x";
+    str+=stream.str();
     return str;
 }
 
-int Model::GridFilter::getHorizontalLines() {
-	return this->horizontalLines;
+int Model::GridFilter::getHorizontalCells() {
+    return horizontalCells_;
 }
 
-void Model::GridFilter::setHorizontalLines(int horizontalLines) {
-	this->horizontalLines = horizontalLines;
+void Model::GridFilter::setHorizontalCells(int horizontalCells) {
+    horizontalCells_ = horizontalCells;
 }
 
-int Model::GridFilter::getVerticalLines() {
-	return this->verticalLines;
+int Model::GridFilter::getVerticalCells() {
+    return verticalCells_;
 }
 
-void Model::GridFilter::setVerticalLines(int verticalLines) {
-	this->verticalLines = verticalLines;
+void Model::GridFilter::setVerticalCells(int verticalCells) {
+    verticalCells_ = verticalCells;
 }
 
 QColor Model::GridFilter::getColor() {
-	return this->color;
+    return color_;
 }
 
 void Model::GridFilter::setColor(QColor color) {
-	this->color = color;
+    color_ = color;
 }
 
 int Model::GridFilter::getThickness() {
-	return this->thickness;
+    return thickness_;
 }
 
 void Model::GridFilter::setThickness(int thickness) {
-	this->thickness = thickness;
+    thickness_ = thickness;
 }
 
 int Model::GridFilter::getOpacity() {
-	return this->opacity;
+    return opacity_;
 }
 
 void Model::GridFilter::setOpacity(int opacity) {
-	this->opacity = opacity;
+    opacity_ = opacity;
 }
 
 QString Model::GridFilter::getName() {
@@ -79,22 +83,22 @@ QString Model::GridFilter::getName() {
 
 void Model::GridFilter::restoreFilter(QString description) {
     QStringList list  = description.split(";");
-    setHorizontalLines(list[0].QString::toInt());
-    setVerticalLines(list[1].QString::toInt());
+    setHorizontalCells(list[0].QString::toInt());
+    setVerticalCells(list[1].QString::toInt());
     setThickness(list[2].QString::toInt());
     setOpacity(list[3].QString::toInt());
     setColor(QColor(list[4]));
 }
 
 QString Model::GridFilter::getSaveString() {
-    QString str = QString::number(horizontalLines);
+    QString str = QString::number(horizontalCells_);
     str+=";";
-    str+=QString::number(verticalLines);
+    str+=QString::number(verticalCells_);
     str+=";";
-    str+=QString::number(thickness);
+    str+=QString::number(thickness_);
     str+=";";
-    str+=QString::number(opacity);
+    str+=QString::number(opacity_);
     str+=";";
-    str+=color.QColor::name();
+    str+=color_.QColor::name();
     return str;
 }

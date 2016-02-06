@@ -6,8 +6,9 @@
 #include <string>
 
 #include "Filter.h"
-//NOT FINISHED
+
 namespace Model {
+
 /**
  * Converts the video to a black and white video.
 */
@@ -17,7 +18,7 @@ public:
   static const QString FILTERNAME;
 
     /**
-     * @brief BlackWhiteFilter Constructor.
+     * @brief GrayScaleFilter Constructor.
      */
     GrayscaleFilter();
 
