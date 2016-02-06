@@ -1,14 +1,10 @@
 #ifndef __EncodedVideo_h__
 #define __EncodedVideo_h__
 
-//#include "AnalysisBox.h"
 #include "Video.h"
 #include "AVVideo.h"
 #include "Graph.h"
 
-namespace GUI {
-class AnalysisBox;
-}
 namespace Model {
 class AVVideo;
 class Graph;
@@ -28,9 +24,7 @@ class EncodedVideo {
   private:
 	int numberOfColors;
   private:
-	QString codec;
-  public:
-	GUI::AnalysisBox* video;
+    QString codec;
   public:
 	Model::AVVideo* avVideo;
   public:

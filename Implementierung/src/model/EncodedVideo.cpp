@@ -1,96 +1,92 @@
-/*#include <exception>
-
 #include "EncodedVideo.h"
-#include "AnalysisBox.h"
+
 #include "Video.h"
 #include "AVVideo.h"
 #include "Graph.h"
 
-EncodedVideo::EncodedVideo(QString path) {
+Model::EncodedVideo::EncodedVideo(QString path) {
 }
 
-QString EncodedVideo::getPath() {
+QString Model::EncodedVideo::getPath() {
 	return this->path;
 }
 
-int EncodedVideo::getFileSize() {
+int Model::EncodedVideo::getFileSize() {
 	return this->fileSize;
 }
 
-int EncodedVideo::getNumberOfColors() {
+int Model::EncodedVideo::getNumberOfColors() {
 	return this->numberOfColors;
 }
 
-QString EncodedVideo::getCodec() {
+QString Model::EncodedVideo::getCodec() {
 	return this->codec;
 }
 
-Model::Graph& EncodedVideo::getBitrate() {
+Model::Graph& Model::EncodedVideo::getBitrate() {
 	throw "Not yet implemented";
 }
 
-Model::Graph& EncodedVideo::getPsnr() {
+Model::Graph& Model::EncodedVideo::getPsnr() {
 	throw "Not yet implemented";
 }
 
-Model::Graph& EncodedVideo::getRedHistogramm() {
+Model::Graph& Model::EncodedVideo::getRedHistogramm() {
 	throw "Not yet implemented";
 }
 
-Model::Graph& EncodedVideo::getBlueHistogramm() {
+Model::Graph& Model::EncodedVideo::getBlueHistogramm() {
 	throw "Not yet implemented";
 }
 
-Model::Graph& EncodedVideo::getGreenHistogramm() {
+Model::Graph& Model::EncodedVideo::getGreenHistogramm() {
 	throw "Not yet implemented";
 }
 
-Model::AVVideo& EncodedVideo::getAvVideo() {
+Model::AVVideo& Model::EncodedVideo::getAvVideo() {
 	throw "Not yet implemented";
 }
 
-GUI::Video& EncodedVideo::getMacroBlockVideo() {
+Model::Video& Model::EncodedVideo::getMacroBlockVideo() {
 	throw "Not yet implemented";
 }
 
-GUI::Video& EncodedVideo::getRgbDiffVideo(Video* reference) {
+Model::Video& Model::EncodedVideo::getRgbDiffVideo(Video* reference) {
 	throw "Not yet implemented";
 }
 
-GUI::Video& EncodedVideo::getVideo() {
+Model::Video& Model::EncodedVideo::getVideo() {
 	throw "Not yet implemented";
 }
 
-void EncodedVideo::loadVideo() {
+void Model::EncodedVideo::loadVideo() {
 	throw "Not yet implemented";
 }
 
-void EncodedVideo::setBitrate(Graph graph) {
+void Model::EncodedVideo::setBitrate(Graph graph) {
 	throw "Not yet implemented";
 }
 
-void EncodedVideo::setPsnr(Graph graph) {
+void Model::EncodedVideo::setPsnr(Graph graph) {
 	throw "Not yet implemented";
 }
 
-void EncodedVideo::setRedHistogramm(Graph graph) {
+void Model::EncodedVideo::setRedHistogramm(Graph graph) {
 	throw "Not yet implemented";
 }
 
-void EncodedVideo::setGreenHistogramm(Graph graph) {
+void Model::EncodedVideo::setGreenHistogramm(Graph graph) {
 	throw "Not yet implemented";
 }
 
-void EncodedVideo::setBlueHistogramm(Graph graph) {
+void Model::EncodedVideo::setBlueHistogramm(Graph graph) {
 	throw "Not yet implemented";
 }
 
-void EncodedVideo::setMacroblockVideo(Video video) {
+void Model::EncodedVideo::setMacroblockVideo(Video video) {
 	throw "Not yet implemented";
 }
 
-void EncodedVideo::setRgbDiffVideo(Video video) {
+void Model::EncodedVideo::setRgbDiffVideo(Video video) {
 	throw "Not yet implemented";
 }
-
-*/

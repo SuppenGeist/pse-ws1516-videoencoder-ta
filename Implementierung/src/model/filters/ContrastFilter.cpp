@@ -7,7 +7,7 @@
 
 const QString Model::ContrastFilter::FILTERNAME="Contrast";
 
-Model::ContrastFilter::ContrastFilter():intensity_(-50) {
+Model::ContrastFilter::ContrastFilter():intensity_(80) {
 
 }
 
