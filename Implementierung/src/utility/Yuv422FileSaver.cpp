@@ -40,7 +40,7 @@ void Utility::Yuv422FileSaver::savePacked() {
 				continue;
 			}
 
-			auto vec=Rgb888ToYuv422(frame->pixel(x1,y1),frame->pixel(x2,y2));
+            auto vec=Rgb888ToYuv422(frame->pixel(x1,y1),frame->pixel(x2,y2));
 			dataStream_<<vec.getU()<<vec.getY1()<<vec.getV()<<vec.getY2();
 		}
 	}

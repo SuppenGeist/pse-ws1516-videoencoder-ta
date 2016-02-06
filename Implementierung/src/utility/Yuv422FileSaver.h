@@ -45,6 +45,7 @@ class Yuv422FileSaver: public YuvFileSaver {
   private:
 	Compression     compression_;
 
+
 	/**
 	 * @brief savePacked Saves the video packed.
 	 */
