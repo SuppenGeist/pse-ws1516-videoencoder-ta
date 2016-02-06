@@ -1,58 +1,63 @@
-#include <exception>
-#include <string>
-
-
 #ifndef __ContrastFilter_h__
 #define __ContrastFilter_h__
 
-#include "Filter.h"
+#include <QString>
 
-namespace Model {
-// class Filter;
-class ContrastFilter;
-}
+#include <string>
+
+#include "Filter.h"
 
 namespace Model {
 /**
  * Adjusts the contrast of the video.
 */
-class ContrastFilter: public Model::Filter {
+class ContrastFilter: public Filter {
   public:
     static const QString FILTERNAME;
-  private:
-	int intensity;
 
-	/// <summary>
-	/// Constructor.
-	/// </summary>
-  public:
+    /**
+     * @brief ContrastFilter Constructor.
+     */
 	ContrastFilter();
 
-	/// <summary>
-	/// Sets the intensity of the contrast.
-	/// </summary>
-	/// <param name="intensity">The new intensity.</param>
-  public:
+    /**
+     * @brief setIntensity Sets the intensity of the contrast.
+     * @param intensity The new intensity.
+     */
 	void setIntensity(int intensity);
 
-	/// <summary>
-	/// Returns the intensity of the contrast.
-	/// </summary>
-	/// <returns>The intensity.</returns>
-  public:
+    /**
+     * @brief getIntensity Returns the intensity of the contrast.
+     * @return The intensity.
+     */
 	int getIntensity();
 
-  public:
+    /**
+     * @brief getName
+     * @return
+     */
     QString getName();
 
-  public:
+    /**
+     * @brief getFilterDescription
+     * @return
+     */
 	std::string getFilterDescription();
 
-  public:
+    /**
+     * @brief restoreFilter
+     * @param description
+     */
 	void restoreFilter(QString description);
 
-  public:
+    /**
+     * @brief getSaveString
+     * @return
+     */
 	QString getSaveString();
+
+private:
+    int     intensity_;
 };
 }
 

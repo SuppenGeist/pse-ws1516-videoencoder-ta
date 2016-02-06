@@ -69,7 +69,6 @@ HEADERS += \
     src/model/Project.h \
     src/model/Video.h \
     src/model/YuvVideo.h \
-    src/model/filters/BlackWhiteFilter.h \
     src/model/filters/BlendingFilter.h \
     src/model/filters/BlurFilter.h \
     src/model/filters/BorderFilter.h \
@@ -134,6 +133,7 @@ HEADERS += \
     src/utility/YuvType.h \
     src/utility/meansquareerrorcalculator.h \
     src/utility/Yuv420FileReader.h \
+    src/model/filters/Grayscale.h
 
 SOURCES += \
     src/gui/AnalysisBox.cpp \
@@ -187,7 +187,6 @@ SOURCES += \
     src/model/Project.cpp \
     src/model/Video.cpp \
     src/model/YuvVideo.cpp \
-    src/model/filters/BlackWhiteFilter.cpp \
     src/model/filters/BlendingFilter.cpp \
     src/model/filters/BlurFilter.cpp \
     src/model/filters/BorderFilter.cpp \
@@ -249,7 +248,8 @@ SOURCES += \
     src/utility/meansquareerrorcalculator.cpp \
     src/utility/Yuv422Vector.cpp \
     src/utility/Yuv420FileReader.cpp \
-    src/utility/Yuv411Vector.cpp
+    src/utility/Yuv411Vector.cpp \
+    src/model/filters/Grayscale.cpp
 
 RESOURCES += \
     resources.qrc \

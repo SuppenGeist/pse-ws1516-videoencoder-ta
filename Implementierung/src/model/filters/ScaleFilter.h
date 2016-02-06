@@ -1,6 +1,6 @@
 #include <exception>
 #include <QString>
-
+//NOT FINISHED
 
 #ifndef __ScaleFilter_h__
 #define __ScaleFilter_h__

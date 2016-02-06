@@ -6,7 +6,7 @@
 #include <memory>
 #include <stdexcept>
 
-#include "BlackWhiteFilter.h"
+#include "Grayscale.h"
 #include "BlendingFilter.h"
 #include "BlurFilter.h"
 #include "BorderFilter.h"
@@ -40,8 +40,8 @@ Model::Filter::~Filter()
 }
 
 std::unique_ptr<Model::Filter> Model::Filter::CreateFilter(QString filtername) {
-    if(filtername==BlackWhiteFilter::FILTERNAME) {
-        return std::make_unique<BlackWhiteFilter>();
+    if(filtername==Grayscale::FILTERNAME) {
+        return std::make_unique<Grayscale>();
     } else if(filtername==BlendingFilter::FILTERNAME) {
         return std::make_unique<BlendingFilter>();
     } else if(filtername==BlurFilter::FILTERNAME) {

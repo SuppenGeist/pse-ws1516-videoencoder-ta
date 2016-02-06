@@ -6,7 +6,7 @@
 #define __NegativeFilter_h__
 
 #include "Filter.h"
-
+//NOT FINISHED
 namespace Model {
 // class Filter;
 class NegativeFilter;

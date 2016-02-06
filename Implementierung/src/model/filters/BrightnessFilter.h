@@ -1,58 +1,60 @@
-#include <exception>
-
-
-
 #ifndef __BrightnessFilter_h__
 #define __BrightnessFilter_h__
 
 #include "Filter.h"
 
 namespace Model {
-// class Filter;
-class BrightnessFilter;
-}
-
-namespace Model {
 /**
  * Adjusts the video brightness.
 */
-class BrightnessFilter: public Model::Filter {
+class BrightnessFilter: public Filter {
   public:
     static const QString FILTERNAME;
-  private:
-	int intensity;
 
-	/// <summary>
-	/// Constructor.
-	/// </summary>
-  public:
+    /**
+     * @brief BrightnessFilter Constructor.
+     */
 	BrightnessFilter();
 
-	/// <summary>
-	/// Returns the intensity of the brightness.
-	/// </summary>
-	/// <returns>The intensity.</returns>
-  public:
+    /**
+     * @brief getIntensity Returns the intensity of the brightness.
+     * @return The intensity.
+     */
 	int getIntensity();
 
-	/// <summary>
-	/// Sets the intensity of the brightness.
-	/// </summary>
-	/// <param name="intensity">The new intensity.</param>
-  public:
+    /**
+     * @brief setIntensity Sets the intensity of the brightness.
+     * @param intensity The new intensity.
+     */
 	void setIntensity(int intensity);
 
-  public:
+    /**
+     * @brief getName
+     * @return
+     */
     QString getName();
 
-  public:
+    /**
+     * @brief getFilterDescription
+     * @return
+     */
 	std::string getFilterDescription();
 
-  public:
+    /**
+     * @brief restoreFilter
+     * @param description
+     */
 	void restoreFilter(QString description);
 
-  public:
+    /**
+     * @brief getSaveString
+     * @return
+     */
 	QString getSaveString();
+
+
+private:
+    int     intensity_;
 };
 }
 

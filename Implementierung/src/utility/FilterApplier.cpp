@@ -123,7 +123,6 @@ void Utility::FilterApplier::createFilterString()
     for(std::size_t i =0;i<list_->getSize();i++) {
         filterDescription_+=list_->getFilter(i)->getFilterDescription();
     }
-
     qDebug()<<QString::fromStdString(filterDescription_);
 }
 

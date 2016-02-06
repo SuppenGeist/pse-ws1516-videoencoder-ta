@@ -3,35 +3,38 @@
 #include <QString>
 #include <QStringList>
 
-#include "Filter.h"
-
 const QString Model::BlendingFilter::FILTERNAME="Blending";
 
-Model::BlendingFilter::BlendingFilter() {
+Model::BlendingFilter::BlendingFilter():inBlend_(true),startFrame_(0),endFrame_(1) {
+
 }
 
 bool Model::BlendingFilter::getInBlend() {
-	return this->inBlend;
+    return inBlend_;
 }
 
 void Model::BlendingFilter::setInBlend(bool inBlend) {
-	this->inBlend = inBlend;
+    inBlend_ = inBlend;
 }
 
 int Model::BlendingFilter::getStartFrame() {
-	return this->startFrame;
+    return startFrame_;
 }
 
 void Model::BlendingFilter::setStartFrame(int startFrame) {
-	this->startFrame = startFrame;
+    if(startFrame<0||startFrame>=endFrame_)
+        return;
+    startFrame_ = startFrame;
 }
 
 int Model::BlendingFilter::getEndFrame() {
-	return this->endFrame;
+    return endFrame_;
 }
 
 void Model::BlendingFilter::setEndFrame(int endFrame) {
-	this->endFrame = endFrame;
+    if(endFrame<0||endFrame-startFrame_<=0)
+        return;
+    endFrame_ = endFrame;
 }
 
 QString Model::BlendingFilter::getName() {
@@ -39,22 +42,34 @@ QString Model::BlendingFilter::getName() {
 }
 
 std::string Model::BlendingFilter::getFilterDescription() {
-	throw "Not yet implemented";
+    std::string str("fade=");
+    if(inBlend_) {
+        str+="in:";
+    }else {
+        str+="out:";
+    }
+    str+=std::to_string(startFrame_)+":";
+    str+=std::to_string(endFrame_-startFrame_);
+
+    return str;
 }
 
 
 void Model::BlendingFilter::restoreFilter(QString description) {
     QStringList list  = description.split(";");
-    setInBlend(list[0].QString::toInt());
-    setStartFrame(list[1].QString::toInt());
-    setEndFrame(list[2].QString::toInt());
+    if(list.size()!=3)
+        return;
+    setInBlend(list[0].toInt());
+    setStartFrame(list[1].toInt());
+    setEndFrame(list[2].toInt());
 }
 
 QString Model::BlendingFilter::getSaveString() {
-    QString str = QString::number(inBlend);
+    QString str = QString::number(inBlend_);
     str+=";";
-    str+=QString::number(startFrame);
+    str+=QString::number(startFrame_);
     str+=";";
-    str+=QString::number(endFrame);
+    str+=QString::number(endFrame_);
+
     return str;
 }

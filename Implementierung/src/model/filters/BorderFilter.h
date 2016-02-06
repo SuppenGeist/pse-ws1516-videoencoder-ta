@@ -1,17 +1,12 @@
-#include <exception>
-
-#include <QColor>
-
-
 #ifndef __BorderFilter_h__
 #define __BorderFilter_h__
 
-#include "Filter.h"
+#include <QColor>
+#include <QString>
 
-namespace Model {
-// class Filter;
-class BorderFilter;
-}
+#include <string>
+
+#include "Filter.h"
 
 namespace Model {
 /**
@@ -20,120 +15,115 @@ namespace Model {
 class BorderFilter: public Model::Filter {
   public:
     static const QString FILTERNAME;
-  private:
-	bool top;
-  private:
-	bool bottom;
-  private:
-	bool right;
-  private:
-	bool left;
-  private:
-	int thickness;
-  private:
-	QRgb color;
 
-	/// <summary>
-	/// Constructor.
-	/// </summary>
-  public:
+    /**
+     * @brief BorderFilter Constructor.
+     */
 	BorderFilter();
 
-	/// <summary>
-	/// Whether a border is inserted at the top.
-	/// </summary>
-	/// <returns>True if a border is inserted at the top.</returns>
-  public:
-	bool getTop();
+    /**
+     * @brief getTop Whether a border is inserted at the top.
+     * @return True if a border is inserted at the top.
+     */
+    bool getTop();
 
-	/// <summary>
-	/// Sets whether a border is inserted at the top.
-	/// </summary>
-	/// <param name="top">True if a border is inserted at the top.</param>
-  public:
+    /**
+     * @brief setTop Sets whether a border is inserted at the top.
+     * @param top True if a border is inserted at the top.
+     */
 	void setTop(bool top);
 
-	/// <summary>
-	/// Whether a border is inserted at the bottom.
-	/// </summary>
-	/// <returns>True if a border is inserted at the bottom.</returns>
-  public:
+    /**
+     * @brief getBottom Whether a border is inserted at the bottom.
+     * @return True if a border is inserted at the bottom.
+     */
 	bool getBottom();
 
-	/// <summary>
-	/// Sets whether a border is inserted at the bottom.
-	/// </summary>
-	/// <param name="bottom">True if a border is inserted at the bottom.</param>
-  public:
+    /**
+     * @brief setBottom Sets whether a border is inserted at the bottom.
+     * @param bottom True if a border is inserted at the bottom.
+     */
 	void setBottom(bool bottom);
 
-	/// <summary>
-	/// Whether a border is inserted at the right.
-	/// </summary>
-	/// <returns>True if a border is inserted at the right.</returns>
-  public:
+    /**
+     * @brief getRight Whether a border is inserted at the right.
+     * @return True if a border is inserted at the right.
+     */
 	bool getRight();
 
-	/// <summary>
-	/// Sets whether a border is inserted at the right.
-	/// </summary>
-	/// <param name="right">True if a border is inserted at the right.</param>
-  public:
+    /**
+     * @brief setRight Sets whether a border is inserted at the right.
+     * @param right True if a border is inserted at the right.
+     */
 	void setRight(bool right);
 
-	/// <summary>
-	/// Whether a border is inserted at the left.
-	/// </summary>
-	/// <returns>True if a border is inserted at the left.</returns>
-  public:
+    /**
+     * @brief getLeft Whether a border is inserted at the left.
+     * @return True if a border is inserted at the left.
+     */
 	bool getLeft();
 
-	/// <summary>
-	/// Sets whether a border is inserted at the left.
-	/// </summary>
-	/// <param name="left">True if a border is inserted at the left.</param>
-  public:
+    /**
+     * @brief setLeft Sets whether a border is inserted at the left.
+     * @param left True if a border is inserted at the left.
+     */
 	void setLeft(bool left);
 
-	/// <summary>
-	/// Returns the thickness of the border.
-	/// </summary>
-	/// <returns>The thickness of the border.</returns>
-  public:
+    /**
+     * @brief getThickness Returns the thickness of the border.
+     * @return The thickness of the border.
+     */
 	int getThickness();
 
-	/// <summary>
-	/// Sets the thickness of the border.
-	/// </summary>
-	/// <param name="thickness">The thickness.</param>
-  public:
+    /**
+     * @brief setThickness Sets the thickness of the border.
+     * @param thickness The thickness.
+     */
 	void setThickness(int thickness);
 
-	/// <summary>
-	/// Returns the color of the border,
-	/// </summary>
-	/// <returns>The border color.</returns>
-  public:
+    /**
+     * @brief getColor Returns the color of the border.
+     * @return The border color.
+     */
 	QRgb getColor();
 
-	/// <summary>
-	/// Sets the color of the border,
-	/// </summary>
-	/// <param name="color">The new border color.</param>
-  public:
+    /**
+     * @brief setColor Sets the color of the border,
+     * @param color The new border color.
+     */
 	void setColor(QRgb color);
 
-  public:
+    /**
+     * @brief getName
+     * @return
+     */
     QString getName();
 
-  public:
+    /**
+     * @brief getFilterDescription
+     * @return
+     */
 	std::string getFilterDescription();
 
-  public:
+    /**
+     * @brief restoreFilter
+     * @param description
+     */
 	void restoreFilter(QString description);
 
-  public:
+    /**
+     * @brief getSaveString
+     * @return
+     */
 	QString getSaveString();
+
+private:
+    bool    top_;
+    bool    bottom_;
+    bool    right_;
+    bool    left_;
+    int     thickness_;
+    QRgb    color_;
 };
 }
 

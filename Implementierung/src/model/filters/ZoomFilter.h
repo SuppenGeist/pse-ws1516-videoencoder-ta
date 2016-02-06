@@ -1,7 +1,7 @@
 #include <exception>
 #include <string>
 using namespace std;
-
+//NOT FINISHED
 #ifndef __ZoomFilter_h__
 #define __ZoomFilter_h__
 

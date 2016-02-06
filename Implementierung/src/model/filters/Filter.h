@@ -5,7 +5,7 @@
 #include <memory>
 
 #include <QString>
-
+//NOT FINISHED
 namespace Model {
 /**
  * Baseclass for Filters.

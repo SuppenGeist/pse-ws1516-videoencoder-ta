@@ -1,124 +1,117 @@
-#include <exception>
-
-
-
 #ifndef __ColorbalanceFilter_h__
 #define __ColorbalanceFilter_h__
+
+#include <string>
+
+#include <QString>
 
 #include "../../utility/BasicColor.h"
 #include "Filter.h"
 
-namespace Model {
-// enum BasicColor;
-// class Filter;
-class ColorbalanceFilter;
-}
 
 namespace Model {
 /**
  * Adjusts the colorbalance of the video for the 3 basic colors.
 */
-class ColorbalanceFilter: public Model::Filter {
+class ColorbalanceFilter: public Filter {
   public:
     static const QString FILTERNAME;
-  private:
-	int intensity;
-  private:
-	bool brightPixels;
-  private:
-	bool mediumPixels;
-  private:
-	bool darkPixels;
-  private:
-	Model::BasicColor* color;
 
-	/// <summary>
-	/// Constructor.
-	/// </summary>
-  public:
+    /**
+     * @brief ColorbalanceFilter Constructor.
+     */
 	ColorbalanceFilter();
 
-	/// <summary>
-	/// Returns the color whose balance is to be changed.
-	/// </summary>
-	/// <returns>The color to change.</returns>
-  public:
+    /**
+     * @brief getColor Returns the color whose balance is to be changed.
+     * @return The color to change.
+     */
 	Model::BasicColor getColor();
 
-	/// <summary>
-	/// Sets the color whose balance shall be changed.
-	/// </summary>
-	/// <param name="color">The color to change.</param>
-  public:
+    /**
+     * @brief setColor Sets the color whose balance shall be changed.
+     * @param color The color to change.
+     */
 	void setColor(Model::BasicColor color);
 
-	/// <summary>
-	/// Returns the intensity of the change,
-	/// </summary>
-	/// <returns>The intensity.</returns>
-  public:
+    /**
+     * @brief getIntensity Returns the intensity of the change.
+     * @return The intensity.
+     */
 	int getIntensity();
 
-	/// <summary>
-	/// Sets the intensity of the change.
-	/// </summary>
-	/// <param name="intensity">The intensity.</param>
-  public:
+    /**
+     * @brief setIntensity Sets the intensity of the change.
+     * @param intensity The intensity.
+     */
 	void setIntensity(int intensity);
 
-	/// <summary>
-	/// Whether the bright pixels shall be changed.
-	/// </summary>
-	/// <returns>True if the bright pixels are changed.</returns>
-  public:
+    /**
+     * @brief getBrightPixels Whether the bright pixels shall be changed.
+     * @return True if the bright pixels are changed.
+     */
 	bool getBrightPixels();
 
-	/// <summary>
-	/// Sets whether the bright pixels shall be changed.
-	/// </summary>
-	/// <param name="brightPixels">True if the bright pixels shall be changed.</param>
-  public:
+    /**
+     * @brief setBrightPixels Sets whether the bright pixels shall be changed.
+     * @param brightPixels True if the bright pixels shall be changed.
+     */
 	void setBrightPixels(bool brightPixels);
 
-	/// <summary>
-	/// Whether the medium pixels shall be changed.
-	/// </summary>
-	/// <returns>True if the medium pixels are changed.</returns>
-  public:
+    /**
+     * @brief getMediumPixels Whether the medium pixels shall be changed.
+     * @return True if the medium pixels are changed.
+     */
 	bool getMediumPixels();
 
-	/// <summary>
-	/// Sets whether the medium pixels shall be changed.
-	/// </summary>
-	/// <param name="mediumPixels">True if the medium pixels are changed.</param>
-  public:
+    /**
+     * @brief setMediumPixels Sets whether the medium pixels shall be changed.
+     * @param mediumPixels True if the medium pixels are changed.
+     */
 	void setMediumPixels(bool mediumPixels);
 
-  public:
+    /**
+     * @brief getFilterDescription
+     * @return
+     */
 	std::string getFilterDescription();
 
-  public:
+    /**
+     * @brief getName
+     * @return
+     */
     QString getName();
 
-	/// <summary>
-	/// Whether the drak pixels shall be changed.
-	/// </summary>
-	/// <returns>True if the dark pixels are changed.</returns>
-  public:
+    /**
+     * @brief getDarkPixels Whether the drak pixels shall be changed.
+     * @return True if the dark pixels are changed.
+     */
 	bool getDarkPixels();
 
-	/// <summary>
-	/// Sets whether the dark pixels shall be changed.
-	/// </summary>
-	/// <param name="darkPixels">True if the dark pixels are changed.</param>
-  public:
+    /**
+     * @brief setDarkPixels Sets whether the dark pixels shall be changed.
+     * @param darkPixels True if the dark pixels are changed.
+     */
 	void setDarkPixels(bool darkPixels);
 
-  public:
+    /**
+     * @brief restoreFilter
+     * @param description
+     */
 	void restoreFilter(QString description);
 
-  public:
+    /**
+     * @brief getSaveString
+     * @return
+     */
 	QString getSaveString();
+
+private:
+    int         intensity_;
+    bool        brightPixels_;
+    bool        mediumPixels_;
+    bool        darkPixels_;
+    BasicColor  color_;
 };
 }
 

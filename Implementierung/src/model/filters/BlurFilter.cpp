@@ -1,40 +1,29 @@
 #include "BlurFilter.h"
 
+#include <string>
+#include <stdexcept>
+
 #include <QString>
 #include <QStringList>
 
-#include "Filter.h"
-
 const QString Model::BlurFilter::FILTERNAME="Blur";
 
-Model::BlurFilter::BlurFilter() {
-}
+Model::BlurFilter::BlurFilter():intensity_(50) {
 
-bool Model::BlurFilter::getPreserveEdges() {
-	return this->preserveEdges;
 }
-
-void Model::BlurFilter::setPreserveEdges(bool preserveEdges) {
-	this->preserveEdges = preserveEdges;
-}
-
 int Model::BlurFilter::getIntensity() {
-	return this->intensity;
+    return intensity_;
 }
 
 void Model::BlurFilter::setIntensity(int intensity) {
-	this->intensity = intensity;
+    if(intensity<0||intensity>100)
+        return;
+    intensity_ = intensity;
 }
 
 std::string Model::BlurFilter::getFilterDescription() {
-	std::string str = std::string("");
-	if(preserveEdges) {
-		str += "smartblur";
-	} else {
-		str += "boxblur";
-	}
-	str += "=";
-	str+=std::to_string(intensity);
+    std::string str= "boxblur="+std::to_string((int)((double)intensity_/100*20))+":1";
+
 	return str;
 }
 
@@ -43,14 +32,14 @@ QString Model::BlurFilter::getName() {
 }
 
 void Model::BlurFilter::restoreFilter(QString description) {
-	QStringList list  = description.split(";");
-    setPreserveEdges(list[0].QString::toInt());
+    QStringList list  = description.split(";");
+    if(list.size()!=1)
+        return;
     setIntensity(list[1].QString::toInt());
 }
 
 QString Model::BlurFilter::getSaveString() {
-    QString str =QString::number(preserveEdges);
-    str+=";";
-    str+=QString::number(intensity);
+    QString str = QString::number(intensity_);
+
     return str;
 }

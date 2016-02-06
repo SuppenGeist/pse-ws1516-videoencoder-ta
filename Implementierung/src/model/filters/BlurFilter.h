@@ -1,74 +1,63 @@
-#include <exception>
-#include <string>
-
-
 #ifndef __BlurFilter_h__
 #define __BlurFilter_h__
 
-#include "Filter.h"
+#include <QString>
 
-namespace Model {
-// class Filter;
-class BlurFilter;
-}
+#include <string>
+
+#include "Filter.h"
 
 namespace Model {
 /**
  * Blurs the video.
 */
-class BlurFilter: public Model::Filter {
+class BlurFilter: public Filter {
   public:
     static const QString FILTERNAME;
-  private:
-	bool preserveEdges;
-  private:
-	int intensity;
 
     /**
      * @brief BlurFilter Constructor.
      */
-  public:
-	BlurFilter();
-
-    /**
-    * Whether edges shall be preserved when blurring.
-    */
-  public:
-	bool getPreserveEdges();
-
-    /**
-    * Sets whether the edges shall be preserved when blurring.
-    *
-    * @param preserveEdges.
-    */
-  public:
-	void setPreserveEdges(bool preserveEdges);
+    BlurFilter();
 
     /**
       *@brief getIntensity.
       *@return
       */
-  public:
-	int getIntensity();
+    int getIntensity();
 
     /**
     * @brief setIntensity;
     * @param intensity of the blurring.
     */
-  public:
-	void setIntensity(int intensity);
+    void setIntensity(int intensity);
 
-  public:
-	std::string getFilterDescription();
+    /**
+     * @brief getFilterDescription
+     * @return
+     */
+    std::string getFilterDescription();
 
-  public:
+    /**
+     * @brief getName
+     * @return
+     */
     QString getName();
 
-  public:
-	void restoreFilter(QString description);
+    /**
+     * @brief restoreFilter
+     * @param description
+     */
+    void restoreFilter(QString description);
 
-  public:
-	QString getSaveString();
+    /**
+     * @brief getSaveString
+     * @return
+     */
+    QString getSaveString();
+
+private:
+    int     intensity_;
 };
 }
 

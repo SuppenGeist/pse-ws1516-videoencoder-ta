@@ -1,89 +1,89 @@
-#include <exception>
-#include <string>
-
 #ifndef __BlendingFilter_h__
 #define __BlendingFilter_h__
 
-#include "Filter.h"
+#include <QString>
 
-namespace Model {
-// class Filter;
-class BlendingFilter;
-}
+#include <string>
+
+#include "Filter.h"
 
 namespace Model {
 /**
  * Inserts black blending into the video
 */
-class BlendingFilter: public Model::Filter {
+class BlendingFilter: public Filter {
   public:
     static const QString FILTERNAME;
-  private:
-	bool inBlend;
-  private:
-	int startFrame;
-  private:
-	int endFrame;
 
-	/// <summary>
-	/// Constructor.
-	/// </summary>
-  public:
+    /**
+     * @brief BlendingFilter Constructor.
+     */
 	BlendingFilter();
 
-	/// <summary>
-	/// Whether it is an in blending.
-	/// </summary>
-	/// <returns>true if it is an in blending.</returns>
-  public:
+    /**
+     * @brief getInBlend Whether it is an in blending.
+     * @return true if it is an in blending.
+     */
 	bool getInBlend();
 
-	/// <summary>
-	/// Sets whether it is an in blending.
-	/// </summary>
-	/// <param name="inBlend">True if it is an in blending.</param>
-  public:
+    /**
+     * @brief setInBlend Sets whether it is an in blending.
+     * @param inBlend True if it is an in blending.
+     */
 	void setInBlend(bool inBlend);
 
-	/// <summary>
-	/// Returns the start frame of the blending.
-	/// </summary>
-	/// <returns>The start frame of the blending.</returns>
-  public:
+    /**
+     * @brief getStartFrame Returns the start frame of the blending.
+     * @return The start frame of the blending.
+     */
 	int getStartFrame();
 
-	/// <summary>
-	/// Sets the start frame of the blending.
-	/// </summary>
-	/// <param name="startFrame">The start frame.</param>
-  public:
+    /**
+     * @brief setStartFrame Sets the start frame of the blending.
+     * @param startFrame The start frame.
+     */
 	void setStartFrame(int startFrame);
 
-	/// <summary>
-	/// Returns the end frame of the blending.
-	/// </summary>
-	/// <returns>The end frame.</returns>
-  public:
+    /**
+     * @brief getEndFrame Returns the end frame of the blending.
+     * @return The end frame.
+     */
 	int getEndFrame();
 
-	/// <summary>
-	/// Sets the end frame of the blending.
-	/// </summary>
-	/// <param name="endFrame">The end frame.</param>
-  public:
+    /**
+     * @brief setEndFrame Sets the end frame of the blending.
+     * @param endFrame The end frame.
+     */
 	void setEndFrame(int endFrame);
 
-  public:
+    /**
+     * @brief getName
+     * @return
+     */
     QString getName();
 
-  public:
+    /**
+     * @brief getFilterDescription
+     * @return
+     */
 	std::string getFilterDescription();
 
-  public:
+    /**
+     * @brief restoreFilter
+     * @param description
+     */
 	void restoreFilter(QString description);
 
-  public:
+    /**
+     * @brief getSaveString
+     * @return
+     */
 	QString getSaveString();
+
+private:
+    bool    inBlend_;
+    int     startFrame_;
+    int     endFrame_;
 };
 }
 

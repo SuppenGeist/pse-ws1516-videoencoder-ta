@@ -7,7 +7,7 @@
 
 #include "../MirrorMode.h"
 #include "Filter.h"
-
+//NOT FINISHED
 namespace Model {
 // enum MirrorMode;
 // class Filter;

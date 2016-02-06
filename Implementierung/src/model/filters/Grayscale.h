@@ -1,19 +1,17 @@
-#include <exception>
-#include <string>
-
-
 #ifndef __BlackWhiteFilter_h__
 #define __BlackWhiteFilter_h__
 
 #include <QString>
 
-#include "Filter.h"
+#include <string>
 
+#include "Filter.h"
+//NOT FINISHED
 namespace Model {
 /**
  * Converts the video to a black and white video.
 */
-class BlackWhiteFilter: public Filter {
+class Grayscale: public Filter {
 
 public:
   static const QString FILTERNAME;
@@ -21,7 +19,7 @@ public:
     /**
      * @brief BlackWhiteFilter Constructor.
      */
-    BlackWhiteFilter();
+    Grayscale();
 
     /**
      * @brief getName

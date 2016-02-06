@@ -6,7 +6,7 @@
 
 
 #include "Filter.h"
-
+//NOT FINISHED
 namespace Model {
 // class Filter;
 class EdgeFilter;

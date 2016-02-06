@@ -30,7 +30,12 @@
 #include "VideoPlayer.h"
 #include "Timer.h"
 
-#include "../model/filters/VintageFilter.h"
+#include "../model/filters/BlendingFilter.h"
+#include "../model/filters/BlurFilter.h"
+#include "../model/filters/BorderFilter.h"
+#include "../model/filters/BrightnessFilter.h"
+#include "../model/filters/ColorbalanceFilter.h"
+#include "../model/filters/ContrastFilter.h"
 
 GUI::FilterTab::FilterTab(QWidget* parent):QFrame(parent) {
 	createUi();
@@ -138,7 +143,13 @@ void GUI::FilterTab::createUi() {
 	filterContainerTab_.push_back(filterTab);
 	filterContainerTab_.push_back(artefactsTab);
 
-    filterTab->addFilter(Model::VintageFilter::FILTERNAME);
+    filterTab->addFilter(Model::BlendingFilter::FILTERNAME);
+    filterTab->addFilter(Model::BlurFilter::FILTERNAME);
+    filterTab->addFilter(Model::BrightnessFilter::FILTERNAME);
+    filterTab->addFilter(Model::ColorbalanceFilter::FILTERNAME);
+    filterTab->addFilter(Model::ContrastFilter::FILTERNAME);
+
+    artefactsTab->addFilter(Model::BorderFilter::FILTERNAME);
 
     QScrollArea* scrollArea_filters=new QScrollArea;
     scrollArea_filters->setWidget(filterTab);

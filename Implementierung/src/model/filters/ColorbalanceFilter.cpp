@@ -3,48 +3,95 @@
 #include <QString>
 #include <QStringList>
 
+#include <string>
+#include <stdexcept>
+
 #include "../../utility/BasicColor.h"
 #include "Filter.h"
 
 const QString Model::ColorbalanceFilter::FILTERNAME="Colorbalance";
 
-Model::ColorbalanceFilter::ColorbalanceFilter() {
+Model::ColorbalanceFilter::ColorbalanceFilter():intensity_(20),brightPixels_(true),mediumPixels_(true),darkPixels_(true),color_(BasicColor::RED) {
+
 }
 
 Model::BasicColor Model::ColorbalanceFilter::getColor() {
-	throw "Not yet implemented";
+    return color_;
 }
 
 void Model::ColorbalanceFilter::setColor(BasicColor color) {
-	throw "Not yet implemented";
+    color_=color;
 }
 
 int Model::ColorbalanceFilter::getIntensity() {
-	return this->intensity;
+    return intensity_;
 }
 
 void Model::ColorbalanceFilter::setIntensity(int intensity) {
-	this->intensity = intensity;
+    if(intensity<-100||intensity>100)
+        return;
+    intensity_ = intensity;
 }
 
 bool Model::ColorbalanceFilter::getBrightPixels() {
-	return this->brightPixels;
+    return brightPixels_;
 }
 
 void Model::ColorbalanceFilter::setBrightPixels(bool brightPixels) {
-	this->brightPixels = brightPixels;
+    brightPixels_ = brightPixels;
 }
 
 bool Model::ColorbalanceFilter::getMediumPixels() {
-	return this->mediumPixels;
+    return mediumPixels_;
 }
 
 void Model::ColorbalanceFilter::setMediumPixels(bool mediumPixels) {
-	this->mediumPixels = mediumPixels;
+    mediumPixels_ = mediumPixels;
 }
 
 std::string Model::ColorbalanceFilter::getFilterDescription() {
-	throw "Not yet implemented";
+    std::string str("colorbalance=");
+    std::string range("'");
+    range+=std::to_string((double)intensity_/100)+"'";
+
+    if(color_==BasicColor::RED) {
+        if(darkPixels_) {
+            str+="rs="+range+":";
+        }
+        if(mediumPixels_) {
+            str+="rm="+range+":";
+        }
+        if(brightPixels_) {
+            str+="rh="+range+":";
+        }
+    }
+    else if(color_==BasicColor::GREEN) {
+        if(darkPixels_) {
+            str+="gs="+range+":";
+        }
+        if(mediumPixels_) {
+            str+="gm="+range+":";
+        }
+        if(brightPixels_) {
+            str+="gh="+range+":";
+        }
+    }
+    else if(color_==BasicColor::BLUE) {
+        if(darkPixels_) {
+            str+="bs="+range+":";
+        }
+        if(mediumPixels_) {
+            str+="bm="+range+":";
+        }
+        if(brightPixels_) {
+            str+="bh="+range+":";
+        }
+    }
+    else {
+        throw std::logic_error("Should not get here");
+    }
+
+    return str;
 }
 
 QString Model::ColorbalanceFilter::getName() {
@@ -52,17 +99,34 @@ QString Model::ColorbalanceFilter::getName() {
 }
 
 bool Model::ColorbalanceFilter::getDarkPixels() {
-	return this->darkPixels;
+    return darkPixels_;
 }
 
 void Model::ColorbalanceFilter::setDarkPixels(bool darkPixels) {
-	this->darkPixels = darkPixels;
+    darkPixels_ = darkPixels;
 }
 
 void Model::ColorbalanceFilter::restoreFilter(QString description) {
-	throw "Not yet implemented";
+    QStringList list  = description.split(";");
+    if(list.size()!=6)
+        return;
+    setIntensity(list[1].QString::toInt());
+    setDarkPixels(list[2].QString::toInt());
+    setMediumPixels(list[3].QString::toInt());
+    setBrightPixels(list[4].QString::toInt());
+    setColor(static_cast<BasicColor>(list[5].QString::toInt()));
 }
 
 QString Model::ColorbalanceFilter::getSaveString() {
+    QString str =QString::number(intensity_);
+    str+=";";
+    str+=QString::number(darkPixels_);
+    str+=";";
+    str+=QString::number(mediumPixels_);
+    str+=";";
+    str+=QString::number(brightPixels_);
+    str+=";";
+    str+=QString::number(color_);
 
+    return str;
 }

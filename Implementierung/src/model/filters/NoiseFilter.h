@@ -7,7 +7,7 @@
 
 #include "../NoiseMode.h"
 #include "Filter.h"
-
+//NOT FINISHED
 namespace Model {
 // enum NoiseMode;
 // class Filter;
