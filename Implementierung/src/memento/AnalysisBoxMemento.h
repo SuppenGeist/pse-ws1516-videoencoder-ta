@@ -12,6 +12,7 @@ class AnalysisBoxMemento;
 }
 namespace Model {
 class Graph;
+class Video;
 }
 
 namespace Memento {
@@ -24,9 +25,9 @@ class AnalysisBoxMemento {
   private:
 	QString comment;
   private:
-	GUI::Video* macroVideo;
+    Model::Video* macroVideo;
   private:
-	GUI::Video* rgbDiffVideo;
+    Model::Video* rgbDiffVideo;
   private:
 	Model::Graph psnr;
   private:
@@ -71,28 +72,28 @@ class AnalysisBoxMemento {
 	/// </summary>
 	/// <returns>The macroblock video.</returns>
   public:
-	GUI::Video* getMacroVideo();
+    Model::Video* getMacroVideo();
 
 	/// <summary>
 	/// Sets the macroblock video.
 	/// </summary>
 	/// <param name="macroVideo">The macroblock video.</param>
   public:
-	void setMacroVideo(GUI::Video* macroVideo);
+    void setMacroVideo(Model::Video* macroVideo);
 
 	/// <summary>
 	/// Returns the rgb difference video.
 	/// </summary>
 	/// <returns>The rgb difference video.</returns>
   public:
-	GUI::Video* getRgbDiffVideo();
+    Model::Video* getRgbDiffVideo();
 
 	/// <summary>
 	/// Sets the rgb difference video.
 	/// </summary>
 	/// <param name="rgbDiffVideo">The rgb difference video.</param>
   public:
-	void setRgbDiffVideo(GUI::Video* rgbDiffVideo);
+    void setRgbDiffVideo(Model::Video* rgbDiffVideo);
 
 	/// <summary>
 	/// Returns the psnr graph.

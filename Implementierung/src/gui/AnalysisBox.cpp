@@ -49,27 +49,26 @@ GUI::AnalysisBox::AnalysisBox(QWidget* parent) : QFrame(parent) {
 }
 
 Memento::AnalysisBoxMemento GUI::AnalysisBox::getMemento() {
-    /*
+
     Memento::AnalysisBoxMemento memo;
-    memo.setVideoPath(video_->getPsnr());
+    memo.setPsnr(video_->getPsnr());
     memo.setBitrate(video_->getBitrate());
     memo.setComment(ui_->userComment->toPlainText());
-    memo.setMacroVideo(video_->getMacroBlockVideo());
-    memo.setRgbDiffVideo(video_->getRgbDiffVideo());
+    memo.setMacroVideo(&(video_->getMacroBlockVideo()));
+    memo.setRgbDiffVideo(&(video_->getRgbDiffVideo()));
     memo.setVideoPath(video_->getPath());
 
     return memo;
-    */
+
 }
 
 void GUI::AnalysisBox::restore(Memento::AnalysisBoxMemento memento) {
 
-    /*video_ = new std::make_unique<Model::EncodedVideo>();
+    video_ = std::make_unique<Model::EncodedVideo>(memento.getVideoPath());
     video_->setPsnr(memento.getPsnr());
     video_->setBitrate(memento.getBitrate());
-    video_->setPath(memento.getVideoPath());
     ui_->userComment->setDocument(new QTextDocument(memento.getComment(), ui_->userComment));
-    */
+
 }
 
 /*void AnalysisBox::setTimer(shared_ptrshared_ptr<GUI::Timer> timer:std:) {
