@@ -31,6 +31,8 @@ GUI::FilterView::FilterView(QWidget* parent):QFrame(parent) {
     setFixedHeight(210);
 
     createUi();
+
+    connect(button_addFilter_,SIGNAL(clicked()),this,SLOT(buttonPressed()));
 }
 
 GUI::FilterView::~FilterView()
@@ -40,7 +42,9 @@ GUI::FilterView::~FilterView()
 
 
 void GUI::FilterView::buttonPressed() {
-
+    if(!filterTab_)
+        return;
+    filterTab_->addFilter(filter_->getName());
 }
 
 void GUI::FilterView::setFilter(QString filtername) {

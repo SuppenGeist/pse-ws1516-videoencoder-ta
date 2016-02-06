@@ -69,7 +69,6 @@ HEADERS += \
     src/model/Project.h \
     src/model/Video.h \
     src/model/YuvVideo.h \
-    src/model/filters/BlendingFilter.h \
     src/model/filters/BlurFilter.h \
     src/model/filters/BorderFilter.h \
     src/model/filters/BrightnessFilter.h \
@@ -133,7 +132,7 @@ HEADERS += \
     src/utility/YuvType.h \
     src/utility/meansquareerrorcalculator.h \
     src/utility/Yuv420FileReader.h \
-    src/model/filters/GrayscaleFilter.h
+    src/model/filters/GrayscaleFilter.h \
 
 SOURCES += \
     src/gui/AnalysisBox.cpp \
@@ -187,7 +186,6 @@ SOURCES += \
     src/model/Project.cpp \
     src/model/Video.cpp \
     src/model/YuvVideo.cpp \
-    src/model/filters/BlendingFilter.cpp \
     src/model/filters/BlurFilter.cpp \
     src/model/filters/BorderFilter.cpp \
     src/model/filters/BrightnessFilter.cpp \
@@ -249,15 +247,13 @@ SOURCES += \
     src/utility/Yuv422Vector.cpp \
     src/utility/Yuv420FileReader.cpp \
     src/utility/Yuv411Vector.cpp \
-    src/model/filters/GrayscaleFilter.cpp
+    src/model/filters/GrayscaleFilter.cpp \
 
 RESOURCES += \
     resources.qrc \
 
 FORMS += \
     resources/forms/mainwindow.ui \
-    resources/forms/filtertab.ui \
-    resources/forms/filtercontainertab.ui \
     resources/forms/analysistab.ui \
     resources/forms/analysisbox.ui \
     resources/forms/analysisboxcontainer.ui

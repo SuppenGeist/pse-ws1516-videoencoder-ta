@@ -8,7 +8,7 @@
 
 const QString Model::BlurFilter::FILTERNAME="Blur";
 
-Model::BlurFilter::BlurFilter():intensity_(50) {
+Model::BlurFilter::BlurFilter():intensity_(20) {
 
 }
 int Model::BlurFilter::getIntensity() {

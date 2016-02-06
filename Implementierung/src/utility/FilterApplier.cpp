@@ -123,7 +123,7 @@ void Utility::FilterApplier::createFilterString()
     for(std::size_t i =0;i<list_->getSize();i++) {
         filterDescription_+=list_->getFilter(i)->getFilterDescription();
         if(i!=list_->getSize()-1) {
-            filterDescription_+=";";
+            filterDescription_+=",";
         }
     }
 }

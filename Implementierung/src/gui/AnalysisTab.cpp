@@ -59,6 +59,6 @@ void GUI::AnalysisTab::saveResults() {
 
 void GUI::AnalysisTab::setRawVideo(std::unique_ptr<Model::YuvVideo> video) {
     rawVideo_=std::move(video);
-    player_->setVideo(rawVideo_->getVideo());
+    player_->setVideo(&rawVideo_->getVideo());
 }
 

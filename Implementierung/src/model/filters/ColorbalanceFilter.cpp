@@ -91,6 +91,12 @@ std::string Model::ColorbalanceFilter::getFilterDescription() {
         throw std::logic_error("Should not get here");
     }
 
+    if(str=="colorbalance=") {
+        str="null";
+    }/*else {
+        str=str.substr(0,str.size()-1);
+    }*/
+
     return str;
 }
 

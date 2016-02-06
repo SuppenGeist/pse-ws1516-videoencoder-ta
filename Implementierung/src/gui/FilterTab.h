@@ -6,13 +6,17 @@
 #include <QPushButton>
 #include <QWidget>
 #include <QFrame>
-#include <QListWidget>
+#include <QListView>
 #include <QStringListModel>
 #include <QLabel>
 #include <QTabWidget>
+#include <QVBoxLayout>
 
 #include "../model/YuvVideo.h"
 #include "VideoPlayer.h"
+#include "../model/FilterList.h"
+#include "../model/filters/Filter.h"
+#include "../model/AVVideo.h"
 
 namespace GUI {
 class PreviewControlPanel;
@@ -23,11 +27,6 @@ class FilterContainerTab;
 
 namespace Memento {
 class FilterTabMemento;
-}
-
-namespace Model {
-class FilterList;
-class Filter;
 }
 
 namespace GUI {
@@ -104,13 +103,13 @@ class FilterTab : public QFrame {
 	 */
 	void restore(Memento::FilterTabMemento& memento);
 
-	/**
-	 * @brief insertFilter Inserts a filter to the filterList. If index is -1 the the filter is added to the end.
-	 * @param filter The filter to add.
-	 * @param index The index to insert the filter at.
-	 */
-	void insertFilter(Model::Filter& filter, int index = -1);
+    /**
+     * @brief addFilter Adds a filter to the filterlist.
+     * @param filtername the name of the filter.
+     */
+    Model::Filter *addFilter(QString filtername);
 
+    void updatePreview();
 
   private slots :
 
@@ -175,8 +174,9 @@ class FilterTab : public QFrame {
 	QPushButton*                        button_loadConf_;
 	QPushButton*                        button_reset_;
 	QPushButton*                        button_save_;
+    QVBoxLayout*                        v_player_;
 	QLabel*                             label_selectedFilters_;
-	QListWidget*                        list_filterList_;
+    QListView*                          list_filterList_;
 	QTabWidget*                         filterTabs_;
 	QLabel*                             label_filterOptions_;
 	QStringListModel*                   model_list_;
@@ -187,8 +187,11 @@ class FilterTab : public QFrame {
 	FrameView*                          frameView_;
 	PlayerControlPanel*                 playerPanel_;
 
-	Model::FilterList*                  filterList_;
+    std::unique_ptr<Model::FilterList>  filterList_;
     std::unique_ptr<Model::YuvVideo>    rawVideo_;
+    std::unique_ptr<Model::AVVideo>     previewFrames_;
+    std::unique_ptr<Model::Video>       filteredPreviewFrames_;
+    bool                                isPreviewShown_;
 
 
 	/**

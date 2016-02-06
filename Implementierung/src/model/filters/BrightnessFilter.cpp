@@ -7,7 +7,7 @@
 
 const QString Model::BrightnessFilter::FILTERNAME="Brightness";
 
-Model::BrightnessFilter::BrightnessFilter():intensity_(30) {
+Model::BrightnessFilter::BrightnessFilter():intensity_(20) {
 
 }
 

@@ -72,9 +72,7 @@ QString Model::BorderFilter::getName() {
 std::string Model::BorderFilter::getFilterDescription() {
     std::string str;
     std::string thickness=std::to_string(thickness_);
-    std::stringstream colorbuff;
-    colorbuff<<"0x"<<std::hex<<std::setfill('0')<<std::setw(2)<<color_.red()<<std::setfill('0')<<std::setw(2)<<color_.green()<<std::setfill('0')<<std::setw(2)<<color_.blue();
-    std::string color=colorbuff.str();
+    std::string color=color_.name().toUtf8().constData();
 
     if(top_) {
         str+="drawbox=t="+thickness+":";

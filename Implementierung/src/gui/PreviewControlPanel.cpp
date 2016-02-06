@@ -28,8 +28,13 @@ void GUI::PreviewControlPanel::updateUi() {
 		else
 			return;
 	}
-	label_position->setText(QString::number(player->getPosition())+"/"+QString::number(
+    if(player->getNumberOfFrames()==0) {
+        label_position->setText("0/0");
+    }
+    else {
+    label_position->setText(QString::number(player->getPosition()+1)+"/"+QString::number(
 	                            player->getNumberOfFrames()));
+    }
 }
 
 void GUI::PreviewControlPanel::createUi() {
@@ -42,9 +47,9 @@ void GUI::PreviewControlPanel::createUi() {
 	button_nextFrame->setFlat(true);
 	button_previousFrame->setFlat(true);
 
-	button_nextFrame->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-	button_previousFrame->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-	label_position->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    button_nextFrame->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
+    button_previousFrame->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
+    label_position->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
 
 	button_nextFrame->setIcon(QIcon(":/icons/resources/icons/next.png"));
 	button_previousFrame->setIcon(QIcon(":/icons/resources/icons/prev.png"));

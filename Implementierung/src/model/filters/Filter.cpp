@@ -7,7 +7,6 @@
 #include <stdexcept>
 
 #include "GrayscaleFilter.h"
-#include "BlendingFilter.h"
 #include "BlurFilter.h"
 #include "BorderFilter.h"
 #include "BrightnessFilter.h"
@@ -42,9 +41,7 @@ Model::Filter::~Filter()
 std::unique_ptr<Model::Filter> Model::Filter::CreateFilter(QString filtername) {
     if(filtername==GrayscaleFilter::FILTERNAME) {
         return std::make_unique<GrayscaleFilter>();
-    } else if(filtername==BlendingFilter::FILTERNAME) {
-        return std::make_unique<BlendingFilter>();
-    } else if(filtername==BlurFilter::FILTERNAME) {
+    }  else if(filtername==BlurFilter::FILTERNAME) {
         return std::make_unique<BlurFilter>();
     } else if(filtername==BorderFilter::FILTERNAME) {
         return std::make_unique<BorderFilter>();

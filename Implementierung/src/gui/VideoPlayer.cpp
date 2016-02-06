@@ -30,14 +30,15 @@ void GUI::VideoPlayer::removeView(FrameView& view) {
 	}
 }
 
-void GUI::VideoPlayer::setVideo(Model::Video& video) noexcept {
+void GUI::VideoPlayer::setVideo(Model::Video* video) noexcept {
 	stop();
-	video_=&video;
+    video_=video;
 	setPosition(0);
-    if(timer_.get())
-        timer_->setFps(video.getFps());
+    if(timer_.get()&&video)
+        timer_->setFps(video->getFps());
     if(masterPanel_)
         masterPanel_->updateUi();
+    updateViews();
 }
 
 Model::Video* GUI::VideoPlayer::getVideo() noexcept {
@@ -175,6 +176,11 @@ void GUI::VideoPlayer::updateViews()
                 view->setFrame(*(video_->getFrame(position_)));
             }
         }
+        }
+        else {
+            for(auto view:views_) {
+                view->clear();
+            }
         }
     }
 }
