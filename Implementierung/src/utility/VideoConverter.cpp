@@ -19,21 +19,13 @@ Utility::VideoConverter::VideoConverter()
 }
 
 std::unique_ptr<QImage> Utility::VideoConverter::convertAVFrameToQImage(AVFrame& frame) {
-    //CAUTION: This code is VERY slow. Improve if possible.
     auto image=std::make_unique<QImage>(frame.width,frame.height,QImage::Format_RGB888);
 
     const int width=frame.width;
     const int height=frame.height;
-    uint8_t* data=frame.data[0];
 
-    for(int i=0;i<height;i++) {
-        for(int k=0;k<width;k++) {
-            auto r=data[i*3*width+3*k];
-            auto g=data[i*3*width+3*k+1];
-            auto b=data[i*3*width+3*k+2];
-
-            image->setPixel(k,i,qRgb(r,g,b));
-        }
+    for(int y=0;y<height;y++) {
+            memcpy(image->scanLine(y),frame.data[0]+y*frame.linesize[0],width*3);
     }
 
     return std::move(image);
@@ -60,7 +52,7 @@ AVFrame* Utility::VideoConverter::convertQImageToAVFrame(QImage& image) {
     frame->format=AV_PIX_FMT_RGB24;
 
     int size=avpicture_get_size(AV_PIX_FMT_RGB24,width,height);
-    uint8_t* data=(uint8_t*)malloc(size);
+    uint8_t* data=(uint8_t*)av_malloc(size);
     for(int i=0;i<height;i++) {
         for(int k=0;k<width;k++) {
             auto pixel=image.pixel(k,i);
