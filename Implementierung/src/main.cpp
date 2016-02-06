@@ -4,12 +4,15 @@
 
 extern "C" {
 #include <libavcodec/avcodec.h>
+#include <libavfilter/avfiltergraph.h>
 }
 
 int main(int argc, char *argv[]) {
-	QApplication a(argc, argv);
-	avcodec_register_all();
-	GUI::MainWindow mw;
+    avcodec_register_all();
+    avfilter_register_all();
+
+    QApplication a(argc, argv);
+    GUI::MainWindow mw;
 	mw.show();
 
 	return a.exec();

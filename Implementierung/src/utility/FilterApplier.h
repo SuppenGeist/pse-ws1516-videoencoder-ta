@@ -2,10 +2,15 @@
 #define __FilterApplier_h__
 
 #include <memory>
+#include <string>
 
 extern "C" {
 #include <libavcodec/avcodec.h>
 #include <libavformat/avformat.h>
+#include <libavfilter/avfiltergraph.h>
+#include <libavfilter/buffersink.h>
+#include <libavfilter/buffersrc.h>
+#include <libavutil/opt.h>
 }
 
 namespace Model {
@@ -23,7 +28,9 @@ class FilterApplier {
      * @brief FilterApplier Constructor.
      * @param list The list with the filters to apply.
      */
-    FilterApplier(Model::FilterList& list);
+    FilterApplier(Model::FilterList& list, int width, int height, int pixelFormat);
+
+    ~FilterApplier();
 
     /**
      * @brief applyToVideo Applies the given filters to the video.
@@ -32,6 +39,14 @@ class FilterApplier {
      */
     void applyToVideo(Model::AVVideo& target, Model::AVVideo& video);
 
+    /**
+     * @brief applyToFrame
+     * CAUTION: An owning pointer is returned.
+     * @param source
+     * @return
+     */
+    AVFrame *applyToFrame(AVFrame& source);
+
   private:
     /**
      * @brief initFilters Initializes the filters.
@@ -39,14 +54,16 @@ class FilterApplier {
     void initFilters();
 
   private:
-    Model::FilterList* list_;
+    int                 width_;
+    int                 height_;
+    int                 pixelFormat_;
+    Model::FilterList*  list_;
+    AVFilterGraph*      filterGraph_;
+    AVFilterContext*    buffersinkContext_;
+    AVFilterContext*    buffersourceContext_;
+    std::string         filterDescription_;
 
-    /**
-     * @brief applyToFrame Applies the filters to one frame.
-     * @param frame The frame to apply the filters on.
-     * @return The filtered frame.
-     */
-    std::unique_ptr<AVFrame> applyToFrame(AVFrame& frame);
+    void createFilterString();
 };
 }
 

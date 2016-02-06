@@ -7,6 +7,7 @@
 const QString Model::VintageFilter::FILTERNAME="Vintage";
 
 Model::VintageFilter::VintageFilter() {
+
 }
 
 QString Model::VintageFilter::getName() {
@@ -14,8 +15,7 @@ QString Model::VintageFilter::getName() {
 }
 
 std::string Model::VintageFilter::getFilterDescription() {
-	std::string str = "curves=vintage";
-	return str;
+    return "drawgrid=w=iw/3:h=ih/3:t=2:c=white";
 }
 
 void Model::VintageFilter::restoreFilter(QString description) {
@@ -23,5 +23,5 @@ void Model::VintageFilter::restoreFilter(QString description) {
 }
 
 QString Model::VintageFilter::getSaveString() {
- //nothing to save
+    //nothing to save
 }

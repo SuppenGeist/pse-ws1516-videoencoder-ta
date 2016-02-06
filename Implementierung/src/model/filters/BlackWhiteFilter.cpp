@@ -15,7 +15,7 @@ QString Model::BlackWhiteFilter::getName() {
 }
 
 std::string Model::BlackWhiteFilter::getFilterDescription() {
-	throw "colorchannelmixer=.3:.4:.3:0:.3:.4:.3:0:.3:.4:.3";
+    return "colorchannelmixer=.3:.4:.3:0:.3:.4:.3:0:.3:.4:.3";
 }
 void Model::BlackWhiteFilter::restoreFilter(QString description) {
     //nothing to load

@@ -9,6 +9,7 @@ unix: CONFIG += link_pkgconfig
 unix: PKGCONFIG += libavcodec
 
 unix: PKGCONFIG += libavformat
+unix: PKGCONFIG += libavfilter
 
 unix: PKGCONFIG += libavutil
 unix: PKGCONFIG += libswscale

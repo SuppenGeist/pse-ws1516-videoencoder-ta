@@ -39,7 +39,7 @@ Model::Filter::~Filter()
 
 }
 
-std::unique_ptr<Model::Filter> Model::Filter::createFilter(QString filtername) {
+std::unique_ptr<Model::Filter> Model::Filter::CreateFilter(QString filtername) {
     if(filtername==BlackWhiteFilter::FILTERNAME) {
         return std::make_unique<BlackWhiteFilter>();
     } else if(filtername==BlendingFilter::FILTERNAME) {

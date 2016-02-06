@@ -24,8 +24,8 @@ void Model::FilterList::removeFilter(std::size_t position) {
     filters_.erase(filters_.begin()+ position);
 }
 
-void Model::FilterList::addFilter(QString name) {
-    filters_.push_back(std::move(Filter::createFilter(name)));
+void Model::FilterList::appendFilter(QString name) {
+    filters_.push_back(std::move(Filter::CreateFilter(name)));
 }
 
 Model::Filter* Model::FilterList::getFilter(std::size_t index) {

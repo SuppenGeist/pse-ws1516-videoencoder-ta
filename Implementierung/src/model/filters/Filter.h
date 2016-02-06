@@ -12,7 +12,7 @@ namespace Model {
 */
 class Filter {
   public:
-    static std::unique_ptr<Filter> createFilter(QString filtername);
+    static std::unique_ptr<Filter> CreateFilter(QString filtername);
 
     Filter();
 

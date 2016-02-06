@@ -30,7 +30,7 @@
 #include "VideoPlayer.h"
 #include "Timer.h"
 
-#include "../model/filters/BlackWhiteFilter.h"
+#include "../model/filters/VintageFilter.h"
 
 GUI::FilterTab::FilterTab(QWidget* parent):QFrame(parent) {
 	createUi();
@@ -138,7 +138,7 @@ void GUI::FilterTab::createUi() {
 	filterContainerTab_.push_back(filterTab);
 	filterContainerTab_.push_back(artefactsTab);
 
-    filterTab->addFilter(Model::BlackWhiteFilter::FILTERNAME);
+    filterTab->addFilter(Model::VintageFilter::FILTERNAME);
 
     QScrollArea* scrollArea_filters=new QScrollArea;
     scrollArea_filters->setWidget(filterTab);
@@ -285,7 +285,7 @@ void GUI::FilterTab::loadConf() {
 }
 
 void GUI::FilterTab::reset() {
-    player_->reset();
+    player_->stop();
 }
 
 void GUI::FilterTab::save() {

@@ -40,7 +40,7 @@ class FilterList {
      * @brief addFilter Inserts a filter to the end.
      * @param name Name of the filter to add.
      */
-    void addFilter(QString name);
+    void appendFilter(QString name);
 
     /**
      * @brief getFilter Returns the filter at the given index.
