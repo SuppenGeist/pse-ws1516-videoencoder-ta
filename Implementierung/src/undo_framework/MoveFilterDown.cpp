@@ -1,18 +1,14 @@
-/*#include <exception>
-
 #include "MoveFilterDown.h"
-#include "FilterTab.h"
-#include "QUndoCommand.h"
 
-MoveFilterDown::MoveFilterDown(FilterTab* filterTab, int old, int new_2) {
+#include "../gui/FilterTab.h"
+
+UndoRedo::MoveFilterDown::MoveFilterDown(GUI::FilterTab& filterTab, int index):index_(index),filterTab_(&filterTab) {
 }
 
-void MoveFilterDown::undo() {
-	throw "Not yet implemented";
+void UndoRedo::MoveFilterDown::undo() {
+    filterTab_->moveFilter(index_,index_+1);
 }
 
-void MoveFilterDown::redo() {
-	throw "Not yet implemented";
+void UndoRedo::MoveFilterDown::redo() {
+    filterTab_->moveFilter(index_,index_+1);
 }
-
-*/

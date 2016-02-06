@@ -13,10 +13,10 @@ Model::FilterList::FilterList() {
 }
 
 void Model::FilterList::moveFilter(std::size_t oldPosition, std::size_t newPosition) {
-    //if(oldPosition>=filters_.size()||newPosition>=filters_.size())
-    //    return;
-    //iter_swap(filters_.begin() + oldPosition, filters_.begin() + newPosition);
-    throw "not implemented";
+    if(oldPosition>=filters_.size()||newPosition>filters_.size()||oldPosition==newPosition)
+        return;
+    auto filter=removeFilter(oldPosition);
+    insertFilter(std::move(filter),newPosition);
 }
 
 std::unique_ptr<Model::Filter> Model::FilterList::removeFilter(std::size_t position) {
@@ -33,7 +33,7 @@ std::unique_ptr<Model::Filter> Model::FilterList::removeFilter(std::size_t posit
 
 void Model::FilterList::insertFilter(std::unique_ptr<Model::Filter> filter, std::size_t index)
 {
-    if(index>=filters_.size())
+    if(index>filters_.size())
         return;
     filters_.insert(filters_.begin()+index,std::move(filter));
 }

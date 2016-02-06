@@ -18,6 +18,7 @@ Utility::YuvFileReader::~YuvFileReader()
     if(isRunning()) {
         stopReading();
     }
+    //reader_.join();
 }
 
 void Utility::YuvFileReader::read(Model::Video *target)

@@ -34,6 +34,8 @@
 #include "../undo_framework/UndoStack.h"
 #include "../undo_framework/LoadFilterVideo.h"
 #include "../undo_framework/RemoveFilter.h"
+#include "../undo_framework/MoveFilterUp.h"
+#include "../undo_framework/MoveFilterDown.h"
 #include "VideoPlayer.h"
 #include "Timer.h"
 #include "../model/AVVideo.h"
@@ -323,10 +325,19 @@ void GUI::FilterTab::insertFilter(std::unique_ptr<Model::Filter> filter, std::si
 }
 
 void GUI::FilterTab::up() {
+    QModelIndexList selected = list_filterList_->selectionModel()->selectedIndexes();
+    if (!selected.isEmpty())
+    {
+        UndoRedo::UndoStack::getUndoStack().push(new UndoRedo::MoveFilterUp(*this,selected.first().row()));
+    }
 }
 
 void GUI::FilterTab::down() {
-
+    QModelIndexList selected = list_filterList_->selectionModel()->selectedIndexes();
+    if (!selected.isEmpty())
+    {
+        UndoRedo::UndoStack::getUndoStack().push(new UndoRedo::MoveFilterDown(*this,selected.first().row()));
+    }
 }
 
 void GUI::FilterTab::remove() {
@@ -438,14 +449,6 @@ std::unique_ptr<Model::Filter> GUI::FilterTab::removeFilter(int index) {
     return std::move(filter);
 }
 
-void GUI::FilterTab::showVideo() {
-	throw "Not yet implemented";
-}
-
-void GUI::FilterTab::showPreview() {
-	throw "Not yet implemented";
-}
-
 void GUI::FilterTab::setFilterList(Model::FilterList list) {
 	throw "Not yet implemented";
 }
@@ -462,6 +465,15 @@ std::unique_ptr<Model::YuvVideo> GUI::FilterTab::releaseVideo() {
 	return std::move(video);
 }
 
-void GUI::FilterTab::moveFilter(int old, int new_3) {
-	throw "Not yet implemented";
+void GUI::FilterTab::moveFilter(int old, int newPos) {
+    if(old<0||old>=filterList_->getSize()||newPos<0||newPos>=filterList_->getSize()||old==newPos)
+        return;
+    filterList_->moveFilter(old,newPos);
+    auto stringlist=model_list_->stringList();
+    auto filname=stringlist.at(old);
+    stringlist.removeAt(old);
+    stringlist.insert(newPos,filname);
+    model_list_->setStringList(stringlist);
+
+    updatePreview();
 }

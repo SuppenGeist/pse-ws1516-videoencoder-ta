@@ -50,17 +50,6 @@ class FilterTab : public QFrame {
 	 */
     std::unique_ptr<Model::Filter> removeFilter(int index);
 
-
-	/**
-	 * @brief showVideo Shows the video with the applied filters.
-	 */
-	void showVideo();
-
-	/**
-	 * @brief showPreview Shows the 5 frame preview.
-	 */
-    void showPreview();
-
     /**
      * @brief setFilterList Sets the filterlist.
      * @param list The filterlist to use.
@@ -84,7 +73,7 @@ class FilterTab : public QFrame {
 	 * @param old old  list index
 	 * @param newIndex new  list index
 	 */
-	void moveFilter(int oldIndex, int newIndex);
+    void moveFilter(int oldIndex, int newPos);
 
 	/**
 	 * @brief getMemento Creates a memento which contains the state of this tab.
