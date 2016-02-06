@@ -48,7 +48,7 @@ class FilterTab : public QFrame {
 	 * @brief removeFilter removes teh given filter form the filterList
 	 * @param filterName name of the filter
 	 */
-	void removeFilter(std::string filterName);
+    std::unique_ptr<Model::Filter> removeFilter(int index);
 
 
 	/**
@@ -59,18 +59,13 @@ class FilterTab : public QFrame {
 	/**
 	 * @brief showPreview Shows the 5 frame preview.
 	 */
-	void showPreview();
+    void showPreview();
 
-	/**
-	 * @brief resetFilters Resets the filterlist.
-	 */
-	void resetFilters();
-
-	/**
-	 * @brief setFilterList Sets the filterlist.
-	 * @param list The filterlist to use.
-	 */
-	void setFilterList(Model::FilterList list);
+    /**
+     * @brief setFilterList Sets the filterlist.
+     * @param list The filterlist to use.
+     */
+    void setFilterList(Model::FilterList list);
 
 	/**
 	 * @brief setRawVideo Sets the video the filters are applied to. This operation resets the whole filtertab.
@@ -109,7 +104,17 @@ class FilterTab : public QFrame {
      */
     Model::Filter *addFilter(QString filtername);
 
+    Model::FilterList* getFilterList();
+
     void updatePreview();
+
+    void insertFilter(std::unique_ptr<Model::Filter> filter,std::size_t index);
+
+  public slots:
+    /**
+     * @brief reset resets the filter list
+     */
+    void reset();
 
   private slots :
 
@@ -147,11 +152,6 @@ class FilterTab : public QFrame {
 	 * @brief loadConf opens QFileDialog and loads the filter configuration in the selected path
 	 */
 	void loadConf();
-
-	/**
-	 * @brief reset resets the filter list
-	 */
-	void reset();
 
 	/**
 	 * @brief listSelectionChanged updates the filterConfigurationBox that is shown

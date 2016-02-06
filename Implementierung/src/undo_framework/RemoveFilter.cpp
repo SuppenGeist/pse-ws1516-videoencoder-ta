@@ -1,19 +1,15 @@
-/*#include <exception>
-
 #include "RemoveFilter.h"
-#include "FilterTab.h"
-#include "Filter.h"
-#include "QUndoCommand.h"
 
-RemoveFilter::RemoveFilter(FilterTab* filterTab, Filter filter, int index) {
+#include "../gui/FilterTab.h"
+#include "../model/filters/Filter.h"
+
+UndoRedo::RemoveFilter::RemoveFilter(GUI::FilterTab& filterTab, int index):filterTab_(&filterTab),index_(index) {
 }
 
-void RemoveFilter::undo() {
-	throw "Not yet implemented";
+void UndoRedo::RemoveFilter::undo() {
+    filterTab_->insertFilter(std::move(filter_),index_);
 }
 
-void RemoveFilter::redo() {
-	throw "Not yet implemented";
+void UndoRedo::RemoveFilter::redo() {
+    filter_=filterTab_->removeFilter(index_);
 }
-
-*/

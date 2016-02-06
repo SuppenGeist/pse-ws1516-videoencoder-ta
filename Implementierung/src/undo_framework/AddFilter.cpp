@@ -1,19 +1,20 @@
-/*#include <exception>
-
 #include "AddFilter.h"
-#include "FilterTab.h"
-#include "Filter.h"
-#include "QUndoCommand.h"
 
-AddFilter::AddFilter(Model::Filter::FilterTab* filterTab, Filter filter) {
+#include <QString>
+
+#include <memory>
+
+#include "UndoStack.h"
+#include "../gui/FilterTab.h"
+
+UndoRedo::AddFilter::AddFilter(GUI::FilterTab &filterTab, QString filtername):filterTab_(&filterTab),filtername_(filtername) {
+
 }
 
-void AddFilter::undo() {
-	throw "Not yet implemented";
+void UndoRedo::AddFilter::undo() {
+    filterTab_->removeFilter(filterTab_->getFilterList()->getSize()-1);
 }
 
-void AddFilter::redo() {
-	throw "Not yet implemented";
+void UndoRedo::AddFilter::redo() {
+    filterTab_->addFilter(filtername_);
 }
-
-*/

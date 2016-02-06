@@ -22,6 +22,8 @@ extern "C" {
 #include "../utility/VideoConverter.h"
 #include "../utility/FilterApplier.h"
 #include "../model/FilterList.h"
+#include "../undo_framework/UndoStack.h"
+#include "../undo_framework/AddFilter.h"
 
 std::unique_ptr<QImage> GUI::FilterView::defaultImage_;
 
@@ -44,7 +46,7 @@ GUI::FilterView::~FilterView()
 void GUI::FilterView::buttonPressed() {
     if(!filterTab_)
         return;
-    filterTab_->addFilter(filter_->getName());
+    UndoRedo::UndoStack::getUndoStack().push(new UndoRedo::AddFilter(*filterTab_,filter_->getName()));
 }
 
 void GUI::FilterView::setFilter(QString filtername) {

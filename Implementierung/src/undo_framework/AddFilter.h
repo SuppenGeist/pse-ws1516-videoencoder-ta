@@ -1,56 +1,48 @@
-/*
-#include <exception>
-using namespace std;
-
 #ifndef __AddFilter_h__
 #define __AddFilter_h__
 
-// #include "FilterTab.h"
-#include "Filter.h"
-#include "QUndoCommand.h"
+#include <QUndoCommand>
+#include <QString>
 
-namespace GUI
-{
-	class FilterTab;
+#include <memory>
+
+namespace Model {
+    class Filter;
 }
-namespace Model
-{
-	class Filter;
-}
-namespace UndoRedo
-{
-	// class QUndoCommand;
-	class AddFilter;
+namespace GUI {
+    class FilterTab;
 }
 
 namespace UndoRedo
 {
 	/**
 	 * This is the undo command for adding a filter to the filterlist on the filtertab.
+     */
+    class AddFilter: public QUndoCommand
+    {
+        public:
+        /**
+         * @brief AddFilter Constructor.
+         * @param filterTab The filtertab to operate on.
+         * @param filter The filter on which the operation is performed on.
+         */
+        AddFilter(GUI::FilterTab& filterTab, QString filtername);
 
-	class AddFilter: public UndoRedo::QUndoCommand
-	{
-		private: GUI::FilterTab* filterTab;
-		private: Model::Filter* filter;
+        /**
+         * @brief undo Removes the added filter from the filterlist.
+         */
+        void undo();
 
-		/// <summary>
-		/// Constructor.
-		/// </summary>
-		/// <param name="filterTab">The filtertab to operate on.</param>
-		/// <param name="filter">The filter on which the operation is performed on.</param>
-		public: AddFilter(Model::Filter::FilterTab* filterTab, Model::Filter filter);
+        /**
+         * @brief redo Adds a filter to the filterlist.
+         */
+        void redo();
 
-		/// <summary>
-		/// Removes the added filter from the filterlist.
-		/// </summary>
-		public: void undo();
+    private:
 
-		/// <summary>
-		/// Adds a filter to the filterlist.
-		/// </summary>
-		public: void redo();
+        GUI::FilterTab* filterTab_;
+        QString         filtername_;
 	};
 }
 
 #endif
-*/

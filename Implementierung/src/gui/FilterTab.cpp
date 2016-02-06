@@ -15,6 +15,8 @@
 #include <QTimer>
 #include <QStringListModel>
 #include <QTabWidget>
+#include <QStringList>
+#include <QModelIndexList>
 #include <QScrollArea>
 
 #include "../memento/FilterTabMemento.h"
@@ -31,6 +33,7 @@
 #include "YuvInfoDialog.h"
 #include "../undo_framework/UndoStack.h"
 #include "../undo_framework/LoadFilterVideo.h"
+#include "../undo_framework/RemoveFilter.h"
 #include "VideoPlayer.h"
 #include "Timer.h"
 #include "../model/AVVideo.h"
@@ -80,6 +83,11 @@ Model::Filter* GUI::FilterTab::addFilter(QString filtername)
     updatePreview();
 
     return filterList_->getFilter(filterList_->getSize()-1);
+}
+
+Model::FilterList *GUI::FilterTab::getFilterList()
+{
+    return filterList_.get();
 }
 
 
@@ -271,9 +279,11 @@ void GUI::FilterTab::updatePreview()
     if(!isPreviewShown_) {
         if(!rawVideo_.get())
             return;
+        player_->stop();
         v_player_->removeWidget(playerPanel_);
         playerPanel_->hide();
         v_player_->addWidget(previewPanel_);
+        previewPanel_->show();
         previewFrames_=std::make_unique<Model::AVVideo>(1,rawVideo_->getWidth(),rawVideo_->getHeight());
 
         static int numberOfPreviewFrames=5;
@@ -305,6 +315,13 @@ void GUI::FilterTab::updatePreview()
     previewPanel_->updateUi();
 }
 
+void GUI::FilterTab::insertFilter(std::unique_ptr<Model::Filter> filter, std::size_t index)
+{
+    auto stringlist=model_list_->stringList();
+    stringlist.insert(index,filter->getName());
+    filterList_->insertFilter(std::move(filter),index);
+}
+
 void GUI::FilterTab::up() {
 }
 
@@ -313,6 +330,11 @@ void GUI::FilterTab::down() {
 }
 
 void GUI::FilterTab::remove() {
+    QModelIndexList selected = list_filterList_->selectionModel()->selectedIndexes();
+    if (!selected.isEmpty())
+    {
+       UndoRedo::UndoStack::getUndoStack().push(new UndoRedo::RemoveFilter(*this,selected.first().row()));
+    }
 }
 
 void GUI::FilterTab::load() {
@@ -364,9 +386,11 @@ void GUI::FilterTab::apply() {
 }
 
 void GUI::FilterTab::saveConf() {
+    UndoRedo::UndoStack::getUndoStack().redo();
 }
 
 void GUI::FilterTab::loadConf() {
+    UndoRedo::UndoStack::getUndoStack().undo();
 }
 
 void GUI::FilterTab::reset() {
@@ -375,6 +399,15 @@ void GUI::FilterTab::reset() {
     model_list_->removeRows(0,model_list_->rowCount());
     playerPanel_->updateUi();
     previewPanel_->updateUi();
+    if(isPreviewShown_) {
+        v_player_->removeWidget(previewPanel_);
+        v_player_->addWidget(playerPanel_);
+        previewPanel_->hide();
+        playerPanel_->show();
+        player_->setVideo(&rawVideo_->getVideo());
+        playerPanel_->updateUi();
+        isPreviewShown_=false;
+    }
 }
 
 void GUI::FilterTab::save() {
@@ -384,8 +417,25 @@ void GUI::FilterTab::listSelectionChanged(QModelIndex* index) {
 	throw "Not yet implemented";
 }
 
-void GUI::FilterTab::removeFilter(std::string filterName) {
-	throw "Not yet implemented";
+std::unique_ptr<Model::Filter> GUI::FilterTab::removeFilter(int index) {
+    std::unique_ptr<Model::Filter> f;
+    if(index<0||index>=filterList_->getSize()) {
+        f.release();
+        return std::move(f);
+    }
+    auto stringlist=model_list_->stringList();
+    stringlist.removeAt(index);
+    model_list_->setStringList(stringlist);
+    auto filter=filterList_->removeFilter(index);
+
+    if(filterList_->getSize()==0) {
+        reset();
+    }
+    else {
+        updatePreview();
+    }
+
+    return std::move(filter);
 }
 
 void GUI::FilterTab::showVideo() {
@@ -393,10 +443,6 @@ void GUI::FilterTab::showVideo() {
 }
 
 void GUI::FilterTab::showPreview() {
-	throw "Not yet implemented";
-}
-
-void GUI::FilterTab::resetFilters() {
 	throw "Not yet implemented";
 }
 

@@ -315,3 +315,7 @@ Fuege bool parameter zu readNextVectorPacked und readNextVectorPlanar hinzu.
 Fuege bool parameter zu readNextVectorPacked und readNextVectorPlanar hinzu.
 <br><b>Grund:</b> Rueckmeldung, ob es einen naechsten vector gab.
 <hr>
+#BlendingFilter
+Loesche diese Klasse.
+<br><b>Grund:</b> Laesst sich nicht mit der frameview vereinbaren.
+<hr>

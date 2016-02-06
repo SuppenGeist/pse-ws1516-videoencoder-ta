@@ -28,13 +28,15 @@ class FilterList {
      * @param oldPosition The old position.
      * @param newPosition The new position.
      */
-    void swapFilter(std::size_t oldPosition, std::size_t newPosition);
+    void moveFilter(std::size_t oldPosition, std::size_t newPosition);
 
     /**
      * @brief removeFilter Removes a filter.
      * @param position Position of the filter to remove.
      */
-    void removeFilter(std::size_t position);
+    std::unique_ptr<Filter> removeFilter(std::size_t position);
+
+    void insertFilter(std::unique_ptr<Filter> filter, std::size_t index);
 
     /**
      * @brief addFilter Inserts a filter to the end.
