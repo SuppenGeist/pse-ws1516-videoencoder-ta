@@ -3,6 +3,7 @@
 #include <QString>
 #include <QStringList>
 #include <QColor>
+#include <QDebug>
 
 #include <string>
 #include <iomanip>
@@ -86,7 +87,7 @@ std::string Model::BorderFilter::getFilterDescription() {
             str+=",";
         }
         str+="drawbox=t="+thickness+":";
-        str+="x=0:y=iw-"+thickness+":height="+std::to_string(thickness_)+":";
+        str+="x=0:y=ih-"+thickness+":height="+thickness+":";
         str+="width=iw:";
         str+="color="+color;
     }
@@ -110,7 +111,7 @@ std::string Model::BorderFilter::getFilterDescription() {
         str+="width="+thickness+":";
         str+="color="+color;
     }
-
+    qDebug()<<QString::fromStdString(str);
     return str;
 }
 
