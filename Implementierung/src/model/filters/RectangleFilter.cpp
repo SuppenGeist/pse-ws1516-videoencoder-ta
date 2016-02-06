@@ -12,14 +12,36 @@ Model::RectangleFilter::RectangleFilter() {
 }
 
 std::string Model::RectangleFilter::getFilterDescription() {
-	throw "Not yet implemented";
+    std::string str = std::string("drawbox");
+    str+="=";
+    str+="x";
+    str+="=";
+    str+=std::to_string(x);
+    str+=":";
+    str+="y";
+    str+="=";
+    str+=std::to_string(y);
+    str+=":";
+    str+="w";
+    str+="=";
+    str+=std::to_string(width);
+    str+="h";
+    str+="=";
+    str+=std::to_string(height);
+    str+=":";
+    str+="color";
+    str+="=";
+    str+=color.QColor::name().toStdString();
+    str+="@";
+    str+=std::to_string(opacity);
+    return str;
 }
 
-QRgb Model::RectangleFilter::getColor() {
+QColor Model::RectangleFilter::getColor() {
 	return this->color;
 }
 
-void Model::RectangleFilter::setColor(QRgb color) {
+void Model::RectangleFilter::setColor(QColor color) {
 	this->color = color;
 }
 
@@ -74,7 +96,7 @@ void Model::RectangleFilter::restoreFilter(QString description) {
     setX(list[2].QString::toInt());
     setY(list[3].QString::toInt());
     setOpacity(list[4].QString::toInt());
-    setColor(list[5].QString::toInt());
+    setColor(QColor(list[5]));
 }
 
 QString Model::RectangleFilter::getSaveString() {
@@ -88,6 +110,6 @@ QString Model::RectangleFilter::getSaveString() {
     str+=";";
     str+=QString::number(opacity);
     str+=";";
-    str+=QString::number(color);
+    str+=color.QColor::name();
     return str;
 }

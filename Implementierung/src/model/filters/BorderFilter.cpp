@@ -51,11 +51,11 @@ void Model::BorderFilter::setThickness(int thickness) {
 	this->thickness = thickness;
 }
 
-QRgb Model::BorderFilter::getColor() {
+QColor Model::BorderFilter::getColor() {
 	return this->color;
 }
 
-void Model::BorderFilter::setColor(QRgb color) {
+void Model::BorderFilter::setColor(QColor color) {
 	this->color = color;
 }
 
@@ -74,7 +74,7 @@ void Model::BorderFilter::restoreFilter(QString description) {
     setRight(list[2].QString::toInt());
     setLeft(list[3].QString::toInt());
     setThickness(list[4].QString::toInt());
-    setColor(list[5].QString::toInt());
+    setColor(QColor(list[5]));
 }
 
 QString Model::BorderFilter::getSaveString() {
@@ -88,6 +88,6 @@ QString Model::BorderFilter::getSaveString() {
     str+=";";
     str+=QString::number(thickness);
     str+=";";
-    str+=QString::number(color);
+    str+=color.QColor::name();
     return str;
 }

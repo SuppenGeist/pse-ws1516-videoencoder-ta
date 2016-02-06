@@ -11,7 +11,10 @@ Model::SaturationFilter::SaturationFilter() {
 }
 
 std::string Model::SaturationFilter::getFilterDescription() {
-	throw "Not yet implemented";
+    std::string str = std::string("eq=");
+    str+= "saturation";
+    str+=std::to_string(intensity);
+    return str;
 }
 
 int Model::SaturationFilter::getIntensity() {

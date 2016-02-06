@@ -15,7 +15,10 @@ QString Model::ZoomFilter::getName() {
 }
 
 std::string Model::ZoomFilter::getFilterDescription() {
-	throw "Not yet implemented";
+    std::string str = std::string("zoompan=z='min(zoom+0.0015,");
+    str+=std::to_string(intensity);
+    str+=")'";
+    return str;
 }
 
 int Model::ZoomFilter::getIntensity() {

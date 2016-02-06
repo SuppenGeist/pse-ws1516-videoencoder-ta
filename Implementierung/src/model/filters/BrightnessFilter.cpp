@@ -23,7 +23,7 @@ QString Model::BrightnessFilter::getName() {
 }
 
 std::string Model::BrightnessFilter::getFilterDescription() {
-	std::string str = std::string("eq=contrast=1:");
+    std::string str = std::string("eq=");
 	str+= "brightness";
 	str+=std::to_string(intensity);
 	return str;

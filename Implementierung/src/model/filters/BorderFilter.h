@@ -31,7 +31,7 @@ class BorderFilter: public Model::Filter {
   private:
 	int thickness;
   private:
-	QRgb color;
+    QColor color;
 
 	/// <summary>
 	/// Constructor.
@@ -114,14 +114,14 @@ class BorderFilter: public Model::Filter {
 	/// </summary>
 	/// <returns>The border color.</returns>
   public:
-	QRgb getColor();
+    QColor getColor();
 
 	/// <summary>
 	/// Sets the color of the border,
 	/// </summary>
 	/// <param name="color">The new border color.</param>
   public:
-	void setColor(QRgb color);
+    void setColor(QColor color);
 
   public:
     QString getName();

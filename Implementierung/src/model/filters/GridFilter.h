@@ -24,7 +24,7 @@ class GridFilter: public Model::Filter {
   private:
 	int verticalLines;
   private:
-	QRgb color;
+    QColor color;
   private:
 	int thickness;
   private:
@@ -72,14 +72,14 @@ class GridFilter: public Model::Filter {
 	/// </summary>
 	/// <returns>The gridcolor.</returns>
   public:
-	QRgb getColor();
+    QColor getColor();
 
 	/// <summary>
 	/// Sets the color of the grid.
 	/// </summary>
 	/// <param name="color">The gridcolor.</param>
   public:
-	void setColor(QRgb color);
+    void setColor(QColor color);
 
 	/// <summary>
 	/// Returns the thickness of the drawn lines.

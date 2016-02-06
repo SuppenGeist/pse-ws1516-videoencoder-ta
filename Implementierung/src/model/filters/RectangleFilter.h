@@ -20,7 +20,7 @@ class RectangleFilter: public Model::Filter {
   public:
     static const QString FILTERNAME;
   private:
-	QRgb color;
+    QColor color;
   private:
 	int width;
   private:
@@ -46,14 +46,14 @@ class RectangleFilter: public Model::Filter {
 	/// </summary>
 	/// <returns>The color of the rectangle.</returns>
   public:
-	QRgb getColor();
+    QColor getColor();
 
 	/// <summary>
 	/// Sets the color of the rectangle.
 	/// </summary>
 	/// <param name="color">The new color of the rectangle.</param>
   public:
-	void setColor(QRgb color);
+    void setColor(QColor color);
 
 	/// <summary>
 	/// Returns the width of the rectangle.
