@@ -49,27 +49,26 @@ GUI::AnalysisBox::AnalysisBox(QWidget* parent) : QFrame(parent) {
 }
 
 Memento::AnalysisBoxMemento GUI::AnalysisBox::getMemento() {
-    /*
+
     Memento::AnalysisBoxMemento memo;
-    memo.setVideoPath(video_->getPsnr());
+    memo.setPsnr(video_->getPsnr());
     memo.setBitrate(video_->getBitrate());
     memo.setComment(ui_->userComment->toPlainText());
-    memo.setMacroVideo(video_->getMacroBlockVideo());
-    memo.setRgbDiffVideo(video_->getRgbDiffVideo());
+    memo.setMacroVideo(&(video_->getMacroBlockVideo()));
+    memo.setRgbDiffVideo(&(video_->getRgbDiffVideo()));
     memo.setVideoPath(video_->getPath());
 
     return memo;
-    */
+
 }
 
 void GUI::AnalysisBox::restore(Memento::AnalysisBoxMemento memento) {
 
-    /*video_ = new std::make_unique<Model::EncodedVideo>();
+    video_ = std::make_unique<Model::EncodedVideo>(memento.getVideoPath());
     video_->setPsnr(memento.getPsnr());
     video_->setBitrate(memento.getBitrate());
-    video_->setPath(memento.getVideoPath());
     ui_->userComment->setDocument(new QTextDocument(memento.getComment(), ui_->userComment));
-    */
+
 }
 
 /*void AnalysisBox::setTimer(shared_ptrshared_ptr<GUI::Timer> timer:std:) {
@@ -86,13 +85,13 @@ void GUI::AnalysisBox::setControlPanel(GUI::GlobalControlPanel* panel) {
 
 void GUI::AnalysisBox::showMacroBlockVideo() {
      if(currentlyPlayedVideo_ == 1) {
-        //analysisVideoPlayer_->setVideo(&(video_->getMacroBlockVideo()));
+        analysisVideoPlayer_->setVideo(&(video_->getMacroBlockVideo()));
      }
 }
 
 void GUI::AnalysisBox::showRGBDifferenceVideo() {
     if(currentlyPlayedVideo_ == 1) {
-       //analysisVideoPlayer_->setVideo(&(video_->getRgbDiffVideo(rawVideo_)));
+       analysisVideoPlayer_->setVideo(&(video_->getRgbDiffVideo(rawVideo_)));
     }
 }
 
@@ -106,10 +105,9 @@ void GUI::AnalysisBox::textChanged() {
 
 void GUI::AnalysisBox::setAnalyseVideo(std::unique_ptr<Model::EncodedVideo> video) {
     QRegExp reg = QRegExp("(.(dot))*/");
-    //ui_->groupBox->setTitle(video_->getPath()->replace(reg,QString(""));
+    ui_->groupBox->setTitle(video_->getPath().replace(reg,QString("")));
     video_ = std::move(video);
-    /*u
-     * plainVideoPlayer_->setVideo(&(video_->getVideo()));
+    plainVideoPlayer_->setVideo(&(video_->getVideo()));
 
     GUI::GraphWidget *g = new GUI::GraphWidget;
     g->drawGraph(video_->getPsnr());
@@ -121,6 +119,6 @@ void GUI::AnalysisBox::setAnalyseVideo(std::unique_ptr<Model::EncodedVideo> vide
     QVBoxLayout *ly = new QVBoxLayout(w);
     ly->addWidget(new QLabel(QString("Path: " + video_->getPath())));
     ui_->tabWidget->addTab(w,QString("Attributs"));
-    */
+
   }
 

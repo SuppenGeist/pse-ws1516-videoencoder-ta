@@ -12,7 +12,6 @@ namespace Ui {
 class AnalysisBoxContainer;
 }
 namespace GUI {
-class Video;
 class Timer;
 class AnalysisTab;
 class AnalysisBox;
@@ -22,6 +21,7 @@ namespace Memento {
 class AnalysisBoxContainerMemento;
 }
 namespace Model {
+class Video;
 class EncodedVideo;
 }
 namespace UndoRedo {
@@ -64,7 +64,7 @@ class AnalysisBoxContainer: public QFrame {
 
 	 * @param video The raw video.
 	 */
-	void setRawVideo(GUI::Video* video);
+    void setRawVideo(Model::Video* video);
 
 
 
@@ -106,7 +106,7 @@ class AnalysisBoxContainer: public QFrame {
 	UndoRedo::RemoveVideo* anaBoxContainer;
   private:
 
-	GUI::Video* rawVideo;
+    Model::Video* rawVideo;
 	//private: shared_ptr<GUI::Timer> timer:std:;
 	GUI::GlobalControlPanel* controlPanel;
 	GUI::AnalysisTab* analysisBoxContainer;

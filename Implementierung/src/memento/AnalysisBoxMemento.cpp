@@ -1,58 +1,58 @@
-/*#include <exception>
+
 
 #include "AnalysisBoxMemento.h"
-#include "Video.h"
-#include "Graph.h"
+#include "../model/Video.h"
+#include "../model/Graph.h"
 
-AnalysisBoxMemento::AnalysisBoxMemento() {
+Memento::AnalysisBoxMemento::AnalysisBoxMemento() {
 }
 
-QString AnalysisBoxMemento::getVideoPath() {
+QString Memento::AnalysisBoxMemento::getVideoPath() {
 	return this->videoPath;
 }
 
-void AnalysisBoxMemento::setVideoPath(QString videoPath) {
+void Memento::AnalysisBoxMemento::setVideoPath(QString videoPath) {
 	this->videoPath = videoPath;
 }
 
-QString AnalysisBoxMemento::getComment() {
+QString Memento::AnalysisBoxMemento::getComment() {
 	return this->comment;
 }
 
-void AnalysisBoxMemento::setComment(QString comment) {
+void Memento::AnalysisBoxMemento::setComment(QString comment) {
 	this->comment = comment;
 }
 
-GUI::Video* AnalysisBoxMemento::getMacroVideo() {
+Model::Video* Memento::AnalysisBoxMemento::getMacroVideo() {
 	return this->macroVideo;
 }
 
-void AnalysisBoxMemento::setMacroVideo(Video* macroVideo) {
+void Memento::AnalysisBoxMemento::setMacroVideo(Model::Video* macroVideo) {
 	this->macroVideo = macroVideo;
 }
 
-GUI::Video* AnalysisBoxMemento::getRgbDiffVideo() {
+Model::Video* Memento::AnalysisBoxMemento::getRgbDiffVideo() {
 	return this->rgbDiffVideo;
 }
 
-void AnalysisBoxMemento::setRgbDiffVideo(Video* rgbDiffVideo) {
+void Memento::AnalysisBoxMemento::setRgbDiffVideo(Model::Video* rgbDiffVideo) {
 	this->rgbDiffVideo = rgbDiffVideo;
 }
 
-Model::Graph AnalysisBoxMemento::getPsnr() {
+Model::Graph Memento::AnalysisBoxMemento::getPsnr() {
 	return this->psnr;
 }
 
-void AnalysisBoxMemento::setPsnr(Graph psnr) {
+void Memento::AnalysisBoxMemento::setPsnr(Model::Graph psnr) {
 	this->psnr = psnr;
 }
 
-Model::Graph AnalysisBoxMemento::getBitrate() {
+Model::Graph Memento::AnalysisBoxMemento::getBitrate() {
 	return this->bitrate;
 }
 
-void AnalysisBoxMemento::setBitrate(Graph bitrate) {
+void Memento::AnalysisBoxMemento::setBitrate(Model::Graph bitrate) {
 	this->bitrate = bitrate;
 }
 
-*/
+
