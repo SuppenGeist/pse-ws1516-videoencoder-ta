@@ -11,7 +11,7 @@ namespace Model {
 /**
  * Converts the video to a black and white video.
 */
-class Grayscale: public Filter {
+class GrayscaleFilter: public Filter {
 
 public:
   static const QString FILTERNAME;
@@ -19,7 +19,7 @@ public:
     /**
      * @brief BlackWhiteFilter Constructor.
      */
-    Grayscale();
+    GrayscaleFilter();
 
     /**
      * @brief getName

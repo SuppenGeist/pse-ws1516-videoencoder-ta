@@ -133,7 +133,7 @@ HEADERS += \
     src/utility/YuvType.h \
     src/utility/meansquareerrorcalculator.h \
     src/utility/Yuv420FileReader.h \
-    src/model/filters/Grayscale.h
+    src/model/filters/GrayscaleFilter.h
 
 SOURCES += \
     src/gui/AnalysisBox.cpp \
@@ -249,7 +249,7 @@ SOURCES += \
     src/utility/Yuv422Vector.cpp \
     src/utility/Yuv420FileReader.cpp \
     src/utility/Yuv411Vector.cpp \
-    src/model/filters/Grayscale.cpp
+    src/model/filters/GrayscaleFilter.cpp
 
 RESOURCES += \
     resources.qrc \
