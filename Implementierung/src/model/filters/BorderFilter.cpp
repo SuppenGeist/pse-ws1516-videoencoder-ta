@@ -12,7 +12,7 @@
 const QString Model::BorderFilter::FILTERNAME="Border";
 
 Model::BorderFilter::BorderFilter():top_(true),bottom_(true),right_(true),left_(true),
-	thickness_(15),color_(QColor(0,0,0)) {
+    thickness_(35),color_(QColor(0,0,0)) {
 
 }
 
@@ -74,44 +74,40 @@ std::string Model::BorderFilter::getFilterDescription() {
 	std::string str;
 	std::string thickness=std::to_string(thickness_);
 	std::string color=color_.name().toUtf8().constData();
+    str+="pad=iw";
+    if(right_) {
+        str+="+"+thickness;
+    }
 
+    if(left_) {
+        str+="+"+thickness;
+    }
+    str+=":ih";
 	if(top_) {
-		str+="drawbox=t="+thickness+":";
-		str+="x=0:y=0:height="+thickness+":";
-		str+="width=iw:";
-		str+="color="+color;
+        str+="+"+thickness;
 	}
 
 	if(bottom_) {
-		if(!str.empty()) {
-			str+=",";
-		}
-		str+="drawbox=t="+thickness+":";
-		str+="x=0:y=ih-"+thickness+":height="+thickness+":";
-		str+="width=iw:";
-		str+="color="+color;
+        str+="+"+thickness;
 	}
+    str+=":";
+    if(right_ && left_) {
+        str+="(ow-iw)/2:";
+    } else if(right_ && !left_){
+        str+="0:";
+    } else if(!right_ && left_){
+        str+=thickness+":";
+    }
+    if(bottom_&& top_) {
+        str+="(oh-ih)/2:";
+    } else if(bottom_&& !top_){
+        str+="0:";
+    } else if(!bottom_&& top_){
+        str+=thickness+":";
+    }
 
-	if(right_) {
-		if(!str.empty()) {
-			str+=",";
-		}
-		str+="drawbox=t="+thickness+":";
-		str+="x=iw-"+thickness+":y=0:height=iw:";
-		str+="width=iw-"+thickness+":";
-		str+="color="+color;
-	}
-
-	if(left_) {
-		if(!str.empty()) {
-			str+=",";
-		}
-		str+="drawbox=t="+thickness+":";
-		str+="x=0:y="+thickness+":height=iw:";
-		str+="width="+thickness+":";
-		str+="color="+color;
-	}
-	return str;
+    str+=color;
+    return str;
 }
 
 void Model::BorderFilter::restoreFilter(QString description) {
