@@ -11,15 +11,15 @@
 
 const QString Model::MirrorFilter::FILTERNAME="Mirror";
 
-Model::MirrorFilter::MirrorFilter():mode_(MirrorMode::HORIZONTAL) {
+Model::MirrorFilter::MirrorFilter():mode_(MirrorMode::VERTICAL) {
 
 }
 
 std::string Model::MirrorFilter::getFilterDescription() {
 	if(mode_==MirrorMode::HORIZONTAL) {
-		return "null";//return "crop=iw/2:ih:0:0,split[left][tmp];[tmp]hflip[right];[left][right] hstack";
+        return "'pad=iw:2*ih[left]; [tmp]vflip [right];[left][right] overlay=0:main_h/2'" ;//return "crop=iw/2:ih:0:0,split[left][tmp];[tmp]hflip[right];[left][right] hstack";
 	} else  if(mode_==MirrorMode::VERTICAL) {
-		return "null";
+        return "'pad=iw:2*ih [top]; [tmp]vflip [bottom];[top][bottom] overlay=0:main_h/2'";// return ""crop=iw/2:ih:0:0,split[top][tmp];[tmp]vflip[bottom];[top][bottom] vstack""
 	}
 	throw std::logic_error("Should not get here");
 }
