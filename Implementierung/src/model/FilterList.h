@@ -42,7 +42,7 @@ class FilterList {
 	 * @brief addFilter Inserts a filter to the end.
 	 * @param name Name of the filter to add.
 	 */
-	void appendFilter(QString name);
+    Model::Filter* appendFilter(QString name);
 
 	/**
 	 * @brief getFilter Returns the filter at the given index.

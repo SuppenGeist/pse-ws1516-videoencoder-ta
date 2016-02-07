@@ -38,8 +38,10 @@
 #include "../undo_framework/MoveFilterUp.h"
 #include "../undo_framework/MoveFilterDown.h"
 #include "VideoPlayer.h"
+#include "../undo_framework/LoadFilterconfig.h"
 #include "Timer.h"
 #include "../utility/FilterConfigurationSaver.h"
+#include "../utility/FilterConfigurationLoader.h"
 #include "../model/AVVideo.h"
 
 #include "../model/filters/BlurFilter.h"
@@ -105,7 +107,12 @@ Model::Filter* GUI::FilterTab::addFilter(QString filtername) {
 }
 
 Model::FilterList *GUI::FilterTab::getFilterList() {
-	return filterList_.get();
+    return filterList_.get();
+}
+
+std::unique_ptr<Model::FilterList> GUI::FilterTab::releaseFilterList()
+{
+    return std::move(std::move(filterList_));
 }
 
 
@@ -445,7 +452,18 @@ void GUI::FilterTab::saveConf() {
 }
 
 void GUI::FilterTab::loadConf() {
-	UndoRedo::UndoStack::getUndoStack().undo();
+    if(!rawVideo_.get())
+        return;
+
+    auto filename=QFileDialog::getOpenFileName(this,tr("Open filterconfiguration"),QDir::homePath(),"*.conf");
+
+    if(filename.isEmpty())
+        return;
+
+    Utility::FilterConfigurationLoader loader(filename);
+    auto filterlist=loader.getConfiguration();
+
+    UndoRedo::UndoStack::getUndoStack().push(new UndoRedo::LoadFilterconfig(*this,std::move(filterlist)));
 }
 
 void GUI::FilterTab::reset() {
@@ -493,8 +511,16 @@ std::unique_ptr<Model::Filter> GUI::FilterTab::removeFilter(int index) {
 	return std::move(filter);
 }
 
-void GUI::FilterTab::setFilterList(Model::FilterList list) {
-	throw "Not yet implemented";
+void GUI::FilterTab::setFilterList(std::unique_ptr<Model::FilterList> list) {
+    if(!list.get())
+        return;
+    filterList_=std::move(list);
+    QStringList filterlist;
+    for(std::size_t i=0;i<filterList_->getSize();i++) {
+        filterlist<<filterList_->getFilter(i)->getName();
+    }
+    model_list_->setStringList(filterlist);
+    updatePreview();
 }
 
 void GUI::FilterTab::setRawVideo(std::unique_ptr<Model::YuvVideo> video) {

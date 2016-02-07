@@ -1,19 +1,20 @@
-/*#include <exception>
-
 #include "LoadFilterconfig.h"
-#include "FilterTab.h"
-#include "FilterList.h"
-#include "QUndoCommand.h"
 
-LoadFilterconfig::LoadFilterconfig(FilterTab* filterTab, FilterList oldList, FilterList list) {
+#include <memory>
+
+#include "../gui/FilterTab.h"
+#include "../model/FilterList.h"
+
+UndoRedo::LoadFilterconfig::LoadFilterconfig(GUI::FilterTab& filterTab, std::unique_ptr<Model::FilterList> list):filterTab_(&filterTab),newList_(std::move(list)) {
+
 }
 
-void LoadFilterconfig::undo() {
-	throw "Not yet implemented";
+void UndoRedo::LoadFilterconfig::undo() {
+    newList_=filterTab_->releaseFilterList();
+    filterTab_->setFilterList(std::move(oldList_));
 }
 
-void LoadFilterconfig::redo() {
-	throw "Not yet implemented";
+void UndoRedo::LoadFilterconfig::redo() {
+    oldList_=filterTab_->releaseFilterList();
+    filterTab_->setFilterList(std::move(newList_));
 }
-
-*/

@@ -37,8 +37,9 @@ void Model::FilterList::insertFilter(std::unique_ptr<Model::Filter> filter, std:
 	filters_.insert(filters_.begin()+index,std::move(filter));
 }
 
-void Model::FilterList::appendFilter(QString name) {
+Model::Filter* Model::FilterList::appendFilter(QString name) {
 	filters_.push_back(std::move(Filter::CreateFilter(name)));
+    return filters_.back().get();
 }
 
 Model::Filter* Model::FilterList::getFilter(std::size_t index) {

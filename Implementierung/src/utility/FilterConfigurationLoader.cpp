@@ -1,30 +1,40 @@
-#include <exception>
-#include <QTextStream>
 #include "FilterConfigurationLoader.h"
+
+#include <memory>
+
+#include <QTextStream>
+#include <QFile>
+#include <QDebug>
+
 #include "../model/FilterList.h"
 #include "../model/filters/Filter.h"
 
-Utility::FilterConfigurationLoader::FilterConfigurationLoader(QString path) {
-	QFile file(path);
+Utility::FilterConfigurationLoader::FilterConfigurationLoader(QString path):file_(path) {
+
 }
 
-Model::FilterList* Utility::FilterConfigurationLoader::getConfiguration() {
-	if( !file.open( QIODevice::ReadOnly | QIODevice::Text ) )
-		qFatal( "Could not open the file" );
+std::unique_ptr<Model::FilterList> Utility::FilterConfigurationLoader::getConfiguration() {
+    auto filterconf=std::make_unique<Model::FilterList>();
 
-	QTextStream stream( &file );
-	Model::FilterList* filterList = new Model::FilterList();
+    if( !file_.open( QIODevice::ReadOnly | QIODevice::Text ) ) {
+        filterconf.release();
+        return std::move(filterconf);
+    }
+
+    QTextStream stream( &file_ );
 
 	while( !stream.atEnd() ) {
 		QString line = stream.readLine();
-		//filterList->addFilter(line.section(";",0,0).toStdString());
-		//filterList->getFilterByName(line.section(";",0,0).toStdString())->restoreFilter(line);
+        auto filtername=line.section(";",0,0);
+        auto filter=filterconf->appendFilter(filtername);
+        auto restorestring=line.right(line.length()-filtername.length()-1);
+        filter->restoreFilter(restorestring);
 
 	}
 
-	file.close();
+    file_.close();
 
-	return filterList;
+    return std::move(filterconf);
 }
 
 

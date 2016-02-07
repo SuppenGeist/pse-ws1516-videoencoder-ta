@@ -54,7 +54,7 @@ class FilterTab : public QFrame {
 	 * @brief setFilterList Sets the filterlist.
 	 * @param list The filterlist to use.
 	 */
-	void setFilterList(Model::FilterList list);
+    void setFilterList(std::unique_ptr<Model::FilterList> list);
 
 	/**
 	 * @brief setRawVideo Sets the video the filters are applied to. This operation resets the whole filtertab.
@@ -94,6 +94,8 @@ class FilterTab : public QFrame {
 	Model::Filter *addFilter(QString filtername);
 
 	Model::FilterList* getFilterList();
+
+    std::unique_ptr<Model::FilterList> releaseFilterList();
 
 	void updatePreview();
 
