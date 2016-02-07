@@ -1,17 +1,13 @@
-/*#include <exception>
-
 #include "ProjectWriter.h"
-#include "Project.h"
+#include "../model/Project.h"
 
-ProjectWriter::ProjectWriter(Project p) {
+Utility::ProjectWriter::ProjectWriter(Model::Project p) {
 }
 
-void ProjectWriter::saveProject() {
+void Utility::ProjectWriter::saveProject() {
 	throw "Not yet implemented";
 }
 
-void ProjectWriter::saveResults() {
+void Utility::ProjectWriter::saveResults() {
 	throw "Not yet implemented";
 }
-
-*/

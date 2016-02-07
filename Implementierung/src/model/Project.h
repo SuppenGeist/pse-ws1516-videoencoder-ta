@@ -57,7 +57,7 @@ class Project
 	/// Sets the path at which the project is saved.
 	/// </summary>
 	/// <param name="path">The project save path.</param>
-	public: void setPath(QString path);
+    public: void setPath(QString path);
 
 	/// <summary>
 	/// Returns the project save path.

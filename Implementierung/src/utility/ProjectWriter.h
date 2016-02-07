@@ -1,26 +1,17 @@
-/*
-#include <exception>
-using namespace std;
-
 #ifndef __ProjectWriter_h__
 #define __ProjectWriter_h__
-
-#include "Project.h"
 
 namespace Model
 {
 	class Project;
 }
-namespace Utility
-{
-	class ProjectWriter;
-}
+
 
 namespace Utility
 {
 	/**
 	 * This class can write the project files and the results.
-
+    */
 	class ProjectWriter
 	{
 
@@ -43,4 +34,3 @@ namespace Utility
 }
 
 #endif
-*/

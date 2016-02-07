@@ -86,21 +86,18 @@ class MainWindow : public QMainWindow {
 
   private:
 
-	QStatusBar* statusbar;
-	QAction* action_newProject;
-	QAction* action_undo;
-	QAction* action_saveAs;
-	QAction* action_loadProject;
-	QAction* action_saveProject;
-	QAction* action_redo;
-	QTabWidget* tab_tabs;
-	FilterTab* filterTab;
-	AnalysisTab* analysisTab;
-
-
-	Ui::MainWindow *ui;
-
-	Model::Project* loadedProject;
+    QStatusBar* statusbar_;
+    QAction* action_newProject_;
+    QAction* action_undo_;
+    QAction* action_saveAs_;
+    QAction* action_loadProject_;
+    QAction* action_saveProject_;
+    QAction* action_redo_;
+    QTabWidget* tab_tabs_;
+    FilterTab* filterTab_;
+    AnalysisTab* analysisTab_;
+    Ui::MainWindow *ui_;
+    Model::Project* loadedProject_;
 
 	/**
 	 * @brief createUi creates the UI.

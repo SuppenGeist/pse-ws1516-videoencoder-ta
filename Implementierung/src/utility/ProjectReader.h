@@ -1,11 +1,7 @@
-/*
-#include <exception>
-using namespace std;
-
 #ifndef __ProjectReader_h__
 #define __ProjectReader_h__
 
-#include "Project.h"
+#include <QString>
 
 namespace Model
 {
@@ -20,7 +16,7 @@ namespace Utility
 {
 	/**
 	 * This class can read a project from a file.
-
+    */
 	class ProjectReader
 	{
 		private: QString path;
@@ -40,4 +36,4 @@ namespace Utility
 }
 
 #endif
-*/
+

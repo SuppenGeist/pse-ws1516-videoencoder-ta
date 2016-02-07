@@ -21,20 +21,21 @@ GUI::MainWindow::MainWindow(QWidget* parent):QMainWindow(parent) {
 
 Memento::MainWindowMemento GUI::MainWindow::getMemento() {
     Memento::MainWindowMemento memo;
-    memo.setAnalysisTabMemento(analysisTab->getMemento());
-    memo.setFilterTabMemento(filterTab->getMemento());
-    memo.setSelectedTab(ui->tab_tabs->currentIndex());
+    memo.setAnalysisTabMemento(analysisTab_->getMemento());
+    memo.setFilterTabMemento(filterTab_->getMemento());
+    memo.setSelectedTab(ui_->tab_tabs->currentIndex());
     return memo;
 }
 
 void GUI::MainWindow::restore(Memento::MainWindowMemento memento) {
-    analysisTab->restore(memento.getAnalysisTabMemento());
-    filterTab->restore(memento.getFilterTabMemento());
-    ui->tab_tabs->setCurrentIndex(memento.getSelectedTab());
+    analysisTab_->restore(memento.getAnalysisTabMemento());
+    filterTab_->restore(memento.getFilterTabMemento());
+    ui_->tab_tabs->setCurrentIndex(memento.getSelectedTab());
 }
 
 void GUI::MainWindow::newProject() {
-    loadedProject = new Model::Project(QString("new_Project"));
+    loadedProject_ = new Model::Project(QString("new_Project"));
+    loadedProject_->setPath(QString(""));
     createUi();
     UndoRedo::UndoStack::getUndoStack().clear();
 }
@@ -44,7 +45,11 @@ void GUI::MainWindow::undo() {
 }
 
 void GUI::MainWindow::saveAs() {
-	throw "Not yet implemented";
+    if (loadedProject_->getPath().size()==0) {
+        saveProject();
+    } else {
+       // Utility::
+    }
 }
 
 void GUI::MainWindow::loadProject() {
@@ -60,34 +65,34 @@ void GUI::MainWindow::redo() {
 }
 
 void GUI::MainWindow::createUi() {
-	ui = new Ui::MainWindow;
+    ui_ = new Ui::MainWindow;
 
-	ui->setupUi(this);
+    ui_->setupUi(this);
 
-	statusbar=ui->statusbar;
-	action_newProject=ui->actionNew;
-	action_loadProject=ui->actionLoad;
-	action_saveAs=ui->actionSaveAs;
-	action_saveProject=ui->actionSave;
-	action_redo=ui->actionRedo;
-	action_undo=ui->actionUndo;
-	filterTab = new GUI::FilterTab(ui->filterTab);
-	analysisTab = new GUI::AnalysisTab(ui->analysisTab);
+    statusbar_=ui_->statusbar;
+    action_newProject_=ui_->actionNew;
+    action_loadProject_=ui_->actionLoad;
+    action_saveAs_=ui_->actionSaveAs;
+    action_saveProject_=ui_->actionSave;
+    action_redo_=ui_->actionRedo;
+    action_undo_=ui_->actionUndo;
+    filterTab_ = new GUI::FilterTab(ui_->filterTab);
+    analysisTab_ = new GUI::AnalysisTab(ui_->analysisTab);
 }
 
 void GUI::MainWindow::connectActions() {
-	connect(action_loadProject,SIGNAL(triggered()),this,SLOT(loadProject()));
-	connect(action_newProject, SIGNAL(triggered()),this,SLOT(newProject()));
-	connect(action_saveProject,SIGNAL(triggered()),this, SLOT(saveProject()));
-	connect(action_redo,SIGNAL(triggered()),this, SLOT(redo()));
-	connect(action_saveAs,SIGNAL(triggered()),this, SLOT(saveAs()));
-	connect(action_undo,SIGNAL(triggered()),this, SLOT(undo()));
+    connect(action_loadProject_,SIGNAL(triggered()),this,SLOT(loadProject()));
+    connect(action_newProject_, SIGNAL(triggered()),this,SLOT(newProject()));
+    connect(action_saveProject_,SIGNAL(triggered()),this, SLOT(saveProject()));
+    connect(action_redo_,SIGNAL(triggered()),this, SLOT(redo()));
+    connect(action_saveAs_,SIGNAL(triggered()),this, SLOT(saveAs()));
+    connect(action_undo_,SIGNAL(triggered()),this, SLOT(undo()));
 
 
 }
 
 Model::Project* GUI::MainWindow::getProject() {
-	throw "Not yet implemented";
+    return loadedProject_;
 }
 
 
