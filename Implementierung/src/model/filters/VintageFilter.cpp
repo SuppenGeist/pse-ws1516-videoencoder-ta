@@ -15,7 +15,7 @@ QString Model::VintageFilter::getName() {
 }
 
 std::string Model::VintageFilter::getFilterDescription() {
-    return "drawgrid=w=iw/3:h=ih/3:t=2:c=white";
+    return "curves=preset=vintage";
 }
 
 void Model::VintageFilter::restoreFilter(QString description) {

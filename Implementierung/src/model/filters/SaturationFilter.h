@@ -19,40 +19,51 @@ namespace Model {
 class SaturationFilter: public Model::Filter {
   public:
     static const QString FILTERNAME;
-  private:
-	int intensity;
 
-	/// <summary>
-	/// Constructor.
-	/// </summary>
-  public:
+
+    /**
+     * @brief SaturationFilter Constructor.
+     */
 	SaturationFilter();
 
-  public:
+    /**
+     * @brief restoreFilter
+     * @param description
+     */
 	std::string getFilterDescription();
 
-	/// <summary>
-	/// Returns the intensity of the saturation.
-	/// </summary>
-	/// <returns>The intensity.</returns>
-  public:
+    /**
+     * @brief Returns the intensity of the Saturation.
+     * @return The intensity.
+     */
 	int getIntensity();
 
-  public:
+    /**
+     * @brief getName
+     * @return
+     */
     QString getName();
 
-	/// <summary>
-	/// Sets the intensity of the saturation.
-	/// </summary>
-	/// <param name="intensity">The new intensity,</param>
-  public:
-	void setIntensity(int intensity);
+    /**
+     * @brief Sets the intensity of the Saturation.
+     * @param The intensity.
+     */
+    void setIntensity(int intensity_);
 
-  public:
+    /**
+     * @brief restoreFilter
+     * @param description
+     */
 	void restoreFilter(QString description);
 
-  public:
+    /**
+     * @brief getSaveString
+     * @return
+     */
 	QString getSaveString();
+
+private:
+  int intensity_;
 };
 }
 

@@ -50,8 +50,17 @@
 #include "../model/filters/GridFilter.h"
 #include "../model/filters/MirrorFilter.h"
 #include "../model/filters/NegativeFilter.h"
-#include "../model/filters/MirrorFilter.h"
-
+#include "../model/filters/NoiseFilter.h"
+#include "../model/filters/PosterFilter.h"
+#include "../model/filters/RectangleFilter.h"
+#include "../model/filters/RGBFilter.h"
+#include "../model/filters/RotationFilter.h"
+#include "../model/filters/SaturationFilter.h"
+#include "../model/filters/ScaleFilter.h"
+#include "../model/filters/SepiaFilter.h"
+#include "../model/filters/SharpnessFilter.h"
+#include "../model/filters/VintageFilter.h"
+#include "../model/filters/ZoomFilter.h"
 
 extern "C" {
 #include <libavutil/pixfmt.h>
@@ -203,11 +212,17 @@ void GUI::FilterTab::createUi() {
     filterTab->addFilter(Model::EdgeFilter::FILTERNAME);
     filterTab->addFilter(Model::GrayscaleFilter::FILTERNAME);
     filterTab->addFilter(Model::NegativeFilter::FILTERNAME);
-    filterTab->addFilter(Model::MirrorFilter::FILTERNAME);
+
+
+
+    filterTab->addFilter(Model::SaturationFilter::FILTERNAME);
+
+    filterTab->addFilter(Model::SharpnessFilter::FILTERNAME);
+
 
     artefactsTab->addFilter(Model::BorderFilter::FILTERNAME);
     artefactsTab->addFilter(Model::GridFilter::FILTERNAME);
-
+    artefactsTab->addFilter(Model::RectangleFilter::FILTERNAME);
     QScrollArea* scrollArea_filters=new QScrollArea;
     scrollArea_filters->setWidget(filterTab);
     scrollArea_filters->setVerticalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAlwaysOff);

@@ -19,120 +19,100 @@ namespace Model {
 class RectangleFilter: public Model::Filter {
   public:
     static const QString FILTERNAME;
-  private:
-    QColor color;
-  private:
-	int width;
-  private:
-	int height;
-  private:
-	int x;
-  private:
-	int y;
-  private:
-	int opacity;
+
 
 	/// <summary>
 	/// Constructor.
 	/// </summary>
-  public:
 	RectangleFilter();
 
-  public:
 	std::string getFilterDescription();
 
 	/// <summary>
 	/// Returns the color of the rectangle.
 	/// </summary>
-	/// <returns>The color of the rectangle.</returns>
-  public:
+	/// <returns>The color of the rectangle.</returns>  
     QColor getColor();
 
 	/// <summary>
 	/// Sets the color of the rectangle.
 	/// </summary>
 	/// <param name="color">The new color of the rectangle.</param>
-  public:
-    void setColor(QColor color);
+    void setColor(QColor color_);
 
 	/// <summary>
 	/// Returns the width of the rectangle.
 	/// </summary>
 	/// <returns>The width of the rectangle.</returns>
-  public:
 	int getWidth();
 
 	/// <summary>
 	/// Sets the width of the rectangle.
 	/// </summary>
 	/// <param name="width">The new width of the rectangle.</param>
-  public:
-	void setWidth(int width);
+    void setWidth(int width_);
 
 	/// <summary>
 	/// Returns the height of the rectangle.
 	/// </summary>
 	/// <returns>The height of the rectangle.</returns>
-  public:
 	int getHeight();
 
 	/// <summary>
 	/// Sets the height of the rectangle.
 	/// </summary>
 	/// <param name="height">The new height of the rectangle.</param>
-  public:
-	void setHeight(int height);
+    void setHeight(int height_);
 
 	/// <summary>
 	/// Returns the start position on the x axis.
 	/// </summary>
 	/// <returns>The start position on the x axis.</returns>
-  public:
 	int getX();
 
-  public:
     QString getName();
 
 	/// <summary>
 	/// Sets the start position on the x axis.
 	/// </summary>
 	/// <param name="x">The new start position on the x axis.</param>
-  public:
-	void setX(int x);
+    void setX(int x_);
 
 	/// <summary>
 	/// Returns the start position on the y axis.
 	/// </summary>
 	/// <returns>The start position on the y axis.</returns>
-  public:
 	int getY();
 
 	/// <summary>
 	/// Sets the start position on the y axis.
 	/// </summary>
 	/// <param name="y">The new start position on the y axis.</param>
-  public:
-	void setY(int y);
+    void setY(int y_);
 
 	/// <summary>
 	/// Returns the opacity of the rectangle.
 	/// </summary>
 	/// <returns>The opacity of the rectangle.</returns>
-  public:
 	int getOpacity();
 
 	/// <summary>
 	/// Sets the opacity of the rectangle.
 	/// </summary>
 	/// <param name="opacity">The new opacity of the rectangle.</param>
-  public:
-	void setOpacity(int opacity);
+    void setOpacity(int opacity_);
 
-  public:
 	void restoreFilter(QString description);
 
-  public:
 	QString getSaveString();
+
+private:
+  QColor color_;
+  int width_;
+  int height_;
+  int x_;
+  int y_;
+  int opacity_;
 };
 }
 

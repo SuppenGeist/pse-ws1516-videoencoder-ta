@@ -7,17 +7,21 @@
 
 const QString Model::SharpnessFilter::FILTERNAME="Sharpness";
 
-Model::SharpnessFilter::SharpnessFilter() {
+Model::SharpnessFilter::SharpnessFilter(): intensity_(60){
 }
 
 std::string Model::SharpnessFilter::getFilterDescription() {
     std::string str = std::string("unsharp=la=");
-    str+=std::to_string(intensity);
+    if(intensity_<=40){
+        str+="-2";
+    } else{
+    str+=std::to_string((int)((double)intensity_/100*5));
+    }
     return str;
 }
 
 int Model::SharpnessFilter::getIntensity() {
-	return this->intensity;
+    return intensity_;
 }
 
 QString Model::SharpnessFilter::getName() {
@@ -25,7 +29,7 @@ QString Model::SharpnessFilter::getName() {
 }
 
 void Model::SharpnessFilter::setIntensity(int intensity) {
-	this->intensity = intensity;
+    intensity_ = intensity;
 }
 
 void Model::SharpnessFilter::restoreFilter(QString description) {
@@ -34,6 +38,6 @@ void Model::SharpnessFilter::restoreFilter(QString description) {
 }
 
 QString Model::SharpnessFilter::getSaveString() {
-    QString str = QString::number(intensity);
+    QString str = QString::number(intensity_);
     return str;
 }
