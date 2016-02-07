@@ -12,3 +12,7 @@ added constructor
 added setters and getters 
 made attributes private
 added constructors
+
+##YUV444Saver
+add compression to attributes
+make rgb888ToYuv444(QRgb pixel1) not static 

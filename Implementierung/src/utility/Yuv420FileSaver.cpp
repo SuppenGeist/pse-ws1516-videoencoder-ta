@@ -25,6 +25,8 @@ void Utility::Yuv420FileSaver::save() {
 				qDebug()<<"Wrong pixel coordinates";
 				continue;
 			}
+
+
 		}
 	}
 }
