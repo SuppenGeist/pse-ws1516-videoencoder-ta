@@ -2,22 +2,22 @@
 
 #include <QString>
 #include <QStringList>
+#include <cmath>
 
 #include "Filter.h"
 
 const QString Model::RotationFilter::FILTERNAME="Rotation";
 
-Model::RotationFilter::RotationFilter():angle(30) {
+Model::RotationFilter::RotationFilter():angle_(90) {
 }
 
 std::string Model::RotationFilter::getFilterDescription() {
-	std::string str = std::string("rotate");
-	str+="=";
-	str+=std::to_string(angle);;
+    std::string str = std::string("rotate="+std::to_string(angle_)+"*PI/180");
+    return str;
 }
 
 int Model::RotationFilter::getAngle() {
-	return this->angle;
+    return angle_;
 }
 
 QString Model::RotationFilter::getName() {
@@ -25,7 +25,7 @@ QString Model::RotationFilter::getName() {
 }
 
 void Model::RotationFilter::setAngle(int angle) {
-	this->angle = angle;
+    angle_ = angle;
 }
 
 void Model::RotationFilter::restoreFilter(QString description) {
@@ -34,6 +34,6 @@ void Model::RotationFilter::restoreFilter(QString description) {
 }
 
 QString Model::RotationFilter::getSaveString() {
-	QString str = QString::number(angle);
+    QString str = QString::number(angle_);
 	return str;
 }

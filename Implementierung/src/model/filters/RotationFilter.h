@@ -63,7 +63,7 @@ class RotationFilter: public Model::Filter {
 	QString getSaveString();
 
   private:
-	int angle;
+    int angle_;
 };
 }
 

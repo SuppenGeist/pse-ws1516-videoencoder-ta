@@ -223,7 +223,7 @@ void GUI::FilterTab::createUi() {
 	//filterTab->addFilter(Model::NoiseFilter::FILTERNAME);
 	filterTab->addFilter(Model::PosterFilter::FILTERNAME);
 	//filterTab->addFilter(Model::RGBFilter::FILTERNAME);
-	//filterTab->addFilter(Model::RoationFilter::FILTERNAME);
+    filterTab->addFilter(Model::RotationFilter::FILTERNAME);
 	filterTab->addFilter(Model::SaturationFilter::FILTERNAME);
 	filterTab->addFilter(Model::ScaleFilter::FILTERNAME);
 	filterTab->addFilter(Model::SepiaFilter::FILTERNAME);
