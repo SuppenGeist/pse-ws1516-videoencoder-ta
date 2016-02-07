@@ -9,7 +9,7 @@
 
 const QString Model::RectangleFilter::FILTERNAME="Rectangle";
 
-Model::RectangleFilter::RectangleFilter():x_(10),y_(20),width_(100),height_(60),color_(QColor(255,0,
+Model::RectangleFilter::RectangleFilter():x_(10),y_(20),width_(100),height_(60),color_(QColor(0,0,
 	        0)),opacity_(255) {
 }
 

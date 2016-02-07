@@ -43,7 +43,7 @@ class FilterView : public QFrame {
 	 * @brief setFilterTab Sets the tab this view is contained in.
 	 * @param filtertab The parent filtertab.
 	 */
-	void setFilterTab(FilterTab& filtertab);
+    void setFilterTab(FilterTab& filtertab);
 
   private slots:
 	void buttonPressed();

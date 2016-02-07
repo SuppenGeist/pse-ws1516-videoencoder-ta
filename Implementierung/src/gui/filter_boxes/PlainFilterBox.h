@@ -1,35 +1,24 @@
-/*
-#include <exception>
-using namespace std;
-
 #ifndef __PlainFilterBox_h__
 #define __PlainFilterBox_h__
 
-// #include "QWidget.h"
-#include "FilterConfigurationBox.h"
+#include <QWidget>
 
-namespace GUI
-{
-	class QWidget;
-	// class FilterConfigurationBox;
-	class PlainFilterBox;
-}
+#include "FilterConfigurationBox.h"
 
 namespace GUI
 {
 	/**
 	 * This class contains no sliders to adjust filter options.
-
-	class PlainFilterBox: public GUI::FilterConfigurationBox
-	{
-
-		/// <summary>
-		/// Constructor.
-		/// </summary>
-		public: PlainFilterBox(GUI::QWidget* parent);
+     */
+    class PlainFilterBox: public FilterConfigurationBox
+    {
+        public:
+        /**
+         * @brief PlainFilterBox Constructor.
+         * @param parent
+         */
+        PlainFilterBox(QWidget* parent=0);
 	};
 }
 
 #endif
-*/
-

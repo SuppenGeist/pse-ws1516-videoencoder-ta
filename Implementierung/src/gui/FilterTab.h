@@ -10,6 +10,7 @@
 #include <QStringListModel>
 #include <QLabel>
 #include <QTabWidget>
+#include <QItemSelection>
 #include <QVBoxLayout>
 
 #include "../model/YuvVideo.h"
@@ -17,6 +18,7 @@
 #include "../model/FilterList.h"
 #include "../model/filters/Filter.h"
 #include "../model/AVVideo.h"
+#include "filter_boxes/FilterConfigurationBox.h"
 
 namespace GUI {
 class PreviewControlPanel;
@@ -148,7 +150,7 @@ class FilterTab : public QFrame {
 	 * @brief listSelectionChanged updates the filterConfigurationBox that is shown
 	 * @param index Index of the selected item
 	 */
-	void listSelectionChanged(QModelIndex* index);
+    void listSelectionChanged(QItemSelection selection);
 
 	/**
 	 * @brief save opens QFileDialog and saves the video with the filters used on it.
@@ -166,12 +168,14 @@ class FilterTab : public QFrame {
 	QPushButton*                        button_reset_;
 	QPushButton*                        button_save_;
 	QVBoxLayout*                        v_player_;
+    QHBoxLayout*                        filterOptionsLayout_;
 	QLabel*                             label_selectedFilters_;
 	QListView*                          list_filterList_;
-	QTabWidget*                         filterTabs_;
-	QLabel*                             label_filterOptions_;
+    QTabWidget*                         filterTabs_;
+    QLabel*                             label_filterOptions_;
 	QStringListModel*                   model_list_;
 	std::vector<FilterContainerTab*>    filterContainerTab_;
+    FilterConfigurationBox*             currentBox_;
 
 	std::unique_ptr<VideoPlayer>        player_;
 	PreviewControlPanel*                previewPanel_;

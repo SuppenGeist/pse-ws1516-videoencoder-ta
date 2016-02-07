@@ -6,6 +6,7 @@
 #include <QFrame>
 #include <QWidget>
 #include <QHBoxLayout>
+#include <QString>
 #include <QVBoxLayout>
 
 namespace GUI {
@@ -39,7 +40,7 @@ class FilterContainerTab : public QFrame {
 	 * @brief setParentTab Sets the parent tab.
 	 * @param parent The parent tab.
 	 */
-	void setParentTab(FilterTab& parent);
+    void setParentTab(FilterTab& parent);
 
   private:
 	FilterTab*                  parentTab_;

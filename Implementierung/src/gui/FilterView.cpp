@@ -118,6 +118,6 @@ void GUI::FilterView::createUi() {
 }
 
 void GUI::FilterView::setFilterTab(FilterTab& filtertab) {
-	filterTab_=&filtertab;
+    filterTab_=&filtertab;
 }
 

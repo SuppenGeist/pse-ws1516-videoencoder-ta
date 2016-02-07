@@ -20,10 +20,11 @@ void GUI::FilterContainerTab::addFilter(QString filtername) {
 	view->setFilter(filtername);
 	view->setFilterTab(*parentTab_);
 	filterContainer_->addWidget(view);
+    filterViews_.push_back(view);
 }
 
 void GUI::FilterContainerTab::setParentTab(FilterTab& parent) {
-	parentTab_=&parent;
+    parentTab_=&parent;
 }
 
 void GUI::FilterContainerTab::createUi() {

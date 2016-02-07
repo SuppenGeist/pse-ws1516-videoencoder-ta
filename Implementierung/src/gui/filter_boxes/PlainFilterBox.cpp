@@ -1,10 +1,9 @@
-/*/*#include <exception>
-
 #include "PlainFilterBox.h"
-#include "QWidget.h"
+
+#include <QWidget>
+
 #include "FilterConfigurationBox.h"
 
-PlainFilterBox::PlainFilterBox(QWidget* parent) {
-}
+GUI::PlainFilterBox::PlainFilterBox(QWidget* parent):FilterConfigurationBox(parent) {
 
-*/
+}

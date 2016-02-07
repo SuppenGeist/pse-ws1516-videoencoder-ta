@@ -18,6 +18,7 @@
 #include <QTabWidget>
 #include <QStringList>
 #include <QModelIndexList>
+#include <QItemSelection>
 #include <QScrollArea>
 
 #include "../memento/FilterTabMemento.h"
@@ -28,6 +29,7 @@
 #include "FrameView.h"
 #include "PlayerControlPanel.h"
 #include "PreviewControlPanel.h"
+#include "FilterView.h"
 #include "FilterContainerTab.h"
 #include "../utility/VideoConverter.h"
 #include "YuvFileOpenDialog.h"
@@ -65,6 +67,7 @@
 #include "../model/filters/SharpnessFilter.h"
 #include "../model/filters/VintageFilter.h"
 #include "../model/filters/ZoomFilter.h"
+#include "filter_boxes/FilterConfigurationBox.h"
 
 extern "C" {
 #include <libavutil/pixfmt.h>
@@ -126,6 +129,8 @@ void GUI::FilterTab::connectActions() {
 	connect(button_save_,SIGNAL(clicked()),this,SLOT(save()));
 	connect(button_saveConf_,SIGNAL(clicked()),this,SLOT(saveConf()));
 	connect(button_up_,SIGNAL(clicked()),this,SLOT(up()));
+    connect(list_filterList_->selectionModel(),SIGNAL(selectionChanged(QItemSelection,
+            QItemSelection)),this,SLOT(listSelectionChanged(QItemSelection)));
 }
 
 void GUI::FilterTab::createUi() {
@@ -179,12 +184,10 @@ void GUI::FilterTab::createUi() {
 	button_save_->setStyleSheet(styleSheet_buttonGroup);
 	button_up_->setStyleSheet(styleSheet_buttonGroup);
 
-	label_selectedFilters_=new QLabel(tr("Selected filters:"));
-	label_filterOptions_=new QLabel(tr("Filter options:"));
+    label_selectedFilters_=new QLabel(tr("Selected filters:"));
 
 	list_filterList_=new QListView;
-	list_filterList_->setMaximumWidth(400);
-	list_filterList_->setMinimumWidth(250);
+    list_filterList_->setFixedWidth(250);
 	list_filterList_->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
 	model_list_=new QStringListModel;
@@ -218,7 +221,7 @@ void GUI::FilterTab::createUi() {
 	filterTab->addFilter(Model::ContrastFilter::FILTERNAME);
 	filterTab->addFilter(Model::EdgeFilter::FILTERNAME);
 	filterTab->addFilter(Model::GrayscaleFilter::FILTERNAME);
-	filterTab->addFilter(Model::MirrorFilter::FILTERNAME);
+    //filterTab->addFilter(Model::MirrorFilter::FILTERNAME);
 	filterTab->addFilter(Model::NegativeFilter::FILTERNAME);
 	//filterTab->addFilter(Model::NoiseFilter::FILTERNAME);
 	filterTab->addFilter(Model::PosterFilter::FILTERNAME);
@@ -245,8 +248,22 @@ void GUI::FilterTab::createUi() {
 	scrollArea_artefacts->setVerticalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAlwaysOff);
 	scrollArea_artefacts->setFixedHeight(245);
 
+    QScrollArea* wrapper=new QScrollArea;
+    QFrame* optionsWidget=new QFrame;
+    optionsWidget->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
+    filterOptionsLayout_=new QHBoxLayout;
+    currentBox_=new FilterConfigurationBox;
+    filterOptionsLayout_->addWidget(currentBox_);
+
+    optionsWidget->setLayout(filterOptionsLayout_);
+
+    wrapper->setWidget(optionsWidget);
+    wrapper->setVerticalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAlwaysOff);
+    wrapper->setHorizontalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAlwaysOff);
+
 	filterTabs_->addTab(scrollArea_filters,tr("Filters"));
 	filterTabs_->addTab(scrollArea_artefacts,tr("Artefacts"));
+    filterTabs_->addTab(wrapper,tr("Filter options"));
 	filterTabs_->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Minimum);
 
 
@@ -277,6 +294,8 @@ void GUI::FilterTab::createUi() {
 	v_buttonBlock->addWidget(button_saveConf_);
 	v_buttonBlock->addSpacing(20);
 	v_buttonBlock->addWidget(button_reset_);
+    QSpacerItem* sp3=new QSpacerItem(0,0,QSizePolicy::Minimum,QSizePolicy::MinimumExpanding);
+    v_buttonBlock->addSpacerItem(sp3);
 
 	h_buttons_player->addLayout(v_buttonBlock);
 	h_buttons_player->addSpacing(30);
@@ -291,20 +310,9 @@ void GUI::FilterTab::createUi() {
 	QSpacerItem* sp1=new QSpacerItem(0,0,QSizePolicy::MinimumExpanding,QSizePolicy::MinimumExpanding);
 	h_buttons_player->addSpacerItem(sp1);
 
-	v_player_buttons_filterconf->addLayout(h_buttons_player);
+    v_player_buttons_filterconf->addLayout(h_buttons_player);
 
-	v_player_buttons_filterconf->addSpacing(20);
-	v_player_buttons_filterconf->addWidget(label_filterOptions_);
-
-	QFrame* buffer=new QFrame;
-	buffer->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
-	buffer->setStyleSheet("background: rgb(200, 200, 200)");
-	buffer->setMinimumHeight(50);
-	buffer->setMaximumWidth(300);
-
-	v_player_buttons_filterconf->addWidget(buffer);
-
-	h_list_button_player_filterconf->addLayout(v_player_buttons_filterconf,1);
+    h_list_button_player_filterconf->addLayout(v_player_buttons_filterconf,1);
 
 	v_content->addLayout(h_list_button_player_filterconf);
 
@@ -487,8 +495,19 @@ void GUI::FilterTab::save() {
 
 }
 
-void GUI::FilterTab::listSelectionChanged(QModelIndex* index) {
-	throw "Not yet implemented";
+void GUI::FilterTab::listSelectionChanged(QItemSelection selection) {
+    if(selection.indexes().isEmpty())
+        return;
+
+    /*auto filter=filterList_->getFilter(selection.indexes().first().row());
+    filterOptionsLayout_->removeWidget(currentBox_);
+    currentBox_->hide();
+    delete currentBox_;
+    auto filterbox=FilterConfigurationBox::CreateConfigurationBox(*filter);
+    auto ptr=filterbox.release();
+    currentBox_=ptr;
+    filterOptionsLayout_->addWidget(currentBox_);*/
+
 }
 
 std::unique_ptr<Model::Filter> GUI::FilterTab::removeFilter(int index) {

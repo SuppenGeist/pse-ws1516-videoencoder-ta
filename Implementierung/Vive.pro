@@ -36,7 +36,6 @@ HEADERS += \
     src/gui/VideoPlayer.h \
     src/gui/YuvFileOpenDialog.h \
     src/gui/YuvInfoDialog.h \
-    src/gui/filter_boxes/BlendingFilterBox.h \
     src/gui/filter_boxes/BlurFilterBox.h \
     src/gui/filter_boxes/BorderFilterBox.h \
     src/gui/filter_boxes/BrightnessFilterBox.h \
@@ -153,7 +152,6 @@ SOURCES += \
     src/gui/VideoPlayer.cpp \
     src/gui/YuvFileOpenDialog.cpp \
     src/gui/YuvInfoDialog.cpp \
-    src/gui/filter_boxes/BlendingFilterBox.cpp \
     src/gui/filter_boxes/BlurFilterBox.cpp \
     src/gui/filter_boxes/BorderFilterBox.cpp \
     src/gui/filter_boxes/BrightnessFilterBox.cpp \

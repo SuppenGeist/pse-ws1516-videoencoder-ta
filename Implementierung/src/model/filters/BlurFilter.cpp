@@ -35,7 +35,7 @@ void Model::BlurFilter::restoreFilter(QString description) {
 	QStringList list  = description.split(";");
 	if(list.size()!=1)
 		return;
-	setIntensity(list[1].QString::toInt());
+    setIntensity(list[0].QString::toInt());
 }
 
 QString Model::BlurFilter::getSaveString() {
