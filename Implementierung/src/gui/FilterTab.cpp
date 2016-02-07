@@ -11,6 +11,7 @@
 #include <QDebug>
 #include <QString>
 #include <QListView>
+#include <QFileDialog>
 #include <QSpacerItem>
 #include <QTimer>
 #include <QStringListModel>
@@ -38,6 +39,7 @@
 #include "../undo_framework/MoveFilterDown.h"
 #include "VideoPlayer.h"
 #include "Timer.h"
+#include "../utility/FilterConfigurationSaver.h"
 #include "../model/AVVideo.h"
 
 #include "../model/filters/BlurFilter.h"
@@ -427,7 +429,19 @@ void GUI::FilterTab::apply() {
 }
 
 void GUI::FilterTab::saveConf() {
-	UndoRedo::UndoStack::getUndoStack().redo();
+    if(filterList_->getSize()==0)
+        return;
+
+    auto filename = QFileDialog::getSaveFileName(this,tr("Save filter configuration"),QDir::homePath(),"*.conf");
+
+    if(filename.isEmpty())
+        return;
+
+    if(!filename.endsWith(".conf"))
+        filename+=".conf";
+
+    Utility::FilterConfigurationSaver saver(filename,*filterList_);
+    saver.save();
 }
 
 void GUI::FilterTab::loadConf() {
@@ -452,6 +466,7 @@ void GUI::FilterTab::reset() {
 }
 
 void GUI::FilterTab::save() {
+
 }
 
 void GUI::FilterTab::listSelectionChanged(QModelIndex* index) {
