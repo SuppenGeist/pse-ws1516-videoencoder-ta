@@ -8,6 +8,9 @@
 #include "AnalysisTab.h"
 #include "../memento/MainWindowMemento.h"
 #include "../undo_framework/UndoStack.h"
+#include "../utility/ProjectReader.h"
+#include "../utility/ProjectWriter.h"
+#include "../model/Project.h"
 
 
 GUI::MainWindow::MainWindow(QWidget* parent):QMainWindow(parent) {
@@ -31,12 +34,13 @@ void GUI::MainWindow::restore(Memento::MainWindowMemento memento) {
 }
 
 void GUI::MainWindow::newProject() {
+    loadedProject = new Model::Project(QString("new_Project"));
     createUi();
     UndoRedo::UndoStack::getUndoStack().clear();
 }
 
 void GUI::MainWindow::undo() {
-	UndoRedo::UndoStack::getUndoStack();
+    UndoRedo::UndoStack::getUndoStack().undo();
 }
 
 void GUI::MainWindow::saveAs() {

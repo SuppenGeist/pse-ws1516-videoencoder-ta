@@ -21,7 +21,7 @@ class Project;
 namespace Model {
 
 /** This class contains the different mementos.
-
+*/
 class Project
 {
 	private: QString name;

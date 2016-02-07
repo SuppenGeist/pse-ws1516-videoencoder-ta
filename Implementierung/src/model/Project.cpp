@@ -1,31 +1,28 @@
-/*
- * #include <exception>
-
 #include "Project.h"
-//#include "MainWindow.h"
-//#include "MainWindowMemento.h"
 
-Project::Project(QString name) {
+//#include "MainWindow.h"
+#include "../memento/MainWindowMemento.h"
+
+Model::Project::Project(QString name) {
 }
 
-QString Project::getName() {
+QString Model::Project::getName() {
 	return this->name;
 }
 
-Memento::MainWindowMemento& Project::getMemento() {
+Memento::MainWindowMemento& Model::Project::getMemento() {
 	throw "Not yet implemented";
 }
 
-void Project::setMemento(MainWindowMemento memento) {
+void Model::Project::setMemento(Memento::MainWindowMemento memento) {
 	throw "Not yet implemented";
 }
 
-void Project::setPath(QString path) {
+void Model::Project::setPath(QString path) {
 	this->path = path;
 }
 
-QString Project::getPath() {
+QString Model::Project::getPath() {
 	return this->path;
 }
 
-*/
