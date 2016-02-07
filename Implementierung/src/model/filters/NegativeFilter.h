@@ -7,10 +7,7 @@
 
 #include "Filter.h"
 
-namespace Model {
 
-class NegativeFilter;
-}
 
 namespace Model {
 /**

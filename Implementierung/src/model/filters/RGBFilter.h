@@ -9,11 +9,6 @@
 #include "../../utility/BasicColor.h"
 #include "Filter.h"
 
-namespace Model {
-// enum BasicColor;
-// class Filter;
-class RGBFilter;
-}
 
 namespace Model {
 /**
@@ -25,37 +20,48 @@ class RGBFilter: public Model::Filter {
   private:
 	Model::BasicColor* color;
 
-	/// <summary>
-	/// Constructor.
-	/// </summary>
+    /**
+     * @brief RGBFilter Constructor.
+     */
   public:
 	RGBFilter();
 
-  public:
-	std::string getFilterDescription();
 
-	/// <summary>
-	/// Returns the color that is not filtered out.
-	/// </summary>
-	/// <returns>The preserved color.</returns>
-  public:
+    /**
+     * @brief Returns the preserved color.
+     * @return The preserved color.
+     */
 	Model::BasicColor getColor();
 
-	/// <summary>
-	/// Sets the preserved color.
-	/// </summary>
-	/// <param name="color">The preserved color.</param>
-  public:
+    /**
+     * @brief Sets the preserved color.
+     * @param The preserved color.
+     */
 	void setColor(Model::BasicColor color);
 
-  public:
+    /**
+     * @brief getName
+     * @return
+     */
     QString getName();
 
-  public:
-	void restoreFilter(QString description);
+    /**
+     * @brief getFilterDescription
+     * @return
+     */
+    std::string getFilterDescription();
 
-  public:
-	QString getSaveString();
+    /**
+     * @brief restoreFilter
+     * @param description
+     */
+    void restoreFilter(QString description);
+
+    /**
+     * @brief getSaveString
+     * @return
+     */
+    QString getSaveString();
 };
 }
 

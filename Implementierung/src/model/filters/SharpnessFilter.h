@@ -1,16 +1,12 @@
 #include <exception>
 #include <string>
-//NOT FINISHED
+
 
 #ifndef __SharpnessFilter_h__
 #define __SharpnessFilter_h__
 
 #include "Filter.h"
 
-namespace Model {
-// class Filter;
-class SharpnessFilter;
-}
 
 namespace Model {
 /**

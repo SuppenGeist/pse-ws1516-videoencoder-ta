@@ -7,10 +7,7 @@
 
 #include "Filter.h"
 
-namespace Model {
-// class Filter;
-class RotationFilter;
-}
+
 
 namespace Model {
 /**
@@ -19,40 +16,54 @@ namespace Model {
 class RotationFilter: public Model::Filter {
   public:
     static const QString FILTERNAME;
-  private:
-	int angle;
 
-	/// <summary>
-	/// Constructor.
-	/// </summary>
+
+    /**
+     * @brief RotationFilter Constructor.
+     */
   public:
 	RotationFilter();
 
-  public:
-	std::string getFilterDescription();
 
-	/// <summary>
-	/// Returns the angle of the rotation.
-	/// </summary>
-	/// <returns>The rotation angle.</returns>
+    /**
+     * @brief Returns the angle of the rotation.
+     * @return The new rotation angle.
+     */
   public:
 	int getAngle();
 
-  public:
-    QString getName();
-
-	/// <summary>
-	/// Sets the angle of the rotation.
-	/// </summary>
-	/// <param name="angle">The new rotation angle.</param>
-  public:
+    /**
+     * @brief Sets the angle of the rotation.
+     * @param The new rotation angle.
+     */
 	void setAngle(int angle);
 
-  public:
-	void restoreFilter(QString description);
+    /**
+     * @brief getName
+     * @return
+     */
+    QString getName();
 
-  public:
-	QString getSaveString();
+    /**
+     * @brief getFilterDescription
+     * @return
+     */
+    std::string getFilterDescription();
+
+    /**
+     * @brief restoreFilter
+     * @param description
+     */
+    void restoreFilter(QString description);
+
+    /**
+     * @brief getSaveString
+     * @return
+     */
+    QString getSaveString();
+
+private:
+  int angle;
 };
 }
 

@@ -8,11 +8,7 @@
 #include "../NoiseMode.h"
 #include "Filter.h"
 //NOT FINISHED
-namespace Model {
-// enum NoiseMode;
-// class Filter;
-class NoiseFilter;
-}
+
 
 namespace Model {
 /**
@@ -26,51 +22,61 @@ class NoiseFilter: public Model::Filter {
   private:
 	Model::NoiseMode* mode;
 
-	/// <summary>
-	/// Constructor.
-	/// </summary>
+    /**
+     * @brief NoiseFilter Constructor.
+     */
   public:
 	NoiseFilter();
 
-  public:
-	std::string getFilterDescription();
 
-	/// <summary>
-	/// Returns the NoiseMode.
-	/// </summary>
-	/// <returns>The NoiseMode.</returns>
+    /**
+     * @brief Returns the NoiseMode.
+     * @return The new NoiseMode.
+     */
   public:
 	Model::NoiseMode getMode();
 
-	/// <summary>
-	/// Sets the NoiseMode.
-	/// </summary>
-	/// <param name="mode">The new NoiseMode.</param>
-  public:
+    /**
+     * @brief Sets the NoiseMode.
+     * @param The new NoiseMode.
+     */
 	void setMode(Model::NoiseMode mode);
 
-	/// <summary>
-	/// Returns the intensity of the noise.
-	/// </summary>
-	/// <returns>The noise intensity.</returns>
-  public:
+    /**
+     * @brief Returns the intensity of the noise.
+     * @return The new intensity of the noise.
+     */
 	int getIntensity();
 
-  public:
-    QString getName();
-
-	/// <summary>
-	/// Sets the intensity of the noise.
-	/// </summary>
-	/// <param name="intensity">The new intensity of the noise.</param>
-  public:
+    /**
+     * @brief Sets the intensity of the noise.
+     * @param The new intensity of the noise.
+     */
 	void setIntensity(int intensity);
 
-  public:
-	void restoreFilter(QString description);
+    /**
+     * @brief getName
+     * @return
+     */
+    QString getName();
 
-  public:
-	QString getSaveString();
+    /**
+     * @brief getFilterDescription
+     * @return
+     */
+    std::string getFilterDescription();
+
+    /**
+     * @brief restoreFilter
+     * @param description
+     */
+    void restoreFilter(QString description);
+
+    /**
+     * @brief getSaveString
+     * @return
+     */
+    QString getSaveString();
 };
 }
 

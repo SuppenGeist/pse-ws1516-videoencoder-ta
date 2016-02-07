@@ -6,11 +6,7 @@
 #define __PosterFilter_h__
 
 #include "Filter.h"
-//NOT FINISHED
-namespace Model {
-// class Filter;
-class PosterFilter;
-}
+
 
 namespace Model {
 /**

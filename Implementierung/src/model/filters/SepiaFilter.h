@@ -1,16 +1,12 @@
 #include <exception>
 #include <string>
-//NOT FINISHED
+
 
 #ifndef __SepiaFilter_h__
 #define __SepiaFilter_h__
 
 #include "Filter.h"
 
-namespace Model {
-// class Filter;
-class SepiaFilter;
-}
 
 namespace Model {
 /**

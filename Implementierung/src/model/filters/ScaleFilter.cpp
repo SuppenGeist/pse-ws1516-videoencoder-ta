@@ -7,24 +7,24 @@
 
 const QString Model::ScaleFilter::FILTERNAME="Scale";
 
-Model::ScaleFilter::ScaleFilter() {
+Model::ScaleFilter::ScaleFilter():width_(100), height_(200),keepRatio_(false),ratio_(2) {
 }
 
 std::string Model::ScaleFilter::getFilterDescription() {
 	std::string str = std::string("scale");
 	str+="=";
-	str+=std::to_string(width);
+    str+=std::to_string(width_);
 	str+=":";
-	str+=std::to_string(height);
+    str+=std::to_string(height_);
 	return str;
 }
 
 bool Model::ScaleFilter::getKeepRatio() {
-	return this->keepRatio;
+    return keepRatio_;
 }
 
 void Model::ScaleFilter::setKeepRatio(bool keepRatio) {
-	this->keepRatio = keepRatio;
+    keepRatio_ = keepRatio;
 }
 
 QString Model::ScaleFilter::getName() {
@@ -32,27 +32,27 @@ QString Model::ScaleFilter::getName() {
 }
 
 int Model::ScaleFilter::getWidth() {
-	return this->width;
+    return width_;
 }
 
 void Model::ScaleFilter::setWidth(int width) {
-	this->width = width;
+    width_ = width;
 }
 
 int Model::ScaleFilter::getHeight() {
-	return this->height;
+    return height_;
 }
 
 void Model::ScaleFilter::setHeight(int height) {
-	this->height = height;
+    height_ = height;
 }
 
 int Model::ScaleFilter::getRatio() {
-	return this->ratio;
+    return ratio_;
 }
 
 void Model::ScaleFilter::setRatio(int ratio) {
-	this->ratio = ratio;
+    ratio_ = ratio;
 }
 
 void Model::ScaleFilter::restoreFilter(QString description) {
@@ -64,12 +64,12 @@ void Model::ScaleFilter::restoreFilter(QString description) {
 }
 
 QString Model::ScaleFilter::getSaveString() {
-    QString str = QString::number(width);
+    QString str = QString::number(width_);
     str+=";";
-    str+=QString::number(height);
+    str+=QString::number(height_);
     str+=";";
-    str+=QString::number(keepRatio);
+    str+=QString::number(keepRatio_);
     str+=";";
-    str+=QString::number(ratio);
+    str+=QString::number(ratio_);
     return str;
 }

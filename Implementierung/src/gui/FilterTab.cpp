@@ -211,18 +211,23 @@ void GUI::FilterTab::createUi() {
     filterTab->addFilter(Model::ContrastFilter::FILTERNAME);
     filterTab->addFilter(Model::EdgeFilter::FILTERNAME);
     filterTab->addFilter(Model::GrayscaleFilter::FILTERNAME);
-    filterTab->addFilter(Model::NegativeFilter::FILTERNAME);
     filterTab->addFilter(Model::MirrorFilter::FILTERNAME);
+    filterTab->addFilter(Model::NegativeFilter::FILTERNAME);
+    //filterTab->addFilter(Model::NoiseFilter::FILTERNAME);
     filterTab->addFilter(Model::PosterFilter::FILTERNAME);
-
+    //filterTab->addFilter(Model::RGBFilter::FILTERNAME);
+    //filterTab->addFilter(Model::RoationFilter::FILTERNAME);
     filterTab->addFilter(Model::SaturationFilter::FILTERNAME);
+    filterTab->addFilter(Model::ScaleFilter::FILTERNAME);
     filterTab->addFilter(Model::SepiaFilter::FILTERNAME);
     filterTab->addFilter(Model::SharpnessFilter::FILTERNAME);
     filterTab->addFilter(Model::VintageFilter::FILTERNAME);
+    //filterTab->addFilter(Model::ZoomFilter::FILTERNAME);
 
     artefactsTab->addFilter(Model::BorderFilter::FILTERNAME);
     artefactsTab->addFilter(Model::GridFilter::FILTERNAME);
     artefactsTab->addFilter(Model::RectangleFilter::FILTERNAME);
+
     QScrollArea* scrollArea_filters=new QScrollArea;
     scrollArea_filters->setWidget(filterTab);
     scrollArea_filters->setVerticalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAlwaysOff);

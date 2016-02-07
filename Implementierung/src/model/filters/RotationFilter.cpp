@@ -7,7 +7,7 @@
 
 const QString Model::RotationFilter::FILTERNAME="Rotation";
 
-Model::RotationFilter::RotationFilter() {
+Model::RotationFilter::RotationFilter():angle(30) {
 }
 
 std::string Model::RotationFilter::getFilterDescription() {

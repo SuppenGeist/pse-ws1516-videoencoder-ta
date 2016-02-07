@@ -7,10 +7,6 @@
 
 #include "Filter.h"
 
-namespace Model {
-
-class EdgeFilter;
-}
 
 namespace Model {
 /**

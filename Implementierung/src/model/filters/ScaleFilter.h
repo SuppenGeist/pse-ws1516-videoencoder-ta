@@ -7,10 +7,6 @@
 
 #include "Filter.h"
 
-namespace Model {
-// class Filter;
-class ScaleFilter;
-}
 
 namespace Model {
 /**
@@ -19,88 +15,93 @@ namespace Model {
 class ScaleFilter: public Model::Filter {
   public:
     static const QString FILTERNAME;
-  private:
-	bool keepRatio;
-  private:
-	int width;
-  private:
-	int height;
-  private:
-	int ratio;
 
-	/// <summary>
-	/// Constructor.
-	/// </summary>
+
+    /**
+     * @brief ZoomFilter Constructor.
+     */
   public:
 	ScaleFilter();
 
-  public:
-	std::string getFilterDescription();
 
-	/// <summary>
-	/// Whether the ration is preserved.
-	/// </summary>
-	/// <returns>True if the ration is preserved.</returns>
-  public:
+    /**
+     * @brief Whether the ration is preserved.
+     * @return True if the ration is preserved.
+     */
 	bool getKeepRatio();
 
-	/// <summary>
-	/// Sets whether the ration is preserved.
-	/// </summary>
-	/// <param name="keepRatio">True if the ration is preserved.</param>
-  public:
+    /**
+     * @brief Whether the ration is preserved.
+     * @param True if the ration is preserved.
+     */
 	void setKeepRatio(bool keepRatio);
 
-  public:
-    QString getName();
 
-	/// <summary>
-	/// Returns the new width.
-	/// </summary>
-	/// <returns>The new width.</returns>
-  public:
+    /**
+     * @brief Returns the new width.
+     * @return The new width.
+     */
 	int getWidth();
 
-	/// <summary>
-	/// Sets the new width,
-	/// </summary>
-	/// <param name="width">The new width.</param>
-  public:
+    /**
+     * @brief Returns the new width.
+     * @param The new width.
+     */
 	void setWidth(int width);
 
-	/// <summary>
-	/// Returns the new height.
-	/// </summary>
-	/// <returns>The new height.</returns>
-  public:
+    /**
+     * @brief Returns the new height.
+     * @param The new height.
+     */
 	int getHeight();
 
-	/// <summary>
-	/// Sets the new height.
-	/// </summary>
-	/// <param name="height">The new height.</param>
-  public:
+    /**
+     * @brief Sets the new height.
+     * @param The new height.
+     */
 	void setHeight(int height);
 
-	/// <summary>
-	/// Returns the ratio of the scaling.
-	/// </summary>
-	/// <returns>The ration.</returns>
-  public:
+    /**
+     * @brief Returns the ration of the scaling.
+     * @return The ratio.
+     */
 	int getRatio();
 
-	/// <summary>
-	/// Sets the ration of the scaling.
-	/// </summary>
-	/// <param name="ratio">The ration.</param>
-  public:
+    /**
+     * @brief Sets the ration of the scaling.
+     * @param The ratio.
+     */
 	void setRatio(int ratio);
 
-  public:
-	void restoreFilter(QString description);
+    /**
+     * @brief getName
+     * @return
+     */
+    QString getName();
 
-  public:
-	QString getSaveString();
+    /**
+     * @brief getFilterDescription
+     * @return
+     */
+    std::string getFilterDescription();
+
+    /**
+     * @brief restoreFilter
+     * @param description
+     */
+    void restoreFilter(QString description);
+
+    /**
+     * @brief getSaveString
+     * @return
+     */
+    QString getSaveString();
+
+
+  bool keepRatio_;
+  int width_;
+  int height_;
+  int ratio_;
 };
 }
 

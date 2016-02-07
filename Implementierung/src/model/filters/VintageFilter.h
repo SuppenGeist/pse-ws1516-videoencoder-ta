@@ -1,16 +1,12 @@
 #include <exception>
 #include <string>
-//NOT FINISHED
+
 
 #ifndef __VintageFilter_h__
 #define __VintageFilter_h__
 
 #include "Filter.h"
 
-namespace Model {
-// class Filter;
-class VintageFilter;
-}
 
 namespace Model {
 /**

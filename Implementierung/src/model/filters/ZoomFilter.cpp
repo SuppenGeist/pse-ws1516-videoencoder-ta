@@ -7,7 +7,7 @@
 
 const QString Model::ZoomFilter::FILTERNAME="Zoom";
 
-Model::ZoomFilter::ZoomFilter() {
+Model::ZoomFilter::ZoomFilter():intensity_(100) {
 }
 
 QString Model::ZoomFilter::getName() {
@@ -15,18 +15,16 @@ QString Model::ZoomFilter::getName() {
 }
 
 std::string Model::ZoomFilter::getFilterDescription() {
-    std::string str = std::string("zoompan=z='min(zoom+0.0015,");
-    str+=std::to_string(intensity);
-    str+=")'";
+    std::string str = std::string("zoompan=z=min'(zoom+0,0015,"+std::to_string((double)intensity_/10)+")':d=100:x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)'");
     return str;
 }
 
 int Model::ZoomFilter::getIntensity() {
-	return this->intensity;
+    return intensity_;
 }
 
 void Model::ZoomFilter::setIntensity(int intensity) {
-	this->intensity = intensity;
+    intensity_ = intensity;
 }
 
 void Model::ZoomFilter::restoreFilter(QString description) {
@@ -35,6 +33,6 @@ void Model::ZoomFilter::restoreFilter(QString description) {
 }
 
 QString Model::ZoomFilter::getSaveString() {
-    QString str = QString::number(intensity);
+    QString str = QString::number(intensity_);
     return str;
 }

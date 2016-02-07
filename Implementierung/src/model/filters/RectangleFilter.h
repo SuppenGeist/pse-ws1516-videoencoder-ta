@@ -6,11 +6,7 @@
 #define __RectangleFilter_h__
 
 #include "Filter.h"
-//NOT FINISHED
-namespace Model {
-// class Filter;
-class RectangleFilter;
-}
+
 
 namespace Model {
 /**
@@ -21,90 +17,107 @@ class RectangleFilter: public Model::Filter {
     static const QString FILTERNAME;
 
 
-	/// <summary>
-	/// Constructor.
-	/// </summary>
+    /**
+     * @brief RectangleFilter Constructor.
+     */
 	RectangleFilter();
 
-	std::string getFilterDescription();
 
-	/// <summary>
-	/// Returns the color of the rectangle.
-	/// </summary>
-	/// <returns>The color of the rectangle.</returns>  
+    /**
+    * @brief Returns the color of the rectangle.
+    * @return The new color of the rectangle.
+    */
     QColor getColor();
 
-	/// <summary>
-	/// Sets the color of the rectangle.
-	/// </summary>
-	/// <param name="color">The new color of the rectangle.</param>
+    /**
+    * @brief Sets the color of the rectangle.
+    * @param The new color of the rectangle.
+    */
     void setColor(QColor color);
 
-	/// <summary>
-	/// Returns the width of the rectangle.
-	/// </summary>
-	/// <returns>The width of the rectangle.</returns>
-	int getWidth();
+    /**
+    * @brief Returns the width of the rectangle.
+    * @return The width of the rectangle.
+    */
+    int getWidth();
 
-	/// <summary>
-	/// Sets the width of the rectangle.
-	/// </summary>
-	/// <param name="width">The new width of the rectangle.</param>
+    /**
+    * @brief Sets the width of the rectangle.
+    * @param The new width of the rectangle.
+    */
     void setWidth(int width);
 
-	/// <summary>
-	/// Returns the height of the rectangle.
-	/// </summary>
-	/// <returns>The height of the rectangle.</returns>
+    /**
+    * @brief Returns the height of the rectangle.
+    * @return The height of the rectangle.
+    */
 	int getHeight();
 
-	/// <summary>
-	/// Sets the height of the rectangle.
-	/// </summary>
-	/// <param name="height">The new height of the rectangle.</param>
+    /**
+    * @brief Sets the height of the rectangle.
+    * @param The new height of the rectangle.
+    */
     void setHeight(int height);
 
-	/// <summary>
-	/// Returns the start position on the x axis.
-	/// </summary>
-	/// <returns>The start position on the x axis.</returns>
-	int getX();
+    /**
+    * @brief Returns the start position on the x axis.
+    * @return The start position on the x axis.
+    */
+    int getX();
 
-    QString getName();
-
-	/// <summary>
-	/// Sets the start position on the x axis.
-	/// </summary>
-	/// <param name="x">The new start position on the x axis.</param>
+    /**
+    * @brief Sets the start position on the x axis.
+    * @param The new start position on the x axis.
+    */
     void setX(int x);
 
-	/// <summary>
-	/// Returns the start position on the y axis.
-	/// </summary>
-	/// <returns>The start position on the y axis.</returns>
+    /**
+    * @brief Returns the start position on the y axis.
+    * @return The start position on the y axis.
+    */
 	int getY();
 
-	/// <summary>
-	/// Sets the start position on the y axis.
-	/// </summary>
-	/// <param name="y">The new start position on the y axis.</param>
+    /**
+    * @brief Sets the start position on the y axis.
+    * @param The new start position on the y axis.
+    */
     void setY(int y);
 
-	/// <summary>
-	/// Returns the opacity of the rectangle.
-	/// </summary>
-	/// <returns>The opacity of the rectangle.</returns>
+    /**
+    * @brief Returns the opacity of the rectangle.
+    * @return The opacity of the rectangle.
+    */
 	int getOpacity();
 
-	/// <summary>
-	/// Sets the opacity of the rectangle.
-	/// </summary>
-	/// <param name="opacity">The new opacity of the rectangle.</param>
+    /**
+    * @brief Sets the opacity of the rectangle.
+    * @param The new opacity of the rectangle.
+    */
     void setOpacity(int opacity);
 
-	void restoreFilter(QString description);
+    /**
+     * @brief getName
+     * @return
+     */
+    QString getName();
 
-	QString getSaveString();
+    /**
+     * @brief getFilterDescription
+     * @return
+     */
+    std::string getFilterDescription();
+
+    /**
+     * @brief restoreFilter
+     * @param description
+     */
+    void restoreFilter(QString description);
+
+    /**
+     * @brief getSaveString
+     * @return
+     */
+    QString getSaveString();
 
 private:
   QColor color_;
