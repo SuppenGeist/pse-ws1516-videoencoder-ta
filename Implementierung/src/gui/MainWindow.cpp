@@ -2,6 +2,7 @@
 
 #include <QWidget>
 #include <QMainWindow>
+#include <QFileDialog>
 
 #include "ui_mainwindow.h"
 #include "FilterTab.h"
@@ -16,6 +17,7 @@
 GUI::MainWindow::MainWindow(QWidget* parent):QMainWindow(parent) {
 	createUi();
 	connectActions();
+    loadedProject_ = new Model::Project(QString("new_Project"));
 
 }
 
@@ -48,16 +50,27 @@ void GUI::MainWindow::saveAs() {
     if (loadedProject_->getPath().size()==0) {
         saveProject();
     } else {
-       // Utility::
+       Utility::ProjectWriter w = Utility::ProjectWriter(*loadedProject_);
+       w.saveProject();
     }
 }
 
 void GUI::MainWindow::loadProject() {
-	throw "Not yet implemented";
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Open Image"), "/", tr("Text Files (*.txt)"));
+    if(fileName.length() > 0) {
+        Utility::ProjectReader w = Utility::ProjectReader(fileName);
+        *loadedProject_ = w.readProject();
+    }
+    restore(loadedProject_->getMemento());
 }
 
 void GUI::MainWindow::saveProject() {
-	throw "Not yet implemented";
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Open Image"), "/", tr("Text Files (*.txt)"));
+    if(fileName.length() > 0) {
+        loadedProject_->setPath(fileName);
+        Utility::ProjectWriter w = Utility::ProjectWriter(*loadedProject_);
+        w.saveProject();
+    }
 }
 
 void GUI::MainWindow::redo() {
