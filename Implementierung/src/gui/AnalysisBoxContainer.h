@@ -94,7 +94,7 @@ class AnalysisBoxContainer: public QFrame {
 	 * @brief removeBox Removes a box from the list.
 	 * @param box The box to remove.
 	 */
-	void removeBox(GUI::AnalysisBox& box);
+    void removeBox(GUI::AnalysisBox* box);
 
 	/**
 	 * @brief addVideo Adds the given video to the container.
@@ -106,12 +106,12 @@ class AnalysisBoxContainer: public QFrame {
 	UndoRedo::RemoveVideo* anaBoxContainer;
   private:
 
-	Model::Video* rawVideo;
+    Model::Video* rawVideo_;
 	//private: shared_ptr<GUI::Timer> timer:std:;
-	GUI::GlobalControlPanel* controlPanel;
-	GUI::AnalysisTab* analysisBoxContainer;
-	std::vector<GUI::AnalysisBox*> boxes;
-	Ui::AnalysisBoxContainer* ui;
+    GUI::GlobalControlPanel* controlPanel_;
+    GUI::AnalysisTab* analysisBoxContainer_;
+    std::vector<GUI::AnalysisBox*> boxes_;
+    Ui::AnalysisBoxContainer* ui_;
 };
 }
 
