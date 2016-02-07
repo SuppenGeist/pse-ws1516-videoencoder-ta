@@ -17,8 +17,7 @@ namespace Model {
 class RGBFilter: public Model::Filter {
   public:
 	static const QString FILTERNAME;
-  private:
-	Model::BasicColor* color;
+
 
 	/**
 	 * @brief RGBFilter Constructor.
@@ -62,6 +61,9 @@ class RGBFilter: public Model::Filter {
 	 * @return
 	 */
 	QString getSaveString();
+
+private:
+    Model::BasicColor color_;
 };
 }
 

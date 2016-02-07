@@ -1,6 +1,6 @@
 #include <exception>
 #include <string>
-//NOT FINISHED
+
 
 #ifndef __RotationFilter_h__
 #define __RotationFilter_h__
@@ -63,7 +63,7 @@ class RotationFilter: public Model::Filter {
 	QString getSaveString();
 
   private:
-	int angle;
+    int angle_;
 };
 }
 

@@ -8,19 +8,27 @@
 
 const QString Model::RGBFilter::FILTERNAME="RGB";
 
-Model::RGBFilter::RGBFilter() {
+Model::RGBFilter::RGBFilter():color_(BasicColor::RED) {
 }
 
 std::string Model::RGBFilter::getFilterDescription() {
-	throw "Not yet implemented";
+std::string str = std::string("colorchannelmixer=");
+    if(color_ == BasicColor::RED){
+        str+= "1:0:0:0:0:0:0:0:0:0:0:0";
+    } else if (color_ == BasicColor::GREEN){
+        str+= "0:0:0:0:0:1:0:0:0:0:0:0";
+    } else if (color_ == BasicColor::BLUE){
+        str+= "0:0:0:0:0:0:0:0:0:0:1:0";
+    }
+    return str;
 }
 
 Model::BasicColor Model::RGBFilter::getColor() {
-	throw "Not yet implemented";
+    return color_;
 }
 
 void Model::RGBFilter::setColor(BasicColor color) {
-	throw "Not yet implemented";
+    color_=color;
 }
 
 QString Model::RGBFilter::getName() {
@@ -28,9 +36,14 @@ QString Model::RGBFilter::getName() {
 }
 
 void Model::RGBFilter::restoreFilter(QString description) {
-	throw "Not yet implemented";
+    QStringList list  = description.split(";");
+    if(list.size()!=1)
+        return;
+    setColor(static_cast<BasicColor>(list[0].QString::toInt()));
 }
 
 QString Model::RGBFilter::getSaveString() {
-
+    QString str = QString::number(color_);
+    return str;
 }
+

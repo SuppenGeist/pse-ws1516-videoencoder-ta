@@ -34,6 +34,8 @@ void Model::SharpnessFilter::setIntensity(int intensity) {
 
 void Model::SharpnessFilter::restoreFilter(QString description) {
 	QStringList list  = description.split(";");
+    if(list.size()!=1)
+        return;
 	setIntensity(list[0].QString::toInt());
 }
 
