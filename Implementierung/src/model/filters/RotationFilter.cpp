@@ -30,6 +30,8 @@ void Model::RotationFilter::setAngle(int angle) {
 
 void Model::RotationFilter::restoreFilter(QString description) {
 	QStringList list  = description.split(";");
+    if(list.size()!=1)
+        return;
 	setAngle(list[0].QString::toInt());
 }
 

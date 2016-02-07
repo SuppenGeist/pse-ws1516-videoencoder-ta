@@ -30,6 +30,8 @@ void Model::ZoomFilter::setIntensity(int intensity) {
 
 void Model::ZoomFilter::restoreFilter(QString description) {
 	QStringList list  = description.split(";");
+    if(list.size()!=1)
+        return;
 	setIntensity(list[0].QString::toInt());
 }
 

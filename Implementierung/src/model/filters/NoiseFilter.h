@@ -7,7 +7,7 @@
 
 #include "../NoiseMode.h"
 #include "Filter.h"
-//NOT FINISHED
+
 
 
 namespace Model {
@@ -17,15 +17,11 @@ namespace Model {
 class NoiseFilter: public Model::Filter {
   public:
 	static const QString FILTERNAME;
-  private:
-	int intensity;
-  private:
-	Model::NoiseMode* mode;
+
 
 	/**
 	 * @brief NoiseFilter Constructor.
 	 */
-  public:
 	NoiseFilter();
 
 
@@ -33,7 +29,6 @@ class NoiseFilter: public Model::Filter {
 	 * @brief Returns the NoiseMode.
 	 * @return The new NoiseMode.
 	 */
-  public:
 	Model::NoiseMode getMode();
 
 	/**
@@ -77,6 +72,10 @@ class NoiseFilter: public Model::Filter {
 	 * @return
 	 */
 	QString getSaveString();
+
+private:
+  int intensity_;
+  Model::NoiseMode mode_;
 };
 }
 

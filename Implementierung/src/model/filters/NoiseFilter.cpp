@@ -8,23 +8,31 @@
 
 const QString Model::NoiseFilter::FILTERNAME="Noise";
 
-Model::NoiseFilter::NoiseFilter() {
+Model::NoiseFilter::NoiseFilter():mode_(NoiseMode::RANDOM),intensity_(50) {
 }
 
 std::string Model::NoiseFilter::getFilterDescription() {
-	throw "Not yet implemented";
+    std::string str = std::string("noise=alls='" + std::to_string(intensity_) +"':allf=");
+    if(mode_ == NoiseMode::STATIC){
+    str+="a";
+    } else if(mode_ == NoiseMode::RANDOM){
+    str+="t+p";
+    } else if(mode_ == NoiseMode::MUSTER){
+    str+="u";
+    }
+    return str;
 }
 
 Model::NoiseMode Model::NoiseFilter::getMode() {
-	throw "Not yet implemented";
+    return mode_;
 }
 
 void Model::NoiseFilter::setMode(NoiseMode mode) {
-	throw "Not yet implemented";
+    mode_ = mode;
 }
 
 int Model::NoiseFilter::getIntensity() {
-	return this->intensity;
+    return intensity_;
 }
 
 QString Model::NoiseFilter::getName() {
@@ -32,12 +40,17 @@ QString Model::NoiseFilter::getName() {
 }
 
 void Model::NoiseFilter::setIntensity(int intensity) {
-	this->intensity = intensity;
+    intensity_ = intensity;
 }
 
 void Model::NoiseFilter::restoreFilter(QString description) {
-	throw "Not yet implemented";
+    QStringList list  = description.split(";");
+    if(list.size()!=1)
+        return;
+    setIntensity(list[0].QString::toInt());
 }
 
 QString Model::NoiseFilter::getSaveString() {
+        QString str = QString(mode_);
+        return str;
 }
