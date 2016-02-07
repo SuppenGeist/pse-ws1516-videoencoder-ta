@@ -15,10 +15,11 @@ Utility::YuvFileReader::YuvFileReader(QString filename, int width, int height, i
 
 Utility::YuvFileReader::~YuvFileReader()
 {
-    if(isRunning()) {
-        stopReading();
+    stopReading();
+
+    if(reader_.joinable()) {
+        reader_.join();
     }
-    //reader_.join();
 }
 
 void Utility::YuvFileReader::read(Model::Video *target)
@@ -34,7 +35,6 @@ void Utility::YuvFileReader::stopReading()
 {
     if(isRunning_) {
         isRunning_=false;
-        reader_.join();
     }
 }
 

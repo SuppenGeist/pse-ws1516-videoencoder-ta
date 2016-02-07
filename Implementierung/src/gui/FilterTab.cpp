@@ -487,8 +487,8 @@ void GUI::FilterTab::setFilterList(Model::FilterList list) {
 
 void GUI::FilterTab::setRawVideo(std::unique_ptr<Model::YuvVideo> video) {
 	reset();
-	rawVideo_=std::move(video);
-    player_->setVideo(&rawVideo_->getVideo());
+    player_->setVideo(&video->getVideo());
+    rawVideo_=std::move(video);
 }
 
 std::unique_ptr<Model::YuvVideo> GUI::FilterTab::releaseVideo() {
