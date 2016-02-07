@@ -14,37 +14,37 @@ namespace Model {
 */
 class GrayscaleFilter: public Filter {
 
-public:
-  static const QString FILTERNAME;
+  public:
+	static const QString FILTERNAME;
 
-    /**
-     * @brief GrayScaleFilter Constructor.
-     */
-    GrayscaleFilter();
+	/**
+	 * @brief GrayScaleFilter Constructor.
+	 */
+	GrayscaleFilter();
 
-    /**
-     * @brief getName
-     * @return
-     */
-    QString getName();
+	/**
+	 * @brief getName
+	 * @return
+	 */
+	QString getName();
 
-    /**
-     * @brief getFilterDescription
-     * @return
-     */
-    std::string getFilterDescription();
+	/**
+	 * @brief getFilterDescription
+	 * @return
+	 */
+	std::string getFilterDescription();
 
-    /**
-     * @brief restoreFilter
-     * @param description
-     */
-    void restoreFilter(QString description);
+	/**
+	 * @brief restoreFilter
+	 * @param description
+	 */
+	void restoreFilter(QString description);
 
-    /**
-     * @brief getSaveString
-     * @return
-     */
-    QString getSaveString();
+	/**
+	 * @brief getSaveString
+	 * @return
+	 */
+	QString getSaveString();
 };
 }
 

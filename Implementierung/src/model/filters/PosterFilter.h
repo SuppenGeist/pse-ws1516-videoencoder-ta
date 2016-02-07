@@ -14,53 +14,53 @@ namespace Model {
 */
 class PosterFilter: public Model::Filter {
   public:
-    static const QString FILTERNAME;
+	static const QString FILTERNAME;
 
 
-    /**
-     * @brief PosterFilter Constructor.
-     */
+	/**
+	 * @brief PosterFilter Constructor.
+	 */
 	PosterFilter();
 
-    /**
-     * @brief getFilterDescription
-     * @return
-     */
+	/**
+	 * @brief getFilterDescription
+	 * @return
+	 */
 	std::string getFilterDescription();
 
-    /**
-     * @brief Rturns the maximum number of colors.
-     * @return The maximum number of colors.
-     */
+	/**
+	 * @brief Rturns the maximum number of colors.
+	 * @return The maximum number of colors.
+	 */
 	int getNumberOfColors();
 
 
-    /**
-     * @brief Sets the maximum number of colors.
-     * @param The maximum number of colors.
-     */
+	/**
+	 * @brief Sets the maximum number of colors.
+	 * @param The maximum number of colors.
+	 */
 	void setNumberOfColors(int numberOfColors);
 
-    /**
-     * @brief getName
-     * @return
-     */
-    QString getName();
+	/**
+	 * @brief getName
+	 * @return
+	 */
+	QString getName();
 
-    /**
-     * @brief restoreFilter
-     * @param description
-     */
-    void restoreFilter(QString description);
+	/**
+	 * @brief restoreFilter
+	 * @param description
+	 */
+	void restoreFilter(QString description);
 
-    /**
-     * @brief getSaveString
-     * @return
-     */
-     QString getSaveString();
+	/**
+	 * @brief getSaveString
+	 * @return
+	 */
+	QString getSaveString();
 
-private:
-  int numberOfColors_;
+  private:
+	int numberOfColors_;
 };
 }
 

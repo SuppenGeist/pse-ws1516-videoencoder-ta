@@ -33,7 +33,7 @@ class Yuv444FileReader: public YuvFileReader {
 	 * @param height Height of the video.
 	 * @param compression Compression of the file.
 	 */
-    Yuv444FileReader(QString filename, int width, int height, Compression compression);
+	Yuv444FileReader(QString filename, int width, int height, Compression compression);
 
 
 	/**
@@ -43,12 +43,12 @@ class Yuv444FileReader: public YuvFileReader {
 	 */
 	static QRgb Yuv444ToRgb888(Yuv444Vector &vector);
 
-protected:
-    /**
-     * @brief parseNextFrame Parses the next frame.
-     * @return The parsed frame.
-     */
-    std::unique_ptr<QImage> parseNextFrame();
+  protected:
+	/**
+	 * @brief parseNextFrame Parses the next frame.
+	 * @return The parsed frame.
+	 */
+	std::unique_ptr<QImage> parseNextFrame();
 
   private:
 	int         position_;
@@ -60,13 +60,13 @@ protected:
 	 * @brief readNextVectorPacked Reads the next vector from a packed file.
 	 * @return The new vector.
 	 */
-    Yuv444Vector readNextVectorPacked();
+	Yuv444Vector readNextVectorPacked();
 
 	/**
 	 * @brief readNextVectorPlanar Reads the next vector from a planar file.
 	 * @return The new vector.
 	 */
-    Yuv444Vector readNextVectorPlanar();
+	Yuv444Vector readNextVectorPlanar();
 };
 }
 

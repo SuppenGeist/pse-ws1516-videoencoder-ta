@@ -24,46 +24,46 @@ namespace Utility {
  */
 class FilterApplier {
   public:
-    /**
-     * @brief FilterApplier Constructor.
-     * @param list The list with the filters to apply.
-     */
-    FilterApplier(Model::FilterList& list, int width, int height, int pixelFormat);
+	/**
+	 * @brief FilterApplier Constructor.
+	 * @param list The list with the filters to apply.
+	 */
+	FilterApplier(Model::FilterList& list, int width, int height, int pixelFormat);
 
-    ~FilterApplier();
+	~FilterApplier();
 
-    /**
-     * @brief applyToVideo Applies the given filters to the video.
-     * @param target The video to which the new frames are added to.
-     * @param video The video to apply the filters on.
-     */
-    void applyToVideo(Model::AVVideo& target, Model::AVVideo& video);
+	/**
+	 * @brief applyToVideo Applies the given filters to the video.
+	 * @param target The video to which the new frames are added to.
+	 * @param video The video to apply the filters on.
+	 */
+	void applyToVideo(Model::AVVideo& target, Model::AVVideo& video);
 
-    /**
-     * @brief applyToFrame
-     * CAUTION: An owning pointer is returned.
-     * @param source
-     * @return
-     */
-    AVFrame *applyToFrame(AVFrame& source);
-
-  private:
-    /**
-     * @brief initFilters Initializes the filters.
-     */
-    void initFilters();
+	/**
+	 * @brief applyToFrame
+	 * CAUTION: An owning pointer is returned.
+	 * @param source
+	 * @return
+	 */
+	AVFrame *applyToFrame(AVFrame& source);
 
   private:
-    int                 width_;
-    int                 height_;
-    int                 pixelFormat_;
-    Model::FilterList*  list_;
-    AVFilterGraph*      filterGraph_;
-    AVFilterContext*    buffersinkContext_;
-    AVFilterContext*    buffersourceContext_;
-    std::string         filterDescription_;
+	/**
+	 * @brief initFilters Initializes the filters.
+	 */
+	void initFilters();
 
-    void createFilterString();
+  private:
+	int                 width_;
+	int                 height_;
+	int                 pixelFormat_;
+	Model::FilterList*  list_;
+	AVFilterGraph*      filterGraph_;
+	AVFilterContext*    buffersinkContext_;
+	AVFilterContext*    buffersourceContext_;
+	std::string         filterDescription_;
+
+	void createFilterString();
 };
 }
 

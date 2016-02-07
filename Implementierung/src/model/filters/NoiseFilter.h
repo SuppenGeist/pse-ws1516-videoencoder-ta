@@ -16,67 +16,67 @@ namespace Model {
 */
 class NoiseFilter: public Model::Filter {
   public:
-    static const QString FILTERNAME;
+	static const QString FILTERNAME;
   private:
 	int intensity;
   private:
 	Model::NoiseMode* mode;
 
-    /**
-     * @brief NoiseFilter Constructor.
-     */
+	/**
+	 * @brief NoiseFilter Constructor.
+	 */
   public:
 	NoiseFilter();
 
 
-    /**
-     * @brief Returns the NoiseMode.
-     * @return The new NoiseMode.
-     */
+	/**
+	 * @brief Returns the NoiseMode.
+	 * @return The new NoiseMode.
+	 */
   public:
 	Model::NoiseMode getMode();
 
-    /**
-     * @brief Sets the NoiseMode.
-     * @param The new NoiseMode.
-     */
+	/**
+	 * @brief Sets the NoiseMode.
+	 * @param The new NoiseMode.
+	 */
 	void setMode(Model::NoiseMode mode);
 
-    /**
-     * @brief Returns the intensity of the noise.
-     * @return The new intensity of the noise.
-     */
+	/**
+	 * @brief Returns the intensity of the noise.
+	 * @return The new intensity of the noise.
+	 */
 	int getIntensity();
 
-    /**
-     * @brief Sets the intensity of the noise.
-     * @param The new intensity of the noise.
-     */
+	/**
+	 * @brief Sets the intensity of the noise.
+	 * @param The new intensity of the noise.
+	 */
 	void setIntensity(int intensity);
 
-    /**
-     * @brief getName
-     * @return
-     */
-    QString getName();
+	/**
+	 * @brief getName
+	 * @return
+	 */
+	QString getName();
 
-    /**
-     * @brief getFilterDescription
-     * @return
-     */
-    std::string getFilterDescription();
+	/**
+	 * @brief getFilterDescription
+	 * @return
+	 */
+	std::string getFilterDescription();
 
-    /**
-     * @brief restoreFilter
-     * @param description
-     */
-    void restoreFilter(QString description);
+	/**
+	 * @brief restoreFilter
+	 * @param description
+	 */
+	void restoreFilter(QString description);
 
-    /**
-     * @brief getSaveString
-     * @return
-     */
-    QString getSaveString();
+	/**
+	 * @brief getSaveString
+	 * @return
+	 */
+	QString getSaveString();
 };
 }
 

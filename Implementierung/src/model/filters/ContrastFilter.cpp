@@ -12,34 +12,35 @@ Model::ContrastFilter::ContrastFilter():intensity_(80) {
 }
 
 void Model::ContrastFilter::setIntensity(int intensity) {
-    if(intensity<-100||intensity>100)
-        return;
-    intensity_ = intensity;
+	if(intensity<-100||intensity>100)
+		return;
+	intensity_ = intensity;
 }
 
 int Model::ContrastFilter::getIntensity() {
-    return intensity_;
+	return intensity_;
 }
 
 QString Model::ContrastFilter::getName() {
-    return FILTERNAME;
+	return FILTERNAME;
 }
 
 std::string Model::ContrastFilter::getFilterDescription() {
-    std::string str = std::string("eq=contrast='"+std::to_string((double)intensity_/50)+"':brightness=0:saturation=1:gamma=1:gamma_r=1:gamma_g=1:gamma_b=1:gamma_weight=1");
+	std::string str = std::string("eq=contrast='"+std::to_string((double)intensity_/50)
+	                              +"':brightness=0:saturation=1:gamma=1:gamma_r=1:gamma_g=1:gamma_b=1:gamma_weight=1");
 
-    return str;
+	return str;
 }
 
 void Model::ContrastFilter::restoreFilter(QString description) {
-    QStringList list  = description.split(";");
-    if(list.size()!=1)
-        return;
-    setIntensity(list[0].QString::toInt());
+	QStringList list  = description.split(";");
+	if(list.size()!=1)
+		return;
+	setIntensity(list[0].QString::toInt());
 }
 
 QString Model::ContrastFilter::getSaveString() {
-    QString str = QString::number(intensity_);
+	QString str = QString::number(intensity_);
 
-    return str;
+	return str;
 }

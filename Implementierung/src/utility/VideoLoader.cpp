@@ -58,7 +58,7 @@ unique_ptr<Model::AVVideo> VideoLoader::loadVideo() {
 	while(av_read_frame(formatContext, packet) >= 0) {
 		frame = av_frame_alloc();
 		avcodec_decode_video2(codecContext, frame, 0, packet);
-        video->appendFrame(frame);
+		video->appendFrame(frame);
 	}
 
 	return video;

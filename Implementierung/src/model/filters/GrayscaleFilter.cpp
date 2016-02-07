@@ -13,16 +13,16 @@ Model::GrayscaleFilter::GrayscaleFilter() {
 }
 
 QString Model::GrayscaleFilter::getName() {
-    return FILTERNAME;
+	return FILTERNAME;
 }
 
 std::string Model::GrayscaleFilter::getFilterDescription() {
-    return "colorchannelmixer=',3':',4':',3':0:',3':',4':',3':0:',3':',4':',3'";
+	return "colorchannelmixer=',3':',4':',3':0:',3':',4':',3':0:',3':',4':',3'";
 }
 void Model::GrayscaleFilter::restoreFilter(QString description) {
-    //nothing to load
+	//nothing to load
 }
 
 QString Model::GrayscaleFilter::getSaveString() {
-    //nothing to save
+	//nothing to save
 }

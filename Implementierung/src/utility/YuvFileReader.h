@@ -21,22 +21,22 @@ class YuvFileReader {
 	 * @param width The width of the video.
 	 * @param height The height of the video.
 	 */
-    YuvFileReader(QString filename, int width, int height,int frameSize);
+	YuvFileReader(QString filename, int width, int height,int frameSize);
 
-    ~YuvFileReader();
+	~YuvFileReader();
 
 	/**
 	 * @brief read Reads the file in.
 	 * @return The complete video.
 	 */
-    void read(Model::Video* target);
+	void read(Model::Video* target);
 
-    void stopReading();
+	void stopReading();
 
-    bool isRunning();
+	bool isRunning();
 
-protected:
-    virtual std::unique_ptr<QImage> parseNextFrame()=0;
+  protected:
+	virtual std::unique_ptr<QImage> parseNextFrame()=0;
 
 	/**
 	 * @brief clamp Clamps the given value to the range [0,255].
@@ -46,19 +46,19 @@ protected:
 	static int clamp(int value);
 
   protected:
-    unsigned char*   binaryData_;
-    QDataStream                    dataStream_;
-    int                            width_;
-    int                            height_;
-    Model::Video*                  video_;
-    QFile                          file_;
-    int                            frameSize_;
+	unsigned char*   binaryData_;
+	QDataStream                    dataStream_;
+	int                            width_;
+	int                            height_;
+	Model::Video*                  video_;
+	QFile                          file_;
+	int                            frameSize_;
 
-private:
-    bool                           isRunning_;
-    std::thread                     reader_;
+  private:
+	bool                           isRunning_;
+	std::thread                     reader_;
 
-    void readP();
+	void readP();
 
 };
 }

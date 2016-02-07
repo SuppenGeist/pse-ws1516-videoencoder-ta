@@ -13,53 +13,53 @@ namespace Model {
 */
 class ZoomFilter: public Model::Filter {
   public:
-    static const QString FILTERNAME;
+	static const QString FILTERNAME;
 
 
-    /**
-     * @brief ZoomFilter Constructor.
-     */
+	/**
+	 * @brief ZoomFilter Constructor.
+	 */
 	ZoomFilter();
 
-    /**
-     * @brief Returns the intensity of the Zoom.
-     * @return The intensity.
-     */
+	/**
+	 * @brief Returns the intensity of the Zoom.
+	 * @return The intensity.
+	 */
   public:
 	int getIntensity();
 
-    /**
-     * @brief Sets the intensity of the Zoom.
-     * @param The intensity.
-     */
+	/**
+	 * @brief Sets the intensity of the Zoom.
+	 * @param The intensity.
+	 */
 	void setIntensity(int intensity);
 
-    /**
-     * @brief getName
-     * @return
-     */
-    QString getName();
+	/**
+	 * @brief getName
+	 * @return
+	 */
+	QString getName();
 
-    /**
-     * @brief getFilterDescription
-     * @return
-     */
-    std::string getFilterDescription();
+	/**
+	 * @brief getFilterDescription
+	 * @return
+	 */
+	std::string getFilterDescription();
 
-    /**
-     * @brief restoreFilter
-     * @param description
-     */
-    void restoreFilter(QString description);
+	/**
+	 * @brief restoreFilter
+	 * @param description
+	 */
+	void restoreFilter(QString description);
 
-    /**
-     * @brief getSaveString
-     * @return
-     */
-    QString getSaveString();
+	/**
+	 * @brief getSaveString
+	 * @return
+	 */
+	QString getSaveString();
 
-private:
-  int intensity_;
+  private:
+	int intensity_;
 };
 }
 

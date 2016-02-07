@@ -10,50 +10,50 @@ namespace Model {
 */
 class MirrorFilter: public Filter {
   public:
-    static const QString FILTERNAME;
+	static const QString FILTERNAME;
 
-    /**
-     * @brief MirrorFilter Constructor.
-     */
+	/**
+	 * @brief MirrorFilter Constructor.
+	 */
 	MirrorFilter();
 
-    /**
-     * @brief getFilterDescription
-     * @return
-     */
+	/**
+	 * @brief getFilterDescription
+	 * @return
+	 */
 	std::string getFilterDescription();
 
-    /**
-     * @brief getName
-     * @return
-     */
-    QString getName();
+	/**
+	 * @brief getName
+	 * @return
+	 */
+	QString getName();
 
-    /**
-     * @brief getMode Returns the MirrorMode.
-     * @return The MirrorMode.
-     */
+	/**
+	 * @brief getMode Returns the MirrorMode.
+	 * @return The MirrorMode.
+	 */
 	Model::MirrorMode getMode();
 
-    /**
-     * @brief setMode Sets the MirrorMode.
-     * @param mode The MirrorMode.
-     */
+	/**
+	 * @brief setMode Sets the MirrorMode.
+	 * @param mode The MirrorMode.
+	 */
 	void setMode(Model::MirrorMode mode);
 
-    /**
-     * @brief restoreFilter
-     * @param description
-     */
+	/**
+	 * @brief restoreFilter
+	 * @param description
+	 */
 	void restoreFilter(QString description);
 
-    /**
-     * @brief getSaveString
-     * @return
-     */
+	/**
+	 * @brief getSaveString
+	 * @return
+	 */
 	QString getSaveString();
-private:
-    MirrorMode   mode_;
+  private:
+	MirrorMode   mode_;
 };
 }
 

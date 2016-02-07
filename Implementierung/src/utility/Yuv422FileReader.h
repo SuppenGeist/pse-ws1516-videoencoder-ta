@@ -28,7 +28,7 @@ class Yuv422FileReader: public YuvFileReader {
 	 * @param fps
 	 * @param compression Compression of the file.
 	 */
-    Yuv422FileReader(QString filename, int width, int height, Compression compression);
+	Yuv422FileReader(QString filename, int width, int height, Compression compression);
 
 	/**
 	 * @brief yuv422ToRgb888 Converts a Yuv422Vector the Rgb888 pixels
@@ -37,12 +37,12 @@ class Yuv422FileReader: public YuvFileReader {
 	 */
 	static std::vector<QRgb> Yuv422ToRgb888(Yuv422Vector vector);
 
-protected:
-    /**
-     * @brief parseNextFrame Parses the next frame.
-     * @return The parsed frame.
-     */
-    std::unique_ptr<QImage> parseNextFrame();
+  protected:
+	/**
+	 * @brief parseNextFrame Parses the next frame.
+	 * @return The parsed frame.
+	 */
+	std::unique_ptr<QImage> parseNextFrame();
 
   private:
 	int             position_;
@@ -54,13 +54,13 @@ protected:
 	 * @brief readNextVectorPacked Reads the next vector from a packed file.
 	 * @return The new vector.
 	 */
-    Yuv422Vector readNextVectorPacked();
+	Yuv422Vector readNextVectorPacked();
 
 	/**
 	 * @brief readNextVectorPlanar Reads the next vector from a planar file.
 	 * @return The new vector.
 	 */
-    Yuv422Vector readNextVectorPlanar();
+	Yuv422Vector readNextVectorPlanar();
 };
 }
 

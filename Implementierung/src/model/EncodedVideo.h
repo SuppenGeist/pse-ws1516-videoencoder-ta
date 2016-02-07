@@ -24,15 +24,15 @@ class EncodedVideo {
   private:
 	int numberOfColors;
   private:
-    QString codec;
+	QString codec;
   public:
 	Model::AVVideo* avVideo;
   public:
-    Model::Video* displayVideo;
+	Model::Video* displayVideo;
   public:
-    Model::Video* macroblockVideo;
+	Model::Video* macroblockVideo;
   public:
-    Model::Video* rgbDiffVideo;
+	Model::Video* rgbDiffVideo;
   public:
 	Model::Graph* bitrate;
   public:
@@ -126,7 +126,7 @@ class EncodedVideo {
 	/// </summary>
 	/// <returns>The macroblock video.</returns>
   public:
-    Model::Video& getMacroBlockVideo();
+	Model::Video& getMacroBlockVideo();
 
 	/// <summary>
 	/// Returns the video which shows the rgb difference to another video.
@@ -134,14 +134,14 @@ class EncodedVideo {
 	/// <param name="reference">The video to compare to.</param>
 	/// <returns>The rgb diff video.</returns>
   public:
-    Model::Video& getRgbDiffVideo(Model::Video* reference = 0);
+	Model::Video& getRgbDiffVideo(Model::Video* reference = 0);
 
 	/// <summary>
 	/// Returns the Video.
 	/// </summary>
 	/// <returns>The Video.</returns>
   public:
-    Model::Video& getVideo();
+	Model::Video& getVideo();
 
 	/// <summary>
 	/// Loads the video from the file.
@@ -189,14 +189,14 @@ class EncodedVideo {
 	/// </summary>
 	/// <param name="video">The macroblcok video.</param>
   public:
-    void setMacroblockVideo(Model::Video video);
+	void setMacroblockVideo(Model::Video video);
 
 	/// <summary>
 	/// Sets the video that shows a rgb differenece to another video.
 	/// </summary>
 	/// <param name="video">The rgb diff video.</param>
   public:
-    void setRgbDiffVideo(Model::Video video);
+	void setRgbDiffVideo(Model::Video video);
 };
 }
 

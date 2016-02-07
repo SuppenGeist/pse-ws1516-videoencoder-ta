@@ -11,17 +11,17 @@ Model::VintageFilter::VintageFilter() {
 }
 
 QString Model::VintageFilter::getName() {
-    return FILTERNAME;
+	return FILTERNAME;
 }
 
 std::string Model::VintageFilter::getFilterDescription() {
-    return "curves=r='0/0,11 ,42/,51 1/0,95':g='0,50/0,48':b='0/0,22 ,49/,44 1/0,8'";
+	return "curves=r='0/0,11 ,42/,51 1/0,95':g='0,50/0,48':b='0/0,22 ,49/,44 1/0,8'";
 }
 
 void Model::VintageFilter::restoreFilter(QString description) {
-    //nothing to load
+	//nothing to load
 }
 
 QString Model::VintageFilter::getSaveString() {
-    //nothing to save
+	//nothing to save
 }

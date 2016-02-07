@@ -14,35 +14,35 @@ namespace Model {
 */
 class VintageFilter: public Model::Filter {
   public:
-    static const QString FILTERNAME;
+	static const QString FILTERNAME;
 
-    /**
-     * @brief VintageFilter Constructor.
-     */
+	/**
+	 * @brief VintageFilter Constructor.
+	 */
 	VintageFilter();
 
-    /**
-     * @brief getName
-     * @return
-     */
-    QString getName();
+	/**
+	 * @brief getName
+	 * @return
+	 */
+	QString getName();
 
-    /**
-     * @brief getFilterDescription
-     * @return
-     */
+	/**
+	 * @brief getFilterDescription
+	 * @return
+	 */
 	std::string getFilterDescription();
 
-    /**
-     * @brief restoreFilter
-     * @param description
-     */
+	/**
+	 * @brief restoreFilter
+	 * @param description
+	 */
 	void restoreFilter(QString description);
 
-    /**
-     * @brief getSaveString
-     * @return
-     */
+	/**
+	 * @brief getSaveString
+	 * @return
+	 */
 	QString getSaveString();
 };
 }

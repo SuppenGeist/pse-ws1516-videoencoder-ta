@@ -14,10 +14,10 @@ GUI::FrameView::FrameView(QWidget* parent):QWidget(parent),xOffset_(0),yOffset_(
 }
 
 void GUI::FrameView::setFrame(QImage& frame) {
-    if(frame.isNull())
-        return;
+	if(frame.isNull())
+		return;
 
-    originalFrame_=&frame;
+	originalFrame_=&frame;
 
 	currentFrame_=originalFrame_->scaled(width(),height(),Qt::KeepAspectRatio);
 
@@ -34,7 +34,7 @@ void GUI::FrameView::resizeEvent(QResizeEvent* event) {
 	if( size().isEmpty() || !originalFrame_ )
 		return;
 
-    QSize eRect=event->size();
+	QSize eRect=event->size();
 	currentFrame_=originalFrame_->scaled(eRect.width(),eRect.height(),Qt::KeepAspectRatio);
 
 	updateOffset();

@@ -11,17 +11,17 @@ Model::NegativeFilter::NegativeFilter() {
 }
 
 std::string Model::NegativeFilter::getFilterDescription() {
-    return "negate";
+	return "negate";
 }
 
 QString Model::NegativeFilter::getName() {
-    return FILTERNAME;
+	return FILTERNAME;
 }
 
 void Model::NegativeFilter::restoreFilter(QString description) {
-    //nothing to load
+	//nothing to load
 }
 
 QString Model::NegativeFilter::getSaveString() {
-    //nothing to save
+	//nothing to save
 }

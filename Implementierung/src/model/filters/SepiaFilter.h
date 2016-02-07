@@ -14,35 +14,35 @@ namespace Model {
 */
 class SepiaFilter: public Model::Filter {
   public:
-    static const QString FILTERNAME;
-    /**
-     * @brief SepiaFilter Constructor.
-     */
+	static const QString FILTERNAME;
+	/**
+	 * @brief SepiaFilter Constructor.
+	 */
 	SepiaFilter();
 
-    /**
-     * @brief getName
-     * @return
-     */
-    QString getName();
+	/**
+	 * @brief getName
+	 * @return
+	 */
+	QString getName();
 
-    /**
-     * @brief getFilterDescription
-     * @return
-     */
-    std::string getFilterDescription();
+	/**
+	 * @brief getFilterDescription
+	 * @return
+	 */
+	std::string getFilterDescription();
 
-    /**
-     * @brief restoreFilter
-     * @param description
-     */
-    void restoreFilter(QString description);
+	/**
+	 * @brief restoreFilter
+	 * @param description
+	 */
+	void restoreFilter(QString description);
 
-    /**
-     * @brief getSaveString
-     * @return
-     */
-    QString getSaveString();
+	/**
+	 * @brief getSaveString
+	 * @return
+	 */
+	QString getSaveString();
 };
 }
 

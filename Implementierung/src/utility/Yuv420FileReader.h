@@ -25,14 +25,14 @@ class Yuv420FileReader: public YuvFileReader {
 	 * @param height Height of the video.
 	 * @param fps
 	 */
-    Yuv420FileReader(QString filename, int width, int height);
+	Yuv420FileReader(QString filename, int width, int height);
 
-protected:
-    /**
-     * @brief parseNextFrame Parses the next frame.
-     * @return The parsed frame.
-     */
-    std::unique_ptr<QImage> parseNextFrame();
+  protected:
+	/**
+	 * @brief parseNextFrame Parses the next frame.
+	 * @return The parsed frame.
+	 */
+	std::unique_ptr<QImage> parseNextFrame();
 
   private:
 
@@ -44,7 +44,7 @@ protected:
 	 * @param success
 	 * @return The new vector.
 	 */
-    Yuv444Vector readNextVector();
+	Yuv444Vector readNextVector();
 };
 }
 

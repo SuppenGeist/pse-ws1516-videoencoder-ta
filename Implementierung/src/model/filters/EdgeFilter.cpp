@@ -11,17 +11,17 @@ Model::EdgeFilter::EdgeFilter() {
 }
 
 std::string Model::EdgeFilter::getFilterDescription() {
-    return "edgedetect";
+	return "edgedetect";
 }
 
 QString Model::EdgeFilter::getName() {
-    return FILTERNAME;
+	return FILTERNAME;
 }
 
 void Model::EdgeFilter::restoreFilter(QString description) {
-    //nothing to load
+	//nothing to load
 }
 
 QString Model::EdgeFilter::getSaveString() {
-    //nothing to save
+	//nothing to save
 }

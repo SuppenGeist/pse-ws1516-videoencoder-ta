@@ -48,13 +48,13 @@ class FilterTab : public QFrame {
 	 * @brief removeFilter removes teh given filter form the filterList
 	 * @param filterName name of the filter
 	 */
-    std::unique_ptr<Model::Filter> removeFilter(int index);
+	std::unique_ptr<Model::Filter> removeFilter(int index);
 
-    /**
-     * @brief setFilterList Sets the filterlist.
-     * @param list The filterlist to use.
-     */
-    void setFilterList(Model::FilterList list);
+	/**
+	 * @brief setFilterList Sets the filterlist.
+	 * @param list The filterlist to use.
+	 */
+	void setFilterList(Model::FilterList list);
 
 	/**
 	 * @brief setRawVideo Sets the video the filters are applied to. This operation resets the whole filtertab.
@@ -73,7 +73,7 @@ class FilterTab : public QFrame {
 	 * @param old old  list index
 	 * @param newIndex new  list index
 	 */
-    void moveFilter(int oldIndex, int newPos);
+	void moveFilter(int oldIndex, int newPos);
 
 	/**
 	 * @brief getMemento Creates a memento which contains the state of this tab.
@@ -87,23 +87,23 @@ class FilterTab : public QFrame {
 	 */
 	void restore(Memento::FilterTabMemento& memento);
 
-    /**
-     * @brief addFilter Adds a filter to the filterlist.
-     * @param filtername the name of the filter.
-     */
-    Model::Filter *addFilter(QString filtername);
+	/**
+	 * @brief addFilter Adds a filter to the filterlist.
+	 * @param filtername the name of the filter.
+	 */
+	Model::Filter *addFilter(QString filtername);
 
-    Model::FilterList* getFilterList();
+	Model::FilterList* getFilterList();
 
-    void updatePreview();
+	void updatePreview();
 
-    void insertFilter(std::unique_ptr<Model::Filter> filter,std::size_t index);
+	void insertFilter(std::unique_ptr<Model::Filter> filter,std::size_t index);
 
   public slots:
-    /**
-     * @brief reset resets the filter list
-     */
-    void reset();
+	/**
+	 * @brief reset resets the filter list
+	 */
+	void reset();
 
   private slots :
 
@@ -163,9 +163,9 @@ class FilterTab : public QFrame {
 	QPushButton*                        button_loadConf_;
 	QPushButton*                        button_reset_;
 	QPushButton*                        button_save_;
-    QVBoxLayout*                        v_player_;
+	QVBoxLayout*                        v_player_;
 	QLabel*                             label_selectedFilters_;
-    QListView*                          list_filterList_;
+	QListView*                          list_filterList_;
 	QTabWidget*                         filterTabs_;
 	QLabel*                             label_filterOptions_;
 	QStringListModel*                   model_list_;
@@ -176,11 +176,11 @@ class FilterTab : public QFrame {
 	FrameView*                          frameView_;
 	PlayerControlPanel*                 playerPanel_;
 
-    std::unique_ptr<Model::FilterList>  filterList_;
-    std::unique_ptr<Model::YuvVideo>    rawVideo_;
-    std::unique_ptr<Model::AVVideo>     previewFrames_;
-    std::unique_ptr<Model::Video>       filteredPreviewFrames_;
-    bool                                isPreviewShown_;
+	std::unique_ptr<Model::FilterList>  filterList_;
+	std::unique_ptr<Model::YuvVideo>    rawVideo_;
+	std::unique_ptr<Model::AVVideo>     previewFrames_;
+	std::unique_ptr<Model::Video>       filteredPreviewFrames_;
+	bool                                isPreviewShown_;
 
 
 	/**
@@ -191,7 +191,7 @@ class FilterTab : public QFrame {
 	/**
 	 * @brief createUi Creates the user interface.
 	 */
-    void createUi();
+	void createUi();
 
 };
 }

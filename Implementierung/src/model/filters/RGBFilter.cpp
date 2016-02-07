@@ -24,7 +24,7 @@ void Model::RGBFilter::setColor(BasicColor color) {
 }
 
 QString Model::RGBFilter::getName() {
-    return FILTERNAME;
+	return FILTERNAME;
 }
 
 void Model::RGBFilter::restoreFilter(QString description) {

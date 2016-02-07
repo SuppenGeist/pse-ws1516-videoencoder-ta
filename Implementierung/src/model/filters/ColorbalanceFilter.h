@@ -15,103 +15,103 @@ namespace Model {
 */
 class ColorbalanceFilter: public Filter {
   public:
-    static const QString FILTERNAME;
+	static const QString FILTERNAME;
 
-    /**
-     * @brief ColorbalanceFilter Constructor.
-     */
+	/**
+	 * @brief ColorbalanceFilter Constructor.
+	 */
 	ColorbalanceFilter();
 
-    /**
-     * @brief getColor Returns the color whose balance is to be changed.
-     * @return The color to change.
-     */
+	/**
+	 * @brief getColor Returns the color whose balance is to be changed.
+	 * @return The color to change.
+	 */
 	Model::BasicColor getColor();
 
-    /**
-     * @brief setColor Sets the color whose balance shall be changed.
-     * @param color The color to change.
-     */
+	/**
+	 * @brief setColor Sets the color whose balance shall be changed.
+	 * @param color The color to change.
+	 */
 	void setColor(Model::BasicColor color);
 
-    /**
-     * @brief getIntensity Returns the intensity of the change.
-     * @return The intensity.
-     */
+	/**
+	 * @brief getIntensity Returns the intensity of the change.
+	 * @return The intensity.
+	 */
 	int getIntensity();
 
-    /**
-     * @brief setIntensity Sets the intensity of the change.
-     * @param intensity The intensity.
-     */
+	/**
+	 * @brief setIntensity Sets the intensity of the change.
+	 * @param intensity The intensity.
+	 */
 	void setIntensity(int intensity);
 
-    /**
-     * @brief getBrightPixels Whether the bright pixels shall be changed.
-     * @return True if the bright pixels are changed.
-     */
+	/**
+	 * @brief getBrightPixels Whether the bright pixels shall be changed.
+	 * @return True if the bright pixels are changed.
+	 */
 	bool getBrightPixels();
 
-    /**
-     * @brief setBrightPixels Sets whether the bright pixels shall be changed.
-     * @param brightPixels True if the bright pixels shall be changed.
-     */
+	/**
+	 * @brief setBrightPixels Sets whether the bright pixels shall be changed.
+	 * @param brightPixels True if the bright pixels shall be changed.
+	 */
 	void setBrightPixels(bool brightPixels);
 
-    /**
-     * @brief getMediumPixels Whether the medium pixels shall be changed.
-     * @return True if the medium pixels are changed.
-     */
+	/**
+	 * @brief getMediumPixels Whether the medium pixels shall be changed.
+	 * @return True if the medium pixels are changed.
+	 */
 	bool getMediumPixels();
 
-    /**
-     * @brief setMediumPixels Sets whether the medium pixels shall be changed.
-     * @param mediumPixels True if the medium pixels are changed.
-     */
+	/**
+	 * @brief setMediumPixels Sets whether the medium pixels shall be changed.
+	 * @param mediumPixels True if the medium pixels are changed.
+	 */
 	void setMediumPixels(bool mediumPixels);
 
-    /**
-     * @brief getFilterDescription
-     * @return
-     */
+	/**
+	 * @brief getFilterDescription
+	 * @return
+	 */
 	std::string getFilterDescription();
 
-    /**
-     * @brief getName
-     * @return
-     */
-    QString getName();
+	/**
+	 * @brief getName
+	 * @return
+	 */
+	QString getName();
 
-    /**
-     * @brief getDarkPixels Whether the drak pixels shall be changed.
-     * @return True if the dark pixels are changed.
-     */
+	/**
+	 * @brief getDarkPixels Whether the drak pixels shall be changed.
+	 * @return True if the dark pixels are changed.
+	 */
 	bool getDarkPixels();
 
-    /**
-     * @brief setDarkPixels Sets whether the dark pixels shall be changed.
-     * @param darkPixels True if the dark pixels are changed.
-     */
+	/**
+	 * @brief setDarkPixels Sets whether the dark pixels shall be changed.
+	 * @param darkPixels True if the dark pixels are changed.
+	 */
 	void setDarkPixels(bool darkPixels);
 
-    /**
-     * @brief restoreFilter
-     * @param description
-     */
+	/**
+	 * @brief restoreFilter
+	 * @param description
+	 */
 	void restoreFilter(QString description);
 
-    /**
-     * @brief getSaveString
-     * @return
-     */
+	/**
+	 * @brief getSaveString
+	 * @return
+	 */
 	QString getSaveString();
 
-private:
-    int         intensity_;
-    bool        brightPixels_;
-    bool        mediumPixels_;
-    bool        darkPixels_;
-    BasicColor  color_;
+  private:
+	int         intensity_;
+	bool        brightPixels_;
+	bool        mediumPixels_;
+	bool        darkPixels_;
+	BasicColor  color_;
 };
 }
 

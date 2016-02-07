@@ -24,7 +24,7 @@ class AVVideo {
 	 */
 	AVVideo(int fps, int width, int height);
 
-    ~AVVideo();
+	~AVVideo();
 
 	/**
 	 * @brief getWidth Returns the width of the video.
@@ -46,7 +46,7 @@ class AVVideo {
 
 	/**
 	 * @brief getFrame Returns the frame at the given index.
-     * If the index is invalid nullptr is returned. This is not an owning pointer.
+	 * If the index is invalid nullptr is returned. This is not an owning pointer.
 	 * @param index the index of the frame to return
 	 * @return The frame at the given index.
 	 */
@@ -55,11 +55,11 @@ class AVVideo {
 	/**
 	 * @brief insertFrame Inserts a frame at the given index.
 	 * If the width and height of the frame dont match the size of the video false is returned.
-     * CAUTION:Ownership is transferred.
+	 * CAUTION:Ownership is transferred.
 	 * @param frame The frame to insert.
 	 * @param index The index to insert the frame at.
 	 */
-    bool insertFrame(AVFrame* frame, std::size_t index);
+	bool insertFrame(AVFrame* frame, std::size_t index);
 
 	/**
 	 * @brief removeFrame Removes the frame at the given index.
@@ -71,19 +71,19 @@ class AVVideo {
 	 * @brief insertFrames Inserts a vector of frames at the given index.
 	 * If the width and height of one frame dont match the size of the video false is returned.
 	 * All frames that match the size of the video are inserted either way.
-     * CAUTION:Ownership is transferred.
+	 * CAUTION:Ownership is transferred.
 	 * @param frames The frames to insert.
 	 * @param index The index to insert the frames at.
 	 */
-    bool insertFrames(std::vector<AVFrame *> &frames, std::size_t index);
+	bool insertFrames(std::vector<AVFrame *> &frames, std::size_t index);
 
-    /**
-     * @brief appendFrame
-     * CAUTION: Ownership is tranferred.
-     * @param frame
-     * @return
-     */
-    bool appendFrame(AVFrame *frame);
+	/**
+	 * @brief appendFrame
+	 * CAUTION: Ownership is tranferred.
+	 * @param frame
+	 * @return
+	 */
+	bool appendFrame(AVFrame *frame);
 
 	/**
 	 * @brief getNumberOfFrames Returns the number of frames in the video.
@@ -92,7 +92,7 @@ class AVVideo {
 	std::size_t getNumberOfFrames();
 
   private:
-    std::vector<AVFrame*> video_;
+	std::vector<AVFrame*> video_;
 	int fps_;
 	int width_;
 	int height_;

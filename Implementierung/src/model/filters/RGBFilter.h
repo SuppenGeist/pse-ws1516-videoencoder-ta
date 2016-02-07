@@ -16,52 +16,52 @@ namespace Model {
 */
 class RGBFilter: public Model::Filter {
   public:
-    static const QString FILTERNAME;
+	static const QString FILTERNAME;
   private:
 	Model::BasicColor* color;
 
-    /**
-     * @brief RGBFilter Constructor.
-     */
+	/**
+	 * @brief RGBFilter Constructor.
+	 */
   public:
 	RGBFilter();
 
 
-    /**
-     * @brief Returns the preserved color.
-     * @return The preserved color.
-     */
+	/**
+	 * @brief Returns the preserved color.
+	 * @return The preserved color.
+	 */
 	Model::BasicColor getColor();
 
-    /**
-     * @brief Sets the preserved color.
-     * @param The preserved color.
-     */
+	/**
+	 * @brief Sets the preserved color.
+	 * @param The preserved color.
+	 */
 	void setColor(Model::BasicColor color);
 
-    /**
-     * @brief getName
-     * @return
-     */
-    QString getName();
+	/**
+	 * @brief getName
+	 * @return
+	 */
+	QString getName();
 
-    /**
-     * @brief getFilterDescription
-     * @return
-     */
-    std::string getFilterDescription();
+	/**
+	 * @brief getFilterDescription
+	 * @return
+	 */
+	std::string getFilterDescription();
 
-    /**
-     * @brief restoreFilter
-     * @param description
-     */
-    void restoreFilter(QString description);
+	/**
+	 * @brief restoreFilter
+	 * @param description
+	 */
+	void restoreFilter(QString description);
 
-    /**
-     * @brief getSaveString
-     * @return
-     */
-    QString getSaveString();
+	/**
+	 * @brief getSaveString
+	 * @return
+	 */
+	QString getSaveString();
 };
 }
 

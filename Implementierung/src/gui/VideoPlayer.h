@@ -25,7 +25,7 @@ namespace GUI {
  * It provides a basic interface for handling playback of videos.
  */
 class VideoPlayer: public QObject,public Player {
-    Q_OBJECT
+	Q_OBJECT
   public:
 	/**
 	 * @brief VideoPlayer Constructor.
@@ -58,7 +58,7 @@ class VideoPlayer: public QObject,public Player {
 	 * @brief setVideo Sets the video.
 	 * @param video The video to play.
 	 */
-    void setVideo(Model::Video* video) noexcept;
+	void setVideo(Model::Video* video) noexcept;
 
 	/**
 	 * If no video is set nullptr is returned.
@@ -181,9 +181,9 @@ class VideoPlayer: public QObject,public Player {
 	 */
 	std::size_t getNumberOfFrames() const override;
 
-private slots:
+  private slots:
 
-    void updateViews();
+	void updateViews();
 
   private:
 	std::size_t             position_;
@@ -191,7 +191,7 @@ private slots:
 	std::vector<FrameView*> views_;
 	std::shared_ptr<Timer>  timer_;
 	ControlPanel*           masterPanel_;
-    QTimer                  viewUpdater_;
+	QTimer                  viewUpdater_;
 
 };
 }

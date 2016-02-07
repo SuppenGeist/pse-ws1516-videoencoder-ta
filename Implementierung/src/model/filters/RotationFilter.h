@@ -15,55 +15,55 @@ namespace Model {
 */
 class RotationFilter: public Model::Filter {
   public:
-    static const QString FILTERNAME;
+	static const QString FILTERNAME;
 
 
-    /**
-     * @brief RotationFilter Constructor.
-     */
+	/**
+	 * @brief RotationFilter Constructor.
+	 */
   public:
 	RotationFilter();
 
 
-    /**
-     * @brief Returns the angle of the rotation.
-     * @return The new rotation angle.
-     */
+	/**
+	 * @brief Returns the angle of the rotation.
+	 * @return The new rotation angle.
+	 */
   public:
 	int getAngle();
 
-    /**
-     * @brief Sets the angle of the rotation.
-     * @param The new rotation angle.
-     */
+	/**
+	 * @brief Sets the angle of the rotation.
+	 * @param The new rotation angle.
+	 */
 	void setAngle(int angle);
 
-    /**
-     * @brief getName
-     * @return
-     */
-    QString getName();
+	/**
+	 * @brief getName
+	 * @return
+	 */
+	QString getName();
 
-    /**
-     * @brief getFilterDescription
-     * @return
-     */
-    std::string getFilterDescription();
+	/**
+	 * @brief getFilterDescription
+	 * @return
+	 */
+	std::string getFilterDescription();
 
-    /**
-     * @brief restoreFilter
-     * @param description
-     */
-    void restoreFilter(QString description);
+	/**
+	 * @brief restoreFilter
+	 * @param description
+	 */
+	void restoreFilter(QString description);
 
-    /**
-     * @brief getSaveString
-     * @return
-     */
-    QString getSaveString();
+	/**
+	 * @brief getSaveString
+	 * @return
+	 */
+	QString getSaveString();
 
-private:
-  int angle;
+  private:
+	int angle;
 };
 }
 

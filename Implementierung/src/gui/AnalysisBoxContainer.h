@@ -64,7 +64,7 @@ class AnalysisBoxContainer: public QFrame {
 
 	 * @param video The raw video.
 	 */
-    void setRawVideo(Model::Video* video);
+	void setRawVideo(Model::Video* video);
 
 
 
@@ -106,7 +106,7 @@ class AnalysisBoxContainer: public QFrame {
 	UndoRedo::RemoveVideo* anaBoxContainer;
   private:
 
-    Model::Video* rawVideo;
+	Model::Video* rawVideo;
 	//private: shared_ptr<GUI::Timer> timer:std:;
 	GUI::GlobalControlPanel* controlPanel;
 	GUI::AnalysisTab* analysisBoxContainer;

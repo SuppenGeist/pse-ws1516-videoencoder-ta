@@ -33,21 +33,21 @@ class FilterContainerTab : public QFrame {
 	 * @brief addFilter Adds a selectable filter.
 	 * @param filter The new filter.
 	 */
-    void addFilter(QString filtername);
+	void addFilter(QString filtername);
 
 	/**
 	 * @brief setParentTab Sets the parent tab.
 	 * @param parent The parent tab.
 	 */
-    void setParentTab(FilterTab& parent);
+	void setParentTab(FilterTab& parent);
 
   private:
-    FilterTab*                  parentTab_;
-    QHBoxLayout*                container_;
-    QHBoxLayout*                filterContainer_;
-    std::vector<FilterView*>    filterViews_;
+	FilterTab*                  parentTab_;
+	QHBoxLayout*                container_;
+	QHBoxLayout*                filterContainer_;
+	std::vector<FilterView*>    filterViews_;
 
-    void createUi();
+	void createUi();
 };
 }
 

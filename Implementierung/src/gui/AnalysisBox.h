@@ -39,7 +39,7 @@ namespace GUI {
 */
 class AnalysisBox: public QFrame {
 
-    Q_OBJECT
+	Q_OBJECT
   public:
 
 	/**
@@ -60,11 +60,11 @@ class AnalysisBox: public QFrame {
 	 */
 	void restore(Memento::AnalysisBoxMemento memento);
 
-    /**
-     * @brief setTimer Sets the timer for the videoplayer.
-     * @param timer The timer for the videoplayer.
-     */
-    void setTimer(std::shared_ptr<GUI::Timer> timer);
+	/**
+	 * @brief setTimer Sets the timer for the videoplayer.
+	 * @param timer The timer for the videoplayer.
+	 */
+	void setTimer(std::shared_ptr<GUI::Timer> timer);
 
 
 	/**
@@ -93,38 +93,38 @@ class AnalysisBox: public QFrame {
 	 * @brief setAnalyseVideo Sets the video this box shall present.
 	 * @param video The video to present.
 	 */
-    void setAnalyseVideo(std::unique_ptr<Model::EncodedVideo> video);
+	void setAnalyseVideo(std::unique_ptr<Model::EncodedVideo> video);
 
-private slots:
-    /**
-     * @brief close removes this box from AnalysisBoxContainer
-     */
-    void close();
+  private slots:
+	/**
+	 * @brief close removes this box from AnalysisBoxContainer
+	 */
+	void close();
 
-    /**
-     * @brief textChanged updates QUndoStack
-     */
-    void textChanged();
+	/**
+	 * @brief textChanged updates QUndoStack
+	 */
+	void textChanged();
 
   public:
-    UndoRedo::RemoveVideo* anaBox_;
+	UndoRedo::RemoveVideo* anaBox_;
   private:
-    Model::Video* rawVideo_;
-    int currentlyPlayedVideo_;
-    QTabWidget* tabs_;
-    QPushButton* button_close_;
-    QTextEdit* textEdit_comment_;
-    GlobalControlPanel* playerPanel_;
-    GUI::AnalysisBoxContainer* boxes_;
-    std::unique_ptr<VideoPlayer> plainVideoPlayer_;
-    std::unique_ptr<VideoPlayer> analysisVideoPlayer_;
-    GUI::GraphWidget* psnrGraph_;
-    GUI::GraphWidget* bitrateGraph_;
-    GUI::GraphWidget* redHistogramm_;
-    GUI::GraphWidget* blueHistogramm_;
-    GUI::GraphWidget* greenHistogramm_;
-    std::unique_ptr<Model::EncodedVideo> video_;
-    Ui::AnalysisBox* ui_;
+	Model::Video* rawVideo_;
+	int currentlyPlayedVideo_;
+	QTabWidget* tabs_;
+	QPushButton* button_close_;
+	QTextEdit* textEdit_comment_;
+	GlobalControlPanel* playerPanel_;
+	GUI::AnalysisBoxContainer* boxes_;
+	std::unique_ptr<VideoPlayer> plainVideoPlayer_;
+	std::unique_ptr<VideoPlayer> analysisVideoPlayer_;
+	GUI::GraphWidget* psnrGraph_;
+	GUI::GraphWidget* bitrateGraph_;
+	GUI::GraphWidget* redHistogramm_;
+	GUI::GraphWidget* blueHistogramm_;
+	GUI::GraphWidget* greenHistogramm_;
+	std::unique_ptr<Model::EncodedVideo> video_;
+	Ui::AnalysisBox* ui_;
 };
 }
 

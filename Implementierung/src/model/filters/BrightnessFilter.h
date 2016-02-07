@@ -9,52 +9,52 @@ namespace Model {
 */
 class BrightnessFilter: public Filter {
   public:
-    static const QString FILTERNAME;
+	static const QString FILTERNAME;
 
-    /**
-     * @brief BrightnessFilter Constructor.
-     */
+	/**
+	 * @brief BrightnessFilter Constructor.
+	 */
 	BrightnessFilter();
 
-    /**
-     * @brief getIntensity Returns the intensity of the brightness.
-     * @return The intensity.
-     */
+	/**
+	 * @brief getIntensity Returns the intensity of the brightness.
+	 * @return The intensity.
+	 */
 	int getIntensity();
 
-    /**
-     * @brief setIntensity Sets the intensity of the brightness.
-     * @param intensity The new intensity.
-     */
+	/**
+	 * @brief setIntensity Sets the intensity of the brightness.
+	 * @param intensity The new intensity.
+	 */
 	void setIntensity(int intensity);
 
-    /**
-     * @brief getName
-     * @return
-     */
-    QString getName();
+	/**
+	 * @brief getName
+	 * @return
+	 */
+	QString getName();
 
-    /**
-     * @brief getFilterDescription
-     * @return
-     */
+	/**
+	 * @brief getFilterDescription
+	 * @return
+	 */
 	std::string getFilterDescription();
 
-    /**
-     * @brief restoreFilter
-     * @param description
-     */
+	/**
+	 * @brief restoreFilter
+	 * @param description
+	 */
 	void restoreFilter(QString description);
 
-    /**
-     * @brief getSaveString
-     * @return
-     */
+	/**
+	 * @brief getSaveString
+	 * @return
+	 */
 	QString getSaveString();
 
 
-private:
-    int     intensity_;
+  private:
+	int     intensity_;
 };
 }
 

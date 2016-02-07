@@ -21,8 +21,8 @@ GUI::PlayerControlPanel::PlayerControlPanel(QWidget* parent):QFrame(parent) {
 	connect(comboBox_speed_,SIGNAL(currentIndexChanged(int)),this,SLOT(changeSpeed(int)));
 	connect(slider_timeline_,SIGNAL(valueChanged(int)),this,SLOT(changeTimeline(int)));
 
-    connect(&updater_,SIGNAL(timeout()),this,SLOT(updateUi()));
-    updater_.start(500);
+	connect(&updater_,SIGNAL(timeout()),this,SLOT(updateUi()));
+	updater_.start(500);
 }
 
 void GUI::PlayerControlPanel::updateUi() {
@@ -178,10 +178,10 @@ void GUI::PlayerControlPanel::nextFrame() {
 }
 
 void GUI::PlayerControlPanel::previousFrame() {
-    if(masterPlayer_) {
+	if(masterPlayer_) {
 		masterPlayer_->previousFrame();
-        masterPlayer_->pause();
-    }
+		masterPlayer_->pause();
+	}
 
 	for(auto player:players_) {
 		player->previousFrame();

@@ -61,14 +61,14 @@ class PlayerControlPanel: public QFrame, public ControlPanel {
 	 */
 	void changeTimeline(int value);
 
-public slots:
-    /**
-     * If no master player is set the first player of the player list is taken.
-     * If this list is empty nothing happens.
-     *
-     * @brief updateUi Updates the ui of the control panel.
-     */
-    void updateUi() override;
+  public slots:
+	/**
+	 * If no master player is set the first player of the player list is taken.
+	 * If this list is empty nothing happens.
+	 *
+	 * @brief updateUi Updates the ui of the control panel.
+	 */
+	void updateUi() override;
 
   private:
 	QPushButton*    button_play_;
@@ -78,7 +78,7 @@ public slots:
 	QPushButton*    button_pause_;
 	QComboBox*      comboBox_speed_;
 	QSlider*        slider_timeline_;
-    QTimer          updater_;
+	QTimer          updater_;
 
 	/**
 	 * @brief createUi Creates the ui.

@@ -33,7 +33,7 @@ class YuvVideo {
 	YuvVideo(QString path, Utility::YuvType type,Utility::Compression compression, int width,
 	         int height, int fps);
 
-    ~YuvVideo();
+	~YuvVideo();
 
 	/**
 	 * @brief getPath Returns the path to the video.
@@ -91,8 +91,8 @@ class YuvVideo {
 	Utility::Compression                compression_;
 	std::unique_ptr<Model::Video>       displayVideo_;
 	std::unique_ptr<Model::AVVideo>     avVideo_;
-    Utility::YuvType                    yuvType_;
-    std::unique_ptr<Utility::YuvFileReader> fileReader_;
+	Utility::YuvType                    yuvType_;
+	std::unique_ptr<Utility::YuvFileReader> fileReader_;
 
 	/**
 	 * @brief loadVideo Loads the video from the file.

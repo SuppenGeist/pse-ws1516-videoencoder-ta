@@ -23,7 +23,7 @@ class Yuv411Vector {
 	 * @param y2
 	 * @param v
 	 * @param y3
-     * @param y4
+	 * @param y4
 	 */
 	Yuv411Vector(unsigned char u, unsigned char y1, unsigned char y2, unsigned char v, unsigned char y3,
 	             unsigned char y4);

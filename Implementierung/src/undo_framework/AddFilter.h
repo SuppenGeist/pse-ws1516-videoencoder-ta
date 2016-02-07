@@ -7,42 +7,40 @@
 #include <memory>
 
 namespace Model {
-    class Filter;
+class Filter;
 }
 namespace GUI {
-    class FilterTab;
+class FilterTab;
 }
 
-namespace UndoRedo
-{
+namespace UndoRedo {
+/**
+ * This is the undo command for adding a filter to the filterlist on the filtertab.
+ */
+class AddFilter: public QUndoCommand {
+  public:
 	/**
-	 * This is the undo command for adding a filter to the filterlist on the filtertab.
-     */
-    class AddFilter: public QUndoCommand
-    {
-        public:
-        /**
-         * @brief AddFilter Constructor.
-         * @param filterTab The filtertab to operate on.
-         * @param filter The filter on which the operation is performed on.
-         */
-        AddFilter(GUI::FilterTab& filterTab, QString filtername);
+	 * @brief AddFilter Constructor.
+	 * @param filterTab The filtertab to operate on.
+	 * @param filter The filter on which the operation is performed on.
+	 */
+	AddFilter(GUI::FilterTab& filterTab, QString filtername);
 
-        /**
-         * @brief undo Removes the added filter from the filterlist.
-         */
-        void undo();
+	/**
+	 * @brief undo Removes the added filter from the filterlist.
+	 */
+	void undo();
 
-        /**
-         * @brief redo Adds a filter to the filterlist.
-         */
-        void redo();
+	/**
+	 * @brief redo Adds a filter to the filterlist.
+	 */
+	void redo();
 
-    private:
+  private:
 
-        GUI::FilterTab* filterTab_;
-        QString         filtername_;
-	};
+	GUI::FilterTab* filterTab_;
+	QString         filtername_;
+};
 }
 
 #endif

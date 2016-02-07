@@ -16,16 +16,16 @@
 
 GUI::AnalysisBoxContainer::AnalysisBoxContainer(QWidget* parent) : QFrame(parent) {
 
-    ui = new Ui::AnalysisBoxContainer;
-    ui->setupUi(this);
-    AnalysisBox *a = new AnalysisBox(this);
-    ui->verticalLayout->addWidget(a);
-    a = new AnalysisBox(this);
-    ui->verticalLayout->addWidget(a);
-    a = new AnalysisBox(this);
-    ui->verticalLayout->addWidget(a);
-    a = new AnalysisBox(this);
-    ui->verticalLayout->addWidget(a);
+	ui = new Ui::AnalysisBoxContainer;
+	ui->setupUi(this);
+	AnalysisBox *a = new AnalysisBox(this);
+	ui->verticalLayout->addWidget(a);
+	a = new AnalysisBox(this);
+	ui->verticalLayout->addWidget(a);
+	a = new AnalysisBox(this);
+	ui->verticalLayout->addWidget(a);
+	a = new AnalysisBox(this);
+	ui->verticalLayout->addWidget(a);
 }
 
 Memento::AnalysisBoxContainerMemento GUI::AnalysisBoxContainer::getMemento() {
@@ -37,14 +37,14 @@ void GUI::AnalysisBoxContainer::restore(Memento::AnalysisBoxContainerMemento mem
 }
 
 void GUI::AnalysisBoxContainer::addVideo(QString path) {
-    AnalysisBox* anaBox = new AnalysisBox(this);
-    anaBox->setRawVideo(rawVideo);
-    anaBox->setAnalyseVideo(std::make_unique<Model::EncodedVideo>(path));
-    ui->verticalLayout->addWidget(anaBox);
-    boxes.push_back(anaBox);
-    if(255* boxes.size() > height()) {
-        resize(height()+255,width());
-    }
+	AnalysisBox* anaBox = new AnalysisBox(this);
+	anaBox->setRawVideo(rawVideo);
+	anaBox->setAnalyseVideo(std::make_unique<Model::EncodedVideo>(path));
+	ui->verticalLayout->addWidget(anaBox);
+	boxes.push_back(anaBox);
+	if(255* boxes.size() > height()) {
+		resize(height()+255,width());
+	}
 }
 
 void GUI::AnalysisBoxContainer::setRawVideo(Model::Video* video) {
@@ -72,16 +72,16 @@ void GUI::AnalysisBoxContainer::removeBox(AnalysisBox& box) {
 }
 
 GUI::AnalysisBox* GUI::AnalysisBoxContainer::addVideo(Model::EncodedVideo video) {
-    /*AnalysisBox* anaBox = new AnalysisBox(this);
-    anaBox->setRawVideo(rawVideo);
-    anaBox->setAnalyseVideo(video);
-    ui->verticalLayout->addWidget(anaBox);
-    boxes.push_back(anaBox);
-    if(255* boxes.length > height()) {
-        resize(height()+255,width());
-    }
-    return &anaBox;
-    */
+	/*AnalysisBox* anaBox = new AnalysisBox(this);
+	anaBox->setRawVideo(rawVideo);
+	anaBox->setAnalyseVideo(video);
+	ui->verticalLayout->addWidget(anaBox);
+	boxes.push_back(anaBox);
+	if(255* boxes.length > height()) {
+	    resize(height()+255,width());
+	}
+	return &anaBox;
+	*/
 }
 
 

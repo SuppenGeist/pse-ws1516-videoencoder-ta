@@ -11,9 +11,9 @@ Model::RotationFilter::RotationFilter():angle(30) {
 }
 
 std::string Model::RotationFilter::getFilterDescription() {
-    std::string str = std::string("rotate");
-    str+="=";
-    str+=std::to_string(angle);;
+	std::string str = std::string("rotate");
+	str+="=";
+	str+=std::to_string(angle);;
 }
 
 int Model::RotationFilter::getAngle() {
@@ -21,7 +21,7 @@ int Model::RotationFilter::getAngle() {
 }
 
 QString Model::RotationFilter::getName() {
-    return FILTERNAME;
+	return FILTERNAME;
 }
 
 void Model::RotationFilter::setAngle(int angle) {
@@ -29,11 +29,11 @@ void Model::RotationFilter::setAngle(int angle) {
 }
 
 void Model::RotationFilter::restoreFilter(QString description) {
-    QStringList list  = description.split(";");
-    setAngle(list[0].QString::toInt());
+	QStringList list  = description.split(";");
+	setAngle(list[0].QString::toInt());
 }
 
 QString Model::RotationFilter::getSaveString() {
-    QString str = QString::number(angle);
-    return str;
+	QString str = QString::number(angle);
+	return str;
 }

@@ -13,51 +13,51 @@ namespace Model {
 */
 class BlurFilter: public Filter {
   public:
-    static const QString FILTERNAME;
+	static const QString FILTERNAME;
 
-    /**
-     * @brief BlurFilter Constructor.
-     */
-    BlurFilter();
+	/**
+	 * @brief BlurFilter Constructor.
+	 */
+	BlurFilter();
 
-    /**
-      *@brief getIntensity.
-      *@return
-      */
-    int getIntensity();
+	/**
+	  *@brief getIntensity.
+	  *@return
+	  */
+	int getIntensity();
 
-    /**
-    * @brief setIntensity;
-    * @param intensity of the blurring.
-    */
-    void setIntensity(int intensity);
+	/**
+	* @brief setIntensity;
+	* @param intensity of the blurring.
+	*/
+	void setIntensity(int intensity);
 
-    /**
-     * @brief getFilterDescription
-     * @return
-     */
-    std::string getFilterDescription();
+	/**
+	 * @brief getFilterDescription
+	 * @return
+	 */
+	std::string getFilterDescription();
 
-    /**
-     * @brief getName
-     * @return
-     */
-    QString getName();
+	/**
+	 * @brief getName
+	 * @return
+	 */
+	QString getName();
 
-    /**
-     * @brief restoreFilter
-     * @param description
-     */
-    void restoreFilter(QString description);
+	/**
+	 * @brief restoreFilter
+	 * @param description
+	 */
+	void restoreFilter(QString description);
 
-    /**
-     * @brief getSaveString
-     * @return
-     */
-    QString getSaveString();
+	/**
+	 * @brief getSaveString
+	 * @return
+	 */
+	QString getSaveString();
 
-private:
-    int     intensity_;
+  private:
+	int     intensity_;
 };
 }
 

@@ -28,7 +28,7 @@ int Model::NoiseFilter::getIntensity() {
 }
 
 QString Model::NoiseFilter::getName() {
-    return FILTERNAME;
+	return FILTERNAME;
 }
 
 void Model::NoiseFilter::setIntensity(int intensity) {

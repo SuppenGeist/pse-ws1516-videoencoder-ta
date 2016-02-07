@@ -15,15 +15,16 @@
 #include "Yuv444Vector.h"
 
 Utility::Yuv422FileReader::Yuv422FileReader(QString filename, int width, int height,
-        Compression compression):YuvFileReader(filename,width,height,2*width*height),compression_(compression) {
+        Compression compression):YuvFileReader(filename,width,height,2*width*height),
+	compression_(compression) {
 }
 
 
 std::unique_ptr<QImage> Utility::Yuv422FileReader::parseNextFrame() {
-    position_=0;
+	position_=0;
 	auto frame=std::make_unique<QImage>(width_,height_,QImage::Format_RGB888);
 
-    Yuv422Vector (Yuv422FileReader::*func_read)()=nullptr;
+	Yuv422Vector (Yuv422FileReader::*func_read)()=nullptr;
 
 	if(compression_==Compression::PACKED) {
 		func_read=&Yuv422FileReader::readNextVectorPacked;
@@ -34,7 +35,7 @@ std::unique_ptr<QImage> Utility::Yuv422FileReader::parseNextFrame() {
 	}
 
 	for (int i = 0; i < height_*width_; i+=2) {
-        auto vec=(this->*func_read)();
+		auto vec=(this->*func_read)();
 
 		auto pixels=Yuv422ToRgb888(vec);
 		frame->setPixel(i%width_,i/width_,pixels[0]);
@@ -45,13 +46,13 @@ std::unique_ptr<QImage> Utility::Yuv422FileReader::parseNextFrame() {
 }
 
 Utility::Yuv422Vector Utility::Yuv422FileReader::readNextVectorPacked() {
-    auto u=binaryData_[position_];
-    auto y1=binaryData_[position_+1];
-    auto v=binaryData_[position_+2];
-    auto y2=binaryData_[position_+3];
+	auto u=binaryData_[position_];
+	auto y1=binaryData_[position_+1];
+	auto v=binaryData_[position_+2];
+	auto y2=binaryData_[position_+3];
 
-    position_+=4;
-    return Yuv422Vector(u,y1,v,y2);
+	position_+=4;
+	return Yuv422Vector(u,y1,v,y2);
 }
 
 std::vector<QRgb> Utility::Yuv422FileReader::Yuv422ToRgb888(Yuv422Vector vector) {
@@ -66,13 +67,13 @@ std::vector<QRgb> Utility::Yuv422FileReader::Yuv422ToRgb888(Yuv422Vector vector)
 }
 
 Utility::Yuv422Vector Utility::Yuv422FileReader::readNextVectorPlanar() {
-    int numberOfPixels=width_*height_;
+	int numberOfPixels=width_*height_;
 
-    auto y1=binaryData_[position_];
-    auto y2=binaryData_[position_+1];
-    auto u=binaryData_[numberOfPixels+position_/2];
-    auto v=binaryData_[numberOfPixels+numberOfPixels/2+position_/2];
+	auto y1=binaryData_[position_];
+	auto y2=binaryData_[position_+1];
+	auto u=binaryData_[numberOfPixels+position_/2];
+	auto v=binaryData_[numberOfPixels+numberOfPixels/2+position_/2];
 
-    position_+=2;
-    return Yuv422Vector(u,y1,v,y2);
+	position_+=2;
+	return Yuv422Vector(u,y1,v,y2);
 }

@@ -39,57 +39,57 @@ namespace GUI {
  * The tab that shows videos and analyses them.
 */
 class AnalysisTab: public QFrame {
-    Q_OBJECT
+	Q_OBJECT
 
   public:
-    /**
-     * @brief AnalysisTab Contructor.
-     * @param parent Parent of this Object.
-     */
-    AnalysisTab(QWidget* parent);
+	/**
+	 * @brief AnalysisTab Contructor.
+	 * @param parent Parent of this Object.
+	 */
+	AnalysisTab(QWidget* parent);
 
-    /**
-     * @brief getMemento Creates a memento which contains the state of this tab.
-     * @return The created memento.
-     */
-    Memento::AnalysisTabMemento getMemento();
+	/**
+	 * @brief getMemento Creates a memento which contains the state of this tab.
+	 * @return The created memento.
+	 */
+	Memento::AnalysisTabMemento getMemento();
 
 
-    /**
-     * @brief restore Restores the tab based on the memento.
-     * @param memento The memento which contains the state of the tab.
-     */
+	/**
+	 * @brief restore Restores the tab based on the memento.
+	 * @param memento The memento which contains the state of the tab.
+	 */
 	void restore(Memento::AnalysisTabMemento memento);
 
-     /**
-     * @brief setRawVideo Sets the raw video for the analysis. This operation resets the tab completely.
-     * @param video The new raw video.
-     */
-    void setRawVideo(std::unique_ptr<Model::YuvVideo> video);
+	/**
+	* @brief setRawVideo Sets the raw video for the analysis. This operation resets the tab completely.
+	* @param video The new raw video.
+	*/
+	void setRawVideo(std::unique_ptr<Model::YuvVideo> video);
 
-private slots:
+  private slots:
 
-    /**
-     * @brief loadRawVideo opens YuvFileOpenDialog and gives the video to AnalysisBoxContainer
-     */
+	/**
+	 * @brief loadRawVideo opens YuvFileOpenDialog and gives the video to AnalysisBoxContainer
+	 */
 	void loadRawVideo();
 
-    /**
-     * @brief addVideo opens QFIleDialog, and gives string to AnalysisBoxContainer
-     */
-    void addVideo();
+	/**
+	 * @brief addVideo opens QFIleDialog, and gives string to AnalysisBoxContainer
+	 */
+	void addVideo();
 
-    /**
-     * @brief analyseTypChanged tells AnalysisBox to showMacroBlocks() or showRGBDiff()
-     * @param index The new type. 0 = Macroblock, 1 = RGB_Diff
-     *
-     */
-    void analyseTypChanged(int index);
+	/**
+	 * @brief analyseTypChanged tells AnalysisBox to showMacroBlocks() or showRGBDiff()
+	 * @param index The new type. 0 = Macroblock, 1 = RGB_Diff
+	 *
+	 */
+	void analyseTypChanged(int index);
 
-    /**
-    * @brief saveResults Opens QFIleDialog and saves relevant data in the path.
-    */
-   void saveResults();
+	/**
+	* @brief saveResults Opens QFIleDialog and saves relevant data in the path.
+	*/
+	void saveResults();
 
   public:
 	GUI::FrameView* rawVideoView;
@@ -103,15 +103,15 @@ private slots:
 	QLabel* label_rawVideo;
 	QPushButton* button_addRawVideo;
 	QTabWidget* tab_properties;
-    QPushButton* button_addVideo;
-    GUI::PlayerControlPanel* playerPanel_;
+	QPushButton* button_addVideo;
+	GUI::PlayerControlPanel* playerPanel_;
 	GUI::Timer* playerTimer;
-    GUI::AnalysisBoxContainer* analysisBoxContainer;
+	GUI::AnalysisBoxContainer* analysisBoxContainer;
 	GUI::GlobalControlPanel* globalControlPanel;
 	Ui::AnalysisTab* ui;
 
-    std::unique_ptr<Model::YuvVideo>    rawVideo_;
-    std::unique_ptr<VideoPlayer>        player_;
+	std::unique_ptr<Model::YuvVideo>    rawVideo_;
+	std::unique_ptr<VideoPlayer>        player_;
 };
 }
 

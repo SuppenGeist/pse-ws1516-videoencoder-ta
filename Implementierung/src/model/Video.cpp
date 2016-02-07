@@ -47,8 +47,8 @@ void Model::Video::removeFrame(std::size_t index) {
 }
 
 bool Model::Video::appendFrame(std::unique_ptr<QImage> frame) {
-    if(frame->width()!=width_||frame->height()!=height_)
-        return false;
+	if(frame->width()!=width_||frame->height()!=height_)
+		return false;
 
 	frames_.push_back(std::move(frame));
 }
