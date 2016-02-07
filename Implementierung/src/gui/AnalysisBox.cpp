@@ -31,8 +31,7 @@ GUI::AnalysisBox::AnalysisBox(QWidget* parent) : QFrame(parent) {
 	ui_->rawVidCon->addWidget(frameView_);
 	frameView_->setMaximumWidth(600);
 	frameView_->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Expanding);
-	plainVideoPlayer_->addView(*frameView_);
-	//plainVideoPlayer_->setMasterControlPanel(*playerPanel_);
+    plainVideoPlayer_->addView(*frameView_);
 
 	analysisVideoPlayer_=std::make_unique<VideoPlayer>();
 	frameView_ = new FrameView;
@@ -40,10 +39,8 @@ GUI::AnalysisBox::AnalysisBox(QWidget* parent) : QFrame(parent) {
 	frameView_->setMaximumWidth(600);
 	frameView_->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Expanding);
 	analysisVideoPlayer_->addView(*frameView_);
-	//analysisVideoPlayer_->setMasterControlPanel(*playerPanel_);
 
-	//playerPanel_->addVideoPlayer(*plainVideoPlayer_);
-	//playerPanel_->addVideoPlayer(*analysisVideoPlayer_);
+
 
     connect(ui_->userComment, SIGNAL(textChanged()), this, SLOT(textChanged()));
     connect(ui_->close,SIGNAL(clicked()), this, SLOT(close()));
@@ -81,7 +78,12 @@ void GUI::AnalysisBox::setRawVideo(Model::Video* video) {
 }
 
 void GUI::AnalysisBox::setControlPanel(GUI::GlobalControlPanel* panel) {
-	playerPanel_ = panel;
+    playerPanel_ = panel;
+    playerPanel_->addVideoPlayer(*plainVideoPlayer_);
+    playerPanel_->addVideoPlayer(*analysisVideoPlayer_);
+    analysisVideoPlayer_->setMasterControlPanel(*playerPanel_);
+    plainVideoPlayer_->setMasterControlPanel(*playerPanel_);
+
 }
 
 void GUI::AnalysisBox::showMacroBlockVideo() {
@@ -98,7 +100,6 @@ void GUI::AnalysisBox::showRGBDifferenceVideo() {
 
 void GUI::AnalysisBox::close() {
 
-    setObjectName("AnalysisBoxDelete");
     boxes_->removeBox(this);
 }
 

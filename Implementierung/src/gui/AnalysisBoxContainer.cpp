@@ -75,6 +75,9 @@ void GUI::AnalysisBoxContainer::setRawVideo(Model::Video* video) {
 
 void GUI::AnalysisBoxContainer::setControlPanel(GUI::GlobalControlPanel* panel) {
     controlPanel_ = panel;
+    for (AnalysisBox* anaBox : boxes_) {
+        anaBox->setControlPanel(controlPanel_);
+    }
 }
 
 void GUI::AnalysisBoxContainer::showMacroBlockVideos() {
@@ -88,6 +91,7 @@ void GUI::AnalysisBoxContainer::showRGBDifferenceVideos() {
 }
 
 void GUI::AnalysisBoxContainer::removeBox(AnalysisBox* box) {
+    box->setObjectName("toBeDeleted");
     for (int i = 0; i < boxes_.size(); i++) {
         if(boxes_[i]->objectName() == box->objectName()) {
             delete boxes_[i];

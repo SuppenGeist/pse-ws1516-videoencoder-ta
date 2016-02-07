@@ -27,6 +27,7 @@ GUI::AnalysisTab::AnalysisTab(QWidget* parent) : QFrame(parent) {
 
 	connect(ui->save,SIGNAL(clicked()),this,SLOT(saveResults()));
 	connect(ui->addVideo,SIGNAL(clicked()),this,SLOT(addVideo()));
+    connect(ui->analysisTyp,SIGNAL(currentIndexChanged(int)), this, SLOT(analyseTypChanged(int)));
 
 	playerPanel_ =new PlayerControlPanel(ui->panel);
 	player_=std::make_unique<VideoPlayer>();
@@ -38,16 +39,33 @@ GUI::AnalysisTab::AnalysisTab(QWidget* parent) : QFrame(parent) {
 	player_->setTimer(std::make_shared<Timer>());
 	playerPanel_->setMasterVideoPlayer(*player_);
 	player_->setMasterControlPanel(*playerPanel_);
+    //analysisBoxContainer->setControlPanel(new GlobalControlPanel());
 
 }
 
 Memento::AnalysisTabMemento GUI::AnalysisTab::getMemento() {
+    Memento::AnalysisTabMemento memo;
+    memo.setAnalysisBoxContainerMemento(analysisBoxContainer->getMemento());
+    memo.setCurrentSpeed(player_->getSpeed());
+    memo.setCurrentVideoPosition(player_->getPosition());
+    memo.setCurrentlyShownAnalysisVideo(ui->analysisTyp->currentIndex());
+    return memo;
 }
 
 void GUI::AnalysisTab::restore(Memento::AnalysisTabMemento memento) {
+    analysisBoxContainer->restore(memento.getAnalysisBoxContainerMemento());
+    player_->setSpeed(memento.getCurrentSpeed());
+    player_->setPosition(memento.getCurrentVideoPosition());
+    ui->analysisTyp->setCurrentIndex(memento.getCurrentlyShownAnalysisVideo());
 }
 
 void GUI::AnalysisTab::analyseTypChanged(int index) {
+    // 0 = RGB_Diff, 1 = Macroblock
+    if(index == 1) {
+        analysisBoxContainer->showRGBDifferenceVideos();
+    } else if (index == 1) {
+        analysisBoxContainer->showMacroBlockVideos();
+    }
 }
 
 void GUI::AnalysisTab::addVideo() {

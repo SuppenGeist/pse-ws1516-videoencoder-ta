@@ -18,9 +18,9 @@ class MainWindowMemento {
   private:
 	int selectedTab;
   private:
-	Memento::AnalysisTabMemento* analysisTab;
+    Memento::AnalysisTabMemento analysisTab;
   private:
-	Memento::FilterTabMemento* filterTab;
+    Memento::FilterTabMemento filterTab;
 
 	/// <summary>
 	/// Constructor.
@@ -68,7 +68,7 @@ class MainWindowMemento {
 	/// </summary>
 	/// <param name="filterTabMemento">The FilterTabMemento.</param>
   public:
-	void setFilterTabMemento(FilterTabMemento *filterTabMemento);
+    void setFilterTabMemento(FilterTabMemento filterTabMemento);
 };
 }
 

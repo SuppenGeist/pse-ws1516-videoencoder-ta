@@ -81,13 +81,13 @@ class FilterTab : public QFrame {
 	 * @brief getMemento Creates a memento which contains the state of this tab.
 	 * @return the created memento
 	 */
-	std::unique_ptr<Memento::FilterTabMemento> getMemento();
+    Memento::FilterTabMemento getMemento();
 
 	/**
 	 * @brief restore Restores the tab based on the memento.
 	 * @param memento The memento which contains the state of the tab.
 	 */
-	void restore(Memento::FilterTabMemento& memento);
+    void restore(Memento::FilterTabMemento memento);
 
 	/**
 	 * @brief addFilter Adds a filter to the filterlist.

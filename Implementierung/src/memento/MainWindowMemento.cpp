@@ -26,6 +26,6 @@ Memento::FilterTabMemento Memento::MainWindowMemento::getFilterTabMemento() {
 	throw "Not yet implemented";
 }
 
-void Memento::MainWindowMemento::setFilterTabMemento(FilterTabMemento* filterTabMemento) {
+void Memento::MainWindowMemento::setFilterTabMemento(FilterTabMemento filterTabMemento) {
 	throw "Not yet implemented";
 }

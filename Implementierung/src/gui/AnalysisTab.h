@@ -81,7 +81,7 @@ class AnalysisTab: public QFrame {
 
 	/**
 	 * @brief analyseTypChanged tells AnalysisBox to showMacroBlocks() or showRGBDiff()
-	 * @param index The new type. 0 = Macroblock, 1 = RGB_Diff
+     * @param index The new type. 1 = RGB_Diff,  0 = Macroblock.
 	 *
 	 */
 	void analyseTypChanged(int index);

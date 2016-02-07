@@ -17,15 +17,22 @@ GUI::MainWindow::MainWindow(QWidget* parent):QMainWindow(parent) {
 }
 
 Memento::MainWindowMemento GUI::MainWindow::getMemento() {
-	throw "Not yet implemented";
+    Memento::MainWindowMemento memo;
+    memo.setAnalysisTabMemento(analysisTab->getMemento());
+    memo.setFilterTabMemento(filterTab->getMemento());
+    memo.setSelectedTab(ui->tab_tabs->currentIndex());
+    return memo;
 }
 
 void GUI::MainWindow::restore(Memento::MainWindowMemento memento) {
-	throw "Not yet implemented";
+    analysisTab->restore(memento.getAnalysisTabMemento());
+    filterTab->restore(memento.getFilterTabMemento());
+    ui->tab_tabs->setCurrentIndex(memento.getSelectedTab());
 }
 
 void GUI::MainWindow::newProject() {
-	throw "Not yet implemented";
+    createUi();
+    UndoRedo::UndoStack::getUndoStack().clear();
 }
 
 void GUI::MainWindow::undo() {
