@@ -20,14 +20,33 @@ class VintageFilter: public Model::Filter {
   public:
     static const QString FILTERNAME;
 
+    /**
+     * @brief VintageFilter Constructor.
+     */
 	VintageFilter();
 
+    /**
+     * @brief getName
+     * @return
+     */
     QString getName();
 
+    /**
+     * @brief getFilterDescription
+     * @return
+     */
 	std::string getFilterDescription();
 
+    /**
+     * @brief restoreFilter
+     * @param description
+     */
 	void restoreFilter(QString description);
 
+    /**
+     * @brief getSaveString
+     * @return
+     */
 	QString getSaveString();
 };
 }

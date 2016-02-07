@@ -60,8 +60,8 @@ class SharpnessFilter: public Model::Filter {
      * @brief getSaveString
      * @return
      */
-  public:
 	QString getSaveString();
+
 private:
   int intensity_;
 };

@@ -38,7 +38,7 @@ class RectangleFilter: public Model::Filter {
 	/// Sets the color of the rectangle.
 	/// </summary>
 	/// <param name="color">The new color of the rectangle.</param>
-    void setColor(QColor color_);
+    void setColor(QColor color);
 
 	/// <summary>
 	/// Returns the width of the rectangle.
@@ -50,7 +50,7 @@ class RectangleFilter: public Model::Filter {
 	/// Sets the width of the rectangle.
 	/// </summary>
 	/// <param name="width">The new width of the rectangle.</param>
-    void setWidth(int width_);
+    void setWidth(int width);
 
 	/// <summary>
 	/// Returns the height of the rectangle.
@@ -62,7 +62,7 @@ class RectangleFilter: public Model::Filter {
 	/// Sets the height of the rectangle.
 	/// </summary>
 	/// <param name="height">The new height of the rectangle.</param>
-    void setHeight(int height_);
+    void setHeight(int height);
 
 	/// <summary>
 	/// Returns the start position on the x axis.
@@ -76,7 +76,7 @@ class RectangleFilter: public Model::Filter {
 	/// Sets the start position on the x axis.
 	/// </summary>
 	/// <param name="x">The new start position on the x axis.</param>
-    void setX(int x_);
+    void setX(int x);
 
 	/// <summary>
 	/// Returns the start position on the y axis.
@@ -88,7 +88,7 @@ class RectangleFilter: public Model::Filter {
 	/// Sets the start position on the y axis.
 	/// </summary>
 	/// <param name="y">The new start position on the y axis.</param>
-    void setY(int y_);
+    void setY(int y);
 
 	/// <summary>
 	/// Returns the opacity of the rectangle.
@@ -100,7 +100,7 @@ class RectangleFilter: public Model::Filter {
 	/// Sets the opacity of the rectangle.
 	/// </summary>
 	/// <param name="opacity">The new opacity of the rectangle.</param>
-    void setOpacity(int opacity_);
+    void setOpacity(int opacity);
 
 	void restoreFilter(QString description);
 

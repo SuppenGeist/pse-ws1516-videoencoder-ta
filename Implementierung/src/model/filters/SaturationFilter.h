@@ -48,7 +48,7 @@ class SaturationFilter: public Model::Filter {
      * @brief Sets the intensity of the Saturation.
      * @param The intensity.
      */
-    void setIntensity(int intensity_);
+    void setIntensity(int intensity);
 
     /**
      * @brief restoreFilter

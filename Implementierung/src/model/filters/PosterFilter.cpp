@@ -7,15 +7,17 @@
 
 const QString Model::PosterFilter::FILTERNAME="Poster";
 
-Model::PosterFilter::PosterFilter() {
+Model::PosterFilter::PosterFilter():numberOfColors_(12) {
 }
 
 std::string Model::PosterFilter::getFilterDescription() {
-	throw "Not yet implemented";
+    std::string str = std::string("elbg=codebook_length='"+std::to_string(numberOfColors_));
+
+    return str;
 }
 
 int Model::PosterFilter::getNumberOfColors() {
-	return this->numberOfColors;
+    return numberOfColors_;
 }
 
 QString Model::PosterFilter::getName() {
@@ -23,7 +25,7 @@ QString Model::PosterFilter::getName() {
 }
 
 void Model::PosterFilter::setNumberOfColors(int numberOfColors) {
-	this->numberOfColors = numberOfColors;
+    numberOfColors_ = numberOfColors;
 }
 
 void Model::PosterFilter::restoreFilter(QString description) {
@@ -32,6 +34,6 @@ void Model::PosterFilter::restoreFilter(QString description) {
 }
 
 QString Model::PosterFilter::getSaveString() {
-    QString str = QString::number(numberOfColors);
+    QString str = QString::number(numberOfColors_);
     return str;
 }

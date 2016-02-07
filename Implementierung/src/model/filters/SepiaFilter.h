@@ -19,21 +19,34 @@ namespace Model {
 class SepiaFilter: public Model::Filter {
   public:
     static const QString FILTERNAME;
-
-  public:
+    /**
+     * @brief SepiaFilter Constructor.
+     */
 	SepiaFilter();
 
-  public:
+    /**
+     * @brief getName
+     * @return
+     */
     QString getName();
 
-  public:
-	std::string getFilterDescription();
+    /**
+     * @brief getFilterDescription
+     * @return
+     */
+    std::string getFilterDescription();
 
-  public:
-	void restoreFilter(QString description);
+    /**
+     * @brief restoreFilter
+     * @param description
+     */
+    void restoreFilter(QString description);
 
-  public:
-	QString getSaveString();
+    /**
+     * @brief getSaveString
+     * @return
+     */
+    QString getSaveString();
 };
 }
 
