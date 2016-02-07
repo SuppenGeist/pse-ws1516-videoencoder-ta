@@ -1,6 +1,7 @@
 #include <QApplication>
 #include "gui/MainWindow.h"
 #include "gui/FilterContainerTab.h"
+#include "mainwindowfv.h"
 
 extern "C" {
 #include <libavcodec/avcodec.h>
@@ -8,10 +9,10 @@ extern "C" {
 }
 
 int main(int argc, char *argv[]) {
-    avcodec_register_all();
-    avfilter_register_all();
+	avcodec_register_all();
+	avfilter_register_all();
 
-    QApplication a(argc, argv);
+	QApplication a(argc, argv);
     GUI::MainWindow mw;
 	mw.show();
 
