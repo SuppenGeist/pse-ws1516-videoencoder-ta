@@ -7,15 +7,21 @@
 
 const QString Model::ScaleFilter::FILTERNAME="Scale";
 
-Model::ScaleFilter::ScaleFilter():width_(100), height_(200),keepRatio_(false),ratio_(2) {
+Model::ScaleFilter::ScaleFilter():width_(100), height_(200),keepRatio_(true),ratio_(2) {
 }
 
 std::string Model::ScaleFilter::getFilterDescription() {
-	std::string str = std::string("scale");
-	str+="=";
-	str+=std::to_string(width_);
-	str+=":";
-	str+=std::to_string(height_);
+    std::string str = std::string("scale=");
+    if(keepRatio_){
+        str+=std::to_string(ratio_);
+        str+="*iw:";
+        str+=std::to_string(ratio_);
+        str+="*ih";
+    } else {
+        str+=std::to_string(width_);
+        str+=":";
+        str+=std::to_string(height_);
+    }
 	return str;
 }
 

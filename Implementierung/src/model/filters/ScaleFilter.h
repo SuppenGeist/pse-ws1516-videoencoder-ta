@@ -25,14 +25,14 @@ class ScaleFilter: public Model::Filter {
 
 
 	/**
-	 * @brief Whether the ration is preserved.
-	 * @return True if the ration is preserved.
+     * @brief Whether the ratio is preserved.
+     * @return True if the ratio is preserved.
 	 */
 	bool getKeepRatio();
 
 	/**
-	 * @brief Whether the ration is preserved.
-	 * @param True if the ration is preserved.
+     * @brief Whether the ratio is preserved.
+     * @param True if the ratio is preserved.
 	 */
 	void setKeepRatio(bool keepRatio);
 
