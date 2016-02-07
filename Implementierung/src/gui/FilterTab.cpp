@@ -89,14 +89,14 @@ GUI::FilterTab::FilterTab(QWidget* parent):QFrame(parent),isPreviewShown_(false)
 
 
 Memento::FilterTabMemento GUI::FilterTab::getMemento() {
-    Memento::FilterTabMemento memo;
+    /*Memento::FilterTabMemento memo;
     memo.setFilterList(&(*filterList_));
     memo.setWasApplied(!isPreviewShown_);
     //memo.setDisplayedFrame(frameView_->);
-    memo.setLoadedFile(rawVideo_->getPath().toStdString());
+    memo.setLoadedFile(rawVideo_->getPath().toStdString());*/
 
     //set yuv video data
-    return memo;
+    //return memo;
 
 }
 
