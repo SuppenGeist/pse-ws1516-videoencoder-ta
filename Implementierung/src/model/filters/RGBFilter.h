@@ -1,7 +1,7 @@
 
 #include <exception>
 #include <string>
-//NOT FINISHED
+
 
 #ifndef __RGBFilter_h__
 #define __RGBFilter_h__

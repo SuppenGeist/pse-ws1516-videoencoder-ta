@@ -232,7 +232,7 @@ void GUI::FilterTab::createUi() {
 	filterTab->addFilter(Model::SepiaFilter::FILTERNAME);
 	filterTab->addFilter(Model::SharpnessFilter::FILTERNAME);
 	filterTab->addFilter(Model::VintageFilter::FILTERNAME);
-	//filterTab->addFilter(Model::ZoomFilter::FILTERNAME);
+    filterTab->addFilter(Model::ZoomFilter::FILTERNAME);
 
 	artefactsTab->addFilter(Model::BorderFilter::FILTERNAME);
 	artefactsTab->addFilter(Model::GridFilter::FILTERNAME);

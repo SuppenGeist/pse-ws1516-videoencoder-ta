@@ -7,7 +7,7 @@
 
 const QString Model::ScaleFilter::FILTERNAME="Scale";
 
-Model::ScaleFilter::ScaleFilter():width_(100), height_(200),keepRatio_(true),ratio_(2) {
+Model::ScaleFilter::ScaleFilter():width_(100), height_(200),keepRatio_(false),ratio_(2) {
 }
 
 std::string Model::ScaleFilter::getFilterDescription() {
