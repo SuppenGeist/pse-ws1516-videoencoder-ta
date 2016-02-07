@@ -107,7 +107,7 @@ class AnalysisBox: public QFrame {
 	void textChanged();
 
   public:
-	UndoRedo::RemoveVideo* anaBox_;
+    UndoRedo::RemoveVideo* anaBox_;
   private:
 	Model::Video* rawVideo_;
 	int currentlyPlayedVideo_;
@@ -124,7 +124,7 @@ class AnalysisBox: public QFrame {
 	GUI::GraphWidget* blueHistogramm_;
 	GUI::GraphWidget* greenHistogramm_;
 	std::unique_ptr<Model::EncodedVideo> video_;
-	Ui::AnalysisBox* ui_;
+    Ui::AnalysisBox* ui_;
 };
 }
 

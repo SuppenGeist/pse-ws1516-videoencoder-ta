@@ -21,6 +21,7 @@
 
 
 GUI::AnalysisBox::AnalysisBox(QWidget* parent) : QFrame(parent) {
+    boxes_ = (AnalysisBoxContainer*) parent;
 	currentlyPlayedVideo_=0;
 	ui_ = new Ui::AnalysisBox;
 	ui_->setupUi(this);
@@ -44,8 +45,8 @@ GUI::AnalysisBox::AnalysisBox(QWidget* parent) : QFrame(parent) {
 	//playerPanel_->addVideoPlayer(*plainVideoPlayer_);
 	//playerPanel_->addVideoPlayer(*analysisVideoPlayer_);
 
-
-	//connect(ui_->close,SIGNAL(clicked()), this, SLOT(close()));
+    connect(ui_->userComment, SIGNAL(textChanged()), this, SLOT(textChanged()));
+    connect(ui_->close,SIGNAL(clicked()), this, SLOT(close()));
 }
 
 Memento::AnalysisBoxMemento GUI::AnalysisBox::getMemento() {
@@ -96,11 +97,13 @@ void GUI::AnalysisBox::showRGBDifferenceVideo() {
 }
 
 void GUI::AnalysisBox::close() {
-	throw "Not yet implemented";
+
+    setObjectName("AnalysisBoxDelete");
+    boxes_->removeBox(this);
 }
 
 void GUI::AnalysisBox::textChanged() {
-	throw "Not yet implemented";
+
 }
 
 void GUI::AnalysisBox::setAnalyseVideo(std::unique_ptr<Model::EncodedVideo> video) {
