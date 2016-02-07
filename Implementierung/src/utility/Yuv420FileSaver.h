@@ -32,13 +32,14 @@ class Yuv420FileSaver: public Utility::YuvFileSaver {
   public:
 	void save();
 
-	/// <summary>
+/*	/// <summary>
 	/// saves the ith frame.
 	/// If the index is invalid nothing happens.
 	/// </summary>
 	/// <param name="index">index of the frame to safe</param>
   private:
 	void saveFrame(int index);
+*/
 };
 }
 

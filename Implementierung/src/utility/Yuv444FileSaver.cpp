@@ -24,7 +24,7 @@ void Utility::Yuv444FileSaver::save() {
 void Utility::Yuv444FileSaver::savePacked() {
     for(std::size_t k=0; k<video_->getNumberOfFrames(); k++) {
         auto frame_=video_->getFrame(k);
-        for(int i=0; i<width_*height_; i+=4) {
+        for(int i=0; i<width_*height_; i++) {
             int y1=i/width_;
             int x1=i%width_;
 
@@ -44,7 +44,7 @@ void Utility::Yuv444FileSaver::savePlanar() {
         QVector<unsigned char> vBuffer;
         auto frame_=video_->getFrame(k);
 
-        for(int i=0; i<width_*height_; i+=4) {
+        for(int i=0; i<width_*height_; i++) {
             int y1=i/width_;
             int x1=i%width_;
 

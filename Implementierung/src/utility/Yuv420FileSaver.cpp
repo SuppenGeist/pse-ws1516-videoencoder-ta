@@ -10,29 +10,35 @@ Utility::Yuv420FileSaver::Yuv420FileSaver(QString filename,
 }
 
 void Utility::Yuv420FileSaver::save() {
-	for(std::size_t k=0; k<video_->getNumberOfFrames(); k++) {
-		QVector<unsigned char> uBuffer;
-		QVector<unsigned char> vBuffer;
-		auto frame_=video_->getFrame(k);
+    for(std::size_t k=0; k<video_->getNumberOfFrames(); k++) {
+        auto frame_=video_->getFrame(k);
+        unsigned char frameBuffer_[width_*height_*2];
+        for(int i=0; i<width_*height_; i++) {
+            int y1=i/width_;
+            int x1=i%width_;
+            if(!frame_->valid(x1,y1)) {
+                qDebug()<<"Wrong pixel coordinates";
+                continue;
+            }
+         auto pixel1 = frame_->pixel(x1,y1);
 
-		for(int i=0; i<width_*height_; i+=4) {
-			int y1=i/width_;
-			int x1=i%width_;
-			int y2=(i+1)/width_;
-			int x2=(i+1)%width_;
+         int y = 0.299*qRed(pixel1)+ 0.587*qGreen(pixel1) + 0.1144*qBlue(pixel1);
+         int u = (-0.147)*qRed(pixel1)-0.289*qGreen(pixel1)+0.436*qBlue(pixel1);
+         int v = 0.615*qRed(pixel1)-0.515*qGreen(pixel1)-0.100*qBlue(pixel1);
 
-			if(!frame_->valid(x1,y1)||!frame_->valid(x2,y2)) {
-				qDebug()<<"Wrong pixel coordinates";
-				continue;
-			}
-
-
-		}
+         int offset1=(y1/2)*(width_/2)+(x1/2)+width_*height_;
+         frameBuffer_[i] = y;
+         frameBuffer_[offset1] = u;
+         frameBuffer_[offset1+(width_*height_*1/4)] = v;
+        }
+        for(int j=0;j<width_*height_*1.5;j++){
+            dataStream_<<frameBuffer_[j];
+        }
 	}
 }
 
-void Utility::Yuv420FileSaver::saveFrame(int index) {
-	throw "Not yet implemented";
-}
+/*void Utility::Yuv420FileSaver::saveFrame(int index) {
 
+}
+*/
 

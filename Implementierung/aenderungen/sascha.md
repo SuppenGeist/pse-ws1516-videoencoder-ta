@@ -16,3 +16,6 @@ added constructors
 ##YUV444Saver
 add compression to attributes
 make rgb888ToYuv444(QRgb pixel1) not static 
+
+##YUV420Saver
+remove saveFrame funtion 
