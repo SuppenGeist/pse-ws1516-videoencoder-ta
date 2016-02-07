@@ -75,6 +75,7 @@ void GUI::AnalysisTab::loadRawVideo() {
 }
 
 void GUI::AnalysisTab::saveResults() {
+
 }
 
 void GUI::AnalysisTab::setRawVideo(std::unique_ptr<Model::YuvVideo> video) {

@@ -57,6 +57,7 @@ void GUI::MainWindow::saveAs() {
 
 void GUI::MainWindow::loadProject() {
     QString fileName = QFileDialog::getOpenFileName(this, tr("Open Image"), "/", tr("Text Files (*.txt)"));
+
     if(fileName.length() > 0) {
         Utility::ProjectReader w = Utility::ProjectReader(fileName);
         *loadedProject_ = w.readProject();

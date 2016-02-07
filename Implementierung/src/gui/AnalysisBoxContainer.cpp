@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QFrame>
 #include <QUndoStack>
+#include <memory>
 
 #include "../model/Video.h"
 #include "Timer.h"
@@ -69,9 +70,9 @@ void GUI::AnalysisBoxContainer::setRawVideo(Model::Video* video) {
     rawVideo_ = video;
 }
 
-/*void GUI::AnalysisBoxContainer::setTimer(shared_ptrshared_ptr<GUI::Timer> timer:std:) {
-	throw "Not yet implemented";
-} */
+void GUI::AnalysisBoxContainer::setTimer(std::shared_ptr<GUI::Timer> timer) {
+    this->timer = timer;
+}
 
 void GUI::AnalysisBoxContainer::setControlPanel(GUI::GlobalControlPanel* panel) {
     controlPanel_ = panel;
@@ -111,12 +112,14 @@ GUI::AnalysisBox* GUI::AnalysisBoxContainer::addVideo(Model::EncodedVideo video)
     boxes_.push_back(anaBox);
     if(255* width() > height()) {
 	    resize(height()+255,width());
-	}
-    return anaBox;
-    */
+    }
     if(255* boxes_.size() > height()) {
         resize(height()+255,width());
     }
+    //something to set rgbDif/Makroblock video
+    return anaBox;
+    */
+
 }
 
 

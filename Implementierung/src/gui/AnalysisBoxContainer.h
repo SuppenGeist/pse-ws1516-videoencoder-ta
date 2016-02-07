@@ -3,16 +3,17 @@
 
 
 #include <vector>
-
+#include <memory>
 
 #include <QWidget>
 #include <QFrame>
+
+#include "Timer.h"
 
 namespace Ui {
 class AnalysisBoxContainer;
 }
 namespace GUI {
-class Timer;
 class AnalysisTab;
 class AnalysisBox;
 class GlobalControlPanel;
@@ -72,7 +73,7 @@ class AnalysisBoxContainer: public QFrame {
 	 * @brief setTimer Sets the timer for the videoplayers.
 	 * @param timer The timer for the videoplayers.
 	 */
-	//void setTimer(shared_ptr<GUI::Timer> timer:std:);
+    void setTimer(std::shared_ptr<GUI::Timer> timer);
 
 	/**
 	 * @brief setControlPanel Sets the GlobalControlPanel.
@@ -107,7 +108,7 @@ class AnalysisBoxContainer: public QFrame {
   private:
 
     Model::Video* rawVideo_;
-	//private: shared_ptr<GUI::Timer> timer:std:;
+private: std::shared_ptr<GUI::Timer> timer;
     GUI::GlobalControlPanel* controlPanel_;
     GUI::AnalysisTab* analysisBoxContainer_;
     std::vector<GUI::AnalysisBox*> boxes_;

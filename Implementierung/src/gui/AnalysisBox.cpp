@@ -69,10 +69,11 @@ void GUI::AnalysisBox::restore(Memento::AnalysisBoxMemento memento) {
 
 }
 
-/*void AnalysisBox::setTimer(shared_ptrshared_ptr<GUI::Timer> timer:std:) {
-    throw "Not yet implemented";
+void GUI::AnalysisBox::setTimer(std::shared_ptr<GUI::Timer> timer) {
+    analysisVideoPlayer_->setTimer(timer);
+    plainVideoPlayer_->setTimer(timer);
 }
-*/
+
 void GUI::AnalysisBox::setRawVideo(Model::Video* video) {
 	this->rawVideo_ = video;
 }
