@@ -50,6 +50,7 @@
 #include "../model/filters/GridFilter.h"
 #include "../model/filters/MirrorFilter.h"
 #include "../model/filters/NegativeFilter.h"
+#include "../model/filters/MirrorFilter.h"
 
 
 extern "C" {
@@ -202,6 +203,7 @@ void GUI::FilterTab::createUi() {
     filterTab->addFilter(Model::EdgeFilter::FILTERNAME);
     filterTab->addFilter(Model::GrayscaleFilter::FILTERNAME);
     filterTab->addFilter(Model::NegativeFilter::FILTERNAME);
+    filterTab->addFilter(Model::MirrorFilter::FILTERNAME);
 
     artefactsTab->addFilter(Model::BorderFilter::FILTERNAME);
     artefactsTab->addFilter(Model::GridFilter::FILTERNAME);

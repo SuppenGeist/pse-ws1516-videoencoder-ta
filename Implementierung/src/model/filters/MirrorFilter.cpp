@@ -3,16 +3,25 @@
 #include <QString>
 #include <QStringList>
 
+#include <string>
+#include <stdexcept>
+
 #include "../MirrorMode.h"
 #include "Filter.h"
 
 const QString Model::MirrorFilter::FILTERNAME="Mirror";
 
-Model::MirrorFilter::MirrorFilter() {
+Model::MirrorFilter::MirrorFilter():mode_(MirrorMode::HORIZONTAL) {
+
 }
 
 std::string Model::MirrorFilter::getFilterDescription() {
-	throw "Not yet implemented";
+    if(mode_==MirrorMode::HORIZONTAL) {
+        return "null";//return "crop=iw/2:ih:0:0,split[left][tmp];[tmp]hflip[right];[left][right] hstack";
+    }else  if(mode_==MirrorMode::VERTICAL) {
+        return "null";
+    }
+    throw std::logic_error("Should not get here");
 }
 
 QString Model::MirrorFilter::getName() {
@@ -20,15 +29,15 @@ QString Model::MirrorFilter::getName() {
 }
 
 Model::MirrorMode Model::MirrorFilter::getMode() {
-	throw "Not yet implemented";
+    return mode_;
 }
 
 void Model::MirrorFilter::setMode(MirrorMode mode) {
-	throw "Not yet implemented";
+    mode_=mode;
 }
 
 void Model::MirrorFilter::restoreFilter(QString description) {
-	throw "Not yet implemented";
+
 }
 
 QString Model::MirrorFilter::getSaveString() {
