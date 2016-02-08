@@ -83,7 +83,7 @@ void Model::YuvVideo::loadVideo() {
 	default:
 		throw std::logic_error("Should not get here");
 	}
-	displayVideo_=std::make_unique<Video>(fps_,width_,height_);
+    displayVideo_=std::make_unique<Video>(fps_);
 	fileReader_->read(displayVideo_.get());
 }
 

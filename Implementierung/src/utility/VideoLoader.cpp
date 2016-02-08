@@ -52,8 +52,7 @@ unique_ptr<Model::AVVideo> VideoLoader::loadVideo() {
 
 	AVPacket *packet = NULL;
 	AVFrame *frame = NULL;
-	unique_ptr<Model::AVVideo> video = make_unique<Model::AVVideo>(codecContext->framerate.num,
-	                                   codecContext->width, codecContext->height);
+    unique_ptr<Model::AVVideo> video = make_unique<Model::AVVideo>(codecContext->framerate.num);
 
 	while(av_read_frame(formatContext, packet) >= 0) {
 		frame = av_frame_alloc();

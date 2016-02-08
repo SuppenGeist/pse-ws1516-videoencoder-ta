@@ -354,7 +354,7 @@ void GUI::FilterTab::updatePreview() {
         playerPanel_->hide();
         v_player_->addWidget(previewPanel_);
         previewPanel_->show();
-        previewFrames_=std::make_unique<Model::AVVideo>(1,rawVideo_->getWidth(),rawVideo_->getHeight());
+        previewFrames_=std::make_unique<Model::AVVideo>(1);
 
         static int numberOfPreviewFrames=5;
         int videoFramecount=rawVideo_->getVideo().getNumberOfFrames();
@@ -372,12 +372,11 @@ void GUI::FilterTab::updatePreview() {
         isPreviewShown_=true;
     }
     player_->setVideo(nullptr);
-    filteredPreviewFrames_=std::make_unique<Model::Video>(1,rawVideo_->getWidth(),
-                           rawVideo_->getHeight());
+    filteredPreviewFrames_=std::make_unique<Model::Video>(1);
 
     Utility::FilterApplier filterApplier(*filterList_,rawVideo_->getWidth(),rawVideo_->getHeight(),
                                          AV_PIX_FMT_RGB24);
-    Model::AVVideo filteredVideo(1,rawVideo_->getWidth(),rawVideo_->getHeight());
+    Model::AVVideo filteredVideo(1);
     filterApplier.applyToVideo(filteredVideo,*previewFrames_);
 
     for(std::size_t i=0; i<filteredVideo.getNumberOfFrames(); i++) {
