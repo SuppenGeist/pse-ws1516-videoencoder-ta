@@ -18,6 +18,9 @@ namespace GUI
          * @param parent
          */
         PlainFilterBox(QWidget* parent=0);
+
+    protected:
+        void updateUi();
 	};
 }
 

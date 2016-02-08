@@ -7,6 +7,7 @@
 #include <QVBoxLayout>
 #include <QLabel>
 #include <QScrollArea>
+#include <QPushButton>
 
 #include <memory>
 
@@ -16,6 +17,7 @@ class Filter;
 
 namespace GUI {
 class FrameView;
+class FilterTab;
 }
 
 namespace GUI
@@ -25,8 +27,10 @@ namespace GUI
      */
     class FilterConfigurationBox:public QFrame
     {
+        Q_OBJECT
         public:
-        static std::unique_ptr<FilterConfigurationBox> CreateConfigurationBox(Model::Filter& filter);
+        static std::unique_ptr<FilterConfigurationBox> CreateConfigurationBox(FilterTab& filterTab,Model::Filter& filter);
+
         /**
          * @brief FilterConfigurationBox Constructor.
          * @param parent
@@ -47,29 +51,31 @@ namespace GUI
          */
         Model::Filter* getFilter();
 
+        void setFilterTab(FilterTab& filterTab);
 
-        void createUi();
+
 
 
         protected:
             std::unique_ptr<Model::Filter>  tempFilter_;
             QLabel*                         label_filter_;
-            QVBoxLayout*    v_filterOptions_;
-            QHBoxLayout*    h_content;
+            QScrollArea*                    filterOptionsArea_;
 
             void updatePreview();
+            virtual void updateUi()=0;
 
-            virtual void createFilterOptions();
-
+    private slots:
+            void applyFilter();
 
     private:
             static std::unique_ptr<QImage>  defaultImage_;
             std::unique_ptr<QImage>         filteredImage_;
             FrameView*                      filterPreview_;
             Model::Filter* filter_;
-            QScrollArea*                    filterOptionsArea_;
-
+            QPushButton*                    button_apply_;
+            FilterTab* filterTab_;
             static QImage &getDefaultImage();
+            void createUi();
 
 
 

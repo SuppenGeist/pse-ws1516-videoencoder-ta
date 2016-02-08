@@ -68,6 +68,7 @@
 #include "../model/filters/VintageFilter.h"
 #include "../model/filters/ZoomFilter.h"
 #include "filter_boxes/FilterConfigurationBox.h"
+#include "filter_boxes/PlainFilterBox.h"
 
 extern "C" {
 #include <libavutil/pixfmt.h>
@@ -261,22 +262,30 @@ void GUI::FilterTab::createUi() {
     scrollArea_artefacts->setVerticalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAlwaysOff);
     scrollArea_artefacts->setFixedHeight(245);
 
-    QScrollArea* wrapper=new QScrollArea;
+    //QScrollArea* wrapper=new QScrollArea;
     QFrame* optionsWidget=new QFrame;
+    optionsWidget->setObjectName("OptWid");
+    optionsWidget->setStyleSheet("QFrame#OptWid {"
+                                 "background-color:rgb(235,235,235);"
+                                 "}");
     optionsWidget->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     filterOptionsLayout_=new QHBoxLayout;
-    currentBox_=new FilterConfigurationBox;
+    QSpacerItem* sp4=new QSpacerItem(0,0,QSizePolicy::Expanding,QSizePolicy::Expanding);
+    filterOptionsLayout_->addSpacerItem(sp4);
+    currentBox_=new PlainFilterBox;
     filterOptionsLayout_->addWidget(currentBox_);
+    spacer_filterOpt_=new QSpacerItem(0,0,QSizePolicy::Expanding,QSizePolicy::Expanding);
+    filterOptionsLayout_->addSpacerItem(spacer_filterOpt_);
 
     optionsWidget->setLayout(filterOptionsLayout_);
 
-    wrapper->setWidget(optionsWidget);
-    wrapper->setVerticalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAlwaysOff);
-    wrapper->setHorizontalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAlwaysOff);
+    //wrapper->setWidget(optionsWidget);
+    //wrapper->setVerticalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAlwaysOff);
+    //wrapper->setHorizontalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAlwaysOff);
 
     filterTabs_->addTab(scrollArea_filters,tr("Filters"));
     filterTabs_->addTab(scrollArea_artefacts,tr("Artefacts"));
-    filterTabs_->addTab(wrapper,tr("Filter options"));
+    filterTabs_->addTab(optionsWidget,tr("Filter options"));
     filterTabs_->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Minimum);
 
 
@@ -493,6 +502,7 @@ void GUI::FilterTab::reset() {
     model_list_->removeRows(0,model_list_->rowCount());
     playerPanel_->updateUi();
     previewPanel_->updateUi();
+    currentBox_->hide();
     if(isPreviewShown_) {
         v_player_->removeWidget(previewPanel_);
         v_player_->addWidget(playerPanel_);
@@ -512,14 +522,16 @@ void GUI::FilterTab::listSelectionChanged(QItemSelection selection) {
     if(selection.indexes().isEmpty())
         return;
 
-    /*auto filter=filterList_->getFilter(selection.indexes().first().row());
+    auto filter=filterList_->getFilter(selection.indexes().first().row());
     filterOptionsLayout_->removeWidget(currentBox_);
     currentBox_->hide();
     delete currentBox_;
-    auto filterbox=FilterConfigurationBox::CreateConfigurationBox(*filter);
+    auto filterbox=FilterConfigurationBox::CreateConfigurationBox(*this,*filter);
     auto ptr=filterbox.release();
     currentBox_=ptr;
-    filterOptionsLayout_->addWidget(currentBox_);*/
+    filterOptionsLayout_->addWidget(currentBox_);
+    filterOptionsLayout_->removeItem(spacer_filterOpt_);
+    filterOptionsLayout_->addItem(spacer_filterOpt_);
 
 }
 

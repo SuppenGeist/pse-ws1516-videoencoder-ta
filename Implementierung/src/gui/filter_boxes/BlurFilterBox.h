@@ -14,6 +14,7 @@ namespace GUI
      */
     class BlurFilterBox: public FilterConfigurationBox
     {
+        Q_OBJECT
         public:
         /**
          * @brief BlurFilterBox Constructor.
@@ -22,11 +23,17 @@ namespace GUI
         BlurFilterBox(QWidget* parent=0);
 
     protected:
-        virtual void createFilterOptions();
+        void updateUi() override;
 
+
+    private slots:
+        void sliderChanged(int value);
+        void spinBoxChanged(int value);
     private:
         QSlider*     slider_;
         QSpinBox*   spinBox_;
+
+        virtual void createFilterOptions();
 	};
 }
 

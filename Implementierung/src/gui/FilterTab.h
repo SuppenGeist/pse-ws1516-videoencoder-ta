@@ -9,6 +9,7 @@
 #include <QListView>
 #include <QStringListModel>
 #include <QLabel>
+#include <QSpacerItem>
 #include <QTabWidget>
 #include <QItemSelection>
 #include <QVBoxLayout>
@@ -168,6 +169,7 @@ class FilterTab : public QFrame {
 	QPushButton*                        button_reset_;
 	QPushButton*                        button_save_;
 	QVBoxLayout*                        v_player_;
+    QSpacerItem*                        spacer_filterOpt_;
     QHBoxLayout*                        filterOptionsLayout_;
 	QLabel*                             label_selectedFilters_;
 	QListView*                          list_filterList_;
