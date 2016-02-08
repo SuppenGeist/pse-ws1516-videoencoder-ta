@@ -57,6 +57,7 @@ std::unique_ptr<GUI::FilterConfigurationBox> GUI::FilterConfigurationBox::Create
 void GUI::FilterConfigurationBox::setFilter(Model::Filter& filter) {
     filter_=&filter;
     tempFilter_->restoreFilter(filter.getSaveString());
+    label_filter_->setText(filter_->getName()+" filter");
     updateUi();
 }
 

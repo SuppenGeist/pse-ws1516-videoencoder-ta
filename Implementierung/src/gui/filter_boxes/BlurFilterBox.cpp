@@ -15,8 +15,6 @@
 GUI::BlurFilterBox::BlurFilterBox(QWidget* parent):FilterConfigurationBox(parent) {
     tempFilter_=std::make_unique<Model::BlurFilter>();
 
-    label_filter_->setText(Model::BlurFilter::FILTERNAME+" filter");
-
     createFilterOptions();
 
     connect(slider_,SIGNAL(valueChanged(int)),this,SLOT(sliderChanged(int)));

@@ -53,7 +53,6 @@ HEADERS += \
     src/gui/filter_boxes/SaturationFilterBox.h \
     src/gui/filter_boxes/ScaleFilterBox.h \
     src/gui/filter_boxes/SharpnessFilterBox.h \
-    src/gui/filter_boxes/ZoomFilterBox.h \
     src/memento/AnalysisBoxContainerMemento.h \
     src/memento/AnalysisBoxMemento.h \
     src/memento/AnalysisTabMemento.h \
@@ -169,7 +168,6 @@ SOURCES += \
     src/gui/filter_boxes/SaturationFilterBox.cpp \
     src/gui/filter_boxes/ScaleFilterBox.cpp \
     src/gui/filter_boxes/SharpnessFilterBox.cpp \
-    src/gui/filter_boxes/ZoomFilterBox.cpp \
     src/memento/AnalysisBoxContainerMemento.cpp \
     src/memento/AnalysisBoxMemento.cpp \
     src/memento/AnalysisTabMemento.cpp \
