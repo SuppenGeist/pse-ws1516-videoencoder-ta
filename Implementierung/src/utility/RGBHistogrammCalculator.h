@@ -1,19 +1,14 @@
-/*
-#include <exception>
 using namespace std;
 
 #ifndef __RGBHistogrammCalculator_h__
 #define __RGBHistogrammCalculator_h__
 
-#include "Video.h"
-#include "Graph.h"
+#include "../model/Video.h"
+#include "../model/Graph.h"
 
-namespace GUI
-{
-	class Video;
-}
 namespace Model
 {
+	class Video;
 	class Graph;
 }
 namespace Utility
@@ -25,10 +20,10 @@ namespace Utility
 {
 	/**
 	 * This class calculates the RGB histogramm for a video.
-
+     */
 	class RGBHistogrammCalculator
 	{
-		private: GUI::Video* video;
+        private: Model::Video* video;
 		private: Model::Graph redHistogramm;
 		private: Model::Graph greenHistogramm;
 		private: Model::Graph blueHistogramm;
@@ -37,7 +32,7 @@ namespace Utility
 		/// Constructor.
 		/// </summary>
 		/// <param name="video">the video that is analyzed.</param>
-		public: void RGBHistorgrammCalculator(GUI::Video& video);
+        public: void RGBHistorgrammCalculator(Model::Video& video);
 
 		/// <summary>
 		/// Calculates the red, green and blue components of a video.
@@ -62,4 +57,3 @@ namespace Utility
 }
 
 #endif
-*/
