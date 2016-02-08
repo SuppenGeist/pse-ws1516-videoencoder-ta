@@ -234,7 +234,7 @@ void GUI::FilterTab::createUi() {
     filterTab->addFilter(Model::ContrastFilter::FILTERNAME);
     filterTab->addFilter(Model::EdgeFilter::FILTERNAME);
     filterTab->addFilter(Model::GrayscaleFilter::FILTERNAME);
-    //filterTab->addFilter(Model::MirrorFilter::FILTERNAME);
+    filterTab->addFilter(Model::MirrorFilter::FILTERNAME);
     filterTab->addFilter(Model::NegativeFilter::FILTERNAME);
     filterTab->addFilter(Model::NoiseFilter::FILTERNAME);
     filterTab->addFilter(Model::PosterFilter::FILTERNAME);
