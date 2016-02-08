@@ -66,7 +66,6 @@
 #include "../model/filters/SepiaFilter.h"
 #include "../model/filters/SharpnessFilter.h"
 #include "../model/filters/VintageFilter.h"
-#include "../model/filters/ZoomFilter.h"
 #include "filter_boxes/FilterConfigurationBox.h"
 #include "filter_boxes/PlainFilterBox.h"
 
@@ -246,7 +245,6 @@ void GUI::FilterTab::createUi() {
     filterTab->addFilter(Model::SepiaFilter::FILTERNAME);
     filterTab->addFilter(Model::SharpnessFilter::FILTERNAME);
     filterTab->addFilter(Model::VintageFilter::FILTERNAME);
-    filterTab->addFilter(Model::ZoomFilter::FILTERNAME);
 
     artefactsTab->addFilter(Model::BorderFilter::FILTERNAME);
     artefactsTab->addFilter(Model::GridFilter::FILTERNAME);

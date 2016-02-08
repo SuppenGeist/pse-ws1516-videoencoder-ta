@@ -88,7 +88,6 @@ HEADERS += \
     src/model/filters/SepiaFilter.h \
     src/model/filters/SharpnessFilter.h \
     src/model/filters/VintageFilter.h \
-    src/model/filters/ZoomFilter.h \
     src/undo_framework/AddFilter.h \
     src/undo_framework/AddVideo.h \
     src/undo_framework/ApplyFilter.h \
@@ -205,7 +204,6 @@ SOURCES += \
     src/model/filters/SepiaFilter.cpp \
     src/model/filters/SharpnessFilter.cpp \
     src/model/filters/VintageFilter.cpp \
-    src/model/filters/ZoomFilter.cpp \
     src/undo_framework/AddFilter.cpp \
     src/undo_framework/AddVideo.cpp \
     src/undo_framework/ApplyFilter.cpp \

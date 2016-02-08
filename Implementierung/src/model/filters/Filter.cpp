@@ -26,7 +26,6 @@
 #include "SepiaFilter.h"
 #include "SharpnessFilter.h"
 #include "VintageFilter.h"
-#include "ZoomFilter.h"
 
 Model::Filter::Filter() {
 
@@ -77,9 +76,7 @@ std::unique_ptr<Model::Filter> Model::Filter::CreateFilter(QString filtername) {
 		return std::make_unique<SharpnessFilter>();
 	} else if(filtername==VintageFilter::FILTERNAME) {
 		return std::make_unique<VintageFilter>();
-	} else if(filtername==ZoomFilter::FILTERNAME) {
-		return std::make_unique<ZoomFilter>();
-	}
+    }
 	throw std::invalid_argument("Filter is not known");
 }
 
