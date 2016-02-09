@@ -179,9 +179,9 @@ void GUI::FilterTab::createUi() {
                                    "color: rgb(255, 255, 255);"
                                    "border-color: rgb(69, 62, 62);"
                                    "background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #88d, stop: 0.1 #99e, stop: 0.49 #77c);"
-                                   "background: rgb(115, 115, 115);"
+                                   "background: rgb(140, 140, 140);"
                                    "border-width: 1px;"
-                                   "border-color:rgb(255, 255, 255);"
+                                   "border-color:rgb(0, 0, 0);"
                                    "border-style: outset;"
                                    "border-radius: 7;"
                                    "padding: 3px;"
@@ -205,11 +205,10 @@ void GUI::FilterTab::createUi() {
     button_save_->setStyleSheet(styleSheet_buttonGroup);
     button_up_->setStyleSheet(styleSheet_buttonGroup);
 
-    label_selectedFilters_=new QLabel(tr("Selected filters:"));
-
     list_filterList_=new QListView;
     list_filterList_->setFixedWidth(250);
     list_filterList_->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    list_filterList_->setStyleSheet("font-size:17px;");
 
     model_list_=new QStringListModel;
     list_filterList_->setModel(model_list_);
@@ -297,8 +296,7 @@ void GUI::FilterTab::createUi() {
 
     //build gui
     QVBoxLayout* v_content=new QVBoxLayout;
-
-    v_content->addWidget(label_selectedFilters_);
+    v_content->addSpacing(10);
 
     QHBoxLayout* h_list_button_player_filterconf=new QHBoxLayout;
 

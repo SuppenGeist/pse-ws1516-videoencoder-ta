@@ -62,8 +62,17 @@ void GUI::PreviewControlPanel::createUi() {
 	h_layout->addWidget(label_position);
 	h_layout->addWidget(button_nextFrame);
 
-	setLayout(h_layout);
-	setStyleSheet("background: rgb(175, 175, 175)");
+    setLayout(h_layout);
+    setFixedHeight(60);
+    setObjectName("playerPanel");
+    setStyleSheet("QFrame#playerPanel {"
+                  "border-width:1px;"
+                  "border-radius:4px;"
+                  "border-color:rgb(0,0,0);"
+                  "border-style:outset;"
+                  "background: rgb(200, 200, 200);"
+                  "}"
+                  "");
 }
 
 void GUI::PreviewControlPanel::nextFrame() {

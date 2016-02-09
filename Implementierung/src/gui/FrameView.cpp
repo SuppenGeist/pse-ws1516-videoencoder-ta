@@ -10,7 +10,7 @@
 
 GUI::FrameView::FrameView(QWidget* parent):QWidget(parent),xOffset_(0),yOffset_(0),
 	originalFrame_(nullptr) {
-	setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
+    setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
 }
 
 void GUI::FrameView::setFrame(QImage& frame) {
@@ -35,7 +35,7 @@ void GUI::FrameView::resizeEvent(QResizeEvent* event) {
 		return;
 
 	QSize eRect=event->size();
-	currentFrame_=originalFrame_->scaled(eRect.width(),eRect.height(),Qt::KeepAspectRatio);
+    currentFrame_=originalFrame_->scaled(eRect.width(),eRect.height(),Qt::KeepAspectRatio);
 
 	updateOffset();
 	update();
@@ -51,14 +51,17 @@ void GUI::FrameView::paintEvent(QPaintEvent* event) {
 	QPainter p(this);
 
 	//Draw the default background color
-	QColor defaultBackground(200,200,200);
+    QColor defaultBackground(220,220,220);
 	p.fillRect(event->rect(),QBrush(defaultBackground));
+
+    p.drawRoundedRect(QRect(0,0,width()-1,height()-1),0,0);
 
 	//Draw the frame
 	if(originalFrame_) {
-		p.drawPixmap(xOffset_,yOffset_,currentFrame_.width(),currentFrame_.height(),
+        p.drawPixmap(xOffset_+1,yOffset_+1,currentFrame_.width()-2,currentFrame_.height()-2,
 		             QPixmap::fromImage(currentFrame_));
 	}
+
 
 	p.end();
 }

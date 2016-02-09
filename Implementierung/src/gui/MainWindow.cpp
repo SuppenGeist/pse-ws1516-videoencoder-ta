@@ -21,10 +21,6 @@ GUI::MainWindow::MainWindow(QWidget* parent):QMainWindow(parent) {
 	createUi();
 	connectActions();
     loadedProject_ = new Model::Project(QString("new_Project"));
-
-    setStyleSheet("QWidget#centralWidget {"
-                  "background-color:rgb(255,255,255);"
-                  "}");
 }
 
 Memento::MainWindowMemento GUI::MainWindow::getMemento() {
