@@ -77,10 +77,10 @@ void Utility::Yuv422FileSaver::savePlanar() {
 }
 
 Utility::Yuv422Vector Utility::Yuv422FileSaver::Rgb888ToYuv422(QRgb pixel1, QRgb pixel2) {
-	int u = (-0.147)*qRed(pixel1)-0.289*qGreen(pixel1)+0.436*qBlue(pixel1);
-	int y1= 0.299*qRed(pixel1)+ 0.587*qGreen(pixel1) + 0.1144*qBlue(pixel1);
-	int v = 0.615*qRed(pixel1)-0.515*qGreen(pixel1)-0.100*qBlue(pixel1);
-	int y2= 0.299*qRed(pixel2)+ 0.587*qGreen(pixel2) + 0.1144*qBlue(pixel2);
+    int u = RgbToU(pixel1);
+    int y1= RgbToY(pixel1);
+    int v = RgbToV(pixel1);
+    int y2= RgbToY(pixel2);
 
 
 }
