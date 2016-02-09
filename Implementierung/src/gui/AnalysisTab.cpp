@@ -75,7 +75,8 @@ void GUI::AnalysisTab::analyseTypChanged(int index) {
 std::unique_ptr<Model::YuvVideo> GUI::AnalysisTab::removeYuvVideo() {
     auto video=std::move(rawVideo_);
     player_->stop();
-    ui_->addVideo->setText("Add Video");
+    player_->reset();
+    ui_->addVideo->setText("Add Raw Video");
     return std::move(video);
 }
 
