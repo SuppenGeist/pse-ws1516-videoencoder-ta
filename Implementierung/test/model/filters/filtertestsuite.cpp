@@ -4,6 +4,7 @@
 
 #include "testblurfilter.h"
 #include "testborderfilter.h"
+#include "testbrightnessfilter.h"
 
 FilterTestSuite::FilterTestSuite(int argc,char* argv[]):argc_(argc),argv_(argv)
 {
@@ -17,5 +18,8 @@ void FilterTestSuite::testAllFilters()
 
     TestBorderFilter testBorderFilter;
     QTest::qExec(&testBorderFilter);
+
+    TestBrightnessFilter testBrightnessFilter;
+    QTest::qExec(&testBrightnessFilter);
 }
 
