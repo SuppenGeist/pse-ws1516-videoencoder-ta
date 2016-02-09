@@ -1,13 +1,10 @@
-/*#include <exception>
-
 #include "RGBDifferenceCalculator.h"
-#include "Video.h"
 
-RGBDifferenceCalculator::RGBDifferenceCalculator(Video& referenceVideo, Video& video) {
+Utility::RGBDifferenceCalculator::RGBDifferenceCalculator(Model::Video& referenceVideo, Model::Video& video) {
+    this->referenceVideo = &referenceVideo;
+    this->video = &video;
 }
 
-void RGBDifferenceCalculator::calculateVideo(Video& target) {
-	throw "Not yet implemented";
+void Utility::RGBDifferenceCalculator::calculateVideo(Model::Video& target) {
+    //TODO: Calculate
 }
-
-*/
