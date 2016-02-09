@@ -3,7 +3,7 @@
 #include "../model/Graph.h"
 #include <QColor>
 
-void Utility::RGBHistogrammCalculator::RGBHistorgrammCalculator(Model::Video& video) {
+void Utility::RGBHistogrammCalculator::RGBHistogrammCalculator(Model::Video& video) {
     this->video = &video;
 }
 

@@ -32,7 +32,7 @@ namespace Utility
 		/// Constructor.
 		/// </summary>
 		/// <param name="video">the video that is analyzed.</param>
-        public: void RGBHistorgrammCalculator(Model::Video& video);
+        public: void RGBHistogrammCalculator(Model::Video& video);
 
 		/// <summary>
 		/// Calculates the red, green and blue components of a video.
