@@ -12,7 +12,7 @@ Model::PosterFilter::PosterFilter():numberOfColors_(12) {
 
 std::string Model::PosterFilter::getFilterDescription() {
 
-	std::string str = std::string("elbg=codebook_length='"+std::to_string(numberOfColors_));
+    std::string str = std::string("elbg=codebook_length="+std::to_string(numberOfColors_));
 
 	return str;
 }
