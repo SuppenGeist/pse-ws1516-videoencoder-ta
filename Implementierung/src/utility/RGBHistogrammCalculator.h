@@ -24,9 +24,9 @@ namespace Utility
 	class RGBHistogrammCalculator
 	{
         private: Model::Video* video;
-		private: Model::Graph redHistogramm;
-		private: Model::Graph greenHistogramm;
-		private: Model::Graph blueHistogramm;
+        private: Model::Graph *redHistogramm;
+        private: Model::Graph *greenHistogramm;
+        private: Model::Graph *blueHistogramm;
 
 		/// <summary>
 		/// Constructor.
@@ -42,17 +42,17 @@ namespace Utility
 		/// <summary>
 		/// Returns the red components of a video.
 		/// </summary>
-		public: Model::Graph getRedHistogramm();
+        public: Model::Graph* getRedHistogramm();
 
 		/// <summary>
 		/// Returns the green components of a video.
 		/// </summary>
-		public: Model::Graph getGreenHistogramm();
+        public: Model::Graph* getGreenHistogramm();
 
 		/// <summary>
 		/// Returns the blue components of a video.
 		/// </summary>
-		public: Model::Graph getBlueHistogramm();
+        public: Model::Graph* getBlueHistogramm();
 	};
 }
 

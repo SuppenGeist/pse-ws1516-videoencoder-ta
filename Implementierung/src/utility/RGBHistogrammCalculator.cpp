@@ -3,8 +3,11 @@
 #include "../model/Graph.h"
 #include <QColor>
 
-void Utility::RGBHistogrammCalculator::RGBHistogrammCalculator(Model::Video& video) {
+Utility::RGBHistogrammCalculator::RGBHistogrammCalculator(Model::Video& video) {
     this->video = &video;
+    this->blueHistogramm = new Model::Graph();
+    this->greenHistogramm = new Model::Graph();
+    this->redHistogramm = new Model::Graph();
 }
 
 void Utility::RGBHistogrammCalculator::calculate() {
@@ -18,20 +21,20 @@ void Utility::RGBHistogrammCalculator::calculate() {
                 greenChannel += qGreen(currentFrame->pixel(j,k));
             }
         }
-        redHistogramm.setValue(i, redChannel / (currentFrame->height() * currentFrame->width()));
-        blueHistogramm.setValue(i, blueChannel / (currentFrame->height() * currentFrame->width()));
-        greenHistogramm.setValue(i, greenChannel / (currentFrame->height() * currentFrame->width()));
+        redHistogramm->setValue(i, redChannel / (currentFrame->height() * currentFrame->width()));
+        blueHistogramm->setValue(i, blueChannel / (currentFrame->height() * currentFrame->width()));
+        greenHistogramm->setValue(i, greenChannel / (currentFrame->height() * currentFrame->width()));
     }
 }
 
-Model::Graph Utility::RGBHistogrammCalculator::getRedHistogramm() {
+Model::Graph* Utility::RGBHistogrammCalculator::getRedHistogramm() {
 	return this->redHistogramm;
 }
 
-Model::Graph Utility::RGBHistogrammCalculator::getGreenHistogramm() {
+Model::Graph* Utility::RGBHistogrammCalculator::getGreenHistogramm() {
 	return this->greenHistogramm;
 }
 
-Model::Graph Utility::RGBHistogrammCalculator::getBlueHistogramm() {
+Model::Graph* Utility::RGBHistogrammCalculator::getBlueHistogramm() {
 	return this->blueHistogramm;
 }
