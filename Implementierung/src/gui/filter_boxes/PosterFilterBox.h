@@ -1,35 +1,37 @@
-/*
-#include <exception>
-using namespace std;
-
 #ifndef __PosterFilterBox_h__
 #define __PosterFilterBox_h__
 
-// #include "QWidget.h"
-#include "FilterConfigurationBox.h"
+#include <QWidget>
+#include <QSpinBox>
 
-namespace GUI
-{
-	class QWidget;
-	// class FilterConfigurationBox;
-	class PosterFilterBox;
-}
+#include "FilterConfigurationBox.h"
 
 namespace GUI
 {
 	/**
 	 * This class contains the gui elements for changing the options of a poster filter.
+    */
+class PosterFilterBox: public FilterConfigurationBox
+{
+    Q_OBJECT
+    public:
+    /**
+     * @brief PosterFilterBox Constructor.
+     * @param parent
+    */
+    PosterFilterBox(QWidget* parent=0);
 
-	class PosterFilterBox: public GUI::FilterConfigurationBox
-	{
+protected:
+    void updateUi() override;
 
-		/// <summary>
-		/// Constructor.
-		/// </summary>
-		public: PosterFilterBox(GUI::QWidget* parent);
-	};
+private slots:
+    void spinBoxChanged(int value);
+private:
+    QSpinBox*   spinBox_;
+
+    virtual void createFilterOptions();
+};
 }
 
 #endif
-*/
 

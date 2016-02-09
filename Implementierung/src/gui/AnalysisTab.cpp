@@ -20,6 +20,7 @@
 #include "../undo_framework/UndoStack.h"
 #include "../undo_framework//LoadAnalysisVideo.h"
 #include "../undo_framework/AddVideo.h"
+#include "ForwardPlayer.h"
 
 GUI::AnalysisTab::AnalysisTab(QWidget* parent) : QFrame(parent) {
 
@@ -44,7 +45,14 @@ GUI::AnalysisTab::AnalysisTab(QWidget* parent) : QFrame(parent) {
 	player_->setTimer(std::make_shared<Timer>());
 	playerPanel_->setMasterVideoPlayer(*player_);
 	player_->setMasterControlPanel(*playerPanel_);
-    //analysisBoxContainer->setControlPanel(new GlobalControlPanel());
+
+        /*
+    ForwardPlayer fp = ForwardPlayer();
+    playerPanel_->setMasterVideoPlayer(fp);
+    GlobalControlPanel* gp = new GlobalControlPanel();
+    fp.setForwardControlPanel(gp);
+    analysisBoxContainer_->setControlPanel(gp);
+    */
 
 }
 
@@ -131,8 +139,9 @@ void GUI::AnalysisTab::addVideo() {
         UndoRedo::UndoStack::getUndoStack().push(new UndoRedo::LoadAnalysisVideo(this,std::move(yuvVideo)));
 
     } else {
-        QString fileName = QFileDialog::getOpenFileName(this, tr("Open Image"), "/", tr("Video files (*.txt)"));
+        QString fileName = QFileDialog::getOpenFileName(this, tr("Open Image"), "/", tr("Video files (*.mp4 *.avi *flv)"));
         if(fileName.size() > 0) {
+            analysisBoxContainer_->addVideo(fileName);
         }
 
     }

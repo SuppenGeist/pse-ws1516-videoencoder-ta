@@ -82,6 +82,12 @@ std::unique_ptr<GUI::FilterConfigurationBox> GUI::FilterConfigurationBox::Create
         box=std::make_unique<RotationFilterBox>();
     }else if(filter.getName()==Model::SharpnessFilter::FILTERNAME){
         box=std::make_unique<SharpnessFilterBox>();
+    }else if(filter.getName()==Model::PosterFilter::FILTERNAME){
+        box=std::make_unique<PosterFilterBox>();
+    }else if(filter.getName()==Model::BorderFilter::FILTERNAME){
+        box=std::make_unique<BorderFilterBox>();
+    }else if(filter.getName()==Model::GridFilter::FILTERNAME){
+        box=std::make_unique<GridFilterBox>();
     }else {
         return std::make_unique<PlainFilterBox>();
     }

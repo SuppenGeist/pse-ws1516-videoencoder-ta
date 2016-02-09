@@ -20,6 +20,7 @@ class GlobalControlPanel;
 }
 namespace Memento {
 class AnalysisBoxContainerMemento;
+class AnalysisBoxMemento;
 }
 namespace Model {
 class Video;
@@ -97,6 +98,13 @@ class AnalysisBoxContainer: public QFrame {
      * @return Index where box was removed.
 	 */
     int removeBox(GUI::AnalysisBox* box);
+    /**
+     * @brief addBox Adds a box at specific postion.
+     * @param index Where to add the box.
+     * @param boxMemo The Memento of the Box.
+     * @return The created Box.
+     */
+    GUI::AnalysisBox* addBox(int index, Memento::AnalysisBoxMemento boxMemo);
 
 	/**
 	 * @brief addVideo Adds the given video to the container.
@@ -106,12 +114,13 @@ class AnalysisBoxContainer: public QFrame {
 	GUI::AnalysisBox* addVideo(Model::EncodedVideo video);
 
 
+
   public:
 	UndoRedo::RemoveVideo* anaBoxContainer;
   private:
-
+    int anaTypShown_;
     Model::Video* rawVideo_;
-private: std::shared_ptr<GUI::Timer> timer;
+    std::shared_ptr<GUI::Timer> timer_;
     GUI::GlobalControlPanel* controlPanel_;
     GUI::AnalysisTab* analysisBoxContainer_;
     std::vector<GUI::AnalysisBox*> boxes_;

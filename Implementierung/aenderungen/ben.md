@@ -26,10 +26,23 @@ entferne LoadRawVideo
 <b>Grund:</b> layout änderung, selber Button wie addVideo;
 füge methode loadYuvVideo und removeYuvVideo hinzu
 <b>Grund:</b> ermöglicht einfacheres undo/redo
+füge int anaTypShown hinzu
+<b>Grund:</b> einfacher einem neuen Video zu sagen welches Analysevideo er zeigen soll.
+<hr>
+##AnalysisBoxContainer
+füge addBox(int index, AnaBoxMemento memo) hinzu
+<b>Grund:</b> ermöglicht einfaches hinzufügen der boxen für den Undo/ReDo Befehl.
+<hr>
 ##AddVideo
 aendere parameter des constructors zu GUI::AnalysisBox
 nur AnalysisBox als Attribut
 <b>Grund:</b> alle noetigen Infos kann man aus der Box erhalten. 
+<hr>
+##RemoveVideo
+parameter nun AnaBox, AnaBoxMemento und AnaBoxContainer
+<b>Grund:</b>AnaBox um zu entfernende box zu finden, memo um box wiederherzustellen, container zum finden des containers
+<hr>
 ##LoadAnalysisVideo
 entferne memento aus Parametern und Attributen
-<b>Grund:</b> warum denzustand speichern wenn man den schritt dorthin kennt
+<b>Grund:</b> warum den Zustand speichern wenn man den schritt dorthin kennt
+<hr>

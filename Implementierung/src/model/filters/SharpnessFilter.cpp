@@ -29,6 +29,8 @@ QString Model::SharpnessFilter::getName() {
 }
 
 void Model::SharpnessFilter::setIntensity(int intensity) {
+    if(intensity<-100||intensity>100)
+        return;
 	intensity_ = intensity;
 }
 

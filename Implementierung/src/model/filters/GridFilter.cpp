@@ -75,6 +75,8 @@ int Model::GridFilter::getOpacity() {
 }
 
 void Model::GridFilter::setOpacity(int opacity) {
+    if(opacity<0||opacity>255)
+        return;
 	opacity_ = opacity;
 }
 

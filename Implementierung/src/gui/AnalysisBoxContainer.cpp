@@ -19,15 +19,9 @@
 #include "../memento/AnalysisBoxMemento.h"
 
 GUI::AnalysisBoxContainer::AnalysisBoxContainer(QWidget* parent) : QFrame(parent) {
-
+    anaTypShown_ = 0;
     ui_ = new Ui::AnalysisBoxContainer;
     ui_->setupUi(this);
-	AnalysisBox *a = new AnalysisBox(this);
-    ui_->verticalLayout->addWidget(a);
-    boxes_.push_back(a);
-    a = new AnalysisBox(this);
-        ui_->verticalLayout->addWidget(a);
-        boxes_.push_back(a);
 }
 
 Memento::AnalysisBoxContainerMemento GUI::AnalysisBoxContainer::getMemento() {
@@ -71,7 +65,7 @@ void GUI::AnalysisBoxContainer::setRawVideo(Model::Video* video) {
 }
 
 void GUI::AnalysisBoxContainer::setTimer(std::shared_ptr<GUI::Timer> timer) {
-    this->timer = timer;
+    timer_ = timer;
 }
 
 void GUI::AnalysisBoxContainer::setControlPanel(GUI::GlobalControlPanel* panel) {
@@ -82,12 +76,14 @@ void GUI::AnalysisBoxContainer::setControlPanel(GUI::GlobalControlPanel* panel) 
 }
 
 void GUI::AnalysisBoxContainer::showMacroBlockVideos() {
+    anaTypShown_ = 1;
     for (AnalysisBox* & anaBox : boxes_) {
         anaBox->showMacroBlockVideo();
     }
 }
 
 void GUI::AnalysisBoxContainer::showRGBDifferenceVideos() {
+    anaTypShown_ = 0;
     for (AnalysisBox* & anaBox : boxes_) {
         anaBox->showRGBDifferenceVideo();
     }
@@ -96,7 +92,7 @@ void GUI::AnalysisBoxContainer::showRGBDifferenceVideos() {
 int GUI::AnalysisBoxContainer::removeBox(AnalysisBox* box) {
     box->setObjectName("toBeDeleted");
     int index = -1;
-    for (int i = 0; i < boxes_.size() && index == 1; i++) {
+    for (int i = 0; i < boxes_.size() && index == -1; i++) {
         if(boxes_[i]->objectName() == box->objectName()) {
             delete boxes_[i];
             boxes_.erase(boxes_.begin() + i);
@@ -108,22 +104,42 @@ int GUI::AnalysisBoxContainer::removeBox(AnalysisBox* box) {
     }
     return index;
 }
+GUI::AnalysisBox* GUI::AnalysisBoxContainer::addBox(int index, Memento::AnalysisBoxMemento boxMemo) {
+    AnalysisBox* box = new AnalysisBox(this);
+    box->restore(boxMemo);
+    boxes_.insert(boxes_.begin() + index, box);
+    ui_->verticalLayout->insertWidget(index,box);
 
-GUI::AnalysisBox* GUI::AnalysisBoxContainer::addVideo(Model::EncodedVideo video) {
-    AnalysisBox* anaBox = new AnalysisBox(this);
-    /*anaBox->setRawVideo(rawVideo_);
-    anaBox->setAnalyseVideo(make_unique(video));
-    ui_->verticalLayout->addWidget(anaBox);
-    boxes_.push_back(anaBox);
-    if(255* width() > height()) {
-	    resize(height()+255,width());
-    }
+    /*box->setRawVideo(rawVideo_);
+    box->setTimer(timer_);
+
     if(255* boxes_.size() > height()) {
         resize(height()+255,width());
     }
-    //something to set rgbDif/Makroblock video
-    return anaBox;
+    box->setTimer(timer_);
+    if(anaTypShown_ = 0) {
+        box->showRGBDifferenceVideo();
+    } else {
+        box->showMacroBlockVideo();
+    }
     */
+    return box;
+}
+
+GUI::AnalysisBox* GUI::AnalysisBoxContainer::addVideo(Model::EncodedVideo video) {
+    AnalysisBox* box = new AnalysisBox(this);
+
+    box->setTimer(timer_);
+    if(anaTypShown_ = 0) {
+        box->showRGBDifferenceVideo();
+    } else {
+        box->showMacroBlockVideo();
+    }
+
+    boxes_.push_back(box);
+    ui_->verticalLayout->addWidget(box);
+    return box;
+
 
 }
 

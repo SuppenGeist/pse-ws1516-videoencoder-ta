@@ -40,6 +40,8 @@ QString Model::NoiseFilter::getName() {
 }
 
 void Model::NoiseFilter::setIntensity(int intensity) {
+    if(intensity<-0||intensity>100)
+        return;
     intensity_ = intensity;
 }
 
