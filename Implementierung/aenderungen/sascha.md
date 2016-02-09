@@ -19,3 +19,6 @@ make rgb888ToYuv444(QRgb pixel1) not static
 
 ##YUV420Saver
 remove saveFrame funtion 
+
+##YUVFileSave
+add static conversion methods, so they are in one place 

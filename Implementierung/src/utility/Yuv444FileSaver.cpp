@@ -68,7 +68,7 @@ void Utility::Yuv444FileSaver::savePlanar() {
 }
 
 Utility::Yuv444Vector Utility::Yuv444FileSaver::Rgb888ToYuv444(QRgb pixel1) {
-    int y = RgbtoY(pixel1);
+    int y = RgbToY(pixel1);
     int u = RgbToU(pixel1);
     int v = RgbToV(pixel1);
 
