@@ -6,81 +6,38 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>955</width>
-    <height>955</height>
+    <width>20</width>
+    <height>66</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Vive</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QTabWidget" name="tab_tabs">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>950</width>
-      <height>920</height>
-     </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>950</width>
-      <height>920</height>
-     </size>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>950</width>
-      <height>920</height>
-     </size>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="currentIndex">
-     <number>0</number>
-    </property>
-    <widget class="QWidget" name="Filtersandartefacts">
-     <attribute name="title">
-      <string>Filters and artefacts</string>
-     </attribute>
-     <widget class="QWidget" name="filterTab" native="true">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>951</width>
-        <height>881</height>
-       </rect>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="videoandanalysis">
-     <attribute name="title">
-      <string>Video and analysis</string>
-     </attribute>
-     <widget class="QWidget" name="analysisTab" native="true">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>951</width>
-        <height>881</height>
-       </rect>
-      </property>
-     </widget>
-    </widget>
-   </widget>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QWidget#centralwidget {
+background-color:rgb(250,250,250);
+}</string>
+   </property>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>955</width>
+     <width>20</width>
      <height>24</height>
     </rect>
    </property>

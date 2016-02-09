@@ -3,6 +3,9 @@
 #include <QWidget>
 #include <QMainWindow>
 #include <QFileDialog>
+#include <QVBoxLayout>
+#include <QTabWidget>
+#include <QHBoxLayout>
 
 #include "ui_mainwindow.h"
 #include "FilterTab.h"
@@ -19,20 +22,23 @@ GUI::MainWindow::MainWindow(QWidget* parent):QMainWindow(parent) {
 	connectActions();
     loadedProject_ = new Model::Project(QString("new_Project"));
 
+    setStyleSheet("QWidget#centralWidget {"
+                  "background-color:rgb(255,255,255);"
+                  "}");
 }
 
 Memento::MainWindowMemento GUI::MainWindow::getMemento() {
     Memento::MainWindowMemento memo;
     memo.setAnalysisTabMemento(analysisTab_->getMemento());
     memo.setFilterTabMemento(filterTab_->getMemento());
-    memo.setSelectedTab(ui_->tab_tabs->currentIndex());
+    //memo.setSelectedTab(ui_->tab_tabs->currentIndex());
     return memo;
 }
 
 void GUI::MainWindow::restore(Memento::MainWindowMemento memento) {
     analysisTab_->restore(memento.getAnalysisTabMemento());
     filterTab_->restore(memento.getFilterTabMemento());
-    ui_->tab_tabs->setCurrentIndex(memento.getSelectedTab());
+    //ui_->tab_tabs->setCurrentIndex(memento.getSelectedTab());
 }
 
 void GUI::MainWindow::newProject() {
@@ -90,8 +96,45 @@ void GUI::MainWindow::createUi() {
     action_saveProject_=ui_->actionSave;
     action_redo_=ui_->actionRedo;
     action_undo_=ui_->actionUndo;
-    filterTab_ = new GUI::FilterTab(ui_->filterTab);
-    analysisTab_ = new GUI::AnalysisTab(ui_->analysisTab);
+
+    QVBoxLayout* v_content=new QVBoxLayout;
+    v_content->addSpacing(10);
+
+    QHBoxLayout* h_tabs=new QHBoxLayout;
+    h_tabs->addSpacing(5);
+
+    tab_tabs_=new QTabWidget;
+
+    QWidget* wrapper_filter=new QWidget;
+    wrapper_filter->setObjectName("filterWrapper");
+    wrapper_filter->setStyleSheet("QWidget#filterWrapper {"
+                                  "background-color:rgb(235,235,235);"
+                                  "}");
+    QVBoxLayout* v_filterTab=new QVBoxLayout;
+    filterTab_=new FilterTab;
+    v_filterTab->addWidget(filterTab_);
+    wrapper_filter->setLayout(v_filterTab);
+
+    tab_tabs_->addTab(wrapper_filter,"Filters and artefacts");
+
+    QWidget* wrapper_analysis=new QWidget;
+    wrapper_analysis->setObjectName("analysisWrapper");
+    wrapper_analysis->setStyleSheet("QWidget#analysisWrapper {"
+                                  "background-color:rgb(235,235,235);"
+                                  "}");
+    QVBoxLayout* v_analysisTab=new QVBoxLayout;
+    analysisTab_=new AnalysisTab;
+    v_analysisTab->addWidget(analysisTab_);
+    wrapper_analysis->setLayout(v_analysisTab);
+
+    tab_tabs_->addTab(wrapper_analysis,"Analysis");
+
+    h_tabs->addWidget(tab_tabs_);
+    h_tabs->addSpacing(5);
+
+    v_content->addLayout(h_tabs);
+
+    centralWidget()->setLayout(v_content);
 }
 
 void GUI::MainWindow::connectActions() {
@@ -101,8 +144,6 @@ void GUI::MainWindow::connectActions() {
     connect(action_redo_,SIGNAL(triggered()),this, SLOT(redo()));
     connect(action_saveAs_,SIGNAL(triggered()),this, SLOT(saveAs()));
     connect(action_undo_,SIGNAL(triggered()),this, SLOT(undo()));
-
-
 }
 
 Model::Project* GUI::MainWindow::getProject() {

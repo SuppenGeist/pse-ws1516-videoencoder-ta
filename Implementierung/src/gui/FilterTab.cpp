@@ -78,6 +78,8 @@ GUI::FilterTab::FilterTab(QWidget* parent):QFrame(parent),isPreviewShown_(false)
     createUi();
     connectActions();
 
+    setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
+
     player_=std::make_unique<VideoPlayer>();
     player_->addView(*frameView_);
     player_->setTimer(std::make_shared<Timer>());
@@ -86,6 +88,11 @@ GUI::FilterTab::FilterTab(QWidget* parent):QFrame(parent),isPreviewShown_(false)
     player_->setMasterControlPanel(*playerPanel_);
 
     filterList_=std::make_unique<Model::FilterList>();
+
+    setObjectName("filterTab");
+    setStyleSheet("QFrame#filterTab {"
+                  "background-color:rgb(235,235,235);"
+                  "}");
 }
 
 

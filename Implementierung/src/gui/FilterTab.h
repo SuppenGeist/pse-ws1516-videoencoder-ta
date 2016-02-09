@@ -44,7 +44,7 @@ class FilterTab : public QFrame {
 	 *@brief Contructor
 	 *
 	*/
-	FilterTab(QWidget* parent);
+    FilterTab(QWidget* parent=0);
 
 
 	/**

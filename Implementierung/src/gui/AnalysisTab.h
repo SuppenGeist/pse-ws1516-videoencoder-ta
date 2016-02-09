@@ -46,7 +46,7 @@ class AnalysisTab: public QFrame {
 	 * @brief AnalysisTab Contructor.
 	 * @param parent Parent of this Object.
 	 */
-	AnalysisTab(QWidget* parent);
+    AnalysisTab(QWidget* parent=0);
 
 	/**
 	 * @brief getMemento Creates a memento which contains the state of this tab.
