@@ -65,7 +65,7 @@ Model::Video& Model::EncodedVideo::getMacroBlockVideo() {
 Model::Video& Model::EncodedVideo::getRgbDiffVideo(Video *reference) {
     if(this->rgbDiffVideo == NULL && reference != NULL) {
         Utility::RGBDifferenceCalculator rgbDifferenceCalculator = Utility::RGBDifferenceCalculator(*reference, *(this->video));
-        this->rgbDiffVideo = new Video(this->video->getFps(), this->video->getWidth(), this->video->getHeight());
+        this->rgbDiffVideo = new Video(this->video->getFps());
         rgbDifferenceCalculator.calculateVideo(*(this->rgbDiffVideo));
     }
     return *(this->rgbDiffVideo);
