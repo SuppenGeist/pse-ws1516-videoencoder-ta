@@ -1,35 +1,56 @@
-/*/*
-#include <exception>
-using namespace std;
-
 #ifndef __BorderFilterBox_h__
 #define __BorderFilterBox_h__
 
-// #include "QWidget.h"
-#include "FilterConfigurationBox.h"
+#include <QWidget>
+#include <QSlider>
+#include <QSpinBox>
+#include <QCheckBox>
+#include <QColorDialog>
 
-namespace GUI
-{
-	class QWidget;
-	// class FilterConfigurationBox;
-	class BorderFilterBox;
-}
+#include "FilterConfigurationBox.h"
 
 namespace GUI
 {
 	/**
 	 * This class contains the gui elements for changing the options of a border filter.
+    */
+    class BorderFilterBox: public FilterConfigurationBox
+    {
+         Q_OBJECT
+            public:
+        /**
+         * @brief BorderFilterBox Constructor.
+         * @param parent
+         */
+        BorderFilterBox(QWidget* parent=0);
 
-	class BorderFilterBox: public GUI::FilterConfigurationBox
-	{
+    protected:
+        void updateUi() override;
 
-		/// <summary>
-		/// Constructor.
-		/// </summary>
-		public: BorderFilterBox(GUI::QWidget* parent);
-	};
+
+    private slots:
+
+        void sliderChanged(int value);
+        void spinBoxChanged(int value);
+        void topchecked(int check);
+        void bottomchecked(int check);
+        void rightchecked(int check);
+        void leftchecked(int check);
+        void colorChanged(QColor color);
+
+    private:
+        QSlider*        slider_;
+        QColorDialog*   color_;
+        QSpinBox*       spinBox_;
+        QCheckBox*      top_;
+        QCheckBox*      bottom_;
+        QCheckBox*      right_;
+        QCheckBox*      left_;
+
+    virtual void createFilterOptions();
+    };
 }
 
 #endif
-*/
+
 

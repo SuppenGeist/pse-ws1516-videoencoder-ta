@@ -97,6 +97,8 @@ std::string Model::BorderFilter::getFilterDescription() {
         str+="0:";
     } else if(!right_ && left_){
         str+=thickness+":";
+    } else {
+        str+="0:";
     }
     if(bottom_&& top_) {
         str+="(oh-ih)/2:";
@@ -104,6 +106,8 @@ std::string Model::BorderFilter::getFilterDescription() {
         str+="0:";
     } else if(!bottom_&& top_){
         str+=thickness+":";
+    } else{
+        str+="0:";
     }
 
     str+=color;

@@ -11,6 +11,7 @@ Model::PosterFilter::PosterFilter():numberOfColors_(12) {
 }
 
 std::string Model::PosterFilter::getFilterDescription() {
+
 	std::string str = std::string("elbg=codebook_length='"+std::to_string(numberOfColors_));
 
 	return str;
@@ -25,6 +26,8 @@ QString Model::PosterFilter::getName() {
 }
 
 void Model::PosterFilter::setNumberOfColors(int numberOfColors) {
+    if(numberOfColors<-0||numberOfColors>16777216)
+        return;
 	numberOfColors_ = numberOfColors;
 }
 

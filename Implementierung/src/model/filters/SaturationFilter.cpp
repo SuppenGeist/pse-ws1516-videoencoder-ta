@@ -26,6 +26,8 @@ QString Model::SaturationFilter::getName() {
 }
 
 void Model::SaturationFilter::setIntensity(int intensity) {
+    if(intensity<0||intensity>100)
+        return;
 	intensity_ = intensity;
 }
 
