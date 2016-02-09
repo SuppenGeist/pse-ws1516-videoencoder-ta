@@ -80,6 +80,8 @@ std::unique_ptr<GUI::FilterConfigurationBox> GUI::FilterConfigurationBox::Create
         box=std::make_unique<SaturationFilterBox>();
     }else if(filter.getName()==Model::RotationFilter::FILTERNAME){
         box=std::make_unique<RotationFilterBox>();
+    }else if(filter.getName()==Model::SharpnessFilter::FILTERNAME){
+        box=std::make_unique<SharpnessFilterBox>();
     }else {
         return std::make_unique<PlainFilterBox>();
     }

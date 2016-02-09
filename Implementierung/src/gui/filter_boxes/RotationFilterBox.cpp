@@ -32,8 +32,6 @@ void GUI::RotationFilterBox::sliderChanged(int value)
 {
     static_cast<Model::RotationFilter*>(tempFilter_.get())->setAngle(value);
     spinBox_->setValue(value);
-
-    updatePreview();
 }
 
 void GUI::RotationFilterBox::spinBoxChanged(int value)
@@ -51,7 +49,6 @@ void GUI::RotationFilterBox::createFilterOptions()
     slider_=new QSlider(Qt::Horizontal);
     slider_->setMaximum(360);
     slider_->setMinimum(0);
-    slider_->setTracking(false);
 
     spinBox_=new QSpinBox;
     spinBox_->setMaximum(360);

@@ -32,8 +32,6 @@ void GUI::ContrastFilterBox::sliderChanged(int value)
 {
     static_cast<Model::ContrastFilter*>(tempFilter_.get())->setIntensity(value);
     spinBox_->setValue(value);
-
-    updatePreview();
 }
 
 void GUI::ContrastFilterBox::spinBoxChanged(int value)
@@ -51,7 +49,6 @@ void GUI::ContrastFilterBox::createFilterOptions()
     slider_=new QSlider(Qt::Horizontal);
     slider_->setMaximum(100);
     slider_->setMinimum(-100);
-    slider_->setTracking(false);
 
     spinBox_=new QSpinBox;
     spinBox_->setMaximum(100);

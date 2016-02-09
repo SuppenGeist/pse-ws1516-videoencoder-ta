@@ -1,35 +1,43 @@
-/*
-#include <exception>
-using namespace std;
-
 #ifndef __SharpnessFilterBox_h__
 #define __SharpnessFilterBox_h__
 
-// #include "QWidget.h"
+#include <QWidget>
+#include <QSlider>
+#include <QSpinBox>
+
 #include "FilterConfigurationBox.h"
 
-namespace GUI
-{
-	class QWidget;
-	// class FilterConfigurationBox;
-	class SharpnessFilterBox;
-}
 
 namespace GUI
 {
 	/**
 	 * This class contains the gui elements for changing the options of a sharpness filter.
+    */
+class SharpnessFilterBox: public FilterConfigurationBox
+{
+    Q_OBJECT
+    public:
+    /**
+     * @brief SharpnessFilterBox Constructor.
+     * @param parent
+     */
+    SharpnessFilterBox(QWidget* parent=0);
 
-	class SharpnessFilterBox: public GUI::FilterConfigurationBox
-	{
+protected:
+    void updateUi() override;
 
-		/// <summary>
-		/// Constructor.
-		/// </summary>
-		public: SharpnessFilterBox(GUI::QWidget* parent);
-	};
+
+private slots:
+    void sliderChanged(int value);
+    void spinBoxChanged(int value);
+private:
+    QSlider*     slider_;
+    QSpinBox*   spinBox_;
+
+    virtual void createFilterOptions();
+};
 }
 
 #endif
-*/
+
 

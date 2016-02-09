@@ -12,11 +12,11 @@ Model::SharpnessFilter::SharpnessFilter(): intensity_(60) {
 
 std::string Model::SharpnessFilter::getFilterDescription() {
 	std::string str = std::string("unsharp=la=");
-	if(intensity_<=40) {
-		str+="-2";
-	} else {
-		str+=std::to_string((int)((double)intensity_/100*5));
-	}
+    if(intensity_<0) {
+        str+=std::to_string((int)((double)intensity_/100*2));
+    } else {
+        str+=std::to_string((int)((double)intensity_/100*5));
+    }
 	return str;
 }
 

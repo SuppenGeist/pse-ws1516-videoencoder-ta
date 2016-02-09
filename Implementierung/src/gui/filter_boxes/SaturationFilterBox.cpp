@@ -33,8 +33,6 @@ void GUI::SaturationFilterBox::sliderChanged(int value)
 {
     static_cast<Model::SaturationFilter*>(tempFilter_.get())->setIntensity(value);
     spinBox_->setValue(value);
-
-    updatePreview();
 }
 
 void GUI::SaturationFilterBox::spinBoxChanged(int value)
@@ -52,7 +50,6 @@ void GUI::SaturationFilterBox::createFilterOptions()
     slider_=new QSlider(Qt::Horizontal);
     slider_->setMaximum(100);
     slider_->setMinimum(0);
-    slider_->setTracking(false);
 
     spinBox_=new QSpinBox;
     spinBox_->setMaximum(100);
