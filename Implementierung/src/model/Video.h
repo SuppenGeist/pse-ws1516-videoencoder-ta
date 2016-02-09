@@ -15,9 +15,7 @@ class Video {
   public:
 	/**
 	 * @brief Video Constructor.
-	 * @param fps The fps the video should be played at.
-	 * @param width The width of the video.
-	 * @param height The height of the video.
+     * @param fps The fps the video should be played at.
 	 */
     Video(int fps) noexcept;
 

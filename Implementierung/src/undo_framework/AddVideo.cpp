@@ -1,20 +1,18 @@
-/*#include <exception>
-
 #include "AddVideo.h"
-#include "AnalysisBox.h"
-#include "AnalysisBoxContainer.h"
-#include "EncodedVideo.h"
-#include "QUndoCommand.h"
 
-AddVideo::AddVideo(AnalysisBoxContainer* analysisBoxContainer, EncodedVideo video) {
+#include <QUndoCommand>
+
+#include "../gui/AnalysisBox.h"
+#include "../gui/AnalysisBoxContainer.h"
+
+
+UndoRedo::AddVideo::AddVideo(GUI::AnalysisBox*) {
 }
 
-void AddVideo::undo() {
+void UndoRedo::AddVideo::undo() {
 	throw "Not yet implemented";
 }
 
-void AddVideo::redo() {
+void UndoRedo::AddVideo::redo() {
 	throw "Not yet implemented";
 }
-
-*/

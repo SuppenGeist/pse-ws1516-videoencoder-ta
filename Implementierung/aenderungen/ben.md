@@ -22,4 +22,14 @@ füge ui hinzu
 ändere yuvVideo zu rawVideo
 ändere player und rawVideo zu unique_ptr
 <b>Grund</b> Gleiche funktion wie im filtertab, leichtere Orientierung
-
+entferne LoadRawVideo
+<b>Grund:</b> layout änderung, selber Button wie addVideo;
+füge methode loadYuvVideo und removeYuvVideo hinzu
+<b>Grund:</b> ermöglicht einfacheres undo/redo
+##AddVideo
+aendere parameter des constructors zu GUI::AnalysisBox
+nur AnalysisBox als Attribut
+<b>Grund:</b> alle noetigen Infos kann man aus der Box erhalten. 
+##LoadAnalysisVideo
+entferne memento aus Parametern und Attributen
+<b>Grund:</b> warum denzustand speichern wenn man den schritt dorthin kennt

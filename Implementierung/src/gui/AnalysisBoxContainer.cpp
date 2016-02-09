@@ -82,7 +82,9 @@ void GUI::AnalysisBoxContainer::setControlPanel(GUI::GlobalControlPanel* panel) 
 }
 
 void GUI::AnalysisBoxContainer::showMacroBlockVideos() {
-
+    for (AnalysisBox* & anaBox : boxes_) {
+        anaBox->showMacroBlockVideo();
+    }
 }
 
 void GUI::AnalysisBoxContainer::showRGBDifferenceVideos() {
@@ -91,17 +93,20 @@ void GUI::AnalysisBoxContainer::showRGBDifferenceVideos() {
     }
 }
 
-void GUI::AnalysisBoxContainer::removeBox(AnalysisBox* box) {
+int GUI::AnalysisBoxContainer::removeBox(AnalysisBox* box) {
     box->setObjectName("toBeDeleted");
-    for (int i = 0; i < boxes_.size(); i++) {
+    int index = -1;
+    for (int i = 0; i < boxes_.size() && index == 1; i++) {
         if(boxes_[i]->objectName() == box->objectName()) {
             delete boxes_[i];
             boxes_.erase(boxes_.begin() + i);
+            index = i;
         }
     }
     if(255* boxes_.size()-255 > height()) {
         resize(height()-255,width());
     }
+    return index;
 }
 
 GUI::AnalysisBox* GUI::AnalysisBoxContainer::addVideo(Model::EncodedVideo video) {
