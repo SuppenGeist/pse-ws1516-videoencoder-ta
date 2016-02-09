@@ -39,9 +39,9 @@ class YuvFileSaver {
 	QFile           file_;
 	QDataStream     dataStream_;
 
-    int RgbToY(QRgb pixel);
-    int RgbToU(QRgb pixel);
-    int RgbToV(QRgb pixel);
+    static int RgbToY(QRgb pixel);
+    static int RgbToU(QRgb pixel);
+    static int RgbToV(QRgb pixel);
 };
 }
 

@@ -82,5 +82,5 @@ Utility::Yuv422Vector Utility::Yuv422FileSaver::Rgb888ToYuv422(QRgb pixel1, QRgb
     int v = RgbToV(pixel1);
     int y2= RgbToY(pixel2);
 
-
+    return Utility::Yuv422Vector(u,y1,v,y2);
 }
