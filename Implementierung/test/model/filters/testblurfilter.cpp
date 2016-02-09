@@ -4,42 +4,52 @@
 
 void TestBlurFilter::init()
 {
-    testFilter_=Model::BlurFilter();
+    filter_=Model::BlurFilter();
 }
 
 void TestBlurFilter::testSetIntensity()
 {
     const int testValue1=0;
-    testFilter_.setIntensity(testValue1);
-    QVERIFY(testValue1 == testFilter_.getIntensity());
+    filter_.setIntensity(testValue1);
+    QVERIFY(testValue1 == filter_.getIntensity());
 
     const int testValue2=100;
-    testFilter_.setIntensity(testValue2);
-    QVERIFY(testValue2 == testFilter_.getIntensity());
+    filter_.setIntensity(testValue2);
+    QVERIFY(testValue2 == filter_.getIntensity());
 
     const int testValue3=101;
-    testFilter_.setIntensity(testValue3);
-    QVERIFY(testValue3 != testFilter_.getIntensity());
+    filter_.setIntensity(testValue3);
+    QVERIFY(testValue3 != filter_.getIntensity());
 
     const int testValue4=-1;
-    testFilter_.setIntensity(testValue4);
-    QVERIFY(testValue4 != testFilter_.getIntensity());
+    filter_.setIntensity(testValue4);
+    QVERIFY(testValue4 != filter_.getIntensity());
 }
 
 void TestBlurFilter::testRestore()
 {
-    testFilter_.restore("60");
-    QVERIFY(testFilter_.getIntensity()==60);
+    filter_.restore("60");
+    QVERIFY(filter_.getIntensity()==60);
 
-    testFilter_.restore("102");
-    QVERIFY(testFilter_.getIntensity()!=102);
+    filter_.restore("102");
+    QVERIFY(filter_.getIntensity()!=102);
 
-    testFilter_.restore("-1");
-    QVERIFY(testFilter_.getIntensity()!=-1);
+    filter_.restore("-1");
+    QVERIFY(filter_.getIntensity()!=-1);
 }
 
 void TestBlurFilter::testGetSaveString()
 {
-    testFilter_.setIntensity(60);
-    QVERIFY(testFilter_.getSaveString()=="60");
+    filter_.setIntensity(60);
+    QVERIFY(filter_.getSaveString()=="60");
+}
+
+void TestBlurFilter::testFilterCopy()
+{
+    const int testValue=100;
+    Model::BlurFilter filter2;
+    filter2.setIntensity(testValue);
+
+    filter_.restore(filter2.getSaveString());
+    QVERIFY(filter_.getIntensity()==testValue);
 }
