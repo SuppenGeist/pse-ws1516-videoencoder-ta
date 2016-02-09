@@ -31,7 +31,7 @@ QString Model::BlurFilter::getName() {
 	return FILTERNAME;
 }
 
-void Model::BlurFilter::restoreFilter(QString description) {
+void Model::BlurFilter::restore(QString description) {
 	QStringList list  = description.split(";");
 	if(list.size()!=1)
 		return;

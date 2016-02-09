@@ -32,7 +32,7 @@ std::string Model::ContrastFilter::getFilterDescription() {
 	return str;
 }
 
-void Model::ContrastFilter::restoreFilter(QString description) {
+void Model::ContrastFilter::restore(QString description) {
 	QStringList list  = description.split(";");
 	if(list.size()!=1)
 		return;

@@ -110,7 +110,7 @@ void Model::ColorbalanceFilter::setDarkPixels(bool darkPixels) {
 	darkPixels_ = darkPixels;
 }
 
-void Model::ColorbalanceFilter::restoreFilter(QString description) {
+void Model::ColorbalanceFilter::restore(QString description) {
 	QStringList list  = description.split(";");
 	if(list.size()!=6)
 		return;

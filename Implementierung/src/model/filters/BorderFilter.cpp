@@ -110,7 +110,7 @@ std::string Model::BorderFilter::getFilterDescription() {
     return str;
 }
 
-void Model::BorderFilter::restoreFilter(QString description) {
+void Model::BorderFilter::restore(QString description) {
 	QStringList list  = description.split(";");
 	if(list.size()!=6)
 		return;

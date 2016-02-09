@@ -28,7 +28,7 @@ std::unique_ptr<Model::FilterList> Utility::FilterConfigurationLoader::getConfig
         auto filtername=line.section(";",0,0);
         auto filter=filterconf->appendFilter(filtername);
         auto restorestring=line.right(line.length()-filtername.length()-1);
-        filter->restoreFilter(restorestring);
+        filter->restore(restorestring);
 
 	}
 

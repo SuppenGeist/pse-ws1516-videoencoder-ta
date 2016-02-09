@@ -56,7 +56,7 @@ std::unique_ptr<GUI::FilterConfigurationBox> GUI::FilterConfigurationBox::Create
 
 void GUI::FilterConfigurationBox::setFilter(Model::Filter& filter) {
     filter_=&filter;
-    tempFilter_->restoreFilter(filter.getSaveString());
+    tempFilter_->restore(filter.getSaveString());
     label_filter_->setText(filter_->getName()+" filter");
     updateUi();
 }
@@ -73,7 +73,7 @@ void GUI::FilterConfigurationBox::setFilterTab(GUI::FilterTab &filterTab)
 void GUI::FilterConfigurationBox::updatePreview()
 {
     Model::FilterList filterList;
-    filterList.appendFilter(tempFilter_->getName())->restoreFilter(tempFilter_->getSaveString());
+    filterList.appendFilter(tempFilter_->getName())->restore(tempFilter_->getSaveString());
 
     auto avframe=Utility::VideoConverter::convertQImageToAVFrame(getDefaultImage());
 
@@ -90,7 +90,7 @@ void GUI::FilterConfigurationBox::updatePreview()
 
 void GUI::FilterConfigurationBox::applyFilter()
 {
-    filter_->restoreFilter(tempFilter_->getSaveString());
+    filter_->restore(tempFilter_->getSaveString());
 
     filterTab_->updatePreview();
 }

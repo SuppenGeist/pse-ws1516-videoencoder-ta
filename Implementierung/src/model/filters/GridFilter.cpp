@@ -82,7 +82,7 @@ QString Model::GridFilter::getName() {
 	return FILTERNAME;
 }
 
-void Model::GridFilter::restoreFilter(QString description) {
+void Model::GridFilter::restore(QString description) {
 	QStringList list  = description.split(";");
 	setHorizontalCells(list[0].QString::toInt());
 	setVerticalCells(list[1].QString::toInt());

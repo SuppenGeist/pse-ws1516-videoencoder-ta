@@ -36,7 +36,7 @@ void Model::MirrorFilter::setMode(MirrorMode mode) {
 	mode_=mode;
 }
 
-void Model::MirrorFilter::restoreFilter(QString description) {
+void Model::MirrorFilter::restore(QString description) {
 
 }
 

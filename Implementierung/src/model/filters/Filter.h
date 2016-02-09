@@ -34,7 +34,7 @@ class Filter {
 	 * @brief restoreFilter
 	 * @param description
 	 */
-	virtual void restoreFilter(QString description) = 0;
+    virtual void restore(QString description) = 0;
 
 	/**
 	 * @brief getSaveString

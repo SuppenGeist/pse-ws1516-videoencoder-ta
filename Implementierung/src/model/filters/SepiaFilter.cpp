@@ -19,7 +19,7 @@ std::string Model::SepiaFilter::getFilterDescription() {
 	return str;
 }
 
-void Model::SepiaFilter::restoreFilter(QString description) {
+void Model::SepiaFilter::restore(QString description) {
 	//nothing to load
 }
 

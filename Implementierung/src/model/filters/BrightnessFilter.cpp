@@ -32,7 +32,7 @@ std::string Model::BrightnessFilter::getFilterDescription() {
 	return str;
 }
 
-void Model::BrightnessFilter::restoreFilter(QString description) {
+void Model::BrightnessFilter::restore(QString description) {
 	QStringList list  = description.split(";");
 	if(list.size()!=1)
 		return;

@@ -18,7 +18,7 @@ QString Model::EdgeFilter::getName() {
 	return FILTERNAME;
 }
 
-void Model::EdgeFilter::restoreFilter(QString description) {
+void Model::EdgeFilter::restore(QString description) {
 	//nothing to load
 }
 

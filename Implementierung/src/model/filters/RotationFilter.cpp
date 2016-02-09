@@ -28,7 +28,7 @@ void Model::RotationFilter::setAngle(int angle) {
     angle_ = angle;
 }
 
-void Model::RotationFilter::restoreFilter(QString description) {
+void Model::RotationFilter::restore(QString description) {
 	QStringList list  = description.split(";");
     if(list.size()!=1)
         return;

@@ -19,7 +19,7 @@ QString Model::GrayscaleFilter::getName() {
 std::string Model::GrayscaleFilter::getFilterDescription() {
 	return "colorchannelmixer=',3':',4':',3':0:',3':',4':',3':0:',3':',4':',3'";
 }
-void Model::GrayscaleFilter::restoreFilter(QString description) {
+void Model::GrayscaleFilter::restore(QString description) {
 	//nothing to load
 }
 

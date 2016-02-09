@@ -43,7 +43,7 @@ void Model::NoiseFilter::setIntensity(int intensity) {
     intensity_ = intensity;
 }
 
-void Model::NoiseFilter::restoreFilter(QString description) {
+void Model::NoiseFilter::restore(QString description) {
     QStringList list  = description.split(";");
     if(list.size()!=1)
         return;

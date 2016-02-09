@@ -61,7 +61,7 @@ void Model::ScaleFilter::setRatio(int ratio) {
 	ratio_ = ratio;
 }
 
-void Model::ScaleFilter::restoreFilter(QString description) {
+void Model::ScaleFilter::restore(QString description) {
 	QStringList list  = description.split(";");
 	setWidth(list[0].QString::toInt());
 	setHeight(list[1].QString::toInt());

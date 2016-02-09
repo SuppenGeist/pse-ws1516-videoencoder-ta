@@ -58,7 +58,6 @@ namespace GUI
 
         protected:
             std::unique_ptr<Model::Filter>  tempFilter_;
-            QLabel*                         label_filter_;
             QScrollArea*                    filterOptionsArea_;
 
             void updatePreview();
@@ -71,6 +70,7 @@ namespace GUI
             static std::unique_ptr<QImage>  defaultImage_;
             std::unique_ptr<QImage>         filteredImage_;
             FrameView*                      filterPreview_;
+            QLabel*                         label_filter_;
             Model::Filter* filter_;
             QPushButton*                    button_apply_;
             FilterTab* filterTab_;

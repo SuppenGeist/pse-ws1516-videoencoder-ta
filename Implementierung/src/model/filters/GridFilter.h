@@ -94,7 +94,7 @@ class GridFilter: public Model::Filter {
 	 * @brief restoreFilter
 	 * @param description
 	 */
-	void restoreFilter(QString description);
+	void restore(QString description);
 
 	/**
 	 * @brief getSaveString

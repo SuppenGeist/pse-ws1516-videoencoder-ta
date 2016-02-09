@@ -35,7 +35,7 @@ QString Model::RGBFilter::getName() {
 	return FILTERNAME;
 }
 
-void Model::RGBFilter::restoreFilter(QString description) {
+void Model::RGBFilter::restore(QString description) {
     QStringList list  = description.split(";");
     if(list.size()!=1)
         return;

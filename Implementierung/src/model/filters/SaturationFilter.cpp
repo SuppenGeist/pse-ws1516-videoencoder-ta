@@ -29,7 +29,7 @@ void Model::SaturationFilter::setIntensity(int intensity) {
 	intensity_ = intensity;
 }
 
-void Model::SaturationFilter::restoreFilter(QString description) {
+void Model::SaturationFilter::restore(QString description) {
 	QStringList list  = description.split(";");
     if(list.size()!=1)
         return;

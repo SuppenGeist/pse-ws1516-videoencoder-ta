@@ -28,7 +28,7 @@ void Model::PosterFilter::setNumberOfColors(int numberOfColors) {
 	numberOfColors_ = numberOfColors;
 }
 
-void Model::PosterFilter::restoreFilter(QString description) {
+void Model::PosterFilter::restore(QString description) {
 	QStringList list  = description.split(";");
     if(list.size()!=1)
         return;

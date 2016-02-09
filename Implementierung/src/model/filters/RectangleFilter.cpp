@@ -95,7 +95,7 @@ void Model::RectangleFilter::setOpacity(int opacity) {
 	opacity_ = opacity;
 }
 
-void Model::RectangleFilter::restoreFilter(QString description) {
+void Model::RectangleFilter::restore(QString description) {
 	QStringList list  = description.split(";");
 	setWidth(list[0].QString::toInt());
 	setHeight(list[1].QString::toInt());
