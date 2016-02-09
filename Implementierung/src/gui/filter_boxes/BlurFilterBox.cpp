@@ -32,8 +32,6 @@ void GUI::BlurFilterBox::sliderChanged(int value)
 {
     static_cast<Model::BlurFilter*>(tempFilter_.get())->setIntensity(value);
     spinBox_->setValue(value);
-
-    updatePreview();
 }
 
 void GUI::BlurFilterBox::spinBoxChanged(int value)
@@ -51,7 +49,6 @@ void GUI::BlurFilterBox::createFilterOptions()
     slider_=new QSlider(Qt::Horizontal);
     slider_->setMaximum(100);
     slider_->setMinimum(0);
-    slider_->setTracking(false);
 
     spinBox_=new QSpinBox;
     spinBox_->setMaximum(100);
