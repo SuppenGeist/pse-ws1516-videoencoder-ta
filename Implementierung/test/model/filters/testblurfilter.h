@@ -19,8 +19,10 @@ private slots:
 
     void testGetSaveString();
 
+    void testFilterCopy();
+
 private:
-    Model::BlurFilter   testFilter_;
+    Model::BlurFilter   filter_;
 };
 
 #endif // TESTBLURFILTER_H

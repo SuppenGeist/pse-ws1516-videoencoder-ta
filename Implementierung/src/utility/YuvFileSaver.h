@@ -3,6 +3,7 @@
 
 #include <QFile>
 #include <QDataStream>
+#include <QColor>
 
 namespace Model {
 class Video;
@@ -37,6 +38,10 @@ class YuvFileSaver {
 	Model::Video*   video_;
 	QFile           file_;
 	QDataStream     dataStream_;
+
+    int RgbToY(QRgb pixel);
+    int RgbToU(QRgb pixel);
+    int RgbToV(QRgb pixel);
 };
 }
 
