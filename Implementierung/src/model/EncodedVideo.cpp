@@ -1,10 +1,8 @@
 #include "EncodedVideo.h"
 
-#include "Video.h"
-#include "AVVideo.h"
-#include "Graph.h"
-
 Model::EncodedVideo::EncodedVideo(QString path) {
+    this->path = path;
+    this->loadVideo();
 }
 
 QString Model::EncodedVideo::getPath() {
@@ -24,69 +22,97 @@ QString Model::EncodedVideo::getCodec() {
 }
 
 Model::Graph& Model::EncodedVideo::getBitrate() {
-	throw "Not yet implemented";
+    return *(this->bitrate);
 }
 
-Model::Graph& Model::EncodedVideo::getPsnr() {
-	throw "Not yet implemented";
+Model::Graph& Model::EncodedVideo::getPsnr(Video *reference) {
+    if(this->psnr == NULL && reference != NULL) {
+        Utility::PsnrCalculator psnrCalculator = Utility::PsnrCalculator(*(reference), *(this->video));
+        this->psnr = new Graph(psnrCalculator.calculate());
+    }
+    return *(this->psnr);
 }
 
 Model::Graph& Model::EncodedVideo::getRedHistogramm() {
-	throw "Not yet implemented";
+    if(this->redHisto == NULL) {
+        calculateHistogramms();
+    }
+    return *(this->redHisto);
 }
 
 Model::Graph& Model::EncodedVideo::getBlueHistogramm() {
-	throw "Not yet implemented";
+    if(this->blueHisto == NULL) {
+        calculateHistogramms();
+    }
+    return *(this->blueHisto);
 }
 
 Model::Graph& Model::EncodedVideo::getGreenHistogramm() {
-	throw "Not yet implemented";
+    if(this->greenHisto == NULL) {
+        calculateHistogramms();
+    }
+    return *(this->greenHisto);
 }
 
 Model::AVVideo& Model::EncodedVideo::getAvVideo() {
-	throw "Not yet implemented";
+    return *(this->avVideo);
 }
 
 Model::Video& Model::EncodedVideo::getMacroBlockVideo() {
-	throw "Not yet implemented";
+    return *(this->macroblockVideo);
 }
 
-Model::Video& Model::EncodedVideo::getRgbDiffVideo(Video* reference) {
-	throw "Not yet implemented";
+Model::Video& Model::EncodedVideo::getRgbDiffVideo(Video *reference) {
+    if(this->rgbDiffVideo == NULL && reference != NULL) {
+        Utility::RGBDifferenceCalculator rgbDifferenceCalculator = Utility::RGBDifferenceCalculator(*reference, *(this->video));
+        this->rgbDiffVideo = new Video(this->video->getFps(), this->video->getWidth(), this->video->getHeight());
+        rgbDifferenceCalculator.calculateVideo(*(this->rgbDiffVideo));
+    }
+    return *(this->rgbDiffVideo);
 }
 
 Model::Video& Model::EncodedVideo::getVideo() {
-	throw "Not yet implemented";
+    return *(this->video);
 }
 
 void Model::EncodedVideo::loadVideo() {
-	throw "Not yet implemented";
+    Utility::VideoLoader loader = Utility::VideoLoader(this->path);
+    this->avVideo = loader.loadVideo().get();
+    this->video = Utility::VideoConverter::convertAVVideoToVideo(*(this->avVideo)).get();
 }
 
 void Model::EncodedVideo::setBitrate(Graph graph) {
-	throw "Not yet implemented";
+    this->bitrate = &graph;
 }
 
 void Model::EncodedVideo::setPsnr(Graph graph) {
-	throw "Not yet implemented";
+    this->psnr = &graph;
 }
 
 void Model::EncodedVideo::setRedHistogramm(Graph graph) {
-	throw "Not yet implemented";
+    this->redHisto = &graph;
 }
 
 void Model::EncodedVideo::setGreenHistogramm(Graph graph) {
-	throw "Not yet implemented";
+    this->greenHisto = &graph;
 }
 
 void Model::EncodedVideo::setBlueHistogramm(Graph graph) {
-	throw "Not yet implemented";
+    this->blueHisto = &graph;
 }
 
 void Model::EncodedVideo::setMacroblockVideo(Video video) {
-	throw "Not yet implemented";
+    this->macroblockVideo = &video;
 }
 
 void Model::EncodedVideo::setRgbDiffVideo(Video video) {
-	throw "Not yet implemented";
+    this->rgbDiffVideo = &video;
+}
+
+void Model::EncodedVideo::calculateHistogramms(){
+    Utility::RGBHistogrammCalculator histogrammCalculator = Utility::RGBHistogrammCalculator(*(this->video));
+    histogrammCalculator.calculate();
+    this->greenHisto = histogrammCalculator.getGreenHistogramm();
+    this->redHisto = histogrammCalculator.getRedHistogramm();
+    this->blueHisto = histogrammCalculator.getBlueHistogramm();
 }
