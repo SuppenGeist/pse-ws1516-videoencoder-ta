@@ -3,16 +3,12 @@
 
 #include <QUndoCommand>
 
+#include "../memento/AnalysisBoxMemento.h"
 namespace GUI
 {
 	class AnalysisBox;
 	class AnalysisBoxContainer;
 }
-namespace Model
-{
-	class EncodedVideo;
-}
-
 namespace UndoRedo
 {
 	/**
@@ -41,6 +37,8 @@ namespace UndoRedo
     private:
 
         GUI::AnalysisBox* anaBox;
+        GUI::AnalysisBoxContainer* container;
+        Memento::AnalysisBoxMemento boxMemo;
         int index;
 	};
 }

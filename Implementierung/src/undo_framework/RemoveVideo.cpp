@@ -1,20 +1,21 @@
-/*#include <exception>
-
 #include "RemoveVideo.h"
-#include "AnalysisBox.h"
-#include "AnalysisBoxContainer.h"
-#include "EncodedVideo.h"
-#include "QUndoCommand.h"
 
-RemoveVideo::RemoveVideo(AnalysisBoxContainer* container, encodedVideo video) {
+#include <QUndoCommand>
+
+#include "../gui/AnalysisBox.h"
+#include "../gui/AnalysisBoxContainer.h"
+#include "../memento/AnalysisBoxMemento.h"
+
+UndoRedo::RemoveVideo::RemoveVideo(GUI::AnalysisBox* box){
+    anaBox = box;
+    boxMemo = box->getMemento();
+    container = (GUI::AnalysisBoxContainer*) box->parent();
 }
 
-void RemoveVideo::undo() {
-	throw "Not yet implemented";
+void UndoRedo::RemoveVideo::undo() {
+    anaBox = container->addBox(index, boxMemo);
 }
 
-void RemoveVideo::redo() {
-	throw "Not yet implemented";
+void UndoRedo::RemoveVideo::redo() {
+    index = ((GUI::AnalysisBoxContainer*) anaBox->parent())->removeBox(anaBox);
 }
-
-*/
