@@ -21,9 +21,37 @@
 #include "../FilterTab.h"
 
 #include "BlurFilterBox.h"
+#include "BorderFilterBox.h"
+#include "BrightnessFilterBox.h"
+#include "ColorbalanceFilterBox.h"
+#include "ContrastFilterBox.h"
+#include "GridFilterBox.h"
+#include "MirrorFilterBox.h"
+#include "NoiseFilterBox.h"
 #include "PlainFilterBox.h"
+#include "PosterFilterBox.h"
+#include "RectangleFilterBox.h"
+#include "RGBFilterBox.h"
+#include "RotationFilterBox.h"
+#include "SaturationFilterBox.h"
+#include "ScaleFilterBox.h"
+#include "SharpnessFilterBox.h"
 
 #include "../../model/filters/BlurFilter.h"
+#include "../../model/filters/BorderFilter.h"
+#include "../../model/filters/BrightnessFilter.h"
+#include "../../model/filters/ColorbalanceFilter.h"
+#include "../../model/filters/ContrastFilter.h"
+#include "../../model/filters/GridFilter.h"
+#include "../../model/filters/MirrorFilter.h"
+#include "../../model/filters/NoiseFilter.h"
+#include "../../model/filters/PosterFilter.h"
+#include "../../model/filters/RectangleFilter.h"
+#include "../../model/filters/RGBFilter.h"
+#include "../../model/filters/RotationFilter.h"
+#include "../../model/filters/SaturationFilter.h"
+#include "../../model/filters/ScaleFilter.h"
+#include "../../model/filters/SharpnessFilter.h"
 
 std::unique_ptr<QImage> GUI::FilterConfigurationBox::defaultImage_;
 
@@ -44,6 +72,14 @@ std::unique_ptr<GUI::FilterConfigurationBox> GUI::FilterConfigurationBox::Create
 
     if(filter.getName()==Model::BlurFilter::FILTERNAME) {
         box=std::make_unique<BlurFilterBox>();
+    }else if(filter.getName()==Model::BrightnessFilter::FILTERNAME){
+        box=std::make_unique<BrightnessFilterBox>();
+    }else if(filter.getName()==Model::ContrastFilter::FILTERNAME){
+        box=std::make_unique<ContrastFilterBox>();
+    }else if(filter.getName()==Model::SaturationFilter::FILTERNAME){
+        box=std::make_unique<SaturationFilterBox>();
+    }else if(filter.getName()==Model::RotationFilter::FILTERNAME){
+        box=std::make_unique<RotationFilterBox>();
     }else {
         return std::make_unique<PlainFilterBox>();
     }

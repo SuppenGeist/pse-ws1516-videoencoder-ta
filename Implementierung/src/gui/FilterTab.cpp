@@ -69,6 +69,7 @@
 #include "filter_boxes/FilterConfigurationBox.h"
 #include "filter_boxes/PlainFilterBox.h"
 
+
 extern "C" {
 #include <libavutil/pixfmt.h>
 }

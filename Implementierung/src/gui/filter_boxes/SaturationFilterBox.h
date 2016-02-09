@@ -1,35 +1,43 @@
-/*/*
-#include <exception>
-using namespace std;
-
 #ifndef __SaturationFilterBox_h__
 #define __SaturationFilterBox_h__
 
-// #include "QWidget.h"
+#include <QWidget>
+#include <QSlider>
+#include <QSpinBox>
+
 #include "FilterConfigurationBox.h"
 
-namespace GUI
-{
-	class QWidget;
-	// class FilterConfigurationBox;
-	class SaturationFilterBox;
-}
 
 namespace GUI
 {
 	/**
 	 * This class contains the gui elements for changing the options of a saturation filter.
+    */
+class SaturationFilterBox: public FilterConfigurationBox
+{
+    Q_OBJECT
+    public:
+    /**
+     * @brief SaturationFilterBox Constructor.
+     * @param parent
+     */
+    SaturationFilterBox(QWidget* parent=0);
 
-	class SaturationFilterBox: public GUI::FilterConfigurationBox
-	{
+protected:
+    void updateUi() override;
 
-		/// <summary>
-		/// Constructor.
-		/// </summary>
-		public: SaturationFilterBox(GUI::QWidget* parent);
-	};
+
+private slots:
+    void sliderChanged(int value);
+    void spinBoxChanged(int value);
+private:
+    QSlider*     slider_;
+    QSpinBox*   spinBox_;
+
+    virtual void createFilterOptions();
+};
 }
 
 #endif
-*/
+
 
