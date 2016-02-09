@@ -94,15 +94,18 @@ class AnalysisBoxContainer: public QFrame {
 	/**
 	 * @brief removeBox Removes a box from the list.
 	 * @param box The box to remove.
+     * @return Index where box was removed.
 	 */
-    void removeBox(GUI::AnalysisBox* box);
+    int removeBox(GUI::AnalysisBox* box);
 
 	/**
 	 * @brief addVideo Adds the given video to the container.
 	 * @param video The video to add.
 	 * @return The box in which the video is presented.
-	 */
+     */
 	GUI::AnalysisBox* addVideo(Model::EncodedVideo video);
+
+
   public:
 	UndoRedo::RemoveVideo* anaBoxContainer;
   private:

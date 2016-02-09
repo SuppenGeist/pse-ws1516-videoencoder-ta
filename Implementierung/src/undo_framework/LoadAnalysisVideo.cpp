@@ -1,20 +1,23 @@
-/*#include <exception>
-
 #include "LoadAnalysisVideo.h"
-#include "AnalysisTab.h"
-#include "AnalysisTabMemento.h"
-#include "YuvVideo.h"
-#include "QUndoCommand.h"
 
-LoadAnalysisVideo::LoadAnalysisVideo(AnalysisTab* anaTab, AnalyseTabMemento anaTabMem, YuvVideo video) {
+#include <QUndoCommand>
+
+#include "../gui/AnalysisTab.h"
+#include "../model/YuvVideo.h"
+
+
+UndoRedo::LoadAnalysisVideo::LoadAnalysisVideo(GUI::AnalysisTab* anaTab, std::unique_ptr<Model::YuvVideo> video) {
+    video_ = std::move(video);
+    anaTab_ = anaTab;
+
 }
 
-void LoadAnalysisVideo::undo() {
-	throw "Not yet implemented";
+void UndoRedo::LoadAnalysisVideo::undo() {
+    video_ = std::move(anaTab_->removeYuvVideo());
 }
 
-void LoadAnalysisVideo::redo() {
-	throw "Not yet implemented";
+void UndoRedo::LoadAnalysisVideo::redo() {
+   anaTab_->loadYuvVideo(std::move(video_));
 }
 
-*/
+

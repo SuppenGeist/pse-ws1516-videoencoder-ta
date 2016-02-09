@@ -67,12 +67,19 @@ class AnalysisTab: public QFrame {
 	*/
 	void setRawVideo(std::unique_ptr<Model::YuvVideo> video);
 
-  private slots:
+    /**
+     * @brief removeYuvVideo Removes current loaded yuv video.
+     * @return The removed video.
+     */
+    std::unique_ptr<Model::YuvVideo> removeYuvVideo();
 
-	/**
-	 * @brief loadRawVideo opens YuvFileOpenDialog and gives the video to AnalysisBoxContainer
-	 */
-	void loadRawVideo();
+    /**
+     * @brief loadYuvVideo Shows given yuv video.
+     * @param video The video to load.
+     */
+    void loadYuvVideo(std::unique_ptr<Model::YuvVideo> video);
+
+  private slots:
 
 	/**
 	 * @brief addVideo opens QFIleDialog, and gives string to AnalysisBoxContainer
@@ -91,24 +98,26 @@ class AnalysisTab: public QFrame {
 	*/
 	void saveResults();
 
+
+
   public:
-	GUI::FrameView* rawVideoView;
-	UndoRedo::LoadAnalysisVideo* anaTab;
+    GUI::FrameView* rawVideoView_;
+    UndoRedo::LoadAnalysisVideo* anaTab_;
 
   private:
 
-	QPushButton* button_save;
-	QComboBox* comboBox_analyseTyp;
-	QScrollArea* scrollArea_analyseVideos;
-	QLabel* label_rawVideo;
-	QPushButton* button_addRawVideo;
-	QTabWidget* tab_properties;
-	QPushButton* button_addVideo;
+    QPushButton* button_save_;
+    QComboBox* comboBox_analyseTyp_;
+    QScrollArea* scrollArea_analyseVideos_;
+    QLabel* label_rawVideo_;
+    QPushButton* button_addRawVideo_;
+    QTabWidget* tab_properties_;
+    QPushButton* button_addVideo_;
 	GUI::PlayerControlPanel* playerPanel_;
-	GUI::Timer* playerTimer;
-	GUI::AnalysisBoxContainer* analysisBoxContainer;
-	GUI::GlobalControlPanel* globalControlPanel;
-	Ui::AnalysisTab* ui;
+    GUI::Timer* playerTimer_;
+    GUI::AnalysisBoxContainer* analysisBoxContainer_;
+    GUI::GlobalControlPanel* globalControlPanel_;
+    Ui::AnalysisTab* ui_;
 
 	std::unique_ptr<Model::YuvVideo>    rawVideo_;
 	std::unique_ptr<VideoPlayer>        player_;
