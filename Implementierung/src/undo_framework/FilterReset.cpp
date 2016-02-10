@@ -1,19 +1,19 @@
-/*#include <exception>
-
 #include "FilterReset.h"
-#include "FilterTab.h"
-#include "FilterList.h"
-#include "QUndoCommand.h"
 
-FilterReset::FilterReset(FilterTab* filterTab, FilterList filterList) {
+#include <memory>
+
+#include "../gui/FilterTab.h"
+#include "../model/FilterList.h"
+
+UndoRedo::FilterReset::FilterReset(GUI::FilterTab& filterTab, std::unique_ptr<Model::FilterList> filterList):filterTab_(&filterTab),filterList_(std::move(filterList)) {
 }
 
-void FilterReset::undo() {
-	throw "Not yet implemented";
+void UndoRedo::FilterReset::undo() {
+    filterTab_->setFilterList(std::make_unique<Model::FilterList>(*filterList_));
+    if(filterList_->getSize()>0)
+        filterTab_->showFilterPreview();
 }
 
-void FilterReset::redo() {
-	throw "Not yet implemented";
+void UndoRedo::FilterReset::redo() {
+    filterTab_->resetFilters();
 }
-
-*/

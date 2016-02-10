@@ -19,6 +19,7 @@
 #include "PlayerControlPanel.h"
 #include "PreviewControlPanel.h"
 #include "VideoPlayer.h"
+#include "filter_boxes/FilterConfigurationBox.h"
 
 #include "../memento/FilterTabMemento.h"
 
@@ -91,6 +92,7 @@ private:
 
     QHBoxLayout*                        h_filterOptions_;
     QSpacerItem*                        spacer_filterOptions_;
+    FilterConfigurationBox*             currentFilterOptionsBox_;
 
     QTabWidget*                         tab_filtertabs_;
 

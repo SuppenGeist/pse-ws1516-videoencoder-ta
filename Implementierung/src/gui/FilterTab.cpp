@@ -25,12 +25,15 @@
 #include "YuvInfoDialog.h"
 #include "VideoPlayer.h"
 #include "Timer.h"
+#include "filter_boxes/FilterConfigurationBox.h"
+#include "filter_boxes/PlainFilterBox.h"
 
 #include "../model/YuvVideo.h"
 #include "../model/FilterList.h"
 
 #include "../undo_framework/UndoStack.h"
 #include "../undo_framework/LoadFilterVideo.h"
+#include "../undo_framework/FilterReset.h"
 
 #include "../memento/FilterTabMemento.h"
 
@@ -86,11 +89,6 @@ void GUI::FilterTab::restore(Memento::FilterTabMemento *memento)
 {
     setRawVideo(memento->getRawVideo());
     setFilterList(memento->getFilterList());
-    QStringList model;
-    for(std::size_t i=0;i<filterlist_->getSize();i++) {
-        model<<filterlist_->getFilter(i)->getName()+" filter";
-    }
-    model_filterlist_->setStringList(model);
     if(memento->isPreviewShow()) {
         showFilterPreview();
     }else {
@@ -208,9 +206,12 @@ std::unique_ptr<Model::Filter> GUI::FilterTab::removeFilter(std::size_t index)
 
     if(filterlist_->getSize()==0) {
         showRawVideo();
+        currentFilterOptionsBox_->hide();
     }
     else {
         updateFilterPreview();
+        QModelIndex index(model_filterlist_->index(static_cast<int>(filterlist_->getSize()-1),0));
+        list_filterlist_->setCurrentIndex(index);
     }
 
     return std::move(filter);
@@ -225,6 +226,11 @@ void GUI::FilterTab::setFilterList(std::unique_ptr<Model::FilterList> filterlist
 {
     resetFilters();
     filterlist_=std::move(filterlist);
+    QStringList model;
+    for(std::size_t i=0;i<filterlist_->getSize();i++) {
+        model<<filterlist_->getFilter(i)->getName()+" filter";
+    }
+    model_filterlist_->setStringList(model);
     updateFilterPreview();
 }
 
@@ -311,12 +317,31 @@ void GUI::FilterTab::loadConfiguration()
 
 void GUI::FilterTab::reset()
 {
+    if(filterlist_->getSize()==0)
+        return;
 
+    auto command=new UndoRedo::FilterReset(*this,std::make_unique<Model::FilterList>(*filterlist_));
+    UndoRedo::UndoStack::getUndoStack().push(command);
 }
 
 void GUI::FilterTab::listSelectionChanged(QItemSelection selection)
 {
+    if(selection.indexes().isEmpty())
+        return;
 
+    auto filter=filterlist_->getFilter(selection.indexes().first().row());
+
+    h_filterOptions_->removeWidget(currentFilterOptionsBox_);
+    currentFilterOptionsBox_->hide();
+    delete currentFilterOptionsBox_;
+
+    auto filterbox=FilterConfigurationBox::CreateConfigurationBox(*this,*filter);
+    auto ptr=filterbox.release();
+    currentFilterOptionsBox_=ptr;
+
+    h_filterOptions_->addWidget(currentFilterOptionsBox_);
+    h_filterOptions_->removeItem(spacer_filterOptions_);
+    h_filterOptions_->addItem(spacer_filterOptions_);
 }
 
 void GUI::FilterTab::createUi()
@@ -518,7 +543,8 @@ void GUI::FilterTab::createFilterTabs()
 
     QSpacerItem* spacer=new QSpacerItem(0,0,QSizePolicy::Expanding,QSizePolicy::Expanding);
     h_filterOptions_->addSpacerItem(spacer);
-    //Add FilterConfigurationBox
+    currentFilterOptionsBox_=new PlainFilterBox;
+    h_filterOptions_->addWidget(currentFilterOptionsBox_);
     spacer_filterOptions_=new QSpacerItem(0,0,QSizePolicy::Expanding,QSizePolicy::Expanding);
     h_filterOptions_->addSpacerItem(spacer_filterOptions_);
 
