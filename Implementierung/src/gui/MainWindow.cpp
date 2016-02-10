@@ -66,7 +66,7 @@ void GUI::MainWindow::loadProject() {
         Utility::ProjectReader w = Utility::ProjectReader(fileName);
         *loadedProject_ = w.readProject();
     }
-    restore(loadedProject_->getMemento());
+    //restore(loadedProject_->getMemento());
     analysisTab_->setProject(loadedProject_);
 }
 

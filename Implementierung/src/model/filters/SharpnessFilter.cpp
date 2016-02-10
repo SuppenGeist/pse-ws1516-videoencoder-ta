@@ -24,7 +24,7 @@ int Model::SharpnessFilter::getIntensity() {
 	return intensity_;
 }
 
-QString Model::SharpnessFilter::getName() {
+QString Model::SharpnessFilter::getName() const {
 	return FILTERNAME;
 }
 
@@ -41,7 +41,7 @@ void Model::SharpnessFilter::restore(QString description) {
 	setIntensity(list[0].QString::toInt());
 }
 
-QString Model::SharpnessFilter::getSaveString() {
+QString Model::SharpnessFilter::getSaveString() const {
 	QString str = QString::number(intensity_);
 	return str;
 }

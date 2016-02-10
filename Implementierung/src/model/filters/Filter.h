@@ -28,7 +28,7 @@ class Filter {
 	 * @brief getName
 	 * @return
 	 */
-	virtual QString getName()=0;
+    virtual QString getName() const =0;
 
 	/**
 	 * @brief restoreFilter
@@ -40,7 +40,7 @@ class Filter {
 	 * @brief getSaveString
 	 * @return
 	 */
-	virtual QString getSaveString() = 0;
+    virtual QString getSaveString() const = 0;
 };
 }
 

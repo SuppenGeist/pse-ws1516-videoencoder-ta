@@ -14,7 +14,7 @@ std::string Model::NegativeFilter::getFilterDescription() {
 	return "negate";
 }
 
-QString Model::NegativeFilter::getName() {
+QString Model::NegativeFilter::getName() const {
 	return FILTERNAME;
 }
 
@@ -22,6 +22,6 @@ void Model::NegativeFilter::restore(QString description) {
 	//nothing to load
 }
 
-QString Model::NegativeFilter::getSaveString() {
+QString Model::NegativeFilter::getSaveString() const {
 	//nothing to save
 }

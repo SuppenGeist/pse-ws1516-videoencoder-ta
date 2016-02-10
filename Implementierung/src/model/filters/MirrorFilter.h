@@ -27,7 +27,7 @@ class MirrorFilter: public Filter {
 	 * @brief getName
 	 * @return
 	 */
-	QString getName();
+    QString getName() const;
 
 	/**
 	 * @brief getMode Returns the MirrorMode.
@@ -51,7 +51,7 @@ class MirrorFilter: public Filter {
 	 * @brief getSaveString
 	 * @return
 	 */
-	QString getSaveString();
+    QString getSaveString() const;
   private:
 	MirrorMode   mode_;
 };

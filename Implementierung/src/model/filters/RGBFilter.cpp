@@ -31,7 +31,7 @@ void Model::RGBFilter::setColor(BasicColor color) {
     color_=color;
 }
 
-QString Model::RGBFilter::getName() {
+QString Model::RGBFilter::getName() const {
 	return FILTERNAME;
 }
 
@@ -42,7 +42,7 @@ void Model::RGBFilter::restore(QString description) {
     setColor(static_cast<BasicColor>(list[0].QString::toInt()));
 }
 
-QString Model::RGBFilter::getSaveString() {
+QString Model::RGBFilter::getSaveString() const {
     QString str = QString::number(color_);
     return str;
 }

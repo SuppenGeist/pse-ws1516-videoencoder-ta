@@ -24,7 +24,7 @@ std::string Model::MirrorFilter::getFilterDescription() {
 	throw std::logic_error("Should not get here");
 }
 
-QString Model::MirrorFilter::getName() {
+QString Model::MirrorFilter::getName() const {
 	return FILTERNAME;
 }
 
@@ -40,6 +40,6 @@ void Model::MirrorFilter::restore(QString description) {
 
 }
 
-QString Model::MirrorFilter::getSaveString() {
+QString Model::MirrorFilter::getSaveString() const {
 
 }

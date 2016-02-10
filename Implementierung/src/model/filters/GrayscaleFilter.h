@@ -26,7 +26,7 @@ class GrayscaleFilter: public Filter {
 	 * @brief getName
 	 * @return
 	 */
-	QString getName();
+    QString getName() const;
 
 	/**
 	 * @brief getFilterDescription
@@ -44,7 +44,7 @@ class GrayscaleFilter: public Filter {
 	 * @brief getSaveString
 	 * @return
 	 */
-	QString getSaveString();
+    QString getSaveString() const;
 };
 }
 

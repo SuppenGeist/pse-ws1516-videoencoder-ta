@@ -14,7 +14,7 @@ std::string Model::EdgeFilter::getFilterDescription() {
 	return "edgedetect";
 }
 
-QString Model::EdgeFilter::getName() {
+QString Model::EdgeFilter::getName() const {
 	return FILTERNAME;
 }
 
@@ -22,6 +22,6 @@ void Model::EdgeFilter::restore(QString description) {
 	//nothing to load
 }
 
-QString Model::EdgeFilter::getSaveString() {
+QString Model::EdgeFilter::getSaveString() const {
 	//nothing to save
 }

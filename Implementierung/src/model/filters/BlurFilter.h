@@ -42,7 +42,7 @@ class BlurFilter: public Filter {
 	 * @brief getName
 	 * @return
 	 */
-	QString getName();
+    QString getName() const;
 
 	/**
 	 * @brief restoreFilter
@@ -54,7 +54,7 @@ class BlurFilter: public Filter {
 	 * @brief getSaveString
 	 * @return
 	 */
-	QString getSaveString();
+    QString getSaveString() const;
 
   private:
 	int     intensity_;

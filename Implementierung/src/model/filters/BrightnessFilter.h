@@ -32,7 +32,7 @@ class BrightnessFilter: public Filter {
 	 * @brief getName
 	 * @return
 	 */
-	QString getName();
+    QString getName() const;
 
 	/**
 	 * @brief getFilterDescription
@@ -50,7 +50,7 @@ class BrightnessFilter: public Filter {
 	 * @brief getSaveString
 	 * @return
 	 */
-	QString getSaveString();
+    QString getSaveString() const;
 
 
   private:

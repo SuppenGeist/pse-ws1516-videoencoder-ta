@@ -1,82 +1,44 @@
 #include "FilterTabMemento.h"
 
-#include <string>
+#include <memory>
 
+#include "../model/YuvVideo.h"
 #include "../model/FilterList.h"
+#include "../model/filters/Filter.h"
 
-Memento::FilterTabMemento::FilterTabMemento() {
+Memento::FilterTabMemento::FilterTabMemento():rawVideo_(nullptr),isPreviewShow_(false) {
+
 }
 
-Model::FilterList* Memento::FilterTabMemento::getFilterList() {
-    return this->filterList_;
+void Memento::FilterTabMemento::setRawVideo(Model::YuvVideo *rawVideo)
+{
+    rawVideo_=rawVideo;
 }
 
-void Memento::FilterTabMemento::setFilterList(Model::FilterList *filterList) {
-    this->filterList_ = filterList;
+Model::YuvVideo *Memento::FilterTabMemento::getRawVideo()
+{
+    return rawVideo_;
 }
 
-bool Memento::FilterTabMemento::getWasApplied() {
-    return this->wasApplied_;
+void Memento::FilterTabMemento::setFilterList( Model::FilterList &filterlist)
+{
+    filterlist_=std::make_unique<Model::FilterList>(filterlist);
 }
 
-void Memento::FilterTabMemento::setWasApplied(bool wasApplied) {
-    this->wasApplied_ = wasApplied;
+std::unique_ptr<Model::FilterList> Memento::FilterTabMemento::getFilterList()
+{
+    if(!filterlist_.get())
+        return std::unique_ptr<Model::FilterList>();
+    return std::make_unique<Model::FilterList>(*filterlist_);
 }
 
-int Memento::FilterTabMemento::getDisplayedFrame() {
-    return this->displayedFrame_;
+void Memento::FilterTabMemento::setIsPreviewShown(bool isShown)
+{
+    isPreviewShow_=isShown;
 }
 
-void Memento::FilterTabMemento::setDisplayedFrame(int displayedFrame) {
-    this->displayedFrame_ = displayedFrame;
+bool Memento::FilterTabMemento::isPreviewShow()
+{
+    return isPreviewShow_;
 }
 
-std::string Memento::FilterTabMemento::getLoadedFile() {
-    return yuvPath_;
-}
-
-void Memento::FilterTabMemento::setLoadedFile(std::string loadedFile) {
-    yuvPath_ = loadedFile;
-}
-
-int Memento::FilterTabMemento::getFps() {
- return yuvFps_;
-}
-
-
-int Memento::FilterTabMemento::getWidth() {
-    return yuvWidth_;
-}
-
-
-int Memento::FilterTabMemento::getHeight() {
-    return yuvHeight_;
-}
-
-Utility::Compression Memento::FilterTabMemento::getCompression() {
-    return yuvCompession_;
-}
-
-Utility::YuvType Memento::FilterTabMemento::getPixelSheme() {
-    return yuvPixelScheme_;
-}
-
-void Memento::FilterTabMemento::setFps(int fps) {
-    yuvFps_ = fps;
-}
-
-void Memento::FilterTabMemento::setWidth(int width) {
-    yuvWidth_ = width;
-}
-
-void Memento::FilterTabMemento::setHeight(int height) {
-    yuvHeight_ = height;
-}
-
-void Memento::FilterTabMemento::setCompression(Utility::Compression comp) {
-    yuvCompession_ = comp;
-}
-
-void Memento::FilterTabMemento::setPixelSheme(Utility::YuvType sheme) {
-    yuvPixelScheme_ = sheme;
-}

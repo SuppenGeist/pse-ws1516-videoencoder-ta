@@ -71,7 +71,7 @@ int Model::RectangleFilter::getX() {
 	return x_;
 }
 
-QString Model::RectangleFilter::getName() {
+QString Model::RectangleFilter::getName() const {
 	return FILTERNAME;
 }
 
@@ -105,7 +105,7 @@ void Model::RectangleFilter::restore(QString description) {
 	setColor(QColor(list[5]));
 }
 
-QString Model::RectangleFilter::getSaveString() {
+QString Model::RectangleFilter::getSaveString() const {
 	QString str =QString::number(width_);
 	str+=";";
 	str+=QString::number(height_);

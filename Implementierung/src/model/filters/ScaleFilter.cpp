@@ -33,7 +33,7 @@ void Model::ScaleFilter::setKeepRatio(bool keepRatio) {
 	keepRatio_ = keepRatio;
 }
 
-QString Model::ScaleFilter::getName() {
+QString Model::ScaleFilter::getName() const {
 	return FILTERNAME;
 }
 
@@ -69,7 +69,7 @@ void Model::ScaleFilter::restore(QString description) {
 	setRatio(list[3].QString::toInt());
 }
 
-QString Model::ScaleFilter::getSaveString() {
+QString Model::ScaleFilter::getSaveString() const {
 	QString str = QString::number(width_);
 	str+=";";
 	str+=QString::number(height_);

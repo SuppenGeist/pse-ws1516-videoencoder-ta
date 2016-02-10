@@ -35,7 +35,7 @@ int Model::NoiseFilter::getIntensity() {
     return intensity_;
 }
 
-QString Model::NoiseFilter::getName() {
+QString Model::NoiseFilter::getName() const {
 	return FILTERNAME;
 }
 
@@ -52,7 +52,7 @@ void Model::NoiseFilter::restore(QString description) {
     setIntensity(list[0].QString::toInt());
 }
 
-QString Model::NoiseFilter::getSaveString() {
+QString Model::NoiseFilter::getSaveString() const {
         QString str = QString(mode_);
         return str;
 }

@@ -21,7 +21,7 @@ void Model::BrightnessFilter::setIntensity(int intensity) {
 	intensity_ = intensity;
 }
 
-QString Model::BrightnessFilter::getName() {
+QString Model::BrightnessFilter::getName() const {
 	return FILTERNAME;
 }
 
@@ -39,7 +39,7 @@ void Model::BrightnessFilter::restore(QString description) {
 	setIntensity(list[0].QString::toInt());
 }
 
-QString Model::BrightnessFilter::getSaveString() {
+QString Model::BrightnessFilter::getSaveString() const {
 	QString str =QString::number(intensity_);
 
 	return str;

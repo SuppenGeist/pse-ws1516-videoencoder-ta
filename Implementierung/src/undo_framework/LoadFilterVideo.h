@@ -5,8 +5,9 @@
 
 #include <memory>
 
-#include "../model/YuvVideo.h"
+#include "../gui/FilterTab.h"
 #include "../memento/FilterTabMemento.h"
+#include "../model/YuvVideo.h"
 
 namespace GUI {
 class FilterTab;
@@ -24,8 +25,8 @@ class LoadFilterVideo: public QUndoCommand {
 	 * @param video The video to use.
 	 * @param memento The memento before the new video is loaded.
 	 */
-	LoadFilterVideo(GUI::FilterTab& filterTab, std::unique_ptr<Model::YuvVideo> video,
-                    Memento::FilterTabMemento memento);
+    LoadFilterVideo(GUI::FilterTab& filterTab, std::unique_ptr<Model::YuvVideo> video,
+                    std::unique_ptr<Memento::FilterTabMemento> memento);
 
 	/**
 	 * @brief undo Removes current video to which filters can be applied and loads previous video.
@@ -39,9 +40,9 @@ class LoadFilterVideo: public QUndoCommand {
 
 
   private:
-    Memento::FilterTabMemento                   memento_;
-	GUI::FilterTab*                             filterTab_;
-	std::unique_ptr<Model::YuvVideo>            video_;
+    std::unique_ptr<Memento::FilterTabMemento>  memento_;
+    GUI::FilterTab*                             filterTab_;
+    std::unique_ptr<Model::YuvVideo>            video_;
 };
 }
 

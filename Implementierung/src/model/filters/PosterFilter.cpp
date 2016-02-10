@@ -21,7 +21,7 @@ int Model::PosterFilter::getNumberOfColors() {
 	return numberOfColors_;
 }
 
-QString Model::PosterFilter::getName() {
+QString Model::PosterFilter::getName() const {
 	return FILTERNAME;
 }
 
@@ -38,7 +38,7 @@ void Model::PosterFilter::restore(QString description) {
 	setNumberOfColors(list[0].QString::toInt());
 }
 
-QString Model::PosterFilter::getSaveString() {
+QString Model::PosterFilter::getSaveString() const {
 	QString str = QString::number(numberOfColors_);
 	return str;
 }

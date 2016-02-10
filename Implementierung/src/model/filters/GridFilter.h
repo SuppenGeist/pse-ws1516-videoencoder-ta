@@ -88,7 +88,7 @@ class GridFilter: public Model::Filter {
 	 * @brief getName
 	 * @return
 	 */
-	QString getName();
+    QString getName() const;
 
 	/**
 	 * @brief restoreFilter
@@ -100,7 +100,7 @@ class GridFilter: public Model::Filter {
 	 * @brief getSaveString
 	 * @return
 	 */
-	QString getSaveString();
+    QString getSaveString() const;
   private:
 	int    horizontalCells_;
 	int    verticalCells_;

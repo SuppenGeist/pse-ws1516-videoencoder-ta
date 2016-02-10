@@ -20,7 +20,7 @@ int Model::RotationFilter::getAngle() {
     return angle_;
 }
 
-QString Model::RotationFilter::getName() {
+QString Model::RotationFilter::getName() const {
 	return FILTERNAME;
 }
 
@@ -35,7 +35,7 @@ void Model::RotationFilter::restore(QString description) {
 	setAngle(list[0].QString::toInt());
 }
 
-QString Model::RotationFilter::getSaveString() {
+QString Model::RotationFilter::getSaveString() const {
     QString str = QString::number(angle_);
 	return str;
 }

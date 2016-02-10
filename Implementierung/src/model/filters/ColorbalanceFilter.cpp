@@ -98,7 +98,7 @@ std::string Model::ColorbalanceFilter::getFilterDescription() {
 	return str;
 }
 
-QString Model::ColorbalanceFilter::getName() {
+QString Model::ColorbalanceFilter::getName() const {
 	return FILTERNAME;
 }
 
@@ -121,7 +121,7 @@ void Model::ColorbalanceFilter::restore(QString description) {
 	setColor(static_cast<BasicColor>(list[5].QString::toInt()));
 }
 
-QString Model::ColorbalanceFilter::getSaveString() {
+QString Model::ColorbalanceFilter::getSaveString() const {
 	QString str =QString::number(intensity_);
 	str+=";";
 	str+=QString::number(darkPixels_);

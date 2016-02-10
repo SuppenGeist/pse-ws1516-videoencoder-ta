@@ -45,7 +45,7 @@ class PosterFilter: public Model::Filter {
 	 * @brief getName
 	 * @return
 	 */
-	QString getName();
+    QString getName() const;
 
 	/**
 	 * @brief restoreFilter
@@ -57,7 +57,7 @@ class PosterFilter: public Model::Filter {
 	 * @brief getSaveString
 	 * @return
 	 */
-	QString getSaveString();
+    QString getSaveString() const;
 
   private:
 	int numberOfColors_;

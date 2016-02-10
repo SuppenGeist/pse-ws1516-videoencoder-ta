@@ -80,7 +80,7 @@ void Model::GridFilter::setOpacity(int opacity) {
 	opacity_ = opacity;
 }
 
-QString Model::GridFilter::getName() {
+QString Model::GridFilter::getName() const {
 	return FILTERNAME;
 }
 
@@ -93,7 +93,7 @@ void Model::GridFilter::restore(QString description) {
 	setColor(QColor(list[4]));
 }
 
-QString Model::GridFilter::getSaveString() {
+QString Model::GridFilter::getSaveString() const {
 	QString str = QString::number(horizontalCells_);
 	str+=";";
 	str+=QString::number(verticalCells_);

@@ -38,7 +38,7 @@ class SharpnessFilter: public Model::Filter {
 	 * @brief getName
 	 * @return
 	 */
-	QString getName();
+    QString getName() const;
 
 	/**
 	 * @brief Sets the intensity of the Sharpness.
@@ -56,7 +56,7 @@ class SharpnessFilter: public Model::Filter {
 	 * @brief getSaveString
 	 * @return
 	 */
-	QString getSaveString();
+    QString getSaveString() const;
 
   private:
 	int intensity_;

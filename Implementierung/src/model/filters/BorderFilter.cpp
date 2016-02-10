@@ -66,7 +66,7 @@ void Model::BorderFilter::setColor(QColor color) {
 	color_ = color;
 }
 
-QString Model::BorderFilter::getName() {
+QString Model::BorderFilter::getName() const {
 	return FILTERNAME;
 }
 
@@ -126,7 +126,7 @@ void Model::BorderFilter::restore(QString description) {
 	setColor(QColor(list[5]));
 }
 
-QString Model::BorderFilter::getSaveString() {
+QString Model::BorderFilter::getSaveString() const {
 	QString str = QString::number(top_);
 	str+=";";
 	str+=QString::number(bottom_);

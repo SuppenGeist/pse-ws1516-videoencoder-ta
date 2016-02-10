@@ -23,6 +23,8 @@ class FilterList {
 	 */
 	FilterList();
 
+    FilterList(FilterList& obj);
+
 	/**
 	 * @brief moveFilter Moves a filter to another position.
 	 * @param oldPosition The old position.

@@ -21,7 +21,7 @@ int Model::SaturationFilter::getIntensity() {
 	return intensity_;
 }
 
-QString Model::SaturationFilter::getName() {
+QString Model::SaturationFilter::getName() const {
 	return FILTERNAME;
 }
 
@@ -38,7 +38,7 @@ void Model::SaturationFilter::restore(QString description) {
 	setIntensity(list[0].QString::toInt());
 }
 
-QString Model::SaturationFilter::getSaveString() {
+QString Model::SaturationFilter::getSaveString() const {
 	QString str = QString::number(intensity_);
 	return str;
 

@@ -21,7 +21,7 @@ int Model::ContrastFilter::getIntensity() {
 	return intensity_;
 }
 
-QString Model::ContrastFilter::getName() {
+QString Model::ContrastFilter::getName() const {
 	return FILTERNAME;
 }
 
@@ -39,7 +39,7 @@ void Model::ContrastFilter::restore(QString description) {
 	setIntensity(list[0].QString::toInt());
 }
 
-QString Model::ContrastFilter::getSaveString() {
+QString Model::ContrastFilter::getSaveString() const {
 	QString str = QString::number(intensity_);
 
 	return str;

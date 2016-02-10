@@ -12,7 +12,7 @@ Model::GrayscaleFilter::GrayscaleFilter() {
 
 }
 
-QString Model::GrayscaleFilter::getName() {
+QString Model::GrayscaleFilter::getName() const {
 	return FILTERNAME;
 }
 
@@ -23,6 +23,6 @@ void Model::GrayscaleFilter::restore(QString description) {
 	//nothing to load
 }
 
-QString Model::GrayscaleFilter::getSaveString() {
+QString Model::GrayscaleFilter::getSaveString() const {
 	//nothing to save
 }

@@ -42,7 +42,7 @@ class RotationFilter: public Model::Filter {
 	 * @brief getName
 	 * @return
 	 */
-	QString getName();
+    QString getName() const;
 
 	/**
 	 * @brief getFilterDescription
@@ -60,7 +60,7 @@ class RotationFilter: public Model::Filter {
 	 * @brief getSaveString
 	 * @return
 	 */
-	QString getSaveString();
+    QString getSaveString() const;
 
   private:
     int angle_;

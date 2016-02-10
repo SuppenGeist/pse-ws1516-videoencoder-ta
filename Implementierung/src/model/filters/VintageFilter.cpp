@@ -10,7 +10,7 @@ Model::VintageFilter::VintageFilter() {
 
 }
 
-QString Model::VintageFilter::getName() {
+QString Model::VintageFilter::getName() const {
 	return FILTERNAME;
 }
 
@@ -22,6 +22,6 @@ void Model::VintageFilter::restore(QString description) {
 	//nothing to load
 }
 
-QString Model::VintageFilter::getSaveString() {
+QString Model::VintageFilter::getSaveString() const {
 	//nothing to save
 }

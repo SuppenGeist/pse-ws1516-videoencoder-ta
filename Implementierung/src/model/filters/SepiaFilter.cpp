@@ -9,7 +9,7 @@ const QString Model::SepiaFilter::FILTERNAME="Sepia";
 Model::SepiaFilter::SepiaFilter() {
 }
 
-QString Model::SepiaFilter::getName() {
+QString Model::SepiaFilter::getName() const {
 	return FILTERNAME;
 }
 
@@ -23,6 +23,6 @@ void Model::SepiaFilter::restore(QString description) {
 	//nothing to load
 }
 
-QString Model::SepiaFilter::getSaveString() {
+QString Model::SepiaFilter::getSaveString() const {
 	//nothing to save
 }

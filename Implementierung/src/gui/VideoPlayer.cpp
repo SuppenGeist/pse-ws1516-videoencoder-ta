@@ -3,6 +3,7 @@
 #include <vector>
 #include <algorithm>
 #include <memory>
+
 #include <QDebug>
 
 #include "ControlPanel.h"
@@ -32,12 +33,16 @@ void GUI::VideoPlayer::removeView(FrameView& view) {
 
 void GUI::VideoPlayer::setVideo(Model::Video* video) noexcept {
 	stop();
+
 	video_=video;
+
 	setPosition(0);
+
 	if(timer_.get()&&video)
 		timer_->setFps(video->getFps());
 	if(masterPanel_)
-		masterPanel_->updateUi();
+        masterPanel_->updateUi();
+
 	updateViews();
 }
 
