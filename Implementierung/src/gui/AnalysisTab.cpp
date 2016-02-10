@@ -24,6 +24,8 @@
 #include "AnalysisTab.h"
 #include "MainWindow.h"
 #include "../model/Project.h"
+#include "../utility/Compression.h"
+#include "../utility/YuvType.h"
 
 GUI::AnalysisTab::AnalysisTab(QWidget* parent) : QFrame(parent) {
 
@@ -65,14 +67,27 @@ Memento::AnalysisTabMemento GUI::AnalysisTab::getMemento() {
     memo.setCurrentSpeed(player_->getSpeed());
     memo.setCurrentVideoPosition(player_->getPosition());
     memo.setCurrentlyShownAnalysisVideo(ui_->analysisTyp->currentIndex());
+    memo.setCompression(rawVideo_->getCompression());
+    memo.setFps(rawVideo_->getFps());
+    memo.setHeight(rawVideo_->getHeight());
+    memo.setWidth(rawVideo_->getWidth());
+    memo.setPixelSheme(rawVideo_->getYuvType());
     return memo;
 }
 
 void GUI::AnalysisTab::restore(Memento::AnalysisTabMemento memento) {
     analysisBoxContainer_->restore(memento.getAnalysisBoxContainerMemento());
+
+    ui_->analysisTyp->setCurrentIndex(memento.getCurrentlyShownAnalysisVideo());
+    rawVideo_=std::make_unique<Model::YuvVideo>(QString::fromStdString(memento.getLoadedFile()),
+                                               memento.getPixelSheme(),
+                                               memento.getCompression(),
+                                               memento.getWidth(),
+                                               memento.getHeight(),
+                                               memento.getFps());
+    player_->setVideo(&rawVideo_->getVideo());
     player_->setSpeed(memento.getCurrentSpeed());
     player_->setPosition(memento.getCurrentVideoPosition());
-    ui_->analysisTyp->setCurrentIndex(memento.getCurrentlyShownAnalysisVideo());
 }
 
 void GUI::AnalysisTab::analyseTypChanged(int index) {

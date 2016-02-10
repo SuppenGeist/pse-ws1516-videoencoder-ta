@@ -11,11 +11,9 @@ QString Model::Project::getName() {
 }
 
 Memento::MainWindowMemento& Model::Project::getMemento() {
-	throw "Not yet implemented";
 }
 
 void Model::Project::setMemento(Memento::MainWindowMemento memento) {
-	throw "Not yet implemented";
 }
 
 void Model::Project::setPath(QString path) {

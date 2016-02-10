@@ -28,14 +28,14 @@ Memento::MainWindowMemento GUI::MainWindow::getMemento() {
     Memento::MainWindowMemento memo;
     memo.setAnalysisTabMemento(analysisTab_->getMemento());
     memo.setFilterTabMemento(filterTab_->getMemento());
-    //memo.setSelectedTab(ui_->tab_tabs->currentIndex());
+    memo.setSelectedTab(tab_tabs_->currentIndex());
     return memo;
 }
 
 void GUI::MainWindow::restore(Memento::MainWindowMemento memento) {
     analysisTab_->restore(memento.getAnalysisTabMemento());
     filterTab_->restore(memento.getFilterTabMemento());
-    //ui_->tab_tabs->setCurrentIndex(memento.getSelectedTab());
+    tab_tabs_->setCurrentIndex(memento.getSelectedTab());
 }
 
 void GUI::MainWindow::newProject() {
@@ -51,11 +51,11 @@ void GUI::MainWindow::undo() {
 }
 
 void GUI::MainWindow::saveAs() {
-    if (loadedProject_->getPath().size()==0) {
-        saveProject();
-    } else {
-       Utility::ProjectWriter w = Utility::ProjectWriter(*loadedProject_);
-       w.saveProject();
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Open Image"), "/", tr("Text Files (*.txt)"));
+    if(fileName.length() > 0) {
+        loadedProject_->setPath(fileName);
+        Utility::ProjectWriter w = Utility::ProjectWriter(*loadedProject_);
+        w.saveProject();
     }
 }
 
@@ -71,11 +71,11 @@ void GUI::MainWindow::loadProject() {
 }
 
 void GUI::MainWindow::saveProject() {
-    QString fileName = QFileDialog::getOpenFileName(this, tr("Open Image"), "/", tr("Text Files (*.txt)"));
-    if(fileName.length() > 0) {
-        loadedProject_->setPath(fileName);
-        Utility::ProjectWriter w = Utility::ProjectWriter(*loadedProject_);
-        w.saveProject();
+    if (loadedProject_->getPath() == NULL) {
+        saveAs();
+    } else {
+       Utility::ProjectWriter w = Utility::ProjectWriter(*loadedProject_);
+       w.saveProject();
     }
 }
 
