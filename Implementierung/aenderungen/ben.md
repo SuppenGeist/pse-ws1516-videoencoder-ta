@@ -48,3 +48,11 @@ parameter nun AnaBox, AnaBoxMemento und AnaBoxContainer
 entferne memento aus Parametern und Attributen
 <b>Grund:</b> warum den Zustand speichern wenn man den schritt dorthin kennt
 <hr>
+##AnalysisTabMemento
+füge yuvDaten hinzu
+<b>Grund:</b>wurde wohl vergessen
+<hr>
+##FilterTabMemento
+füge yuvDaten hinzu
+<b>Grund:</b>wurde wohl vergessen
+<hr>

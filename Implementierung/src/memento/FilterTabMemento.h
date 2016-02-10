@@ -8,82 +8,138 @@
 namespace Model {
 class FilterList;
 }
-
+namespace Utility {
+enum class Compression;
+enum class YuvType;
+}
 namespace Memento {
 /**
  * This class is the memento for the FilterTab.
  */
 class FilterTabMemento {
-  private:
-	Model::FilterList* filterList;
-  private:
-	bool wasApplied;
-  private:
-	int displayedFrame;
-  private:
-	std::string loadedFile;
 
-	/// <summary>
-	/// Constructor.
-	/// </summary>
-  public:
-	FilterTabMemento();
 
-	/// <summary>
-	/// Returns the list of the currently selected  filters.
-	/// </summary>
-	/// <returns>List of the selected filters.</returns>
-  public:
-	Model::FilterList *getFilterList();
 
-	/// <summary>
-	/// Sets the list of the currently selected filters.
-	/// </summary>
-	/// <param name="filterList">List of the selected filters.</param>
   public:
+    /**
+     * @brief FilterTabMemento
+     */
+    FilterTabMemento();
+
+    /**
+     * @brief getFilterList Returns the list of the currently selected  filters.
+     * @return List of the selected filters.
+     */
+    Model::FilterList *getFilterList();
+
+    /**
+     * @brief setFilterList Sets the list of the currently selected filters.
+     * @param filterList List of the selected filters.
+     */
 	void setFilterList(Model::FilterList* filterList);
 
-	/// <summary>
-	/// Whether the filter were already applied.
-	/// </summary>
-	/// <returns>True if the filter wre already applied.</returns>
-  public:
+    /**
+     * @brief getWasApplied Whether the filter were already applied.
+     * @return True if the filter wre already applied.
+     */
 	bool getWasApplied();
 
-	/// <summary>
-	/// Sets whether the filters were already aplied.
-	/// </summary>
-	/// <param name="wasApplied">True if the filter were already applied.</param>
-  public:
+    /**
+     * @brief setWasApplied Sets whether the filters were already aplied.
+     * @param wasApplied True if the filter were already applied.
+     */
 	void setWasApplied(bool wasApplied);
 
-	/// <summary>
-	/// Returns the currently displayed frame in the frame preview.
-	/// </summary>
-	/// <returns>The currently displayed frame.</returns>
-  public:
+    /**
+     * @brief getDisplayedFrame Returns the currently displayed frame in the frame preview.
+     * @return The currently displayed frame.
+     */
 	int getDisplayedFrame();
 
-	/// <summary>
-	/// Sets the currently displayed frame in the frame preview.
-	/// </summary>
-	/// <param name="displayedFrame">The currently displayed frame.</param>
-  public:
+    /**
+     * @brief setDisplayedFrame Sets the currently displayed frame in the frame preview.
+     * @param displayedFrame The currently displayed frame.
+     */
 	void setDisplayedFrame(int displayedFrame);
 
-	/// <summary>
-	/// Returns the path to the currently loaded yuv file.
-	/// </summary>
-	/// <returns>Absolute path to the currently loaded yuv file.</returns>
-  public:
+    /**
+     * @brief getLoadedFile Returns the path to the currently loaded yuv file
+     * @return Absolute path to the currently loaded yuv file.
+     */
 	std::string getLoadedFile();
 
-	/// <summary>
-	/// Sets the path to the currently loaded yuv file.
-	/// </summary>
-	/// <param name="loadedFile">Absolute path to the loaded yuv file.</param>
-  public:
+    /**
+     * @brief setLoadedFile Sets the path to the currently loaded yuv file.
+     * @param loadedFile Absolute path to the loaded yuv file.
+     */
 	void setLoadedFile(std::string loadedFile);
+
+    /**
+     * @brief getFps Returns the fps.
+     * @return The fps.
+     */
+    int getFps();
+
+    /**
+     * @brief getWidth Returns the width.
+     * @return The width.
+     */
+    int getWidth();
+
+    /**
+     * @brief getHeight Returns the heigh.
+     * @return The height.
+     */
+    int getHeight();
+
+    /**
+     * @brief getCompression Returns the compression.
+     * @return The compression.
+     */
+    Utility::Compression getCompression();
+
+    /**
+     * @brief getPixelSheme Returns the pixelsheme.
+     * @return The pixelsheme.
+     */
+    Utility::YuvType getPixelSheme();
+
+    /**
+     * @brief setFps Sets fps.
+     * @param fps The fps.
+     */
+    void setFps(int fps);
+    /**
+     * @brief setWidth Sets Width.
+     * @param width The Width.
+     */
+    void setWidth(int width);
+    /**
+     * @brief setHeight Sets Height.
+     * @param height The Height.
+     */
+    void setHeight(int height);
+    /**
+     * @brief setCompression Sets Compression.
+     * @param compThe Compression.
+     */
+    void setCompression(Utility::Compression comp);
+    /**
+     * @brief setPixelSheme Sets PixelScheme.
+     * @param sheme The PixelScheme.
+     */
+    void setPixelSheme(Utility::YuvType sheme);
+
+private:
+  Model::FilterList* filterList_;
+  bool wasApplied_;
+  int displayedFrame_;
+  int yuvWidth_;
+  int yuvHeight_;
+  int yuvFps_;
+  Utility::Compression yuvCompession_;
+  std::string yuvPath_;
+  Utility::YuvType yuvPixelScheme_;
 };
 }
 
