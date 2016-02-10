@@ -137,7 +137,24 @@ HEADERS += \
     test/model/modeltestsuite.h \
     test/model/filters/filtertestsuite.h \
     test/model/filters/testborderfilter.h \
-    test/model/filters/testbrightnessfilter.h
+    test/model/filters/testbrightnessfilter.h \
+    test/model/filters/testcolorbalancefilter.h \
+    test/model/filters/testcontrastfilter.h \
+    test/model/filters/testedgefilter.h \
+    test/model/filters/testgrayscalefilter.h \
+    test/model/filters/testgridfilter.h \
+    test/model/filters/testmirrorfilter.h \
+    test/model/filters/testnegativefilter.h \
+    test/model/filters/testnoisefilter.h \
+    test/model/filters/testposterfilter.h \
+    test/model/filters/testrectanglefilter.h \
+    test/model/filters/testrgbfilter.h \
+    test/model/filters/testrotationfilter.h \
+    test/model/filters/testsaturationfilter.h \
+    test/model/filters/testscalefilter.h \
+    test/model/filters/testsepiafilter.h \
+    test/model/filters/testsharpnessfilter.h \
+    test/model/filters/testvintagefilter.h
 
 SOURCES += \
     src/gui/AnalysisBox.cpp \
@@ -255,7 +272,24 @@ SOURCES += \
     test/model/modeltestsuite.cpp \
     test/model/filters/filtertestsuite.cpp \
     test/model/filters/testborderfilter.cpp \
-    test/model/filters/testbrightnessfilter.cpp
+    test/model/filters/testbrightnessfilter.cpp \
+    test/model/filters/testcolorbalancefilter.cpp \
+    test/model/filters/testcontrastfilter.cpp \
+    test/model/filters/testedgefilter.cpp \
+    test/model/filters/testgrayscalefilter.cpp \
+    test/model/filters/testgridfilter.cpp \
+    test/model/filters/testmirrorfilter.cpp \
+    test/model/filters/testnegativefilter.cpp \
+    test/model/filters/testnoisefilter.cpp \
+    test/model/filters/testposterfilter.cpp \
+    test/model/filters/testrectanglefilter.cpp \
+    test/model/filters/testrgbfilter.cpp \
+    test/model/filters/testrotationfilter.cpp \
+    test/model/filters/testsaturationfilter.cpp \
+    test/model/filters/testscalefilter.cpp \
+    test/model/filters/testsepiafilter.cpp \
+    test/model/filters/testsharpnessfilter.cpp \
+    test/model/filters/testvintagefilter.cpp
 
 RESOURCES += \
     resources.qrc \

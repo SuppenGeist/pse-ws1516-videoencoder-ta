@@ -1,0 +1,4 @@
+#ifndef TESTGRIDFILTER_H
+#define TESTGRIDFILTER_H
+
+#endif // TESTGRIDFILTER_H

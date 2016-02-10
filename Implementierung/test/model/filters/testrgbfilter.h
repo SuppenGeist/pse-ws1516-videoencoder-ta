@@ -1,0 +1,4 @@
+#ifndef TESTRGBFILTER_H
+#define TESTRGBFILTER_H
+
+#endif // TESTRGBFILTER_H
