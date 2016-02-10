@@ -5,7 +5,23 @@
 #include "testblurfilter.h"
 #include "testborderfilter.h"
 #include "testbrightnessfilter.h"
+#include "testcolorbalancefilter.h"
 #include "testcontrastfilter.h"
+#include "testedgefilter.h"
+#include "testgrayscalefilter.h"
+#include "testgridfilter.h"
+#include "testmirrorfilter.h"
+#include "testnegativefilter.h"
+#include "testnoisefilter.h"
+#include "testposterfilter.h"
+#include "testrectanglefilter.h"
+#include "testrgbfilter.h"
+#include "testrotationfilter.h"
+#include "testsaturationfilter.h"
+#include "testscalefilter.h"
+#include "testsepiafilter.h"
+#include "testsharpnessfilter.h"
+#include "testvintagefilter.h"
 
 
 FilterTestSuite::FilterTestSuite(int argc,char* argv[]):argc_(argc),argv_(argv)
@@ -24,7 +40,14 @@ void FilterTestSuite::testAllFilters()
     TestBrightnessFilter testBrightnessFilter;
     QTest::qExec(&testBrightnessFilter);
 
+    //TestColorbalanceFilter testColorbalanceFilter;
+    //QTest::qExec(&testColorbalanceFilter);
+
     TestContrastFilter testContrastFilter;
     QTest::qExec(&testContrastFilter);
+
+    TestEdgeFilter testEdgeFilter;
+    QTest::qExec(&testEdgeFilter);
+
 }
 
