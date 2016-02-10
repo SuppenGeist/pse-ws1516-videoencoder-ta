@@ -85,12 +85,12 @@ void Utility::Yuv411FileSaver::savePlanar() {
 
 Utility::Yuv411Vector Utility::Yuv411FileSaver::Rgb888ToYuv411(QRgb pixel1, QRgb pixel2,
         QRgb pixel3, QRgb pixel4) {
-    int u = RgbToU(pixel1);
-    int y1= RgbToY(pixel1);
-    int y2= RgbToY(pixel2);
-    int v = RgbToV(pixel1);
-    int y3= RgbToU(pixel3);
-    int y4= RgbToU(pixel4);
+	int u = RgbToU(pixel1);
+	int y1= RgbToY(pixel1);
+	int y2= RgbToY(pixel2);
+	int v = RgbToV(pixel1);
+	int y3= RgbToU(pixel3);
+	int y4= RgbToU(pixel4);
 
 	return Utility::Yuv411Vector(u,y1,y2,v,y3,y4);
 }

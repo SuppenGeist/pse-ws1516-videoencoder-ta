@@ -47,7 +47,7 @@ class AnalysisTab: public QFrame {
 	 * @brief AnalysisTab Contructor.
 	 * @param parent Parent of this Object.
 	 */
-    AnalysisTab(QWidget* parent=0);
+	AnalysisTab(QWidget* parent=0);
 
 	/**
 	 * @brief getMemento Creates a memento which contains the state of this tab.
@@ -68,23 +68,23 @@ class AnalysisTab: public QFrame {
 	*/
 	void setRawVideo(std::unique_ptr<Model::YuvVideo> video);
 
-    /**
-     * @brief removeYuvVideo Removes current loaded yuv video.
-     * @return The removed video.
-     */
-    std::unique_ptr<Model::YuvVideo> removeYuvVideo();
+	/**
+	 * @brief removeYuvVideo Removes current loaded yuv video.
+	 * @return The removed video.
+	 */
+	std::unique_ptr<Model::YuvVideo> removeYuvVideo();
 
-    /**
-     * @brief loadYuvVideo Shows given yuv video.
-     * @param video The video to load.
-     */
-    void loadYuvVideo(std::unique_ptr<Model::YuvVideo> video);
+	/**
+	 * @brief loadYuvVideo Shows given yuv video.
+	 * @param video The video to load.
+	 */
+	void loadYuvVideo(std::unique_ptr<Model::YuvVideo> video);
 
-    /**
-     * @brief setProject Sets the project.
-     * @param project_Pointer to th used project.
-     */
-    void setProject(Model::Project* project);
+	/**
+	 * @brief setProject Sets the project.
+	 * @param project_Pointer to th used project.
+	 */
+	void setProject(Model::Project* project);
 
   private slots:
 
@@ -95,7 +95,7 @@ class AnalysisTab: public QFrame {
 
 	/**
 	 * @brief analyseTypChanged tells AnalysisBox to showMacroBlocks() or showRGBDiff()
-     * @param index The new type. 1 = RGB_Diff,  0 = Macroblock.
+	 * @param index The new type. 1 = RGB_Diff,  0 = Macroblock.
 	 *
 	 */
 	void analyseTypChanged(int index);
@@ -108,24 +108,24 @@ class AnalysisTab: public QFrame {
 
 
   public:
-    GUI::FrameView* rawVideoView_;
-    UndoRedo::LoadAnalysisVideo* anaTab_;
+	GUI::FrameView* rawVideoView_;
+	UndoRedo::LoadAnalysisVideo* anaTab_;
 
   private:
 
-    QPushButton* button_save_;
-    QComboBox* comboBox_analyseTyp_;
-    QScrollArea* scrollArea_analyseVideos_;
-    QLabel* label_rawVideo_;
-    QPushButton* button_addRawVideo_;
-    QTabWidget* tab_properties_;
-    QPushButton* button_addVideo_;
+	QPushButton* button_save_;
+	QComboBox* comboBox_analyseTyp_;
+	QScrollArea* scrollArea_analyseVideos_;
+	QLabel* label_rawVideo_;
+	QPushButton* button_addRawVideo_;
+	QTabWidget* tab_properties_;
+	QPushButton* button_addVideo_;
 	GUI::PlayerControlPanel* playerPanel_;
-    GUI::Timer* playerTimer_;
-    GUI::AnalysisBoxContainer* analysisBoxContainer_;
-    GUI::GlobalControlPanel* globalControlPanel_;
-    Ui::AnalysisTab* ui_;
-    Model::Project* project_;
+	GUI::Timer* playerTimer_;
+	GUI::AnalysisBoxContainer* analysisBoxContainer_;
+	GUI::GlobalControlPanel* globalControlPanel_;
+	Ui::AnalysisTab* ui_;
+	Model::Project* project_;
 
 	std::unique_ptr<Model::YuvVideo>    rawVideo_;
 	std::unique_ptr<VideoPlayer>        player_;

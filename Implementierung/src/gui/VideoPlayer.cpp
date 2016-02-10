@@ -41,7 +41,7 @@ void GUI::VideoPlayer::setVideo(Model::Video* video) noexcept {
 	if(timer_.get()&&video)
 		timer_->setFps(video->getFps());
 	if(masterPanel_)
-        masterPanel_->updateUi();
+		masterPanel_->updateUi();
 
 	updateViews();
 }

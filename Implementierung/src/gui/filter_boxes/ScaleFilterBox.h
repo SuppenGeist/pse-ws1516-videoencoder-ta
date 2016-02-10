@@ -8,37 +8,35 @@
 
 #include "FilterConfigurationBox.h"
 
-namespace GUI
-{
+namespace GUI {
+/**
+ * This class contains the gui elements for changing the options of a scale filter.
+*/
+class ScaleFilterBox: public FilterConfigurationBox {
+	Q_OBJECT
+  public:
 	/**
-	 * This class contains the gui elements for changing the options of a scale filter.
-    */
-class ScaleFilterBox: public FilterConfigurationBox
-{
-    Q_OBJECT
-    public:
-    /**
-     * @brief ScaleFilterBox Constructor.
-     * @param parent
-     */
-    ScaleFilterBox(QWidget* parent=0);
+	 * @brief ScaleFilterBox Constructor.
+	 * @param parent
+	 */
+	ScaleFilterBox(QWidget* parent=0);
 
-protected:
-    void updateUi() override;
+  protected:
+	void updateUi() override;
 
 
-private slots:
-    void heightChanged(int value);
-    void widthChanged(int value);
-    void ratioChanged(int value);
-    void keepRatio(int check);
-private:
-    QSpinBox*       width_;
-    QSpinBox*       height_;
-    QSpinBox* ratio_;
-    QCheckBox*      keepRatio_;
+  private slots:
+	void heightChanged(int value);
+	void widthChanged(int value);
+	void ratioChanged(int value);
+	void keepRatio(int check);
+  private:
+	QSpinBox*       width_;
+	QSpinBox*       height_;
+	QSpinBox* ratio_;
+	QCheckBox*      keepRatio_;
 
-    virtual void createFilterOptions();
+	virtual void createFilterOptions();
 };
 }
 

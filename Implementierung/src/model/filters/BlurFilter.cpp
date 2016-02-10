@@ -27,7 +27,7 @@ std::string Model::BlurFilter::getFilterDescription() {
 	return str;
 }
 
-QString Model::BlurFilter::getName() const{
+QString Model::BlurFilter::getName() const {
 	return FILTERNAME;
 }
 
@@ -35,7 +35,7 @@ void Model::BlurFilter::restore(QString description) {
 	QStringList list  = description.split(";");
 	if(list.size()!=1)
 		return;
-    setIntensity(list[0].QString::toInt());
+	setIntensity(list[0].QString::toInt());
 }
 
 QString Model::BlurFilter::getSaveString() const {

@@ -10,10 +10,10 @@ extern "C" {
 
 int main(int argc, char *argv[]) {
 	avcodec_register_all();
-    avfilter_register_all();
+	avfilter_register_all();
 
 	QApplication a(argc, argv);
-    GUI::MainWindow mw;
+	GUI::MainWindow mw;
 	mw.show();
 
 	return a.exec();

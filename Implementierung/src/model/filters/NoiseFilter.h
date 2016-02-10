@@ -53,7 +53,7 @@ class NoiseFilter: public Model::Filter {
 	 * @brief getName
 	 * @return
 	 */
-    QString getName() const;
+	QString getName() const;
 
 	/**
 	 * @brief getFilterDescription
@@ -71,11 +71,11 @@ class NoiseFilter: public Model::Filter {
 	 * @brief getSaveString
 	 * @return
 	 */
-    QString getSaveString() const;
+	QString getSaveString() const;
 
-private:
-  int intensity_;
-  Model::NoiseMode mode_;
+  private:
+	int intensity_;
+	Model::NoiseMode mode_;
 };
 }
 

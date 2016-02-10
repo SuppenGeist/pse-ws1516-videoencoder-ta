@@ -16,27 +16,27 @@ class FilterTabMemento {
 
 
   public:
-    /**
-     * @brief FilterTabMemento
-     */
-    FilterTabMemento();
+	/**
+	 * @brief FilterTabMemento
+	 */
+	FilterTabMemento();
 
-    void setRawVideo(Model::YuvVideo* rawVideo);
+	void setRawVideo(Model::YuvVideo* rawVideo);
 
-    Model::YuvVideo* getRawVideo();
+	Model::YuvVideo* getRawVideo();
 
-    void setFilterList(Model::FilterList& filterlist);
+	void setFilterList(Model::FilterList& filterlist);
 
-    std::unique_ptr<Model::FilterList> getFilterList();
+	std::unique_ptr<Model::FilterList> getFilterList();
 
-    void setIsPreviewShown(bool isShown);
+	void setIsPreviewShown(bool isShown);
 
-    bool isPreviewShow();
+	bool isPreviewShow();
 
-private:
-    Model::YuvVideo*                    rawVideo_;
-    std::unique_ptr<Model::FilterList>  filterlist_;
-    bool                                isPreviewShow_;
+  private:
+	Model::YuvVideo*                    rawVideo_;
+	std::unique_ptr<Model::FilterList>  filterlist_;
+	bool                                isPreviewShow_;
 
 };
 }

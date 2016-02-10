@@ -38,7 +38,7 @@ class SaturationFilter: public Model::Filter {
 	 * @brief getName
 	 * @return
 	 */
-    QString getName() const;
+	QString getName() const;
 
 	/**
 	 * @brief Sets the intensity of the Saturation.
@@ -56,7 +56,7 @@ class SaturationFilter: public Model::Filter {
 	 * @brief getSaveString
 	 * @return
 	 */
-    QString getSaveString() const;
+	QString getSaveString() const;
 
   private:
 	int intensity_;

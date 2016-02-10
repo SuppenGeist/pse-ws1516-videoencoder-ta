@@ -36,7 +36,7 @@ class ContrastFilter: public Filter {
 	 * @brief getName
 	 * @return
 	 */
-    QString getName() const;
+	QString getName() const;
 
 	/**
 	 * @brief getFilterDescription
@@ -54,7 +54,7 @@ class ContrastFilter: public Filter {
 	 * @brief getSaveString
 	 * @return
 	 */
-    QString getSaveString() const;
+	QString getSaveString() const;
 
   private:
 	int     intensity_;

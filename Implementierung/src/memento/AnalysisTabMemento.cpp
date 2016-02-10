@@ -6,83 +6,83 @@ Memento::AnalysisTabMemento::AnalysisTabMemento() {
 }
 
 int Memento::AnalysisTabMemento::getCurrentVideoPosition() {
-    return this->currentVideoPosition_;
+	return this->currentVideoPosition_;
 }
 
 void Memento::AnalysisTabMemento::setCurrentVideoPosition(int currentVideoPosition) {
-    this->currentVideoPosition_ = currentVideoPosition;
+	this->currentVideoPosition_ = currentVideoPosition;
 }
 
 int Memento::AnalysisTabMemento::getCurrentlyShownAnalysisVideo() {
-    return currentlyShownAnalyseVideo_;
+	return currentlyShownAnalyseVideo_;
 }
 
 void Memento::AnalysisTabMemento::setCurrentlyShownAnalysisVideo(int currentlyShownAnalysisVideo) {
-    this->currentlyShownAnalyseVideo_ = currentlyShownAnalysisVideo;
+	this->currentlyShownAnalyseVideo_ = currentlyShownAnalysisVideo;
 }
 
 float Memento::AnalysisTabMemento::getCurrentSpeed() {
-    return this->currentSpeed_;
+	return this->currentSpeed_;
 }
 
 void Memento::AnalysisTabMemento::setCurrentSpeed(float currentSpeed) {
-    this->currentSpeed_ = currentSpeed;
+	this->currentSpeed_ = currentSpeed;
 }
 
 Memento::AnalysisBoxContainerMemento Memento::AnalysisTabMemento::getAnalysisBoxContainerMemento() {
-    return containerMemo_;
+	return containerMemo_;
 }
 
 void Memento::AnalysisTabMemento::setAnalysisBoxContainerMemento(AnalysisBoxContainerMemento
         analysisBoxContainerMemento) {
-    containerMemo_ = analysisBoxContainerMemento;
+	containerMemo_ = analysisBoxContainerMemento;
 }
 std::string Memento::AnalysisTabMemento::getLoadedFile() {
-    return yuvPath_;
+	return yuvPath_;
 }
 
 void Memento::AnalysisTabMemento::setLoadedFile(std::string loadedFile) {
-    yuvPath_ = loadedFile;
+	yuvPath_ = loadedFile;
 }
 
 int Memento::AnalysisTabMemento::getFps() {
- return yuvFps_;
+	return yuvFps_;
 }
 
 
 int Memento::AnalysisTabMemento::getWidth() {
-    return yuvWidth_;
+	return yuvWidth_;
 }
 
 
 int Memento::AnalysisTabMemento::getHeight() {
-    return yuvHeight_;
+	return yuvHeight_;
 }
 
 Utility::Compression Memento::AnalysisTabMemento::getCompression() {
-    return yuvCompession_;
+	return yuvCompession_;
 }
 
 Utility::YuvType Memento::AnalysisTabMemento::getPixelSheme() {
-    return yuvPixelScheme_;
+	return yuvPixelScheme_;
 }
 
 void Memento::AnalysisTabMemento::setFps(int fps) {
-    yuvFps_ = fps;
+	yuvFps_ = fps;
 }
 
 void Memento::AnalysisTabMemento::setWidth(int width) {
-    yuvWidth_ = width;
+	yuvWidth_ = width;
 }
 
 void Memento::AnalysisTabMemento::setHeight(int height) {
-    yuvHeight_ = height;
+	yuvHeight_ = height;
 }
 
 void Memento::AnalysisTabMemento::setCompression(Utility::Compression comp) {
-    yuvCompession_ = comp;
+	yuvCompession_ = comp;
 }
 
 void Memento::AnalysisTabMemento::setPixelSheme(Utility::YuvType sheme) {
-    yuvPixelScheme_ = sheme;
+	yuvPixelScheme_ = sheme;
 }

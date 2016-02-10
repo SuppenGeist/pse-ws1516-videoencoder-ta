@@ -29,10 +29,10 @@ QImage* Model::Video::getFrame(std::size_t index) noexcept {
 }
 
 bool Model::Video::insertFrame(std::unique_ptr<QImage> frame, std::size_t index) {
-    if(frames_.empty()) {
-        width_=frame->width();
-        height_=frame->height();
-    }
+	if(frames_.empty()) {
+		width_=frame->width();
+		height_=frame->height();
+	}
 	if(frame->width()!=width_||frame->height()!=height_)
 		return false;
 
@@ -49,17 +49,17 @@ void Model::Video::removeFrame(std::size_t index) {
 		return;
 	frames_.erase(frames_.begin()+index);
 
-    if(frames_.empty()) {
-        width_=0;
-        height_=0;
-    }
+	if(frames_.empty()) {
+		width_=0;
+		height_=0;
+	}
 }
 
 bool Model::Video::appendFrame(std::unique_ptr<QImage> frame) {
-    if(frames_.empty()) {
-        width_=frame->width();
-        height_=frame->height();
-    }
+	if(frames_.empty()) {
+		width_=frame->width();
+		height_=frame->height();
+	}
 	if(frame->width()!=width_||frame->height()!=height_)
 		return false;
 

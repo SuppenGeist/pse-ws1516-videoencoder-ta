@@ -40,7 +40,7 @@ class FilterContainerTab : public QFrame {
 	 * @brief setParentTab Sets the parent tab.
 	 * @param parent The parent tab.
 	 */
-    void setParentTab(FilterTab& parent);
+	void setParentTab(FilterTab& parent);
 
   private:
 	FilterTab*                  parentTab_;

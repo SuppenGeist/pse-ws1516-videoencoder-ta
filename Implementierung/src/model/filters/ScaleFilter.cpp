@@ -11,17 +11,17 @@ Model::ScaleFilter::ScaleFilter():width_(100), height_(200),keepRatio_(false),ra
 }
 
 std::string Model::ScaleFilter::getFilterDescription() {
-    std::string str = std::string("scale=");
-    if(keepRatio_){
-        str+=std::to_string(ratio_);
-        str+="*iw:";
-        str+=std::to_string(ratio_);
-        str+="*ih";
-    } else {
-        str+=std::to_string(width_);
-        str+=":";
-        str+=std::to_string(height_);
-    }
+	std::string str = std::string("scale=");
+	if(keepRatio_) {
+		str+=std::to_string(ratio_);
+		str+="*iw:";
+		str+=std::to_string(ratio_);
+		str+="*ih";
+	} else {
+		str+=std::to_string(width_);
+		str+=":";
+		str+=std::to_string(height_);
+	}
 	return str;
 }
 

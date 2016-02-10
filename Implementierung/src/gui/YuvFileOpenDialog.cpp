@@ -99,9 +99,9 @@ void GUI::YuvFileOpenDialog::hasFinished(int result) {
 }
 
 void GUI::YuvFileOpenDialog::chooseFile() {
-    auto filename=QFileDialog::getOpenFileName(this,tr("OpenYUV File"),QDir::homePath());
-    if(!filename.isEmpty())
-        lineEdit_selectedFile_->setText(filename);
+	auto filename=QFileDialog::getOpenFileName(this,tr("OpenYUV File"),QDir::homePath());
+	if(!filename.isEmpty())
+		lineEdit_selectedFile_->setText(filename);
 }
 
 void GUI::YuvFileOpenDialog::selectionChanged(const QItemSelection& selection) {

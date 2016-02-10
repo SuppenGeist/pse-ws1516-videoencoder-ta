@@ -35,10 +35,10 @@ AVFrame* Model::AVVideo::getFrame(std::size_t index) {
 }
 
 bool Model::AVVideo::insertFrame(AVFrame *frame, std::size_t index) {
-    if(video_.empty()) {
-        width_=frame->width;
-        height_=frame->height;
-    }
+	if(video_.empty()) {
+		width_=frame->width;
+		height_=frame->height;
+	}
 	if(frame->width!=width_||frame->height!=height_)
 		return false;
 
@@ -55,10 +55,10 @@ void Model::AVVideo::removeFrame(std::size_t index) {
 		av_frame_free(&video_[index]);
 		video_.erase(video_.begin() + index);
 	}
-    if(video_.empty()) {
-        width_=0;
-        height_=0;
-    }
+	if(video_.empty()) {
+		width_=0;
+		height_=0;
+	}
 }
 
 bool Model::AVVideo::insertFrames(std::vector<AVFrame*>& frames,
@@ -75,10 +75,10 @@ bool Model::AVVideo::insertFrames(std::vector<AVFrame*>& frames,
 }
 
 bool Model::AVVideo::appendFrame(AVFrame* frame) {
-    if(video_.empty()) {
-        width_=frame->width;
-        height_=frame->height;
-    }
+	if(video_.empty()) {
+		width_=frame->width;
+		height_=frame->height;
+	}
 	if(frame->width!=width_||frame->height!=height_)
 		return false;
 

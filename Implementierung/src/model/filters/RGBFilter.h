@@ -42,7 +42,7 @@ class RGBFilter: public Model::Filter {
 	 * @brief getName
 	 * @return
 	 */
-    QString getName() const;
+	QString getName() const;
 
 	/**
 	 * @brief getFilterDescription
@@ -60,10 +60,10 @@ class RGBFilter: public Model::Filter {
 	 * @brief getSaveString
 	 * @return
 	 */
-    QString getSaveString() const;
+	QString getSaveString() const;
 
-private:
-    Model::BasicColor color_;
+  private:
+	Model::BasicColor color_;
 };
 }
 

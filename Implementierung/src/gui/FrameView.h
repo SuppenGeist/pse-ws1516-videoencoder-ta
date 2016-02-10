@@ -44,7 +44,7 @@ class FrameView: public QWidget {
 
   private:
 	int         xOffset_;
-    int         yOffset_;
+	int         yOffset_;
 
 	QImage      currentFrame_;
 	QImage*     originalFrame_;

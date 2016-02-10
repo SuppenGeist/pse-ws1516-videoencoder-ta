@@ -80,7 +80,7 @@ class ColorbalanceFilter: public Filter {
 	 * @brief getName
 	 * @return
 	 */
-    QString getName() const;
+	QString getName() const;
 
 	/**
 	 * @brief getDarkPixels Whether the drak pixels shall be changed.
@@ -104,7 +104,7 @@ class ColorbalanceFilter: public Filter {
 	 * @brief getSaveString
 	 * @return
 	 */
-    QString getSaveString() const;
+	QString getSaveString() const;
 
   private:
 	int         intensity_;

@@ -25,14 +25,14 @@ class ScaleFilter: public Model::Filter {
 
 
 	/**
-     * @brief Whether the ratio is preserved.
-     * @return True if the ratio is preserved.
+	 * @brief Whether the ratio is preserved.
+	 * @return True if the ratio is preserved.
 	 */
 	bool getKeepRatio();
 
 	/**
-     * @brief Whether the ratio is preserved.
-     * @param True if the ratio is preserved.
+	 * @brief Whether the ratio is preserved.
+	 * @param True if the ratio is preserved.
 	 */
 	void setKeepRatio(bool keepRatio);
 
@@ -77,7 +77,7 @@ class ScaleFilter: public Model::Filter {
 	 * @brief getName
 	 * @return
 	 */
-    QString getName() const;
+	QString getName() const;
 
 	/**
 	 * @brief getFilterDescription
@@ -95,7 +95,7 @@ class ScaleFilter: public Model::Filter {
 	 * @brief getSaveString
 	 * @return
 	 */
-    QString getSaveString() const;
+	QString getSaveString() const;
 
 
 	bool keepRatio_;

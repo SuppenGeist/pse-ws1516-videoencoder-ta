@@ -90,7 +90,7 @@ void GUI::FilterView::createUi() {
 	                   "border-width: 1px;"
 	                   "border-color:rgb(0, 0, 0);"
 	                   "border-style: outset;"
-                       "border-radius: 7px;"
+	                   "border-radius: 7px;"
 	                   "font-size: 12px;"
 	                   "}"
 	                   "QPushButton:pressed {"
@@ -118,6 +118,6 @@ void GUI::FilterView::createUi() {
 }
 
 void GUI::FilterView::setFilterTab(FilterTab& filtertab) {
-    filterTab_=&filtertab;
+	filterTab_=&filtertab;
 }
 

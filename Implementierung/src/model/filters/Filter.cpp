@@ -76,7 +76,7 @@ std::unique_ptr<Model::Filter> Model::Filter::CreateFilter(QString filtername) {
 		return std::make_unique<SharpnessFilter>();
 	} else if(filtername==VintageFilter::FILTERNAME) {
 		return std::make_unique<VintageFilter>();
-    }
+	}
 	throw std::invalid_argument("Filter is not known");
 }
 

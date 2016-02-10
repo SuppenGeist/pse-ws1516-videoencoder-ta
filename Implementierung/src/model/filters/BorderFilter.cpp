@@ -12,7 +12,7 @@
 const QString Model::BorderFilter::FILTERNAME="Border";
 
 Model::BorderFilter::BorderFilter():top_(true),bottom_(true),right_(true),left_(true),
-    thickness_(35),color_(QColor(0,0,0)) {
+	thickness_(35),color_(QColor(0,0,0)) {
 
 }
 
@@ -74,44 +74,44 @@ std::string Model::BorderFilter::getFilterDescription() {
 	std::string str;
 	std::string thickness=std::to_string(thickness_);
 	std::string color=color_.name().toUtf8().constData();
-    str+="pad=iw";
-    if(right_) {
-        str+="+"+thickness;
-    }
+	str+="pad=iw";
+	if(right_) {
+		str+="+"+thickness;
+	}
 
-    if(left_) {
-        str+="+"+thickness;
-    }
-    str+=":ih";
+	if(left_) {
+		str+="+"+thickness;
+	}
+	str+=":ih";
 	if(top_) {
-        str+="+"+thickness;
+		str+="+"+thickness;
 	}
 
 	if(bottom_) {
-        str+="+"+thickness;
+		str+="+"+thickness;
 	}
-    str+=":";
-    if(right_ && left_) {
-        str+="(ow-iw)/2:";
-    } else if(right_ && !left_){
-        str+="0:";
-    } else if(!right_ && left_){
-        str+=thickness+":";
-    } else {
-        str+="0:";
-    }
-    if(bottom_&& top_) {
-        str+="(oh-ih)/2:";
-    } else if(bottom_&& !top_){
-        str+="0:";
-    } else if(!bottom_&& top_){
-        str+=thickness+":";
-    } else{
-        str+="0:";
-    }
+	str+=":";
+	if(right_ && left_) {
+		str+="(ow-iw)/2:";
+	} else if(right_ && !left_) {
+		str+="0:";
+	} else if(!right_ && left_) {
+		str+=thickness+":";
+	} else {
+		str+="0:";
+	}
+	if(bottom_&& top_) {
+		str+="(oh-ih)/2:";
+	} else if(bottom_&& !top_) {
+		str+="0:";
+	} else if(!bottom_&& top_) {
+		str+=thickness+":";
+	} else {
+		str+="0:";
+	}
 
-    str+=color;
-    return str;
+	str+=color;
+	return str;
 }
 
 void Model::BorderFilter::restore(QString description) {

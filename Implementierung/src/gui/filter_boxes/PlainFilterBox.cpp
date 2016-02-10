@@ -5,10 +5,9 @@
 #include "FilterConfigurationBox.h"
 
 GUI::PlainFilterBox::PlainFilterBox(QWidget* parent):FilterConfigurationBox(parent) {
-    hide();
+	hide();
 }
 
-void GUI::PlainFilterBox::updateUi()
-{
+void GUI::PlainFilterBox::updateUi() {
 
 }

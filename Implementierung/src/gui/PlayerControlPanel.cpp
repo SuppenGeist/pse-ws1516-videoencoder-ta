@@ -117,7 +117,7 @@ void GUI::PlayerControlPanel::createUi() {
 	comboBox_speed_->addItems(speedItems);
 	comboBox_speed_->setCurrentIndex(3);
 	comboBox_speed_->setMinimumWidth(80);
-    comboBox_speed_->setStyleSheet("background: rgb(200, 200, 200);");
+	comboBox_speed_->setStyleSheet("background: rgb(200, 200, 200);");
 
 	h_layout->addWidget(button_play_);
 	h_layout->addWidget(button_pause_);
@@ -134,15 +134,15 @@ void GUI::PlayerControlPanel::createUi() {
 	v_layout->addWidget(slider_timeline_);
 
 	setLayout(v_layout);
-    setObjectName("playerPanel");
-    setStyleSheet("QFrame#playerPanel {"
-                  "border-width:1px;"
-                  "border-radius:4px;"
-                  "border-color:rgb(0,0,0);"
-                  "border-style:outset;"
-                  "background: rgb(200, 200, 200);"
-                  "}"
-                  "");
+	setObjectName("playerPanel");
+	setStyleSheet("QFrame#playerPanel {"
+	              "border-width:1px;"
+	              "border-radius:4px;"
+	              "border-color:rgb(0,0,0);"
+	              "border-style:outset;"
+	              "background: rgb(200, 200, 200);"
+	              "}"
+	              "");
 }
 
 void GUI::PlayerControlPanel::play() {

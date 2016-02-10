@@ -4,43 +4,40 @@
 #include <QUndoCommand>
 
 #include "../memento/AnalysisBoxMemento.h"
-namespace GUI
-{
-	class AnalysisBox;
-	class AnalysisBoxContainer;
+namespace GUI {
+class AnalysisBox;
+class AnalysisBoxContainer;
 }
-namespace UndoRedo
-{
+namespace UndoRedo {
+/**
+ * This class is the undo command for removing a encoded video in the analysis tab.
+*/
+class RemoveVideo: public QUndoCommand {
+  public:
+
 	/**
-	 * This class is the undo command for removing a encoded video in the analysis tab.
-    */
-    class RemoveVideo: public QUndoCommand
-	{
-        public:
+	 * @brief RemoveVideo The AnalysisBoxContainer to operate on.
+	 * @param container The video to remove.
+	 */
+	RemoveVideo(GUI::AnalysisBox* box);
 
-        /**
-         * @brief RemoveVideo The AnalysisBoxContainer to operate on.
-         * @param container The video to remove.
-         */
-        RemoveVideo(GUI::AnalysisBox* box);
+	/**
+	 * @brief undo Re adds the removed video to the analysis tab.
+	 */
+	void undo();
 
-        /**
-         * @brief undo Re adds the removed video to the analysis tab.
-         */
-        void undo();
+	/**
+	 * @brief redo Removes a video from the analysis tab.
+	 */
+	void redo();
 
-        /**
-         * @brief redo Removes a video from the analysis tab.
-         */
-        void redo();
+  private:
 
-    private:
-
-        GUI::AnalysisBox* anaBox;
-        GUI::AnalysisBoxContainer* container;
-        Memento::AnalysisBoxMemento boxMemo;
-        int index;
-	};
+	GUI::AnalysisBox* anaBox;
+	GUI::AnalysisBoxContainer* container;
+	Memento::AnalysisBoxMemento boxMemo;
+	int index;
+};
 }
 
 #endif

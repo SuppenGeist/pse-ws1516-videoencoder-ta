@@ -28,19 +28,19 @@ class Filter {
 	 * @brief getName
 	 * @return
 	 */
-    virtual QString getName() const =0;
+	virtual QString getName() const =0;
 
 	/**
 	 * @brief restoreFilter
 	 * @param description
 	 */
-    virtual void restore(QString description) = 0;
+	virtual void restore(QString description) = 0;
 
 	/**
 	 * @brief getSaveString
 	 * @return
 	 */
-    virtual QString getSaveString() const = 0;
+	virtual QString getSaveString() const = 0;
 };
 }
 

@@ -12,23 +12,23 @@ Model::RGBFilter::RGBFilter():color_(BasicColor::RED) {
 }
 
 std::string Model::RGBFilter::getFilterDescription() {
-std::string str = std::string("colorchannelmixer=");
-    if(color_ == BasicColor::RED){
-        str+= "1:0:0:0:0:0:0:0:0:0:0:0";
-    } else if (color_ == BasicColor::GREEN){
-        str+= "0:0:0:0:0:1:0:0:0:0:0:0";
-    } else if (color_ == BasicColor::BLUE){
-        str+= "0:0:0:0:0:0:0:0:0:0:1:0";
-    }
-    return str;
+	std::string str = std::string("colorchannelmixer=");
+	if(color_ == BasicColor::RED) {
+		str+= "1:0:0:0:0:0:0:0:0:0:0:0";
+	} else if (color_ == BasicColor::GREEN) {
+		str+= "0:0:0:0:0:1:0:0:0:0:0:0";
+	} else if (color_ == BasicColor::BLUE) {
+		str+= "0:0:0:0:0:0:0:0:0:0:1:0";
+	}
+	return str;
 }
 
 Model::BasicColor Model::RGBFilter::getColor() {
-    return color_;
+	return color_;
 }
 
 void Model::RGBFilter::setColor(BasicColor color) {
-    color_=color;
+	color_=color;
 }
 
 QString Model::RGBFilter::getName() const {
@@ -36,14 +36,14 @@ QString Model::RGBFilter::getName() const {
 }
 
 void Model::RGBFilter::restore(QString description) {
-    QStringList list  = description.split(";");
-    if(list.size()!=1)
-        return;
-    setColor(static_cast<BasicColor>(list[0].QString::toInt()));
+	QStringList list  = description.split(";");
+	if(list.size()!=1)
+		return;
+	setColor(static_cast<BasicColor>(list[0].QString::toInt()));
 }
 
 QString Model::RGBFilter::getSaveString() const {
-    QString str = QString::number(color_);
-    return str;
+	QString str = QString::number(color_);
+	return str;
 }
 

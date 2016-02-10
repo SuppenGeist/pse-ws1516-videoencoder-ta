@@ -6,33 +6,31 @@
 
 #include "FilterConfigurationBox.h"
 
-namespace GUI
-{
+namespace GUI {
+/**
+ * This class contains the gui elements for changing the options of a mirror filter.
+*/
+class MirrorFilterBox: public FilterConfigurationBox {
+	Q_OBJECT
+  public:
 	/**
-	 * This class contains the gui elements for changing the options of a mirror filter.
-    */
-class MirrorFilterBox: public FilterConfigurationBox
-{
-    Q_OBJECT
-    public:
-    /**
-     * @brief MirrorFilterBox Constructor.
-     * @param parent
-    */
-    MirrorFilterBox(QWidget* parent=0);
+	 * @brief MirrorFilterBox Constructor.
+	 * @param parent
+	*/
+	MirrorFilterBox(QWidget* parent=0);
 
-protected:
-    void updateUi() override;
+  protected:
+	void updateUi() override;
 
-private slots:
-    void vertical(bool);
-    void horizontal(bool);
-private:
+  private slots:
+	void vertical(bool);
+	void horizontal(bool);
+  private:
 
-    QRadioButton*    vertical_;
-    QRadioButton*    horizontal_;
+	QRadioButton*    vertical_;
+	QRadioButton*    horizontal_;
 
-    virtual void createFilterOptions();
+	virtual void createFilterOptions();
 };
 }
 

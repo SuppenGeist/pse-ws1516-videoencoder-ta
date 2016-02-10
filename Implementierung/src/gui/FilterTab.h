@@ -31,85 +31,85 @@
 
 namespace GUI {
 class FilterTab: public QFrame {
-    Q_OBJECT
-public:
-    FilterTab(QWidget* parent=0);
+	Q_OBJECT
+  public:
+	FilterTab(QWidget* parent=0);
 
-    std::unique_ptr<Memento::FilterTabMemento> getMemento();
+	std::unique_ptr<Memento::FilterTabMemento> getMemento();
 
-    void restore(Memento::FilterTabMemento* memento);
+	void restore(Memento::FilterTabMemento* memento);
 
-    void setRawVideo(Model::YuvVideo* rawVideo);
+	void setRawVideo(Model::YuvVideo* rawVideo);
 
-    void showRawVideo();
+	void showRawVideo();
 
-    void showFilterPreview();
+	void showFilterPreview();
 
-    void updateFilterPreview();
+	void updateFilterPreview();
 
-    Model::Filter* appendFilter(QString filtername);
+	Model::Filter* appendFilter(QString filtername);
 
-    std::unique_ptr<Model::Filter> removeFilter(std::size_t index);
+	std::unique_ptr<Model::Filter> removeFilter(std::size_t index);
 
-    Model::FilterList* getFilterList();
+	Model::FilterList* getFilterList();
 
-    void setFilterList(std::unique_ptr<Model::FilterList> filterlist);
+	void setFilterList(std::unique_ptr<Model::FilterList> filterlist);
 
-    void resetFilters();
+	void resetFilters();
 
-private slots:
-    void up();
-    void down();
-    void remove();
-    void load();
-    void apply();
-    void save();
-    void saveConfiguration();
-    void loadConfiguration();
-    void reset();
-    void listSelectionChanged(QItemSelection selection);
+  private slots:
+	void up();
+	void down();
+	void remove();
+	void load();
+	void apply();
+	void save();
+	void saveConfiguration();
+	void loadConfiguration();
+	void reset();
+	void listSelectionChanged(QItemSelection selection);
 
 
-private:
-    QPushButton*                        button_up_;
-    QPushButton*                        button_down_;
-    QPushButton*                        button_remove_;
-    QPushButton*                        button_load_;
-    QPushButton*                        button_apply_;
-    QPushButton*                        button_saveConf_;
-    QPushButton*                        button_loadConf_;
-    QPushButton*                        button_reset_;
-    QPushButton*                        button_save_;
+  private:
+	QPushButton*                        button_up_;
+	QPushButton*                        button_down_;
+	QPushButton*                        button_remove_;
+	QPushButton*                        button_load_;
+	QPushButton*                        button_apply_;
+	QPushButton*                        button_saveConf_;
+	QPushButton*                        button_loadConf_;
+	QPushButton*                        button_reset_;
+	QPushButton*                        button_save_;
 
-    QListView*                          list_filterlist_;
-    QStringListModel*                   model_filterlist_;
+	QListView*                          list_filterlist_;
+	QStringListModel*                   model_filterlist_;
 
-    FrameView*                          frameView_;
-    PlayerControlPanel*                 playerControlPanel_;
-    PreviewControlPanel*                PreviewControlPanel_;
-    QVBoxLayout*                        v_player_;
-    std::unique_ptr<VideoPlayer>        player_;
+	FrameView*                          frameView_;
+	PlayerControlPanel*                 playerControlPanel_;
+	PreviewControlPanel*                PreviewControlPanel_;
+	QVBoxLayout*                        v_player_;
+	std::unique_ptr<VideoPlayer>        player_;
 
-    QHBoxLayout*                        h_filterOptions_;
-    QSpacerItem*                        spacer_filterOptions_;
-    FilterConfigurationBox*             currentFilterOptionsBox_;
+	QHBoxLayout*                        h_filterOptions_;
+	QSpacerItem*                        spacer_filterOptions_;
+	FilterConfigurationBox*             currentFilterOptionsBox_;
 
-    QTabWidget*                         tab_filtertabs_;
+	QTabWidget*                         tab_filtertabs_;
 
-    Model::YuvVideo*                    rawVideo_;
-    std::unique_ptr<Model::FilterList>  filterlist_;
-    std::unique_ptr<Model::AVVideo>     originalPreviewFrames_;
-    std::unique_ptr<Model::Video>       filteredPreviewFrames_;
+	Model::YuvVideo*                    rawVideo_;
+	std::unique_ptr<Model::FilterList>  filterlist_;
+	std::unique_ptr<Model::AVVideo>     originalPreviewFrames_;
+	std::unique_ptr<Model::Video>       filteredPreviewFrames_;
 
-    void createUi();
-    void createButtons();
-    void createListView();
-    void createVideoPlayer();
-    void createFilterTabs();
-    void connectAtions();
-    void initPlayer();
-    void initFilterList();
-    void calculatePreviewFrames();
+	void createUi();
+	void createButtons();
+	void createListView();
+	void createVideoPlayer();
+	void createFilterTabs();
+	void connectAtions();
+	void initPlayer();
+	void initFilterList();
+	void calculatePreviewFrames();
 };
 
 }

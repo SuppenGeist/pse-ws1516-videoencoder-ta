@@ -47,11 +47,11 @@ class MainWindow : public QMainWindow {
 	 */
 	void restore(Memento::MainWindowMemento memento);
 
-    /**
-     * @brief getProject Returns the current loaded Project.
-     * @return the current project
-     */
-    Model::Project* getProject();
+	/**
+	 * @brief getProject Returns the current loaded Project.
+	 * @return the current project
+	 */
+	Model::Project* getProject();
 
   private slots:
 	/**
@@ -88,18 +88,18 @@ class MainWindow : public QMainWindow {
 
   private:
 
-    QStatusBar* statusbar_;
-    QAction* action_newProject_;
-    QAction* action_undo_;
-    QAction* action_saveAs_;
-    QAction* action_loadProject_;
-    QAction* action_saveProject_;
-    QAction* action_redo_;
-    QTabWidget* tab_tabs_;
-    FilterTab* filterTab_;
-    AnalysisTab* analysisTab_;
-    Ui::MainWindow *ui_;
-    Model::Project* loadedProject_;
+	QStatusBar* statusbar_;
+	QAction* action_newProject_;
+	QAction* action_undo_;
+	QAction* action_saveAs_;
+	QAction* action_loadProject_;
+	QAction* action_saveProject_;
+	QAction* action_redo_;
+	QTabWidget* tab_tabs_;
+	FilterTab* filterTab_;
+	AnalysisTab* analysisTab_;
+	Ui::MainWindow *ui_;
+	Model::Project* loadedProject_;
 
 	/**
 	 * @brief createUi creates the UI.

@@ -32,7 +32,7 @@ std::unique_ptr<QImage> Utility::VideoConverter::convertAVFrameToQImage(AVFrame&
 
 std::unique_ptr<Model::Video> Utility::VideoConverter::convertAVVideoToVideo(
     Model::AVVideo& avvideo) {
-    auto video = std::make_unique<Model::Video>(avvideo.getFps());
+	auto video = std::make_unique<Model::Video>(avvideo.getFps());
 
 	for(std::size_t i = 0; i < avvideo.getNumberOfFrames(); i++) {
 		video->appendFrame(convertAVFrameToQImage(*avvideo.getFrame(i)));
@@ -67,7 +67,7 @@ AVFrame* Utility::VideoConverter::convertQImageToAVFrame(QImage& image) {
 }
 std::unique_ptr<Model::AVVideo> Utility::VideoConverter::convertVideoToAVVideo(
     Model::Video& video) {
-    auto avvideo = std::make_unique<Model::AVVideo>(video.getFps());
+	auto avvideo = std::make_unique<Model::AVVideo>(video.getFps());
 
 	for(std::size_t i = 0; i < video.getNumberOfFrames(); i++) {
 		avvideo->appendFrame(convertQImageToAVFrame(*video.getFrame(i)));

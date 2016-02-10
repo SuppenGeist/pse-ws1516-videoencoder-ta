@@ -22,7 +22,7 @@ class AVVideo {
 	 * @param width The width of the video.
 	 * @param height The height of the video.
 	 */
-    AVVideo(int fps=1);
+	AVVideo(int fps=1);
 
 	~AVVideo();
 

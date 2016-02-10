@@ -17,9 +17,9 @@ Model::MirrorFilter::MirrorFilter():mode_(MirrorMode::HORIZONTAL) {
 
 std::string Model::MirrorFilter::getFilterDescription() {
 	if(mode_==MirrorMode::HORIZONTAL) {
-        return "hflip";
+		return "hflip";
 	} else  if(mode_==MirrorMode::VERTICAL) {
-        return "vflip";
+		return "vflip";
 	}
 	throw std::logic_error("Should not get here");
 }

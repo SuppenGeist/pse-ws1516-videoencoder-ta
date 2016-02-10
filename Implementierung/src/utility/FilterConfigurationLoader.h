@@ -15,20 +15,20 @@ namespace Utility {
 */
 class FilterConfigurationLoader {
   public:
-    /**
-     * @brief FilterConfigurationLoader Constructor.
-     * @param path The path to the filerlist to load.
-     */
+	/**
+	 * @brief FilterConfigurationLoader Constructor.
+	 * @param path The path to the filerlist to load.
+	 */
 	FilterConfigurationLoader(QString path);
 
-    /**
-     * @brief getConfiguration Loads the filterlist.
-     * @return The loaded filterlist.
-     */
-    std::unique_ptr<Model::FilterList> getConfiguration();
+	/**
+	 * @brief getConfiguration Loads the filterlist.
+	 * @return The loaded filterlist.
+	 */
+	std::unique_ptr<Model::FilterList> getConfiguration();
 
-    private:
-        QFile   file_;
+  private:
+	QFile   file_;
 };
 }
 

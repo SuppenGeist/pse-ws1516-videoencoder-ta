@@ -74,7 +74,7 @@ class AnalysisBoxContainer: public QFrame {
 	 * @brief setTimer Sets the timer for the videoplayers.
 	 * @param timer The timer for the videoplayers.
 	 */
-    void setTimer(std::shared_ptr<GUI::Timer> timer);
+	void setTimer(std::shared_ptr<GUI::Timer> timer);
 
 	/**
 	 * @brief setControlPanel Sets the GlobalControlPanel.
@@ -95,22 +95,22 @@ class AnalysisBoxContainer: public QFrame {
 	/**
 	 * @brief removeBox Removes a box from the list.
 	 * @param box The box to remove.
-     * @return Index where box was removed.
+	 * @return Index where box was removed.
 	 */
-    int removeBox(GUI::AnalysisBox* box);
-    /**
-     * @brief addBox Adds a box at specific postion.
-     * @param index Where to add the box.
-     * @param boxMemo The Memento of the Box.
-     * @return The created Box.
-     */
-    GUI::AnalysisBox* addBox(int index, Memento::AnalysisBoxMemento boxMemo);
+	int removeBox(GUI::AnalysisBox* box);
+	/**
+	 * @brief addBox Adds a box at specific postion.
+	 * @param index Where to add the box.
+	 * @param boxMemo The Memento of the Box.
+	 * @return The created Box.
+	 */
+	GUI::AnalysisBox* addBox(int index, Memento::AnalysisBoxMemento boxMemo);
 
 	/**
 	 * @brief addVideo Adds the given video to the container.
 	 * @param video The video to add.
 	 * @return The box in which the video is presented.
-     */
+	 */
 	GUI::AnalysisBox* addVideo(Model::EncodedVideo video);
 
 
@@ -118,13 +118,13 @@ class AnalysisBoxContainer: public QFrame {
   public:
 	UndoRedo::RemoveVideo* anaBoxContainer;
   private:
-    int anaTypShown_;
-    Model::Video* rawVideo_;
-    std::shared_ptr<GUI::Timer> timer_;
-    GUI::GlobalControlPanel* controlPanel_;
-    GUI::AnalysisTab* analysisBoxContainer_;
-    std::vector<GUI::AnalysisBox*> boxes_;
-    Ui::AnalysisBoxContainer* ui_;
+	int anaTypShown_;
+	Model::Video* rawVideo_;
+	std::shared_ptr<GUI::Timer> timer_;
+	GUI::GlobalControlPanel* controlPanel_;
+	GUI::AnalysisTab* analysisBoxContainer_;
+	std::vector<GUI::AnalysisBox*> boxes_;
+	Ui::AnalysisBoxContainer* ui_;
 };
 }
 

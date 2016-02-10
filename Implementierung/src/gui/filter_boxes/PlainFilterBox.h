@@ -5,23 +5,21 @@
 
 #include "FilterConfigurationBox.h"
 
-namespace GUI
-{
+namespace GUI {
+/**
+ * This class contains no sliders to adjust filter options.
+ */
+class PlainFilterBox: public FilterConfigurationBox {
+  public:
 	/**
-	 * This class contains no sliders to adjust filter options.
-     */
-    class PlainFilterBox: public FilterConfigurationBox
-    {
-        public:
-        /**
-         * @brief PlainFilterBox Constructor.
-         * @param parent
-         */
-        PlainFilterBox(QWidget* parent=0);
+	 * @brief PlainFilterBox Constructor.
+	 * @param parent
+	 */
+	PlainFilterBox(QWidget* parent=0);
 
-    protected:
-        void updateUi();
-	};
+  protected:
+	void updateUi();
+};
 }
 
 #endif

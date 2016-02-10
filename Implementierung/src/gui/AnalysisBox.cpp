@@ -22,51 +22,52 @@
 
 
 GUI::AnalysisBox::AnalysisBox(QWidget* parent) : QFrame(parent) {
-    boxes_ = (AnalysisBoxContainer*) parent;
+	boxes_ = (AnalysisBoxContainer*) parent;
 	currentlyPlayedVideo_=0;
 	ui_ = new Ui::AnalysisBox;
 	ui_->setupUi(this);
 
-    plainVideoPlayer_=std::make_unique<VideoPlayer>();
-    FrameView* frameView_ = new FrameView(ui_->anaRawVid);
-    ui_->horizontalLayout->addWidget(frameView_);
-    frameView_->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Expanding);
-    plainVideoPlayer_->addView(*frameView_);
+	plainVideoPlayer_=std::make_unique<VideoPlayer>();
+	FrameView* frameView_ = new FrameView(ui_->anaRawVid);
+	ui_->horizontalLayout->addWidget(frameView_);
+	frameView_->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Expanding);
+	plainVideoPlayer_->addView(*frameView_);
 
-    FrameView* frameView_2 = new FrameView(ui_->anaVid);analysisVideoPlayer_=std::make_unique<VideoPlayer>();
-    ui_->horizontalLayout->insertWidget(0, frameView_2);
-    frameView_2->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Expanding);
-    analysisVideoPlayer_->addView(*frameView_2);
+	FrameView* frameView_2 = new FrameView(ui_->anaVid);
+	analysisVideoPlayer_=std::make_unique<VideoPlayer>();
+	ui_->horizontalLayout->insertWidget(0, frameView_2);
+	frameView_2->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Expanding);
+	analysisVideoPlayer_->addView(*frameView_2);
 
 
 
-    connect(ui_->userComment, SIGNAL(textChanged()), this, SLOT(textChanged()));
-    connect(ui_->close,SIGNAL(clicked()), this, SLOT(close()));
+	connect(ui_->userComment, SIGNAL(textChanged()), this, SLOT(textChanged()));
+	connect(ui_->close,SIGNAL(clicked()), this, SLOT(close()));
 }
 
 Memento::AnalysisBoxMemento GUI::AnalysisBox::getMemento() {
 
 	Memento::AnalysisBoxMemento memo;
-    memo.setComment(ui_->userComment->toPlainText());
-    /*memo.setPsnr(video_->getPsnr());
-    memo.setBitrate(video_->getBitrate());
+	memo.setComment(ui_->userComment->toPlainText());
+	/*memo.setPsnr(video_->getPsnr());
+	memo.setBitrate(video_->getBitrate());
 	memo.setMacroVideo(&(video_->getMacroBlockVideo()));
 	memo.setRgbDiffVideo(&(video_->getRgbDiffVideo()));
 	memo.setVideoPath(video_->getPath());
-    */
+	*/
 	return memo;
 
 }
 
 void GUI::AnalysisBox::restore(Memento::AnalysisBoxMemento memento) {
 
-    /*video_ = std::make_unique<Model::EncodedVideo>(memento.getVideoPath());
-    psnrGraph_ = memento.getPsnr();
-    bitrateGraph_ = memento.getBitrate();
-    //redHistogramm_;
-    //blueHistogramm_;
-    //greenHistogramm_;
-    */
+	/*video_ = std::make_unique<Model::EncodedVideo>(memento.getVideoPath());
+	psnrGraph_ = memento.getPsnr();
+	bitrateGraph_ = memento.getBitrate();
+	//redHistogramm_;
+	//blueHistogramm_;
+	//greenHistogramm_;
+	*/
 
 
 	ui_->userComment->setDocument(new QTextDocument(memento.getComment(), ui_->userComment));
@@ -74,8 +75,8 @@ void GUI::AnalysisBox::restore(Memento::AnalysisBoxMemento memento) {
 }
 
 void GUI::AnalysisBox::setTimer(std::shared_ptr<GUI::Timer> timer) {
-    analysisVideoPlayer_->setTimer(timer);
-    plainVideoPlayer_->setTimer(timer);
+	analysisVideoPlayer_->setTimer(timer);
+	plainVideoPlayer_->setTimer(timer);
 }
 
 void GUI::AnalysisBox::setRawVideo(Model::Video* video) {
@@ -83,29 +84,29 @@ void GUI::AnalysisBox::setRawVideo(Model::Video* video) {
 }
 
 void GUI::AnalysisBox::setControlPanel(GUI::GlobalControlPanel* panel) {
-    playerPanel_ = panel;
-    playerPanel_->addVideoPlayer(*plainVideoPlayer_);
-    playerPanel_->addVideoPlayer(*analysisVideoPlayer_);
-    analysisVideoPlayer_->setMasterControlPanel(*playerPanel_);
-    plainVideoPlayer_->setMasterControlPanel(*playerPanel_);
+	playerPanel_ = panel;
+	playerPanel_->addVideoPlayer(*plainVideoPlayer_);
+	playerPanel_->addVideoPlayer(*analysisVideoPlayer_);
+	analysisVideoPlayer_->setMasterControlPanel(*playerPanel_);
+	plainVideoPlayer_->setMasterControlPanel(*playerPanel_);
 
 }
 
 void GUI::AnalysisBox::showMacroBlockVideo() {
-    currentlyPlayedVideo_ = 1;
-		analysisVideoPlayer_->setVideo(&(video_->getMacroBlockVideo()));
+	currentlyPlayedVideo_ = 1;
+	analysisVideoPlayer_->setVideo(&(video_->getMacroBlockVideo()));
 
 }
 
 void GUI::AnalysisBox::showRGBDifferenceVideo() {
-    currentlyPlayedVideo_ = 0;
-		analysisVideoPlayer_->setVideo(&(video_->getRgbDiffVideo(rawVideo_)));
+	currentlyPlayedVideo_ = 0;
+	analysisVideoPlayer_->setVideo(&(video_->getRgbDiffVideo(rawVideo_)));
 
 }
 
 void GUI::AnalysisBox::close() {
 
-    UndoRedo::UndoStack::getUndoStack().push(new UndoRedo::RemoveVideo(this));
+	UndoRedo::UndoStack::getUndoStack().push(new UndoRedo::RemoveVideo(this));
 
 }
 

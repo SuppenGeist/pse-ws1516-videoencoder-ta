@@ -15,9 +15,9 @@ class Video {
   public:
 	/**
 	 * @brief Video Constructor.
-     * @param fps The fps the video should be played at.
+	 * @param fps The fps the video should be played at.
 	 */
-    Video(int fps=1) noexcept;
+	Video(int fps=1) noexcept;
 
 	/**
 	 * @brief getWidth Returns the width of the video.

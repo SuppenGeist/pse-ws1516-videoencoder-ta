@@ -23,7 +23,7 @@ class FilterList {
 	 */
 	FilterList();
 
-    FilterList(FilterList& obj);
+	FilterList(FilterList& obj);
 
 	/**
 	 * @brief moveFilter Moves a filter to another position.
@@ -44,7 +44,7 @@ class FilterList {
 	 * @brief addFilter Inserts a filter to the end.
 	 * @param name Name of the filter to add.
 	 */
-    Model::Filter* appendFilter(QString name);
+	Model::Filter* appendFilter(QString name);
 
 	/**
 	 * @brief getFilter Returns the filter at the given index.

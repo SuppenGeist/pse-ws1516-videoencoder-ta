@@ -9,44 +9,42 @@
 
 #include "FilterConfigurationBox.h"
 
-namespace GUI
-{
+namespace GUI {
+/**
+ * This class contains the gui elements for changing the options of a border filter.
+*/
+class BorderFilterBox: public FilterConfigurationBox {
+	Q_OBJECT
+  public:
 	/**
-	 * This class contains the gui elements for changing the options of a border filter.
-    */
-    class BorderFilterBox: public FilterConfigurationBox
-    {
-         Q_OBJECT
-            public:
-        /**
-         * @brief BorderFilterBox Constructor.
-         * @param parent
-         */
-        BorderFilterBox(QWidget* parent=0);
+	 * @brief BorderFilterBox Constructor.
+	 * @param parent
+	 */
+	BorderFilterBox(QWidget* parent=0);
 
-    protected:
-        void updateUi() override;
+  protected:
+	void updateUi() override;
 
 
-    private slots:
-        void spinBoxChanged(int value);
-        void topchecked(int check);
-        void bottomchecked(int check);
-        void rightchecked(int check);
-        void leftchecked(int check);
-        void openColorDialog();
+  private slots:
+	void spinBoxChanged(int value);
+	void topchecked(int check);
+	void bottomchecked(int check);
+	void rightchecked(int check);
+	void leftchecked(int check);
+	void openColorDialog();
 
-    private:
-        QSpinBox*       spinBox_;
-        QCheckBox*      top_;
-        QCheckBox*      bottom_;
-        QCheckBox*      right_;
-        QCheckBox*      left_;
-        QPushButton*    button_;
-        QPalette* pal;
+  private:
+	QSpinBox*       spinBox_;
+	QCheckBox*      top_;
+	QCheckBox*      bottom_;
+	QCheckBox*      right_;
+	QCheckBox*      left_;
+	QPushButton*    button_;
+	QPalette* pal;
 
-    virtual void createFilterOptions();
-    };
+	virtual void createFilterOptions();
+};
 }
 
 #endif

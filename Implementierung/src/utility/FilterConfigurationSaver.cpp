@@ -13,14 +13,14 @@ Utility::FilterConfigurationSaver::FilterConfigurationSaver(QString file,
 }
 
 void Utility::FilterConfigurationSaver::save() {
-    if (fileout_.open(QFile::ReadWrite | QFile::Text)) {
-        QTextStream out(&fileout_);
-        for(std::size_t i=0;i<filterList_->getSize();i++) {
-            out << filterList_->getFilter(i)->getName() << ";";
-            out << filterList_->getFilter(i)->getSaveString() << "\n";
-        }
+	if (fileout_.open(QFile::ReadWrite | QFile::Text)) {
+		QTextStream out(&fileout_);
+		for(std::size_t i=0; i<filterList_->getSize(); i++) {
+			out << filterList_->getFilter(i)->getName() << ";";
+			out << filterList_->getFilter(i)->getSaveString() << "\n";
+		}
 	}
-    fileout_.close();
+	fileout_.close();
 }
 
 

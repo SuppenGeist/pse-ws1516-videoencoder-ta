@@ -36,7 +36,7 @@ Utility::FilterApplier::~FilterApplier() {
 
 void Utility::FilterApplier::applyToVideo(Model::AVVideo& target, Model::AVVideo& video) {
 	for(std::size_t i=0; i<video.getNumberOfFrames(); i++) {
-        target.appendFrame(applyToFrame(*video.getFrame(i)));
+		target.appendFrame(applyToFrame(*video.getFrame(i)));
 	}
 }
 
