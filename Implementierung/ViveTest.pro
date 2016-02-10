@@ -136,7 +136,8 @@ HEADERS += \
     test/maintestsuite.h \
     test/model/modeltestsuite.h \
     test/model/filters/filtertestsuite.h \
-    test/model/filters/testborderfilter.h
+    test/model/filters/testborderfilter.h \
+    test/model/filters/testbrightnessfilter.h
 
 SOURCES += \
     src/gui/AnalysisBox.cpp \
@@ -253,7 +254,8 @@ SOURCES += \
     test/maintestsuite.cpp \
     test/model/modeltestsuite.cpp \
     test/model/filters/filtertestsuite.cpp \
-    test/model/filters/testborderfilter.cpp
+    test/model/filters/testborderfilter.cpp \
+    test/model/filters/testbrightnessfilter.cpp
 
 RESOURCES += \
     resources.qrc \
