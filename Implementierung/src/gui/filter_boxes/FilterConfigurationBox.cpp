@@ -90,6 +90,8 @@ std::unique_ptr<GUI::FilterConfigurationBox> GUI::FilterConfigurationBox::Create
         box=std::make_unique<GridFilterBox>();
     //}else if(filter.getName()==Model::MirrorFilter::FILTERNAME){
     //    box=std::make_unique<MirrorFilterBox>();
+    }else if(filter.getName()==Model::ScaleFilter::FILTERNAME){
+        box=std::make_unique<ScaleFilterBox>();
     }else {
         return std::make_unique<PlainFilterBox>();
     }
