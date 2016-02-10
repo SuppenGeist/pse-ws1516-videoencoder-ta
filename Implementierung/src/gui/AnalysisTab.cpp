@@ -5,7 +5,6 @@
 #include <memory>
 #include <QFileDialog>
 
-
 #include "VideoPlayer.h"
 #include "FrameView.h"
 #include "PlayerControlPanel.h"
@@ -21,6 +20,10 @@
 #include "../undo_framework//LoadAnalysisVideo.h"
 #include "../undo_framework/AddVideo.h"
 #include "ForwardPlayer.h"
+#include "../utility/ProjectWriter.h"
+#include "AnalysisTab.h"
+#include "MainWindow.h"
+#include "../model/Project.h"
 
 GUI::AnalysisTab::AnalysisTab(QWidget* parent) : QFrame(parent) {
 
@@ -93,6 +96,9 @@ void GUI::AnalysisTab::loadYuvVideo(std::unique_ptr<Model::YuvVideo> video) {
     rawVideo_=std::move(video);
     ui_->addVideo->setText("Add Video");
 }
+void GUI::AnalysisTab::setProject(Model::Project *project) {
+    project_ = project;
+}
 
 void GUI::AnalysisTab::addVideo() {
     if(ui_->addVideo->text() == QString("Add Raw Video")) {
@@ -148,7 +154,8 @@ void GUI::AnalysisTab::addVideo() {
 }
 
 void GUI::AnalysisTab::saveResults() {
-
+    Utility::ProjectWriter *pWriter = new Utility::ProjectWriter(*project_);
+    pWriter->saveResults();
 }
 
 void GUI::AnalysisTab::setRawVideo(std::unique_ptr<Model::YuvVideo> video) {

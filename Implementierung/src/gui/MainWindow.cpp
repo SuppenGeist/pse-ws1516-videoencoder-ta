@@ -21,6 +21,7 @@ GUI::MainWindow::MainWindow(QWidget* parent):QMainWindow(parent) {
 	createUi();
 	connectActions();
     loadedProject_ = new Model::Project(QString("new_Project"));
+    analysisTab_->setProject(loadedProject_);
 }
 
 Memento::MainWindowMemento GUI::MainWindow::getMemento() {
@@ -40,6 +41,7 @@ void GUI::MainWindow::restore(Memento::MainWindowMemento memento) {
 void GUI::MainWindow::newProject() {
     loadedProject_ = new Model::Project(QString("new_Project"));
     loadedProject_->setPath(QString(""));
+    analysisTab_->setProject(loadedProject_);
     createUi();
     UndoRedo::UndoStack::getUndoStack().clear();
 }
@@ -65,6 +67,7 @@ void GUI::MainWindow::loadProject() {
         *loadedProject_ = w.readProject();
     }
     restore(loadedProject_->getMemento());
+    analysisTab_->setProject(loadedProject_);
 }
 
 void GUI::MainWindow::saveProject() {

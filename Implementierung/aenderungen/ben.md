@@ -29,6 +29,8 @@ füge methode loadYuvVideo und removeYuvVideo hinzu
 füge int anaTypShown hinzu
 <b>Grund:</b> einfacher einem neuen Video zu sagen welches Analysevideo er zeigen soll.
 <hr>
+füge Model::Project project_ mit setter hinzu
+<b>Grund:</b> Nötig für Konstructor von ProjectWriter welcher Ergebnisse speichert.
 ##AnalysisBoxContainer
 füge addBox(int index, AnaBoxMemento memo) hinzu
 <b>Grund:</b> ermöglicht einfaches hinzufügen der boxen für den Undo/ReDo Befehl.

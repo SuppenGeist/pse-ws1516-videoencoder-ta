@@ -47,6 +47,12 @@ class MainWindow : public QMainWindow {
 	 */
 	void restore(Memento::MainWindowMemento memento);
 
+    /**
+     * @brief getProject Returns the current loaded Project.
+     * @return the current project
+     */
+    Model::Project* getProject();
+
   private slots:
 	/**
 	 * @brief newProject creates new project.
@@ -78,11 +84,7 @@ class MainWindow : public QMainWindow {
 	 */
 	void redo();
 
-	/**
-	 * @brief getProject Returns the current loaded Project.
-	 * @return the current project
-	 */
-	Model::Project* getProject();
+
 
   private:
 

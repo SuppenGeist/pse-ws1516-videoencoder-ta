@@ -29,6 +29,7 @@ class AnalysisTabMemento;
 }
 namespace Model {
 class YuvVideo;
+class Project;
 }
 namespace UndoRedo {
 class LoadAnalysisVideo;
@@ -79,6 +80,12 @@ class AnalysisTab: public QFrame {
      */
     void loadYuvVideo(std::unique_ptr<Model::YuvVideo> video);
 
+    /**
+     * @brief setProject Sets the project.
+     * @param project_Pointer to th used project.
+     */
+    void setProject(Model::Project* project);
+
   private slots:
 
 	/**
@@ -118,6 +125,7 @@ class AnalysisTab: public QFrame {
     GUI::AnalysisBoxContainer* analysisBoxContainer_;
     GUI::GlobalControlPanel* globalControlPanel_;
     Ui::AnalysisTab* ui_;
+    Model::Project* project_;
 
 	std::unique_ptr<Model::YuvVideo>    rawVideo_;
 	std::unique_ptr<VideoPlayer>        player_;
