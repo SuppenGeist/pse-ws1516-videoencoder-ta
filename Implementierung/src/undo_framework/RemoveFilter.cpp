@@ -8,9 +8,9 @@ UndoRedo::RemoveFilter::RemoveFilter(GUI::FilterTab& filterTab, int index):filte
 }
 
 void UndoRedo::RemoveFilter::undo() {
-	filterTab_->insertFilter(std::move(filter_),index_);
+    //filterTab_->insertFilter(std::move(filter_),index_);
 }
 
 void UndoRedo::RemoveFilter::redo() {
-	filter_=filterTab_->removeFilter(index_);
+    //filter_=filterTab_->removeFilter(index_);
 }

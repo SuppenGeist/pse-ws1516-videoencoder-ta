@@ -27,14 +27,14 @@ GUI::MainWindow::MainWindow(QWidget* parent):QMainWindow(parent) {
 Memento::MainWindowMemento GUI::MainWindow::getMemento() {
     Memento::MainWindowMemento memo;
     memo.setAnalysisTabMemento(analysisTab_->getMemento());
-    memo.setFilterTabMemento(filterTab_->getMemento());
+    //memo.setFilterTabMemento(filterTab_->getMemento());
     memo.setSelectedTab(tab_tabs_->currentIndex());
     return memo;
 }
 
 void GUI::MainWindow::restore(Memento::MainWindowMemento memento) {
     analysisTab_->restore(memento.getAnalysisTabMemento());
-    filterTab_->restore(memento.getFilterTabMemento());
+    //filterTab_->restore(memento.getFilterTabMemento());
     tab_tabs_->setCurrentIndex(memento.getSelectedTab());
 }
 

@@ -1,50 +1,22 @@
 #include "FilterTab.h"
 
-#include <string>
-
 #include <QWidget>
 #include <QFrame>
-#include <QModelIndex>
-#include <QPushButton>
-#include <QHBoxLayout>
-#include <QVBoxLayout>
-#include <QDebug>
 #include <QString>
+#include <QPushButton>
 #include <QListView>
-#include <QFileDialog>
-#include <QSpacerItem>
-#include <QTimer>
-#include <QStringListModel>
-#include <QTabWidget>
-#include <QStringList>
-#include <QModelIndexList>
-#include <QItemSelection>
 #include <QScrollArea>
+#include <QStringListModel>
+#include <QSpacerItem>
+#include <QItemSelection>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QTabWidget>
 
-#include "../memento/FilterTabMemento.h"
-#include "../model/FilterList.h"
-#include "../utility/FilterApplier.h"
-#include "../model/filters/Filter.h"
-#include "../model/YuvVideo.h"
 #include "FrameView.h"
 #include "PlayerControlPanel.h"
 #include "PreviewControlPanel.h"
-#include "FilterView.h"
 #include "FilterContainerTab.h"
-#include "../utility/VideoConverter.h"
-#include "YuvFileOpenDialog.h"
-#include "YuvInfoDialog.h"
-#include "../undo_framework/UndoStack.h"
-#include "../undo_framework/LoadFilterVideo.h"
-#include "../undo_framework/RemoveFilter.h"
-#include "../undo_framework/MoveFilterUp.h"
-#include "../undo_framework/MoveFilterDown.h"
-#include "VideoPlayer.h"
-#include "../undo_framework/LoadFilterconfig.h"
-#include "Timer.h"
-#include "../utility/FilterConfigurationSaver.h"
-#include "../utility/FilterConfigurationLoader.h"
-#include "../model/AVVideo.h"
 
 #include "../model/filters/BlurFilter.h"
 #include "../model/filters/BorderFilter.h"
@@ -66,95 +38,127 @@
 #include "../model/filters/SepiaFilter.h"
 #include "../model/filters/SharpnessFilter.h"
 #include "../model/filters/VintageFilter.h"
-#include "filter_boxes/FilterConfigurationBox.h"
-#include "filter_boxes/PlainFilterBox.h"
 
-
-extern "C" {
-#include <libavutil/pixfmt.h>
+GUI::FilterTab::FilterTab(QWidget *parent):QFrame(parent) {
+    createUi();
+    connectAtions();
 }
 
-GUI::FilterTab::FilterTab(QWidget* parent):QFrame(parent),isPreviewShown_(false) {
-    createUi();
-    connectActions();
+void GUI::FilterTab::up()
+{
 
-    setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
+}
 
-    player_=std::make_unique<VideoPlayer>();
-    player_->addView(*frameView_);
-    player_->setTimer(std::make_shared<Timer>());
-    playerPanel_->setMasterVideoPlayer(*player_);
-    previewPanel_->setMasterVideoPlayer(*player_);
-    player_->setMasterControlPanel(*playerPanel_);
+void GUI::FilterTab::down()
+{
 
-    filterList_=std::make_unique<Model::FilterList>();
+}
+
+void GUI::FilterTab::remove()
+{
+
+}
+
+void GUI::FilterTab::load()
+{
+
+}
+
+void GUI::FilterTab::apply()
+{
+
+}
+
+void GUI::FilterTab::save()
+{
+
+}
+
+void GUI::FilterTab::saveConfiguration()
+{
+
+}
+
+void GUI::FilterTab::loadConfiguration()
+{
+
+}
+
+void GUI::FilterTab::reset()
+{
+
+}
+
+void GUI::FilterTab::listSelectionChanged(QItemSelection selection)
+{
+
+}
+
+void GUI::FilterTab::createUi()
+{
+    createButtons();
+    createListView();
+    createVideoPlayer();
+    createFilterTabs();
+
+    //Start building ui
+    QVBoxLayout* v_content=new QVBoxLayout;
+    v_content->addSpacing(10);
+
+    QHBoxLayout* h_list_button_player=new QHBoxLayout;
+
+    h_list_button_player->addWidget(list_filterlist_);
+    h_list_button_player->addSpacing(20);
+
+    QVBoxLayout* v_buttons=new QVBoxLayout;
+    v_buttons->addWidget(button_load_);
+    v_buttons->addWidget(button_apply_);
+    v_buttons->addWidget(button_save_);
+    v_buttons->addSpacing(20);
+    v_buttons->addWidget(button_up_);
+    v_buttons->addWidget(button_down_);
+    v_buttons->addWidget(button_remove_);
+    v_buttons->addSpacing(20);
+    v_buttons->addWidget(button_loadConf_);
+    v_buttons->addWidget(button_saveConf_);
+    v_buttons->addSpacing(20);
+    v_buttons->addWidget(button_reset_);
+
+    QSpacerItem* spacer_buttons=new QSpacerItem(0,0,QSizePolicy::Minimum,QSizePolicy::MinimumExpanding);
+    v_buttons->addSpacerItem(spacer_buttons);
+
+    h_list_button_player->addLayout(v_buttons);
+    h_list_button_player->addSpacing(30);
+
+    QSpacerItem* spacer_player1=new QSpacerItem(0,0,QSizePolicy::MinimumExpanding,QSizePolicy::MinimumExpanding);
+    h_list_button_player->addSpacerItem(spacer_player1);
+
+    v_player_=new QVBoxLayout;
+    v_player_->addWidget(frameView_);
+    v_player_->addWidget(playerControlPanel_);
+
+    h_list_button_player->addLayout(v_player_);
+
+    QSpacerItem* spacer_player2=new QSpacerItem(0,0,QSizePolicy::MinimumExpanding,QSizePolicy::MinimumExpanding);
+    h_list_button_player->addSpacerItem(spacer_player2);
+
+    v_content->addLayout(h_list_button_player);
+
+    v_content->addSpacing(20);
+
+    v_content->addWidget(tab_filtertabs_);
+
+    setLayout(v_content);
 
     setObjectName("filterTab");
     setStyleSheet("QFrame#filterTab {"
                   "background-color:rgb(235,235,235);"
-                  "}");
+                  "}"
+    );
 }
 
-
-Memento::FilterTabMemento GUI::FilterTab::getMemento() {
-    /*Memento::FilterTabMemento memo;
-    memo.setFilterList(&(*filterList_));
-    memo.setWasApplied(!isPreviewShown_);
-    //memo.setDisplayedFrame(frameView_->);
-    memo.setLoadedFile(rawVideo_->getPath().toStdString());*/
-
-    //set yuv video data
-    //return memo;
-
-}
-
-void GUI::FilterTab::restore(Memento::FilterTabMemento memento) {
-    /*filterList_ = make_unique<memento.getFilterList()>;
-    isPreviewShown_ = !(memento.getWasApplied());
-    memo.setDisplayedFrame(frameView_->);
-    rawVideo_ = make_unique<Model::YuvVideo();
-    */
-}
-
-Model::Filter* GUI::FilterTab::addFilter(QString filtername) {
-    if(!rawVideo_.get())
-        return nullptr;
-
-    filterList_->appendFilter(filtername);
-    auto modelList=model_list_->stringList();
-    modelList.append(filtername+" filter");
-    model_list_->setStringList(modelList);
-
-    updatePreview();
-
-    return filterList_->getFilter(filterList_->getSize()-1);
-}
-
-Model::FilterList *GUI::FilterTab::getFilterList() {
-    return filterList_.get();
-}
-
-std::unique_ptr<Model::FilterList> GUI::FilterTab::releaseFilterList()
+void GUI::FilterTab::createButtons()
 {
-    return std::move(std::move(filterList_));
-}
-
-
-void GUI::FilterTab::connectActions() {
-    connect(button_apply_,SIGNAL(clicked()),this,SLOT(apply()));
-    connect(button_down_,SIGNAL(clicked()),this,SLOT(down()));
-    connect(button_load_,SIGNAL(clicked()),this,SLOT(load()));
-    connect(button_loadConf_,SIGNAL(clicked()),this,SLOT(loadConf()));
-    connect(button_remove_,SIGNAL(clicked()),this,SLOT(remove()));
-    connect(button_reset_,SIGNAL(clicked()),this,SLOT(reset()));
-    connect(button_save_,SIGNAL(clicked()),this,SLOT(save()));
-    connect(button_saveConf_,SIGNAL(clicked()),this,SLOT(saveConf()));
-    connect(button_up_,SIGNAL(clicked()),this,SLOT(up()));
-    connect(list_filterList_->selectionModel(),SIGNAL(selectionChanged(QItemSelection,
-            QItemSelection)),this,SLOT(listSelectionChanged(QItemSelection)));
-}
-
-void GUI::FilterTab::createUi() {
     button_apply_=new QPushButton(tr("Apply to video"));
     button_down_=new QPushButton(tr("Filter down"));
     button_loadConf_=new QPushButton(tr("Load configuration"));
@@ -176,24 +180,24 @@ void GUI::FilterTab::createUi() {
     button_up_->setFlat(true);
 
     QString styleSheet_buttonGroup("QPushButton {"
-                                   "color: rgb(255, 255, 255);"
-                                   "border-color: rgb(69, 62, 62);"
-                                   "background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #88d, stop: 0.1 #99e, stop: 0.49 #77c);"
-                                   "background: rgb(140, 140, 140);"
-                                   "border-width: 1px;"
-                                   "border-color:rgb(0, 0, 0);"
-                                   "border-style: outset;"
-                                   "border-radius: 7;"
-                                   "padding: 3px;"
-                                   "font-size: 18px;"
-                                   "padding-left: 5px;"
-                                   "padding-right: 5px;"
-                                   "}"
-                                   "QPushButton:pressed {"
-                                   "background-color: rgb(69, 62, 62);"
-                                   "border-style: inset;"
-                                   "}"
-                                  );
+                                    "color: rgb(255, 255, 255);"
+                                    "border-color: rgb(69, 62, 62);"
+                                    "background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #88d, stop: 0.1 #99e, stop: 0.49 #77c);"
+                                    "background: rgb(140, 140, 140);"
+                                    "border-width: 1px;"
+                                    "border-color:rgb(0, 0, 0);"
+                                    "border-style: outset;"
+                                    "border-radius: 7;"
+                                    "padding: 3px;"
+                                    "font-size: 18px;"
+                                    "padding-left: 5px;"
+                                    "padding-right: 5px;"
+                                    "}"
+                                    "QPushButton:pressed {"
+                                    "background-color: rgb(69, 62, 62);"
+                                    "border-style: inset;"
+                                    "}"
+    );
 
     button_apply_->setStyleSheet(styleSheet_buttonGroup);
     button_down_->setStyleSheet(styleSheet_buttonGroup);
@@ -204,37 +208,45 @@ void GUI::FilterTab::createUi() {
     button_saveConf_->setStyleSheet(styleSheet_buttonGroup);
     button_save_->setStyleSheet(styleSheet_buttonGroup);
     button_up_->setStyleSheet(styleSheet_buttonGroup);
+}
 
-    list_filterList_=new QListView;
-    list_filterList_->setFixedWidth(250);
-    list_filterList_->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    list_filterList_->setStyleSheet("font-size:17px;");
+void GUI::FilterTab::createListView()
+{
+    list_filterlist_=new QListView;
+    list_filterlist_->setFixedWidth(250);
+    list_filterlist_->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    list_filterlist_->setStyleSheet("font-size:17px;");
 
-    model_list_=new QStringListModel;
-    list_filterList_->setModel(model_list_);
+    model_filterlist_=new QStringListModel;
+    list_filterlist_->setModel(model_filterlist_);
+}
 
+void GUI::FilterTab::createVideoPlayer()
+{
     frameView_=new FrameView;
     frameView_->setMaximumWidth(600);
     frameView_->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Expanding);
 
-    playerPanel_=new PlayerControlPanel;
-    playerPanel_->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Minimum);
-    playerPanel_->setMaximumWidth(600);
+    playerControlPanel_=new PlayerControlPanel;
+    playerControlPanel_->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Minimum);
+    playerControlPanel_->setMaximumWidth(600);
 
-    previewPanel_=new PreviewControlPanel;
-    previewPanel_->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Minimum);
-    previewPanel_->setMaximumWidth(600);
+    PreviewControlPanel_=new PreviewControlPanel;
+    PreviewControlPanel_->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Minimum);
+    PreviewControlPanel_->setMaximumWidth(600);
+}
 
-    filterTabs_=new QTabWidget;
+void GUI::FilterTab::createFilterTabs()
+{
+    tab_filtertabs_=new QTabWidget;
+
     FilterContainerTab* filterTab=new FilterContainerTab;
     filterTab->setParentTab(*this);
 
     FilterContainerTab* artefactsTab=new FilterContainerTab;
     artefactsTab->setParentTab(*this);
 
-    filterContainerTab_.push_back(filterTab);
-    filterContainerTab_.push_back(artefactsTab);
-
+    //Add all filters
     filterTab->addFilter(Model::BlurFilter::FILTERNAME);
     filterTab->addFilter(Model::BrightnessFilter::FILTERNAME);
     filterTab->addFilter(Model::ColorbalanceFilter::FILTERNAME);
@@ -253,6 +265,7 @@ void GUI::FilterTab::createUi() {
     filterTab->addFilter(Model::SharpnessFilter::FILTERNAME);
     filterTab->addFilter(Model::VintageFilter::FILTERNAME);
 
+    //Add all artefacts
     artefactsTab->addFilter(Model::BorderFilter::FILTERNAME);
     artefactsTab->addFilter(Model::GridFilter::FILTERNAME);
     artefactsTab->addFilter(Model::RectangleFilter::FILTERNAME);
@@ -267,330 +280,42 @@ void GUI::FilterTab::createUi() {
     scrollArea_artefacts->setVerticalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAlwaysOff);
     scrollArea_artefacts->setFixedHeight(245);
 
-    //QScrollArea* wrapper=new QScrollArea;
     QFrame* optionsWidget=new QFrame;
+
     optionsWidget->setObjectName("OptWid");
     optionsWidget->setStyleSheet("QFrame#OptWid {"
                                  "background-color:rgb(235,235,235);"
                                  "}");
+
     optionsWidget->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
-    filterOptionsLayout_=new QHBoxLayout;
-    QSpacerItem* sp4=new QSpacerItem(0,0,QSizePolicy::Expanding,QSizePolicy::Expanding);
-    filterOptionsLayout_->addSpacerItem(sp4);
-    currentBox_=new PlainFilterBox;
-    filterOptionsLayout_->addWidget(currentBox_);
-    spacer_filterOpt_=new QSpacerItem(0,0,QSizePolicy::Expanding,QSizePolicy::Expanding);
-    filterOptionsLayout_->addSpacerItem(spacer_filterOpt_);
 
-    optionsWidget->setLayout(filterOptionsLayout_);
+    h_filterOptions_=new QHBoxLayout;
 
-    //wrapper->setWidget(optionsWidget);
-    //wrapper->setVerticalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAlwaysOff);
-    //wrapper->setHorizontalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAlwaysOff);
+    QSpacerItem* spacer=new QSpacerItem(0,0,QSizePolicy::Expanding,QSizePolicy::Expanding);
+    h_filterOptions_->addSpacerItem(spacer);
+    //Add FilterConfigurationBox
+    spacer_filterOptions_=new QSpacerItem(0,0,QSizePolicy::Expanding,QSizePolicy::Expanding);
+    h_filterOptions_->addSpacerItem(spacer_filterOptions_);
 
-    filterTabs_->addTab(scrollArea_filters,tr("Filters"));
-    filterTabs_->addTab(scrollArea_artefacts,tr("Artefacts"));
-    filterTabs_->addTab(optionsWidget,tr("Filter options"));
-    filterTabs_->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Minimum);
+    optionsWidget->setLayout(h_filterOptions_);
 
-
-    //build gui
-    QVBoxLayout* v_content=new QVBoxLayout;
-    v_content->addSpacing(10);
-
-    QHBoxLayout* h_list_button_player_filterconf=new QHBoxLayout;
-
-    h_list_button_player_filterconf->addWidget(list_filterList_);
-    h_list_button_player_filterconf->addSpacing(20);
-
-    QVBoxLayout* v_player_buttons_filterconf=new QVBoxLayout;
-
-    QHBoxLayout* h_buttons_player=new QHBoxLayout;
-
-    QVBoxLayout* v_buttonBlock=new QVBoxLayout;
-    v_buttonBlock->addWidget(button_load_);
-    v_buttonBlock->addWidget(button_apply_);
-    v_buttonBlock->addWidget(button_save_);
-    v_buttonBlock->addSpacing(20);
-    v_buttonBlock->addWidget(button_up_);
-    v_buttonBlock->addWidget(button_down_);
-    v_buttonBlock->addWidget(button_remove_);
-    v_buttonBlock->addSpacing(20);
-    v_buttonBlock->addWidget(button_loadConf_);
-    v_buttonBlock->addWidget(button_saveConf_);
-    v_buttonBlock->addSpacing(20);
-    v_buttonBlock->addWidget(button_reset_);
-    QSpacerItem* sp3=new QSpacerItem(0,0,QSizePolicy::Minimum,QSizePolicy::MinimumExpanding);
-    v_buttonBlock->addSpacerItem(sp3);
-
-    h_buttons_player->addLayout(v_buttonBlock);
-    h_buttons_player->addSpacing(30);
-    QSpacerItem* sp=new QSpacerItem(0,0,QSizePolicy::MinimumExpanding,QSizePolicy::MinimumExpanding);
-    h_buttons_player->addSpacerItem(sp);
-
-    v_player_=new QVBoxLayout;
-    v_player_->addWidget(frameView_);
-    v_player_->addWidget(playerPanel_);
-
-    h_buttons_player->addLayout(v_player_,1);
-    QSpacerItem* sp1=new QSpacerItem(0,0,QSizePolicy::MinimumExpanding,QSizePolicy::MinimumExpanding);
-    h_buttons_player->addSpacerItem(sp1);
-
-    v_player_buttons_filterconf->addLayout(h_buttons_player);
-
-    h_list_button_player_filterconf->addLayout(v_player_buttons_filterconf,1);
-
-    v_content->addLayout(h_list_button_player_filterconf);
-
-    v_content->addSpacing(20);
-
-    v_content->addWidget(filterTabs_);
-
-    setLayout(v_content);
+    tab_filtertabs_->addTab(scrollArea_filters,tr("Filters"));
+    tab_filtertabs_->addTab(scrollArea_artefacts,tr("Artefacts"));
+    tab_filtertabs_->addTab(optionsWidget,tr("Filter options"));
+    tab_filtertabs_->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Minimum);
 }
 
-void GUI::FilterTab::updatePreview() {
-    if(!isPreviewShown_) {
-        if(!rawVideo_.get())
-            return;
-        player_->stop();
-        v_player_->removeWidget(playerPanel_);
-        playerPanel_->hide();
-        v_player_->addWidget(previewPanel_);
-        previewPanel_->show();
-        previewFrames_=std::make_unique<Model::AVVideo>(1);
-
-        static int numberOfPreviewFrames=5;
-        int videoFramecount=rawVideo_->getVideo().getNumberOfFrames();
-        int stepsize=videoFramecount/numberOfPreviewFrames;
-        if(videoFramecount<numberOfPreviewFrames) {
-            numberOfPreviewFrames=videoFramecount;
-            stepsize=1;
-        }
-        for(std::size_t i=0; i<numberOfPreviewFrames; i++) {
-            auto frame=Utility::VideoConverter::convertQImageToAVFrame(*rawVideo_->getVideo().getFrame(
-                           i*stepsize));
-            previewFrames_->appendFrame(frame);
-        }
-
-        isPreviewShown_=true;
-    }
-    player_->setVideo(nullptr);
-    filteredPreviewFrames_=std::make_unique<Model::Video>(1);
-
-    Utility::FilterApplier filterApplier(*filterList_,rawVideo_->getWidth(),rawVideo_->getHeight(),
-                                         AV_PIX_FMT_RGB24);
-    Model::AVVideo filteredVideo(1);
-    filterApplier.applyToVideo(filteredVideo,*previewFrames_);
-
-    for(std::size_t i=0; i<filteredVideo.getNumberOfFrames(); i++) {
-        filteredPreviewFrames_->appendFrame(Utility::VideoConverter::convertAVFrameToQImage(
-                                                *filteredVideo.getFrame(i)));
-    }
-
-    player_->setVideo(filteredPreviewFrames_.get());
-    previewPanel_->updateUi();
-}
-
-void GUI::FilterTab::insertFilter(std::unique_ptr<Model::Filter> filter, std::size_t index) {
-    auto stringlist=model_list_->stringList();
-    stringlist.insert(index,filter->getName());
-    filterList_->insertFilter(std::move(filter),index);
-}
-
-void GUI::FilterTab::up() {
-    QModelIndexList selected = list_filterList_->selectionModel()->selectedIndexes();
-    if (!selected.isEmpty()) {
-        UndoRedo::UndoStack::getUndoStack().push(new UndoRedo::MoveFilterUp(*this,selected.first().row()));
-    }
-}
-
-void GUI::FilterTab::down() {
-    QModelIndexList selected = list_filterList_->selectionModel()->selectedIndexes();
-    if (!selected.isEmpty()) {
-        UndoRedo::UndoStack::getUndoStack().push(new UndoRedo::MoveFilterDown(*this,
-                selected.first().row()));
-    }
-}
-
-void GUI::FilterTab::remove() {
-    QModelIndexList selected = list_filterList_->selectionModel()->selectedIndexes();
-    if (!selected.isEmpty()) {
-        UndoRedo::UndoStack::getUndoStack().push(new UndoRedo::RemoveFilter(*this,selected.first().row()));
-    }
-}
-
-void GUI::FilterTab::load() {
-    YuvFileOpenDialog fileOpenDiag(this);
-
-    int result=fileOpenDiag.exec();
-
-    if(!(result==QDialog::Accepted))
-        return;
-
-    auto path=fileOpenDiag.getFilename();
-
-    if(path.isEmpty())
-        return;
-
-    std::unique_ptr<YuvInfoDialog> infoDialog;
-    bool inputValid=true;
-    do {
-        infoDialog=std::make_unique<YuvInfoDialog>(this);
-        inputValid=true;
-
-        result=infoDialog->exec();
-        if(!(result==QDialog::Accepted))
-            return;
-
-        if(infoDialog->getFps()<=0) {
-            inputValid=false;
-            continue;
-        }
-        if(infoDialog->getHeight()<=0) {
-            inputValid=false;
-            continue;
-        }
-        if(infoDialog->getWidth()<=0) {
-            inputValid=false;
-            continue;
-        }
-
-    } while(!inputValid);
-
-    auto yuvVideo=std::make_unique<Model::YuvVideo>(path,infoDialog->getPixelSheme(),
-                  infoDialog->getCompression(),infoDialog->getWidth(),infoDialog->getHeight(),infoDialog->getFps());
-    UndoRedo::UndoStack::getUndoStack().push(new UndoRedo::LoadFilterVideo(*this,std::move(yuvVideo),
-            std::move(getMemento())));
-}
-
-void GUI::FilterTab::apply() {
-
-}
-
-void GUI::FilterTab::saveConf() {
-    if(filterList_->getSize()==0)
-        return;
-
-    auto filename = QFileDialog::getSaveFileName(this,tr("Save filter configuration"),QDir::homePath(),"*.conf");
-
-    if(filename.isEmpty())
-        return;
-
-    if(!filename.endsWith(".conf"))
-        filename+=".conf";
-
-    Utility::FilterConfigurationSaver saver(filename,*filterList_);
-    saver.save();
-}
-
-void GUI::FilterTab::loadConf() {
-    if(!rawVideo_.get())
-        return;
-
-    auto filename=QFileDialog::getOpenFileName(this,tr("Open filterconfiguration"),QDir::homePath(),"*.conf");
-
-    if(filename.isEmpty())
-        return;
-
-    Utility::FilterConfigurationLoader loader(filename);
-    auto filterlist=loader.getConfiguration();
-
-    UndoRedo::UndoStack::getUndoStack().push(new UndoRedo::LoadFilterconfig(*this,std::move(filterlist)));
-}
-
-void GUI::FilterTab::reset() {
-    player_->stop();
-    filterList_=std::make_unique<Model::FilterList>();
-    model_list_->removeRows(0,model_list_->rowCount());
-    playerPanel_->updateUi();
-    previewPanel_->updateUi();
-    currentBox_->hide();
-    if(isPreviewShown_) {
-        v_player_->removeWidget(previewPanel_);
-        v_player_->addWidget(playerPanel_);
-        previewPanel_->hide();
-        playerPanel_->show();
-        player_->setVideo(&rawVideo_->getVideo());
-        playerPanel_->updateUi();
-        isPreviewShown_=false;
-    }
-}
-
-void GUI::FilterTab::save() {
-
-}
-
-void GUI::FilterTab::listSelectionChanged(QItemSelection selection) {
-    if(selection.indexes().isEmpty())
-        return;
-
-    auto filter=filterList_->getFilter(selection.indexes().first().row());
-    filterOptionsLayout_->removeWidget(currentBox_);
-    currentBox_->hide();
-    delete currentBox_;
-    auto filterbox=FilterConfigurationBox::CreateConfigurationBox(*this,*filter);
-    auto ptr=filterbox.release();
-    currentBox_=ptr;
-    filterOptionsLayout_->addWidget(currentBox_);
-    filterOptionsLayout_->removeItem(spacer_filterOpt_);
-    filterOptionsLayout_->addItem(spacer_filterOpt_);
-
-}
-
-std::unique_ptr<Model::Filter> GUI::FilterTab::removeFilter(int index) {
-    std::unique_ptr<Model::Filter> f;
-    if(index<0||index>=filterList_->getSize()) {
-        f.release();
-        return std::move(f);
-    }
-    auto stringlist=model_list_->stringList();
-    stringlist.removeAt(index);
-    model_list_->setStringList(stringlist);
-    auto filter=filterList_->removeFilter(index);
-
-    if(filterList_->getSize()==0) {
-        reset();
-    } else {
-        updatePreview();
-    }
-
-    return std::move(filter);
-}
-
-void GUI::FilterTab::setFilterList(std::unique_ptr<Model::FilterList> list) {
-    if(!list.get())
-        return;
-    filterList_=std::move(list);
-    QStringList filterlist;
-    for(std::size_t i=0;i<filterList_->getSize();i++) {
-        filterlist<<filterList_->getFilter(i)->getName();
-    }
-    model_list_->setStringList(filterlist);
-    updatePreview();
-}
-
-void GUI::FilterTab::setRawVideo(std::unique_ptr<Model::YuvVideo> video) {
-    reset();
-    player_->setVideo(&video->getVideo());
-    rawVideo_=std::move(video);
-}
-
-std::unique_ptr<Model::YuvVideo> GUI::FilterTab::releaseVideo() {
-    auto video=std::move(rawVideo_);
-    reset();
-    return std::move(video);
-}
-
-void GUI::FilterTab::moveFilter(int old, int newPos) {
-    if(old<0||old>=filterList_->getSize()||newPos<0||newPos>=filterList_->getSize()||old==newPos)
-        return;
-    filterList_->moveFilter(old,newPos);
-    auto stringlist=model_list_->stringList();
-    auto filname=stringlist.at(old);
-    stringlist.removeAt(old);
-    stringlist.insert(newPos,filname);
-    model_list_->setStringList(stringlist);
-
-    updatePreview();
+void GUI::FilterTab::connectAtions()
+{
+    connect(button_apply_,SIGNAL(clicked()),this,SLOT(apply()));
+    connect(button_down_,SIGNAL(clicked()),this,SLOT(down()));
+    connect(button_load_,SIGNAL(clicked()),this,SLOT(load()));
+    connect(button_loadConf_,SIGNAL(clicked()),this,SLOT(loadConfiguration()));
+    connect(button_remove_,SIGNAL(clicked()),this,SLOT(remove()));
+    connect(button_reset_,SIGNAL(clicked()),this,SLOT(reset()));
+    connect(button_save_,SIGNAL(clicked()),this,SLOT(save()));
+    connect(button_saveConf_,SIGNAL(clicked()),this,SLOT(saveConfiguration()));
+    connect(button_up_,SIGNAL(clicked()),this,SLOT(up()));
+    connect(list_filterlist_->selectionModel(),SIGNAL(selectionChanged(QItemSelection,
+                QItemSelection)),this,SLOT(listSelectionChanged(QItemSelection)));
 }

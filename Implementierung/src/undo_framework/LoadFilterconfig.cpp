@@ -4,17 +4,18 @@
 
 #include "../gui/FilterTab.h"
 #include "../model/FilterList.h"
+#include "../model/filters/Filter.h"
 
 UndoRedo::LoadFilterconfig::LoadFilterconfig(GUI::FilterTab& filterTab, std::unique_ptr<Model::FilterList> list):filterTab_(&filterTab),newList_(std::move(list)) {
 
 }
 
 void UndoRedo::LoadFilterconfig::undo() {
-    newList_=filterTab_->releaseFilterList();
-    filterTab_->setFilterList(std::move(oldList_));
+    //newList_=filterTab_->releaseFilterList();
+    //filterTab_->setFilterList(std::move(oldList_));
 }
 
 void UndoRedo::LoadFilterconfig::redo() {
-    oldList_=filterTab_->releaseFilterList();
-    filterTab_->setFilterList(std::move(newList_));
+    //oldList_=filterTab_->releaseFilterList();
+    //filterTab_->setFilterList(std::move(newList_));
 }

@@ -14,12 +14,12 @@ UndoRedo::LoadFilterVideo::LoadFilterVideo(GUI::FilterTab& filterTab,
 }
 
 void UndoRedo::LoadFilterVideo::undo() {
-	video_=filterTab_->releaseVideo();
-    filterTab_->restore(memento_);
+    //video_=filterTab_->releaseVideo();
+    //filterTab_->restore(memento_);
 }
 
 void UndoRedo::LoadFilterVideo::redo() {
-	filterTab_->setRawVideo(std::move(video_));
+    //filterTab_->setRawVideo(std::move(video_));
 }
 
 

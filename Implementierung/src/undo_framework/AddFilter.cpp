@@ -13,9 +13,9 @@ UndoRedo::AddFilter::AddFilter(GUI::FilterTab &filterTab,
 }
 
 void UndoRedo::AddFilter::undo() {
-	filterTab_->removeFilter(filterTab_->getFilterList()->getSize()-1);
+    //filterTab_->removeFilter(filterTab_->getFilterList()->getSize()-1);
 }
 
 void UndoRedo::AddFilter::redo() {
-	filterTab_->addFilter(filtername_);
+    //filterTab_->addFilter(filtername_);
 }

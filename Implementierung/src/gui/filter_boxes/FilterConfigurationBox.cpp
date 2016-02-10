@@ -140,7 +140,7 @@ void GUI::FilterConfigurationBox::applyFilter()
 {
     filter_->restore(tempFilter_->getSaveString());
 
-    filterTab_->updatePreview();
+    //filterTab_->updatePreview();
 }
 
 void GUI::FilterConfigurationBox::createUi()
