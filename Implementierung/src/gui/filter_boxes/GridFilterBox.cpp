@@ -7,6 +7,7 @@
 #include <QLabel>
 #include <QFrame>
 #include <QDebug>
+#include <QColorDialog>
 
 #include "FilterConfigurationBox.h"
 #include "../../model/filters/GridFilter.h"
@@ -16,13 +17,12 @@ GUI::GridFilterBox::GridFilterBox(QWidget* parent) {
 
     createFilterOptions();
 
-    connect(slider_,SIGNAL(valueChanged(int)),this,SLOT(sliderChanged(int)));
     connect(spinBox_,SIGNAL(valueChanged(int)),this,SLOT(spinBoxChanged(int)));
     connect(slider2_,SIGNAL(valueChanged(int)),this,SLOT(slider2Changed(int)));
     connect(spinBox2_,SIGNAL(valueChanged(int)),this,SLOT(spinBox2Changed(int)));
     connect(spinBox3_,SIGNAL(valueChanged(int)),this,SLOT(spinBox3Changed(int)));
     connect(spinBox4_,SIGNAL(valueChanged(int)),this,SLOT(spinBox4Changed(int)));
-
+    connect(button_,SIGNAL(clicked()),this,SLOT(openColorDialog()));
 }
 
 void GUI::GridFilterBox::updateUi()
@@ -31,7 +31,6 @@ void GUI::GridFilterBox::updateUi()
     auto o=static_cast<Model::GridFilter*>(tempFilter_.get())->getOpacity();
     auto hl=static_cast<Model::GridFilter*>(tempFilter_.get())->getHorizontalCells();
     auto vl=static_cast<Model::GridFilter*>(tempFilter_.get())->getVerticalCells();
-    slider_->setValue(t);
     spinBox_->setValue(t);
     slider2_->setValue(o);
     spinBox2_->setValue(o);
@@ -39,16 +38,16 @@ void GUI::GridFilterBox::updateUi()
     spinBox4_->setValue(vl);
 }
 
-void GUI::GridFilterBox::sliderChanged(int value)
+void GUI::GridFilterBox::openColorDialog()
 {
-    static_cast<Model::GridFilter*>(tempFilter_.get())->setThickness(value);
-    spinBox_->setValue(value);
+    QColor color_ = QColorDialog::getColor(Qt::white,this);
+    static_cast<Model::GridFilter*>(tempFilter_.get())->setColor(color_);
+    updatePreview();
 }
 
 void GUI::GridFilterBox::spinBoxChanged(int value)
 {
     static_cast<Model::GridFilter*>(tempFilter_.get())->setThickness(value);
-    slider_->setValue(value);
 
     updatePreview();
 }
@@ -88,13 +87,9 @@ void GUI::GridFilterBox::createFilterOptions()
     QLabel* h=new QLabel("HorizontalCells:");
     QLabel* v=new QLabel("VerticalCells:");
 
-    slider_=new QSlider(Qt::Horizontal);
-    slider_->setMaximum(50);
-    slider_->setMinimum(0);
-
     spinBox_=new QSpinBox;
-    spinBox_->setMaximum(50);
     spinBox_->setMinimum(0);
+    spinBox_->setMaximum(100000);
 
     slider2_=new QSlider(Qt::Horizontal);
     slider2_->setMaximum(255);
@@ -112,13 +107,15 @@ void GUI::GridFilterBox::createFilterOptions()
     spinBox4_->setMaximum(20);
     spinBox4_->setMinimum(1);
 
+     button_ = new QPushButton(tr("Color"));
+
     QVBoxLayout* h_content=new QVBoxLayout;
     QHBoxLayout* thickness=new QHBoxLayout;
     QHBoxLayout* opacity=new QHBoxLayout;
     QHBoxLayout* cells=new QHBoxLayout;
+    QHBoxLayout* color=new QHBoxLayout;
 
     thickness->addWidget(t);
-    thickness->addWidget(slider_);
     thickness->addWidget(spinBox_);
     opacity->addWidget(o);
     opacity->addWidget(slider2_);
@@ -127,10 +124,12 @@ void GUI::GridFilterBox::createFilterOptions()
     cells->addWidget(spinBox3_);
     cells->addWidget(v);
     cells->addWidget(spinBox4_);
+    color->addWidget(button_);
 
     h_content->addLayout(thickness);
     h_content->addLayout(opacity);
     h_content->addLayout(cells);
+    h_content->addLayout(color);
 
     QFrame* frame=new QFrame;
     frame->setFixedWidth(330);

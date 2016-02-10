@@ -1,4 +1,5 @@
 #include "BorderFilterBox.h"
+
 #include <QWidget>
 #include <QSlider>
 #include <QSpinBox>
@@ -22,9 +23,8 @@ GUI::BorderFilterBox::BorderFilterBox(QWidget* parent) {
     connect(bottom_, SIGNAL(stateChanged(int)),this,SLOT(bottomchecked(int)));
     connect(right_, SIGNAL(stateChanged(int)),this,SLOT(rightchecked(int)));
     connect(left_, SIGNAL(stateChanged(int)),this,SLOT(leftchecked(int)));
-    connect(slider_,SIGNAL(valueChanged(int)),this,SLOT(sliderChanged(int)));
     connect(spinBox_,SIGNAL(valueChanged(int)),this,SLOT(spinBoxChanged(int)));
-    //connect(color_,SIGNAL(currentColorChanged(QColor)),this,SLOT(sliderChanged(int)));
+    connect(button_,SIGNAL(clicked()),this,SLOT(openColorDialog()));
 
 }
 
@@ -35,35 +35,28 @@ void GUI::BorderFilterBox::updateUi()
     auto right=static_cast<Model::BorderFilter*>(tempFilter_.get())->getRight();
     auto left=static_cast<Model::BorderFilter*>(tempFilter_.get())->getLeft();
     auto value=static_cast<Model::BorderFilter*>(tempFilter_.get())->getThickness();
-    //auto color=static_cast<Model::BorderFilter*>(tempFilter_.get())->getColor();
+    auto color=static_cast<Model::BorderFilter*>(tempFilter_.get())->getColor();
 
     top_->setChecked(top);
     bottom_->setChecked(bottom);
     right_->setChecked(right);
     left_->setChecked(left);
-    slider_->setValue(value);
     spinBox_->setValue(value);
-    //color_->setCurrentColor(color);
 }
 
-void GUI::BorderFilterBox::sliderChanged(int value)
+void GUI::BorderFilterBox::openColorDialog()
 {
-    static_cast<Model::BorderFilter*>(tempFilter_.get())->setThickness(value);
-    spinBox_->setValue(value);
+    QColor color_ = QColorDialog::getColor(Qt::white,this);
+    static_cast<Model::BorderFilter*>(tempFilter_.get())->setColor(color_);
+    updatePreview();
 }
+
 
 void GUI::BorderFilterBox::spinBoxChanged(int value)
 {
     static_cast<Model::BorderFilter*>(tempFilter_.get())->setThickness(value);
-    slider_->setValue(value);
 
     updatePreview();
-}
-
-void GUI::BorderFilterBox::colorChanged(QColor color)
-{
-    static_cast<Model::BorderFilter*>(tempFilter_.get())->setColor(color);
-    color_->setCurrentColor(color);
 }
 
 
@@ -101,7 +94,7 @@ void GUI::BorderFilterBox::leftchecked(int check)
 
 void GUI::BorderFilterBox::createFilterOptions()
 {
-    QLabel* l=new QLabel("Intensity:");
+    QLabel* l=new QLabel("Thickness:");
     QLabel* t=new QLabel("Top");
     QLabel* b=new QLabel("Bottom");
     QLabel* r=new QLabel("Right");
@@ -111,20 +104,17 @@ void GUI::BorderFilterBox::createFilterOptions()
     right_= new QCheckBox;
     left_= new QCheckBox;
 
-    slider_=new QSlider(Qt::Horizontal);
-    slider_->setMaximum(100);
-    slider_->setMinimum(0);
 
     spinBox_=new QSpinBox;
-    spinBox_->setMaximum(100);
     spinBox_->setMinimum(0);
+    spinBox_->setMaximum(100000);
 
-    //color_ =new QColorDialog;
+    button_ = new QPushButton(tr("Color"));
 
     QVBoxLayout* h_content=new QVBoxLayout;
     QHBoxLayout* topLayout=new QHBoxLayout;
     QHBoxLayout* bottomLayout=new QHBoxLayout;
-    //QHBoxLayout* bottom2Layout= new QHBoxLayout;
+    QHBoxLayout* bottom2Layout= new QHBoxLayout;
 
     topLayout->addWidget(t);
     topLayout->addWidget(top_);
@@ -135,13 +125,14 @@ void GUI::BorderFilterBox::createFilterOptions()
     topLayout->addWidget(le);
     topLayout->addWidget(left_);
     bottomLayout->addWidget(l);
-    bottomLayout->addWidget(slider_);
     bottomLayout->addWidget(spinBox_);
-    //bottom2Layout->addWidget(color_);
+    bottom2Layout->addWidget(button_);
 
     h_content->addLayout(topLayout);
+    h_content->addSpacing(10);
     h_content->addLayout(bottomLayout);
-    //h_content->addLayout(bottom2Layout);
+    h_content->addSpacing(10);
+    h_content->addLayout(bottom2Layout);
 
     QFrame* frame=new QFrame;
     frame->setFixedWidth(330);

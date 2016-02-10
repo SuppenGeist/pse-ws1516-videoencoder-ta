@@ -29,23 +29,21 @@ namespace GUI
 
 
     private slots:
-
-        void sliderChanged(int value);
         void spinBoxChanged(int value);
         void topchecked(int check);
         void bottomchecked(int check);
         void rightchecked(int check);
         void leftchecked(int check);
-        void colorChanged(QColor color);
+        void openColorDialog();
 
     private:
-        QSlider*        slider_;
-        QColorDialog*   color_;
         QSpinBox*       spinBox_;
         QCheckBox*      top_;
         QCheckBox*      bottom_;
         QCheckBox*      right_;
         QCheckBox*      left_;
+        QPushButton*    button_;
+        QPalette* pal;
 
     virtual void createFilterOptions();
     };

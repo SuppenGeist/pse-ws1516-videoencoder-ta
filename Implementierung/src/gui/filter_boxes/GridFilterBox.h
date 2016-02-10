@@ -27,19 +27,19 @@ namespace GUI
 
 
     private slots:
-        void sliderChanged(int value);
         void spinBoxChanged(int value);
         void slider2Changed(int value2);
         void spinBox2Changed(int value2);
         void spinBox3Changed(int value3);
         void spinBox4Changed(int value4);
+        void openColorDialog();
     private:
-        QSlider*        slider_;
         QSlider*        slider2_;
         QSpinBox*       spinBox_;
         QSpinBox*       spinBox2_;
         QSpinBox*       spinBox3_;
         QSpinBox*       spinBox4_;
+        QPushButton*    button_;
 
         virtual void createFilterOptions();
     };

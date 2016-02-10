@@ -37,7 +37,7 @@ void GUI::PosterFilterBox::createFilterOptions()
     QLabel* l=new QLabel("Number of colors:");
 
     spinBox_=new QSpinBox;
-    spinBox_->setMaximum(16777216);
+    spinBox_->setMaximum(256);
     spinBox_->setMinimum(1);
 
 
