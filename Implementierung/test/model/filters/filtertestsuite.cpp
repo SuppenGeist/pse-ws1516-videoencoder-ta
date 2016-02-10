@@ -49,5 +49,8 @@ void FilterTestSuite::testAllFilters()
     TestEdgeFilter testEdgeFilter;
     QTest::qExec(&testEdgeFilter);
 
+    TestGrayscaleFilter testGrayscaleFilter;
+    QTest::qExec(&testGrayscaleFilter);
+
 }
 
