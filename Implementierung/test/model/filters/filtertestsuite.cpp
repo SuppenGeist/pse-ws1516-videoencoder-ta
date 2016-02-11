@@ -58,5 +58,9 @@ void FilterTestSuite::testAllFilters()
     TestMirrorFilter testMirrorFilter;
     QTest::qExec(&testMirrorFilter);
 
+    TestNegativeFilter testNegativeFilter;
+    QTest::qExec(&testNegativeFilter);
+
+
 }
 
