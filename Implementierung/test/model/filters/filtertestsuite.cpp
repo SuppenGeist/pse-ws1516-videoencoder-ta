@@ -67,6 +67,10 @@ void FilterTestSuite::testAllFilters()
     TestPosterFilter testPosterFilter;
     QTest::qExec(&testPosterFilter);
 
+    TestRectangleFilter testRectangleFilter;
+    QTest::qExec(&testRectangleFilter);
+
+
 
 }
 
