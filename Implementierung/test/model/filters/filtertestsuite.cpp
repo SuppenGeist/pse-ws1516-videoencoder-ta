@@ -61,6 +61,9 @@ void FilterTestSuite::testAllFilters()
     TestNegativeFilter testNegativeFilter;
     QTest::qExec(&testNegativeFilter);
 
+    TestNoiseFilter testNoiseFilter;
+    QTest::qExec(&testNoiseFilter);
+
 
 }
 
