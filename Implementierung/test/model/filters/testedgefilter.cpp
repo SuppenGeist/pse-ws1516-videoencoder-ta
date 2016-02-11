@@ -9,7 +9,7 @@ void TestEdgeFilter::init()
 
 void TestEdgeFilter::testGetName()
 {
-    QVERIFY(filter_.getName()=="Edge");
+    QVERIFY(filter_.getName()==Model::EdgeFilter::FILTERNAME);
 }
 
 void TestEdgeFilter::testGetFilterDescription(){

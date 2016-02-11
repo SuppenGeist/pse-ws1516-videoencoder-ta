@@ -40,8 +40,8 @@ void FilterTestSuite::testAllFilters()
     TestBrightnessFilter testBrightnessFilter;
     QTest::qExec(&testBrightnessFilter);
 
-    //TestColorbalanceFilter testColorbalanceFilter;
-    //QTest::qExec(&testColorbalanceFilter);
+    TestColorbalanceFilter testColorbalanceFilter;
+    QTest::qExec(&testColorbalanceFilter);
 
     TestContrastFilter testContrastFilter;
     QTest::qExec(&testContrastFilter);

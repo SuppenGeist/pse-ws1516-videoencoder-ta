@@ -9,7 +9,7 @@ void TestGrayscaleFilter::init()
 
 void TestGrayscaleFilter::testGetName()
 {
-    QVERIFY(filter_.getName()=="Grayscale");
+    QVERIFY(filter_.getName()==Model::GrayscaleFilter::FILTERNAME);
 }
 
 void TestGrayscaleFilter::testGetFilterDescription(){
