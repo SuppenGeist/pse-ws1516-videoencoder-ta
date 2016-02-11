@@ -52,6 +52,9 @@ class FilterConfigurationBox:public QFrame {
 
 	void setFilterTab(FilterTab& filterTab);
 
+    virtual void updateUi()=0;
+
+    void setFilterIndex(int index);
 
 
 
@@ -59,8 +62,8 @@ class FilterConfigurationBox:public QFrame {
 	std::unique_ptr<Model::Filter>  tempFilter_;
 	QScrollArea*                    filterOptionsArea_;
 
-	void updatePreview();
-	virtual void updateUi()=0;
+    void updatePreview();
+    void updateTempFilter();
 
   private slots:
 	void applyFilter();
@@ -73,6 +76,7 @@ class FilterConfigurationBox:public QFrame {
 	Model::Filter* filter_;
 	QPushButton*                    button_apply_;
 	FilterTab* filterTab_;
+    int index_;
 	static QImage &getDefaultImage();
 	void createUi();
 

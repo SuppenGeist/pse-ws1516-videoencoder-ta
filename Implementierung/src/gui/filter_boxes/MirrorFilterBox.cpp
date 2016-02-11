@@ -21,6 +21,7 @@ GUI::MirrorFilterBox::MirrorFilterBox(QWidget* parent) {
 }
 
 void GUI::MirrorFilterBox::updateUi() {
+    updateTempFilter();
     auto mirrormode=static_cast<Model::MirrorFilter*>(tempFilter_.get())->getMode();
 
     if(mirrormode==Model::MirrorMode::HORIZONTAL) {

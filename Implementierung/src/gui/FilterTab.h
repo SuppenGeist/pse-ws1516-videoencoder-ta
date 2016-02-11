@@ -45,7 +45,9 @@ class FilterTab: public QFrame {
 
 	void showFilterPreview();
 
-	void updateFilterPreview();
+    void updateFilterPreview();
+
+    void changeFilter(int index,QString newState);
 
 	Model::Filter* appendFilter(QString filtername);
 

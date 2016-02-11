@@ -20,6 +20,7 @@ GUI::PosterFilterBox::PosterFilterBox(QWidget* parent):FilterConfigurationBox(pa
 }
 
 void GUI::PosterFilterBox::updateUi() {
+    updateTempFilter();
 	auto value=static_cast<Model::PosterFilter*>(tempFilter_.get())->getNumberOfColors();
 	spinBox_->setValue(value);
 

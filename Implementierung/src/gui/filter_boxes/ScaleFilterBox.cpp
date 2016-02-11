@@ -24,6 +24,7 @@ GUI::ScaleFilterBox::ScaleFilterBox(QWidget* parent):FilterConfigurationBox(pare
 }
 
 void GUI::ScaleFilterBox::updateUi() {
+    updateTempFilter();
 	auto value=static_cast<Model::ScaleFilter*>(tempFilter_.get())->getHeight();
 	auto value2=static_cast<Model::ScaleFilter*>(tempFilter_.get())->getWidth();
 	auto value3=static_cast<Model::ScaleFilter*>(tempFilter_.get())->getRatio();

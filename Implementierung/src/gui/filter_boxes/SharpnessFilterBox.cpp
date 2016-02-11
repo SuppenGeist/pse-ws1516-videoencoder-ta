@@ -22,6 +22,7 @@ GUI::SharpnessFilterBox::SharpnessFilterBox(QWidget* parent):FilterConfiguration
 }
 
 void GUI::SharpnessFilterBox::updateUi() {
+    updateTempFilter();
 	auto value=static_cast<Model::SharpnessFilter*>(tempFilter_.get())->getIntensity();
 	slider_->setValue(value);
 	spinBox_->setValue(value);

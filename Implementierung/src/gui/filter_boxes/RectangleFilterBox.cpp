@@ -29,6 +29,7 @@ GUI::RectangleFilterBox::RectangleFilterBox(QWidget* parent) {
 }
 
 void GUI::RectangleFilterBox::updateUi() {
+    updateTempFilter();
 
     auto value=static_cast<Model::RectangleFilter*>(tempFilter_.get())->getOpacity();
     auto height=static_cast<Model::RectangleFilter*>(tempFilter_.get())->getHeight();

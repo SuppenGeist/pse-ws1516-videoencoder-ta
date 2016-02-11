@@ -22,6 +22,7 @@ GUI::ContrastFilterBox::ContrastFilterBox(QWidget* parent):FilterConfigurationBo
 }
 
 void GUI::ContrastFilterBox::updateUi() {
+    updateTempFilter();
 	auto value=static_cast<Model::ContrastFilter*>(tempFilter_.get())->getIntensity();
 	slider_->setValue(value);
 	spinBox_->setValue(value);

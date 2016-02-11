@@ -29,6 +29,7 @@ GUI::BorderFilterBox::BorderFilterBox(QWidget* parent) {
 }
 
 void GUI::BorderFilterBox::updateUi() {
+    updateTempFilter();
 	auto top=static_cast<Model::BorderFilter*>(tempFilter_.get())->getTop();
 	auto bottom=static_cast<Model::BorderFilter*>(tempFilter_.get())->getBottom();
 	auto right=static_cast<Model::BorderFilter*>(tempFilter_.get())->getRight();

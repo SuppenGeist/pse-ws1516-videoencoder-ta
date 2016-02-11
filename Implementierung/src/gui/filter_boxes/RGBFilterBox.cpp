@@ -22,6 +22,7 @@ GUI::RGBFilterBox::RGBFilterBox(QWidget* parent):FilterConfigurationBox(parent) 
 }
 
 void GUI::RGBFilterBox::updateUi() {
+    updateTempFilter();
     auto mode_=static_cast<Model::RGBFilter*>(tempFilter_.get())->getColor();
 
     if(mode_==Model::BasicColor::RED){

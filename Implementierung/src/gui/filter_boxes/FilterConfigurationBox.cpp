@@ -19,6 +19,8 @@
 #include "../../model/FilterList.h"
 #include "../../utility/VideoConverter.h"
 #include "../FilterTab.h"
+#include "../../undo_framework/changefilter.h"
+#include "../../undo_framework/UndoStack.h"
 
 #include "BlurFilterBox.h"
 #include "BorderFilterBox.h"
@@ -111,8 +113,7 @@ std::unique_ptr<GUI::FilterConfigurationBox> GUI::FilterConfigurationBox::Create
 }
 
 void GUI::FilterConfigurationBox::setFilter(Model::Filter& filter) {
-	filter_=&filter;
-	tempFilter_->restore(filter.getSaveString());
+    filter_=&filter;
 	label_filter_->setText(filter_->getName()+" filter");
 	updateUi();
 }
@@ -122,7 +123,12 @@ Model::Filter* GUI::FilterConfigurationBox::getFilter() {
 }
 
 void GUI::FilterConfigurationBox::setFilterTab(GUI::FilterTab &filterTab) {
-	filterTab_=&filterTab;
+    filterTab_=&filterTab;
+}
+
+void GUI::FilterConfigurationBox::setFilterIndex(int index)
+{
+    index_=index;
 }
 
 void GUI::FilterConfigurationBox::updatePreview() {
@@ -139,13 +145,21 @@ void GUI::FilterConfigurationBox::updatePreview() {
 	filterPreview_->setFrame(*filteredImage_);
 
 	av_frame_free(&avframe);
-	av_frame_free(&filteredFrame);
+    av_frame_free(&filteredFrame);
+}
+
+void GUI::FilterConfigurationBox::updateTempFilter()
+{
+    if(!filter_)
+        return;
+
+    tempFilter_->restore(filter_->getSaveString());
 }
 
 void GUI::FilterConfigurationBox::applyFilter() {
-	filter_->restore(tempFilter_->getSaveString());
+    auto command=new UndoRedo::ChangeFilter(*filterTab_,index_,filter_->getSaveString(),tempFilter_->getSaveString());
 
-	//filterTab_->updatePreview();
+    UndoRedo::UndoStack::getUndoStack().push(command);
 }
 
 void GUI::FilterConfigurationBox::createUi() {

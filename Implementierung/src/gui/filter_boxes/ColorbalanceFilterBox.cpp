@@ -30,6 +30,7 @@ GUI::ColorbalanceFilterBox::ColorbalanceFilterBox(QWidget* parent) {
 }
 
 void GUI::ColorbalanceFilterBox::updateUi() {
+    updateTempFilter();
     auto bright=static_cast<Model::ColorbalanceFilter*>(tempFilter_.get())->getBrightPixels();
     auto medium=static_cast<Model::ColorbalanceFilter*>(tempFilter_.get())->getMediumPixels();
     auto dark=static_cast<Model::ColorbalanceFilter*>(tempFilter_.get())->getDarkPixels();

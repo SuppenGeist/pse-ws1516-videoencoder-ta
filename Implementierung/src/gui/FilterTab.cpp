@@ -112,10 +112,10 @@ void GUI::FilterTab::showRawVideo() {
 	if(PreviewControlPanel_->isVisible()) {
 		v_player_->removeWidget(PreviewControlPanel_);
 		v_player_->addWidget(playerControlPanel_);
-	}
 
-	PreviewControlPanel_->hide();
-	playerControlPanel_->show();
+        PreviewControlPanel_->hide();
+        playerControlPanel_->show();
+    }
 
 	player_->setMasterControlPanel(*playerControlPanel_);
 	if(rawVideo_) {
@@ -130,10 +130,10 @@ void GUI::FilterTab::showFilterPreview() {
 	if(playerControlPanel_->isVisible()) {
 		v_player_->removeWidget(playerControlPanel_);
 		v_player_->addWidget(PreviewControlPanel_);
-	}
 
-	playerControlPanel_->hide();
-	PreviewControlPanel_->show();
+        playerControlPanel_->hide();
+        PreviewControlPanel_->show();
+    }
 
 	player_->setMasterControlPanel(*PreviewControlPanel_);
 	player_->setVideo(filteredPreviewFrames_.get());
@@ -164,7 +164,21 @@ void GUI::FilterTab::updateFilterPreview() {
 	filteredPreviewFrames_=Utility::VideoConverter::convertAVVideoToVideo(filteredVideo);
 
 	if(changeVideo)
-		player_->setVideo(filteredPreviewFrames_.get());
+        player_->setVideo(filteredPreviewFrames_.get());
+}
+
+void GUI::FilterTab::changeFilter(int index, QString newState)
+{
+    auto filter=filterlist_->getFilter(index);
+    if(!filter)
+        return;
+    filter->restore(newState);
+
+    updateFilterPreview();
+    showFilterPreview();
+    if(currentFilterOptionsBox_&&currentFilterOptionsBox_->isVisible()) {
+        currentFilterOptionsBox_->updateUi();
+    }
 }
 
 Model::Filter *GUI::FilterTab::appendFilter(QString filtername) {
@@ -198,7 +212,7 @@ std::unique_ptr<Model::Filter> GUI::FilterTab::removeFilter(std::size_t index) {
 
 	if(filterlist_->getSize()==0) {
 		showRawVideo();
-		currentFilterOptionsBox_->hide();
+        currentFilterOptionsBox_->hide();
 	} else {
 		updateFilterPreview();
 		QModelIndex index(model_filterlist_->index(static_cast<int>(filterlist_->getSize()-1),0));
@@ -317,6 +331,7 @@ void GUI::FilterTab::listSelectionChanged(QItemSelection selection) {
 	auto filterbox=FilterConfigurationBox::CreateConfigurationBox(*this,*filter);
 	auto ptr=filterbox.release();
 	currentFilterOptionsBox_=ptr;
+    currentFilterOptionsBox_->setFilterIndex(selection.indexes().first().row());
 
 	h_filterOptions_->addWidget(currentFilterOptionsBox_);
 	h_filterOptions_->removeItem(spacer_filterOptions_);

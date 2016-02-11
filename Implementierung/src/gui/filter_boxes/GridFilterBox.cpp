@@ -26,6 +26,7 @@ GUI::GridFilterBox::GridFilterBox(QWidget* parent):FilterConfigurationBox(parent
 }
 
 void GUI::GridFilterBox::updateUi() {
+    updateTempFilter();
 	auto t=static_cast<Model::GridFilter*>(tempFilter_.get())->getThickness();
 	auto o=static_cast<Model::GridFilter*>(tempFilter_.get())->getOpacity();
 	auto hl=static_cast<Model::GridFilter*>(tempFilter_.get())->getHorizontalCells();

@@ -22,6 +22,7 @@ GUI::NoiseFilterBox::NoiseFilterBox(QWidget* parent):FilterConfigurationBox(pare
 }
 
 void GUI::NoiseFilterBox::updateUi() {
+    updateTempFilter();
     auto mode_=static_cast<Model::NoiseFilter*>(tempFilter_.get())->getMode();
 
     if(mode_==Model::NoiseMode::STATIC){
