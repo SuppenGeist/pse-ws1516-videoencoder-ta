@@ -98,6 +98,8 @@ std::unique_ptr<GUI::FilterConfigurationBox> GUI::FilterConfigurationBox::Create
         box=std::make_unique<RGBFilterBox>();
     }else if(filter.getName()==Model::ColorbalanceFilter::FILTERNAME) {
         box=std::make_unique<ColorbalanceFilterBox>();
+    }else if(filter.getName()==Model::RectangleFilter::FILTERNAME) {
+        box=std::make_unique<RectangleFilterBox>();
     }else {
 		return std::make_unique<PlainFilterBox>();
 	}

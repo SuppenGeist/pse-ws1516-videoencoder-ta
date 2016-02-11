@@ -1,35 +1,54 @@
-/*
-#include <exception>
-using namespace std;
-
 #ifndef __RectangleFilterBox_h__
 #define __RectangleFilterBox_h__
 
-// #include "QWidget.h"
-#include "FilterConfigurationBox.h"
+#include <QWidget>
+#include <QSlider>
+#include <QSpinBox>
+#include <QColorDialog>
 
-namespace GUI
-{
-	class QWidget;
-	// class FilterConfigurationBox;
-	class RectangleFilterBox;
-}
+#include "FilterConfigurationBox.h"
 
 namespace GUI
 {
 	/**
 	 * This class contains the gui elements for changing the options of a rectangle filter.
+    */
+class RectangleFilterBox: public FilterConfigurationBox {
+    Q_OBJECT
+  public:
+    /**
+     * @brief BorderFilterBox Constructor.
+     * @param parent
+     */
+    RectangleFilterBox(QWidget* parent=0);
 
-	class RectangleFilterBox: public GUI::FilterConfigurationBox
-	{
+  protected:
+    void updateUi() override;
 
-		/// <summary>
-		/// Constructor.
-		/// </summary>
-		public: RectangleFilterBox(GUI::QWidget* parent);
-	};
+
+  private slots:
+    void sliderChanged(int value);
+    void spinBoxChanged(int value);
+    void widthChanged(int value);
+    void heightChanged(int value);
+    void xChanged(int value);
+    void yChanged(int value);
+    void openColorDialog();
+
+  private:
+    QSlider*        slider_;
+    QSpinBox*       spinBox_;
+    QSpinBox*       width_;
+    QSpinBox*       height_;
+    QSpinBox*       x_;
+    QSpinBox*       y_;
+    QPushButton*    button_;
+    QColor          color_;
+
+    virtual void createFilterOptions();
+};
 }
 
 #endif
-*/
+
 
