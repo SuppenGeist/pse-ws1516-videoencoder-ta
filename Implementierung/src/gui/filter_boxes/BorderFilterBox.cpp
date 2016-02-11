@@ -36,6 +36,7 @@ void GUI::BorderFilterBox::updateUi() {
 	auto value=static_cast<Model::BorderFilter*>(tempFilter_.get())->getThickness();
 	auto color=static_cast<Model::BorderFilter*>(tempFilter_.get())->getColor();
 
+    color_=color;
 	top_->setChecked(top);
 	bottom_->setChecked(bottom);
 	right_->setChecked(right);
@@ -44,8 +45,8 @@ void GUI::BorderFilterBox::updateUi() {
 }
 
 void GUI::BorderFilterBox::openColorDialog() {
-	QColor color_ = QColorDialog::getColor(Qt::white,this);
-	static_cast<Model::BorderFilter*>(tempFilter_.get())->setColor(color_);
+    color_ = QColorDialog::getColor(color_,this);
+    static_cast<Model::BorderFilter*>(tempFilter_.get())->setColor(color_);
 	updatePreview();
 }
 
@@ -96,6 +97,7 @@ void GUI::BorderFilterBox::createFilterOptions() {
 	right_= new QCheckBox;
 	left_= new QCheckBox;
 
+    QColor color_;
 
 	spinBox_=new QSpinBox;
 	spinBox_->setMinimum(0);

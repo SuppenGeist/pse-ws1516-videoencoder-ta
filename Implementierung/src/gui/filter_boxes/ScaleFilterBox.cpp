@@ -12,7 +12,7 @@
 #include "FilterConfigurationBox.h"
 #include "../../model/filters/ScaleFilter.h"
 
-GUI::ScaleFilterBox::ScaleFilterBox(QWidget* parent) {
+GUI::ScaleFilterBox::ScaleFilterBox(QWidget* parent):FilterConfigurationBox(parent) {
 	tempFilter_=std::make_unique<Model::ScaleFilter>();
 
 	createFilterOptions();

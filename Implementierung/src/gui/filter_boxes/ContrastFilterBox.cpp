@@ -12,7 +12,7 @@
 #include "FilterConfigurationBox.h"
 #include "../../model/filters/ContrastFilter.h"
 
-GUI::ContrastFilterBox::ContrastFilterBox(QWidget* parent) {
+GUI::ContrastFilterBox::ContrastFilterBox(QWidget* parent):FilterConfigurationBox(parent) {
 	tempFilter_=std::make_unique<Model::ContrastFilter>();
 
 	createFilterOptions();

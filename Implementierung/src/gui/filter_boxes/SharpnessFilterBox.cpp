@@ -12,7 +12,7 @@
 #include "FilterConfigurationBox.h"
 #include "../../model/filters/SharpnessFilter.h"
 
-GUI::SharpnessFilterBox::SharpnessFilterBox(QWidget* parent) {
+GUI::SharpnessFilterBox::SharpnessFilterBox(QWidget* parent):FilterConfigurationBox(parent) {
 	tempFilter_=std::make_unique<Model::SharpnessFilter>();
 
 	createFilterOptions();

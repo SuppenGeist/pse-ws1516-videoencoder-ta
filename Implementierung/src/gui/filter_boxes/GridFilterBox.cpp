@@ -12,7 +12,7 @@
 #include "FilterConfigurationBox.h"
 #include "../../model/filters/GridFilter.h"
 
-GUI::GridFilterBox::GridFilterBox(QWidget* parent) {
+GUI::GridFilterBox::GridFilterBox(QWidget* parent):FilterConfigurationBox(parent) {
 	tempFilter_=std::make_unique<Model::GridFilter>();
 
 	createFilterOptions();
@@ -30,6 +30,9 @@ void GUI::GridFilterBox::updateUi() {
 	auto o=static_cast<Model::GridFilter*>(tempFilter_.get())->getOpacity();
 	auto hl=static_cast<Model::GridFilter*>(tempFilter_.get())->getHorizontalCells();
 	auto vl=static_cast<Model::GridFilter*>(tempFilter_.get())->getVerticalCells();
+    auto color=static_cast<Model::GridFilter*>(tempFilter_.get())->getColor();
+
+    color_=color;
 	spinBox_->setValue(t);
 	slider2_->setValue(o);
 	spinBox2_->setValue(o);
@@ -38,8 +41,8 @@ void GUI::GridFilterBox::updateUi() {
 }
 
 void GUI::GridFilterBox::openColorDialog() {
-	QColor color_ = QColorDialog::getColor(Qt::white,this);
-	static_cast<Model::GridFilter*>(tempFilter_.get())->setColor(color_);
+    color_ = QColorDialog::getColor(color_,this);
+    static_cast<Model::GridFilter*>(tempFilter_.get())->setColor(color_);
 	updatePreview();
 }
 
@@ -78,6 +81,8 @@ void GUI::GridFilterBox::createFilterOptions() {
 	QLabel* o=new QLabel("Opacity:");
 	QLabel* h=new QLabel("HorizontalCells:");
 	QLabel* v=new QLabel("VerticalCells:");
+
+    QColor color_;
 
 	spinBox_=new QSpinBox;
 	spinBox_->setMinimum(0);

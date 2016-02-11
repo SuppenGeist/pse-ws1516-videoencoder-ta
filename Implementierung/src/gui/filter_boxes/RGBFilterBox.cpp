@@ -12,7 +12,7 @@
 #include "../../model/filters/RGBFilter.h"
 #include "../../utility/BasicColor.h"
 
-GUI::RGBFilterBox::RGBFilterBox(QWidget* parent) {
+GUI::RGBFilterBox::RGBFilterBox(QWidget* parent):FilterConfigurationBox(parent) {
     tempFilter_=std::make_unique<Model::RGBFilter>();
 
     createFilterOptions();

@@ -11,7 +11,7 @@
 #include "FilterConfigurationBox.h"
 #include "../../model/filters/PosterFilter.h"
 
-GUI::PosterFilterBox::PosterFilterBox(QWidget* parent) {
+GUI::PosterFilterBox::PosterFilterBox(QWidget* parent):FilterConfigurationBox(parent) {
 	tempFilter_=std::make_unique<Model::PosterFilter>();
 
 	createFilterOptions();

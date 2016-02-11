@@ -12,7 +12,7 @@
 #include "../../model/filters/NoiseFilter.h"
 #include "../../model/NoiseMode.h"
 
-GUI::NoiseFilterBox::NoiseFilterBox(QWidget* parent) {
+GUI::NoiseFilterBox::NoiseFilterBox(QWidget* parent):FilterConfigurationBox(parent) {
     tempFilter_=std::make_unique<Model::NoiseFilter>();
 
     createFilterOptions();

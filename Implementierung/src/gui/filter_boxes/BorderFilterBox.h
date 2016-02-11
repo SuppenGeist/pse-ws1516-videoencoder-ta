@@ -41,7 +41,8 @@ class BorderFilterBox: public FilterConfigurationBox {
 	QCheckBox*      right_;
 	QCheckBox*      left_;
 	QPushButton*    button_;
-	QPalette* pal;
+    QPalette*       pal;
+    QColor          color_;
 
 	virtual void createFilterOptions();
 };
