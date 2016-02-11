@@ -64,6 +64,9 @@ void FilterTestSuite::testAllFilters()
     TestNoiseFilter testNoiseFilter;
     QTest::qExec(&testNoiseFilter);
 
+    TestPosterFilter testPosterFilter;
+    QTest::qExec(&testPosterFilter);
+
 
 }
 
