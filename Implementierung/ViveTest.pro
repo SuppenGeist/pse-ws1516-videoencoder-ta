@@ -154,7 +154,8 @@ HEADERS += \
     test/model/filters/testscalefilter.h \
     test/model/filters/testsepiafilter.h \
     test/model/filters/testsharpnessfilter.h \
-    test/model/filters/testvintagefilter.h
+    test/model/filters/testvintagefilter.h \
+    src/undo_framework/changefilter.h
 
 SOURCES += \
     src/gui/AnalysisBox.cpp \
@@ -289,7 +290,8 @@ SOURCES += \
     test/model/filters/testscalefilter.cpp \
     test/model/filters/testsepiafilter.cpp \
     test/model/filters/testsharpnessfilter.cpp \
-    test/model/filters/testvintagefilter.cpp
+    test/model/filters/testvintagefilter.cpp \
+    src/undo_framework/changefilter.cpp
 
 RESOURCES += \
     resources.qrc \

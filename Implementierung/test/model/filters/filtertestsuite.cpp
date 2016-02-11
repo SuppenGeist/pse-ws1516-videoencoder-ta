@@ -70,7 +70,8 @@ void FilterTestSuite::testAllFilters()
     TestRectangleFilter testRectangleFilter;
     QTest::qExec(&testRectangleFilter);
 
-
+    TestRGBFilter testRGBFilter;
+    QTest::qExec(&testRGBFilter);
 
 }
 

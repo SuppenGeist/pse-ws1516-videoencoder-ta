@@ -1,7 +1,6 @@
 #include <QApplication>
 #include "gui/MainWindow.h"
 #include "gui/FilterContainerTab.h"
-#include "mainwindowfv.h"
 
 extern "C" {
 #include <libavcodec/avcodec.h>
