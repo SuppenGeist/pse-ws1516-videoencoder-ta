@@ -1,8 +1,7 @@
 #include "MirrorFilterBox.h"
 
 #include <QWidget>
-#include <QRadioButton>
-#include <QGroupBox>
+#include <QComboBox>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 #include <QLabel>
@@ -13,44 +12,47 @@
 #include "../../model/filters/MirrorFilter.h"
 #include "../../model/MirrorMode.h"
 
-GUI::MirrorFilterBox::MirrorFilterBox(QWidget* parent):FilterConfigurationBox(parent) {
+GUI::MirrorFilterBox::MirrorFilterBox(QWidget* parent) {
 	tempFilter_=std::make_unique<Model::MirrorFilter>();
 
 	createFilterOptions();
 
-	connect(horizontal_, SIGNAL(toggled(bool)),this,SLOT(vertical(bool)));
-	connect(vertical_, SIGNAL(toggled(bool)),this,SLOT(horizontal(bool)));
+    connect(mirror_, SIGNAL(currentIndexChanged(int)),this,SLOT( mirrorMode() ));
 
 }
 
 void GUI::MirrorFilterBox::updateUi() {
-	auto mode_=static_cast<Model::MirrorFilter*>(tempFilter_.get())->getMode();
-	if(mode_==Model::MirrorMode::HORIZONTAL) {
-		horizontal_->setChecked(true);
-	} else if (mode_==Model::MirrorMode::VERTICAL) {
-		vertical_->setChecked(true);
+    auto mirrormode_=static_cast<Model::MirrorFilter*>(tempFilter_.get())->getMode();
+
+    if(mirrormode_==Model::MirrorMode::HORIZONTAL) {
+        mirror_->setCurrentIndex(0);
+    } else if (mirrormode_==Model::MirrorMode::VERTICAL) {
+        mirror_->setCurrentIndex(1);
 	}
+
 }
 
-void GUI::MirrorFilterBox::vertical(bool on) {
-	if (!on) return;
-	static_cast<Model::MirrorFilter*>(tempFilter_.get())->setMode(Model::MirrorMode::VERTICAL);
+void GUI::MirrorFilterBox::mirrorMode() {
+    if(mirror_->currentText()=="HORIZONTAL"){
+    static_cast<Model::MirrorFilter*>(tempFilter_.get())->setMode(Model::MirrorMode::HORIZONTAL);
+    } else if(mirror_->currentText()=="VERTICAL"){
+    static_cast<Model::MirrorFilter*>(tempFilter_.get())->setMode(Model::MirrorMode::VERTICAL);
+    }
+    updatePreview();
 }
 
-void GUI::MirrorFilterBox::horizontal(bool on) {
-	if (!on) return;
-	static_cast<Model::MirrorFilter*>(tempFilter_.get())->setMode(Model::MirrorMode::HORIZONTAL);
-}
 
 void GUI::MirrorFilterBox::createFilterOptions() {
-	horizontal_ = new QRadioButton(tr("&HORIZONTAL:"));
-	vertical_ = new QRadioButton(tr("&VERTICAL:"));
+    QLabel* m=new QLabel("Mode:");
 
+    mirror_ = new QComboBox;
+    mirror_->addItem("HORIZONTAL");
+    mirror_->addItem("VERTICAL");
 
-	QVBoxLayout* h_content=new QVBoxLayout;
-	h_content->addWidget(horizontal_);
-	h_content->addSpacing(1);
-	h_content->addWidget(vertical_);
+    QHBoxLayout* h_content=new QHBoxLayout;
+
+    h_content->addWidget(m);
+    h_content->addWidget(mirror_);
 
 	QFrame* frame=new QFrame;
 	frame->setFixedWidth(330);

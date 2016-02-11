@@ -2,7 +2,7 @@
 #define __MirrorFilterBox_h__
 
 #include <QWidget>
-#include <QRadioButton>
+#include <QComboBox>
 
 #include "FilterConfigurationBox.h"
 
@@ -23,12 +23,9 @@ class MirrorFilterBox: public FilterConfigurationBox {
 	void updateUi() override;
 
   private slots:
-	void vertical(bool);
-	void horizontal(bool);
+    void mirrorMode();
   private:
-
-	QRadioButton*    vertical_;
-	QRadioButton*    horizontal_;
+    QComboBox*       mirror_;
 
 	virtual void createFilterOptions();
 };

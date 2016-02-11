@@ -10,7 +10,7 @@
 
 const QString Model::NoiseFilter::FILTERNAME="Noise";
 
-Model::NoiseFilter::NoiseFilter():mode_(NoiseMode::RANDOM),intensity_(50) {
+Model::NoiseFilter::NoiseFilter():mode_(NoiseMode::MUSTER),intensity_(50) {
 }
 
 std::string Model::NoiseFilter::getFilterDescription() {
