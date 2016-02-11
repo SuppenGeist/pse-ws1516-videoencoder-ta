@@ -23,7 +23,7 @@ class FilterList {
 	 */
 	FilterList();
 
-	FilterList(FilterList& obj);
+    FilterList(FilterList& obj);
 
 	/**
 	 * @brief moveFilter Moves a filter to another position.

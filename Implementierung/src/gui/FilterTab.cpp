@@ -1,6 +1,7 @@
 #include "FilterTab.h"
 
 #include <memory>
+#include <stdexcept>
 
 #include <QWidget>
 #include <QFrame>
@@ -78,7 +79,7 @@ std::unique_ptr<Memento::FilterTabMemento> GUI::FilterTab::getMemento() {
 	auto memento=std::make_unique<Memento::FilterTabMemento>();
 
 	memento->setRawVideo(rawVideo_);
-	memento->setFilterList(*filterlist_);
+    memento->setFilterList(std::make_unique<Model::FilterList>(*filterlist_));
 	memento->setIsPreviewShown(PreviewControlPanel_->isVisible());
 
 	return std::move(memento);
@@ -168,7 +169,7 @@ void GUI::FilterTab::updateFilterPreview() {
 
 Model::Filter *GUI::FilterTab::appendFilter(QString filtername) {
 	if(!rawVideo_)
-		return nullptr;
+        return nullptr;
 
 	if(filterlist_->getSize()==0) {
 		showFilterPreview();
@@ -187,7 +188,7 @@ Model::Filter *GUI::FilterTab::appendFilter(QString filtername) {
 
 std::unique_ptr<Model::Filter> GUI::FilterTab::removeFilter(std::size_t index) {
 	if(index>=filterlist_->getSize())
-		return std::unique_ptr<Model::Filter>();
+        throw std::logic_error("Checkl the index");
 
 	auto model=model_filterlist_->stringList();
 	model.removeAt(index);
@@ -274,7 +275,7 @@ void GUI::FilterTab::load() {
 
 	auto video=std::make_unique<Model::YuvVideo>(path,infoDialog->getPixelSheme(),
 	           infoDialog->getCompression(),infoDialog->getWidth(),infoDialog->getHeight(),infoDialog->getFps());
-	auto command=new UndoRedo::LoadFilterVideo(*this,std::move(video),getMemento());
+    QUndoCommand* command=new UndoRedo::LoadFilterVideo(*this,std::move(video),getMemento());
 
 	UndoRedo::UndoStack::getUndoStack().push(command);
 }
@@ -299,8 +300,8 @@ void GUI::FilterTab::reset() {
 	if(filterlist_->getSize()==0)
 		return;
 
-	auto command=new UndoRedo::FilterReset(*this,std::make_unique<Model::FilterList>(*filterlist_));
-	UndoRedo::UndoStack::getUndoStack().push(command);
+    auto command=new UndoRedo::FilterReset(*this,std::make_unique<Model::FilterList>(*filterlist_));
+    UndoRedo::UndoStack::getUndoStack().push(command);
 }
 
 void GUI::FilterTab::listSelectionChanged(QItemSelection selection) {

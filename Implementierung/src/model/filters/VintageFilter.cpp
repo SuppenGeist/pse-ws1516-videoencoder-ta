@@ -23,5 +23,5 @@ void Model::VintageFilter::restore(QString description) {
 }
 
 QString Model::VintageFilter::getSaveString() const {
-	//nothing to save
+    return "";
 }

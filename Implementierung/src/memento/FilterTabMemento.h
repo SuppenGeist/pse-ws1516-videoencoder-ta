@@ -25,7 +25,7 @@ class FilterTabMemento {
 
 	Model::YuvVideo* getRawVideo();
 
-	void setFilterList(Model::FilterList& filterlist);
+    void setFilterList(std::unique_ptr<Model::FilterList> filterlist);
 
 	std::unique_ptr<Model::FilterList> getFilterList();
 

@@ -1,5 +1,7 @@
 #include "NoiseFilter.h"
 
+#include <stdexcept>
+
 #include <QString>
 #include <QStringList>
 
@@ -40,19 +42,36 @@ QString Model::NoiseFilter::getName() const {
 }
 
 void Model::NoiseFilter::setIntensity(int intensity) {
-	if(intensity<-0||intensity>100)
+    if(intensity<0||intensity>100)
 		return;
 	intensity_ = intensity;
 }
 
 void Model::NoiseFilter::restore(QString description) {
 	QStringList list  = description.split(";");
-	if(list.size()!=1)
+    if(list.size()!=2)
 		return;
 	setIntensity(list[0].QString::toInt());
+    if(list[1]=="muster") {
+        mode_=NoiseMode::MUSTER;
+    }else if(list[1]=="random") {
+        mode_=NoiseMode::RANDOM;
+    }else if(list[1]=="static") {
+        mode_=NoiseMode::STATIC;
+    }
 }
 
 QString Model::NoiseFilter::getSaveString() const {
-	QString str = QString(mode_);
+    QString str = QString::number(intensity_);
+    str+=";";
+    if(mode_==NoiseMode::MUSTER) {
+        str+="muster";
+    }else if(mode_==NoiseMode::RANDOM) {
+        str+="random";
+    }else if(mode_==NoiseMode::STATIC) {
+        str+="static";
+    }else {
+        throw std::logic_error("should not get here");
+    }
 	return str;
 }

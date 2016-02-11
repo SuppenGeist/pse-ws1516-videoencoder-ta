@@ -23,5 +23,5 @@ void Model::EdgeFilter::restore(QString description) {
 }
 
 QString Model::EdgeFilter::getSaveString() const {
-	//nothing to save
+    return "";
 }

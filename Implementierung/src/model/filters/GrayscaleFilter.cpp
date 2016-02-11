@@ -24,5 +24,5 @@ void Model::GrayscaleFilter::restore(QString description) {
 }
 
 QString Model::GrayscaleFilter::getSaveString() const {
-	//nothing to save
+    return "";
 }

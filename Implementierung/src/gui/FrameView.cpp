@@ -1,5 +1,7 @@
 #include "FrameView.h"
 
+#include <stdexcept>
+
 #include <QWidget>
 #include <QPainter>
 #include <QColor>
@@ -14,6 +16,9 @@ GUI::FrameView::FrameView(QWidget* parent):QWidget(parent),xOffset_(0),yOffset_(
 }
 
 void GUI::FrameView::setFrame(QImage& frame) {
+    if(!&frame)
+        throw std::logic_error("Frame is null");
+
 	if(frame.isNull())
 		return;
 

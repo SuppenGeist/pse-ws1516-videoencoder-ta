@@ -37,9 +37,19 @@ void Model::MirrorFilter::setMode(MirrorMode mode) {
 }
 
 void Model::MirrorFilter::restore(QString description) {
-
+    QStringList list  = description.split(";");
+    if(list.size()!=1)
+        return;
+    if(list[0]=="hor")
+        mode_==MirrorMode::HORIZONTAL;
+    else if(list[0]=="ver")
+        mode_==MirrorMode::VERTICAL;
 }
 
 QString Model::MirrorFilter::getSaveString() const {
-
+    if(mode_==MirrorMode::HORIZONTAL)
+        return "hor";
+    else if(mode_==MirrorMode::VERTICAL)
+        return "ver";
+    throw std::logic_error("Should not gte here");
 }
