@@ -55,5 +55,8 @@ void FilterTestSuite::testAllFilters()
     TestGridFilter testGridFilter;
     QTest::qExec(&testGridFilter);
 
+    TestMirrorFilter testMirrorFilter;
+    QTest::qExec(&testMirrorFilter);
+
 }
 
