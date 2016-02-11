@@ -18,6 +18,7 @@ GUI::MirrorFilterBox::MirrorFilterBox(QWidget* parent) {
 	createFilterOptions();
 
     connect(mirror_, SIGNAL(currentIndexChanged(int)),this,SLOT( mirrorMode() ));
+    updatePreview();
 
 }
 

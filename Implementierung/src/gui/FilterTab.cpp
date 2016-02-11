@@ -275,7 +275,7 @@ void GUI::FilterTab::load() {
 
 	auto video=std::make_unique<Model::YuvVideo>(path,infoDialog->getPixelSheme(),
 	           infoDialog->getCompression(),infoDialog->getWidth(),infoDialog->getHeight(),infoDialog->getFps());
-    QUndoCommand* command=new UndoRedo::LoadFilterVideo(*this,std::move(video),getMemento());
+    auto command=new UndoRedo::LoadFilterVideo(*this,std::move(video),getMemento());
 
 	UndoRedo::UndoStack::getUndoStack().push(command);
 }
