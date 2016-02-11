@@ -112,13 +112,13 @@ void Model::ColorbalanceFilter::setDarkPixels(bool darkPixels) {
 
 void Model::ColorbalanceFilter::restore(QString description) {
 	QStringList list  = description.split(";");
-	if(list.size()!=6)
+    if(list.size()!=5)
 		return;
-	setIntensity(list[1].QString::toInt());
-	setDarkPixels(list[2].QString::toInt());
-	setMediumPixels(list[3].QString::toInt());
-	setBrightPixels(list[4].QString::toInt());
-	setColor(static_cast<BasicColor>(list[5].QString::toInt()));
+    setIntensity(list[0].QString::toInt());
+    setDarkPixels(list[1].QString::toInt());
+    setMediumPixels(list[2].QString::toInt());
+    setBrightPixels(list[3].QString::toInt());
+    setColor(static_cast<BasicColor>(list[4].QString::toInt()));
 }
 
 QString Model::ColorbalanceFilter::getSaveString() const {

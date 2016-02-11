@@ -94,6 +94,8 @@ std::unique_ptr<GUI::FilterConfigurationBox> GUI::FilterConfigurationBox::Create
 		box=std::make_unique<ScaleFilterBox>();
     } else if(filter.getName()==Model::NoiseFilter::FILTERNAME) {
         box=std::make_unique<NoiseFilterBox>();
+    }else if(filter.getName()==Model::RGBFilter::FILTERNAME) {
+        box=std::make_unique<RGBFilterBox>();
     }else {
 		return std::make_unique<PlainFilterBox>();
 	}

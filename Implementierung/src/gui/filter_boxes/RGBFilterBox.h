@@ -1,35 +1,38 @@
-/*
-#include <exception>
-using namespace std;
-
 #ifndef __RGBFilterBox_h__
 #define __RGBFilterBox_h__
 
-// #include "QWidget.h"
-#include "FilterConfigurationBox.h"
+#include <QWidget>
+#include <QComboBox>
 
-namespace GUI
-{
-	class QWidget;
-	// class FilterConfigurationBox;
-	class RGBFilterBox;
-}
+#include "FilterConfigurationBox.h"
 
 namespace GUI
 {
 	/**
 	 * This class contains the gui elements for changing the options of a rgb filter.
+    */
+class RGBFilterBox: public FilterConfigurationBox {
+    Q_OBJECT
+  public:
+    /**
+     * @brief RGBFilterBox Constructor.
+     * @param parent
+     */
+    RGBFilterBox(QWidget* parent=0);
 
-	class RGBFilterBox: public GUI::FilterConfigurationBox
-	{
+  protected:
+    void updateUi() override;
 
-		/// <summary>
-		/// Constructor.
-		/// </summary>
-		public: RGBFilterBox(GUI::QWidget* parent);
-	};
+
+  private slots:
+    void basicColor();
+  private:
+    QComboBox* rgb_;
+
+    virtual void createFilterOptions();
+};
 }
 
 #endif
-*/
+
 
