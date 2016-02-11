@@ -38,7 +38,7 @@ class GridFilterBox: public FilterConfigurationBox {
 	QSpinBox*       spinBox3_;
 	QSpinBox*       spinBox4_;
 	QPushButton*    button_;
-
+    QColor          color_;
 	virtual void createFilterOptions();
 };
 }
