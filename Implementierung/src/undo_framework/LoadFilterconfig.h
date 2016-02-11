@@ -25,7 +25,7 @@ class LoadFilterconfig: public QUndoCommand {
 	 * @param oldList The filterlist before the config is loaded.
 	 * @param list The new filter configuration.
 	 */
-	LoadFilterconfig(GUI::FilterTab& filterTab, std::unique_ptr<Model::FilterList> list);
+    LoadFilterconfig(GUI::FilterTab& filterTab, std::unique_ptr<Model::FilterList> oldList,std::unique_ptr<Model::FilterList> newList);
 
 	/**
 	 * @brief undo Loads the filter configuration present before external configuration was loaded.

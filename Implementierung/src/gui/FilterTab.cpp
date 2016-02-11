@@ -16,6 +16,7 @@
 #include <QStringList>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
+#include <QFileDialog>
 #include <QTabWidget>
 
 #include "FrameView.h"
@@ -38,11 +39,14 @@
 #include "../undo_framework/RemoveFilter.h"
 #include "../undo_framework/MoveFilterDown.h"
 #include "../undo_framework/MoveFilterUp.h"
+#include "../undo_framework/LoadFilterconfig.h"
 
 #include "../memento/FilterTabMemento.h"
 
 #include "../utility/VideoConverter.h"
 #include "../utility/FilterApplier.h"
+#include "../utility/FilterConfigurationLoader.h"
+#include "../utility/FilterConfigurationSaver.h"
 
 #include "../model/filters/Filter.h"
 #include "../model/filters/BlurFilter.h"
@@ -266,6 +270,8 @@ void GUI::FilterTab::setFilterList(std::unique_ptr<Model::FilterList> filterlist
 	}
 	model_filterlist_->setStringList(model);
 	updateFilterPreview();
+    if(filterlist_->getSize()>0)
+        showFilterPreview();
 }
 
 void GUI::FilterTab::resetFilters() {
@@ -348,11 +354,37 @@ void GUI::FilterTab::save() {
 }
 
 void GUI::FilterTab::saveConfiguration() {
+    if(filterlist_->getSize()==0)
+        return;
 
+    auto filename = QFileDialog::getSaveFileName(this,tr("Save filter configuration"),QDir::homePath(),"");
+
+    if(filename.isEmpty())
+        return;
+
+    if(!filename.endsWith(".conf"))
+        filename+=".conf";
+
+    Utility::FilterConfigurationSaver saver(filename,*filterlist_);
+    saver.save();
 }
 
 void GUI::FilterTab::loadConfiguration() {
+    if(!rawVideo_)
+        return;
 
+    auto filename=QFileDialog::getOpenFileName(this,tr("Open filterconfiguration"),QDir::homePath(),"*.conf");
+
+    if(filename.isEmpty())
+        return;
+
+    if(!filename.endsWith(".conf"))
+        return;
+
+    Utility::FilterConfigurationLoader loader(filename);
+    auto filterlist=loader.getConfiguration();
+
+    UndoRedo::UndoStack::getUndoStack().push(new UndoRedo::LoadFilterconfig(*this,std::make_unique<Model::FilterList>(*filterlist_),std::move(filterlist)));
 }
 
 void GUI::FilterTab::reset() {
