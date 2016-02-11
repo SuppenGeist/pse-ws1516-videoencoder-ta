@@ -25,6 +25,8 @@ void GUI::BlurFilterBox::updateUi() {
 	auto value=static_cast<Model::BlurFilter*>(tempFilter_.get())->getIntensity();
 	slider_->setValue(value);
 	spinBox_->setValue(value);
+
+    updatePreview();
 }
 
 void GUI::BlurFilterBox::sliderChanged(int value) {

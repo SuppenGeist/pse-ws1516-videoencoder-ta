@@ -26,6 +26,8 @@ void GUI::SaturationFilterBox::updateUi() {
 	auto value=static_cast<Model::SaturationFilter*>(tempFilter_.get())->getIntensity();
 	slider_->setValue(value);
 	spinBox_->setValue(value);
+
+    updatePreview();
 }
 
 void GUI::SaturationFilterBox::sliderChanged(int value) {

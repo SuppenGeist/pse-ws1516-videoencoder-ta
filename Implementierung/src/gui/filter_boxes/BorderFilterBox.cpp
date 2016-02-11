@@ -42,6 +42,8 @@ void GUI::BorderFilterBox::updateUi() {
 	right_->setChecked(right);
 	left_->setChecked(left);
 	spinBox_->setValue(value);
+
+    updatePreview();
 }
 
 void GUI::BorderFilterBox::openColorDialog() {

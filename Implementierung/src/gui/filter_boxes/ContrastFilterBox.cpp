@@ -25,6 +25,8 @@ void GUI::ContrastFilterBox::updateUi() {
 	auto value=static_cast<Model::ContrastFilter*>(tempFilter_.get())->getIntensity();
 	slider_->setValue(value);
 	spinBox_->setValue(value);
+
+    updatePreview();
 }
 
 void GUI::ContrastFilterBox::sliderChanged(int value) {

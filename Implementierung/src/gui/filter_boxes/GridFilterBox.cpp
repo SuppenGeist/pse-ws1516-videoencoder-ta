@@ -38,6 +38,8 @@ void GUI::GridFilterBox::updateUi() {
 	spinBox2_->setValue(o);
 	spinBox3_->setValue(hl);
 	spinBox4_->setValue(vl);
+
+    updatePreview();
 }
 
 void GUI::GridFilterBox::openColorDialog() {

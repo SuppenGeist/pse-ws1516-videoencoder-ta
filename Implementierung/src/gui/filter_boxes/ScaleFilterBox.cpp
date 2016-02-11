@@ -31,6 +31,8 @@ void GUI::ScaleFilterBox::updateUi() {
 	height_->setValue(value);
 	width_->setValue(value2);
 	ratio_->setValue(value3);
+
+    updatePreview();
 }
 
 void GUI::ScaleFilterBox::keepRatio(int check) {

@@ -32,6 +32,8 @@ void GUI::RGBFilterBox::updateUi() {
     rgb_->setCurrentIndex(2);
     }
 
+    updatePreview();
+
 }
 
 void GUI::RGBFilterBox::basicColor(){

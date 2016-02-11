@@ -32,6 +32,7 @@ void GUI::NoiseFilterBox::updateUi() {
     combo_->setCurrentIndex(2);
     }
 
+    updatePreview();
 }
 
 void GUI::NoiseFilterBox::noiseMode(){

@@ -18,19 +18,17 @@ GUI::MirrorFilterBox::MirrorFilterBox(QWidget* parent) {
 	createFilterOptions();
 
     connect(mirror_, SIGNAL(currentIndexChanged(int)),this,SLOT( mirrorMode() ));
-    updatePreview();
-
 }
 
 void GUI::MirrorFilterBox::updateUi() {
-    auto mirrormode_=static_cast<Model::MirrorFilter*>(tempFilter_.get())->getMode();
+    auto mirrormode=static_cast<Model::MirrorFilter*>(tempFilter_.get())->getMode();
 
-    if(mirrormode_==Model::MirrorMode::HORIZONTAL) {
+    if(mirrormode==Model::MirrorMode::HORIZONTAL) {
         mirror_->setCurrentIndex(0);
-    } else if (mirrormode_==Model::MirrorMode::VERTICAL) {
+    } else if (mirrormode==Model::MirrorMode::VERTICAL) {
         mirror_->setCurrentIndex(1);
 	}
-
+    updatePreview();
 }
 
 void GUI::MirrorFilterBox::mirrorMode() {

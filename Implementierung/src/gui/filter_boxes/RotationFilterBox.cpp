@@ -25,6 +25,8 @@ void GUI::RotationFilterBox::updateUi() {
 	auto value=static_cast<Model::RotationFilter*>(tempFilter_.get())->getAngle();
 	slider_->setValue(value);
 	spinBox_->setValue(value);
+
+    updatePreview();
 }
 
 void GUI::RotationFilterBox::sliderChanged(int value) {

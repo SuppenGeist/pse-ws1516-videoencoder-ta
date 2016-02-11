@@ -25,6 +25,8 @@ void GUI::BrightnessFilterBox::updateUi() {
 	auto value=static_cast<Model::BrightnessFilter*>(tempFilter_.get())->getIntensity();
 	slider_->setValue(value);
 	spinBox_->setValue(value);
+
+    updatePreview();
 }
 
 void GUI::BrightnessFilterBox::sliderChanged(int value) {

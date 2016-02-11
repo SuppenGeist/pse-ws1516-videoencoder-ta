@@ -25,6 +25,8 @@ void GUI::SharpnessFilterBox::updateUi() {
 	auto value=static_cast<Model::SharpnessFilter*>(tempFilter_.get())->getIntensity();
 	slider_->setValue(value);
 	spinBox_->setValue(value);
+
+    updatePreview();
 }
 
 void GUI::SharpnessFilterBox::sliderChanged(int value) {
