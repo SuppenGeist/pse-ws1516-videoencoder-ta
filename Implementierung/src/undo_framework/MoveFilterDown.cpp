@@ -7,9 +7,9 @@ UndoRedo::MoveFilterDown::MoveFilterDown(GUI::FilterTab& filterTab, int index):i
 }
 
 void UndoRedo::MoveFilterDown::undo() {
-	//filterTab_->moveFilter(index_,index_+1);
+    filterTab_->moveFilter(index_,index_+1);
 }
 
 void UndoRedo::MoveFilterDown::redo() {
-	//filterTab_->moveFilter(index_,index_+1);
+    filterTab_->moveFilter(index_,index_+1);
 }

@@ -35,6 +35,9 @@
 #include "../undo_framework/UndoStack.h"
 #include "../undo_framework/LoadFilterVideo.h"
 #include "../undo_framework/FilterReset.h"
+#include "../undo_framework/RemoveFilter.h"
+#include "../undo_framework/MoveFilterDown.h"
+#include "../undo_framework/MoveFilterUp.h"
 
 #include "../memento/FilterTabMemento.h"
 
@@ -181,6 +184,16 @@ void GUI::FilterTab::changeFilter(int index, QString newState)
     }
 }
 
+void GUI::FilterTab::insertFilter(std::unique_ptr<Model::Filter> filter, std::size_t index)
+{
+    auto model=model_filterlist_->stringList();
+    model.insert(index,filter->getName()+" filter");
+    model_filterlist_->setStringList(model);
+    filterlist_->insertFilter(std::move(filter),index);
+    updateFilterPreview();
+    showFilterPreview();
+}
+
 Model::Filter *GUI::FilterTab::appendFilter(QString filtername) {
 	if(!rawVideo_)
         return nullptr;
@@ -215,11 +228,29 @@ std::unique_ptr<Model::Filter> GUI::FilterTab::removeFilter(std::size_t index) {
         currentFilterOptionsBox_->hide();
 	} else {
 		updateFilterPreview();
+        showFilterPreview();
 		QModelIndex index(model_filterlist_->index(static_cast<int>(filterlist_->getSize()-1),0));
 		list_filterlist_->setCurrentIndex(index);
 	}
 
-	return std::move(filter);
+    return std::move(filter);
+}
+
+void GUI::FilterTab::moveFilter(std::size_t oldIndex, std::size_t newIndex)
+{
+    if(oldIndex<0||oldIndex>=filterlist_->getSize()||newIndex<0||newIndex>=filterlist_->getSize()||oldIndex==newIndex)
+        return;
+
+    filterlist_->moveFilter(oldIndex,newIndex);
+
+    auto model=model_filterlist_->stringList();
+    auto filtername=model.at(oldIndex);
+    model.removeAt(oldIndex);
+    model.insert(newIndex,filtername);
+    model_filterlist_->setStringList(model);
+
+    updateFilterPreview();
+    showFilterPreview();
 }
 
 Model::FilterList *GUI::FilterTab::getFilterList() {
@@ -245,15 +276,29 @@ void GUI::FilterTab::resetFilters() {
 }
 
 void GUI::FilterTab::up() {
-
+    QModelIndexList selected = list_filterlist_->selectionModel()->selectedIndexes();
+    if (!selected.isEmpty()) {
+        if(selected.first().row()==0)
+            return;
+        UndoRedo::UndoStack::getUndoStack().push(new UndoRedo::MoveFilterUp(*this,selected.first().row()));
+    }
 }
 
 void GUI::FilterTab::down() {
-
+    QModelIndexList selected = list_filterlist_->selectionModel()->selectedIndexes();
+    if (!selected.isEmpty()) {
+        if(selected.first().row()==filterlist_->getSize()-1)
+            return;
+        UndoRedo::UndoStack::getUndoStack().push(new UndoRedo::MoveFilterDown(*this,
+              selected.first().row()));
+    }
 }
 
 void GUI::FilterTab::remove() {
-
+    QModelIndexList selected = list_filterlist_->selectionModel()->selectedIndexes();
+    if (!selected.isEmpty()) {
+        UndoRedo::UndoStack::getUndoStack().push(new UndoRedo::RemoveFilter(*this,selected.first().row()));
+    }
 }
 
 void GUI::FilterTab::load() {
