@@ -67,6 +67,7 @@ class FilterConfigurationBox:public QFrame {
 
   private slots:
 	void applyFilter();
+    void resetFilter();
 
   private:
 	static std::unique_ptr<QImage>  defaultImage_;
@@ -75,6 +76,7 @@ class FilterConfigurationBox:public QFrame {
 	QLabel*                         label_filter_;
 	Model::Filter* filter_;
 	QPushButton*                    button_apply_;
+    QPushButton*                    button_reset_;
 	FilterTab* filterTab_;
     int index_;
 	static QImage &getDefaultImage();

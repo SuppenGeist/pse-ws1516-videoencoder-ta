@@ -12,7 +12,7 @@
 #include "../../model/filters/MirrorFilter.h"
 #include "../../model/MirrorMode.h"
 
-GUI::MirrorFilterBox::MirrorFilterBox(QWidget* parent) {
+GUI::MirrorFilterBox::MirrorFilterBox(QWidget* parent):FilterConfigurationBox(parent) {
 	tempFilter_=std::make_unique<Model::MirrorFilter>();
 
 	createFilterOptions();

@@ -14,7 +14,7 @@
 #include "FilterConfigurationBox.h"
 #include "../../model/filters/RectangleFilter.h"
 
-GUI::RectangleFilterBox::RectangleFilterBox(QWidget* parent) {
+GUI::RectangleFilterBox::RectangleFilterBox(QWidget* parent):FilterConfigurationBox(parent) {
     tempFilter_=std::make_unique<Model::RectangleFilter>();
 
     createFilterOptions();

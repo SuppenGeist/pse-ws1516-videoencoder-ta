@@ -16,7 +16,7 @@
 #include "../../model/filters/ColorbalanceFilter.h"
 #include "../../utility/BasicColor.h"
 
-GUI::ColorbalanceFilterBox::ColorbalanceFilterBox(QWidget* parent) {
+GUI::ColorbalanceFilterBox::ColorbalanceFilterBox(QWidget* parent):FilterConfigurationBox(parent) {
     tempFilter_=std::make_unique<Model::ColorbalanceFilter>();
 
     createFilterOptions();

@@ -14,7 +14,7 @@
 #include "FilterConfigurationBox.h"
 #include "../../model/filters/BorderFilter.h"
 
-GUI::BorderFilterBox::BorderFilterBox(QWidget* parent) {
+GUI::BorderFilterBox::BorderFilterBox(QWidget* parent):FilterConfigurationBox(parent) {
 	tempFilter_=std::make_unique<Model::BorderFilter>();
 
 	createFilterOptions();

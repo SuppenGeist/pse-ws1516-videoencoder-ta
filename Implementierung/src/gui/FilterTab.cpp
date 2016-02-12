@@ -122,15 +122,15 @@ void GUI::FilterTab::showRawVideo() {
 
         PreviewControlPanel_->hide();
         playerControlPanel_->show();
-    }
 
-	player_->setMasterControlPanel(*playerControlPanel_);
-	if(rawVideo_) {
-		player_->setVideo(&rawVideo_->getVideo());
-	} else {
-		player_->setVideo(nullptr);
-	}
-	playerControlPanel_->updateUi();
+        player_->setMasterControlPanel(*playerControlPanel_);
+        if(rawVideo_) {
+            player_->setVideo(&rawVideo_->getVideo());
+        } else {
+            player_->setVideo(nullptr);
+        }
+        playerControlPanel_->updateUi();
+    }
 }
 
 void GUI::FilterTab::showFilterPreview() {
@@ -140,11 +140,11 @@ void GUI::FilterTab::showFilterPreview() {
 
         playerControlPanel_->hide();
         PreviewControlPanel_->show();
-    }
 
-	player_->setMasterControlPanel(*PreviewControlPanel_);
-	player_->setVideo(filteredPreviewFrames_.get());
-	PreviewControlPanel_->updateUi();
+        player_->setVideo(filteredPreviewFrames_.get());
+        player_->setMasterControlPanel(*PreviewControlPanel_);
+        PreviewControlPanel_->updateUi();
+    }
 }
 
 void GUI::FilterTab::updateFilterPreview() {
@@ -157,8 +157,11 @@ void GUI::FilterTab::updateFilterPreview() {
 
 	auto changeVideo=PreviewControlPanel_->isVisible();
 
-	if(changeVideo)
+    int currentPos=0;
+    if(changeVideo) {
+        currentPos=player_->getPosition();
 		player_->setVideo(nullptr);
+    }
 
 	filteredPreviewFrames_=std::make_unique<Model::Video>();
 
@@ -170,8 +173,10 @@ void GUI::FilterTab::updateFilterPreview() {
 
 	filteredPreviewFrames_=Utility::VideoConverter::convertAVVideoToVideo(filteredVideo);
 
-	if(changeVideo)
+    if(changeVideo) {
         player_->setVideo(filteredPreviewFrames_.get());
+        player_->setPosition(currentPos);
+    }
 }
 
 void GUI::FilterTab::changeFilter(int index, QString newState)
@@ -213,6 +218,8 @@ Model::Filter *GUI::FilterTab::appendFilter(QString filtername) {
 	model_filterlist_->setStringList(model);
 
 	updateFilterPreview();
+    QModelIndex index(model_filterlist_->index(static_cast<int>(filterlist_->getSize()-1),0));
+    list_filterlist_->setCurrentIndex(index);
 
 	return filter;
 }
@@ -278,6 +285,7 @@ void GUI::FilterTab::resetFilters() {
 	initFilterList();
 	model_filterlist_->removeRows(0,model_filterlist_->rowCount());
 	originalPreviewFrames_.release();
+    currentFilterOptionsBox_->hide();
 	showRawVideo();
 }
 

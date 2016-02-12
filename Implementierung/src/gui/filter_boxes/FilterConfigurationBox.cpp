@@ -62,6 +62,7 @@ GUI::FilterConfigurationBox::FilterConfigurationBox(QWidget* parent):QFrame(pare
 	createUi();
 
 	connect(button_apply_,SIGNAL(clicked()),this,SLOT(applyFilter()));
+    connect(button_reset_,SIGNAL(clicked()),this,SLOT(resetFilter()));
 }
 
 GUI::FilterConfigurationBox::~FilterConfigurationBox() {
@@ -162,6 +163,12 @@ void GUI::FilterConfigurationBox::applyFilter() {
     UndoRedo::UndoStack::getUndoStack().push(command);
 }
 
+void GUI::FilterConfigurationBox::resetFilter()
+{
+    updateTempFilter();
+    updateUi();
+}
+
 void GUI::FilterConfigurationBox::createUi() {
 	filterPreview_=new FrameView;
 	filterPreview_->setFixedSize(200,200);
@@ -186,6 +193,10 @@ void GUI::FilterConfigurationBox::createUi() {
 	button_apply_->setStyleSheet(stylesheet);
 	button_apply_->setFixedSize(70,25);
 
+    button_reset_=new QPushButton("Reset");
+    button_reset_->setStyleSheet(stylesheet);
+    button_reset_->setFixedSize(70,25);
+
 	label_filter_=new QLabel(tr("Filter options:"));
 	QFont font("Arial",12,QFont::Bold);
 	label_filter_->setFont(font);
@@ -209,6 +220,7 @@ void GUI::FilterConfigurationBox::createUi() {
 	h_label_butt->addWidget(label_filter_);
 	QSpacerItem* sp1=new QSpacerItem(0,0,QSizePolicy::Expanding,QSizePolicy::Minimum);
 	h_label_butt->addSpacerItem(sp1);
+    h_label_butt->addWidget(button_reset_);
 	h_label_butt->addWidget(button_apply_);
 	v_caption_options->addLayout(h_label_butt);
 	QFrame* separator=new QFrame;
