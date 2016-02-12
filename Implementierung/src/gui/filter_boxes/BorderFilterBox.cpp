@@ -98,13 +98,12 @@ void GUI::BorderFilterBox::createFilterOptions() {
 	top_= new QCheckBox;
 	bottom_= new QCheckBox;
 	right_= new QCheckBox;
-	left_= new QCheckBox;
-
-    QColor color_;
+    left_= new QCheckBox;
 
 	spinBox_=new QSpinBox;
 	spinBox_->setMinimum(0);
 	spinBox_->setMaximum(100000);
+    spinBox_->setFixedWidth(100);
 
 	button_ = new QPushButton(tr("Color"));
 
@@ -115,20 +114,47 @@ void GUI::BorderFilterBox::createFilterOptions() {
 
 	topLayout->addWidget(t);
 	topLayout->addWidget(top_);
+    QFrame* separator=new QFrame;
+    separator->setFrameShape(QFrame::VLine);
+    separator->setFrameShadow(QFrame::Sunken);
+    topLayout->addWidget(separator);
 	topLayout->addWidget(b);
 	topLayout->addWidget(bottom_);
+    QFrame* separator1=new QFrame;
+    separator1->setFrameShape(QFrame::VLine);
+    separator1->setFrameShadow(QFrame::Sunken);
+    topLayout->addWidget(separator1);
 	topLayout->addWidget(r);
 	topLayout->addWidget(right_);
+    QFrame* separator2=new QFrame;
+    separator2->setFrameShape(QFrame::VLine);
+    separator2->setFrameShadow(QFrame::Sunken);
+    topLayout->addWidget(separator2);
 	topLayout->addWidget(le);
-	topLayout->addWidget(left_);
+    topLayout->addWidget(left_);
 	bottomLayout->addWidget(l);
 	bottomLayout->addWidget(spinBox_);
 	bottom2Layout->addWidget(button_);
 
+    h_content->addSpacing(5);
 	h_content->addLayout(topLayout);
-	h_content->addSpacing(10);
-	h_content->addLayout(bottomLayout);
-	h_content->addSpacing(10);
+    QFrame* separator3=new QFrame;
+    separator3->setFrameShape(QFrame::HLine);
+    separator3->setFrameShadow(QFrame::Plain);
+    separator3->setStyleSheet("background-color:black;");
+    separator3->setFixedHeight(1);
+    h_content->addSpacing(8);
+    h_content->addWidget(separator3);
+    h_content->addSpacing(5);
+    h_content->addLayout(bottomLayout);
+    QFrame* separator4=new QFrame;
+    separator4->setFrameShape(QFrame::HLine);
+    separator4->setFrameShadow(QFrame::Plain);
+    separator4->setStyleSheet("background-color:black;");
+    separator4->setFixedHeight(1);
+    h_content->addSpacing(5);
+    h_content->addWidget(separator4);
+    h_content->addSpacing(5);
 	h_content->addLayout(bottom2Layout);
 
 	QFrame* frame=new QFrame;

@@ -134,25 +134,59 @@ void GUI::RectangleFilterBox::createFilterOptions() {
 
     wh->addWidget(h);
     wh->addWidget(height_);
+    QFrame* separator=new QFrame;
+    separator->setFrameShape(QFrame::VLine);
+    separator->setFrameShadow(QFrame::Sunken);
+    wh->addWidget(separator);
     wh->addWidget(w);
     wh->addWidget(width_);
+    wh->addSpacing(15);
 
     xy->addWidget(x);
     xy->addWidget(x_);
+    QFrame* separator2=new QFrame;
+    separator2->setFrameShape(QFrame::VLine);
+    separator2->setFrameShadow(QFrame::Sunken);
+    xy->addWidget(separator2);
     xy->addWidget(y);
     xy->addWidget(y_);
+    xy->addSpacing(15);
 
     op->addWidget(o);
     op->addWidget(slider_);
     op->addWidget(spinBox_);
+    op->addSpacing(15);
 
     co->addWidget(button_);
+    co->addSpacing(15);
 
     h_content->addLayout(wh);
+    QFrame* separator1=new QFrame;
+    separator1->setFrameShape(QFrame::HLine);
+    separator1->setFrameShadow(QFrame::Plain);
+    separator1->setStyleSheet("background-color:black;");
+    separator1->setFixedHeight(1);
+    h_content->addSpacing(5);
+    h_content->addWidget(separator1);
     h_content->addSpacing(5);
     h_content->addLayout(xy);
+    QFrame* separator3=new QFrame;
+    separator3->setFrameShape(QFrame::HLine);
+    separator3->setFrameShadow(QFrame::Plain);
+    separator3->setStyleSheet("background-color:black;");
+    separator3->setFixedHeight(1);
+    h_content->addSpacing(5);
+    h_content->addWidget(separator3);
     h_content->addSpacing(5);
     h_content->addLayout(op);
+    h_content->addSpacing(5);
+    QFrame* separator4=new QFrame;
+    separator4->setFrameShape(QFrame::HLine);
+    separator4->setFrameShadow(QFrame::Plain);
+    separator4->setStyleSheet("background-color:black;");
+    separator4->setFixedHeight(1);
+    h_content->addSpacing(5);
+    h_content->addWidget(separator4);
     h_content->addSpacing(5);
     h_content->addLayout(co);
 

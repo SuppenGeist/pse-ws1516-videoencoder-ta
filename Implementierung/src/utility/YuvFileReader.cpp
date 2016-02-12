@@ -13,6 +13,7 @@ Utility::YuvFileReader::YuvFileReader(QString filename, int width, int height,
 	isRunning_(false) {
 	file_.open(QIODevice::ReadOnly);
 	dataStream_.setDevice(&file_);
+    binaryData_=new unsigned char[frameSize_];
 }
 
 Utility::YuvFileReader::~YuvFileReader() {
@@ -21,6 +22,8 @@ Utility::YuvFileReader::~YuvFileReader() {
 	if(reader_.joinable()) {
 		reader_.join();
 	}
+
+    delete [] binaryData_;
 }
 
 void Utility::YuvFileReader::read(Model::Video *target) {
@@ -55,11 +58,9 @@ int Utility::YuvFileReader::clamp(int value) {
 void Utility::YuvFileReader::readP() {
 	std::unique_ptr<QImage> frame;
 	isRunning_=true;
-	while(!dataStream_.atEnd()&&isRunning_) {
-		binaryData_=new unsigned char[frameSize_];
+    while(!dataStream_.atEnd()&&isRunning_) {
 		dataStream_.readRawData(reinterpret_cast<char*>(binaryData_),frameSize_);
-		video_->appendFrame(std::move(parseNextFrame()));
-		delete [] binaryData_;
+        video_->appendFrame(std::move(parseNextFrame()));
 	}
 	isRunning_=false;
 }

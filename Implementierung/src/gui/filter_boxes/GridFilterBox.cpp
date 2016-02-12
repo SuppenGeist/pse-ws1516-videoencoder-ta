@@ -90,6 +90,7 @@ void GUI::GridFilterBox::createFilterOptions() {
 	spinBox_=new QSpinBox;
 	spinBox_->setMinimum(0);
 	spinBox_->setMaximum(100000);
+    spinBox_->setFixedWidth(100);
 
 	slider2_=new QSlider(Qt::Horizontal);
 	slider2_->setMaximum(255);
@@ -101,11 +102,13 @@ void GUI::GridFilterBox::createFilterOptions() {
 
 	spinBox3_=new QSpinBox;
 	spinBox3_->setMaximum(20);
-	spinBox3_->setMinimum(1);
+    spinBox3_->setMinimum(1);
+    spinBox3_->setFixedWidth(100);
 
 	spinBox4_=new QSpinBox;
 	spinBox4_->setMaximum(20);
-	spinBox4_->setMinimum(1);
+    spinBox4_->setMinimum(1);
+    spinBox4_->setFixedWidth(100);
 
 	button_ = new QPushButton(tr("Color"));
 
@@ -113,22 +116,61 @@ void GUI::GridFilterBox::createFilterOptions() {
 	QHBoxLayout* thickness=new QHBoxLayout;
 	QHBoxLayout* opacity=new QHBoxLayout;
 	QHBoxLayout* cells=new QHBoxLayout;
+    QHBoxLayout* cells1=new QHBoxLayout;
 	QHBoxLayout* color=new QHBoxLayout;
 
 	thickness->addWidget(t);
 	thickness->addWidget(spinBox_);
+    thickness->addSpacing(15);
 	opacity->addWidget(o);
 	opacity->addWidget(slider2_);
 	opacity->addWidget(spinBox2_);
+    opacity->addSpacing(15);
 	cells->addWidget(h);
 	cells->addWidget(spinBox3_);
-	cells->addWidget(v);
-	cells->addWidget(spinBox4_);
+    cells->addSpacing(15);
+    cells1->addWidget(v);
+    cells1->addWidget(spinBox4_);
+    cells1->addSpacing(15);
 	color->addWidget(button_);
+    color->addSpacing(15);
 
-	h_content->addLayout(thickness);
+    h_content->addLayout(thickness);
+    QFrame* separator=new QFrame;
+    separator->setFrameShape(QFrame::HLine);
+    separator->setFrameShadow(QFrame::Plain);
+    separator->setStyleSheet("background-color:black;");
+    separator->setFixedHeight(1);
+    h_content->addSpacing(5);
+    h_content->addWidget(separator);
+    h_content->addSpacing(5);
 	h_content->addLayout(opacity);
+    QFrame* separator1=new QFrame;
+    separator1->setFrameShape(QFrame::HLine);
+    separator1->setFrameShadow(QFrame::Plain);
+    separator1->setStyleSheet("background-color:black;");
+    separator1->setFixedHeight(1);
+    h_content->addSpacing(5);
+    h_content->addWidget(separator1);
+    h_content->addSpacing(5);
 	h_content->addLayout(cells);
+    QFrame* separator2=new QFrame;
+    separator2->setFrameShape(QFrame::HLine);
+    separator2->setFrameShadow(QFrame::Plain);
+    separator2->setStyleSheet("background-color:black;");
+    separator2->setFixedHeight(1);
+    h_content->addSpacing(5);
+    h_content->addWidget(separator2);
+    h_content->addSpacing(5);
+    h_content->addLayout(cells1);
+    QFrame* separator3=new QFrame;
+    separator3->setFrameShape(QFrame::HLine);
+    separator3->setFrameShadow(QFrame::Plain);
+    separator3->setStyleSheet("background-color:black;");
+    separator3->setFixedHeight(1);
+    h_content->addSpacing(5);
+    h_content->addWidget(separator3);
+    h_content->addSpacing(5);
 	h_content->addLayout(color);
 
 	QFrame* frame=new QFrame;
