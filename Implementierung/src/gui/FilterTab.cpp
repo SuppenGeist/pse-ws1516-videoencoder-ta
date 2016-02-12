@@ -82,7 +82,7 @@ extern "C" {
 #include <libavutil/pixfmt.h>
 }
 
-GUI::FilterTab::FilterTab(QWidget *parent):QFrame(parent),rawVideo_(nullptr),isFilteredVideoShown_(false) {
+GUI::FilterTab::FilterTab(QWidget *parent):QFrame(parent),rawVideo_(nullptr),isFilteredVideoShown_(false),mainWindow_(nullptr) {
 	createUi();
 	connectAtions();
 
@@ -344,6 +344,16 @@ void GUI::FilterTab::showFilteredVideo()
     isFilteredVideoShown_=true;
 }
 
+void GUI::FilterTab::setMainWindow(GUI::MainWindow *mainwindow)
+{
+    mainWindow_=mainwindow;
+}
+
+GUI::MainWindow *GUI::FilterTab::getMainWindow()
+{
+    return mainWindow_;
+}
+
 void GUI::FilterTab::up() {
     QModelIndexList selected = list_filterlist_->selectionModel()->selectedIndexes();
     if (!selected.isEmpty()) {
@@ -414,6 +424,8 @@ void GUI::FilterTab::apply() {
     if(filterlist_->getSize()==0)
         return;
 
+    mainWindow_->getStatusBar()->showMessage("Applying filters to video...");
+
     auto command=new UndoRedo::ApplyFilter(*this,&rawVideo_->getVideo(),std::make_unique<Model::FilterList>(*filterlist_));
     UndoRedo::UndoStack::getUndoStack().push(command);
 }
@@ -426,10 +438,13 @@ void GUI::FilterTab::save() {
     if(!filteredVideo_)
         return;
 
+    mainWindow_->getStatusBar()->showMessage("Saving filtered video...");
     auto filename = QFileDialog::getSaveFileName(this,tr("Save yuv video"),QDir::homePath());
 
-    if(filename.isEmpty())
+    if(filename.isEmpty()) {
+        mainWindow_->getStatusBar()->showMessage("Aborted!",3000);
         return;
+    }
 
     if(!filename.endsWith(".yuv"))
         filename+=".yuv";
@@ -451,34 +466,46 @@ void GUI::FilterTab::saveConfiguration() {
     if(filterlist_->getSize()==0)
         return;
 
+    mainWindow_->getStatusBar()->showMessage("Saving filterconfig..");
     auto filename = QFileDialog::getSaveFileName(this,tr("Save filter configuration"),QDir::homePath());
 
-    if(filename.isEmpty())
+    if(filename.isEmpty()) {
+        mainWindow_->getStatusBar()->showMessage("Aborted!",3000);
         return;
+    }
 
     if(!filename.endsWith(".conf"))
         filename+=".conf";
 
     Utility::FilterConfigurationSaver saver(filename,*filterlist_);
     saver.save();
+
+    mainWindow_->getStatusBar()->showMessage("Filterconfig successfully saved!",3000);
 }
 
 void GUI::FilterTab::loadConfiguration() {
     if(!rawVideo_)
         return;
 
+    mainWindow_->getStatusBar()->showMessage("Loading filterconfig..");
     auto filename=QFileDialog::getOpenFileName(this,tr("Open filterconfiguration"),QDir::homePath(),"*.conf");
 
-    if(filename.isEmpty())
+    if(filename.isEmpty()) {
+        mainWindow_->getStatusBar()->showMessage("Aborted!",3000);
         return;
+    }
 
-    if(!filename.endsWith(".conf"))
+    if(!filename.endsWith(".conf")) {
+        mainWindow_->getStatusBar()->showMessage("Aborted!",3000);
         return;
+    }
 
     Utility::FilterConfigurationLoader loader(filename);
     auto filterlist=loader.getConfiguration();
 
     UndoRedo::UndoStack::getUndoStack().push(new UndoRedo::LoadFilterconfig(*this,std::move(filterlist)));
+
+    mainWindow_->getStatusBar()->showMessage("Filterconfig successfully loaded!",3000);
 }
 
 void GUI::FilterTab::reset() {
@@ -513,9 +540,21 @@ void GUI::FilterTab::notifyOnSaveComplete(bool successful, QString filename)
 {
     if(successful) {
         QMessageBox::information(this,"Video saved successfully!","The video was successfully saved to '"+filename+"'",QMessageBox::Ok);
+        mainWindow_->getStatusBar()->showMessage("Filtered video successfully saved!",3000);
     }
     else {
         QMessageBox::warning(this,"Video not saved completly!","The video could not be saved completly to '"+filename+"'",QMessageBox::Ok);
+        mainWindow_->getStatusBar()->showMessage("Filtered video could not be saved completly!",3000);
+    }
+}
+
+void GUI::FilterTab::notifyOnApplyComplete(bool successful)
+{
+    if(successful) {
+    mainWindow_->getStatusBar()->showMessage("Filters successfully applied",3000);
+    }
+    else {
+        mainWindow_->getStatusBar()->showMessage("Filters not completly applied!",3000);
     }
 }
 
@@ -741,6 +780,7 @@ void GUI::FilterTab::connectAtions() {
 	connect(list_filterlist_->selectionModel(),SIGNAL(selectionChanged(QItemSelection,
 	        QItemSelection)),this,SLOT(listSelectionChanged(QItemSelection)));
     connect(this,SIGNAL(saveComplete(bool,QString)),this,SLOT(notifyOnSaveComplete(bool,QString)));
+    connect(this,SIGNAL(applyComplete(bool)),this,SLOT(notifyOnApplyComplete(bool)));
 }
 
 void GUI::FilterTab::initPlayer() {

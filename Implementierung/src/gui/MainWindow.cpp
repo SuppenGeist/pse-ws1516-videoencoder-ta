@@ -113,6 +113,7 @@ void GUI::MainWindow::createUi() {
 	                              "}");
 	QVBoxLayout* v_filterTab=new QVBoxLayout;
 	filterTab_=new FilterTab;
+    filterTab_->setMainWindow(this);
 	v_filterTab->addWidget(filterTab_);
 	wrapper_filter->setLayout(v_filterTab);
 
@@ -148,7 +149,12 @@ void GUI::MainWindow::connectActions() {
 }
 
 Model::Project* GUI::MainWindow::getProject() {
-	return loadedProject_;
+    return loadedProject_;
+}
+
+QStatusBar *GUI::MainWindow::getStatusBar()
+{
+    return statusbar_;
 }
 
 

@@ -21,6 +21,7 @@ extern "C" {
 #include "../model/Video.h"
 #include "../model/AVVideo.h"
 #include "../model/filters/Filter.h"
+#include "../gui/FilterTab.h"
 #include "VideoConverter.h"
 
 Utility::FilterApplier::FilterApplier(Model::FilterList& list, int width, int height,
@@ -39,11 +40,12 @@ Utility::FilterApplier::~FilterApplier() {
     }
 }
 
-void Utility::FilterApplier::applyToVideo(Model::Video &target, Model::Video &source)
+void Utility::FilterApplier::applyToVideo(Model::Video &target, Model::Video &source,GUI::FilterTab* filtertab)
 {
     if(isRunning_)
         return;
 
+    filterTab_=filtertab;
     target_=&target;
     source_=&source;
 
@@ -167,6 +169,9 @@ void Utility::FilterApplier::applyToVideoP()
     }
     }while(isRunning_);
     target_->setIsComplete(true);
+    if(filterTab_) {
+        filterTab_->applyComplete(isRunning_);
+    }
     isRunning_=false;
 }
 

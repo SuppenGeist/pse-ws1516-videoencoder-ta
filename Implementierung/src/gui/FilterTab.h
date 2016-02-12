@@ -19,6 +19,7 @@
 #include "PlayerControlPanel.h"
 #include "PreviewControlPanel.h"
 #include "VideoPlayer.h"
+#include "MainWindow.h"
 #include "filter_boxes/FilterConfigurationBox.h"
 
 #include "../memento/FilterTabMemento.h"
@@ -70,8 +71,13 @@ class FilterTab: public QFrame {
 
     void showFilteredVideo();
 
+    void setMainWindow(GUI::MainWindow* mainwindow);
+
+    MainWindow *getMainWindow();
+
 signals:
     void saveComplete(bool successful,QString filename);
+    void applyComplete(bool successful);
 
   private slots:
 	void up();
@@ -85,6 +91,7 @@ signals:
 	void reset();
 	void listSelectionChanged(QItemSelection selection);
     void notifyOnSaveComplete(bool successful,QString filename);
+    void notifyOnApplyComplete(bool successful);
 
 
   private:
@@ -123,6 +130,8 @@ signals:
     bool                                isFilteredVideoShown_;
 
     std::vector<std::unique_ptr<Utility::YuvFileSaver> > safer_;
+
+    GUI::MainWindow*                    mainWindow_;
 
 	void createUi();
 	void createButtons();

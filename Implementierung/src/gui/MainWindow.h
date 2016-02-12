@@ -6,6 +6,7 @@
 #include <QMenuBar>
 #include <QTabWidget>
 #include <QMainWindow>
+#include <QStatusBar>
 
 namespace GUI {
 class FilterTab;
@@ -52,6 +53,8 @@ class MainWindow : public QMainWindow {
 	 * @return the current project
 	 */
 	Model::Project* getProject();
+
+    QStatusBar* getStatusBar();
 
   private slots:
 	/**

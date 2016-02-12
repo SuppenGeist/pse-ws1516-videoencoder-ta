@@ -14,6 +14,10 @@ extern "C" {
 #include <libavutil/opt.h>
 }
 
+namespace GUI {
+class FilterTab;
+}
+
 namespace Model {
 class FilterList;
 class Video;
@@ -34,7 +38,7 @@ class FilterApplier {
 
     ~FilterApplier();
 
-    void applyToVideo(Model::Video& target, Model::Video& source);
+    void applyToVideo(Model::Video& target, Model::Video& source,GUI::FilterTab* filtertab=0);
 
     void applyToVideo(Model::Video& target,Model::AVVideo& source);
 
@@ -66,6 +70,7 @@ class FilterApplier {
     Model::AVVideo*     source1_;
     Model::Video*       target_;
     bool                isRunning_;
+    GUI::FilterTab*     filterTab_;
 
 	void createFilterString();
     void applyToVideoP();
