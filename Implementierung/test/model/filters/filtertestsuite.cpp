@@ -79,5 +79,8 @@ void FilterTestSuite::testAllFilters()
     TestScaleFilter testScaleFilter;
     QTest::qExec(&testScaleFilter);
 
+    TestSepiaFilter testSepiaFilter;
+    QTest::qExec(&testSepiaFilter);
+
 }
 
