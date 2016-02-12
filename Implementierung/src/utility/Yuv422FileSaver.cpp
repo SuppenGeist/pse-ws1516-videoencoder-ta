@@ -17,13 +17,8 @@ Utility::Yuv422FileSaver::Yuv422FileSaver(QString filename, Model::Video& video,
 }
 
 void Utility::Yuv422FileSaver::save() {
-	if(compression_==Compression::PACKED) {
-		savePacked();
-	} else if(compression_==Compression::PLANAR) {
-		savePlanar();
-	} else {
-		throw std::logic_error("Should not get here");
-	}
+    safer_=std::thread(&Yuv422FileSaver::saveP,this);
+    safer_.detach();
 }
 
 void Utility::Yuv422FileSaver::savePacked() {
@@ -73,7 +68,18 @@ void Utility::Yuv422FileSaver::savePlanar() {
 		while (!vBuffer.isEmpty()) {
 			dataStream_<<vBuffer.takeFirst();
 		}
-	}
+    }
+}
+
+void Utility::Yuv422FileSaver::saveP()
+{
+    if(compression_==Compression::PACKED) {
+        savePacked();
+    } else if(compression_==Compression::PLANAR) {
+        savePlanar();
+    } else {
+        throw std::logic_error("Should not get here");
+    }
 }
 
 Utility::Yuv422Vector Utility::Yuv422FileSaver::Rgb888ToYuv422(QRgb pixel1, QRgb pixel2) {

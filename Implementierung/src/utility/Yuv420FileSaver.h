@@ -1,11 +1,10 @@
 #ifndef __Yuv420FileSaver_h__
 #define __Yuv420FileSaver_h__
 
-#include <exception>
+#include <thread>
+
 #include "../model/Video.h"
 #include "YuvFileSaver.h"
-
-using namespace std;
 
 namespace Model {
 class Video;
@@ -19,27 +18,26 @@ namespace Utility {
 
 //This class can save videos in the yuv 420 format.
 
-class Yuv420FileSaver: public Utility::YuvFileSaver {
+class Yuv420FileSaver: public YuvFileSaver {
 
-	/// <summary>
-	/// Constructor.
-	/// </summary>
-	/// <param name="filename">Absolute path to the file to save to.</param>
-	/// <param name="video">The video to save.</param>
   public:
+    /**
+     * @brief Yuv420FileSaver Constructor.
+     * @param filename Absolute path to the file to save to.
+     * @param video The video to save.
+     */
 	Yuv420FileSaver(QString filename, Model::Video& video);
+
+    ~Yuv420FileSaver();
 
   public:
 	void save();
 
-	/*	/// <summary>
-		/// saves the ith frame.
-		/// If the index is invalid nothing happens.
-		/// </summary>
-		/// <param name="index">index of the frame to safe</param>
-	  private:
-		void saveFrame(int index);
-	*/
+private:
+    std::thread     safer_;
+    bool            isRunning_;
+
+    void saveP();
 };
 }
 

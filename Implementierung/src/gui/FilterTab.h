@@ -30,6 +30,7 @@
 #include "../model/Video.h"
 
 #include "../utility/FilterApplier.h"
+#include "../utility/YuvFileSaver.h"
 
 namespace GUI {
 class FilterTab: public QFrame {
@@ -116,6 +117,8 @@ class FilterTab: public QFrame {
     Model::Video*                       filteredVideo_;
 
     bool                                isFilteredVideoShown_;
+
+    std::vector<std::unique_ptr<Utility::YuvFileSaver> > safer_;
 
 	void createUi();
 	void createButtons();

@@ -1,8 +1,7 @@
 #ifndef __Yuv411FileSaver_h__
 #define __Yuv411FileSaver_h__
 
-#include <exception>
-using namespace std;
+#include <thread>
 
 #include "../model/Video.h"
 #include "Compression.h"
@@ -23,42 +22,49 @@ namespace Utility {
 
 //This class can save videos in the yuv 411 format.
 
-class Yuv411FileSaver: public Utility::YuvFileSaver {
+class Yuv411FileSaver: public YuvFileSaver {
   public:
-	/// <summary>
-	/// Constructor.
-	/// </summary>
-	/// <param name="filename">Absolute path to the file to save to.</param>
-	/// <param name="video">The video to save.</param>
-	/// <param name="compression">The compression mode.</param>
-	Yuv411FileSaver(QString filename, Model::Video& video, Utility::Compression compression);
+    /**
+     * @brief Yuv411FileSaver Constructor.
+     * @param filename Absolute path to the file to save to.
+     * @param video The video to save.
+     * @param compression The compression mode.
+     */
+    Yuv411FileSaver(QString filename, Model::Video& video, Utility::Compression compression);
 
+    /**
+     * @brief save
+     */
 	void save();
 
-
-	/// <summary>
-	/// Converts Rgb888 pixels to a Yuv411Vector.
-	/// </summary>
-	/// <param name="pixel1">Pixel 1 to convert.</param>
-	/// <param name="pixel2">Pixel 2 to convert.</param>
-	/// <param name="pixel3">Pixel 3 to convert.</param>
-	/// <param name="pixe4">Pixel 4 to convert.</param>
-	/// <returns>The Yuv411Vector</returns>
-	Utility::Yuv411Vector Rgb888ToYuv411(QRgb pixel1, QRgb pixel2, QRgb pixel3, QRgb pixel4);
+    /**
+     * @brief Rgb888ToYuv411 Converts Rgb888 pixels to a Yuv411Vector.
+     * @param pixel1 Pixel 1 to convert.
+     * @param pixel2 Pixel 2 to convert.
+     * @param pixel3 Pixel 3 to convert.
+     * @param pixel4 Pixel 4 to convert.
+     * @return The Yuv411Vector
+     */
+    Utility::Yuv411Vector Rgb888ToYuv411(QRgb pixel1, QRgb pixel2, QRgb pixel3, QRgb pixel4);
 
   private:
 	Compression compression_;
+    std::thread     saver_;
 
+    /**
+     * @brief savePacked Saves the video in packed format.
+     */
+    void savePacked();
 
-	/// <summary>
-	/// Saves the video in packed format.
-	/// </summary>
-	void savePacked();
+    /**
+     * @brief savePlanar Saves the video in planar format.
+     */
+    void savePlanar();
 
-	/// <summary>
-	/// Saves the video in planar format.
-	/// </summary>
-	void savePlanar();
+    /**
+     * @brief saveP
+     */
+    void saveP();
 };
 }
 

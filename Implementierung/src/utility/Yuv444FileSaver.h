@@ -1,13 +1,12 @@
 #ifndef __Yuv444FileSaver_h__
 #define __Yuv444FileSaver_h__
 
-#include <exception>
+#include <thread>
+
 #include "../model/Video.h"
 #include "Compression.h"
 #include "Yuv444Vector.h"
 #include "YuvFileSaver.h"
-
-using namespace std;
 
 namespace Model {
 class Video;
@@ -25,36 +24,39 @@ namespace Utility {
 
 class Yuv444FileSaver: public Utility::YuvFileSaver {
   public:
+    /**
+     * @brief Yuv444FileSaver Constructor.
+     * @param filename Absolute path to the file to save to.
+     * @param video The video to save.
+     * @param compression The compression mode.
+     */
+    Yuv444FileSaver(QString filename, Model::Video& video, Utility::Compression compression);
 
-	/// <summary>
-	/// Constructor.
-	/// </summary>
-	/// <param name="filename">Absolute path to the file to save to.</param>
-	/// <param name="video">The video to save.</param>
-	/// <param name="compression">The compression mode.</param>
-	Yuv444FileSaver(QString filename, Model::Video& video, Utility::Compression compression);
-
-	/// <summary>
-	/// Converts a Rgb888 pixel to a Yuv444Vector.
-	/// </summary>
-	/// <param name="pixel1">The pixel to convert.</param>
-	/// <returns>The Yuv444Vector.</returns>
-	Utility::Yuv444Vector Rgb888ToYuv444(QRgb pixel1);
+    /**
+     * @brief Rgb888ToYuv444 Converts a Rgb888 pixel to a Yuv444Vector.
+     * @param pixel1 The pixel to convert.
+     * @return The Yuv444Vector.
+     */
+    static Utility::Yuv444Vector Rgb888ToYuv444(QRgb pixel1);
 
 	void save();
 
 
   private:
-	Compression compression_;
-	/// <summary>
-	/// Saves the video in packed format.
-	/// </summary>
-	void savePacked();
+    Compression compression_;
+    std::thread safer_;
 
-	/// <summary>
-	/// Saves the video in planar format.
-	/// </summary>
-	void savePlanar();
+    /**
+     * @brief savePacked Saves the video in packed format.
+     */
+    void savePacked();
+
+    /**
+     * @brief savePlanar Saves the video in planar format.
+     */
+    void savePlanar();
+
+    void saveP();
 };
 }
 

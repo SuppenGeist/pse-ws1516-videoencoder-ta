@@ -13,13 +13,8 @@ Utility::Yuv444FileSaver::Yuv444FileSaver(QString filename, Model::Video& video,
 }
 
 void Utility::Yuv444FileSaver::save() {
-	if(compression_==Compression::PACKED) {
-		savePacked();
-	} else if(compression_==Compression::PLANAR) {
-		savePlanar();
-	} else {
-		throw std::logic_error("Should not get here");
-	}
+    safer_=std::thread(&Yuv444FileSaver::saveP,this);
+    safer_.detach();
 }
 
 void Utility::Yuv444FileSaver::savePacked() {
@@ -66,6 +61,17 @@ void Utility::Yuv444FileSaver::savePlanar() {
 		}
 	}
 
+}
+
+void Utility::Yuv444FileSaver::saveP()
+{
+    if(compression_==Compression::PACKED) {
+        savePacked();
+    } else if(compression_==Compression::PLANAR) {
+        savePlanar();
+    } else {
+        throw std::logic_error("Should not get here");
+    }
 }
 
 Utility::Yuv444Vector Utility::Yuv444FileSaver::Rgb888ToYuv444(QRgb pixel1) {

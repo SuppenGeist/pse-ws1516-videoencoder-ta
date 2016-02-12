@@ -4,6 +4,8 @@
 #include <QString>
 #include <QColor>
 
+#include <thread>
+
 #include "YuvFileSaver.h"
 
 namespace Utility {
@@ -44,6 +46,7 @@ class Yuv422FileSaver: public YuvFileSaver {
 
   private:
 	Compression     compression_;
+    std::thread     safer_;
 
 
 	/**
@@ -55,6 +58,8 @@ class Yuv422FileSaver: public YuvFileSaver {
 	 * @brief savePlanar Saves the video planar.
 	 */
 	void savePlanar();
+
+    void saveP();
 
 };
 }

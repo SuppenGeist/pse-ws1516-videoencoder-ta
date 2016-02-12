@@ -48,6 +48,12 @@
 #include "../utility/FilterApplier.h"
 #include "../utility/FilterConfigurationLoader.h"
 #include "../utility/FilterConfigurationSaver.h"
+#include "../utility/Yuv444FileSaver.h"
+#include "../utility/Yuv411FileSaver.h"
+#include "../utility/Yuv420FileSaver.h"
+#include "../utility/Yuv422FileSaver.h"
+#include "../utility/Yuv444FileSaver.h"
+#include "../utility/YuvType.h"
 
 #include "../model/filters/Filter.h"
 #include "../model/filters/BlurFilter.h"
@@ -395,14 +401,39 @@ void GUI::FilterTab::apply() {
 }
 
 void GUI::FilterTab::save() {
+    if(!isFilteredVideoShown_)
+        return;
+    if(!rawVideo_)
+        return;
+    if(!filteredVideo_)
+        return;
 
+    auto filename = QFileDialog::getSaveFileName(this,tr("Save yuv video"),QDir::homePath());
+
+    if(filename.isEmpty())
+        return;
+
+    if(!filename.endsWith(".yuv"))
+        filename+=".yuv";
+
+    auto type=rawVideo_->getYuvType();
+    if(type==Utility::YuvType::YUV411) {
+         safer_.push_back(std::make_unique<Utility::Yuv411FileSaver>(filename,*filteredVideo_,rawVideo_->getCompression()));
+    }else if(type==Utility::YuvType::YUV420) {
+        safer_.push_back(std::make_unique<Utility::Yuv420FileSaver>(filename,*filteredVideo_));
+    }else if(type==Utility::YuvType::YUV422) {
+         safer_.push_back(std::make_unique<Utility::Yuv422FileSaver>(filename,*filteredVideo_,rawVideo_->getCompression()));
+    }else if(type==Utility::YuvType::YUV444) {
+         safer_.push_back(std::make_unique<Utility::Yuv444FileSaver>(filename,*filteredVideo_,rawVideo_->getCompression()));
+    }
+    safer_.back()->save();
 }
 
 void GUI::FilterTab::saveConfiguration() {
     if(filterlist_->getSize()==0)
         return;
 
-    auto filename = QFileDialog::getSaveFileName(this,tr("Save filter configuration"),QDir::homePath(),"");
+    auto filename = QFileDialog::getSaveFileName(this,tr("Save filter configuration"),QDir::homePath());
 
     if(filename.isEmpty())
         return;
