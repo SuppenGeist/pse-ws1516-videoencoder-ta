@@ -76,8 +76,8 @@ void FilterTestSuite::testAllFilters()
     TestRotationFilter testRotationFilter;
     QTest::qExec(&testRotationFilter);
 
-    TestSaturationFilter testSaturationFilter;
-    QTest::qExec(&testSaturationFilter);
+    TestScaleFilter testScaleFilter;
+    QTest::qExec(&testScaleFilter);
 
 }
 
