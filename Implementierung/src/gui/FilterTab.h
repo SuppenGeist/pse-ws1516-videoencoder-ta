@@ -70,6 +70,9 @@ class FilterTab: public QFrame {
 
     void showFilteredVideo();
 
+signals:
+    void saveComplete(bool successful,QString filename);
+
   private slots:
 	void up();
 	void down();
@@ -81,6 +84,7 @@ class FilterTab: public QFrame {
 	void loadConfiguration();
 	void reset();
 	void listSelectionChanged(QItemSelection selection);
+    void notifyOnSaveComplete(bool successful,QString filename);
 
 
   private:

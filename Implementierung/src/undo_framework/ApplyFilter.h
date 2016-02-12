@@ -23,7 +23,7 @@ namespace UndoRedo
          * @brief ApplyFilter Constuctor
          * @param filterTab
          */
-        ApplyFilter(GUI::FilterTab& filterTab,Model::Video* origVideo,std::unique_ptr<Model::FilterList> filterlist);
+        ApplyFilter(GUI::FilterTab& filterTab, Model::Video *origVideo, std::unique_ptr<Model::FilterList> filterlist);
 
         /**
          * @brief undo Shows the 5 frame preview.
@@ -37,7 +37,7 @@ namespace UndoRedo
 
         private:
         GUI::FilterTab*                         filterTab_;
-        Model::Video*                           originalVideo_;
+        Model::Video*                        originalVideo_;
         std::unique_ptr<Utility::FilterApplier> applier_;
         std::unique_ptr<Model::Video>           filteredVideo_;
         std::unique_ptr<Model::FilterList>      filterlist_;

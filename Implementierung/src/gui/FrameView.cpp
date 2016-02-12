@@ -17,7 +17,7 @@ GUI::FrameView::FrameView(QWidget* parent):QWidget(parent),xOffset_(0),yOffset_(
 
 void GUI::FrameView::setFrame(QImage& frame) {
     if(!&frame)
-        throw std::logic_error("Frame is null");
+        return;
 
 	if(frame.isNull())
 		return;

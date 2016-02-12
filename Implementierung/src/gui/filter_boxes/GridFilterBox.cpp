@@ -82,8 +82,8 @@ void GUI::GridFilterBox::spinBox4Changed(int value4) {
 void GUI::GridFilterBox::createFilterOptions() {
 	QLabel* t=new QLabel("Thickness:");
 	QLabel* o=new QLabel("Opacity:");
-	QLabel* h=new QLabel("HorizontalCells:");
-	QLabel* v=new QLabel("VerticalCells:");
+    QLabel* h=new QLabel("Horizontal cells:");
+    QLabel* v=new QLabel("Vertical cells:");
 
     QColor color_;
 
@@ -101,12 +101,12 @@ void GUI::GridFilterBox::createFilterOptions() {
 	spinBox2_->setMinimum(0);
 
 	spinBox3_=new QSpinBox;
-	spinBox3_->setMaximum(20);
+    spinBox3_->setMaximum(100000);
     spinBox3_->setMinimum(1);
     spinBox3_->setFixedWidth(100);
 
 	spinBox4_=new QSpinBox;
-	spinBox4_->setMaximum(20);
+    spinBox4_->setMaximum(100000);
     spinBox4_->setMinimum(1);
     spinBox4_->setFixedWidth(100);
 

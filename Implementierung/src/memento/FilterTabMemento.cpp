@@ -7,7 +7,7 @@
 #include "../model/FilterList.h"
 #include "../model/filters/Filter.h"
 
-Memento::FilterTabMemento::FilterTabMemento():rawVideo_(nullptr),isPreviewShow_(false) {
+Memento::FilterTabMemento::FilterTabMemento():rawVideo_(nullptr),isPreviewShow_(false),currentFrame_(0),currentlySelectedFilter_(-1) {
 
 }
 
@@ -55,5 +55,25 @@ void Memento::FilterTabMemento::setFilteredVideo(Model::Video *filteredVideo)
 Model::Video *Memento::FilterTabMemento::getFilteredVideo()
 {
     return filteredVideo_;
+}
+
+void Memento::FilterTabMemento::setCurrentFrame(int currentFrame)
+{
+    currentFrame_=currentFrame;
+}
+
+int Memento::FilterTabMemento::getCurrentFrame()
+{
+    return currentFrame_;
+}
+
+void Memento::FilterTabMemento::setCurrentlySelectedFilter(int filter)
+{
+    currentlySelectedFilter_=filter;
+}
+
+int Memento::FilterTabMemento::getCurrentlySelectedFilter()
+{
+    return currentlySelectedFilter_;
 }
 

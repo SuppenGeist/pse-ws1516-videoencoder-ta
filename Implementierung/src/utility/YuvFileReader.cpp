@@ -62,5 +62,6 @@ void Utility::YuvFileReader::readP() {
 		dataStream_.readRawData(reinterpret_cast<char*>(binaryData_),frameSize_);
         video_->appendFrame(std::move(parseNextFrame()));
 	}
-	isRunning_=false;
+    isRunning_=false;
+    video_->setIsComplete(true);
 }

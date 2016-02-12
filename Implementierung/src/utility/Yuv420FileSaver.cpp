@@ -3,10 +3,14 @@
 #include "Yuv420FileSaver.h"
 #include "../model/Video.h"
 #include "YuvFileSaver.h"
+#include "../gui/FilterTab.h"
+
 #include <QDebug>
+#include <QObject>
+#include <QFileInfo>
 
 Utility::Yuv420FileSaver::Yuv420FileSaver(QString filename,
-                                          Model::Video& video):YuvFileSaver(filename,video),isRunning_(false) {
+                                          Model::Video& video,GUI::FilterTab* filterTab):YuvFileSaver(filename,video),isRunning_(false),filterTab_(filterTab) {
 }
 
 Utility::Yuv420FileSaver::~Yuv420FileSaver()
@@ -24,7 +28,9 @@ void Utility::Yuv420FileSaver::save() {
 void Utility::Yuv420FileSaver::saveP()
 {
     isRunning_=true;
-    for(std::size_t k=0; k<video_->getNumberOfFrames()&&isRunning_; k++) {
+    std::size_t k=0;
+    do {
+    for(; k<video_->getNumberOfFrames()&&isRunning_; k++) {
         auto frame_=video_->getFrame(k);
         unsigned char frameBuffer_[width_*height_*2];
         for(int i=0; i<width_*height_; i++) {
@@ -49,6 +55,10 @@ void Utility::Yuv420FileSaver::saveP()
             dataStream_<<frameBuffer_[j];
         }
     }
+    if(video_->isComplete())
+        break;
+    }while(isRunning_);
+    filterTab_->saveComplete(isRunning_,QFileInfo(file_).fileName());
     isRunning_=false;
 }
 

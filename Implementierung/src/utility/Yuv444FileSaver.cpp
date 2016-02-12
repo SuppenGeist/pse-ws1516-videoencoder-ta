@@ -6,10 +6,19 @@
 #include "Yuv444Vector.h"
 #include "YuvFileSaver.h"
 #include <QDebug>
+#include <QFileInfo>
 
 Utility::Yuv444FileSaver::Yuv444FileSaver(QString filename, Model::Video& video,
-        Compression compression):YuvFileSaver(filename,video),compression_(compression) {
+        Compression compression, GUI::FilterTab *filterTab):YuvFileSaver(filename,video),compression_(compression),filterTab_(filterTab),isRunning_(false) {
 
+}
+
+Utility::Yuv444FileSaver::~Yuv444FileSaver()
+{
+    isRunning_=false;
+    if(safer_.joinable()) {
+        safer_.join();
+    }
 }
 
 void Utility::Yuv444FileSaver::save() {
@@ -18,7 +27,7 @@ void Utility::Yuv444FileSaver::save() {
 }
 
 void Utility::Yuv444FileSaver::savePacked() {
-	for(std::size_t k=0; k<video_->getNumberOfFrames(); k++) {
+    for(std::size_t k=0; k<video_->getNumberOfFrames()&&isRunning_; k++) {
 		auto frame_=video_->getFrame(k);
 		for(int i=0; i<width_*height_; i++) {
 			int y1=i/width_;
@@ -35,7 +44,7 @@ void Utility::Yuv444FileSaver::savePacked() {
 }
 
 void Utility::Yuv444FileSaver::savePlanar() {
-	for(std::size_t k=0; k<video_->getNumberOfFrames(); k++) {
+    for(std::size_t k=0; k<video_->getNumberOfFrames()&&isRunning_; k++) {
 		QVector<unsigned char> uBuffer;
 		QVector<unsigned char> vBuffer;
 		auto frame_=video_->getFrame(k);
@@ -65,13 +74,17 @@ void Utility::Yuv444FileSaver::savePlanar() {
 
 void Utility::Yuv444FileSaver::saveP()
 {
+    isRunning_=true;
     if(compression_==Compression::PACKED) {
         savePacked();
     } else if(compression_==Compression::PLANAR) {
         savePlanar();
     } else {
+        isRunning_=false;
         throw std::logic_error("Should not get here");
     }
+    filterTab_->saveComplete(isRunning_,QFileInfo(file_).fileName());
+    isRunning_=false;
 }
 
 Utility::Yuv444Vector Utility::Yuv444FileSaver::Rgb888ToYuv444(QRgb pixel1) {

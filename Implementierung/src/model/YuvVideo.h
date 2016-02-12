@@ -81,7 +81,7 @@ class YuvVideo {
 	 * @brief getVideo Returns the Video.
 	 * @return The Video.
 	 */
-	Model::Video& getVideo();
+    Model::Video& getVideo();
 
   private:
 	QString                             path_;
@@ -93,6 +93,7 @@ class YuvVideo {
 	std::unique_ptr<Model::AVVideo>     avVideo_;
 	Utility::YuvType                    yuvType_;
 	std::unique_ptr<Utility::YuvFileReader> fileReader_;
+    bool                                isComplete_;
 
 	/**
 	 * @brief loadVideo Loads the video from the file.

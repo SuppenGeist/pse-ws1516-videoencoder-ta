@@ -89,11 +89,16 @@ class Video {
 	 */
 	std::size_t getNumberOfFrames() const noexcept;
 
+    bool isComplete();
+
+    void setIsComplete(bool isComplete);
+
   private:
 	std::vector<std::unique_ptr<QImage>>    frames_;
 	int                                     fps_;
 	int                                     width_;
 	int                                     height_;
+    bool                                    isComplete_;
 };
 }
 

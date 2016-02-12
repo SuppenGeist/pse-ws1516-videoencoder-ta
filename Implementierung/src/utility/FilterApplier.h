@@ -34,7 +34,7 @@ class FilterApplier {
 
     ~FilterApplier();
 
-    void applyToVideo(Model::Video& target,Model::Video& source);
+    void applyToVideo(Model::Video& target, Model::Video& source);
 
     void applyToVideo(Model::Video& target,Model::AVVideo& source);
 

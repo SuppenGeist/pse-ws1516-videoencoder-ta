@@ -6,16 +6,25 @@
 #include "Yuv411Vector.h"
 #include "YuvFileSaver.h"
 #include <QDebug>
+#include <QFileInfo>
 
 
 Utility::Yuv411FileSaver::Yuv411FileSaver(QString filename, Model::Video& video,
-        Utility::Compression compression):YuvFileSaver(filename,video),compression_(compression) {
+        Utility::Compression compression, GUI::FilterTab *filterTab):YuvFileSaver(filename,video),compression_(compression),filterTab_(filterTab),isRunning_(false) {
 
 }
 
+Utility::Yuv411FileSaver::~Yuv411FileSaver()
+{
+    isRunning_=false;
+    if(safer_.joinable()) {
+        safer_.join();
+    }
+}
+
 void Utility::Yuv411FileSaver::save() {
-    saver_=std::thread(&Yuv411FileSaver::saveP,this);
-    saver_.detach();
+    safer_=std::thread(&Yuv411FileSaver::saveP,this);
+    safer_.detach();
 }
 
 void Utility::Yuv411FileSaver::savePacked() {
@@ -80,13 +89,17 @@ void Utility::Yuv411FileSaver::savePlanar() {
 
 void Utility::Yuv411FileSaver::saveP()
 {
+    isRunning_=true;
     if(compression_==Compression::PACKED) {
         savePacked();
     } else if(compression_==Compression::PLANAR) {
         savePlanar();
     } else {
+        isRunning_=false;
         throw std::logic_error("Should not get here");
     }
+    filterTab_->saveComplete(isRunning_,QFileInfo(file_).fileName());
+    isRunning_=false;
 }
 
 Utility::Yuv411Vector Utility::Yuv411FileSaver::Rgb888ToYuv411(QRgb pixel1, QRgb pixel2,

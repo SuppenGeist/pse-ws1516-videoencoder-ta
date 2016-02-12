@@ -43,6 +43,7 @@ void Utility::FilterApplier::applyToVideo(Model::Video &target, Model::Video &so
 {
     if(isRunning_)
         return;
+
     target_=&target;
     source_=&source;
 
@@ -151,7 +152,9 @@ void Utility::FilterApplier::createFilterString() {
 void Utility::FilterApplier::applyToVideoP()
 {
     isRunning_=true;
-    for(std::size_t i=0;i<source_->getNumberOfFrames()&&isRunning_;i++) {
+    std::size_t i=0;
+    do {
+    for(;i<source_->getNumberOfFrames()&&isRunning_;i++) {
         auto image=VideoConverter::convertQImageToAVFrame(*source_->getFrame(i));
         auto filteredImage=applyToFrame(*image);
         target_->appendFrame(VideoConverter::convertAVFrameToQImage(*filteredImage));
@@ -159,6 +162,11 @@ void Utility::FilterApplier::applyToVideoP()
         av_frame_free(&image);
         av_frame_free(&filteredImage);
     }
+    if(source_->isComplete()) {
+        break;
+    }
+    }while(isRunning_);
+    target_->setIsComplete(true);
     isRunning_=false;
 }
 

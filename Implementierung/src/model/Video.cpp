@@ -6,7 +6,7 @@
 #include <memory>
 
 Model::Video::Video(int fps) noexcept :
-fps_(fps),width_(0),height_(0) {
+fps_(fps),width_(0),height_(0),isComplete_(false) {
 
 }
 
@@ -79,5 +79,15 @@ bool Model::Video::insertFrames(std::vector<std::unique_ptr<QImage> >& frames, s
 }
 
 std::size_t Model::Video::getNumberOfFrames() const noexcept {
-	return frames_.size();
+    return frames_.size();
+}
+
+bool Model::Video::isComplete()
+{
+    return isComplete_;
+}
+
+void Model::Video::setIsComplete(bool isComplete)
+{
+    isComplete_=isComplete;
 }

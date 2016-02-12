@@ -7,6 +7,7 @@
 #include <thread>
 
 #include "YuvFileSaver.h"
+#include "../gui/FilterTab.h"
 
 namespace Utility {
 enum class Compression;
@@ -36,7 +37,9 @@ class Yuv422FileSaver: public YuvFileSaver {
 	 * @param video The video to save.
 	 * @param compression The compression mode.
 	 */
-	Yuv422FileSaver(QString filename, Model::Video& video, Utility::Compression compression);
+    Yuv422FileSaver(QString filename, Model::Video& video, Utility::Compression compression,GUI::FilterTab* filterTab);
+
+    ~Yuv422FileSaver();
 
 	/**
 	 * @brief save Saves the video.
@@ -47,6 +50,8 @@ class Yuv422FileSaver: public YuvFileSaver {
   private:
 	Compression     compression_;
     std::thread     safer_;
+    GUI::FilterTab* filterTab_;
+    bool            isRunning_;
 
 
 	/**

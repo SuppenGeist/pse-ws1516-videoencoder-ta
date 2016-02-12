@@ -42,12 +42,22 @@ class FilterTabMemento {
 
     Model::Video* getFilteredVideo();
 
+    void setCurrentFrame(int currentFrame);
+
+    int getCurrentFrame();
+
+    void setCurrentlySelectedFilter(int filter);
+
+    int getCurrentlySelectedFilter();
+
   private:
 	Model::YuvVideo*                    rawVideo_;
 	std::unique_ptr<Model::FilterList>  filterlist_;
 	bool                                isPreviewShow_;
     bool                                isFilteredVideoShown_;
     Model::Video*                       filteredVideo_;
+    int                                 currentFrame_;
+    int                                 currentlySelectedFilter_;
 
 };
 }

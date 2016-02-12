@@ -18,6 +18,7 @@
 #include <QHBoxLayout>
 #include <QFileDialog>
 #include <QTabWidget>
+#include <QMessageBox>
 
 #include "FrameView.h"
 #include "PlayerControlPanel.h"
@@ -97,7 +98,15 @@ std::unique_ptr<Memento::FilterTabMemento> GUI::FilterTab::getMemento() {
 	memento->setIsPreviewShown(PreviewControlPanel_->isVisible());
     memento->setIsFilteredVideoShown(isFilteredVideoShown_);
     memento->setFilteredVideo(filteredVideo_);
+    memento->setCurrentFrame(player_->getPosition());
 
+    auto index=list_filterlist_->selectionModel()->selectedIndexes();
+    if(index.isEmpty()) {
+        memento->setCurrentlySelectedFilter(-1);
+    }
+    else {
+        memento->setCurrentlySelectedFilter(index.begin()->row());
+    }
 	return std::move(memento);
 }
 
@@ -115,6 +124,14 @@ void GUI::FilterTab::restore(Memento::FilterTabMemento *memento) {
             showRawVideo();
         }
 	}
+    player_->setPosition(memento->getCurrentFrame());
+
+    int index=memento->getCurrentlySelectedFilter();
+    if(index>=filterlist_->getSize()) {
+        index=filterlist_->getSize()-1;
+    }
+    QModelIndex mindex(model_filterlist_->index(index,0));
+    list_filterlist_->setCurrentIndex(mindex);
 }
 
 void GUI::FilterTab::setRawVideo(Model::YuvVideo *rawVideo) {
@@ -175,7 +192,7 @@ void GUI::FilterTab::updateFilterPreview() {
 	if(!rawVideo_)
 		return;
 
-	if(!originalPreviewFrames_.get()||originalPreviewFrames_->getNumberOfFrames()==0) {
+    if(!originalPreviewFrames_.get()||originalPreviewFrames_->getNumberOfFrames()==0||!rawVideo_->getVideo().isComplete()) {
 		calculatePreviewFrames();
 	}
 
@@ -323,6 +340,7 @@ void GUI::FilterTab::showFilteredVideo()
 {
     showRawVideo();
     player_->setVideo(filteredVideo_);
+    playerControlPanel_->updateUi();
     isFilteredVideoShown_=true;
 }
 
@@ -418,13 +436,13 @@ void GUI::FilterTab::save() {
 
     auto type=rawVideo_->getYuvType();
     if(type==Utility::YuvType::YUV411) {
-         safer_.push_back(std::make_unique<Utility::Yuv411FileSaver>(filename,*filteredVideo_,rawVideo_->getCompression()));
+         safer_.push_back(std::make_unique<Utility::Yuv411FileSaver>(filename,*filteredVideo_,rawVideo_->getCompression(),this));
     }else if(type==Utility::YuvType::YUV420) {
-        safer_.push_back(std::make_unique<Utility::Yuv420FileSaver>(filename,*filteredVideo_));
+        safer_.push_back(std::make_unique<Utility::Yuv420FileSaver>(filename,*filteredVideo_,this));
     }else if(type==Utility::YuvType::YUV422) {
-         safer_.push_back(std::make_unique<Utility::Yuv422FileSaver>(filename,*filteredVideo_,rawVideo_->getCompression()));
+         safer_.push_back(std::make_unique<Utility::Yuv422FileSaver>(filename,*filteredVideo_,rawVideo_->getCompression(),this));
     }else if(type==Utility::YuvType::YUV444) {
-         safer_.push_back(std::make_unique<Utility::Yuv444FileSaver>(filename,*filteredVideo_,rawVideo_->getCompression()));
+         safer_.push_back(std::make_unique<Utility::Yuv444FileSaver>(filename,*filteredVideo_,rawVideo_->getCompression(),this));
     }
     safer_.back()->save();
 }
@@ -488,7 +506,17 @@ void GUI::FilterTab::listSelectionChanged(QItemSelection selection) {
 
 	h_filterOptions_->addWidget(currentFilterOptionsBox_);
 	h_filterOptions_->removeItem(spacer_filterOptions_);
-	h_filterOptions_->addItem(spacer_filterOptions_);
+    h_filterOptions_->addItem(spacer_filterOptions_);
+}
+
+void GUI::FilterTab::notifyOnSaveComplete(bool successful, QString filename)
+{
+    if(successful) {
+        QMessageBox::information(this,"Video saved successfully!","The video was successfully saved to '"+filename+"'",QMessageBox::Ok);
+    }
+    else {
+        QMessageBox::warning(this,"Video not saved completly!","The video could not be saved completly to '"+filename+"'",QMessageBox::Ok);
+    }
 }
 
 void GUI::FilterTab::createUi() {
@@ -712,6 +740,7 @@ void GUI::FilterTab::connectAtions() {
 	connect(button_up_,SIGNAL(clicked()),this,SLOT(up()));
 	connect(list_filterlist_->selectionModel(),SIGNAL(selectionChanged(QItemSelection,
 	        QItemSelection)),this,SLOT(listSelectionChanged(QItemSelection)));
+    connect(this,SIGNAL(saveComplete(bool,QString)),this,SLOT(notifyOnSaveComplete(bool,QString)));
 }
 
 void GUI::FilterTab::initPlayer() {

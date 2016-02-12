@@ -7,6 +7,7 @@
 #include "Compression.h"
 #include "Yuv444Vector.h"
 #include "YuvFileSaver.h"
+#include "../gui/FilterTab.h"
 
 namespace Model {
 class Video;
@@ -30,7 +31,9 @@ class Yuv444FileSaver: public Utility::YuvFileSaver {
      * @param video The video to save.
      * @param compression The compression mode.
      */
-    Yuv444FileSaver(QString filename, Model::Video& video, Utility::Compression compression);
+    Yuv444FileSaver(QString filename, Model::Video& video, Utility::Compression compression,GUI::FilterTab* filterTab);
+
+    ~Yuv444FileSaver();
 
     /**
      * @brief Rgb888ToYuv444 Converts a Rgb888 pixel to a Yuv444Vector.
@@ -45,6 +48,8 @@ class Yuv444FileSaver: public Utility::YuvFileSaver {
   private:
     Compression compression_;
     std::thread safer_;
+    GUI::FilterTab* filterTab_;
+    bool    isRunning_;
 
     /**
      * @brief savePacked Saves the video in packed format.
