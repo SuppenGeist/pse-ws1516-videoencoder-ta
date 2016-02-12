@@ -112,11 +112,11 @@ void GUI::RectangleFilterBox::createFilterOptions() {
 
     height_=new QSpinBox();
     height_->setMaximum(100000);
-    height_->setMinimum(0);
+    height_->setMinimum(1);
 
     width_=new QSpinBox;
     width_->setMaximum(100000);
-    width_->setMinimum(0);
+    width_->setMinimum(1);
 
     x_=new QSpinBox();
     x_->setMaximum(100000);
