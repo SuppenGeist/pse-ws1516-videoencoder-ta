@@ -44,6 +44,12 @@ void TestRotationFilter::testGetSaveString()
     QVERIFY(filter_.getSaveString()=="60");
 }
 
+void TestRotationFilter::testGetFilterDescrition(){
+    filter_.setAngle(100);
+    QVERIFY(filter_.getFilterDescription()=="rotate=100*PI/180");
+
+}
+
 void TestRotationFilter::testFilterCopy()
 {
     const int testValue=100;

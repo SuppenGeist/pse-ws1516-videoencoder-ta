@@ -19,6 +19,8 @@ private slots:
 
     void testGetSaveString();
 
+    void testGetFilterDescrition();
+
     void testFilterCopy();
 
 private:

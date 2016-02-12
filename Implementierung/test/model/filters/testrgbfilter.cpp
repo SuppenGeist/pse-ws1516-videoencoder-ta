@@ -35,5 +35,7 @@ void TestRGBFilter::testFilterCopy()
 }
 
 void TestRGBFilter::testGetFilterDescription(){
+    filter_.setColor(Model::BasicColor::GREEN);
+    QVERIFY(filter_.getFilterDescription()=="colorchannelmixer=0:0:0:0:0:1:0:0:0:0:0:0");
 
 }
