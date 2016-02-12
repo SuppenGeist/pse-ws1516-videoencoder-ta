@@ -85,5 +85,8 @@ void FilterTestSuite::testAllFilters()
     TestSharpnessFilter testSharpnessFilter;
     QTest::qExec(&testSharpnessFilter);
 
+    TestVintageFilter testVintageFilter;
+    QTest::qExec(&testVintageFilter);
+
 }
 
