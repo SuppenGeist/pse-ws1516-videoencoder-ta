@@ -6,6 +6,8 @@
 
 #include <memory>
 
+#include "../memento/FilterTabMemento.h"
+
 namespace Model {
 class Filter;
 }
@@ -40,6 +42,7 @@ class AddFilter: public QUndoCommand {
 
 	GUI::FilterTab* filterTab_;
 	QString         filtername_;
+    std::unique_ptr<Memento::FilterTabMemento>  memento_;
 };
 }
 

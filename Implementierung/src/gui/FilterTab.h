@@ -29,6 +29,8 @@
 #include "../model/AVVideo.h"
 #include "../model/Video.h"
 
+#include "../utility/FilterApplier.h"
+
 namespace GUI {
 class FilterTab: public QFrame {
 	Q_OBJECT
@@ -62,6 +64,10 @@ class FilterTab: public QFrame {
 	void setFilterList(std::unique_ptr<Model::FilterList> filterlist);
 
 	void resetFilters();
+
+    void setFilteredVideo(Model::Video* filteredVideo);
+
+    void showFilteredVideo();
 
   private slots:
 	void up();
@@ -104,8 +110,12 @@ class FilterTab: public QFrame {
 
 	Model::YuvVideo*                    rawVideo_;
 	std::unique_ptr<Model::FilterList>  filterlist_;
-	std::unique_ptr<Model::AVVideo>     originalPreviewFrames_;
+    std::unique_ptr<Model::AVVideo>     originalPreviewFrames_;
 	std::unique_ptr<Model::Video>       filteredPreviewFrames_;
+    std::unique_ptr<Utility::FilterApplier> previewCalculator_;
+    Model::Video*                       filteredVideo_;
+
+    bool                                isFilteredVideoShown_;
 
 	void createUi();
 	void createButtons();

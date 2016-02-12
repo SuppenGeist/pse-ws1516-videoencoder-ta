@@ -4,10 +4,11 @@
 
 UndoRedo::MoveFilterDown::MoveFilterDown(GUI::FilterTab& filterTab, int index):index_(index),
 	filterTab_(&filterTab) {
+    memento_=filterTab.getMemento();
 }
 
 void UndoRedo::MoveFilterDown::undo() {
-    filterTab_->moveFilter(index_,index_+1);
+    filterTab_->restore(memento_.get());
 }
 
 void UndoRedo::MoveFilterDown::redo() {

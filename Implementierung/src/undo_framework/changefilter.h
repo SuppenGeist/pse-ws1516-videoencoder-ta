@@ -4,7 +4,10 @@
 #include <QString>
 #include <QUndoCommand>
 
+#include <memory>
+
 #include "../gui/FilterTab.h"
+#include "../memento/FilterTabMemento.h"
 
 namespace UndoRedo {
 
@@ -22,6 +25,7 @@ private:
     QString         oldState_;
     int             index_;
     GUI::FilterTab* filtertab_;
+    std::unique_ptr<Memento::FilterTabMemento>  memento_;
 };
 
 }

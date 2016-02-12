@@ -34,6 +34,26 @@ void Memento::FilterTabMemento::setIsPreviewShown(bool isShown) {
 }
 
 bool Memento::FilterTabMemento::isPreviewShow() {
-	return isPreviewShow_;
+    return isPreviewShow_;
+}
+
+void Memento::FilterTabMemento::setIsFilteredVideoShown(bool isShown)
+{
+    isFilteredVideoShown_=isShown;
+}
+
+bool Memento::FilterTabMemento::isFilteredVideoShown()
+{
+    return isFilteredVideoShown_;
+}
+
+void Memento::FilterTabMemento::setFilteredVideo(Model::Video *filteredVideo)
+{
+    filteredVideo_=filteredVideo;
+}
+
+Model::Video *Memento::FilterTabMemento::getFilteredVideo()
+{
+    return filteredVideo_;
 }
 

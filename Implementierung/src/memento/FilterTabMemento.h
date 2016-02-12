@@ -4,6 +4,7 @@
 #include <memory>
 
 #include "../model/YuvVideo.h"
+#include "../model/Video.h"
 #include "../model/FilterList.h"
 #include "../model/filters/Filter.h"
 
@@ -33,10 +34,20 @@ class FilterTabMemento {
 
 	bool isPreviewShow();
 
+    void setIsFilteredVideoShown(bool isShown);
+
+    bool isFilteredVideoShown();
+
+    void setFilteredVideo(Model::Video* filteredVideo);
+
+    Model::Video* getFilteredVideo();
+
   private:
 	Model::YuvVideo*                    rawVideo_;
 	std::unique_ptr<Model::FilterList>  filterlist_;
 	bool                                isPreviewShow_;
+    bool                                isFilteredVideoShown_;
+    Model::Video*                       filteredVideo_;
 
 };
 }

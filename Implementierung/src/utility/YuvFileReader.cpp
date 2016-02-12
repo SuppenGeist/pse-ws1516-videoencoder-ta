@@ -26,6 +26,9 @@ Utility::YuvFileReader::~YuvFileReader() {
 void Utility::YuvFileReader::read(Model::Video *target) {
 	if(!target)
 		return;
+    if(isRunning_)
+        return;
+
 	video_=target;
 
 	reader_=std::thread(&YuvFileReader::readP,this);

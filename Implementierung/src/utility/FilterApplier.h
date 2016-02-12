@@ -3,6 +3,7 @@
 
 #include <memory>
 #include <string>
+#include <thread>
 
 extern "C" {
 #include <libavcodec/avcodec.h>
@@ -15,6 +16,7 @@ extern "C" {
 
 namespace Model {
 class FilterList;
+class Video;
 class AVVideo;
 }
 
@@ -30,14 +32,11 @@ class FilterApplier {
 	 */
 	FilterApplier(Model::FilterList& list, int width, int height, int pixelFormat);
 
-	~FilterApplier();
+    ~FilterApplier();
 
-	/**
-	 * @brief applyToVideo Applies the given filters to the video.
-	 * @param target The video to which the new frames are added to.
-	 * @param video The video to apply the filters on.
-	 */
-	void applyToVideo(Model::AVVideo& target, Model::AVVideo& video);
+    void applyToVideo(Model::Video& target,Model::Video& source);
+
+    void applyToVideo(Model::Video& target,Model::AVVideo& source);
 
 	/**
 	 * @brief applyToFrame
@@ -62,8 +61,15 @@ class FilterApplier {
 	AVFilterContext*    buffersinkContext_;
 	AVFilterContext*    buffersourceContext_;
 	std::string         filterDescription_;
+    std::thread         applier_;
+    Model::Video*       source_;
+    Model::AVVideo*     source1_;
+    Model::Video*       target_;
+    bool                isRunning_;
 
 	void createFilterString();
+    void applyToVideoP();
+    void applyToAVVideoP();
 };
 }
 

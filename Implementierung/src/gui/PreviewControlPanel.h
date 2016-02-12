@@ -5,6 +5,7 @@
 #include <QWidget>
 #include <QPushButton>
 #include <QLabel>
+#include <QTimer>
 
 #include "ControlPanel.h"
 
@@ -23,6 +24,7 @@ class PreviewControlPanel: public QFrame, public GUI::ControlPanel {
 	 */
 	PreviewControlPanel(QWidget* parent = 0);
 
+public slots:
 	/**
 	 * @brief updateUi Updates the ui of the control panel.
 	 */
@@ -40,9 +42,10 @@ class PreviewControlPanel: public QFrame, public GUI::ControlPanel {
 	void previousFrame();
 
   private:
-	QPushButton* button_nextFrame;
-	QPushButton* button_previousFrame;
-	QLabel* label_position;
+    QPushButton*    button_nextFrame;
+    QPushButton*    button_previousFrame;
+    QLabel*         label_position;
+    QTimer          updater_;
 
 	/**
 	 * @brief createUi Creates the ui.

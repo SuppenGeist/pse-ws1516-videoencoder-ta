@@ -1,48 +1,48 @@
-/*
-#include <exception>
-using namespace std;
-
 #ifndef __ApplyFilter_h__
 #define __ApplyFilter_h__
 
-// #include "FilterTab.h"
-#include "QUndoCommand.h"
+#include <QUndoCommand>
 
-namespace GUI
-{
-	class FilterTab;
-}
-namespace UndoRedo
-{
-	// class QUndoCommand;
-	class ApplyFilter;
-}
+#include <memory>
+
+#include "../gui/FilterTab.h"
+#include "../model/Video.h"
+#include "../model/FilterList.h"
+#include "../utility/FilterApplier.h"
+#include "../memento/FilterTabMemento.h"
 
 namespace UndoRedo
 {
 	/**
 	 * This class is the undo command for applying filters on the filtertab.
+     */
+    class ApplyFilter: public QUndoCommand
+    {
+        public:
+        /**
+         * @brief ApplyFilter Constuctor
+         * @param filterTab
+         */
+        ApplyFilter(GUI::FilterTab& filterTab,Model::Video* origVideo,std::unique_ptr<Model::FilterList> filterlist);
 
-	class ApplyFilter: public UndoRedo::QUndoCommand
-	{
-		private: GUI::FilterTab* filterTab;
+        /**
+         * @brief undo Shows the 5 frame preview.
+         */
+        void undo();
 
-		/// <summary>
-		/// Constuctor
-		/// </summary>
-		public: ApplyFilter(GUI::FilterTab* filterTab);
+        /**
+         * @brief redo Shows the complete video with applied filters.
+         */
+        void redo();
 
-		/// <summary>
-		/// Shows the 5 frame preview.
-		/// </summary>
-		public: void undo();
-
-		/// <summary>
-		/// Shows the complete video with applied filters.
-		/// </summary>
-		public: void redo();
+        private:
+        GUI::FilterTab*                         filterTab_;
+        Model::Video*                           originalVideo_;
+        std::unique_ptr<Utility::FilterApplier> applier_;
+        std::unique_ptr<Model::Video>           filteredVideo_;
+        std::unique_ptr<Model::FilterList>      filterlist_;
+        std::unique_ptr<Memento::FilterTabMemento>  memento_;
 	};
 }
 
 #endif
-*/

@@ -5,6 +5,8 @@
 
 #include <memory>
 
+#include "../memento/FilterTabMemento.h"
+
 namespace Model {
 class FilterList;
 }
@@ -25,7 +27,7 @@ class LoadFilterconfig: public QUndoCommand {
 	 * @param oldList The filterlist before the config is loaded.
 	 * @param list The new filter configuration.
 	 */
-    LoadFilterconfig(GUI::FilterTab& filterTab, std::unique_ptr<Model::FilterList> oldList,std::unique_ptr<Model::FilterList> newList);
+    LoadFilterconfig(GUI::FilterTab& filterTab,std::unique_ptr<Model::FilterList> newList);
 
 	/**
 	 * @brief undo Loads the filter configuration present before external configuration was loaded.
@@ -38,9 +40,9 @@ class LoadFilterconfig: public QUndoCommand {
 	void redo();
 
   private:
-	GUI::FilterTab*                     filterTab_;
-	std::unique_ptr<Model::FilterList>  oldList_;
+    GUI::FilterTab*                     filterTab_;
 	std::unique_ptr<Model::FilterList>  newList_;
+    std::unique_ptr<Memento::FilterTabMemento>  memento_;
 };
 }
 
