@@ -82,5 +82,8 @@ void FilterTestSuite::testAllFilters()
     TestSepiaFilter testSepiaFilter;
     QTest::qExec(&testSepiaFilter);
 
+    TestSharpnessFilter testSharpnessFilter;
+    QTest::qExec(&testSharpnessFilter);
+
 }
 
