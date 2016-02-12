@@ -73,5 +73,9 @@ void FilterTestSuite::testAllFilters()
     TestRGBFilter testRGBFilter;
     QTest::qExec(&testRGBFilter);
 
+    TestRotationFilter testRotationFilter;
+    QTest::qExec(&testRotationFilter);
+
+
 }
 
