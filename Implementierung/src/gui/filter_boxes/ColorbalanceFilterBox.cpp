@@ -10,6 +10,7 @@
 #include <QLabel>
 #include <QFrame>
 #include <QDebug>
+#include <QLineEdit>
 
 #include "FilterConfigurationBox.h"
 #include "../../model/filters/ColorbalanceFilter.h"
@@ -122,6 +123,7 @@ void GUI::ColorbalanceFilterBox::createFilterOptions() {
     combo_->addItem("RED");
     combo_->addItem("GREEN");
     combo_->addItem("BLUE");
+    combo_->setFixedWidth(100);
 
     QVBoxLayout* h_content=new QVBoxLayout;
     QHBoxLayout* topLayout=new QHBoxLayout;
@@ -130,11 +132,21 @@ void GUI::ColorbalanceFilterBox::createFilterOptions() {
 
     topLayout->addWidget(b);
     topLayout->addWidget(bright_);
+    QFrame* separator1=new QFrame;
+    separator1->setFrameShape(QFrame::VLine);
+    separator1->setFrameShadow(QFrame::Sunken);
+    topLayout->addWidget(separator1);
     topLayout->addWidget(m);
     topLayout->addWidget(medium_);
+    QFrame* separator2=new QFrame;
+    separator2->setFrameShape(QFrame::VLine);
+    separator2->setFrameShadow(QFrame::Sunken);
+    topLayout->addWidget(separator2);
     topLayout->addWidget(d);
     topLayout->addWidget(dark_);
 
+    QLabel* label_color=new QLabel("Color:");
+    bottomLayout->addWidget(label_color);
     bottomLayout->addWidget(combo_);
 
     bottom2Layout->addWidget(i);
@@ -142,12 +154,27 @@ void GUI::ColorbalanceFilterBox::createFilterOptions() {
     bottom2Layout->addWidget(spinBox_);
 
 
-
+    h_content->addSpacing(5);
     h_content->addLayout(topLayout);
-    h_content->addSpacing(10);
+    QFrame* separator3=new QFrame;
+    separator3->setFrameShape(QFrame::HLine);
+    separator3->setFrameShadow(QFrame::Plain);
+    separator3->setStyleSheet("background-color:black;");
+    separator3->setFixedHeight(1);
+    h_content->addSpacing(5);
+    h_content->addWidget(separator3);
+    h_content->addSpacing(5);
     h_content->addLayout(bottomLayout);
-    h_content->addSpacing(10);
+    QFrame* separator4=new QFrame;
+    separator4->setFrameShape(QFrame::HLine);
+    separator4->setFrameShadow(QFrame::Plain);
+    separator4->setStyleSheet("background-color:black;");
+    separator4->setFixedHeight(1);
+    h_content->addSpacing(5);
+    h_content->addWidget(separator4);
+    h_content->addSpacing(5);
     h_content->addLayout(bottom2Layout);
+    h_content->addSpacing(5);
 
     QFrame* frame=new QFrame;
     frame->setFixedWidth(330);

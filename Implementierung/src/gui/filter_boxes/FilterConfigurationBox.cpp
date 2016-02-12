@@ -197,7 +197,7 @@ void GUI::FilterConfigurationBox::createUi() {
 	filterOptionsArea_->setObjectName("OptArea");
 	filterOptionsArea_->setStyleSheet("QScrollArea#OptArea {"
 	                                  "background-color:white;"
-	                                  "}");
+                                      "}");
 
 	QHBoxLayout* h_content=new QHBoxLayout;
 
