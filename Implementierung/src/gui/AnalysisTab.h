@@ -115,9 +115,7 @@ class AnalysisTab: public QFrame {
 
 	QPushButton* button_save_;
 	QComboBox* comboBox_analyseTyp_;
-	QScrollArea* scrollArea_analyseVideos_;
-	QLabel* label_rawVideo_;
-	QPushButton* button_addRawVideo_;
+    QScrollArea* scrollArea_analyseVideos_;
 	QTabWidget* tab_properties_;
 	QPushButton* button_addVideo_;
 	GUI::PlayerControlPanel* playerPanel_;

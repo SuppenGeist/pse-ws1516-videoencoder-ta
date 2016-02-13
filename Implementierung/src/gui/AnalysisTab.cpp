@@ -32,21 +32,24 @@ GUI::AnalysisTab::AnalysisTab(QWidget* parent) : QFrame(parent) {
 	ui_ = new Ui::AnalysisTab;
 	ui_->setupUi(this);
 
+    button_addVideo_ = ui_->addVideo;
+    button_save_ = ui_->save;
+    comboBox_analyseTyp_ = ui_->analysisTyp;
+
+    connect(button_save_,SIGNAL(clicked()),this,SLOT(saveResults()));
+    connect(button_addVideo_,SIGNAL(clicked()),this,SLOT(addVideo()));
+    connect(comboBox_analyseTyp_,SIGNAL(currentIndexChanged(int)), this, SLOT(analyseTypChanged(int)));
+
 	analysisBoxContainer_ = new GUI::AnalysisBoxContainer(this);
+    ui_->scrollArea->setWidget(analysisBoxContainer_);
 
-	ui_->scrollArea->setWidget(analysisBoxContainer_);
-
-	connect(ui_->save,SIGNAL(clicked()),this,SLOT(saveResults()));
-	connect(ui_->addVideo,SIGNAL(clicked()),this,SLOT(addVideo()));
-	connect(ui_->analysisTyp,SIGNAL(currentIndexChanged(int)), this, SLOT(analyseTypChanged(int)));
-
-	playerPanel_ =new PlayerControlPanel(ui_->panel);
+    playerPanel_ =new PlayerControlPanel(ui_->panel);
 	player_=std::make_unique<VideoPlayer>();
-	FrameView* frameView_ = new FrameView;
-	ui_->rawVidCon->addWidget(frameView_);
-	frameView_->setMaximumWidth(600);
-	frameView_->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Expanding);
-	player_->addView(*frameView_);
+    rawVideoView_ = new FrameView;
+    ui_->rawVidCon->addWidget(rawVideoView_);
+    rawVideoView_->setMaximumWidth(600);
+    rawVideoView_->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Expanding);
+    player_->addView(*rawVideoView_);
 	player_->setTimer(std::make_shared<Timer>());
 	playerPanel_->setMasterVideoPlayer(*player_);
 	player_->setMasterControlPanel(*playerPanel_);
@@ -57,7 +60,7 @@ GUI::AnalysisTab::AnalysisTab(QWidget* parent) : QFrame(parent) {
 	GlobalControlPanel* gp = new GlobalControlPanel();
 	fp.setForwardControlPanel(gp);
 	analysisBoxContainer_->setControlPanel(gp);
-	*/
+    */
 
 }
 
@@ -66,7 +69,7 @@ Memento::AnalysisTabMemento GUI::AnalysisTab::getMemento() {
 	memo.setAnalysisBoxContainerMemento(analysisBoxContainer_->getMemento());
 	memo.setCurrentSpeed(player_->getSpeed());
 	memo.setCurrentVideoPosition(player_->getPosition());
-	memo.setCurrentlyShownAnalysisVideo(ui_->analysisTyp->currentIndex());
+    memo.setCurrentlyShownAnalysisVideo(comboBox_analyseTyp_->currentIndex());
 	memo.setCompression(rawVideo_->getCompression());
 	memo.setFps(rawVideo_->getFps());
 	memo.setHeight(rawVideo_->getHeight());
@@ -78,7 +81,7 @@ Memento::AnalysisTabMemento GUI::AnalysisTab::getMemento() {
 void GUI::AnalysisTab::restore(Memento::AnalysisTabMemento memento) {
 	analysisBoxContainer_->restore(memento.getAnalysisBoxContainerMemento());
 
-	ui_->analysisTyp->setCurrentIndex(memento.getCurrentlyShownAnalysisVideo());
+    comboBox_analyseTyp_->setCurrentIndex(memento.getCurrentlyShownAnalysisVideo());
 	rawVideo_=std::make_unique<Model::YuvVideo>(QString::fromStdString(memento.getLoadedFile()),
 	          memento.getPixelSheme(),
 	          memento.getCompression(),
@@ -102,21 +105,21 @@ std::unique_ptr<Model::YuvVideo> GUI::AnalysisTab::removeYuvVideo() {
 	auto video=std::move(rawVideo_);
 	player_->stop();
 	player_->reset();
-	ui_->addVideo->setText("Add Raw Video");
+    button_addVideo_->setText("Add Raw Video");
 	return std::move(video);
 }
 
 void GUI::AnalysisTab::loadYuvVideo(std::unique_ptr<Model::YuvVideo> video) {
 	player_->setVideo(&video->getVideo());
 	rawVideo_=std::move(video);
-	ui_->addVideo->setText("Add Video");
+    button_addVideo_->setText("Add Video");
 }
 void GUI::AnalysisTab::setProject(Model::Project *project) {
 	project_ = project;
 }
 
 void GUI::AnalysisTab::addVideo() {
-	if(ui_->addVideo->text() == QString("Add Raw Video")) {
+    if(button_addVideo_->text() == QString("Add Raw Video")) {
 		YuvFileOpenDialog fileOpenDiag(this);
 
 		int result=fileOpenDiag.exec();

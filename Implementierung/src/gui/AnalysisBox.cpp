@@ -14,6 +14,7 @@
 #include "FrameView.h"
 #include "../memento/AnalysisBoxMemento.h"
 #include "../model/EncodedVideo.h"
+#include "../undo_framework/WriteComment.h"
 #include "../undo_framework/RemoveVideo.h"
 #include "../undo_framework/UndoStack.h"
 #include "ui_analysisbox.h"
@@ -38,17 +39,18 @@ GUI::AnalysisBox::AnalysisBox(QWidget* parent) : QFrame(parent) {
 	ui_->horizontalLayout->insertWidget(0, frameView_2);
 	frameView_2->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Expanding);
 	analysisVideoPlayer_->addView(*frameView_2);
+    textEdit_comment_ = ui_->userComment;
 
 
 
-	connect(ui_->userComment, SIGNAL(textChanged()), this, SLOT(textChanged()));
+    connect(textEdit_comment_, SIGNAL(textChanged()), this, SLOT(textChanged()));
 	connect(ui_->close,SIGNAL(clicked()), this, SLOT(close()));
 }
 
 Memento::AnalysisBoxMemento GUI::AnalysisBox::getMemento() {
 
 	Memento::AnalysisBoxMemento memo;
-	memo.setComment(ui_->userComment->toPlainText());
+    memo.setComment(textEdit_comment_->toPlainText());
 	/*memo.setPsnr(video_->getPsnr());
 	memo.setBitrate(video_->getBitrate());
 	memo.setMacroVideo(&(video_->getMacroBlockVideo()));
@@ -70,7 +72,7 @@ void GUI::AnalysisBox::restore(Memento::AnalysisBoxMemento memento) {
 	*/
 
 
-	ui_->userComment->setDocument(new QTextDocument(memento.getComment(), ui_->userComment));
+    textEdit_comment_->setDocument(new QTextDocument(memento.getComment(), ui_->userComment));
 
 }
 
@@ -111,7 +113,7 @@ void GUI::AnalysisBox::close() {
 }
 
 void GUI::AnalysisBox::textChanged() {
-
+    UndoRedo::UndoStack::getUndoStack().push(new UndoRedo::WriteComment(textEdit_comment_));
 }
 
 void GUI::AnalysisBox::setAnalyseVideo(std::unique_ptr<Model::EncodedVideo> video) {

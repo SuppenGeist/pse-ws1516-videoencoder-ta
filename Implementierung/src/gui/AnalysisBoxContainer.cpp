@@ -22,6 +22,9 @@ GUI::AnalysisBoxContainer::AnalysisBoxContainer(QWidget* parent) : QFrame(parent
 	anaTypShown_ = 0;
 	ui_ = new Ui::AnalysisBoxContainer;
 	ui_->setupUi(this);
+
+    AnalysisBox* a = new AnalysisBox(this);
+    ui_->verticalLayout->addWidget(a);
 }
 
 Memento::AnalysisBoxContainerMemento GUI::AnalysisBoxContainer::getMemento() {
