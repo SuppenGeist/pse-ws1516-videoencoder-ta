@@ -113,16 +113,11 @@ class AnalysisBoxContainer: public QFrame {
 	 */
 	GUI::AnalysisBox* addVideo(Model::EncodedVideo video);
 
-
-
-  public:
-	UndoRedo::RemoveVideo* anaBoxContainer;
   private:
 	int anaTypShown_;
 	Model::Video* rawVideo_;
 	std::shared_ptr<GUI::Timer> timer_;
-	GUI::GlobalControlPanel* controlPanel_;
-	GUI::AnalysisTab* analysisBoxContainer_;
+    GUI::GlobalControlPanel* controlPanel_;
 	std::vector<GUI::AnalysisBox*> boxes_;
 	Ui::AnalysisBoxContainer* ui_;
 };

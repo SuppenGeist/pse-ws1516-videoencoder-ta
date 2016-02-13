@@ -28,6 +28,12 @@ GUI::AnalysisBox::AnalysisBox(QWidget* parent) : QFrame(parent) {
 	ui_ = new Ui::AnalysisBox;
 	ui_->setupUi(this);
 
+    textEdit_comment_ = ui_->userComment;
+    button_close_ = ui_->close;
+
+    connect(textEdit_comment_, SIGNAL(textChanged()), this, SLOT(textChanged()));
+    connect(ui_->close,SIGNAL(clicked()), this, SLOT(close()));
+
 	plainVideoPlayer_=std::make_unique<VideoPlayer>();
 	FrameView* frameView_ = new FrameView(ui_->anaRawVid);
 	ui_->horizontalLayout->addWidget(frameView_);
@@ -39,12 +45,9 @@ GUI::AnalysisBox::AnalysisBox(QWidget* parent) : QFrame(parent) {
 	ui_->horizontalLayout->insertWidget(0, frameView_2);
 	frameView_2->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Expanding);
 	analysisVideoPlayer_->addView(*frameView_2);
-    textEdit_comment_ = ui_->userComment;
 
 
 
-    connect(textEdit_comment_, SIGNAL(textChanged()), this, SLOT(textChanged()));
-	connect(ui_->close,SIGNAL(clicked()), this, SLOT(close()));
 }
 
 Memento::AnalysisBoxMemento GUI::AnalysisBox::getMemento() {
@@ -107,9 +110,7 @@ void GUI::AnalysisBox::showRGBDifferenceVideo() {
 }
 
 void GUI::AnalysisBox::close() {
-
 	UndoRedo::UndoStack::getUndoStack().push(new UndoRedo::RemoveVideo(this));
-
 }
 
 void GUI::AnalysisBox::textChanged() {
@@ -117,21 +118,27 @@ void GUI::AnalysisBox::textChanged() {
 }
 
 void GUI::AnalysisBox::setAnalyseVideo(std::unique_ptr<Model::EncodedVideo> video) {
-	QRegExp reg = QRegExp("(.(dot))*/");
-	ui_->groupBox->setTitle(video_->getPath().replace(reg,QString("")));
+
 	video_ = std::move(video);
 	plainVideoPlayer_->setVideo(&(video_->getVideo()));
 
 	GUI::GraphWidget *g = new GUI::GraphWidget;
 	g->drawGraph(video_->getPsnr());
 	ui_->tabWidget->addTab(g,QString("Psnr"));
+
 	g = new GUI::GraphWidget;
 	g->drawGraph(video_->getBitrate());
 	ui_->tabWidget->addTab(g,"Bitrate");
+
 	QWidget* w = new QWidget;
 	QVBoxLayout *ly = new QVBoxLayout(w);
 	ly->addWidget(new QLabel(QString("Path: " + video_->getPath())));
+    ly->addWidget(new QLabel(QString("Codec: " + video_->getCodec())));
+
 	ui_->tabWidget->addTab(w,QString("Attributs"));
 
+    QString name = video_->getPath();
+    name = name.split("/")[name.count("/")];
+    ui_->groupBox->setTitle(name);
 }
 

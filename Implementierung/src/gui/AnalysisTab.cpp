@@ -35,20 +35,23 @@ GUI::AnalysisTab::AnalysisTab(QWidget* parent) : QFrame(parent) {
     button_addVideo_ = ui_->addVideo;
     button_save_ = ui_->save;
     comboBox_analyseTyp_ = ui_->analysisTyp;
+    tab_properties_ = ui_->properties;
 
     connect(button_save_,SIGNAL(clicked()),this,SLOT(saveResults()));
     connect(button_addVideo_,SIGNAL(clicked()),this,SLOT(addVideo()));
     connect(comboBox_analyseTyp_,SIGNAL(currentIndexChanged(int)), this, SLOT(analyseTypChanged(int)));
+
+    rawVideoView_ = new FrameView;
+    ui_->rawVidCon->addWidget(rawVideoView_);
+    rawVideoView_->setMaximumWidth(600);
+    rawVideoView_->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Expanding);
 
 	analysisBoxContainer_ = new GUI::AnalysisBoxContainer(this);
     ui_->scrollArea->setWidget(analysisBoxContainer_);
 
     playerPanel_ =new PlayerControlPanel(ui_->panel);
 	player_=std::make_unique<VideoPlayer>();
-    rawVideoView_ = new FrameView;
-    ui_->rawVidCon->addWidget(rawVideoView_);
-    rawVideoView_->setMaximumWidth(600);
-    rawVideoView_->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Expanding);
+
     player_->addView(*rawVideoView_);
 	player_->setTimer(std::make_shared<Timer>());
 	playerPanel_->setMasterVideoPlayer(*player_);
