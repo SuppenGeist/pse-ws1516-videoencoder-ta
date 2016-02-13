@@ -2,7 +2,10 @@
 #define __LoadAnalysisVideo_h__
 
 #include <QUndoCommand>
+
 #include <memory>
+
+#include "../memento/AnalysisTabMemento.h"
 
 namespace GUI {
 class AnalysisTab;
@@ -37,8 +40,9 @@ class LoadAnalysisVideo: public QUndoCommand {
 	void redo();
 
   private:
-	GUI::AnalysisTab* anaTab_;
-	std::unique_ptr<Model::YuvVideo> video_;
+    GUI::AnalysisTab* anaTab_;
+    std::unique_ptr<Memento::AnalysisTabMemento>    memento_;
+    std::unique_ptr<Model::YuvVideo>                rawVideo_;
 };
 }
 

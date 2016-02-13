@@ -1,5 +1,7 @@
 #include "GlobalControlPanel.h"
 
+#include <QDebug>
+
 #include "Player.h"
 
 GUI::GlobalControlPanel::GlobalControlPanel() {

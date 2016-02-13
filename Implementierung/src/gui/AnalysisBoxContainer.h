@@ -6,6 +6,7 @@
 #include <QWidget>
 #include <QFrame>
 #include <QString>
+#include <QPushButton>
 #include <QVBoxLayout>
 #include <QSpacerItem>
 
@@ -26,9 +27,12 @@ class AnalysisBoxContainer: public QFrame {
 
     void addVideo(QString path);
 
+    void clear();
+
   private:
     QVBoxLayout*                v_boxes_;
     QSpacerItem*                spacer_;
+    QPushButton*                button_addVideo_;
 
     std::vector<AnalysisBox*>   boxes_;
 

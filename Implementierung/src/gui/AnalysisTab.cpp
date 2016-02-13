@@ -17,25 +17,134 @@
 #include "PlayerControlPanel.h"
 #include "GraphWidget.h"
 #include "AnalysisBoxContainer.h"
+#include "YuvFileOpenDialog.h"
+#include "YuvInfoDialog.h"
+#include "ForwardPlayer.h"
+#include "VideoPlayer.h"
+#include "Timer.h"
+#include "GlobalControlPanel.h"
 
-GUI::AnalysisTab::AnalysisTab(QWidget* parent) : QFrame(parent) {
+#include "../memento/AnalysisTabMemento.h"
+
+#include "../model/YuvVideo.h"
+
+#include "../undo_framework/UndoStack.h"
+#include "../undo_framework/LoadAnalysisVideo.h"
+
+GUI::AnalysisTab::AnalysisTab(QWidget* parent) : QFrame(parent),rawVideo_(nullptr) {
     createUi();
     connectActions();
 
-    analysisBoxContainer_->addVideo("Test");
-    analysisBoxContainer_->addVideo("Test");
+    forwardPlayer_=std::make_unique<ForwardPlayer>();
+    globalControlPanel_=std::make_unique<GlobalControlPanel>();
+    videoPlayer_=std::make_unique<VideoPlayer>();
+    timer_=std::make_shared<Timer>();
+
+    forwardPlayer_->setMasterVideoPlayer(videoPlayer_.get());
+    videoPlayer_->setTimer(timer_);
+    videoPlayer_->addView(*rawVideoView_);
+    videoPlayer_->setMasterControlPanel(*playerControlPanel_);
+    playerControlPanel_->setMasterVideoPlayer(*forwardPlayer_.get());
+    forwardPlayer_->setForwardControlPanel(globalControlPanel_.get());
+    globalControlPanel_->setMasterVideoPlayer(*videoPlayer_);
+}
+
+std::unique_ptr<Memento::AnalysisTabMemento> GUI::AnalysisTab::getMemento()
+{
+    auto memento=std::make_unique<Memento::AnalysisTabMemento>();
+
+    memento->setRawVideo(rawVideo_);
+
+    return std::move(memento);
+}
+
+void GUI::AnalysisTab::restore(Memento::AnalysisTabMemento *memento)
+{
+    setRawVideo(memento->getRawVideo());
+}
+
+void GUI::AnalysisTab::setRawVideo(Model::YuvVideo *rawVideo)
+{
+    analysisBoxContainer_->clear();
+
+    globalControlPanel_->stop();
+
+    if(rawVideo) {
+        videoPlayer_->setVideo(&rawVideo->getVideo());
+    }
+    else {
+        videoPlayer_->setVideo(nullptr);
+    }
+    rawVideo_=rawVideo;
+
+    if(rawVideo) {
+        v_rawVideo_->removeWidget(button_addRawVideo_);
+        button_addRawVideo_->hide();
+        v_rawVideo_->addWidget(rawVideoView_);
+        rawVideoView_->show();
+    }
+    else {
+        v_rawVideo_->removeWidget(rawVideoView_);
+        rawVideoView_->hide();
+        v_rawVideo_->addWidget(button_addRawVideo_);
+        button_addRawVideo_->show();
+    }
 }
 
 void GUI::AnalysisTab::resizeEvent(QResizeEvent *event)
 {
     if(event->size().width()>1300) {
-        //button_addencodedvideo->resize(1300,button_addencodedvideo->height());
         analysisBoxContainer_->setFixedWidth(1280);
     }
     else {
-        //button_addencodedvideo->resize(event->size().width(),button_addencodedvideo->height());
         analysisBoxContainer_->setFixedWidth(event->size().width()-56);
     }
+}
+
+void GUI::AnalysisTab::loadRawVideo()
+{
+    YuvFileOpenDialog fileOpenDiag(this);
+
+    int result=fileOpenDiag.exec();
+
+    if(!(result==QDialog::Accepted))
+        return;
+
+    auto path=fileOpenDiag.getFilename();
+
+    if(path.isEmpty())
+        return;
+
+    std::unique_ptr<YuvInfoDialog> infoDialog;
+    bool inputValid=true;
+    do {
+        infoDialog=std::make_unique<YuvInfoDialog>(this);
+        inputValid=true;
+
+        result=infoDialog->exec();
+        if(!(result==QDialog::Accepted))
+             return;
+
+        if(infoDialog->getFps()<=0) {
+            inputValid=false;
+            continue;
+        }
+        if(infoDialog->getHeight()<=0) {
+            inputValid=false;
+            continue;
+        }
+        if(infoDialog->getWidth()<=0) {
+            inputValid=false;
+            continue;
+        }
+
+    } while(!inputValid);
+
+    std::unique_ptr<Model::YuvVideo> yuvVideo =std::make_unique<Model::YuvVideo>(path,
+                 infoDialog->getPixelSheme(),
+                 infoDialog->getCompression(),infoDialog->getWidth(),infoDialog->getHeight(),infoDialog->getFps());
+
+    UndoRedo::UndoStack::getUndoStack().push(new UndoRedo::LoadAnalysisVideo(this,std::move(yuvVideo)));
 }
 
 void GUI::AnalysisTab::createUi()
@@ -48,7 +157,6 @@ void GUI::AnalysisTab::createUi()
     button_greenHistogramm_=new QPushButton("Green histogramm");
     button_redHistogramm_=new QPushButton("Red histogramm");
     button_psnr_=new QPushButton("PSNR");
-    button_addencodedvideo=new QPushButton("Add video");
 
     button_saveResults_->setFlat(true);
     button_attributes_->setFlat(true);
@@ -122,10 +230,6 @@ void GUI::AnalysisTab::createUi()
                                        "border-style: inset;"
                                        "}");
 
-    button_addencodedvideo->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Minimum);
-    button_addencodedvideo->setFlat(true);
-    button_addencodedvideo->setStyleSheet(stylesheet1);
-
     playerControlPanel_=new PlayerControlPanel;
 
     tabs_graphattrs=new QTabWidget;
@@ -135,8 +239,10 @@ void GUI::AnalysisTab::createUi()
     tabs_graphattrs->addTab(graphWidget_,"Graphs");
 
     QWidget* attributes=new QWidget;
-    tabs_graphattrs->addTab(attributes,"Attributes");
+    tabs_graphattrs->addTab(attributes,"Video");
 
+    rawVideoView_=new FrameView;
+    rawVideoView_->setFixedSize(200,200);
 
     playerControlPanel_->setStyleSheet("QFrame#playerPanel {"
                   "background: rgb(200, 200, 200);"
@@ -254,14 +360,13 @@ void GUI::AnalysisTab::createUi()
     scroll_anaBoxes_->setHorizontalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAlwaysOff);
     scroll_anaBoxes_->setWidget(analysisBoxContainer_);
     scroll_anaBoxes_->setStyleSheet("QScrollArea {"
-                                    "border-width:1px;"
+                                    "border-width:2px;"
                                     "border-color:black;"
                                     "border-style:outset;"
                                     "background-color:white;"
                                     "}");
     v_scrollbutton->addWidget(scroll_anaBoxes_);
     scrollbutton->setMaximumWidth(1300);
-    v_scrollbutton->addWidget(button_addencodedvideo);
 
     scrollbutton->setLayout(v_scrollbutton);
     h_anaboxes->addWidget(scrollbutton,1);
@@ -278,6 +383,6 @@ void GUI::AnalysisTab::createUi()
 
 void GUI::AnalysisTab::connectActions()
 {
-
+    connect(button_addRawVideo_,SIGNAL(clicked(bool)),this,SLOT(loadRawVideo()));
 }
 

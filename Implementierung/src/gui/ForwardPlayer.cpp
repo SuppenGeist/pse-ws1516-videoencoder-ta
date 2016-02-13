@@ -9,7 +9,12 @@ forwardPanel_(nullptr) {
 }
 
 void GUI::ForwardPlayer::setForwardControlPanel(GlobalControlPanel *panel) noexcept {
-	forwardPanel_=panel;
+    forwardPanel_=panel;
+}
+
+void GUI::ForwardPlayer::setMasterVideoPlayer(GUI::Player *player)
+{
+    player_=player;
 }
 
 void GUI::ForwardPlayer::play() {
@@ -55,25 +60,25 @@ void GUI::ForwardPlayer::setPosition(std::size_t position) {
 }
 
 std::size_t GUI::ForwardPlayer::getPosition() const {
-	throw std::logic_error("Dont call this method");
+    return player_->getPosition();
 }
 
 float GUI::ForwardPlayer::getSpeed() const {
-	throw std::logic_error("Dont call this method");
+    return player_->getSpeed();
 }
 
 bool GUI::ForwardPlayer::isPlaying() const {
-	throw std::logic_error("Dont call this method");
+    return player_->isPlaying();
 }
 
 bool GUI::ForwardPlayer::isStopped() const {
-	throw std::logic_error("Dont call this method");
+    return player_->isStopped();
 }
 
 void GUI::ForwardPlayer::reset() {
-	throw std::logic_error("Dont call this method");
+    throw std::logic_error("Dont call this method");
 }
 
 std::size_t GUI::ForwardPlayer::getNumberOfFrames() const {
-	throw std::logic_error("Dont call this method");
+    return player_->getNumberOfFrames();
 }

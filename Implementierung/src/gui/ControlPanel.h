@@ -39,7 +39,7 @@ class ControlPanel {
 	 * @brief addVideoPlayer Adds the video player the list of players to notify.
 	 * @param player The player to add to the list.
 	 */
-	void addVideoPlayer(Player& player);
+    void addVideoPlayer(Player *player);
 
 	/**
 	 * @brief updateUi Updates the ui of the control panel.

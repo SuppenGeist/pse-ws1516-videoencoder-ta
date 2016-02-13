@@ -15,14 +15,8 @@ void GUI::ControlPanel::setMasterVideoPlayer(GUI::Player& player) noexcept {
 	updateUi();
 }
 
-void GUI::ControlPanel::addVideoPlayer(GUI::Player& player) {
-	if(std::find(players_.begin(), players_.end(), &player) == players_.end())
-		return;
-
-	if(&player==masterPlayer_)
-		return;
-
-	players_.push_back(&player);
+void GUI::ControlPanel::addVideoPlayer(GUI::Player* player) {
+    players_.push_back(player);
 }
 
 

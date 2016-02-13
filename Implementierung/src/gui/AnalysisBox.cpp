@@ -28,7 +28,7 @@ void GUI::AnalysisBox::createUi()
     tabs_graphs_->setTabPosition(QTabWidget::West);
     tabs_graphs_->addTab(graphWidget_,"Graphs");
     QWidget* attr=new QWidget;
-    tabs_graphs_->addTab(attr,"Attributes");
+    tabs_graphs_->addTab(attr,"Video");
 
 
     QHBoxLayout* h_content=new QHBoxLayout;

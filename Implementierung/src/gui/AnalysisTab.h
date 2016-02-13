@@ -14,6 +14,15 @@
 #include "PlayerControlPanel.h"
 #include "GraphWidget.h"
 #include "AnalysisBoxContainer.h"
+#include "ForwardPlayer.h"
+#include "VideoPlayer.h"
+#include "Timer.h"
+#include "FrameView.h"
+#include "GlobalControlPanel.h"
+
+#include "../model/YuvVideo.h"
+
+#include "../memento/AnalysisTabMemento.h"
 
 namespace GUI {
 /**
@@ -29,8 +38,17 @@ class AnalysisTab: public QFrame {
 	 */
     AnalysisTab(QWidget* parent=0);
 
+    std::unique_ptr<Memento::AnalysisTabMemento> getMemento();
+
+    void restore(Memento::AnalysisTabMemento* memento);
+
+    void setRawVideo(Model::YuvVideo* rawVideo);
+
 protected:
     void resizeEvent(QResizeEvent * event);
+
+private slots:
+    void loadRawVideo();
 
   private:
     QPushButton*            button_saveResults_;
@@ -41,7 +59,6 @@ protected:
     QPushButton*            button_greenHistogramm_;
     QPushButton*            button_bitrate_;
     QPushButton*            button_psnr_;
-    QPushButton*            button_addencodedvideo;
     PlayerControlPanel*     playerControlPanel_;
     QTabWidget*             tabs_graphattrs;
     QComboBox*              combobbox_anaVideo_;
@@ -49,6 +66,14 @@ protected:
     GraphWidget*            graphWidget_;
     AnalysisBoxContainer*   analysisBoxContainer_;
     QScrollArea*            scroll_anaBoxes_;
+
+    Model::YuvVideo*        rawVideo_;
+
+    std::unique_ptr<ForwardPlayer>      forwardPlayer_;
+    std::shared_ptr<Timer>              timer_;
+    std::unique_ptr<GlobalControlPanel> globalControlPanel_;
+    std::unique_ptr<VideoPlayer>        videoPlayer_;
+    FrameView*                          rawVideoView_;
 
     void createUi();
     void connectActions();
