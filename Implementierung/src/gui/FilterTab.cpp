@@ -645,8 +645,7 @@ void GUI::FilterTab::createButtons() {
 
 	QString styleSheet_buttonGroup("QPushButton {"
 	                               "color: rgb(255, 255, 255);"
-	                               "border-color: rgb(69, 62, 62);"
-	                               "background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #88d, stop: 0.1 #99e, stop: 0.49 #77c);"
+                                   "border-color: rgb(69, 62, 62);"
 	                               "background: rgb(140, 140, 140);"
 	                               "border-width: 1px;"
 	                               "border-color:rgb(0, 0, 0);"

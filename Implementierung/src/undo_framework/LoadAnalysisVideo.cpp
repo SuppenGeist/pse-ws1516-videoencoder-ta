@@ -14,11 +14,11 @@ UndoRedo::LoadAnalysisVideo::LoadAnalysisVideo(GUI::AnalysisTab* anaTab,
 }
 
 void UndoRedo::LoadAnalysisVideo::undo() {
-	video_ = std::move(anaTab_->removeYuvVideo());
+    //video_ = std::move(anaTab_->removeYuvVideo());
 }
 
 void UndoRedo::LoadAnalysisVideo::redo() {
-	anaTab_->loadYuvVideo(std::move(video_));
+    //anaTab_->loadYuvVideo(std::move(video_));
 }
 
 

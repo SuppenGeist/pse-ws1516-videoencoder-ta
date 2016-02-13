@@ -1,188 +1,283 @@
 #include "AnalysisTab.h"
 
+#include <memory>
+
 #include <QWidget>
 #include <QFrame>
-#include <memory>
-#include <QFileDialog>
+#include <QPushButton>
+#include <QComboBox>
+#include <QHBoxLayout>
+#include <QTabWidget>
+#include <QDebug>
+#include <QVBoxLayout>
+#include <QFont>
+#include <QSpacerItem>
+#include <QScrollArea>
 
-#include "VideoPlayer.h"
-#include "FrameView.h"
 #include "PlayerControlPanel.h"
-#include "Timer.h"
+#include "GraphWidget.h"
 #include "AnalysisBoxContainer.h"
-#include "GlobalControlPanel.h"
-#include "../memento/AnalysisTabMemento.h"
-#include "../model/YuvVideo.h"
-#include "ui_analysistab.h"
-#include "YuvInfoDialog.h"
-#include "YuvFileOpenDialog.h"
-#include "../undo_framework/UndoStack.h"
-#include "../undo_framework//LoadAnalysisVideo.h"
-#include "../undo_framework/AddVideo.h"
-#include "ForwardPlayer.h"
-#include "../utility/ProjectWriter.h"
-#include "AnalysisTab.h"
-#include "MainWindow.h"
-#include "../model/Project.h"
-#include "../utility/Compression.h"
-#include "../utility/YuvType.h"
 
 GUI::AnalysisTab::AnalysisTab(QWidget* parent) : QFrame(parent) {
+    createUi();
+    connectActions();
 
-	ui_ = new Ui::AnalysisTab;
-	ui_->setupUi(this);
-
-    button_addVideo_ = ui_->addVideo;
-    button_save_ = ui_->save;
-    comboBox_analyseTyp_ = ui_->analysisTyp;
-    tab_properties_ = ui_->properties;
-
-    connect(button_save_,SIGNAL(clicked()),this,SLOT(saveResults()));
-    connect(button_addVideo_,SIGNAL(clicked()),this,SLOT(addVideo()));
-    connect(comboBox_analyseTyp_,SIGNAL(currentIndexChanged(int)), this, SLOT(analyseTypChanged(int)));
-
-    rawVideoView_ = new FrameView;
-    ui_->rawVidCon->addWidget(rawVideoView_);
-    rawVideoView_->setMaximumWidth(600);
-    rawVideoView_->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Expanding);
-
-	analysisBoxContainer_ = new GUI::AnalysisBoxContainer(this);
-    ui_->scrollArea->setWidget(analysisBoxContainer_);
-
-    playerPanel_ =new PlayerControlPanel(ui_->panel);
-	player_=std::make_unique<VideoPlayer>();
-
-    player_->addView(*rawVideoView_);
-	player_->setTimer(std::make_shared<Timer>());
-	playerPanel_->setMasterVideoPlayer(*player_);
-	player_->setMasterControlPanel(*playerPanel_);
-
-	/*
-	ForwardPlayer fp = ForwardPlayer();
-	playerPanel_->setMasterVideoPlayer(fp);
-	GlobalControlPanel* gp = new GlobalControlPanel();
-	fp.setForwardControlPanel(gp);
-	analysisBoxContainer_->setControlPanel(gp);
-    */
-
+    analysisBoxContainer_->addVideo("Test");
+    analysisBoxContainer_->addVideo("Test");
 }
 
-Memento::AnalysisTabMemento GUI::AnalysisTab::getMemento() {
-	Memento::AnalysisTabMemento memo;
-	memo.setAnalysisBoxContainerMemento(analysisBoxContainer_->getMemento());
-	memo.setCurrentSpeed(player_->getSpeed());
-	memo.setCurrentVideoPosition(player_->getPosition());
-    memo.setCurrentlyShownAnalysisVideo(comboBox_analyseTyp_->currentIndex());
-	memo.setCompression(rawVideo_->getCompression());
-	memo.setFps(rawVideo_->getFps());
-	memo.setHeight(rawVideo_->getHeight());
-	memo.setWidth(rawVideo_->getWidth());
-	memo.setPixelSheme(rawVideo_->getYuvType());
-	return memo;
+void GUI::AnalysisTab::resizeEvent(QResizeEvent *event)
+{
+    if(event->size().width()>1300) {
+        //button_addencodedvideo->resize(1300,button_addencodedvideo->height());
+        analysisBoxContainer_->setFixedWidth(1280);
+    }
+    else {
+        //button_addencodedvideo->resize(event->size().width(),button_addencodedvideo->height());
+        analysisBoxContainer_->setFixedWidth(event->size().width()-56);
+    }
 }
 
-void GUI::AnalysisTab::restore(Memento::AnalysisTabMemento memento) {
-	analysisBoxContainer_->restore(memento.getAnalysisBoxContainerMemento());
+void GUI::AnalysisTab::createUi()
+{
+    button_saveResults_=new QPushButton("Save results");
+    button_addRawVideo_=new QPushButton("Load video");
+    button_attributes_=new QPushButton("Attributes");
+    button_bitrate_=new QPushButton("Bitrate");
+    button_blueHistogramm_=new QPushButton("Blue histogramm");
+    button_greenHistogramm_=new QPushButton("Green histogramm");
+    button_redHistogramm_=new QPushButton("Red histogramm");
+    button_psnr_=new QPushButton("PSNR");
+    button_addencodedvideo=new QPushButton("Add video");
 
-    comboBox_analyseTyp_->setCurrentIndex(memento.getCurrentlyShownAnalysisVideo());
-	rawVideo_=std::make_unique<Model::YuvVideo>(QString::fromStdString(memento.getLoadedFile()),
-	          memento.getPixelSheme(),
-	          memento.getCompression(),
-	          memento.getWidth(),
-	          memento.getHeight(),
-	          memento.getFps());
-	player_->setVideo(&rawVideo_->getVideo());
-	player_->setSpeed(memento.getCurrentSpeed());
-	player_->setPosition(memento.getCurrentVideoPosition());
+    button_saveResults_->setFlat(true);
+    button_attributes_->setFlat(true);
+    button_bitrate_->setFlat(true);
+    button_blueHistogramm_->setFlat(true);
+    button_greenHistogramm_->setFlat(true);
+    button_redHistogramm_->setFlat(true);
+    button_psnr_->setFlat(true);
+
+    QString stylesheet("QPushButton {"
+                       "color: rgb(0, 0, 0);"
+                       "background: rgb(220, 220, 220);"
+                       "border-width: 1px;"
+                       "border-color:rgb(0, 0, 0);"
+                       "border-style: outset;"
+                       "border-radius: 7px;"
+                       "font-size: 12px;"
+                       "}"
+                       "QPushButton:pressed {"
+                       "background-color: rgb(200, 200, 200);"
+                       "border-style: inset;"
+                       "}"
+                      );
+
+    button_attributes_->setStyleSheet(stylesheet);
+    button_bitrate_->setStyleSheet(stylesheet);
+    button_blueHistogramm_->setStyleSheet(stylesheet);
+    button_greenHistogramm_->setStyleSheet(stylesheet);
+    button_redHistogramm_->setStyleSheet(stylesheet);
+    button_psnr_->setStyleSheet(stylesheet);
+
+    button_attributes_->setFixedSize(120,25);
+    button_bitrate_->setFixedSize(120,25);
+    button_blueHistogramm_->setFixedSize(120,25);
+    button_greenHistogramm_->setFixedSize(120,25);
+    button_redHistogramm_->setFixedSize(120,25);
+    button_psnr_->setFixedSize(120,25);
+
+    QString stylesheet1("QPushButton {"
+                                   "color: rgb(255, 255, 255);"
+                                   "border-color: rgb(0, 0, 0);"
+                                   "background: rgb(140, 140, 140);"
+                                   "border-width: 1px;"
+                                   "border-color:rgb(0, 0, 0);"
+                                   "border-style: outset;"
+                                   "border-radius: 7;"
+                                   "padding: 3px;"
+                                   "font-size: 18px;"
+                                   "padding-left: 5px;"
+                                   "padding-right: 5px;"
+                                   "}"
+                                   "QPushButton:pressed {"
+                                   "background-color: rgb(69, 62, 62);"
+                                   "border-style: inset;"
+                                   "}"
+                                  );
+    button_saveResults_->setStyleSheet(stylesheet1);
+    button_saveResults_->setFixedWidth(170);
+
+    button_addRawVideo_->setFixedSize(200,200);
+    QFont f("Arial",13);
+    button_addRawVideo_->setFont(f);
+    button_addRawVideo_->setStyleSheet("QPushButton {"
+                                       "border-color:black;"
+                                       "border-width:1px;"
+                                       "background-color: QLinearGradient( x1: 0, y1: 0, x2: 1, y2: 1, stop: 0 white, stop: 0.5 #bbbbbb, stop: 0.8 #999999);"
+                                       "border-style:outset;"
+                                       "}"
+                                       "QPushButton:pressed {"
+                                       "background-color: QLinearGradient( x1: 0, y1: 0, x2: 1, y2: 1, stop: 0 white, stop: 0.5 #aaaaaa, stop: 0.8 #777777);"
+                                       "border-style: inset;"
+                                       "}");
+
+    button_addencodedvideo->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Minimum);
+    button_addencodedvideo->setFlat(true);
+    button_addencodedvideo->setStyleSheet(stylesheet1);
+
+    playerControlPanel_=new PlayerControlPanel;
+
+    tabs_graphattrs=new QTabWidget;
+    tabs_graphattrs->setTabPosition(QTabWidget::West);
+
+    graphWidget_=new GraphWidget;
+    tabs_graphattrs->addTab(graphWidget_,"Graphs");
+
+    QWidget* attributes=new QWidget;
+    tabs_graphattrs->addTab(attributes,"Attributes");
+
+
+    playerControlPanel_->setStyleSheet("QFrame#playerPanel {"
+                  "background: rgb(200, 200, 200);"
+                  "}"
+                  "");
+
+    combobbox_anaVideo_=new QComboBox;
+    combobbox_anaVideo_->addItem("Macroblocks");
+    combobbox_anaVideo_->addItem("RGB difference");
+    combobbox_anaVideo_->setFixedWidth(150);
+    combobbox_anaVideo_->setStyleSheet("QComboBox {"
+                                       "background-color:rgb(210,210,210);"
+                                       "}");
+
+    QVBoxLayout* v_content=new QVBoxLayout;
+
+    QHBoxLayout* h_rawc=new QHBoxLayout;
+    QSpacerItem* spacer5=new QSpacerItem(0,0,QSizePolicy::Expanding,QSizePolicy::Minimum);
+    h_rawc->addSpacerItem(spacer5);
+
+    QWidget* rawVideoArea=new QWidget;
+    rawVideoArea->setFixedHeight(210);
+    rawVideoArea->setMaximumWidth(1100);
+    QHBoxLayout* h_rawVideoArea=new QHBoxLayout;
+
+    v_rawVideo_=new QVBoxLayout;
+    v_rawVideo_->addWidget(button_addRawVideo_);
+
+    h_rawVideoArea->addLayout(v_rawVideo_);
+
+    h_rawVideoArea->addSpacing(20);
+    h_rawVideoArea->addWidget(tabs_graphattrs);
+
+    QVBoxLayout* v_buttongrp=new QVBoxLayout;
+    v_buttongrp->addWidget(button_attributes_);
+    v_buttongrp->addWidget(button_redHistogramm_);
+    v_buttongrp->addWidget(button_greenHistogramm_);
+    v_buttongrp->addWidget(button_blueHistogramm_);
+    v_buttongrp->addWidget(button_psnr_);
+    v_buttongrp->addWidget(button_bitrate_);
+
+    h_rawVideoArea->addSpacing(20);
+    h_rawVideoArea->addLayout(v_buttongrp);
+
+    rawVideoArea->setLayout(h_rawVideoArea);
+
+    h_rawc->addWidget(rawVideoArea,1);
+
+    QSpacerItem* spacer6=new QSpacerItem(0,0,QSizePolicy::Expanding,QSizePolicy::Minimum);
+    h_rawc->addSpacerItem(spacer6);
+
+    v_content->addLayout(h_rawc);
+    v_content->addSpacing(10);
+
+    QWidget* controlArea=new QWidget;
+    controlArea->setFixedHeight(90);
+    controlArea->setObjectName("controlArea");
+    controlArea->setStyleSheet("QWidget#controlArea {"
+                               "background-color:rgb(200,200,200);"
+                               "border-width:1px;"
+                               "border-color:black;"
+                               "border-style:outset;"
+                               "border-radius:5px;"
+                               "}");
+    QHBoxLayout* h_controlArea=new QHBoxLayout;
+
+    QWidget*    saveresults=new QWidget;
+    QHBoxLayout* h_saveresults=new QHBoxLayout;
+
+    QSpacerItem* spacer=new QSpacerItem(0,0,QSizePolicy::Expanding,QSizePolicy::Expanding);
+    h_saveresults->addSpacerItem(spacer);
+    h_saveresults->addWidget(button_saveResults_);
+    QSpacerItem* spacer1=new QSpacerItem(0,0,QSizePolicy::Expanding,QSizePolicy::Expanding);
+    h_saveresults->addSpacerItem(spacer1);
+
+    saveresults->setLayout(h_saveresults);
+    h_controlArea->addWidget(saveresults);
+
+    h_controlArea->addWidget(playerControlPanel_);
+
+    QWidget* videoChooser=new QWidget;
+    QHBoxLayout* h_videoChooser=new QHBoxLayout;
+
+    QSpacerItem* spacer2=new QSpacerItem(0,0,QSizePolicy::Expanding,QSizePolicy::Expanding);
+    QSpacerItem* spacer8=new QSpacerItem(0,0,QSizePolicy::Expanding,QSizePolicy::Expanding);
+
+    h_videoChooser->addSpacerItem(spacer8);
+
+    h_videoChooser->addWidget(combobbox_anaVideo_);
+
+    h_videoChooser->addSpacerItem(spacer2);
+
+    videoChooser->setLayout(h_videoChooser);
+
+    h_controlArea->addWidget(videoChooser);
+
+    controlArea->setLayout(h_controlArea);
+
+    v_content->addWidget(controlArea);
+
+
+    QWidget* analysisBoxes=new QWidget;
+    analysisBoxes->setContentsMargins(0,0,0,-5);
+
+    QHBoxLayout* h_anaboxes=new QHBoxLayout;
+    QSpacerItem* spacer4=new QSpacerItem(0,0,QSizePolicy::Expanding,QSizePolicy::Expanding);
+    h_anaboxes->addSpacerItem(spacer4);
+
+    analysisBoxContainer_=new AnalysisBoxContainer;
+
+    QWidget* scrollbutton=new QWidget;
+    QVBoxLayout* v_scrollbutton=new QVBoxLayout;
+
+    scroll_anaBoxes_=new QScrollArea;
+    scroll_anaBoxes_->setHorizontalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAlwaysOff);
+    scroll_anaBoxes_->setWidget(analysisBoxContainer_);
+    scroll_anaBoxes_->setStyleSheet("QScrollArea {"
+                                    "border-width:1px;"
+                                    "border-color:black;"
+                                    "border-style:outset;"
+                                    "background-color:white;"
+                                    "}");
+    v_scrollbutton->addWidget(scroll_anaBoxes_);
+    scrollbutton->setMaximumWidth(1300);
+    v_scrollbutton->addWidget(button_addencodedvideo);
+
+    scrollbutton->setLayout(v_scrollbutton);
+    h_anaboxes->addWidget(scrollbutton,1);
+
+    QSpacerItem* spacer7=new QSpacerItem(0,0,QSizePolicy::Expanding,QSizePolicy::Expanding);
+    h_anaboxes->addSpacerItem(spacer7);
+
+    analysisBoxes->setLayout(h_anaboxes);
+    v_content->addWidget(analysisBoxes);
+
+    setContentsMargins(0,-10,0,-20);
+    setLayout(v_content);
 }
 
-void GUI::AnalysisTab::analyseTypChanged(int index) {
-	// 0 = RGB_Diff, 1 = Macroblock
-	if(index == 1) {
-		analysisBoxContainer_->showRGBDifferenceVideos();
-	} else if (index == 1) {
-		analysisBoxContainer_->showMacroBlockVideos();
-	}
-}
-std::unique_ptr<Model::YuvVideo> GUI::AnalysisTab::removeYuvVideo() {
-	auto video=std::move(rawVideo_);
-	player_->stop();
-	player_->reset();
-    button_addVideo_->setText("Add Raw Video");
-	return std::move(video);
-}
+void GUI::AnalysisTab::connectActions()
+{
 
-void GUI::AnalysisTab::loadYuvVideo(std::unique_ptr<Model::YuvVideo> video) {
-	player_->setVideo(&video->getVideo());
-	rawVideo_=std::move(video);
-    button_addVideo_->setText("Add Video");
-}
-void GUI::AnalysisTab::setProject(Model::Project *project) {
-	project_ = project;
-}
-
-void GUI::AnalysisTab::addVideo() {
-    if(button_addVideo_->text() == QString("Add Raw Video")) {
-		YuvFileOpenDialog fileOpenDiag(this);
-
-		int result=fileOpenDiag.exec();
-
-		if(!(result==QDialog::Accepted))
-			return;
-
-		auto path=fileOpenDiag.getFilename();
-
-		if(path.isEmpty())
-			return;
-
-		std::unique_ptr<YuvInfoDialog> infoDialog;
-		bool inputValid=true;
-		do {
-			infoDialog=std::make_unique<YuvInfoDialog>(this);
-			inputValid=true;
-
-			result=infoDialog->exec();
-			if(!(result==QDialog::Accepted))
-				return;
-
-			if(infoDialog->getFps()<=0) {
-				inputValid=false;
-				continue;
-			}
-			if(infoDialog->getHeight()<=0) {
-				inputValid=false;
-				continue;
-			}
-			if(infoDialog->getWidth()<=0) {
-				inputValid=false;
-				continue;
-			}
-
-		} while(!inputValid);
-
-		std::unique_ptr<Model::YuvVideo> yuvVideo =std::make_unique<Model::YuvVideo>(path,
-		        infoDialog->getPixelSheme(),
-		        infoDialog->getCompression(),infoDialog->getWidth(),infoDialog->getHeight(),infoDialog->getFps());
-
-		UndoRedo::UndoStack::getUndoStack().push(new UndoRedo::LoadAnalysisVideo(this,std::move(yuvVideo)));
-
-	} else {
-		QString fileName = QFileDialog::getOpenFileName(this, tr("Open Image"), "/",
-		                   tr("Video files (*.mp4 *.avi *flv)"));
-		if(fileName.size() > 0) {
-			analysisBoxContainer_->addVideo(fileName);
-		}
-
-	}
-}
-
-void GUI::AnalysisTab::saveResults() {
-	Utility::ProjectWriter *pWriter = new Utility::ProjectWriter(*project_);
-	pWriter->saveResults();
-}
-
-void GUI::AnalysisTab::setRawVideo(std::unique_ptr<Model::YuvVideo> video) {
-	rawVideo_=std::move(video);
-	player_->setVideo(&rawVideo_->getVideo());
 }
 

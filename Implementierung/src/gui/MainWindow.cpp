@@ -21,19 +21,19 @@ GUI::MainWindow::MainWindow(QWidget* parent):QMainWindow(parent) {
 	createUi();
 	connectActions();
 	loadedProject_ = new Model::Project(QString("new_Project"));
-	analysisTab_->setProject(loadedProject_);
+    //analysisTab_->setProject(loadedProject_);
 }
 
 Memento::MainWindowMemento GUI::MainWindow::getMemento() {
 	Memento::MainWindowMemento memo;
-	memo.setAnalysisTabMemento(analysisTab_->getMemento());
+    //memo.setAnalysisTabMemento(analysisTab_->getMemento());
 	//memo.setFilterTabMemento(filterTab_->getMemento());
 	memo.setSelectedTab(tab_tabs_->currentIndex());
 	return memo;
 }
 
 void GUI::MainWindow::restore(Memento::MainWindowMemento memento) {
-	analysisTab_->restore(memento.getAnalysisTabMemento());
+    //analysisTab_->restore(memento.getAnalysisTabMemento());
 	//filterTab_->restore(memento.getFilterTabMemento());
 	tab_tabs_->setCurrentIndex(memento.getSelectedTab());
 }
@@ -41,8 +41,8 @@ void GUI::MainWindow::restore(Memento::MainWindowMemento memento) {
 void GUI::MainWindow::newProject() {
 	loadedProject_ = new Model::Project(QString("new_Project"));
 	loadedProject_->setPath(QString(""));
-	analysisTab_->setProject(loadedProject_);
-	createUi();
+    //analysisTab_->setProject(loadedProject_);
+    //createUi();
 	UndoRedo::UndoStack::getUndoStack().clear();
 }
 
@@ -69,7 +69,7 @@ void GUI::MainWindow::loadProject() {
 		*loadedProject_ = w.readProject();
 	}
 	//restore(loadedProject_->getMemento());
-	analysisTab_->setProject(loadedProject_);
+    //analysisTab_->setProject(loadedProject_);
 }
 
 void GUI::MainWindow::saveProject() {
