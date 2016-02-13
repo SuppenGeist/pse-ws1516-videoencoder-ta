@@ -58,6 +58,9 @@ void Utility::Yuv420FileSaver::saveP()
     if(video_->isComplete())
         break;
     }while(isRunning_);
+    file_.flush();
+    file_.close();
+
     filterTab_->saveComplete(isRunning_,QFileInfo(file_).fileName());
     isRunning_=false;
 }

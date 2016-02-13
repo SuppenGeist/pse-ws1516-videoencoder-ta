@@ -98,6 +98,9 @@ void Utility::Yuv411FileSaver::saveP()
         isRunning_=false;
         throw std::logic_error("Should not get here");
     }
+    file_.flush();
+    file_.close();
+
     filterTab_->saveComplete(isRunning_,QFileInfo(file_).fileName());
     isRunning_=false;
 }
