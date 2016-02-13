@@ -58,10 +58,15 @@ QRgb Utility::Yuv444FileReader::Yuv444ToRgb888(Yuv444Vector& vector) {
 	int u=vector.getU();
 	int v=vector.getV();
 
-	int r=y + ( ( 1436 * ( v - 128) ) >> 10 );
-	int g=y - ( ( 352 * ( u - 128 ) + 731 * ( v - 128 ) ) >> 10 );
-	int b=y + ( ( 1812 * ( u - 128 ) ) >> 10 );
+    int r=1.164*(y-16)+1.596*(v-128);
+    int g=1.164*(y-16)-0.813*(v-128)-0.391*(u-128);
+    int b=1.164*(y-16)+2.018*(u-128);
 
+    /*
+    int r=y + ( ( 1436 * ( v - 128) ) >> 10 );
+    int g=y - ( ( 352 * ( u - 128 ) + 731 * ( v - 128 ) ) >> 10 );
+    int b=y + ( ( 1812 * ( u - 128 ) ) >> 10 );
+    */
 	return qRgb(clamp(r),clamp(g),clamp(b));
 }
 
