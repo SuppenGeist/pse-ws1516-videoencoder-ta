@@ -1,11 +1,8 @@
-/*
-#include <exception>
-using namespace std;
-
 #ifndef __WriteComment_h__
 #define __WriteComment_h__
 
-#include "QUndoCommand.h"
+#include <QUndoCommand>
+#include <QTextEdit>
 
 namespace UndoRedo
 {
@@ -15,35 +12,31 @@ namespace UndoRedo
 
 namespace UndoRedo
 {
-	class WriteComment: public UndoRedo::QUndoCommand
+    class WriteComment: public QUndoCommand
 	{
+public:
+        /**
+         * @brief WriteComment Constuctor
+         */
+        WriteComment(QTextEdit* textEdit);
 
-		/// <summary>
-		/// Constuctor
-		/// </summary>
-		public: WriteComment();
 
-		/// <summary>
-		/// attempts to merge this command with command if they have the same id, and the id is not -1
-		/// </summary>
-		public: void mergeWith(UndoRedo::QUndoCommand command);
+        /**
+         * @brief undo reverts changes to the textbox
+         */
+        void undo();
 
-		/// <summary>
-		/// reverts changes to the textbox
-		/// </summary>
-		public: void undo();
 
-		/// <summary>
-		/// applies changes to the textbox
-		/// </summary>
-		public: void redo();
+        /**
+         * @brief redo applies changes to the textbox
+         */
+        void redo();
 
-		/// <summary>
-		/// returns id of this command
-		/// </summary>
-		public: void id();
+    private:
+        QTextEdit* textEdit_;
+        bool undoUsed_;
 	};
 }
 
 #endif
-*/
+

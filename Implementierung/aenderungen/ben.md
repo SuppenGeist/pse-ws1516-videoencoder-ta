@@ -56,3 +56,6 @@ füge yuvDaten hinzu
 füge yuvDaten hinzu
 <b>Grund:</b>wurde wohl vergessen
 <hr>
+##WriteComment
+entferne merge und id
+<b>Grund:</b>wird vom UndoStack der Klasse QTextEdit übernommen

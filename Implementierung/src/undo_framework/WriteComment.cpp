@@ -1,25 +1,23 @@
-/*#include <exception>
-
 #include "WriteComment.h"
-#include "QUndoCommand.h"
 
-WriteComment::WriteComment() {
+#include <QUndoCommand>
+
+UndoRedo::WriteComment::WriteComment(QTextEdit* textEdit) {
+    textEdit_ = textEdit;
+    undoUsed_ = false;
 }
 
-void WriteComment::mergeWith(QUndoCommand command) {
-	throw "Not yet implemented";
+void UndoRedo::WriteComment::undo() {
+    textEdit_->blockSignals(true);
+    textEdit_->undo();
+    textEdit_->blockSignals(false);
+    undoUsed_ = true;
 }
 
-void WriteComment::undo() {
-	throw "Not yet implemented";
+void UndoRedo::WriteComment::redo() {
+    if(undoUsed_) {
+    textEdit_->blockSignals(true);
+    textEdit_->redo();
+    textEdit_->blockSignals(false);
+    }
 }
-
-void WriteComment::redo() {
-	throw "Not yet implemented";
-}
-
-void WriteComment::id() {
-	throw "Not yet implemented";
-}
-
-*/
