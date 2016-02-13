@@ -22,191 +22,161 @@ namespace Model {
     * This class contains all analysis info of an encoded video.
     */
 class EncodedVideo {
-  private:
-	QString path;
-  private:
-	int fileSize;
-  private:
-	int numberOfColors;
-  private:
-	QString codec;
-  private:
-	Model::Video* video;
-  private:
-	Model::AVVideo* avVideo;
-  private:
-	Model::Video* displayVideo;
-  private:
-	Model::Video* macroblockVideo;
-  private:
-	Model::Video* rgbDiffVideo;
-  private:
-	Model::Graph* bitrate;
-  private:
-	Model::Graph* psnr;
-  private:
-	Model::Graph* redHisto;
-  private:
-	Model::Graph* greenHisto;
-  private:
-	Model::Graph* blueHisto;
 
-	/// <summary>
-	/// Constructor.
-	/// </summary>
-	/// <param name="path">Path to the video.</param>
-  public:
-	EncodedVideo(QString path);
+public:
+    /**
+     * @brief EncodedVideo Constructor.
+     * @param path
+     */
+    EncodedVideo(QString path);
 
-  private:
-	void calculateHistogramms();
-
-	/// <summary>
-	/// Returns the path to the video.
-	/// </summary>
-	/// <returns>The path to the video.</returns>
-  public:
+    /**
+     * @brief getPath Returns the path to the video.
+     * @return The path to the video.
+     */
 	QString getPath();
 
-	/// <summary>
-	/// Returns the size of the video file.
-	/// </summary>
-	/// <returns>the file size.</returns>
-  public:
+    /**
+     * @brief getFileSize Returns the size of the video file.
+     * @return The file size.
+     */
 	int getFileSize();
 
-	/// <summary>
-	/// Returns the number of colors that appear in the whole video.
-	/// </summary>
-	/// <returns>The number of colors in the video.</returns>
-  public:
+    /**
+     * @brief getNumberOfColors Returns the number of colors that appear in the whole video.
+     * @return The number of colors in the video.
+     */
 	int getNumberOfColors();
 
-	/// <summary>
-	/// Returns the codec used in the video file.
-	/// </summary>
-	/// <returns>The used codec.</returns>
-  public:
+    /**
+     * @brief getCodec Returns the codec used in the video file.
+     * @return The used codec.
+     */
 	QString getCodec();
 
-	/// <summary>
-	/// Returns the bitrate graph.
-	/// </summary>
-	/// <returns>The bitrate graph.</returns>
-  public:
+    /**
+     * @brief getBitrate Returns the bitrate graph.
+     * @return The bitrate graph.
+     */
 	Model::Graph& getBitrate();
 
-	/// <summary>
-	/// Returns the psnr graph.
-	/// </summary>
-	/// <returns>The psnr graph.</returns>
-  public:
+    /**
+     * @brief getPsnr Returns the psnr graph.
+     * @param reference
+     * @return The psnr graph.
+     */
 	Model::Graph& getPsnr(Model::Video* reference = 0);
 
-	/// <summary>
-	/// Returns the red histogramm graph.
-	/// </summary>
-	/// <returns>The red histogramm.</returns>
-  public:
+    /**
+     * @brief getRedHistogramm Returns the red histogramm graph.
+     * @return The red histogramm.
+     */
 	Model::Graph& getRedHistogramm();
 
-	/// <summary>
-	/// Returns the blue histogramm graph.
-	/// </summary>
-	/// <returns>The blue histogramm.</returns>
-  public:
+    /**
+     * @brief getBlueHistogramm Returns the blue histogramm graph.
+     * @return The blue histogramm.
+     */
 	Model::Graph& getBlueHistogramm();
 
-	/// <summary>
-	/// Returns the green histogramm graph.
-	/// </summary>
-	/// <returns>The green histogramm.</returns>
-  public:
+    /**
+     * @brief getGreenHistogramm Returns the green histogramm graph.
+     * @return The green histogramm.
+     */
 	Model::Graph& getGreenHistogramm();
 
-	/// <summary>
-	/// Returns the AVVideo.
-	/// </summary>
-	/// <returns>The AVVideo.</returns>
-  public:
+    /**
+     * @brief getAvVideo Returns the AVVideo.
+     * @return The AVVideo.
+     */
 	Model::AVVideo& getAvVideo();
 
-	/// <summary>
-	/// Returns the video which shows the macroblocks.
-	/// </summary>
-	/// <returns>The macroblock video.</returns>
-  public:
+    /**
+     * @brief getMacroBlockVideo Returns the video which shows the macroblocks.
+     * @return The macroblock video.
+     */
 	Model::Video& getMacroBlockVideo();
 
-	/// <summary>
-	/// Returns the video which shows the rgb difference to another video.
-	/// </summary>
-	/// <param name="reference">The video to compare to.</param>
-	/// <returns>The rgb diff video.</returns>
-  public:
+    /**
+     * @brief getRgbDiffVideo Returns the video which shows the rgb difference to another video.
+     * @param reference The video to compare to.
+     * @return The rgb diff video.
+     */
 	Model::Video& getRgbDiffVideo(Model::Video* reference = 0);
 
-	/// <summary>
-	/// Returns the Video.
-	/// </summary>
-	/// <returns>The Video.</returns>
-  public:
+    /**
+     * @brief getVideo Returns the Video.
+     * @return The Video.
+     */
 	Model::Video& getVideo();
 
-	/// <summary>
-	/// Loads the video from the file.
-	/// </summary>
-  private:
-	void loadVideo();
-
-	/// <summary>
-	/// Sets the bitrate graph.
-	/// </summary>
-	/// <param name="graph">The bitrate graph.</param>
-  public:
+    /**
+     * @brief setBitrate Sets the bitrate graph.
+     * @param graph The bitrate graph.
+     */
 	void setBitrate(Model::Graph graph);
 
-	/// <summary>
-	/// Sets the psnr graph.
-	/// </summary>
-	/// <param name="graph">The psnr graph.</param>
-  public:
+    /**
+     * @brief setPsnr Sets the psnr graph.
+     * @param graph The psnr graph.
+     */
 	void setPsnr(Model::Graph graph);
 
-	/// <summary>
-	/// Sets the red histogramm graph.
-	/// </summary>
-	/// <param name="graph">The red histogramm.</param>
-  public:
+    /**
+     * @brief setRedHistogramm Sets the red histogramm graph.
+     * @param graph The red histogramm.
+     */
 	void setRedHistogramm(Model::Graph graph);
 
-	/// <summary>
-	/// Sets the green histogramm graph.
-	/// </summary>
-	/// <param name="graph">The green histogramm.</param>
-  public:
+    /**
+     * @brief setGreenHistogramm Sets the green histogramm graph.
+     * @param graph The green histogramm.
+     */
 	void setGreenHistogramm(Model::Graph graph);
 
-	/// <summary>
-	/// Sets the blue histogramm graph.
-	/// </summary>
-	/// <param name="graph">The blue histogramm.</param>
-  public:
+    /**
+     * @brief setBlueHistogramm Sets the blue histogramm graph.
+     * @param graph The blue histogramm.
+     */
 	void setBlueHistogramm(Model::Graph graph);
 
-	/// <summary>
-	/// Sets the video that shows the macroblocks.
-	/// </summary>
-	/// <param name="video">The macroblcok video.</param>
-  public:
+    /**
+     * @brief setMacroblockVideo Sets the video that shows the macroblocks.
+     * @param video The macroblcok video.
+     */
 	void setMacroblockVideo(Model::Video video);
 
-	/// <summary>
-	/// Sets the video that shows a rgb differenece to another video.
-	/// </summary>
-	/// <param name="video">The rgb diff video.</param>
-  public:
-	void setRgbDiffVideo(Model::Video video);
+    /**
+     * @brief setRgbDiffVideo Sets the video that shows a rgb differenece to another video.
+     * @param video The rgb diff video.
+     */
+    void setRgbDiffVideo(Model::Video video);
+
+private:
+    /**
+     * @brief calculateHistogramms Calculates the Histogramms.
+     */
+    void calculateHistogramms();
+
+    /**
+     * @brief loadVideo Loads the video from the file.
+     */
+    void loadVideo();
+private:
+    QString path;
+    int fileSize;
+    int numberOfColors;
+    QString codec;
+    Model::Video* video;
+    Model::AVVideo* avVideo;
+    Model::Video* displayVideo;
+    Model::Video* macroblockVideo;
+    Model::Video* rgbDiffVideo;
+    Model::Graph* bitrate;
+    Model::Graph* psnr;
+    Model::Graph* redHisto;
+    Model::Graph* greenHisto;
+    Model::Graph* blueHisto;
 };
 }
 
