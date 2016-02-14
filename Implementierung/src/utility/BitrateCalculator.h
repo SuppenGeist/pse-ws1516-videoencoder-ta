@@ -1,6 +1,8 @@
 #ifndef __BitrateCalculator_h__
 #define __BitrateCalculator_h__
 
+#include <thread>
+
 namespace Model {
 class AVVideo;
 class Graph;
@@ -18,15 +20,22 @@ class BitrateCalculator {
 	 */
 	BitrateCalculator(Model::AVVideo& video);
 
+    ~BitrateCalculator();
+
 	/**
 	 * @brief calculate Calculates the bitrate graph.
 	 * Calculates kb per frame.
 	 * @return The calculated bitrate graph.
 	 */
-	Model::Graph calculate();
+     void calculate(Model::Graph* target);
 
   private:
 	Model::AVVideo* video_;
+    std::thread     calculator_;
+    bool            isRunning_;
+    Model::Graph* target_;
+
+    void calculateP();
 };
 }
 

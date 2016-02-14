@@ -120,6 +120,7 @@ private:
     std::unique_ptr<Graph>      blueHisto_;
 
     std::unique_ptr<Utility::VideoLoader> loader_;
+    std::unique_ptr<Utility::BitrateCalculator> bitrateCalculator_;
     std::thread                 converter_;
     bool                        isConverterRunning_;
 

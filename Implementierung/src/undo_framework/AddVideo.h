@@ -6,6 +6,7 @@
 
 namespace GUI {
 class AnalysisBoxContainer;
+class AnalysisBox;
 }
 
 namespace UndoRedo {
@@ -35,6 +36,7 @@ class AddVideo: public QUndoCommand {
   private:
     GUI::AnalysisBoxContainer*      anaBoxContainer_;
     QString                         filename_;
+    GUI::AnalysisBox*               box_;
 };
 }
 

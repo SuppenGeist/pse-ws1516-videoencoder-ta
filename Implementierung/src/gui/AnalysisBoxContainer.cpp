@@ -19,7 +19,7 @@
 #include "../undo_framework/UndoStack.h"
 #include "../undo_framework/AddVideo.h"
 
-GUI::AnalysisBoxContainer::AnalysisBoxContainer(QWidget* parent) : QFrame(parent) {
+GUI::AnalysisBoxContainer::AnalysisBoxContainer(QWidget* parent) : QFrame(parent),currentGraph_(AnalysisGraph::BITRATE) {
     createUi();
     setContentsMargins(-10,-10,-10,-10);
 
@@ -34,7 +34,7 @@ void GUI::AnalysisBoxContainer::setParentTab(GUI::AnalysisTab *parent)
     parent_=parent;
 }
 
-void GUI::AnalysisBoxContainer::appendVideo(QString path)
+GUI::AnalysisBox *GUI::AnalysisBoxContainer::appendVideo(QString path)
 {
     AnalysisBox* newBox=new AnalysisBox;
     v_boxes_->removeItem(spacer_);
@@ -42,23 +42,34 @@ void GUI::AnalysisBoxContainer::appendVideo(QString path)
     newBox->setFile(path);
     newBox->setTimer(timer_);
     newBox->setControlPanel(controlPanel_);
+    newBox->setParentContainer(this);
+    newBox->showGraph(currentGraph_);
     boxes_.push_back(newBox);
 
     QString objname=QString("x%1").arg((quintptr)newBox,QT_POINTER_SIZE * 2, 16, QChar('0'));
     newBox->setObjectName(objname);
 
-    if(boxes_.size()%2==0) {
-        newBox->setStyleSheet("QFrame#"+objname+" {background-color:rgb(230,230,230);border-bottom-style:outset;border-bottom-color: black;border-bottom-width:1px;}");
-    }else {
-        newBox->setStyleSheet("QFrame#"+objname+" {background-color:rgb(250,250,250);border-bottom-style:outset;border-bottom-color: black;border-bottom-width:1px;}");
-    }
     v_boxes_->addSpacerItem(spacer_);
-    resize(width(),boxes_.size()*newBox->height()+65);
+
+    updateUi();
+
+    return newBox;
 }
 
-void GUI::AnalysisBoxContainer::removeLastVideo()
+void GUI::AnalysisBoxContainer::removeVideo(AnalysisBox* box)
 {
+    for(std::size_t i=0;i<boxes_.size();i++) {
+        if(boxes_[i]==box) {
+            auto b=boxes_[i];
+            boxes_.erase(boxes_.begin()+i);
+            v_boxes_->removeWidget(b);
+            b->hide();
+            delete b;
+            break;
+        }
+    }
 
+    updateUi();
 }
 
 void GUI::AnalysisBoxContainer::clear()
@@ -76,6 +87,13 @@ void GUI::AnalysisBoxContainer::setControlPanel(GUI::GlobalControlPanel *control
     controlPanel_=controlpanel;
 }
 
+void GUI::AnalysisBoxContainer::showGraph(GUI::AnalysisGraph graph)
+{
+    for(auto box:boxes_) {
+        box->showGraph(graph);
+    }
+    currentGraph_=graph;
+}
 void GUI::AnalysisBoxContainer::addVideo()
 {
     if(!parent_)
@@ -143,6 +161,22 @@ void GUI::AnalysisBoxContainer::createUi()
     v_content->addSpacing(15);
 
     setLayout(v_content);
+}
+
+void GUI::AnalysisBoxContainer::updateUi()
+{
+    for(std::size_t i=0;i<boxes_.size();i++) {
+        if(i%2==0) {
+            boxes_[i]->setStyleSheet("QFrame#"+boxes_[i]->objectName()+" {background-color:rgb(240,240,240);border-bottom-style:outset;border-bottom-color: black;border-bottom-width:1px;}");
+        }else{
+            boxes_[i]->setStyleSheet("QFrame#"+boxes_[i]->objectName()+" {background-color:rgb(250,250,250);border-bottom-style:outset;border-bottom-color: black;border-bottom-width:1px;}");
+        }
+    }
+    if(boxes_.size()>0) {
+            resize(width(),boxes_.size()*boxes_[0]->height()+65);
+    }else {
+        resize(width(),+65);
+    }
 }
 
 

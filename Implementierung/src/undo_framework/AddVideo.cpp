@@ -10,9 +10,9 @@ UndoRedo::AddVideo::AddVideo(GUI::AnalysisBoxContainer* anaBoxContainer,QString 
 }
 
 void UndoRedo::AddVideo::undo() {
-    anaBoxContainer_->removeLastVideo();
+    anaBoxContainer_->removeVideo(box_);
 }
 
 void UndoRedo::AddVideo::redo() {
-    anaBoxContainer_->appendVideo(filename_);
+    box_=anaBoxContainer_->appendVideo(filename_);
 }

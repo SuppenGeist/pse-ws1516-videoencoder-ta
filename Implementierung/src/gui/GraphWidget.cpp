@@ -9,6 +9,7 @@
 #include <QMouseEvent>
 #include <QResizeEvent>
 #include <QColor>
+#include <QDebug>
 #include <QPolygon>
 #include <QtCore/qmath.h>
 #include <QGraphicsTextItem>
@@ -160,6 +161,10 @@ void GUI::GraphWidget::mouseReleaseEvent(QMouseEvent* event) {
 		return;
 	}
 
+    if(!graph_) {
+        return;
+    }
+
 	int x=event->pos().x();
 	int y=event->pos().y();
 
@@ -214,11 +219,11 @@ void GUI::GraphWidget::mouseReleaseEvent(QMouseEvent* event) {
 	controlPanel_->setPosition(frame);
 }
 
-void GUI::GraphWidget::resizeEvent(QResizeEvent* event) {
-	Q_UNUSED(event);
+void GUI::GraphWidget::paintEvent(QPaintEvent *event)
+{
+    buildScene();
 
-	buildScene();
-	update();
+    QGraphicsView::paintEvent(event);
 }
 
 void GUI::GraphWidget::buildScene() {

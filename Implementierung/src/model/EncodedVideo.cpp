@@ -2,6 +2,8 @@
 
 #include "AVVideo.h"
 
+#include "../utility/BitrateCalculator.h"
+
 Model::EncodedVideo::EncodedVideo(QString path):path_(path),isConverterRunning_(false) {
 
 }
@@ -27,7 +29,16 @@ QString Model::EncodedVideo::getCodec() {
 }
 
 Model::Graph& Model::EncodedVideo::getBitrate() {
-    throw "";
+    if(!avVideo_.get()) {
+        loadVideo();
+    }
+    if(!bitrate_.get()) {
+        bitrateCalculator_=std::make_unique<Utility::BitrateCalculator>(*avVideo_);
+        bitrate_=std::make_unique<Model::Graph>();
+        bitrateCalculator_->calculate(bitrate_.get());
+    }
+
+    return *bitrate_;
 }
 
 Model::Graph& Model::EncodedVideo::getPsnr(Video *reference) {
@@ -118,7 +129,7 @@ void Model::EncodedVideo::convertVideo()
         for(;i<avVideo_->getNumberOfFrames();i++) {
             video_->appendFrame(Utility::VideoConverter::convertAVFrameToQImage(*avVideo_->getFrame(i)));
         }
-    }while(!avVideo_->isComplete());
+    }while(!avVideo_->isComplete()&&isConverterRunning_);
 
     isConverterRunning_=false;
     video_->setFps(avVideo_->getFps());

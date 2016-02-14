@@ -25,6 +25,10 @@
 #include "../memento/AnalysisTabMemento.h"
 
 namespace GUI {
+enum class AnalysisGraph {
+    BITRATE
+};
+
 /**
  * The tab that shows videos and analyses them.
 */
@@ -51,6 +55,7 @@ protected:
 
 private slots:
     void loadRawVideo();
+    void showBitrate();
 
   private:
     QPushButton*            button_saveResults_;

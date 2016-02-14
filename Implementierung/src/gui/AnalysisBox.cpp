@@ -13,14 +13,19 @@
 #include <QTabWidget>
 #include <QPushButton>
 #include <QSpacerItem>
+#include <QTimer>
 
 #include "FrameView.h"
 #include "GraphWidget.h"
 #include "VideoPlayer.h"
 #include "Timer.h"
+#include "AnalysisTab.h"
 #include "GlobalControlPanel.h"
 
 #include "../model/EncodedVideo.h"
+
+#include "../undo_framework/UndoStack.h"
+#include "../undo_framework/RemoveVideo.h"
 
 GUI::AnalysisBox::AnalysisBox(QWidget* parent) : QFrame(parent) {
     createUi();
@@ -28,12 +33,27 @@ GUI::AnalysisBox::AnalysisBox(QWidget* parent) : QFrame(parent) {
     setFixedHeight(250);
 
     connect(button_close_,SIGNAL(clicked(bool)),this,SLOT(closeBox()));
+    connect(&graphUpdater_,SIGNAL(timeout()),this,SLOT(updateGraphWidget()));
+    graphUpdater_.start(500);
 
     origVidPlayer_=std::make_unique<VideoPlayer>();
     anaVidPlayer_=std::make_unique<VideoPlayer>();
 
     origVidPlayer_->addView(*origView_);
     anaVidPlayer_->addView(*anaView_);
+}
+
+GUI::AnalysisBox::~AnalysisBox()
+{
+    globalControlPanel_->removeVideoPlayer(*origVidPlayer_);
+    globalControlPanel_->removeVideoPlayer(*anaVidPlayer_);
+    origVidPlayer_->clearTimer();
+    anaVidPlayer_->clearTimer();
+}
+
+void GUI::AnalysisBox::setParentContainer(GUI::AnalysisBoxContainer *container)
+{
+    parentContainer_=container;
 }
 
 void GUI::AnalysisBox::setFile(QString filename)
@@ -60,13 +80,31 @@ void GUI::AnalysisBox::setControlPanel(GUI::GlobalControlPanel *controlPanel)
 {
     controlPanel->addVideoPlayer(origVidPlayer_.get());
     controlPanel->addVideoPlayer(anaVidPlayer_.get());
+    graphWidget_->setControlPanel(*controlPanel);
 
     globalControlPanel_=controlPanel;
 }
 
+void GUI::AnalysisBox::showGraph(GUI::AnalysisGraph graph)
+{
+    switch(graph) {
+    case AnalysisGraph::BITRATE:
+        graphWidget_->drawGraph(origVideo_->getBitrate());
+        graphWidget_->setAxisLabels("frame","kb");
+        break;
+    }
+}
+
+QString GUI::AnalysisBox::getFilename()
+{
+    return filename_;
+}
+
 void GUI::AnalysisBox::closeBox()
 {
-    qDebug()<<origVideo_->getVideo().getNumberOfFrames();
+    auto command=new UndoRedo::RemoveVideo(parentContainer_,this);
+
+    UndoRedo::UndoStack::getUndoStack().push(command);
 }
 
 void GUI::AnalysisBox::createUi()
@@ -129,4 +167,9 @@ void GUI::AnalysisBox::createUi()
     v_control->addLayout(h_content);
 
     setLayout(v_control);
+}
+
+void GUI::AnalysisBox::updateGraphWidget()
+{
+    graphWidget_->repaint();
 }

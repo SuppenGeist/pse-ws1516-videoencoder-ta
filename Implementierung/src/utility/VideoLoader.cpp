@@ -113,12 +113,12 @@ void Utility::VideoLoader::loadP()
         if(gotPicture != 0) {
             rgbframe=av_frame_alloc();
 
-            //rgbframe->format=AV_PIX_FMT_RGB24;
             buffer=(uint8_t *)av_malloc(numbytes*sizeof(uint8_t));
             avpicture_fill((AVPicture *)rgbframe, buffer, AV_PIX_FMT_RGB24,codecContext->width, codecContext->height);
             rgbframe->width=codecContext->width;
             rgbframe->height=codecContext->height;
             rgbframe->format=AV_PIX_FMT_RGB24;
+            rgbframe->pkt_size=frame->pkt_size;
 
             sws_scale
                     (

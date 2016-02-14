@@ -155,6 +155,11 @@ void GUI::AnalysisTab::loadRawVideo()
     UndoRedo::UndoStack::getUndoStack().push(new UndoRedo::LoadAnalysisVideo(this,std::move(yuvVideo)));
 }
 
+void GUI::AnalysisTab::showBitrate()
+{
+    analysisBoxContainer_->showGraph(AnalysisGraph::BITRATE);
+}
+
 void GUI::AnalysisTab::createUi()
 {
     button_saveResults_=new QPushButton("Save results");
@@ -393,5 +398,6 @@ void GUI::AnalysisTab::createUi()
 void GUI::AnalysisTab::connectActions()
 {
     connect(button_addRawVideo_,SIGNAL(clicked(bool)),this,SLOT(loadRawVideo()));
+    connect(button_bitrate_,SIGNAL(clicked(bool)),this,SLOT(showBitrate()));
 }
 
