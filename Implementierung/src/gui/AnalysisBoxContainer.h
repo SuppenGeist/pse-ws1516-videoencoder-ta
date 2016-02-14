@@ -14,10 +14,10 @@
 #include "AnalysisBox.h"
 
 namespace GUI {
-    class AnalysisTab;
-    class Timer;
-    class GlobalControlPanel;
-    enum class AnalysisGraph;
+class AnalysisTab;
+class Timer;
+class GlobalControlPanel;
+enum class AnalysisGraph;
 }
 
 namespace GUI {
@@ -25,48 +25,48 @@ namespace GUI {
  * Contains and manages the AnalysisBoxes.
 */
 class AnalysisBoxContainer: public QFrame {
-    Q_OBJECT
+	Q_OBJECT
   public:
 
 	/**
 	* @brief AnalysisBoxContainer Constructor
 	* @param parent parent of this object
 	*/
-    AnalysisBoxContainer(QWidget* parent=0);
+	AnalysisBoxContainer(QWidget* parent=0);
 
-    void setParentTab(AnalysisTab* parent);
+	void setParentTab(AnalysisTab* parent);
 
-    AnalysisBox* appendVideo(QString path);
+	AnalysisBox* appendVideo(QString path);
 
-    void removeVideo(AnalysisBox* box);
+	void removeVideo(AnalysisBox* box);
 
-    void clear();
+	void clear();
 
-    void setTimer(std::shared_ptr<Timer> timer);
+	void setTimer(std::shared_ptr<Timer> timer);
 
-    void setControlPanel(GlobalControlPanel* controlpanel);
+	void setControlPanel(GlobalControlPanel* controlpanel);
 
-    void showGraph(AnalysisGraph graph);
+	void showGraph(AnalysisGraph graph);
 
-private slots:
-    void addVideo();
+  private slots:
+	void addVideo();
 
   private:
-    QVBoxLayout*                v_boxes_;
-    QSpacerItem*                spacer_;
-    QPushButton*                button_addVideo_;
+	QVBoxLayout*                v_boxes_;
+	QSpacerItem*                spacer_;
+	QPushButton*                button_addVideo_;
 
-    AnalysisTab*                parent_;
-    std::shared_ptr<Timer>      timer_;
-    GlobalControlPanel*         controlPanel_;
+	AnalysisTab*                parent_;
+	std::shared_ptr<Timer>      timer_;
+	GlobalControlPanel*         controlPanel_;
 
-    std::vector<AnalysisBox*>   boxes_;
+	std::vector<AnalysisBox*>   boxes_;
 
-    AnalysisGraph               currentGraph_;
+	AnalysisGraph               currentGraph_;
 
-    void createUi();
+	void createUi();
 
-    void updateUi();
+	void updateUi();
 };
 }
 

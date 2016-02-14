@@ -20,22 +20,22 @@ class BitrateCalculator {
 	 */
 	BitrateCalculator(Model::AVVideo& video);
 
-    ~BitrateCalculator();
+	~BitrateCalculator();
 
 	/**
 	 * @brief calculate Calculates the bitrate graph.
 	 * Calculates kb per frame.
 	 * @return The calculated bitrate graph.
 	 */
-     void calculate(Model::Graph* target);
+	void calculate(Model::Graph* target);
 
   private:
 	Model::AVVideo* video_;
-    std::thread     calculator_;
-    bool            isRunning_;
-    Model::Graph* target_;
+	std::thread     calculator_;
+	bool            isRunning_;
+	Model::Graph* target_;
 
-    void calculateP();
+	void calculateP();
 };
 }
 

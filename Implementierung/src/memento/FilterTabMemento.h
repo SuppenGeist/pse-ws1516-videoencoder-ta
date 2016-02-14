@@ -26,7 +26,7 @@ class FilterTabMemento {
 
 	Model::YuvVideo* getRawVideo();
 
-    void setFilterList(std::unique_ptr<Model::FilterList> filterlist);
+	void setFilterList(std::unique_ptr<Model::FilterList> filterlist);
 
 	std::unique_ptr<Model::FilterList> getFilterList();
 
@@ -34,30 +34,30 @@ class FilterTabMemento {
 
 	bool isPreviewShow();
 
-    void setIsFilteredVideoShown(bool isShown);
+	void setIsFilteredVideoShown(bool isShown);
 
-    bool isFilteredVideoShown();
+	bool isFilteredVideoShown();
 
-    void setFilteredVideo(Model::Video* filteredVideo);
+	void setFilteredVideo(Model::Video* filteredVideo);
 
-    Model::Video* getFilteredVideo();
+	Model::Video* getFilteredVideo();
 
-    void setCurrentFrame(int currentFrame);
+	void setCurrentFrame(int currentFrame);
 
-    int getCurrentFrame();
+	int getCurrentFrame();
 
-    void setCurrentlySelectedFilter(int filter);
+	void setCurrentlySelectedFilter(int filter);
 
-    int getCurrentlySelectedFilter();
+	int getCurrentlySelectedFilter();
 
   private:
 	Model::YuvVideo*                    rawVideo_;
 	std::unique_ptr<Model::FilterList>  filterlist_;
 	bool                                isPreviewShow_;
-    bool                                isFilteredVideoShown_;
-    Model::Video*                       filteredVideo_;
-    int                                 currentFrame_;
-    int                                 currentlySelectedFilter_;
+	bool                                isFilteredVideoShown_;
+	Model::Video*                       filteredVideo_;
+	int                                 currentFrame_;
+	int                                 currentlySelectedFilter_;
 
 };
 }

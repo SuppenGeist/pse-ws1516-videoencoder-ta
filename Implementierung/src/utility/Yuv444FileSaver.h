@@ -25,43 +25,44 @@ namespace Utility {
 
 class Yuv444FileSaver: public Utility::YuvFileSaver {
   public:
-    /**
-     * @brief Yuv444FileSaver Constructor.
-     * @param filename Absolute path to the file to save to.
-     * @param video The video to save.
-     * @param compression The compression mode.
-     */
-    Yuv444FileSaver(QString filename, Model::Video& video, Utility::Compression compression,GUI::FilterTab* filterTab);
+	/**
+	 * @brief Yuv444FileSaver Constructor.
+	 * @param filename Absolute path to the file to save to.
+	 * @param video The video to save.
+	 * @param compression The compression mode.
+	 */
+	Yuv444FileSaver(QString filename, Model::Video& video, Utility::Compression compression,
+	                GUI::FilterTab* filterTab);
 
-    ~Yuv444FileSaver();
+	~Yuv444FileSaver();
 
-    /**
-     * @brief Rgb888ToYuv444 Converts a Rgb888 pixel to a Yuv444Vector.
-     * @param pixel1 The pixel to convert.
-     * @return The Yuv444Vector.
-     */
-    static Utility::Yuv444Vector Rgb888ToYuv444(QRgb pixel1);
+	/**
+	 * @brief Rgb888ToYuv444 Converts a Rgb888 pixel to a Yuv444Vector.
+	 * @param pixel1 The pixel to convert.
+	 * @return The Yuv444Vector.
+	 */
+	static Utility::Yuv444Vector Rgb888ToYuv444(QRgb pixel1);
 
 	void save();
 
 
   private:
-    Compression compression_;
-    std::thread safer_;
-    GUI::FilterTab* filterTab_;
-    bool    isRunning_;
+	Compression compression_;
+	std::thread safer_;
+	GUI::FilterTab* filterTab_;
+	bool    isRunning_;
 
-    /**
-     * @brief savePacked Saves the video in packed format.
-     */
-    void savePacked();
+	/**
+	 * @brief savePacked Saves the video in packed format.
+	 */
+	void savePacked();
 
-    /**
-     * @brief savePlanar Saves the video in planar format.
-     */
-    void savePlanar();
+	/**
+	 * @brief savePlanar Saves the video in planar format.
+	 */
+	void savePlanar();
 
-    void saveP();
+	void saveP();
 };
 }
 

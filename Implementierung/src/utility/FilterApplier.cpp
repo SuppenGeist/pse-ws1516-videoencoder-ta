@@ -25,7 +25,8 @@ extern "C" {
 #include "VideoConverter.h"
 
 Utility::FilterApplier::FilterApplier(Model::FilterList& list, int width, int height,
-                                      int pixelFormat):width_(width),height_(height),pixelFormat_(pixelFormat),list_(&list),isRunning_(false) {
+                                      int pixelFormat):width_(width),height_(height),pixelFormat_(pixelFormat),list_(&list),
+	isRunning_(false) {
 	createFilterString();
 	initFilters();
 }
@@ -34,32 +35,31 @@ Utility::FilterApplier::~FilterApplier() {
 	if(filterGraph_) {
 		avfilter_graph_free(&filterGraph_);
 	}
-    isRunning_=false;
-    if(applier_.joinable()) {
-        applier_.join();
-    }
+	isRunning_=false;
+	if(applier_.joinable()) {
+		applier_.join();
+	}
 }
 
-void Utility::FilterApplier::applyToVideo(Model::Video &target, Model::Video &source,GUI::FilterTab* filtertab)
-{
-    if(isRunning_)
-        return;
+void Utility::FilterApplier::applyToVideo(Model::Video &target, Model::Video &source,
+        GUI::FilterTab* filtertab) {
+	if(isRunning_)
+		return;
 
-    filterTab_=filtertab;
-    target_=&target;
-    source_=&source;
+	filterTab_=filtertab;
+	target_=&target;
+	source_=&source;
 
-    applier_=std::thread(&FilterApplier::applyToVideoP,this);
+	applier_=std::thread(&FilterApplier::applyToVideoP,this);
 }
 
-void Utility::FilterApplier::applyToVideo(Model::Video &target, Model::AVVideo &source)
-{
-    if(isRunning_)
-        return;
-    target_=&target;
-    source1_=&source;
+void Utility::FilterApplier::applyToVideo(Model::Video &target, Model::AVVideo &source) {
+	if(isRunning_)
+		return;
+	target_=&target;
+	source1_=&source;
 
-    applier_=std::thread(&FilterApplier::applyToAVVideoP,this);
+	applier_=std::thread(&FilterApplier::applyToAVVideoP,this);
 }
 
 AVFrame* Utility::FilterApplier::applyToFrame(AVFrame &source) {
@@ -148,42 +148,40 @@ void Utility::FilterApplier::createFilterString() {
 		if(i!=list_->getSize()-1) {
 			filterDescription_+=",";
 		}
-    }
+	}
 }
 
-void Utility::FilterApplier::applyToVideoP()
-{
-    isRunning_=true;
-    std::size_t i=0;
-    do {
-    for(;i<source_->getNumberOfFrames()&&isRunning_;i++) {
-        auto image=VideoConverter::convertQImageToAVFrame(*source_->getFrame(i));
-        auto filteredImage=applyToFrame(*image);
-        target_->appendFrame(VideoConverter::convertAVFrameToQImage(*filteredImage));
+void Utility::FilterApplier::applyToVideoP() {
+	isRunning_=true;
+	std::size_t i=0;
+	do {
+		for(; i<source_->getNumberOfFrames()&&isRunning_; i++) {
+			auto image=VideoConverter::convertQImageToAVFrame(*source_->getFrame(i));
+			auto filteredImage=applyToFrame(*image);
+			target_->appendFrame(VideoConverter::convertAVFrameToQImage(*filteredImage));
 
-        av_frame_free(&image);
-        av_frame_free(&filteredImage);
-    }
-    if(source_->isComplete()) {
-        break;
-    }
-    }while(isRunning_);
-    target_->setIsComplete(true);
-    if(filterTab_) {
-        filterTab_->applyComplete(isRunning_);
-    }
-    isRunning_=false;
+			av_frame_free(&image);
+			av_frame_free(&filteredImage);
+		}
+		if(source_->isComplete()) {
+			break;
+		}
+	} while(isRunning_);
+	target_->setIsComplete(true);
+	if(filterTab_) {
+		filterTab_->applyComplete(isRunning_);
+	}
+	isRunning_=false;
 }
 
-void Utility::FilterApplier::applyToAVVideoP()
-{
-    isRunning_=true;
-    for(std::size_t i=0;i<source1_->getNumberOfFrames()&&isRunning_;i++) {
-        auto filteredImage=applyToFrame(*source1_->getFrame(i));
-        target_->appendFrame(VideoConverter::convertAVFrameToQImage(*filteredImage));
+void Utility::FilterApplier::applyToAVVideoP() {
+	isRunning_=true;
+	for(std::size_t i=0; i<source1_->getNumberOfFrames()&&isRunning_; i++) {
+		auto filteredImage=applyToFrame(*source1_->getFrame(i));
+		target_->appendFrame(VideoConverter::convertAVFrameToQImage(*filteredImage));
 
-        av_frame_free(&filteredImage);
-    }
-    isRunning_=false;
+		av_frame_free(&filteredImage);
+	}
+	isRunning_=false;
 }
 

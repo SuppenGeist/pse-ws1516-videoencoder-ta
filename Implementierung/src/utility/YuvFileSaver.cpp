@@ -14,15 +14,15 @@ Utility::YuvFileSaver::~YuvFileSaver() {
 }
 
 int Utility::YuvFileSaver::RgbToY(QRgb pixel) {
-    return (0.257*qRed(pixel)) + (0.504*qGreen(pixel)) + (0.098*qBlue(pixel))+16;
+	return (0.257*qRed(pixel)) + (0.504*qGreen(pixel)) + (0.098*qBlue(pixel))+16;
 }
 
 int Utility::YuvFileSaver::RgbToU(QRgb pixel) {
-    return ((-0.148)*qRed(pixel)) - (0.291*qGreen(pixel)) + (0.439*qBlue(pixel)) + 128;
+	return ((-0.148)*qRed(pixel)) - (0.291*qGreen(pixel)) + (0.439*qBlue(pixel)) + 128;
 }
 
 int Utility::YuvFileSaver::RgbToV(QRgb pixel) {
-    return (0.439*qRed(pixel)) - (0.368*qGreen(pixel)) - (0.071*qBlue(pixel)) + 128;
+	return (0.439*qRed(pixel)) - (0.368*qGreen(pixel)) - (0.071*qBlue(pixel)) + 128;
 }
 
 /*

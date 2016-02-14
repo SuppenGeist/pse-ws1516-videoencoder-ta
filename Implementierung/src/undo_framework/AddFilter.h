@@ -42,7 +42,7 @@ class AddFilter: public QUndoCommand {
 
 	GUI::FilterTab* filterTab_;
 	QString         filtername_;
-    std::unique_ptr<Memento::FilterTabMemento>  memento_;
+	std::unique_ptr<Memento::FilterTabMemento>  memento_;
 };
 }
 

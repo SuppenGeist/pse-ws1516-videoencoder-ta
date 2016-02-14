@@ -26,9 +26,9 @@ class ForwardPlayer: public Player {
 	 * @brief setForwardControlPanel Sets the global control panel that the player forwards its input to.
 	 * @param panel The panel to forward to.
 	 */
-    void setForwardControlPanel(GlobalControlPanel *panel) noexcept;
+	void setForwardControlPanel(GlobalControlPanel *panel) noexcept;
 
-    void setMasterVideoPlayer(Player* player);
+	void setMasterVideoPlayer(Player* player);
 
 	/**
 	 * If no GlobalControlPanel is set nothing happens.
@@ -115,7 +115,7 @@ class ForwardPlayer: public Player {
 
   private:
 	GlobalControlPanel* forwardPanel_;
-    Player*             player_;
+	Player*             player_;
 };
 }
 

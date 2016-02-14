@@ -10,21 +10,21 @@
 
 
 Utility::Yuv411FileSaver::Yuv411FileSaver(QString filename, Model::Video& video,
-        Utility::Compression compression, GUI::FilterTab *filterTab):YuvFileSaver(filename,video),compression_(compression),filterTab_(filterTab),isRunning_(false) {
+        Utility::Compression compression, GUI::FilterTab *filterTab):YuvFileSaver(filename,video),
+	compression_(compression),filterTab_(filterTab),isRunning_(false) {
 
 }
 
-Utility::Yuv411FileSaver::~Yuv411FileSaver()
-{
-    isRunning_=false;
-    if(safer_.joinable()) {
-        safer_.join();
-    }
+Utility::Yuv411FileSaver::~Yuv411FileSaver() {
+	isRunning_=false;
+	if(safer_.joinable()) {
+		safer_.join();
+	}
 }
 
 void Utility::Yuv411FileSaver::save() {
-    safer_=std::thread(&Yuv411FileSaver::saveP,this);
-    safer_.detach();
+	safer_=std::thread(&Yuv411FileSaver::saveP,this);
+	safer_.detach();
 }
 
 void Utility::Yuv411FileSaver::savePacked() {
@@ -84,25 +84,24 @@ void Utility::Yuv411FileSaver::savePlanar() {
 		while (!vBuffer.isEmpty()) {
 			dataStream_<<vBuffer.takeFirst();
 		}
-    }
+	}
 }
 
-void Utility::Yuv411FileSaver::saveP()
-{
-    isRunning_=true;
-    if(compression_==Compression::PACKED) {
-        savePacked();
-    } else if(compression_==Compression::PLANAR) {
-        savePlanar();
-    } else {
-        isRunning_=false;
-        throw std::logic_error("Should not get here");
-    }
-    file_.flush();
-    file_.close();
+void Utility::Yuv411FileSaver::saveP() {
+	isRunning_=true;
+	if(compression_==Compression::PACKED) {
+		savePacked();
+	} else if(compression_==Compression::PLANAR) {
+		savePlanar();
+	} else {
+		isRunning_=false;
+		throw std::logic_error("Should not get here");
+	}
+	file_.flush();
+	file_.close();
 
-    filterTab_->saveComplete(isRunning_,QFileInfo(file_).fileName());
-    isRunning_=false;
+	filterTab_->saveComplete(isRunning_,QFileInfo(file_).fileName());
+	isRunning_=false;
 }
 
 Utility::Yuv411Vector Utility::Yuv411FileSaver::Rgb888ToYuv411(QRgb pixel1, QRgb pixel2,

@@ -25,14 +25,14 @@ std::unique_ptr<Model::FilterList> Utility::FilterConfigurationLoader::getConfig
 
 	while( !stream.atEnd() ) {
 		QString line = stream.readLine();
-        auto filtername=line.section(";",0,0);
-        try {
-            auto filter=filterconf->appendFilter(filtername);
-            auto restorestring=line.right(line.length()-filtername.length()-1);
-            filter->restore(restorestring);
-        }catch(std::invalid_argument& ex) {
-            continue;
-        }
+		auto filtername=line.section(";",0,0);
+		try {
+			auto filter=filterconf->appendFilter(filtername);
+			auto restorestring=line.right(line.length()-filtername.length()-1);
+			filter->restore(restorestring);
+		} catch(std::invalid_argument& ex) {
+			continue;
+		}
 	}
 
 	file_.close();

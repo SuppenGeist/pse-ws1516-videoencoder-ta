@@ -44,7 +44,7 @@ class AVVideo {
 	 */
 	int getFps();
 
-    void setFps(int fps);
+	void setFps(int fps);
 
 	/**
 	 * @brief getFrame Returns the frame at the given index.
@@ -93,16 +93,16 @@ class AVVideo {
 	 */
 	std::size_t getNumberOfFrames();
 
-    bool isComplete();
+	bool isComplete();
 
-    void setIsComplete(bool isComplete);
+	void setIsComplete(bool isComplete);
 
   private:
 	std::vector<AVFrame*> video_;
 	int fps_;
 	int width_;
 	int height_;
-    bool isComplete_;
+	bool isComplete_;
 };
 }
 

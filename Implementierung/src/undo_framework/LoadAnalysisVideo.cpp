@@ -8,15 +8,15 @@
 
 UndoRedo::LoadAnalysisVideo::LoadAnalysisVideo(GUI::AnalysisTab* anaTab,
         std::unique_ptr<Model::YuvVideo> video):anaTab_(anaTab),rawVideo_(std::move(video)) {
-    memento_=anaTab->getMemento();
+	memento_=anaTab->getMemento();
 }
 
 void UndoRedo::LoadAnalysisVideo::undo() {
-    anaTab_->restore(memento_.get());
+	anaTab_->restore(memento_.get());
 }
 
 void UndoRedo::LoadAnalysisVideo::redo() {
-    anaTab_->setRawVideo(rawVideo_.get());
+	anaTab_->setRawVideo(rawVideo_.get());
 }
 
 

@@ -86,9 +86,9 @@ QString Model::GridFilter::getName() const {
 
 void Model::GridFilter::restore(QString description) {
 	QStringList list  = description.split(";");
-    if(list.size()!=5)
-        return;
-    setHorizontalCells(list[0].QString::toInt());
+	if(list.size()!=5)
+		return;
+	setHorizontalCells(list[0].QString::toInt());
 	setVerticalCells(list[1].QString::toInt());
 	setThickness(list[2].QString::toInt());
 	setOpacity(list[3].QString::toInt());

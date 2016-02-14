@@ -104,7 +104,7 @@ void GUI::VideoPlayer::stop() {
 }
 
 void GUI::VideoPlayer::nextFrame() {
-    setPosition(getPosition()+1);
+	setPosition(getPosition()+1);
 }
 
 void GUI::VideoPlayer::previousFrame() {

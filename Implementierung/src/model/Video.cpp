@@ -19,12 +19,11 @@ int Model::Video::getHeight() const noexcept {
 }
 
 int Model::Video::getFps() const noexcept {
-    return fps_;
+	return fps_;
 }
 
-void Model::Video::setFps(int fps)
-{
-    fps_=fps;
+void Model::Video::setFps(int fps) {
+	fps_=fps;
 }
 
 QImage* Model::Video::getFrame(std::size_t index) noexcept {
@@ -84,15 +83,13 @@ bool Model::Video::insertFrames(std::vector<std::unique_ptr<QImage> >& frames, s
 }
 
 std::size_t Model::Video::getNumberOfFrames() const noexcept {
-    return frames_.size();
+	return frames_.size();
 }
 
-bool Model::Video::isComplete()
-{
-    return isComplete_;
+bool Model::Video::isComplete() {
+	return isComplete_;
 }
 
-void Model::Video::setIsComplete(bool isComplete)
-{
-    isComplete_=isComplete;
+void Model::Video::setIsComplete(bool isComplete) {
+	isComplete_=isComplete;
 }

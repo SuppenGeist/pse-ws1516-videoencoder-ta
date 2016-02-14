@@ -36,11 +36,11 @@ class FilterApplier {
 	 */
 	FilterApplier(Model::FilterList& list, int width, int height, int pixelFormat);
 
-    ~FilterApplier();
+	~FilterApplier();
 
-    void applyToVideo(Model::Video& target, Model::Video& source,GUI::FilterTab* filtertab=0);
+	void applyToVideo(Model::Video& target, Model::Video& source,GUI::FilterTab* filtertab=0);
 
-    void applyToVideo(Model::Video& target,Model::AVVideo& source);
+	void applyToVideo(Model::Video& target,Model::AVVideo& source);
 
 	/**
 	 * @brief applyToFrame
@@ -65,16 +65,16 @@ class FilterApplier {
 	AVFilterContext*    buffersinkContext_;
 	AVFilterContext*    buffersourceContext_;
 	std::string         filterDescription_;
-    std::thread         applier_;
-    Model::Video*       source_;
-    Model::AVVideo*     source1_;
-    Model::Video*       target_;
-    bool                isRunning_;
-    GUI::FilterTab*     filterTab_;
+	std::thread         applier_;
+	Model::Video*       source_;
+	Model::AVVideo*     source1_;
+	Model::Video*       target_;
+	bool                isRunning_;
+	GUI::FilterTab*     filterTab_;
 
 	void createFilterString();
-    void applyToVideoP();
-    void applyToAVVideoP();
+	void applyToVideoP();
+	void applyToAVVideoP();
 };
 }
 

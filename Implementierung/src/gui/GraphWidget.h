@@ -123,9 +123,9 @@ class GraphWidget:public QGraphicsView {
 	 * @brief mouseReleaseEvent This method is called if the was a click on the widget.
 	 * @param event
 	 */
-    void mouseReleaseEvent(QMouseEvent* event);
+	void mouseReleaseEvent(QMouseEvent* event);
 
-    void paintEvent(QPaintEvent* event);
+	void paintEvent(QPaintEvent* event);
 
   private:
 	QPen                        linePen_;

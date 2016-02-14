@@ -13,14 +13,14 @@ class AnalysisTabMemento {
 	/**
 	 * @brief AnalysisTabMemento Constructor.
 	 */
-    AnalysisTabMemento();
+	AnalysisTabMemento();
 
-    void setRawVideo(Model::YuvVideo* video);
+	void setRawVideo(Model::YuvVideo* video);
 
-    Model::YuvVideo* getRawVideo();
+	Model::YuvVideo* getRawVideo();
 
   private:
-    Model::YuvVideo*        rawVideo_;
+	Model::YuvVideo*        rawVideo_;
 };
 }
 

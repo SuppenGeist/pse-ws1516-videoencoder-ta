@@ -22,11 +22,11 @@ GUI::BlurFilterBox::BlurFilterBox(QWidget* parent):FilterConfigurationBox(parent
 }
 
 void GUI::BlurFilterBox::updateUi() {
-    updateTempFilter();
+	updateTempFilter();
 	auto value=static_cast<Model::BlurFilter*>(tempFilter_.get())->getIntensity();
 	slider_->setValue(value);
-    spinBox_->setValue(value);
-    updatePreview();
+	spinBox_->setValue(value);
+	updatePreview();
 }
 
 void GUI::BlurFilterBox::sliderChanged(int value) {

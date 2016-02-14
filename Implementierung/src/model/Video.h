@@ -37,7 +37,7 @@ class Video {
 	 */
 	int getFps() const noexcept;
 
-    void setFps(int fps);
+	void setFps(int fps);
 
 	/**
 	 * If the index is invalid nullptr is returned.
@@ -91,16 +91,16 @@ class Video {
 	 */
 	std::size_t getNumberOfFrames() const noexcept;
 
-    bool isComplete();
+	bool isComplete();
 
-    void setIsComplete(bool isComplete);
+	void setIsComplete(bool isComplete);
 
   private:
 	std::vector<std::unique_ptr<QImage>>    frames_;
 	int                                     fps_;
 	int                                     width_;
 	int                                     height_;
-    bool                                    isComplete_;
+	bool                                    isComplete_;
 };
 }
 

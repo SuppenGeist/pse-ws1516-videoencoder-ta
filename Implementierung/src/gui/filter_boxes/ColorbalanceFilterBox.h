@@ -9,41 +9,40 @@
 
 #include "FilterConfigurationBox.h"
 
-namespace GUI
-{
-	/**
-	 * This class contains the gui elements for changing the options of a color balance filter.
-    */
+namespace GUI {
+/**
+ * This class contains the gui elements for changing the options of a color balance filter.
+*/
 class ColorbalanceFilterBox: public FilterConfigurationBox {
-    Q_OBJECT
+	Q_OBJECT
   public:
-    /**
-     * @brief ColorbalanceFilterBox Constructor.
-     * @param parent
-     */
-    ColorbalanceFilterBox(QWidget* parent=0);
+	/**
+	 * @brief ColorbalanceFilterBox Constructor.
+	 * @param parent
+	 */
+	ColorbalanceFilterBox(QWidget* parent=0);
 
   protected:
-    void updateUi() override;
+	void updateUi() override;
 
 
   private slots:
-    void spinBoxChanged(int value);
-    void sliderChanged(int value);
-    void brightPixel(int check);
-    void mediumPixel(int check);
-    void darkPixel(int check);
-    void basicColor();
+	void spinBoxChanged(int value);
+	void sliderChanged(int value);
+	void brightPixel(int check);
+	void mediumPixel(int check);
+	void darkPixel(int check);
+	void basicColor();
 
   private:
-    QSpinBox*       spinBox_;
-    QSlider*        slider_;
-    QCheckBox*      bright_;
-    QCheckBox*      medium_;
-    QCheckBox*      dark_;
-    QComboBox*      combo_;
+	QSpinBox*       spinBox_;
+	QSlider*        slider_;
+	QCheckBox*      bright_;
+	QCheckBox*      medium_;
+	QCheckBox*      dark_;
+	QComboBox*      combo_;
 
-    virtual void createFilterOptions();
+	virtual void createFilterOptions();
 };
 }
 

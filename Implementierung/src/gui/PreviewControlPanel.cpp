@@ -16,8 +16,8 @@ GUI::PreviewControlPanel::PreviewControlPanel(QWidget* parent):QFrame(parent) {
 	connect(button_nextFrame,SIGNAL(clicked()),this,SLOT(nextFrame()));
 	connect(button_previousFrame,SIGNAL(clicked()),this,SLOT(previousFrame()));
 
-    connect(&updater_,SIGNAL(timeout()),this,SLOT(updateUi()));
-    updater_.start(500);
+	connect(&updater_,SIGNAL(timeout()),this,SLOT(updateUi()));
+	updater_.start(500);
 }
 
 void GUI::PreviewControlPanel::updateUi() {

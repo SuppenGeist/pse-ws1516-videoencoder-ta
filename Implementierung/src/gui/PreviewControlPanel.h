@@ -24,7 +24,7 @@ class PreviewControlPanel: public QFrame, public GUI::ControlPanel {
 	 */
 	PreviewControlPanel(QWidget* parent = 0);
 
-public slots:
+  public slots:
 	/**
 	 * @brief updateUi Updates the ui of the control panel.
 	 */
@@ -42,10 +42,10 @@ public slots:
 	void previousFrame();
 
   private:
-    QPushButton*    button_nextFrame;
-    QPushButton*    button_previousFrame;
-    QLabel*         label_position;
-    QTimer          updater_;
+	QPushButton*    button_nextFrame;
+	QPushButton*    button_previousFrame;
+	QLabel*         label_position;
+	QTimer          updater_;
 
 	/**
 	 * @brief createUi Creates the ui.

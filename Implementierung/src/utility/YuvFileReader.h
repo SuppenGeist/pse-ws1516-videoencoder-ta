@@ -29,7 +29,7 @@ class YuvFileReader {
 	 * @brief read Reads the file in.
 	 * @return The complete video.
 	 */
-    void read(Model::Video* target);
+	void read(Model::Video* target);
 
 	void stopReading();
 
@@ -53,7 +53,7 @@ class YuvFileReader {
 	Model::Video*                  video_;
 	QFile                          file_;
 	int                            frameSize_;
-    bool*                          complete_;
+	bool*                          complete_;
 
   private:
 	bool                           isRunning_;

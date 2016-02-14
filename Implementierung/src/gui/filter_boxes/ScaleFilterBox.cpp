@@ -24,40 +24,40 @@ GUI::ScaleFilterBox::ScaleFilterBox(QWidget* parent):FilterConfigurationBox(pare
 }
 
 void GUI::ScaleFilterBox::updateUi() {
-    updateTempFilter();
+	updateTempFilter();
 	auto value=static_cast<Model::ScaleFilter*>(tempFilter_.get())->getHeight();
 	auto value2=static_cast<Model::ScaleFilter*>(tempFilter_.get())->getWidth();
 	auto value3=static_cast<Model::ScaleFilter*>(tempFilter_.get())->getRatio();
-    auto value4=static_cast<Model::ScaleFilter*>(tempFilter_.get())->getKeepRatio();
+	auto value4=static_cast<Model::ScaleFilter*>(tempFilter_.get())->getKeepRatio();
 
-    if(value4) {
-        height_->setEnabled(false);
-        width_->setEnabled(false);
-        ratio_->setEnabled(true);
-    }else {
-        height_->setEnabled(true);
-        width_->setEnabled(true);
-        ratio_->setEnabled(false);
-    }
+	if(value4) {
+		height_->setEnabled(false);
+		width_->setEnabled(false);
+		ratio_->setEnabled(true);
+	} else {
+		height_->setEnabled(true);
+		width_->setEnabled(true);
+		ratio_->setEnabled(false);
+	}
 
 	height_->setValue(value);
 	width_->setValue(value2);
 	ratio_->setValue(value3);
 
-    updatePreview();
+	updatePreview();
 }
 
 void GUI::ScaleFilterBox::keepRatio(int check) {
 	static_cast<Model::ScaleFilter*>(tempFilter_.get())->setKeepRatio(check);
-    if(check) {
-        height_->setEnabled(false);
-        width_->setEnabled(false);
-        ratio_->setEnabled(true);
-    }else {
-        height_->setEnabled(true);
-        width_->setEnabled(true);
-        ratio_->setEnabled(false);
-    }
+	if(check) {
+		height_->setEnabled(false);
+		width_->setEnabled(false);
+		ratio_->setEnabled(true);
+	} else {
+		height_->setEnabled(true);
+		width_->setEnabled(true);
+		ratio_->setEnabled(false);
+	}
 
 	updatePreview();
 }
@@ -86,7 +86,7 @@ void GUI::ScaleFilterBox::ratioChanged(int value) {
 void GUI::ScaleFilterBox::createFilterOptions() {
 	QLabel* h=new QLabel("Height:");
 	QLabel* w=new QLabel("Width:");
-    QLabel* r=new QLabel("Multiplicator:");
+	QLabel* r=new QLabel("Multiplicator:");
 
 	keepRatio_= new QCheckBox(tr("Keep ratio"));
 
@@ -111,29 +111,29 @@ void GUI::ScaleFilterBox::createFilterOptions() {
 
 	wh->addWidget(h);
 	wh->addWidget(height_);
-    QFrame* separator=new QFrame;
-    separator->setFrameShape(QFrame::VLine);
-    separator->setFrameShadow(QFrame::Sunken);
-    wh->addWidget(separator);
+	QFrame* separator=new QFrame;
+	separator->setFrameShape(QFrame::VLine);
+	separator->setFrameShadow(QFrame::Sunken);
+	wh->addWidget(separator);
 	wh->addWidget(w);
-    wh->addWidget(width_);
-    ratio->addWidget(keepRatio_);
-    QFrame* separator2=new QFrame;
-    separator2->setFrameShape(QFrame::VLine);
-    separator2->setFrameShadow(QFrame::Sunken);
-    ratio->addWidget(separator2);
+	wh->addWidget(width_);
+	ratio->addWidget(keepRatio_);
+	QFrame* separator2=new QFrame;
+	separator2->setFrameShape(QFrame::VLine);
+	separator2->setFrameShadow(QFrame::Sunken);
+	ratio->addWidget(separator2);
 	ratio->addWidget(r);
 	ratio->addWidget(ratio_);
 
 	h_content->addLayout(wh);
-    QFrame* separator1=new QFrame;
-    separator1->setFrameShape(QFrame::HLine);
-    separator1->setFrameShadow(QFrame::Plain);
-    separator1->setStyleSheet("background-color:black;");
-    separator1->setFixedHeight(1);
-    h_content->addSpacing(5);
-    h_content->addWidget(separator1);
-    h_content->addSpacing(5);
+	QFrame* separator1=new QFrame;
+	separator1->setFrameShape(QFrame::HLine);
+	separator1->setFrameShadow(QFrame::Plain);
+	separator1->setStyleSheet("background-color:black;");
+	separator1->setFixedHeight(1);
+	h_content->addSpacing(5);
+	h_content->addWidget(separator1);
+	h_content->addSpacing(5);
 	h_content->addLayout(ratio);
 
 	QFrame* frame=new QFrame;

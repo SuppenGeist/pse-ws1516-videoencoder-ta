@@ -7,7 +7,8 @@
 #include "../model/FilterList.h"
 #include "../model/filters/Filter.h"
 
-Memento::FilterTabMemento::FilterTabMemento():rawVideo_(nullptr),isPreviewShow_(false),currentFrame_(0),currentlySelectedFilter_(-1) {
+Memento::FilterTabMemento::FilterTabMemento():rawVideo_(nullptr),isPreviewShow_(false),
+	currentFrame_(0),currentlySelectedFilter_(-1) {
 
 }
 
@@ -20,13 +21,13 @@ Model::YuvVideo *Memento::FilterTabMemento::getRawVideo() {
 }
 
 void Memento::FilterTabMemento::setFilterList( std::unique_ptr<Model::FilterList> filterlist) {
-    filterlist_=std::move(filterlist);
+	filterlist_=std::move(filterlist);
 }
 
 std::unique_ptr<Model::FilterList> Memento::FilterTabMemento::getFilterList() {
 	if(!filterlist_.get())
-        throw std::logic_error("First set the filterlist");
-    return std::make_unique<Model::FilterList>(*filterlist_);
+		throw std::logic_error("First set the filterlist");
+	return std::make_unique<Model::FilterList>(*filterlist_);
 }
 
 void Memento::FilterTabMemento::setIsPreviewShown(bool isShown) {
@@ -34,46 +35,38 @@ void Memento::FilterTabMemento::setIsPreviewShown(bool isShown) {
 }
 
 bool Memento::FilterTabMemento::isPreviewShow() {
-    return isPreviewShow_;
+	return isPreviewShow_;
 }
 
-void Memento::FilterTabMemento::setIsFilteredVideoShown(bool isShown)
-{
-    isFilteredVideoShown_=isShown;
+void Memento::FilterTabMemento::setIsFilteredVideoShown(bool isShown) {
+	isFilteredVideoShown_=isShown;
 }
 
-bool Memento::FilterTabMemento::isFilteredVideoShown()
-{
-    return isFilteredVideoShown_;
+bool Memento::FilterTabMemento::isFilteredVideoShown() {
+	return isFilteredVideoShown_;
 }
 
-void Memento::FilterTabMemento::setFilteredVideo(Model::Video *filteredVideo)
-{
-    filteredVideo_=filteredVideo;
+void Memento::FilterTabMemento::setFilteredVideo(Model::Video *filteredVideo) {
+	filteredVideo_=filteredVideo;
 }
 
-Model::Video *Memento::FilterTabMemento::getFilteredVideo()
-{
-    return filteredVideo_;
+Model::Video *Memento::FilterTabMemento::getFilteredVideo() {
+	return filteredVideo_;
 }
 
-void Memento::FilterTabMemento::setCurrentFrame(int currentFrame)
-{
-    currentFrame_=currentFrame;
+void Memento::FilterTabMemento::setCurrentFrame(int currentFrame) {
+	currentFrame_=currentFrame;
 }
 
-int Memento::FilterTabMemento::getCurrentFrame()
-{
-    return currentFrame_;
+int Memento::FilterTabMemento::getCurrentFrame() {
+	return currentFrame_;
 }
 
-void Memento::FilterTabMemento::setCurrentlySelectedFilter(int filter)
-{
-    currentlySelectedFilter_=filter;
+void Memento::FilterTabMemento::setCurrentlySelectedFilter(int filter) {
+	currentlySelectedFilter_=filter;
 }
 
-int Memento::FilterTabMemento::getCurrentlySelectedFilter()
-{
-    return currentlySelectedFilter_;
+int Memento::FilterTabMemento::getCurrentlySelectedFilter() {
+	return currentlySelectedFilter_;
 }
 

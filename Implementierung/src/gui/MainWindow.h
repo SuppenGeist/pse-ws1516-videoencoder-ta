@@ -54,7 +54,7 @@ class MainWindow : public QMainWindow {
 	 */
 	Model::Project* getProject();
 
-    QStatusBar* getStatusBar();
+	QStatusBar* getStatusBar();
 
   private slots:
 	/**

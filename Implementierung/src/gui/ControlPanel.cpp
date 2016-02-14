@@ -16,7 +16,7 @@ void GUI::ControlPanel::setMasterVideoPlayer(GUI::Player& player) noexcept {
 }
 
 void GUI::ControlPanel::addVideoPlayer(GUI::Player* player) {
-    players_.push_back(player);
+	players_.push_back(player);
 }
 
 

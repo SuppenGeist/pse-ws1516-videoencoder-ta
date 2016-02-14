@@ -23,5 +23,5 @@ void Model::NegativeFilter::restore(QString description) {
 }
 
 QString Model::NegativeFilter::getSaveString() const {
-    return "";
+	return "";
 }

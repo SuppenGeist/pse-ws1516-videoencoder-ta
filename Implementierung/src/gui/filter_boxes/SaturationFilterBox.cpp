@@ -23,12 +23,12 @@ GUI::SaturationFilterBox::SaturationFilterBox(QWidget* parent):FilterConfigurati
 }
 
 void GUI::SaturationFilterBox::updateUi() {
-    updateTempFilter();
+	updateTempFilter();
 	auto value=static_cast<Model::SaturationFilter*>(tempFilter_.get())->getIntensity();
 	slider_->setValue(value);
 	spinBox_->setValue(value);
 
-    updatePreview();
+	updatePreview();
 }
 
 void GUI::SaturationFilterBox::sliderChanged(int value) {

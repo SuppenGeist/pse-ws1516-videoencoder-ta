@@ -9,7 +9,7 @@ extern "C" {
 }
 
 int main(int argc, char *argv[]) {
-    av_register_all();
+	av_register_all();
 	avcodec_register_all();
 	avfilter_register_all();
 

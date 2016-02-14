@@ -62,7 +62,7 @@ GUI::FilterConfigurationBox::FilterConfigurationBox(QWidget* parent):QFrame(pare
 	createUi();
 
 	connect(button_apply_,SIGNAL(clicked()),this,SLOT(applyFilter()));
-    connect(button_reset_,SIGNAL(clicked()),this,SLOT(resetFilter()));
+	connect(button_reset_,SIGNAL(clicked()),this,SLOT(resetFilter()));
 }
 
 GUI::FilterConfigurationBox::~FilterConfigurationBox() {
@@ -91,19 +91,19 @@ std::unique_ptr<GUI::FilterConfigurationBox> GUI::FilterConfigurationBox::Create
 		box=std::make_unique<BorderFilterBox>();
 	} else if(filter.getName()==Model::GridFilter::FILTERNAME) {
 		box=std::make_unique<GridFilterBox>();
-    }else if(filter.getName()==Model::MirrorFilter::FILTERNAME){
-        box=std::make_unique<MirrorFilterBox>();
+	} else if(filter.getName()==Model::MirrorFilter::FILTERNAME) {
+		box=std::make_unique<MirrorFilterBox>();
 	} else if(filter.getName()==Model::ScaleFilter::FILTERNAME) {
 		box=std::make_unique<ScaleFilterBox>();
-    } else if(filter.getName()==Model::NoiseFilter::FILTERNAME) {
-        box=std::make_unique<NoiseFilterBox>();
-    }else if(filter.getName()==Model::RGBFilter::FILTERNAME) {
-        box=std::make_unique<RGBFilterBox>();
-    }else if(filter.getName()==Model::ColorbalanceFilter::FILTERNAME) {
-        box=std::make_unique<ColorbalanceFilterBox>();
-    }else if(filter.getName()==Model::RectangleFilter::FILTERNAME) {
-        box=std::make_unique<RectangleFilterBox>();
-    }else {
+	} else if(filter.getName()==Model::NoiseFilter::FILTERNAME) {
+		box=std::make_unique<NoiseFilterBox>();
+	} else if(filter.getName()==Model::RGBFilter::FILTERNAME) {
+		box=std::make_unique<RGBFilterBox>();
+	} else if(filter.getName()==Model::ColorbalanceFilter::FILTERNAME) {
+		box=std::make_unique<ColorbalanceFilterBox>();
+	} else if(filter.getName()==Model::RectangleFilter::FILTERNAME) {
+		box=std::make_unique<RectangleFilterBox>();
+	} else {
 		return std::make_unique<PlainFilterBox>();
 	}
 
@@ -114,7 +114,7 @@ std::unique_ptr<GUI::FilterConfigurationBox> GUI::FilterConfigurationBox::Create
 }
 
 void GUI::FilterConfigurationBox::setFilter(Model::Filter& filter) {
-    filter_=&filter;
+	filter_=&filter;
 	label_filter_->setText(filter_->getName()+" filter");
 	updateUi();
 }
@@ -124,12 +124,11 @@ Model::Filter* GUI::FilterConfigurationBox::getFilter() {
 }
 
 void GUI::FilterConfigurationBox::setFilterTab(GUI::FilterTab &filterTab) {
-    filterTab_=&filterTab;
+	filterTab_=&filterTab;
 }
 
-void GUI::FilterConfigurationBox::setFilterIndex(int index)
-{
-    index_=index;
+void GUI::FilterConfigurationBox::setFilterIndex(int index) {
+	index_=index;
 }
 
 void GUI::FilterConfigurationBox::updatePreview() {
@@ -146,27 +145,26 @@ void GUI::FilterConfigurationBox::updatePreview() {
 	filterPreview_->setFrame(*filteredImage_);
 
 	av_frame_free(&avframe);
-    av_frame_free(&filteredFrame);
+	av_frame_free(&filteredFrame);
 }
 
-void GUI::FilterConfigurationBox::updateTempFilter()
-{
-    if(!filter_)
-        return;
+void GUI::FilterConfigurationBox::updateTempFilter() {
+	if(!filter_)
+		return;
 
-    tempFilter_->restore(filter_->getSaveString());
+	tempFilter_->restore(filter_->getSaveString());
 }
 
 void GUI::FilterConfigurationBox::applyFilter() {
-    auto command=new UndoRedo::ChangeFilter(*filterTab_,index_,filter_->getSaveString(),tempFilter_->getSaveString());
+	auto command=new UndoRedo::ChangeFilter(*filterTab_,index_,filter_->getSaveString(),
+	                                        tempFilter_->getSaveString());
 
-    UndoRedo::UndoStack::getUndoStack().push(command);
+	UndoRedo::UndoStack::getUndoStack().push(command);
 }
 
-void GUI::FilterConfigurationBox::resetFilter()
-{
-    updateTempFilter();
-    updateUi();
+void GUI::FilterConfigurationBox::resetFilter() {
+	updateTempFilter();
+	updateUi();
 }
 
 void GUI::FilterConfigurationBox::createUi() {
@@ -193,9 +191,9 @@ void GUI::FilterConfigurationBox::createUi() {
 	button_apply_->setStyleSheet(stylesheet);
 	button_apply_->setFixedSize(70,25);
 
-    button_reset_=new QPushButton("Reset");
-    button_reset_->setStyleSheet(stylesheet);
-    button_reset_->setFixedSize(70,25);
+	button_reset_=new QPushButton("Reset");
+	button_reset_->setStyleSheet(stylesheet);
+	button_reset_->setFixedSize(70,25);
 
 	label_filter_=new QLabel(tr("Filter options:"));
 	QFont font("Arial",12,QFont::Bold);
@@ -208,7 +206,7 @@ void GUI::FilterConfigurationBox::createUi() {
 	filterOptionsArea_->setObjectName("OptArea");
 	filterOptionsArea_->setStyleSheet("QScrollArea#OptArea {"
 	                                  "background-color:white;"
-                                      "}");
+	                                  "}");
 
 	QHBoxLayout* h_content=new QHBoxLayout;
 
@@ -220,7 +218,7 @@ void GUI::FilterConfigurationBox::createUi() {
 	h_label_butt->addWidget(label_filter_);
 	QSpacerItem* sp1=new QSpacerItem(0,0,QSizePolicy::Expanding,QSizePolicy::Minimum);
 	h_label_butt->addSpacerItem(sp1);
-    h_label_butt->addWidget(button_reset_);
+	h_label_butt->addWidget(button_reset_);
 	h_label_butt->addWidget(button_apply_);
 	v_caption_options->addLayout(h_label_butt);
 	QFrame* separator=new QFrame;

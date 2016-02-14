@@ -23,9 +23,9 @@ class MirrorFilterBox: public FilterConfigurationBox {
 	void updateUi() override;
 
   private slots:
-    void mirrorMode();
+	void mirrorMode();
   private:
-    QComboBox*       mirror_;
+	QComboBox*       mirror_;
 
 	virtual void createFilterOptions();
 };

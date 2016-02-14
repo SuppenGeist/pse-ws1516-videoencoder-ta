@@ -18,7 +18,7 @@
 
 Model::YuvVideo::YuvVideo(QString path, Utility::YuvType type, Utility::Compression compression,
                           int width, int height, int fps):path_(path),height_(height),width_(width),fps_(fps),
-    compression_(compression),yuvType_(type),isComplete_(false) {
+	compression_(compression),yuvType_(type),isComplete_(false) {
 
 }
 
@@ -59,7 +59,7 @@ Model::AVVideo& Model::YuvVideo::getAvVideo() {
 Model::Video& Model::YuvVideo::getVideo() {
 	if(!displayVideo_.get())
 		loadVideo();
-    return *displayVideo_.get();
+	return *displayVideo_.get();
 }
 
 
@@ -84,7 +84,7 @@ void Model::YuvVideo::loadVideo() {
 		throw std::logic_error("Should not get here");
 	}
 	displayVideo_=std::make_unique<Video>(fps_);
-    fileReader_->read(displayVideo_.get());
+	fileReader_->read(displayVideo_.get());
 }
 
 

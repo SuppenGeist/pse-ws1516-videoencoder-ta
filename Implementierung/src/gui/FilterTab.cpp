@@ -82,7 +82,8 @@ extern "C" {
 #include <libavutil/pixfmt.h>
 }
 
-GUI::FilterTab::FilterTab(QWidget *parent):QFrame(parent),rawVideo_(nullptr),isFilteredVideoShown_(false),mainWindow_(nullptr) {
+GUI::FilterTab::FilterTab(QWidget *parent):QFrame(parent),rawVideo_(nullptr),
+	isFilteredVideoShown_(false),mainWindow_(nullptr) {
 	createUi();
 	connectAtions();
 
@@ -91,47 +92,45 @@ GUI::FilterTab::FilterTab(QWidget *parent):QFrame(parent),rawVideo_(nullptr),isF
 }
 
 std::unique_ptr<Memento::FilterTabMemento> GUI::FilterTab::getMemento() {
-    auto memento=std::make_unique<Memento::FilterTabMemento>();
+	auto memento=std::make_unique<Memento::FilterTabMemento>();
 
 	memento->setRawVideo(rawVideo_);
-    memento->setFilterList(std::make_unique<Model::FilterList>(*filterlist_));
+	memento->setFilterList(std::make_unique<Model::FilterList>(*filterlist_));
 	memento->setIsPreviewShown(PreviewControlPanel_->isVisible());
-    memento->setIsFilteredVideoShown(isFilteredVideoShown_);
-    memento->setFilteredVideo(filteredVideo_);
-    memento->setCurrentFrame(player_->getPosition());
+	memento->setIsFilteredVideoShown(isFilteredVideoShown_);
+	memento->setFilteredVideo(filteredVideo_);
+	memento->setCurrentFrame(player_->getPosition());
 
-    auto index=list_filterlist_->selectionModel()->selectedIndexes();
-    if(index.isEmpty()) {
-        memento->setCurrentlySelectedFilter(-1);
-    }
-    else {
-        memento->setCurrentlySelectedFilter(index.begin()->row());
-    }
+	auto index=list_filterlist_->selectionModel()->selectedIndexes();
+	if(index.isEmpty()) {
+		memento->setCurrentlySelectedFilter(-1);
+	} else {
+		memento->setCurrentlySelectedFilter(index.begin()->row());
+	}
 	return std::move(memento);
 }
 
 void GUI::FilterTab::restore(Memento::FilterTabMemento *memento) {
 	setRawVideo(memento->getRawVideo());
 	setFilterList(memento->getFilterList());
-    setFilteredVideo(memento->getFilteredVideo());
+	setFilteredVideo(memento->getFilteredVideo());
 	if(memento->isPreviewShow()) {
 		showFilterPreview();
 	} else {
-        if(memento->isFilteredVideoShown()) {
-            showFilteredVideo();
-        }
-        else {
-            showRawVideo();
-        }
+		if(memento->isFilteredVideoShown()) {
+			showFilteredVideo();
+		} else {
+			showRawVideo();
+		}
 	}
-    player_->setPosition(memento->getCurrentFrame());
+	player_->setPosition(memento->getCurrentFrame());
 
-    int index=memento->getCurrentlySelectedFilter();
-    if(index>=filterlist_->getSize()) {
-        index=filterlist_->getSize()-1;
-    }
-    QModelIndex mindex(model_filterlist_->index(index,0));
-    list_filterlist_->setCurrentIndex(mindex);
+	int index=memento->getCurrentlySelectedFilter();
+	if(index>=filterlist_->getSize()) {
+		index=filterlist_->getSize()-1;
+	}
+	QModelIndex mindex(model_filterlist_->index(index,0));
+	list_filterlist_->setCurrentIndex(mindex);
 }
 
 void GUI::FilterTab::setRawVideo(Model::YuvVideo *rawVideo) {
@@ -152,25 +151,24 @@ void GUI::FilterTab::showRawVideo() {
 		v_player_->removeWidget(PreviewControlPanel_);
 		v_player_->addWidget(playerControlPanel_);
 
-        PreviewControlPanel_->hide();
-        playerControlPanel_->show();
+		PreviewControlPanel_->hide();
+		playerControlPanel_->show();
 
-        player_->setMasterControlPanel(*playerControlPanel_);
-        if(rawVideo_) {
-            player_->setVideo(&rawVideo_->getVideo());
-        } else {
-            player_->setVideo(nullptr);
-        }
-        playerControlPanel_->updateUi();
-    }
-    else if(isFilteredVideoShown_) {
-        if(rawVideo_) {
-            player_->setVideo(&rawVideo_->getVideo());
-        } else {
-            player_->setVideo(nullptr);
-        }
-    }
-    isFilteredVideoShown_=false;
+		player_->setMasterControlPanel(*playerControlPanel_);
+		if(rawVideo_) {
+			player_->setVideo(&rawVideo_->getVideo());
+		} else {
+			player_->setVideo(nullptr);
+		}
+		playerControlPanel_->updateUi();
+	} else if(isFilteredVideoShown_) {
+		if(rawVideo_) {
+			player_->setVideo(&rawVideo_->getVideo());
+		} else {
+			player_->setVideo(nullptr);
+		}
+	}
+	isFilteredVideoShown_=false;
 }
 
 void GUI::FilterTab::showFilterPreview() {
@@ -178,69 +176,69 @@ void GUI::FilterTab::showFilterPreview() {
 		v_player_->removeWidget(playerControlPanel_);
 		v_player_->addWidget(PreviewControlPanel_);
 
-        playerControlPanel_->hide();
-        PreviewControlPanel_->show();
+		playerControlPanel_->hide();
+		PreviewControlPanel_->show();
 
-        player_->setVideo(filteredPreviewFrames_.get());
-        player_->setMasterControlPanel(*PreviewControlPanel_);
-        PreviewControlPanel_->updateUi();
-    }
-    isFilteredVideoShown_=false;
+		player_->setVideo(filteredPreviewFrames_.get());
+		player_->setMasterControlPanel(*PreviewControlPanel_);
+		PreviewControlPanel_->updateUi();
+	}
+	isFilteredVideoShown_=false;
 }
 
 void GUI::FilterTab::updateFilterPreview() {
 	if(!rawVideo_)
 		return;
 
-    if(!originalPreviewFrames_.get()||originalPreviewFrames_->getNumberOfFrames()==0||!rawVideo_->getVideo().isComplete()) {
+	if(!originalPreviewFrames_.get()||originalPreviewFrames_->getNumberOfFrames()==0
+	        ||!rawVideo_->getVideo().isComplete()) {
 		calculatePreviewFrames();
 	}
 
 	auto changeVideo=PreviewControlPanel_->isVisible();
 
-    if(changeVideo) {
+	if(changeVideo) {
 		player_->setVideo(nullptr);
-    }
+	}
 
 	filteredPreviewFrames_=std::make_unique<Model::Video>();
 
-    previewCalculator_=std::make_unique<Utility::FilterApplier>(*filterlist_,rawVideo_->getWidth(),rawVideo_->getHeight(),
-	                               AV_PIX_FMT_RGB24);
+	previewCalculator_=std::make_unique<Utility::FilterApplier>(*filterlist_,rawVideo_->getWidth(),
+	                   rawVideo_->getHeight(),
+	                   AV_PIX_FMT_RGB24);
 
-    previewCalculator_->applyToVideo(*filteredPreviewFrames_,*originalPreviewFrames_);
+	previewCalculator_->applyToVideo(*filteredPreviewFrames_,*originalPreviewFrames_);
 
-    if(changeVideo) {
-        player_->setVideo(filteredPreviewFrames_.get());
-    }
+	if(changeVideo) {
+		player_->setVideo(filteredPreviewFrames_.get());
+	}
 }
 
-void GUI::FilterTab::changeFilter(int index, QString newState)
-{
-    auto filter=filterlist_->getFilter(index);
-    if(!filter)
-        return;
-    filter->restore(newState);
+void GUI::FilterTab::changeFilter(int index, QString newState) {
+	auto filter=filterlist_->getFilter(index);
+	if(!filter)
+		return;
+	filter->restore(newState);
 
-    updateFilterPreview();
-    showFilterPreview();
-    if(currentFilterOptionsBox_&&currentFilterOptionsBox_->isVisible()) {
-        currentFilterOptionsBox_->updateUi();
-    }
+	updateFilterPreview();
+	showFilterPreview();
+	if(currentFilterOptionsBox_&&currentFilterOptionsBox_->isVisible()) {
+		currentFilterOptionsBox_->updateUi();
+	}
 }
 
-void GUI::FilterTab::insertFilter(std::unique_ptr<Model::Filter> filter, std::size_t index)
-{
-    auto model=model_filterlist_->stringList();
-    model.insert(index,filter->getName()+" filter");
-    model_filterlist_->setStringList(model);
-    filterlist_->insertFilter(std::move(filter),index);
-    updateFilterPreview();
-    showFilterPreview();
+void GUI::FilterTab::insertFilter(std::unique_ptr<Model::Filter> filter, std::size_t index) {
+	auto model=model_filterlist_->stringList();
+	model.insert(index,filter->getName()+" filter");
+	model_filterlist_->setStringList(model);
+	filterlist_->insertFilter(std::move(filter),index);
+	updateFilterPreview();
+	showFilterPreview();
 }
 
 Model::Filter *GUI::FilterTab::appendFilter(QString filtername) {
 	if(!rawVideo_)
-        return nullptr;
+		return nullptr;
 
 	if(filterlist_->getSize()==0) {
 		showFilterPreview();
@@ -253,15 +251,15 @@ Model::Filter *GUI::FilterTab::appendFilter(QString filtername) {
 	model_filterlist_->setStringList(model);
 
 	updateFilterPreview();
-    QModelIndex index(model_filterlist_->index(static_cast<int>(filterlist_->getSize()-1),0));
-    list_filterlist_->setCurrentIndex(index);
+	QModelIndex index(model_filterlist_->index(static_cast<int>(filterlist_->getSize()-1),0));
+	list_filterlist_->setCurrentIndex(index);
 
 	return filter;
 }
 
 std::unique_ptr<Model::Filter> GUI::FilterTab::removeFilter(std::size_t index) {
 	if(index>=filterlist_->getSize())
-        throw std::logic_error("Checkl the index");
+		throw std::logic_error("Checkl the index");
 
 	auto model=model_filterlist_->stringList();
 	model.removeAt(index);
@@ -271,39 +269,39 @@ std::unique_ptr<Model::Filter> GUI::FilterTab::removeFilter(std::size_t index) {
 
 	if(filterlist_->getSize()==0) {
 		showRawVideo();
-        currentFilterOptionsBox_->hide();
+		currentFilterOptionsBox_->hide();
 	} else {
 		updateFilterPreview();
-        showFilterPreview();
-        if(index>=filterlist_->getSize()) {
-            index=filterlist_->getSize()-1;
-        }
-        QModelIndex mindex(model_filterlist_->index(static_cast<int>(index),0));
-        list_filterlist_->setCurrentIndex(mindex);
+		showFilterPreview();
+		if(index>=filterlist_->getSize()) {
+			index=filterlist_->getSize()-1;
+		}
+		QModelIndex mindex(model_filterlist_->index(static_cast<int>(index),0));
+		list_filterlist_->setCurrentIndex(mindex);
 	}
 
-    return std::move(filter);
+	return std::move(filter);
 }
 
-void GUI::FilterTab::moveFilter(std::size_t oldIndex, std::size_t newIndex)
-{
-    if(oldIndex<0||oldIndex>=filterlist_->getSize()||newIndex<0||newIndex>=filterlist_->getSize()||oldIndex==newIndex)
-        return;
+void GUI::FilterTab::moveFilter(std::size_t oldIndex, std::size_t newIndex) {
+	if(oldIndex<0||oldIndex>=filterlist_->getSize()||newIndex<0||newIndex>=filterlist_->getSize()
+	        ||oldIndex==newIndex)
+		return;
 
-    filterlist_->moveFilter(oldIndex,newIndex);
+	filterlist_->moveFilter(oldIndex,newIndex);
 
-    auto model=model_filterlist_->stringList();
-    auto filtername=model.at(oldIndex);
-    model.removeAt(oldIndex);
-    model.insert(newIndex,filtername);
-    model_filterlist_->setStringList(model);
+	auto model=model_filterlist_->stringList();
+	auto filtername=model.at(oldIndex);
+	model.removeAt(oldIndex);
+	model.insert(newIndex,filtername);
+	model_filterlist_->setStringList(model);
 
 
-    QModelIndex index(model_filterlist_->index(static_cast<int>(newIndex),0));
-    list_filterlist_->setCurrentIndex(index);
+	QModelIndex index(model_filterlist_->index(static_cast<int>(newIndex),0));
+	list_filterlist_->setCurrentIndex(index);
 
-    updateFilterPreview();
-    showFilterPreview();
+	updateFilterPreview();
+	showFilterPreview();
 }
 
 Model::FilterList *GUI::FilterTab::getFilterList() {
@@ -319,65 +317,61 @@ void GUI::FilterTab::setFilterList(std::unique_ptr<Model::FilterList> filterlist
 	}
 	model_filterlist_->setStringList(model);
 	updateFilterPreview();
-    if(filterlist_->getSize()>0)
-        showFilterPreview();
+	if(filterlist_->getSize()>0)
+		showFilterPreview();
 }
 
 void GUI::FilterTab::resetFilters() {
 	initFilterList();
 	model_filterlist_->removeRows(0,model_filterlist_->rowCount());
 	originalPreviewFrames_.release();
-    currentFilterOptionsBox_->hide();
-    showRawVideo();
+	currentFilterOptionsBox_->hide();
+	showRawVideo();
 }
 
-void GUI::FilterTab::setFilteredVideo(Model::Video *filteredVideo)
-{
-    filteredVideo_=filteredVideo;
+void GUI::FilterTab::setFilteredVideo(Model::Video *filteredVideo) {
+	filteredVideo_=filteredVideo;
 }
 
-void GUI::FilterTab::showFilteredVideo()
-{
-    showRawVideo();
-    player_->setVideo(filteredVideo_);
-    playerControlPanel_->updateUi();
-    isFilteredVideoShown_=true;
+void GUI::FilterTab::showFilteredVideo() {
+	showRawVideo();
+	player_->setVideo(filteredVideo_);
+	playerControlPanel_->updateUi();
+	isFilteredVideoShown_=true;
 }
 
-void GUI::FilterTab::setMainWindow(GUI::MainWindow *mainwindow)
-{
-    mainWindow_=mainwindow;
+void GUI::FilterTab::setMainWindow(GUI::MainWindow *mainwindow) {
+	mainWindow_=mainwindow;
 }
 
-GUI::MainWindow *GUI::FilterTab::getMainWindow()
-{
-    return mainWindow_;
+GUI::MainWindow *GUI::FilterTab::getMainWindow() {
+	return mainWindow_;
 }
 
 void GUI::FilterTab::up() {
-    QModelIndexList selected = list_filterlist_->selectionModel()->selectedIndexes();
-    if (!selected.isEmpty()) {
-        if(selected.first().row()==0)
-            return;
-        UndoRedo::UndoStack::getUndoStack().push(new UndoRedo::MoveFilterUp(*this,selected.first().row()));
-    }
+	QModelIndexList selected = list_filterlist_->selectionModel()->selectedIndexes();
+	if (!selected.isEmpty()) {
+		if(selected.first().row()==0)
+			return;
+		UndoRedo::UndoStack::getUndoStack().push(new UndoRedo::MoveFilterUp(*this,selected.first().row()));
+	}
 }
 
 void GUI::FilterTab::down() {
-    QModelIndexList selected = list_filterlist_->selectionModel()->selectedIndexes();
-    if (!selected.isEmpty()) {
-        if(selected.first().row()==filterlist_->getSize()-1)
-            return;
-        UndoRedo::UndoStack::getUndoStack().push(new UndoRedo::MoveFilterDown(*this,
-              selected.first().row()));
-    }
+	QModelIndexList selected = list_filterlist_->selectionModel()->selectedIndexes();
+	if (!selected.isEmpty()) {
+		if(selected.first().row()==filterlist_->getSize()-1)
+			return;
+		UndoRedo::UndoStack::getUndoStack().push(new UndoRedo::MoveFilterDown(*this,
+		        selected.first().row()));
+	}
 }
 
 void GUI::FilterTab::remove() {
-    QModelIndexList selected = list_filterlist_->selectionModel()->selectedIndexes();
-    if (!selected.isEmpty()) {
-        UndoRedo::UndoStack::getUndoStack().push(new UndoRedo::RemoveFilter(*this,selected.first().row()));
-    }
+	QModelIndexList selected = list_filterlist_->selectionModel()->selectedIndexes();
+	if (!selected.isEmpty()) {
+		UndoRedo::UndoStack::getUndoStack().push(new UndoRedo::RemoveFilter(*this,selected.first().row()));
+	}
 }
 
 void GUI::FilterTab::load() {
@@ -413,107 +407,113 @@ void GUI::FilterTab::load() {
 
 	auto video=std::make_unique<Model::YuvVideo>(path,infoDialog->getPixelSheme(),
 	           infoDialog->getCompression(),infoDialog->getWidth(),infoDialog->getHeight(),infoDialog->getFps());
-    auto command=new UndoRedo::LoadFilterVideo(*this,std::move(video),getMemento());
+	auto command=new UndoRedo::LoadFilterVideo(*this,std::move(video),getMemento());
 
 	UndoRedo::UndoStack::getUndoStack().push(command);
 }
 
 void GUI::FilterTab::apply() {
-    if(!rawVideo_)
-        return;
-    if(filterlist_->getSize()==0)
-        return;
+	if(!rawVideo_)
+		return;
+	if(filterlist_->getSize()==0)
+		return;
 
-    mainWindow_->getStatusBar()->showMessage("Applying filters to video...");
+	mainWindow_->getStatusBar()->showMessage("Applying filters to video...");
 
-    auto command=new UndoRedo::ApplyFilter(*this,&rawVideo_->getVideo(),std::make_unique<Model::FilterList>(*filterlist_));
-    UndoRedo::UndoStack::getUndoStack().push(command);
+	auto command=new UndoRedo::ApplyFilter(*this,&rawVideo_->getVideo(),
+	                                       std::make_unique<Model::FilterList>(*filterlist_));
+	UndoRedo::UndoStack::getUndoStack().push(command);
 }
 
 void GUI::FilterTab::save() {
-    if(!isFilteredVideoShown_)
-        return;
-    if(!rawVideo_)
-        return;
-    if(!filteredVideo_)
-        return;
+	if(!isFilteredVideoShown_)
+		return;
+	if(!rawVideo_)
+		return;
+	if(!filteredVideo_)
+		return;
 
-    mainWindow_->getStatusBar()->showMessage("Saving filtered video...");
-    auto filename = QFileDialog::getSaveFileName(this,tr("Save yuv video"),QDir::homePath());
+	mainWindow_->getStatusBar()->showMessage("Saving filtered video...");
+	auto filename = QFileDialog::getSaveFileName(this,tr("Save yuv video"),QDir::homePath());
 
-    if(filename.isEmpty()) {
-        mainWindow_->getStatusBar()->showMessage("Aborted!",3000);
-        return;
-    }
+	if(filename.isEmpty()) {
+		mainWindow_->getStatusBar()->showMessage("Aborted!",3000);
+		return;
+	}
 
-    if(!filename.endsWith(".yuv"))
-        filename+=".yuv";
+	if(!filename.endsWith(".yuv"))
+		filename+=".yuv";
 
-    auto type=rawVideo_->getYuvType();
-    if(type==Utility::YuvType::YUV411) {
-         safer_.push_back(std::make_unique<Utility::Yuv411FileSaver>(filename,*filteredVideo_,rawVideo_->getCompression(),this));
-    }else if(type==Utility::YuvType::YUV420) {
-        safer_.push_back(std::make_unique<Utility::Yuv420FileSaver>(filename,*filteredVideo_,this));
-    }else if(type==Utility::YuvType::YUV422) {
-         safer_.push_back(std::make_unique<Utility::Yuv422FileSaver>(filename,*filteredVideo_,rawVideo_->getCompression(),this));
-    }else if(type==Utility::YuvType::YUV444) {
-         safer_.push_back(std::make_unique<Utility::Yuv444FileSaver>(filename,*filteredVideo_,rawVideo_->getCompression(),this));
-    }
-    safer_.back()->save();
+	auto type=rawVideo_->getYuvType();
+	if(type==Utility::YuvType::YUV411) {
+		safer_.push_back(std::make_unique<Utility::Yuv411FileSaver>(filename,*filteredVideo_,
+		                 rawVideo_->getCompression(),this));
+	} else if(type==Utility::YuvType::YUV420) {
+		safer_.push_back(std::make_unique<Utility::Yuv420FileSaver>(filename,*filteredVideo_,this));
+	} else if(type==Utility::YuvType::YUV422) {
+		safer_.push_back(std::make_unique<Utility::Yuv422FileSaver>(filename,*filteredVideo_,
+		                 rawVideo_->getCompression(),this));
+	} else if(type==Utility::YuvType::YUV444) {
+		safer_.push_back(std::make_unique<Utility::Yuv444FileSaver>(filename,*filteredVideo_,
+		                 rawVideo_->getCompression(),this));
+	}
+	safer_.back()->save();
 }
 
 void GUI::FilterTab::saveConfiguration() {
-    if(filterlist_->getSize()==0)
-        return;
+	if(filterlist_->getSize()==0)
+		return;
 
-    mainWindow_->getStatusBar()->showMessage("Saving filterconfig..");
-    auto filename = QFileDialog::getSaveFileName(this,tr("Save filter configuration"),QDir::homePath());
+	mainWindow_->getStatusBar()->showMessage("Saving filterconfig..");
+	auto filename = QFileDialog::getSaveFileName(this,tr("Save filter configuration"),QDir::homePath());
 
-    if(filename.isEmpty()) {
-        mainWindow_->getStatusBar()->showMessage("Aborted!",3000);
-        return;
-    }
+	if(filename.isEmpty()) {
+		mainWindow_->getStatusBar()->showMessage("Aborted!",3000);
+		return;
+	}
 
-    if(!filename.endsWith(".conf"))
-        filename+=".conf";
+	if(!filename.endsWith(".conf"))
+		filename+=".conf";
 
-    Utility::FilterConfigurationSaver saver(filename,*filterlist_);
-    saver.save();
+	Utility::FilterConfigurationSaver saver(filename,*filterlist_);
+	saver.save();
 
-    mainWindow_->getStatusBar()->showMessage("Filterconfig successfully saved!",3000);
+	mainWindow_->getStatusBar()->showMessage("Filterconfig successfully saved!",3000);
 }
 
 void GUI::FilterTab::loadConfiguration() {
-    if(!rawVideo_)
-        return;
+	if(!rawVideo_)
+		return;
 
-    mainWindow_->getStatusBar()->showMessage("Loading filterconfig..");
-    auto filename=QFileDialog::getOpenFileName(this,tr("Open filterconfiguration"),QDir::homePath(),"*.conf");
+	mainWindow_->getStatusBar()->showMessage("Loading filterconfig..");
+	auto filename=QFileDialog::getOpenFileName(this,tr("Open filterconfiguration"),QDir::homePath(),
+	              "*.conf");
 
-    if(filename.isEmpty()) {
-        mainWindow_->getStatusBar()->showMessage("Aborted!",3000);
-        return;
-    }
+	if(filename.isEmpty()) {
+		mainWindow_->getStatusBar()->showMessage("Aborted!",3000);
+		return;
+	}
 
-    if(!filename.endsWith(".conf")) {
-        mainWindow_->getStatusBar()->showMessage("Aborted!",3000);
-        return;
-    }
+	if(!filename.endsWith(".conf")) {
+		mainWindow_->getStatusBar()->showMessage("Aborted!",3000);
+		return;
+	}
 
-    Utility::FilterConfigurationLoader loader(filename);
-    auto filterlist=loader.getConfiguration();
+	Utility::FilterConfigurationLoader loader(filename);
+	auto filterlist=loader.getConfiguration();
 
-    UndoRedo::UndoStack::getUndoStack().push(new UndoRedo::LoadFilterconfig(*this,std::move(filterlist)));
+	UndoRedo::UndoStack::getUndoStack().push(new UndoRedo::LoadFilterconfig(*this,
+	        std::move(filterlist)));
 
-    mainWindow_->getStatusBar()->showMessage("Filterconfig successfully loaded!",3000);
+	mainWindow_->getStatusBar()->showMessage("Filterconfig successfully loaded!",3000);
 }
 
 void GUI::FilterTab::reset() {
 	if(filterlist_->getSize()==0)
 		return;
 
-    auto command=new UndoRedo::FilterReset(*this);
-    UndoRedo::UndoStack::getUndoStack().push(command);
+	auto command=new UndoRedo::FilterReset(*this);
+	UndoRedo::UndoStack::getUndoStack().push(command);
 }
 
 void GUI::FilterTab::listSelectionChanged(QItemSelection selection) {
@@ -529,33 +529,31 @@ void GUI::FilterTab::listSelectionChanged(QItemSelection selection) {
 	auto filterbox=FilterConfigurationBox::CreateConfigurationBox(*this,*filter);
 	auto ptr=filterbox.release();
 	currentFilterOptionsBox_=ptr;
-    currentFilterOptionsBox_->setFilterIndex(selection.indexes().first().row());
+	currentFilterOptionsBox_->setFilterIndex(selection.indexes().first().row());
 
 	h_filterOptions_->addWidget(currentFilterOptionsBox_);
 	h_filterOptions_->removeItem(spacer_filterOptions_);
-    h_filterOptions_->addItem(spacer_filterOptions_);
+	h_filterOptions_->addItem(spacer_filterOptions_);
 }
 
-void GUI::FilterTab::notifyOnSaveComplete(bool successful, QString filename)
-{
-    if(successful) {
-        QMessageBox::information(this,"Video saved successfully!","The video was successfully saved to '"+filename+"'",QMessageBox::Ok);
-        mainWindow_->getStatusBar()->showMessage("Filtered video successfully saved!",3000);
-    }
-    else {
-        QMessageBox::warning(this,"Video not saved completly!","The video could not be saved completly to '"+filename+"'",QMessageBox::Ok);
-        mainWindow_->getStatusBar()->showMessage("Filtered video could not be saved completly!",3000);
-    }
+void GUI::FilterTab::notifyOnSaveComplete(bool successful, QString filename) {
+	if(successful) {
+		QMessageBox::information(this,"Video saved successfully!",
+		                         "The video was successfully saved to '"+filename+"'",QMessageBox::Ok);
+		mainWindow_->getStatusBar()->showMessage("Filtered video successfully saved!",3000);
+	} else {
+		QMessageBox::warning(this,"Video not saved completly!",
+		                     "The video could not be saved completly to '"+filename+"'",QMessageBox::Ok);
+		mainWindow_->getStatusBar()->showMessage("Filtered video could not be saved completly!",3000);
+	}
 }
 
-void GUI::FilterTab::notifyOnApplyComplete(bool successful)
-{
-    if(successful) {
-    mainWindow_->getStatusBar()->showMessage("Filters successfully applied",3000);
-    }
-    else {
-        mainWindow_->getStatusBar()->showMessage("Filters not completly applied!",3000);
-    }
+void GUI::FilterTab::notifyOnApplyComplete(bool successful) {
+	if(successful) {
+		mainWindow_->getStatusBar()->showMessage("Filters successfully applied",3000);
+	} else {
+		mainWindow_->getStatusBar()->showMessage("Filters not completly applied!",3000);
+	}
 }
 
 void GUI::FilterTab::createUi() {
@@ -645,7 +643,7 @@ void GUI::FilterTab::createButtons() {
 
 	QString styleSheet_buttonGroup("QPushButton {"
 	                               "color: rgb(255, 255, 255);"
-                                   "border-color: rgb(69, 62, 62);"
+	                               "border-color: rgb(69, 62, 62);"
 	                               "background: rgb(140, 140, 140);"
 	                               "border-width: 1px;"
 	                               "border-color:rgb(0, 0, 0);"
@@ -778,8 +776,8 @@ void GUI::FilterTab::connectAtions() {
 	connect(button_up_,SIGNAL(clicked()),this,SLOT(up()));
 	connect(list_filterlist_->selectionModel(),SIGNAL(selectionChanged(QItemSelection,
 	        QItemSelection)),this,SLOT(listSelectionChanged(QItemSelection)));
-    connect(this,SIGNAL(saveComplete(bool,QString)),this,SLOT(notifyOnSaveComplete(bool,QString)));
-    connect(this,SIGNAL(applyComplete(bool)),this,SLOT(notifyOnApplyComplete(bool)));
+	connect(this,SIGNAL(saveComplete(bool,QString)),this,SLOT(notifyOnSaveComplete(bool,QString)));
+	connect(this,SIGNAL(applyComplete(bool)),this,SLOT(notifyOnApplyComplete(bool)));
 }
 
 void GUI::FilterTab::initPlayer() {
@@ -800,7 +798,7 @@ void GUI::FilterTab::calculatePreviewFrames() {
 	if(!rawVideo_)
 		return;
 
-    originalPreviewFrames_=std::make_unique<Model::AVVideo>();
+	originalPreviewFrames_=std::make_unique<Model::AVVideo>();
 
 	static std::size_t numberOfPreviewFrames=5;
 
@@ -812,9 +810,9 @@ void GUI::FilterTab::calculatePreviewFrames() {
 		stepsize=1;
 	}
 
-    for(std::size_t i=0; i<numberOfPreviewFrames; i++) {
-        auto frame=Utility::VideoConverter::convertQImageToAVFrame(*rawVideo_->getVideo().getFrame(
-                               i*stepsize));
-        originalPreviewFrames_->appendFrame(frame);
+	for(std::size_t i=0; i<numberOfPreviewFrames; i++) {
+		auto frame=Utility::VideoConverter::convertQImageToAVFrame(*rawVideo_->getVideo().getFrame(
+		               i*stepsize));
+		originalPreviewFrames_->appendFrame(frame);
 	}
 }

@@ -6,12 +6,10 @@ Memento::AnalysisTabMemento::AnalysisTabMemento():rawVideo_(nullptr) {
 
 }
 
-void Memento::AnalysisTabMemento::setRawVideo(Model::YuvVideo *video)
-{
-    rawVideo_=video;
+void Memento::AnalysisTabMemento::setRawVideo(Model::YuvVideo *video) {
+	rawVideo_=video;
 }
 
-Model::YuvVideo *Memento::AnalysisTabMemento::getRawVideo()
-{
-    return rawVideo_;
+Model::YuvVideo *Memento::AnalysisTabMemento::getRawVideo() {
+	return rawVideo_;
 }

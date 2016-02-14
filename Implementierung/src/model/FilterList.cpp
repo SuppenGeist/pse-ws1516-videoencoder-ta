@@ -17,8 +17,8 @@ Model::FilterList::FilterList() {
 
 Model::FilterList::FilterList(Model::FilterList &obj) {
 	for(std::size_t i=0; i<obj.getSize(); i++) {
-        auto filter=obj.getFilter(i);
-        appendFilter(filter->getName())->restore(filter->getSaveString());
+		auto filter=obj.getFilter(i);
+		appendFilter(filter->getName())->restore(filter->getSaveString());
 	}
 }
 
@@ -31,7 +31,7 @@ void Model::FilterList::moveFilter(std::size_t oldPosition, std::size_t newPosit
 
 std::unique_ptr<Model::Filter> Model::FilterList::removeFilter(std::size_t position) {
 	if(position>=filters_.size()) {
-        throw std::logic_error("Check your index!");
+		throw std::logic_error("Check your index!");
 	}
 
 	auto filter=std::move(filters_[position]);

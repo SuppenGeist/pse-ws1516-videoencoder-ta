@@ -22,12 +22,12 @@ GUI::BrightnessFilterBox::BrightnessFilterBox(QWidget* parent):FilterConfigurati
 }
 
 void GUI::BrightnessFilterBox::updateUi() {
-    updateTempFilter();
+	updateTempFilter();
 	auto value=static_cast<Model::BrightnessFilter*>(tempFilter_.get())->getIntensity();
 	slider_->setValue(value);
 	spinBox_->setValue(value);
 
-    updatePreview();
+	updatePreview();
 }
 
 void GUI::BrightnessFilterBox::sliderChanged(int value) {

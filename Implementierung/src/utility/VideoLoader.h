@@ -21,28 +21,28 @@ namespace Utility {
 class VideoLoader {
 
   public:
-    /**
-     * @brief VideoLoader Constructor.
-     * @param path Absolute path to the video to load.
-     */
+	/**
+	 * @brief VideoLoader Constructor.
+	 * @param path Absolute path to the video to load.
+	 */
 	VideoLoader(QString path);
 
-    ~VideoLoader();
+	~VideoLoader();
 
-    /**
-     * @brief loadVideo Loads the video and generates the AVVideo.
-     * @return  The loaded video.
-     */
-    void loadVideo(Model::AVVideo *target);
+	/**
+	 * @brief loadVideo Loads the video and generates the AVVideo.
+	 * @return  The loaded video.
+	 */
+	void loadVideo(Model::AVVideo *target);
 
 
-private:
-    QString     path_;
-    std::thread loader_;
-    Model::AVVideo* target_;
-    bool isRunning_;
+  private:
+	QString     path_;
+	std::thread loader_;
+	Model::AVVideo* target_;
+	bool isRunning_;
 
-    void loadP();
+	void loadP();
 };
 }
 

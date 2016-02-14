@@ -92,17 +92,17 @@ int Model::RectangleFilter::getOpacity() {
 }
 
 void Model::RectangleFilter::setOpacity(int opacity) {
-    if(opacity<0||opacity>255)
-        return;
-    opacity_ = opacity;
+	if(opacity<0||opacity>255)
+		return;
+	opacity_ = opacity;
 }
 
 void Model::RectangleFilter::restore(QString description) {
-    QStringList list  = description.split(";");
-    if(!list.size() == 6){
-        return;
-    }
-    setWidth(list[0].QString::toInt());
+	QStringList list  = description.split(";");
+	if(!list.size() == 6) {
+		return;
+	}
+	setWidth(list[0].QString::toInt());
 	setHeight(list[1].QString::toInt());
 	setX(list[2].QString::toInt());
 	setY(list[3].QString::toInt());

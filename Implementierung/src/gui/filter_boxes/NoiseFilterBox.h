@@ -6,30 +6,29 @@
 
 #include "FilterConfigurationBox.h"
 
-namespace GUI
-{
-	/**
-	 * This class contains the gui elements for changing the options of a noise filter.
-    */
+namespace GUI {
+/**
+ * This class contains the gui elements for changing the options of a noise filter.
+*/
 class NoiseFilterBox: public FilterConfigurationBox {
-    Q_OBJECT
+	Q_OBJECT
   public:
-    /**
-     * @brief NoiseFilterBox Constructor.
-     * @param parent
-     */
-    NoiseFilterBox(QWidget* parent=0);
+	/**
+	 * @brief NoiseFilterBox Constructor.
+	 * @param parent
+	 */
+	NoiseFilterBox(QWidget* parent=0);
 
   protected:
-    void updateUi() override;
+	void updateUi() override;
 
 
   private slots:
-    void noiseMode();
+	void noiseMode();
   private:
-    QComboBox* combo_;
+	QComboBox* combo_;
 
-    virtual void createFilterOptions();
+	virtual void createFilterOptions();
 };
 }
 

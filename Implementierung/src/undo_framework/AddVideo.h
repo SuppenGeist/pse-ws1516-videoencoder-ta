@@ -16,27 +16,27 @@ namespace UndoRedo {
 class AddVideo: public QUndoCommand {
 
   public:
-    /**
-     * @brief AddVideo Constuctor.
-     * @param analysisBoxContainer The AnalysisBoxContainer to operate on.
-     * @param filename The video on which the action is performed.
-     */
-    AddVideo(GUI::AnalysisBoxContainer *analysisBoxContainer,QString filename);
+	/**
+	 * @brief AddVideo Constuctor.
+	 * @param analysisBoxContainer The AnalysisBoxContainer to operate on.
+	 * @param filename The video on which the action is performed.
+	 */
+	AddVideo(GUI::AnalysisBoxContainer *analysisBoxContainer,QString filename);
 
-    /**
-     * @brief undo Removes the added video from the analysis tab.
-     */
+	/**
+	 * @brief undo Removes the added video from the analysis tab.
+	 */
 	void undo();
 
-    /**
-     * @brief redo Adds a video to the Analysis tab.
-     */
+	/**
+	 * @brief redo Adds a video to the Analysis tab.
+	 */
 	void redo();
 
   private:
-    GUI::AnalysisBoxContainer*      anaBoxContainer_;
-    QString                         filename_;
-    GUI::AnalysisBox*               box_;
+	GUI::AnalysisBoxContainer*      anaBoxContainer_;
+	QString                         filename_;
+	GUI::AnalysisBox*               box_;
 };
 }
 

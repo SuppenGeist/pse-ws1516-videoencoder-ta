@@ -40,50 +40,50 @@ class AnalysisTab: public QFrame {
 	 * @brief AnalysisTab Contructor.
 	 * @param parent Parent of this Object.
 	 */
-    AnalysisTab(QWidget* parent=0);
+	AnalysisTab(QWidget* parent=0);
 
-    std::unique_ptr<Memento::AnalysisTabMemento> getMemento();
+	std::unique_ptr<Memento::AnalysisTabMemento> getMemento();
 
-    void restore(Memento::AnalysisTabMemento* memento);
+	void restore(Memento::AnalysisTabMemento* memento);
 
-    void setRawVideo(Model::YuvVideo* rawVideo);
+	void setRawVideo(Model::YuvVideo* rawVideo);
 
-    bool isRawVideoLoaded();
+	bool isRawVideoLoaded();
 
-protected:
-    void resizeEvent(QResizeEvent * event);
+  protected:
+	void resizeEvent(QResizeEvent * event);
 
-private slots:
-    void loadRawVideo();
-    void showBitrate();
+  private slots:
+	void loadRawVideo();
+	void showBitrate();
 
   private:
-    QPushButton*            button_saveResults_;
-    QPushButton*            button_addRawVideo_;
-    QPushButton*            button_attributes_;
-    QPushButton*            button_redHistogramm_;
-    QPushButton*            button_blueHistogramm_;
-    QPushButton*            button_greenHistogramm_;
-    QPushButton*            button_bitrate_;
-    QPushButton*            button_psnr_;
-    PlayerControlPanel*     playerControlPanel_;
-    QTabWidget*             tabs_graphattrs;
-    QComboBox*              combobbox_anaVideo_;
-    QVBoxLayout*            v_rawVideo_;
-    GraphWidget*            graphWidget_;
-    AnalysisBoxContainer*   analysisBoxContainer_;
-    QScrollArea*            scroll_anaBoxes_;
+	QPushButton*            button_saveResults_;
+	QPushButton*            button_addRawVideo_;
+	QPushButton*            button_attributes_;
+	QPushButton*            button_redHistogramm_;
+	QPushButton*            button_blueHistogramm_;
+	QPushButton*            button_greenHistogramm_;
+	QPushButton*            button_bitrate_;
+	QPushButton*            button_psnr_;
+	PlayerControlPanel*     playerControlPanel_;
+	QTabWidget*             tabs_graphattrs;
+	QComboBox*              combobbox_anaVideo_;
+	QVBoxLayout*            v_rawVideo_;
+	GraphWidget*            graphWidget_;
+	AnalysisBoxContainer*   analysisBoxContainer_;
+	QScrollArea*            scroll_anaBoxes_;
 
-    Model::YuvVideo*        rawVideo_;
+	Model::YuvVideo*        rawVideo_;
 
-    std::unique_ptr<ForwardPlayer>      forwardPlayer_;
-    std::shared_ptr<Timer>              timer_;
-    std::unique_ptr<GlobalControlPanel> globalControlPanel_;
-    std::unique_ptr<VideoPlayer>        videoPlayer_;
-    FrameView*                          rawVideoView_;
+	std::unique_ptr<ForwardPlayer>      forwardPlayer_;
+	std::shared_ptr<Timer>              timer_;
+	std::unique_ptr<GlobalControlPanel> globalControlPanel_;
+	std::unique_ptr<VideoPlayer>        videoPlayer_;
+	FrameView*                          rawVideoView_;
 
-    void createUi();
-    void connectActions();
+	void createUi();
+	void connectActions();
 };
 }
 

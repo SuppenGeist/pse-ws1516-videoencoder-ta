@@ -22,24 +22,24 @@ namespace Utility {
 class Yuv420FileSaver: public YuvFileSaver {
 
   public:
-    /**
-     * @brief Yuv420FileSaver Constructor.
-     * @param filename Absolute path to the file to save to.
-     * @param video The video to save.
-     */
-    Yuv420FileSaver(QString filename, Model::Video& video, GUI::FilterTab *filterTab);
+	/**
+	 * @brief Yuv420FileSaver Constructor.
+	 * @param filename Absolute path to the file to save to.
+	 * @param video The video to save.
+	 */
+	Yuv420FileSaver(QString filename, Model::Video& video, GUI::FilterTab *filterTab);
 
-    ~Yuv420FileSaver();
+	~Yuv420FileSaver();
 
   public:
 	void save();
 
-private:
-    std::thread     safer_;
-    bool            isRunning_;
-    GUI::FilterTab* filterTab_;
+  private:
+	std::thread     safer_;
+	bool            isRunning_;
+	GUI::FilterTab* filterTab_;
 
-    void saveP();
+	void saveP();
 };
 }
 

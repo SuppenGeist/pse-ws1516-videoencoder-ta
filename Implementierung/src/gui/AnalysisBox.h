@@ -36,45 +36,45 @@ class AnalysisBox: public QFrame {
 	 * @brief AnalysisBox Constructor
 	 * @param parent The parent of this Object
 	 */
-    AnalysisBox(QWidget* parent=0);
+	AnalysisBox(QWidget* parent=0);
 
-    ~AnalysisBox();
+	~AnalysisBox();
 
-    void setParentContainer(AnalysisBoxContainer* container);
+	void setParentContainer(AnalysisBoxContainer* container);
 
-    void setFile(QString filename);
+	void setFile(QString filename);
 
-    void setTimer(std::shared_ptr<Timer> timer);
+	void setTimer(std::shared_ptr<Timer> timer);
 
-    void setControlPanel(GlobalControlPanel* controlPanel);
+	void setControlPanel(GlobalControlPanel* controlPanel);
 
-    void showGraph(AnalysisGraph graph);
+	void showGraph(AnalysisGraph graph);
 
-    QString getFilename();
+	QString getFilename();
 
-private slots:
-    void closeBox();
-    void updateGraphWidget();
+  private slots:
+	void closeBox();
+	void updateGraphWidget();
 
   private:
-    FrameView*      origView_;
-    FrameView*      anaView_;
-    QTabWidget*     tabs_graphs_;
-    QPushButton*    button_close_;
-    GraphWidget*    graphWidget_;
-    QLabel*         label_title_;
-    QTimer          graphUpdater_;
+	FrameView*      origView_;
+	FrameView*      anaView_;
+	QTabWidget*     tabs_graphs_;
+	QPushButton*    button_close_;
+	GraphWidget*    graphWidget_;
+	QLabel*         label_title_;
+	QTimer          graphUpdater_;
 
-    AnalysisBoxContainer*                   parentContainer_;
+	AnalysisBoxContainer*                   parentContainer_;
 
-    std::unique_ptr<VideoPlayer>              origVidPlayer_;
-    std::unique_ptr<VideoPlayer>              anaVidPlayer_;
-    GlobalControlPanel*                       globalControlPanel_;
+	std::unique_ptr<VideoPlayer>              origVidPlayer_;
+	std::unique_ptr<VideoPlayer>              anaVidPlayer_;
+	GlobalControlPanel*                       globalControlPanel_;
 
-    QString         filename_;
-    std::unique_ptr<Model::EncodedVideo>      origVideo_;
+	QString         filename_;
+	std::unique_ptr<Model::EncodedVideo>      origVideo_;
 
-    void createUi();
+	void createUi();
 
 
 };

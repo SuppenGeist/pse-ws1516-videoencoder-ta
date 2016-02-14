@@ -22,12 +22,12 @@ GUI::RotationFilterBox::RotationFilterBox(QWidget* parent):FilterConfigurationBo
 }
 
 void GUI::RotationFilterBox::updateUi() {
-    updateTempFilter();
+	updateTempFilter();
 	auto value=static_cast<Model::RotationFilter*>(tempFilter_.get())->getAngle();
 	slider_->setValue(value);
 	spinBox_->setValue(value);
 
-    updatePreview();
+	updatePreview();
 }
 
 void GUI::RotationFilterBox::sliderChanged(int value) {

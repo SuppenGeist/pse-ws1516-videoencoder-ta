@@ -49,17 +49,17 @@ class FilterTab: public QFrame {
 
 	void showFilterPreview();
 
-    void updateFilterPreview();
+	void updateFilterPreview();
 
-    void changeFilter(int index,QString newState);
+	void changeFilter(int index,QString newState);
 
-    void insertFilter(std::unique_ptr<Model::Filter> filter,std::size_t index);
+	void insertFilter(std::unique_ptr<Model::Filter> filter,std::size_t index);
 
 	Model::Filter* appendFilter(QString filtername);
 
 	std::unique_ptr<Model::Filter> removeFilter(std::size_t index);
 
-    void moveFilter(std::size_t oldIndex,std::size_t newIndex);
+	void moveFilter(std::size_t oldIndex,std::size_t newIndex);
 
 	Model::FilterList* getFilterList();
 
@@ -67,17 +67,17 @@ class FilterTab: public QFrame {
 
 	void resetFilters();
 
-    void setFilteredVideo(Model::Video* filteredVideo);
+	void setFilteredVideo(Model::Video* filteredVideo);
 
-    void showFilteredVideo();
+	void showFilteredVideo();
 
-    void setMainWindow(GUI::MainWindow* mainwindow);
+	void setMainWindow(GUI::MainWindow* mainwindow);
 
-    MainWindow *getMainWindow();
+	MainWindow *getMainWindow();
 
-signals:
-    void saveComplete(bool successful,QString filename);
-    void applyComplete(bool successful);
+  signals:
+	void saveComplete(bool successful,QString filename);
+	void applyComplete(bool successful);
 
   private slots:
 	void up();
@@ -90,8 +90,8 @@ signals:
 	void loadConfiguration();
 	void reset();
 	void listSelectionChanged(QItemSelection selection);
-    void notifyOnSaveComplete(bool successful,QString filename);
-    void notifyOnApplyComplete(bool successful);
+	void notifyOnSaveComplete(bool successful,QString filename);
+	void notifyOnApplyComplete(bool successful);
 
 
   private:
@@ -122,16 +122,16 @@ signals:
 
 	Model::YuvVideo*                    rawVideo_;
 	std::unique_ptr<Model::FilterList>  filterlist_;
-    std::unique_ptr<Model::AVVideo>     originalPreviewFrames_;
+	std::unique_ptr<Model::AVVideo>     originalPreviewFrames_;
 	std::unique_ptr<Model::Video>       filteredPreviewFrames_;
-    std::unique_ptr<Utility::FilterApplier> previewCalculator_;
-    Model::Video*                       filteredVideo_;
+	std::unique_ptr<Utility::FilterApplier> previewCalculator_;
+	Model::Video*                       filteredVideo_;
 
-    bool                                isFilteredVideoShown_;
+	bool                                isFilteredVideoShown_;
 
-    std::vector<std::unique_ptr<Utility::YuvFileSaver> > safer_;
+	std::vector<std::unique_ptr<Utility::YuvFileSaver> > safer_;
 
-    GUI::MainWindow*                    mainWindow_;
+	GUI::MainWindow*                    mainWindow_;
 
 	void createUi();
 	void createButtons();

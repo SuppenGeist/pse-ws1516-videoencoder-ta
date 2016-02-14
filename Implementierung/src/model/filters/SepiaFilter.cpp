@@ -24,5 +24,5 @@ void Model::SepiaFilter::restore(QString description) {
 }
 
 QString Model::SepiaFilter::getSaveString() const {
-    return "";
+	return "";
 }

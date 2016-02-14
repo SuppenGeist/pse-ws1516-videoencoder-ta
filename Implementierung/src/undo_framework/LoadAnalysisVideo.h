@@ -35,14 +35,14 @@ class LoadAnalysisVideo: public QUndoCommand {
 	void undo();
 
 	/**
-     * @brief redo Loads a new raw video in the analysis tab.
+	 * @brief redo Loads a new raw video in the analysis tab.
 	 */
 	void redo();
 
   private:
-    GUI::AnalysisTab* anaTab_;
-    std::unique_ptr<Memento::AnalysisTabMemento>    memento_;
-    std::unique_ptr<Model::YuvVideo>                rawVideo_;
+	GUI::AnalysisTab* anaTab_;
+	std::unique_ptr<Memento::AnalysisTabMemento>    memento_;
+	std::unique_ptr<Model::YuvVideo>                rawVideo_;
 };
 }
 
