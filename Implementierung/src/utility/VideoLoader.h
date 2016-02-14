@@ -1,20 +1,16 @@
-
-#include <memory>
-using namespace std;
 #ifndef __VideoLoader_h__
 #define __VideoLoader_h__
 
-#include "../model/AVVideo.h"
+#include <thread>
+
 #include <QString>
+
+#include "../model/AVVideo.h"
+
 extern "C" {
 #include <libavcodec/avcodec.h>
-}
-
-namespace Model {
-class AVVideo;
-}
-namespace Utility {
-class VideoLoader;
+#include <libavformat/avformat.h>
+#include <libswscale/swscale.h>
 }
 
 namespace Utility {
@@ -23,22 +19,30 @@ namespace Utility {
  */
 
 class VideoLoader {
-  private:
-	QString path;
 
-	/// <summary>
-	/// Constructor.
-	/// </summary>
-	/// <param name="path">Absolute path to the video to load.</param>
   public:
+    /**
+     * @brief VideoLoader Constructor.
+     * @param path Absolute path to the video to load.
+     */
 	VideoLoader(QString path);
 
-	/// <summary>
-	/// Loads the video and generates the AVVideo.
-	/// </summary>
-	/// <returns>The loaded video.</returns>
-  public:
-	unique_ptr<Model::AVVideo> loadVideo();
+    ~VideoLoader();
+
+    /**
+     * @brief loadVideo Loads the video and generates the AVVideo.
+     * @return  The loaded video.
+     */
+    void loadVideo(Model::AVVideo *target);
+
+
+private:
+    QString     path_;
+    std::thread loader_;
+    Model::AVVideo* target_;
+    bool isRunning_;
+
+    void loadP();
 };
 }
 

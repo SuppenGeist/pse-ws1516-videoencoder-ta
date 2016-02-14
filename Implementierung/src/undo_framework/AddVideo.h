@@ -1,16 +1,11 @@
 #ifndef __AddVideo_h__
 #define __AddVideo_h__
 
-// #include "AnalysisBox.h"
-// #include "AnalysisBoxContainer.h"
 #include <QUndoCommand>
+#include <QString>
 
 namespace GUI {
-class AnalysisBox;
 class AnalysisBoxContainer;
-}
-namespace Model {
-class EncodedVideo;
 }
 
 namespace UndoRedo {
@@ -19,29 +14,27 @@ namespace UndoRedo {
 */
 class AddVideo: public QUndoCommand {
 
-
-	/// <summary>
-	/// Constuctor.
-	/// </summary>
-	/// <param name="analysisBoxContainer">The AnalysisBoxContainer to operate on.</param>
-	/// <param name="video">The video on which the action is performed.</param>
   public:
-	AddVideo(GUI::AnalysisBox *analysisBoxContainer);
+    /**
+     * @brief AddVideo Constuctor.
+     * @param analysisBoxContainer The AnalysisBoxContainer to operate on.
+     * @param filename The video on which the action is performed.
+     */
+    AddVideo(GUI::AnalysisBoxContainer *analysisBoxContainer,QString filename);
 
-	/// <summary>
-	/// Removes the added video from the analysis tab.
-	/// </summary>
-  public:
+    /**
+     * @brief undo Removes the added video from the analysis tab.
+     */
 	void undo();
 
-	/// <summary>
-	/// Adds a video to the Analysis tab.
-	/// </summary>
-  public:
+    /**
+     * @brief redo Adds a video to the Analysis tab.
+     */
 	void redo();
 
   private:
-	GUI::AnalysisBox* anaBox;
+    GUI::AnalysisBoxContainer*      anaBoxContainer_;
+    QString                         filename_;
 };
 }
 

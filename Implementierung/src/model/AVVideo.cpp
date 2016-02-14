@@ -5,7 +5,7 @@ extern "C" {
 #include <libavformat/avformat.h>
 }
 
-Model::AVVideo::AVVideo(int fps):fps_(fps),width_(0),height_(0) {
+Model::AVVideo::AVVideo(int fps):fps_(fps),width_(0),height_(0),isComplete_(false) {
 
 }
 
@@ -24,7 +24,12 @@ int Model::AVVideo::getHeight() {
 }
 
 int Model::AVVideo::getFps() {
-	return fps_;
+    return fps_;
+}
+
+void Model::AVVideo::setFps(int fps)
+{
+    fps_=fps;
 }
 
 AVFrame* Model::AVVideo::getFrame(std::size_t index) {
@@ -86,6 +91,16 @@ bool Model::AVVideo::appendFrame(AVFrame* frame) {
 }
 
 std::size_t Model::AVVideo::getNumberOfFrames() {
-	return video_.size();
+    return video_.size();
+}
+
+bool Model::AVVideo::isComplete()
+{
+    return isComplete_;
+}
+
+void Model::AVVideo::setIsComplete(bool isComplete)
+{
+    isComplete_=isComplete;
 }
 

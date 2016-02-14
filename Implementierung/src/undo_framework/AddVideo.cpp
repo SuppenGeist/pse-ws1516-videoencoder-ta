@@ -1,18 +1,18 @@
 #include "AddVideo.h"
 
 #include <QUndoCommand>
+#include <QString>
 
-#include "../gui/AnalysisBox.h"
 #include "../gui/AnalysisBoxContainer.h"
 
 
-UndoRedo::AddVideo::AddVideo(GUI::AnalysisBox*) {
+UndoRedo::AddVideo::AddVideo(GUI::AnalysisBoxContainer* anaBoxContainer,QString filename):anaBoxContainer_(anaBoxContainer),filename_(filename) {
 }
 
 void UndoRedo::AddVideo::undo() {
-	throw "Not yet implemented";
+    anaBoxContainer_->removeLastVideo();
 }
 
 void UndoRedo::AddVideo::redo() {
-	throw "Not yet implemented";
+    anaBoxContainer_->appendVideo(filename_);
 }

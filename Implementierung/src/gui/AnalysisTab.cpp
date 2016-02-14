@@ -47,6 +47,9 @@ GUI::AnalysisTab::AnalysisTab(QWidget* parent) : QFrame(parent),rawVideo_(nullpt
     playerControlPanel_->setMasterVideoPlayer(*forwardPlayer_.get());
     forwardPlayer_->setForwardControlPanel(globalControlPanel_.get());
     globalControlPanel_->setMasterVideoPlayer(*videoPlayer_);
+
+    analysisBoxContainer_->setControlPanel(globalControlPanel_.get());
+    analysisBoxContainer_->setTimer(timer_);
 }
 
 std::unique_ptr<Memento::AnalysisTabMemento> GUI::AnalysisTab::getMemento()
@@ -89,6 +92,11 @@ void GUI::AnalysisTab::setRawVideo(Model::YuvVideo *rawVideo)
         v_rawVideo_->addWidget(button_addRawVideo_);
         button_addRawVideo_->show();
     }
+}
+
+bool GUI::AnalysisTab::isRawVideoLoaded()
+{
+    return rawVideo_;
 }
 
 void GUI::AnalysisTab::resizeEvent(QResizeEvent *event)
@@ -352,6 +360,7 @@ void GUI::AnalysisTab::createUi()
     h_anaboxes->addSpacerItem(spacer4);
 
     analysisBoxContainer_=new AnalysisBoxContainer;
+    analysisBoxContainer_->setParentTab(this);
 
     QWidget* scrollbutton=new QWidget;
     QVBoxLayout* v_scrollbutton=new QVBoxLayout;

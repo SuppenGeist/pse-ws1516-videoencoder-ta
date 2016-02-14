@@ -44,6 +44,8 @@ class AnalysisTab: public QFrame {
 
     void setRawVideo(Model::YuvVideo* rawVideo);
 
+    bool isRawVideoLoaded();
+
 protected:
     void resizeEvent(QResizeEvent * event);
 

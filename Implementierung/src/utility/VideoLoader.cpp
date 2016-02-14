@@ -1,72 +1,142 @@
 #include "VideoLoader.h"
 
-using namespace Utility;
+#include <thread>
 
-VideoLoader::VideoLoader(QString path) {
-	this->path = path;
+#include <QDebug>
+
+
+Utility::VideoLoader::VideoLoader(QString path):path_(path),isRunning_(false) {
+
 }
 
-unique_ptr<Model::AVVideo> VideoLoader::loadVideo() {
+Utility::VideoLoader::~VideoLoader()
+{
+    isRunning_=false;
 
-	// Contains information about the stream
-	AVFormatContext *formatContext = NULL;
+    if(loader_.joinable()) {
+        loader_.join();
+    }
+}
 
-	// Contains information about the codex
-	AVCodecContext *codecContext = NULL;
+void Utility::VideoLoader::loadVideo(Model::AVVideo* target) {
+    if(!target)
+        return;
+    target_=target;
 
-	// The coder with wich to decode the video
-	AVCodec *codec = NULL;
+    loader_=std::thread(&VideoLoader::loadP,this);
+}
 
-	// Open video file
-	// avformat_open_input(context, path, format, options)
-	// format = NULL means autodetect
-	if(path != NULL && !path.isEmpty()
-	        && avformat_open_input(&formatContext, path.toUtf8(), NULL, NULL)!=0)
-		return NULL; // Couldn't open file
+void Utility::VideoLoader::loadP()
+{
+    isRunning_=true;
+    target_->setIsComplete(false);
+    // Contains information about the stream
+    AVFormatContext *formatContext = NULL;
 
-	// Retrieve stream information
-	if(avformat_find_stream_info(formatContext, NULL)<0)
-		return NULL; // Couldn't find stream information
+    // Contains information about the codex
+    AVCodecContext *codecContext = NULL;
 
-	// Print stream information
-	av_dump_format(formatContext, 0, path.toUtf8(), 0);
+    // The coder with wich to decode the video
+    AVCodec *codec = NULL;
+
+    // Open video file
+    // avformat_open_input(context, path, format, options)
+    // format = NULL means autodetect
+    if(!path_.isEmpty()
+            && avformat_open_input(&formatContext, path_.toUtf8(), NULL, NULL)!=0) {
+        return;
+    }
+
+    // Retrieve stream information
+    if(avformat_find_stream_info(formatContext, NULL)<0) {
+        return;
+    }
+
+    // Print stream information
+    av_dump_format(formatContext, 0, path_.toUtf8(), 0);
 
 
-	// Find the best video stream in context
-	int videoStreamIndex = av_find_best_stream(formatContext, AVMEDIA_TYPE_VIDEO, -1, -1, NULL, 0);
-	if(videoStreamIndex == -1) {
-		return NULL; // Did not find a video stream in the file
-	}
+    // Find the best video stream in context
+    int videoStreamIndex = av_find_best_stream(formatContext, AVMEDIA_TYPE_VIDEO, -1, -1, NULL, 0);
+    if(videoStreamIndex == -1) {
+        return;
+    }
 
-	// Get a pointer to the codec context for the video stream
-	codecContext = formatContext->streams[videoStreamIndex]->codec;
+    // Get a pointer to the codec context for the video stream
+    codecContext = formatContext->streams[videoStreamIndex]->codec;
 
 
-	// Find the decoder for the video stream
-	codec = avcodec_find_decoder(codecContext->codec_id);
-	if(codec == NULL) {
-		return NULL; // Codec not found
-	}
+    // Find the decoder for the video stream
+    codec = avcodec_find_decoder(codecContext->codec_id);
+    if(codec == NULL) {
+        return;
+    }
 
-	// Open codec
-	if(avcodec_open2(codecContext, codec, NULL) < 0)
-		return NULL; // Could not open codec
+    // Open codec
+    if(avcodec_open2(codecContext, codec, NULL) < 0) {
+        return;
+    }
+
+    struct SwsContext      *sws_ctx = NULL;
+
+    sws_ctx =
+        sws_getContext
+        (
+            codecContext->width,
+            codecContext->height,
+            codecContext->pix_fmt,
+            codecContext->width,
+            codecContext->height,
+            AV_PIX_FMT_RGB24,
+            0,
+            0,
+            0,
+            0
+        );
 
     AVPacket packet;
     AVFrame *frame = NULL;
-	unique_ptr<Model::AVVideo> video = make_unique<Model::AVVideo>(codecContext->framerate.num);
+    frame = av_frame_alloc();
+
+    AVFrame* rgbframe=NULL;
+    uint8_t* buffer = NULL;
+    int numbytes=avpicture_get_size(AV_PIX_FMT_RGB24, codecContext->width,codecContext->height);
+
+    target_->setFps(codecContext->framerate.num);
     av_init_packet(&packet);
     packet.data = NULL;
     packet.size = 0;
     int gotPicture = 0;
-    while(av_read_frame(formatContext, &packet) >= 0) {
-        frame = new AVFrame();
-        frame = av_frame_alloc();
+    while(av_read_frame(formatContext, &packet) >= 0&&isRunning_) {
         avcodec_decode_video2(codecContext, frame, &gotPicture, &packet);
-        if(gotPicture != 0) {
-            video->appendFrame(frame);
-        }
-	}
 
-    return std::move(video);
+        if(gotPicture != 0) {
+            rgbframe=av_frame_alloc();
+
+            //rgbframe->format=AV_PIX_FMT_RGB24;
+            buffer=(uint8_t *)av_malloc(numbytes*sizeof(uint8_t));
+            avpicture_fill((AVPicture *)rgbframe, buffer, AV_PIX_FMT_RGB24,codecContext->width, codecContext->height);
+            rgbframe->width=codecContext->width;
+            rgbframe->height=codecContext->height;
+            rgbframe->format=AV_PIX_FMT_RGB24;
+
+            sws_scale
+                    (
+                        sws_ctx,
+                        frame->data,
+                        frame->linesize,
+                        0,
+                        codecContext->height,
+                        rgbframe->data,
+                        rgbframe->linesize
+                    );
+
+            target_->appendFrame(rgbframe);
+        }
+    }
+    av_frame_free(&frame);
+    avcodec_close(codecContext);
+    avformat_close_input(&formatContext);
+    isRunning_=false;
+    target_->setIsComplete(true);
 }

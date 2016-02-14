@@ -44,6 +44,8 @@ class AVVideo {
 	 */
 	int getFps();
 
+    void setFps(int fps);
+
 	/**
 	 * @brief getFrame Returns the frame at the given index.
 	 * If the index is invalid nullptr is returned. This is not an owning pointer.
@@ -91,11 +93,16 @@ class AVVideo {
 	 */
 	std::size_t getNumberOfFrames();
 
+    bool isComplete();
+
+    void setIsComplete(bool isComplete);
+
   private:
 	std::vector<AVFrame*> video_;
 	int fps_;
 	int width_;
 	int height_;
+    bool isComplete_;
 };
 }
 

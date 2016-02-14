@@ -9,23 +9,39 @@
 #include <QSpacerItem>
 #include <QPushButton>
 #include <QHBoxLayout>
+#include <QFileDialog>
+#include <QFileInfo>
 #include <QDebug>
 
 #include "AnalysisBox.h"
+#include "AnalysisTab.h"
+
+#include "../undo_framework/UndoStack.h"
+#include "../undo_framework/AddVideo.h"
 
 GUI::AnalysisBoxContainer::AnalysisBoxContainer(QWidget* parent) : QFrame(parent) {
     createUi();
     setContentsMargins(-10,-10,-10,-10);
 
+    connect(button_addVideo_,SIGNAL(clicked(bool)),this,SLOT(addVideo()));
+
     setObjectName("anacontainer");
     setStyleSheet("QFrame#anacontainer {background-color:white;}");
 }
 
-void GUI::AnalysisBoxContainer::addVideo(QString path)
+void GUI::AnalysisBoxContainer::setParentTab(GUI::AnalysisTab *parent)
+{
+    parent_=parent;
+}
+
+void GUI::AnalysisBoxContainer::appendVideo(QString path)
 {
     AnalysisBox* newBox=new AnalysisBox;
     v_boxes_->removeItem(spacer_);
     v_boxes_->addWidget(newBox);
+    newBox->setFile(path);
+    newBox->setTimer(timer_);
+    newBox->setControlPanel(controlPanel_);
     boxes_.push_back(newBox);
 
     QString objname=QString("x%1").arg((quintptr)newBox,QT_POINTER_SIZE * 2, 16, QChar('0'));
@@ -40,8 +56,46 @@ void GUI::AnalysisBoxContainer::addVideo(QString path)
     resize(width(),boxes_.size()*newBox->height()+65);
 }
 
+void GUI::AnalysisBoxContainer::removeLastVideo()
+{
+
+}
+
 void GUI::AnalysisBoxContainer::clear()
 {
+
+}
+
+void GUI::AnalysisBoxContainer::setTimer(std::shared_ptr<GUI::Timer> timer)
+{
+    timer_=timer;
+}
+
+void GUI::AnalysisBoxContainer::setControlPanel(GUI::GlobalControlPanel *controlpanel)
+{
+    controlPanel_=controlpanel;
+}
+
+void GUI::AnalysisBoxContainer::addVideo()
+{
+    if(!parent_)
+        return;
+
+    if(!parent_->isRawVideoLoaded())
+        return;
+
+    auto filename=QFileDialog::getOpenFileName(this,"Open encoded video",QDir::homePath());
+
+    if(filename.isEmpty())
+        return;
+
+    QFileInfo fileToCheck(filename);
+
+    if(!fileToCheck.exists()&&fileToCheck.isFile())
+        return;
+
+    auto command=new UndoRedo::AddVideo(this,filename);
+    UndoRedo::UndoStack::getUndoStack().push(command);
 
 }
 
