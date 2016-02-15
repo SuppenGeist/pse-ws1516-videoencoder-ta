@@ -216,13 +216,12 @@ void GUI::GraphWidget::mouseReleaseEvent(QMouseEvent* event) {
 	if(x>frame*space_x+space_x/2) {
 		frame++;
 	}
-	controlPanel_->setPosition(frame);
+    controlPanel_->setPosition(frame);
 }
 
-void GUI::GraphWidget::paintEvent(QPaintEvent *event) {
-	buildScene();
-
-	QGraphicsView::paintEvent(event);
+void GUI::GraphWidget::resizeEvent(QResizeEvent *event)
+{
+    buildScene();
 }
 
 void GUI::GraphWidget::buildScene() {

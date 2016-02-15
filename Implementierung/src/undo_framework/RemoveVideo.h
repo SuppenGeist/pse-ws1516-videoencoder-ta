@@ -35,6 +35,7 @@ class RemoveVideo: public QUndoCommand {
 	QString                     filename_;
 	GUI::AnalysisBox*           anaBox_;
 	GUI::AnalysisBoxContainer*  container_;
+    int                         index_;
 };
 }
 

@@ -12,9 +12,9 @@ UndoRedo::RemoveVideo::RemoveVideo(GUI::AnalysisBoxContainer *boxConatiner,
 }
 
 void UndoRedo::RemoveVideo::undo() {
-	anaBox_ = container_->appendVideo(filename_);
+    anaBox_ = container_->insertVideo(filename_,index_);
 }
 
 void UndoRedo::RemoveVideo::redo() {
-	container_->removeVideo(anaBox_);
+    index_=container_->removeVideo(anaBox_);
 }

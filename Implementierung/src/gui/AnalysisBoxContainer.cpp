@@ -55,8 +55,9 @@ GUI::AnalysisBox *GUI::AnalysisBoxContainer::appendVideo(QString path) {
 	return newBox;
 }
 
-void GUI::AnalysisBoxContainer::removeVideo(AnalysisBox* box) {
-	for(std::size_t i=0; i<boxes_.size(); i++) {
+int GUI::AnalysisBoxContainer::removeVideo(AnalysisBox* box) {
+    std::size_t i=0;
+    for(; i<boxes_.size(); i++) {
 		if(boxes_[i]==box) {
 			auto b=boxes_[i];
 			boxes_.erase(boxes_.begin()+i);
@@ -68,6 +69,9 @@ void GUI::AnalysisBoxContainer::removeVideo(AnalysisBox* box) {
 	}
 
 	updateUi();
+    if(i==boxes_.size()+1)
+        return -1;
+    return i;
 }
 
 void GUI::AnalysisBoxContainer::clear() {
@@ -86,8 +90,30 @@ void GUI::AnalysisBoxContainer::showGraph(GUI::AnalysisGraph graph) {
 	for(auto box:boxes_) {
 		box->showGraph(graph);
 	}
-	currentGraph_=graph;
+    currentGraph_=graph;
 }
+
+GUI::AnalysisBox *GUI::AnalysisBoxContainer::insertVideo(QString filname, int index)
+{
+    if(index>boxes_.size())
+        return nullptr;
+    AnalysisBox* newBox=new AnalysisBox;
+    v_boxes_->insertWidget(index,newBox);
+    newBox->setFile(filname);
+    newBox->setTimer(timer_);
+    newBox->setControlPanel(controlPanel_);
+    newBox->setParentContainer(this);
+    newBox->showGraph(currentGraph_);
+    boxes_.insert(boxes_.begin()+index,newBox);
+
+    QString objname=QString("x%1").arg((quintptr)newBox,QT_POINTER_SIZE * 2, 16, QChar('0'));
+    newBox->setObjectName(objname);
+
+    updateUi();
+
+    return newBox;
+}
+
 void GUI::AnalysisBoxContainer::addVideo() {
 	if(!parent_)
 		return;

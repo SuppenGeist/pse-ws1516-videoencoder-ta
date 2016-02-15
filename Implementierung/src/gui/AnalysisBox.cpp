@@ -34,7 +34,7 @@ GUI::AnalysisBox::AnalysisBox(QWidget* parent) : QFrame(parent) {
 
 	connect(button_close_,SIGNAL(clicked(bool)),this,SLOT(closeBox()));
 	connect(&graphUpdater_,SIGNAL(timeout()),this,SLOT(updateGraphWidget()));
-	graphUpdater_.start(500);
+    graphUpdater_.start(800);
 
 	origVidPlayer_=std::make_unique<VideoPlayer>();
 	anaVidPlayer_=std::make_unique<VideoPlayer>();
@@ -161,5 +161,6 @@ void GUI::AnalysisBox::createUi() {
 }
 
 void GUI::AnalysisBox::updateGraphWidget() {
+    graphWidget_->buildScene();
 	graphWidget_->repaint();
 }

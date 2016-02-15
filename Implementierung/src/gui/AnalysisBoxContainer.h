@@ -38,7 +38,7 @@ class AnalysisBoxContainer: public QFrame {
 
 	AnalysisBox* appendVideo(QString path);
 
-	void removeVideo(AnalysisBox* box);
+    int removeVideo(AnalysisBox* box);
 
 	void clear();
 
@@ -47,6 +47,8 @@ class AnalysisBoxContainer: public QFrame {
 	void setControlPanel(GlobalControlPanel* controlpanel);
 
 	void showGraph(AnalysisGraph graph);
+
+    AnalysisBox* insertVideo(QString filname,int index);
 
   private slots:
 	void addVideo();

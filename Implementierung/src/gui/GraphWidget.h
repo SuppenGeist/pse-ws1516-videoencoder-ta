@@ -118,14 +118,19 @@ class GraphWidget:public QGraphicsView {
 	 */
 	void setMarkFont(QFont markFont);
 
+    /**
+     * @brief buildScene Creates the GraphicsScene.
+     */
+    void buildScene();
+
   protected:
 	/**
 	 * @brief mouseReleaseEvent This method is called if the was a click on the widget.
 	 * @param event
 	 */
-	void mouseReleaseEvent(QMouseEvent* event);
+    void mouseReleaseEvent(QMouseEvent* event);
 
-	void paintEvent(QPaintEvent* event);
+    void resizeEvent(QResizeEvent* event);
 
   private:
 	QPen                        linePen_;
@@ -150,11 +155,6 @@ class GraphWidget:public QGraphicsView {
 	bool                        showLabels_;
 	int                         markDistanceX_;
 	int                         markDistanceY_;
-
-	/**
-	 * @brief buildScene Creates the GraphicsScene.
-	 */
-	void buildScene();
 
 	/**
 	 * @brief clamp Clamps the value to the given index.
