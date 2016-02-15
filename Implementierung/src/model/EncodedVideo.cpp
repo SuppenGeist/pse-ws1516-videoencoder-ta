@@ -54,29 +54,28 @@ Model::Graph& Model::EncodedVideo::getPsnr(Video *reference) {
 	throw "";
 }
 
-Model::Graph& Model::EncodedVideo::getRedHistogramm() {
-	/*if(this->redHisto == NULL) {
-		calculateHistogramms();
-	}
-	return *(this->redHisto);
-	*/
-	throw "";
+Model::GraphVideo &Model::EncodedVideo::getRedHistogramm() {
+    if(!redHisto_.get()) {
+        calculateHistogramms();
+    }
+
+    return *redHisto_;
 }
 
-Model::Graph& Model::EncodedVideo::getBlueHistogramm() {
-	/*if(this->blueHisto == NULL) {
-		calculateHistogramms();
-	}
-	return *(this->blueHisto);*/
-	throw "";
+Model::GraphVideo &Model::EncodedVideo::getBlueHistogramm() {
+    if(!greenHisto_.get()) {
+        calculateHistogramms();
+    }
+
+    return *greenHisto_;
 }
 
-Model::Graph& Model::EncodedVideo::getGreenHistogramm() {
-	/*if(this->greenHisto == NULL) {
-		calculateHistogramms();
-	}
-	return *(this->greenHisto);*/
-	throw "";
+Model::GraphVideo &Model::EncodedVideo::getGreenHistogramm() {
+    if(!greenHisto_.get()) {
+        calculateHistogramms();
+    }
+
+    return *greenHisto_;
 }
 
 Model::AVVideo& Model::EncodedVideo::getAvVideo() {
@@ -163,11 +162,10 @@ void Model::EncodedVideo::convertMacroblock()
 }
 
 void Model::EncodedVideo::calculateHistogramms() {
-	/*Utility::RGBHistogrammCalculator histogrammCalculator = Utility::RGBHistogrammCalculator(*
-	        (this->video));
-	histogrammCalculator.calculate();
-	this->greenHisto = histogrammCalculator.getGreenHistogramm();
-	this->redHisto = histogrammCalculator.getRedHistogramm();
-	this->blueHisto = histogrammCalculator.getBlueHistogramm();*/
-	throw "";
+    redHisto_=std::make_unique<GraphVideo>();
+    greenHisto_=std::make_unique<GraphVideo>();
+    blueHisto_=std::make_unique<GraphVideo>();
+
+    rgbHistoCalculator_=std::make_unique<Utility::RGBHistogrammCalculator>(getVideo());
+    rgbHistoCalculator_->calculate(redHisto_.get(),greenHisto_.get(),blueHisto_.get());
 }

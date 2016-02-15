@@ -45,7 +45,7 @@ class AnalysisBoxContainer: public QFrame {
 
 	void setTimer(std::shared_ptr<Timer> timer);
 
-	void setControlPanel(GlobalControlPanel* controlpanel);
+    void setControlPanel(std::shared_ptr<GlobalControlPanel> controlpanel);
 
 	void showGraph(AnalysisGraph graph);
 
@@ -63,7 +63,7 @@ class AnalysisBoxContainer: public QFrame {
 
 	AnalysisTab*                parent_;
 	std::shared_ptr<Timer>      timer_;
-	GlobalControlPanel*         controlPanel_;
+    std::shared_ptr<GlobalControlPanel>         controlPanel_;
 
 	std::vector<AnalysisBox*>   boxes_;
 

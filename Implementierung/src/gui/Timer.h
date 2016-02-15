@@ -7,7 +7,7 @@
 #include <QObject>
 
 namespace GUI {
-class VideoPlayer;
+class Player;
 }
 
 namespace GUI {
@@ -69,7 +69,7 @@ class Timer : QObject {
 	 * @brief addPlayer Adds a player.
 	 * @param player The player to add.
 	 */
-	void addPlayer(VideoPlayer& player);
+    void addPlayer(Player& player);
 
 	/**
 	 * @brief isPlaying Whether the timer currently switches frames.
@@ -83,7 +83,7 @@ class Timer : QObject {
 	 * @brief removePlayer Removes a player from the list.
 	 * @param player The player to remove.
 	 */
-	void removePlayer(VideoPlayer& player);
+    void removePlayer(Player& player);
 
   private slots:
 	/**
@@ -95,7 +95,7 @@ class Timer : QObject {
 	QTimer                      timer_;
 	float                       speed_;
 	int                         fps_;
-	std::vector<VideoPlayer*>   players_;
+    std::vector<Player*>   players_;
 
 
 };

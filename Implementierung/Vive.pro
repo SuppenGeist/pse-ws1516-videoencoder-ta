@@ -129,7 +129,9 @@ HEADERS += \
     src/utility/meansquareerrorcalculator.h \
     src/utility/Yuv420FileReader.h \
     src/model/filters/GrayscaleFilter.h \
-    src/undo_framework/changefilter.h
+    src/undo_framework/changefilter.h \
+    src/model/graphvideo.h \
+    src/gui/graphplayer.h
 
 SOURCES += \
     src/gui/AnalysisBox.cpp \
@@ -241,7 +243,9 @@ SOURCES += \
     src/utility/Yuv420FileReader.cpp \
     src/utility/Yuv411Vector.cpp \
     src/model/filters/GrayscaleFilter.cpp \
-    src/undo_framework/changefilter.cpp
+    src/undo_framework/changefilter.cpp \
+    src/model/graphvideo.cpp \
+    src/gui/graphplayer.cpp
 
 RESOURCES += \
     resources.qrc \

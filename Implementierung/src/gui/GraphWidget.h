@@ -34,7 +34,7 @@ class GraphWidget:public QGraphicsView {
 	 * @param graph The graph to draw.
 	 * @param filled Whether the area under the graph is filled.
 	 */
-	void drawGraph(Model::Graph& graph);
+    void drawGraph(Model::Graph *graph);
 
 	/**
 	 * @brief setLineColor Sets the pen which is used to draw the graph line.
@@ -58,7 +58,7 @@ class GraphWidget:public QGraphicsView {
 	 * @brief setControlPanel Sets the GlobalControlPanel to notify if a click on the graph was performed.
 	 * @param panel The panel to notify.
 	 */
-	void setControlPanel(GlobalControlPanel& panel);
+    void setControlPanel(GlobalControlPanel* panel);
 
 	/**
 	 * @brief setAchsisLabels Sets the labels of the achsis.
@@ -118,6 +118,8 @@ class GraphWidget:public QGraphicsView {
 	 */
 	void setMarkFont(QFont markFont);
 
+    void setFixedMaxYValue(double maxYVal);
+
     /**
      * @brief buildScene Creates the GraphicsScene.
      */
@@ -146,8 +148,7 @@ class GraphWidget:public QGraphicsView {
 	QFont                       markFont_;
 	bool                        isFilled_;
 	int                         marginWidth_;
-	int                         marginHeight_;
-	double                      maxY_;
+    int                         marginHeight_;
 	int                         markLenX_;
 	int                         markLenY_;
 	int                         xLabelHeight_;
@@ -155,6 +156,7 @@ class GraphWidget:public QGraphicsView {
 	bool                        showLabels_;
 	int                         markDistanceX_;
 	int                         markDistanceY_;
+    double                      fixedMaxYVal_;
 
 	/**
 	 * @brief clamp Clamps the value to the given index.

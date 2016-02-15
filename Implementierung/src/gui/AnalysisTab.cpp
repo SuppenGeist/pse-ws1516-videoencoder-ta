@@ -36,7 +36,7 @@ GUI::AnalysisTab::AnalysisTab(QWidget* parent) : QFrame(parent),rawVideo_(nullpt
 	connectActions();
 
 	forwardPlayer_=std::make_unique<ForwardPlayer>();
-	globalControlPanel_=std::make_unique<GlobalControlPanel>();
+    globalControlPanel_=std::make_shared<GlobalControlPanel>();
 	videoPlayer_=std::make_unique<VideoPlayer>();
 	timer_=std::make_shared<Timer>();
 
@@ -48,7 +48,7 @@ GUI::AnalysisTab::AnalysisTab(QWidget* parent) : QFrame(parent),rawVideo_(nullpt
 	forwardPlayer_->setForwardControlPanel(globalControlPanel_.get());
 	globalControlPanel_->setMasterVideoPlayer(*videoPlayer_);
 
-	analysisBoxContainer_->setControlPanel(globalControlPanel_.get());
+    analysisBoxContainer_->setControlPanel(globalControlPanel_);
 	analysisBoxContainer_->setTimer(timer_);
 }
 
@@ -148,6 +148,21 @@ void GUI::AnalysisTab::loadRawVideo() {
 
 void GUI::AnalysisTab::showBitrate() {
     analysisBoxContainer_->showGraph(AnalysisGraph::BITRATE);
+}
+
+void GUI::AnalysisTab::showRedHistogramm()
+{
+    analysisBoxContainer_->showGraph(AnalysisGraph::RED_HISTOGRAMM);
+}
+
+void GUI::AnalysisTab::showBlueHistogramm()
+{
+    analysisBoxContainer_->showGraph(AnalysisGraph::BLUE_HISTOGRAMM);
+}
+
+void GUI::AnalysisTab::showGreenHistogramm()
+{
+    analysisBoxContainer_->showGraph(AnalysisGraph::GREEN_HISTOGRAMM);
 }
 
 void GUI::AnalysisTab::analysisVideoChanged(int index)
@@ -395,5 +410,8 @@ void GUI::AnalysisTab::connectActions() {
 	connect(button_addRawVideo_,SIGNAL(clicked(bool)),this,SLOT(loadRawVideo()));
 	connect(button_bitrate_,SIGNAL(clicked(bool)),this,SLOT(showBitrate()));
     connect(combobbox_anaVideo_,SIGNAL(currentIndexChanged(int)),this,SLOT(analysisVideoChanged(int)));
+    connect(button_redHistogramm_,SIGNAL(clicked(bool)),this,SLOT(showRedHistogramm()));
+    connect(button_blueHistogramm_,SIGNAL(clicked(bool)),this,SLOT(showBlueHistogramm()));
+    connect(button_greenHistogramm_,SIGNAL(clicked(bool)),this,SLOT(showGreenHistogramm()));
 }
 

@@ -7,6 +7,7 @@
 #include "Video.h"
 #include "AVVideo.h"
 #include "Graph.h"
+#include "graphvideo.h"
 
 #include "../utility/VideoLoader.h"
 #include "../utility/VideoConverter.h"
@@ -65,19 +66,19 @@ class EncodedVideo {
 	 * @brief getRedHistogramm Returns the red histogramm graph.
 	 * @return The red histogramm.
 	 */
-	Model::Graph& getRedHistogramm();
+    Model::GraphVideo& getRedHistogramm();
 
 	/**
 	 * @brief getBlueHistogramm Returns the blue histogramm graph.
 	 * @return The blue histogramm.
 	 */
-	Model::Graph& getBlueHistogramm();
+    Model::GraphVideo& getBlueHistogramm();
 
 	/**
 	 * @brief getGreenHistogramm Returns the green histogramm graph.
 	 * @return The green histogramm.
 	 */
-	Model::Graph& getGreenHistogramm();
+    Model::GraphVideo& getGreenHistogramm();
 
 	/**
 	 * @brief getAvVideo Returns the AVVideo.
@@ -116,12 +117,13 @@ class EncodedVideo {
 	std::unique_ptr<Video>      rgbDiffVideo_;
 	std::unique_ptr<Graph>      bitrate_;
 	std::unique_ptr<Graph>      psnr_;
-	std::unique_ptr<Graph>      redHisto_;
-	std::unique_ptr<Graph>      greenHisto_;
-	std::unique_ptr<Graph>      blueHisto_;
+    std::unique_ptr<GraphVideo>      redHisto_;
+    std::unique_ptr<GraphVideo>      greenHisto_;
+    std::unique_ptr<GraphVideo>      blueHisto_;
 
 	std::unique_ptr<Utility::VideoLoader> loader_;
 	std::unique_ptr<Utility::BitrateCalculator> bitrateCalculator_;
+    std::unique_ptr<Utility::RGBHistogrammCalculator> rgbHistoCalculator_;
 	std::thread                 converter_;
     std::thread                 macroblockConverter_;
     std::unique_ptr<Utility::VideoLoader>   macroblockLoader_;

@@ -1,63 +1,44 @@
-using namespace std;
-
 #ifndef __RGBHistogrammCalculator_h__
 #define __RGBHistogrammCalculator_h__
 
+#include <thread>
+
 #include "../model/Video.h"
 #include "../model/Graph.h"
+#include "../model/graphvideo.h"
 
-namespace Model {
-class Video;
-class Graph;
-}
-namespace Utility {
-class RGBHistogrammCalculator;
-}
 
 namespace Utility {
 /**
  * This class calculates the RGB histogramm for a video.
  */
 class RGBHistogrammCalculator {
-  private:
-	Model::Video* video;
-  private:
-	Model::Graph *redHistogramm;
-  private:
-	Model::Graph *greenHistogramm;
-  private:
-	Model::Graph *blueHistogramm;
 
-	/// <summary>
-	/// Constructor.
-	/// </summary>
-	/// <param name="video">the video that is analyzed.</param>
   public:
+    /**
+     * @brief RGBHistogrammCalculator Constructor.
+     * @param video the video that is analyzed.
+     */
 	RGBHistogrammCalculator(Model::Video& video);
 
-	/// <summary>
-	/// Calculates the red, green and blue components of a video.
-	/// </summary>
-  public:
-	void calculate();
+    ~RGBHistogrammCalculator();
 
-	/// <summary>
-	/// Returns the red components of a video.
-	/// </summary>
-  public:
-	Model::Graph* getRedHistogramm();
+    /**
+     * @brief calculate Calculates the red, green and blue components of a video.
+     */
+    void calculate(Model::GraphVideo* targetRed,Model::GraphVideo* targetGreen,Model::GraphVideo* targetBlue);
 
-	/// <summary>
-	/// Returns the green components of a video.
-	/// </summary>
-  public:
-	Model::Graph* getGreenHistogramm();
 
-	/// <summary>
-	/// Returns the blue components of a video.
-	/// </summary>
-  public:
-	Model::Graph* getBlueHistogramm();
+private:
+  Model::Video*         video_;
+  Model::GraphVideo*    red_;
+  Model::GraphVideo*    green_;
+  Model::GraphVideo*    blue_;
+
+  std::thread           calculator_;
+  bool                  isRunning_;
+
+  void calculateP();
 };
 }
 

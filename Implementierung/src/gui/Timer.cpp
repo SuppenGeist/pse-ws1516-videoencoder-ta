@@ -6,7 +6,7 @@
 #include <QObject>
 #include <QDebug>
 
-#include "VideoPlayer.h"
+#include "Player.h"
 
 GUI::Timer::Timer(QObject *parent):QObject(parent),timer_(this),speed_(1.0),fps_(30) {
 	connect(&timer_,SIGNAL(timeout()),this,SLOT(update()));
@@ -52,7 +52,7 @@ void GUI::Timer::start() {
 	timer_.start(((double)1000/fps_)*speed_);
 }
 
-void GUI::Timer::addPlayer(VideoPlayer& player) {
+void GUI::Timer::addPlayer(Player &player) {
 	if(std::find(players_.begin(), players_.end(), &player) != players_.end())
 		return;
 	players_.push_back(&player);
@@ -68,7 +68,7 @@ void GUI::Timer::update() {
 	}
 }
 
-void GUI::Timer::removePlayer(VideoPlayer& player) {
+void GUI::Timer::removePlayer(Player &player) {
 	std::size_t pos = std::find(players_.begin(), players_.end(), &player) - players_.begin();
 	if(pos<players_.size()) {
 		players_.erase(players_.begin()+pos);

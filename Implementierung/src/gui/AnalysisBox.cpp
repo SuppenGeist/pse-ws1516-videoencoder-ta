@@ -8,6 +8,8 @@
 #include <QVBoxLayout>
 #include <QLabel>
 #include <QFileInfo>
+#include <QBrush>
+#include <QPen>
 #include <QFile>
 #include <QDebug>
 #include <QTabWidget>
@@ -27,27 +29,28 @@
 #include "../undo_framework/UndoStack.h"
 #include "../undo_framework/RemoveVideo.h"
 
-GUI::AnalysisBox::AnalysisBox(QWidget* parent) : QFrame(parent) {
+GUI::AnalysisBox::AnalysisBox(QWidget* parent) : QFrame(parent),globalControlPanel_(nullptr) {
 	createUi();
 	setContentsMargins(0,0,0,0);
 	setFixedHeight(250);
 
-	connect(button_close_,SIGNAL(clicked(bool)),this,SLOT(closeBox()));
-	connect(&graphUpdater_,SIGNAL(timeout()),this,SLOT(updateGraphWidget()));
-    graphUpdater_.start(800);
+    connect(button_close_,SIGNAL(clicked(bool)),this,SLOT(closeBox()));
 
 	origVidPlayer_=std::make_unique<VideoPlayer>();
 	anaVidPlayer_=std::make_unique<VideoPlayer>();
+    graphPlayer_=std::make_unique<GraphPlayer>();
 
 	origVidPlayer_->addView(*origView_);
-	anaVidPlayer_->addView(*anaView_);
+    anaVidPlayer_->addView(*anaView_);
 }
 
 GUI::AnalysisBox::~AnalysisBox() {
 	globalControlPanel_->removeVideoPlayer(*origVidPlayer_);
+    globalControlPanel_->removeVideoPlayer(*graphPlayer_);
 	globalControlPanel_->removeVideoPlayer(*anaVidPlayer_);
 	origVidPlayer_->clearTimer();
 	anaVidPlayer_->clearTimer();
+    graphPlayer_->clearTimer();
 }
 
 void GUI::AnalysisBox::setParentContainer(GUI::AnalysisBoxContainer *container) {
@@ -65,17 +68,21 @@ void GUI::AnalysisBox::setFile(QString filename) {
 
 
     origVidPlayer_->setVideo(&origVideo_->getVideo(),false);
+    if(globalControlPanel_) {
+        origVidPlayer_->setPosition(globalControlPanel_->getPosition());
+    }
 }
 
 void GUI::AnalysisBox::setTimer(std::shared_ptr<GUI::Timer> timer) {
 	origVidPlayer_->setTimer(timer);
 	anaVidPlayer_->setTimer(timer);
+    graphPlayer_->setTimer(timer);
 }
 
-void GUI::AnalysisBox::setControlPanel(GUI::GlobalControlPanel *controlPanel) {
+void GUI::AnalysisBox::setControlPanel(std::shared_ptr<GlobalControlPanel> controlPanel) {
 	controlPanel->addVideoPlayer(origVidPlayer_.get());
 	controlPanel->addVideoPlayer(anaVidPlayer_.get());
-	graphWidget_->setControlPanel(*controlPanel);
+    controlPanel->addVideoPlayer(graphPlayer_.get());
 
 	globalControlPanel_=controlPanel;
 }
@@ -83,9 +90,75 @@ void GUI::AnalysisBox::setControlPanel(GUI::GlobalControlPanel *controlPanel) {
 void GUI::AnalysisBox::showGraph(GUI::AnalysisGraph graph) {
 	switch(graph) {
 	case AnalysisGraph::BITRATE:
-		graphWidget_->drawGraph(origVideo_->getBitrate());
+    {
+        graphPlayer_->setGraphVideo(nullptr);
+        graphPlayer_->setView(nullptr);
+        graphWidget_->drawGraph(&origVideo_->getBitrate());
 		graphWidget_->setAxisLabels("frame","kb");
+        graphWidget_->setControlPanel(globalControlPanel_.get());
+        graphWidget_->setFixedMaxYValue(0);
+        graphWidget_->setIsFilled(false);
+        QPen linepen;
+        graphWidget_->setLinePen(linepen);
 		break;
+    }
+    case AnalysisGraph::RED_HISTOGRAMM:
+    {
+        graphWidget_->setControlPanel(nullptr);
+        graphWidget_->drawGraph(nullptr);
+        graphPlayer_->setView(graphWidget_);
+        graphPlayer_->setGraphVideo(&origVideo_->getRedHistogramm());
+        graphWidget_->setAxisLabels("","");
+        graphWidget_->setFixedMaxYValue(1);
+        graphWidget_->setIsFilled(true);
+        QBrush filler(QColor(255,0,0));
+        graphWidget_->setFillBrush(filler);
+        QPen filpen(QColor(255,0,0));
+        graphWidget_->setFillPen(filpen);
+        graphWidget_->setLinePen(filpen);
+        if(globalControlPanel_) {
+            graphPlayer_->setPosition(globalControlPanel_->getPosition());
+        }
+        break;
+    }
+    case AnalysisGraph::BLUE_HISTOGRAMM:
+    {
+        graphWidget_->setControlPanel(nullptr);
+        graphWidget_->drawGraph(nullptr);
+        graphPlayer_->setView(graphWidget_);
+        graphPlayer_->setGraphVideo(&origVideo_->getBlueHistogramm());
+        graphWidget_->setAxisLabels("","");
+        graphWidget_->setFixedMaxYValue(1);
+        graphWidget_->setIsFilled(true);
+        QBrush filler(QColor(0,0,255));
+        graphWidget_->setFillBrush(filler);
+        QPen filpen(QColor(0,0,255));
+        graphWidget_->setFillPen(filpen);
+        graphWidget_->setLinePen(filpen);
+        if(globalControlPanel_) {
+            graphPlayer_->setPosition(globalControlPanel_->getPosition());
+        }
+        break;
+    }
+    case AnalysisGraph::GREEN_HISTOGRAMM:
+    {
+        graphWidget_->setControlPanel(nullptr);
+        graphWidget_->drawGraph(nullptr);
+        graphPlayer_->setView(graphWidget_);
+        graphPlayer_->setGraphVideo(&origVideo_->getGreenHistogramm());
+        graphWidget_->setAxisLabels("","");
+        graphWidget_->setFixedMaxYValue(1);
+        graphWidget_->setIsFilled(true);
+        QBrush filler(QColor(0,255,0));
+        graphWidget_->setFillBrush(filler);
+        QPen filpen(QColor(0,255,0));
+        graphWidget_->setFillPen(filpen);
+        graphWidget_->setLinePen(filpen);
+        if(globalControlPanel_) {
+            graphPlayer_->setPosition(globalControlPanel_->getPosition());
+        }
+        break;
+    }
     }
 }
 
@@ -95,6 +168,10 @@ void GUI::AnalysisBox::showAnalysisVideo(GUI::AnalysisVideo video)
     case AnalysisVideo::MACROBLOCK:
         anaVidPlayer_->setVideo(&origVideo_->getMacroBlockVideo(),false);
         break;
+    }
+
+    if(globalControlPanel_) {
+        anaVidPlayer_->setPosition(globalControlPanel_->getPosition());
     }
 }
 
@@ -167,9 +244,4 @@ void GUI::AnalysisBox::createUi() {
 	v_control->addLayout(h_content);
 
 	setLayout(v_control);
-}
-
-void GUI::AnalysisBox::updateGraphWidget() {
-    graphWidget_->buildScene();
-    graphWidget_->repaint();
 }

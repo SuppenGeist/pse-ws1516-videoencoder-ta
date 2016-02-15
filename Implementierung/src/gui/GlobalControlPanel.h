@@ -56,6 +56,8 @@ class GlobalControlPanel: public ControlPanel {
 	 * @param speed The new speed.
 	 */
 	void setSpeed(float speed);
+
+    int getPosition();
 };
 }
 

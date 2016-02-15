@@ -19,7 +19,7 @@
 #include "../model/Graph.h"
 
 GUI::GraphWidget::GraphWidget(QWidget *parent):QGraphicsView(parent),controlPanel_(nullptr),
-	graph_(nullptr),scene_(nullptr) {
+    graph_(nullptr),scene_(nullptr),fixedMaxYVal_(-1) {
 	setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
 
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -45,8 +45,8 @@ GUI::GraphWidget::GraphWidget(QWidget *parent):QGraphicsView(parent),controlPane
 	setScene(scene_);
 }
 
-void GUI::GraphWidget::drawGraph(Model::Graph& graph) {
-	graph_=&graph;
+void GUI::GraphWidget::drawGraph(Model::Graph* graph) {
+    graph_=graph;
 
 	updateLabelSizes();
 	buildScene();
@@ -74,8 +74,8 @@ void GUI::GraphWidget::setFillBrush(QBrush fillBrush) {
 	update();
 }
 
-void GUI::GraphWidget::setControlPanel(GlobalControlPanel& panel) {
-	controlPanel_=&panel;
+void GUI::GraphWidget::setControlPanel(GlobalControlPanel *panel) {
+    controlPanel_=panel;
 }
 
 void GUI::GraphWidget::setAxisLabels(QString xLabel, QString yLabel) {
@@ -153,7 +153,12 @@ void GUI::GraphWidget::setMarkFont(QFont markFont) {
 
 	updateLabelSizes();
 	buildScene();
-	update();
+    update();
+}
+
+void GUI::GraphWidget::setFixedMaxYValue(double maxYVal)
+{
+    fixedMaxYVal_=maxYVal;
 }
 
 void GUI::GraphWidget::mouseReleaseEvent(QMouseEvent* event) {
@@ -172,7 +177,7 @@ void GUI::GraphWidget::mouseReleaseEvent(QMouseEvent* event) {
 
 	//Width and height of the visible area
 	const int vwidth=visibleArea.width()-5;
-	const int vheight=visibleArea.height()-5;
+    const int vheight=visibleArea.height()-5;
 
 	//Pixelcoordinates of the point (0|0)
 	int zero_x=0;
@@ -238,19 +243,21 @@ void GUI::GraphWidget::buildScene() {
 
 	//Width and height of the visible area
 	const int vwidth=visibleArea.width();
-	const int vheight=visibleArea.height();
+    const int vheight=visibleArea.height();
 
 	//Pixelcoordinates of the point (0|0)
 	int zero_x=0;
 	int zero_y=0;
 
-	if(showLabels_) {
+    if(showLabels_) {
 		zero_x=marginWidth_+markLenY_+yLabelWidth_;
 		zero_y=vheight-marginHeight_-markLenX_-xLabelHeight_-markFont_.pixelSize();
 	} else {
 		zero_x=marginWidth_+5;
 		zero_y=vheight-marginHeight_-5;
 	}
+    zero_x++;
+    zero_y--;
 
 	//Width and height of the coordinate system
 	int width_x=vwidth-zero_x-marginWidth_;
@@ -272,11 +279,20 @@ void GUI::GraphWidget::buildScene() {
 	std::size_t max_x_val=maxXVal;
 	int max_y_val=qCeil(maxYVal);
 
+    if(fixedMaxYVal_>0) {
+        if(max_y_val>fixedMaxYVal_) {
+            fixedMaxYVal_=max_y_val;
+        }
+        max_y_val=fixedMaxYVal_;
+    }
+
 	//The number of pixel for each unit in the graph
 	double space_x=((double)width_x)/(max_x_val-1);
 	double space_y=((double)width_y)/max_y_val;
 
-	if(showLabels_) {
+    if(showLabels_) {
+        zero_x--;
+        zero_y++;
 		int xMarks=clamp(width_x/markDistanceX_,max_x_val,1);
 		int yMarks=clamp(width_y/markDistanceY_,max_y_val,1);
 
@@ -322,6 +338,8 @@ void GUI::GraphWidget::buildScene() {
 		auto yLab=scene_->addText(yLabel_,labelFont_);
 		yLab->setPos(zero_x-markLenY_-yLabelWidth_,zero_y-width_y);
 
+        zero_x++;
+        zero_y--;
 	}
 
 	int last_x=0;
@@ -367,7 +385,8 @@ void GUI::GraphWidget::buildScene() {
 		last_x=i;
 		last_y=val;
 	}
-
+    zero_x--;
+    zero_y++;
 	//Draw coordinate system
 	scene_->addLine(zero_x,zero_y,zero_x+width_x,zero_y);
 	scene_->addLine(zero_x,zero_y-width_y,zero_x,zero_y);
@@ -391,12 +410,14 @@ void GUI::GraphWidget::updateLabelSizes() {
 	yLab.setFont(labelFont_);
 
 	xLabelHeight_=xLab.document()->size().height();
-	yLabelWidth_=yLab.document()->size().width();
+    yLabelWidth_=yLab.document()->size().width();
 
-	if(graph_) {
-		double val=graph_->getBiggestValue();
+    if(graph_) {
+        double val=graph_->getBiggestValue();
+        if(fixedMaxYVal_>0)
+            val=fixedMaxYVal_;
 		QGraphicsTextItem yval(QString::number(qCeil(val)));
 		yval.setFont(markFont_);
 		yLabelWidth_+=yval.document()->size().width();
-	}
+    }
 }

@@ -37,11 +37,11 @@ void GUI::AnalysisBoxContainer::setParentTab(GUI::AnalysisTab *parent) {
 GUI::AnalysisBox *GUI::AnalysisBoxContainer::appendVideo(QString path) {
 	AnalysisBox* newBox=new AnalysisBox;
 	v_boxes_->removeItem(spacer_);
-	v_boxes_->addWidget(newBox);
-	newBox->setFile(path);
+    v_boxes_->addWidget(newBox);
 	newBox->setTimer(timer_);
 	newBox->setControlPanel(controlPanel_);
-	newBox->setParentContainer(this);
+    newBox->setParentContainer(this);
+    newBox->setFile(path);
 	newBox->showGraph(currentGraph_);
     newBox->showAnalysisVideo(currentVideo_);
 	boxes_.push_back(newBox);
@@ -83,7 +83,7 @@ void GUI::AnalysisBoxContainer::setTimer(std::shared_ptr<GUI::Timer> timer) {
 	timer_=timer;
 }
 
-void GUI::AnalysisBoxContainer::setControlPanel(GUI::GlobalControlPanel *controlpanel) {
+void GUI::AnalysisBoxContainer::setControlPanel(std::shared_ptr<GlobalControlPanel> controlpanel) {
 	controlPanel_=controlpanel;
 }
 
@@ -108,10 +108,10 @@ GUI::AnalysisBox *GUI::AnalysisBoxContainer::insertVideo(QString filname, int in
         return nullptr;
     AnalysisBox* newBox=new AnalysisBox;
     v_boxes_->insertWidget(index,newBox);
-    newBox->setFile(filname);
     newBox->setTimer(timer_);
     newBox->setControlPanel(controlPanel_);
     newBox->setParentContainer(this);
+    newBox->setFile(filname);
     newBox->showGraph(currentGraph_);
     newBox->showAnalysisVideo(currentVideo_);
     boxes_.insert(boxes_.begin()+index,newBox);

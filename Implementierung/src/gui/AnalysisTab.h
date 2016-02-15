@@ -26,7 +26,10 @@
 
 namespace GUI {
 enum class AnalysisGraph {
-    BITRATE
+    BITRATE,
+    RED_HISTOGRAMM,
+    BLUE_HISTOGRAMM,
+    GREEN_HISTOGRAMM
 };
 
 enum class AnalysisVideo {
@@ -60,6 +63,9 @@ class AnalysisTab: public QFrame {
   private slots:
 	void loadRawVideo();
 	void showBitrate();
+    void showRedHistogramm();
+    void showBlueHistogramm();
+    void showGreenHistogramm();
     void analysisVideoChanged(int index);
 
   private:
@@ -83,7 +89,7 @@ class AnalysisTab: public QFrame {
 
 	std::unique_ptr<ForwardPlayer>      forwardPlayer_;
 	std::shared_ptr<Timer>              timer_;
-	std::unique_ptr<GlobalControlPanel> globalControlPanel_;
+    std::shared_ptr<GlobalControlPanel> globalControlPanel_;
 	std::unique_ptr<VideoPlayer>        videoPlayer_;
 	FrameView*                          rawVideoView_;
 

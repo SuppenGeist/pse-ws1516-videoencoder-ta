@@ -108,7 +108,7 @@ void GUI::VideoPlayer::nextFrame() {
 }
 
 void GUI::VideoPlayer::previousFrame() {
-	setPosition(getPosition()==0?0:getPosition()-1);
+    setPosition(getPosition()==0?0:getPosition()-1);
 }
 
 void GUI::VideoPlayer::setSpeed(float speed) {
