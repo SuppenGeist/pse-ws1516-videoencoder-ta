@@ -82,8 +82,17 @@ Model::AVVideo& Model::EncodedVideo::getAvVideo() {
 }
 
 Model::Video& Model::EncodedVideo::getMacroBlockVideo() {
-	//return *(this->macroblockVideo);
-	throw "";
+    if(!macroblockVideo_.get()) {
+        macroblockAVVideo_ = std::make_unique<AVVideo>();
+        AVDictionary *dict = NULL;
+        av_dict_set(&dict, "vismv", "bf", 0);       // deprecated option vismv
+        loader_ = std::make_unique<Utility::VideoLoader>(path_, dict);
+        loader_->loadVideo(macroblockAVVideo_.get());
+        free(dict);     // free the AVDictionary as it is no longer used
+        macroblockVideo_=std::make_unique<Video>();
+        converter_=std::thread(&EncodedVideo::convertVideo,this);
+    }
+    return *macroblockVideo_.get();
 }
 
 Model::Video& Model::EncodedVideo::getRgbDiffVideo(Video *reference) {

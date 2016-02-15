@@ -5,7 +5,7 @@
 #include <QDebug>
 
 
-Utility::VideoLoader::VideoLoader(QString path):path_(path),isRunning_(false) {
+Utility::VideoLoader::VideoLoader(QString path, AVDictionary *dict):path_(path),isRunning_(false),dict_(dict) {
 
 }
 
@@ -63,15 +63,14 @@ void Utility::VideoLoader::loadP() {
 	// Get a pointer to the codec context for the video stream
 	codecContext = formatContext->streams[videoStreamIndex]->codec;
 
-
 	// Find the decoder for the video stream
 	codec = avcodec_find_decoder(codecContext->codec_id);
 	if(codec == NULL) {
 		return;
-	}
+    }
 
 	// Open codec
-	if(avcodec_open2(codecContext, codec, NULL) < 0) {
+    if(avcodec_open2(codecContext, codec, &dict_) < 0) {
 		return;
 	}
 

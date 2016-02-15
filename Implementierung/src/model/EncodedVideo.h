@@ -110,8 +110,9 @@ class EncodedVideo {
 	int                         numberOfColors_;
 	QString                     codec_;
 	std::unique_ptr<Video>      video_;
-	std::unique_ptr<AVVideo>    avVideo_;
+    std::unique_ptr<AVVideo>    avVideo_;
 	std::unique_ptr<Video>      macroblockVideo_;
+    std::unique_ptr<AVVideo>    macroblockAVVideo_;
 	std::unique_ptr<Video>      rgbDiffVideo_;
 	std::unique_ptr<Graph>      bitrate_;
 	std::unique_ptr<Graph>      psnr_;
