@@ -121,7 +121,7 @@ void GUI::VideoPlayer::setPosition(std::size_t position) {
 	if(!video_)
 		return;
 	if(video_->getNumberOfFrames()==0)
-		return;
+        return;
 
 	if(position>=video_->getNumberOfFrames()) {
 		position=video_->getNumberOfFrames()-1;

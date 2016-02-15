@@ -29,7 +29,7 @@
 #include "../undo_framework/UndoStack.h"
 #include "../undo_framework/RemoveVideo.h"
 
-GUI::AnalysisBox::AnalysisBox(QWidget* parent) : QFrame(parent),globalControlPanel_(nullptr) {
+GUI::AnalysisBox::AnalysisBox(QWidget* parent) : QFrame(parent) {
 	createUi();
 	setContentsMargins(0,0,0,0);
 	setFixedHeight(250);
@@ -68,7 +68,7 @@ void GUI::AnalysisBox::setFile(QString filename) {
 
 
     origVidPlayer_->setVideo(&origVideo_->getVideo(),false);
-    if(globalControlPanel_) {
+    if(globalControlPanel_.get()) {
         origVidPlayer_->setPosition(globalControlPanel_->getPosition());
     }
 }
@@ -116,7 +116,7 @@ void GUI::AnalysisBox::showGraph(GUI::AnalysisGraph graph) {
         QPen filpen(QColor(255,0,0));
         graphWidget_->setFillPen(filpen);
         graphWidget_->setLinePen(filpen);
-        if(globalControlPanel_) {
+        if(globalControlPanel_.get()) {
             graphPlayer_->setPosition(globalControlPanel_->getPosition());
         }
         break;
@@ -135,7 +135,7 @@ void GUI::AnalysisBox::showGraph(GUI::AnalysisGraph graph) {
         QPen filpen(QColor(0,0,255));
         graphWidget_->setFillPen(filpen);
         graphWidget_->setLinePen(filpen);
-        if(globalControlPanel_) {
+        if(globalControlPanel_.get()) {
             graphPlayer_->setPosition(globalControlPanel_->getPosition());
         }
         break;
@@ -154,7 +154,7 @@ void GUI::AnalysisBox::showGraph(GUI::AnalysisGraph graph) {
         QPen filpen(QColor(0,255,0));
         graphWidget_->setFillPen(filpen);
         graphWidget_->setLinePen(filpen);
-        if(globalControlPanel_) {
+        if(globalControlPanel_.get()) {
             graphPlayer_->setPosition(globalControlPanel_->getPosition());
         }
         break;
@@ -170,7 +170,7 @@ void GUI::AnalysisBox::showAnalysisVideo(GUI::AnalysisVideo video)
         break;
     }
 
-    if(globalControlPanel_) {
+    if(globalControlPanel_.get()) {
         anaVidPlayer_->setPosition(globalControlPanel_->getPosition());
     }
 }

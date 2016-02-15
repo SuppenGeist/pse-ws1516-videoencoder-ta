@@ -32,8 +32,7 @@ GUI::GraphWidget::GraphWidget(QWidget *parent):QGraphicsView(parent),controlPane
 	labelFont.setPixelSize(12);
 
 	setAxisLabels("x","y");
-	setIsFilled(false);
-	setMargin(10,10);
+    setIsFilled(false);
 	setMarkLength(5,3);
 	setShowLabels(true);
 	setMarkDistance(30,20);
@@ -50,7 +49,7 @@ void GUI::GraphWidget::drawGraph(Model::Graph* graph) {
 
 	updateLabelSizes();
 	buildScene();
-	update();
+    update();
 }
 
 void GUI::GraphWidget::setLinePen(QPen linePen) {
@@ -89,16 +88,6 @@ void GUI::GraphWidget::setAxisLabels(QString xLabel, QString yLabel) {
 
 void GUI::GraphWidget::setIsFilled(bool isFilled) {
 	isFilled_=isFilled;
-
-	buildScene();
-	update();
-}
-
-void GUI::GraphWidget::setMargin(int marginX, int marginY) {
-	if(marginX>0)
-		marginWidth_=marginX;
-	if(marginY>0)
-		marginHeight_=marginY;
 
 	buildScene();
 	update();
@@ -184,16 +173,16 @@ void GUI::GraphWidget::mouseReleaseEvent(QMouseEvent* event) {
 	int zero_y=0;
 
 	if(showLabels_) {
-		zero_x=marginWidth_+markLenY_+yLabelWidth_;
-		zero_y=vheight-marginHeight_-markLenX_-xLabelHeight_-markFont_.pixelSize();
+        zero_x=markLenY_+yLabelWidth_+5;
+        zero_y=vheight-markLenX_-xLabelHeight_-markFont_.pixelSize();
 	} else {
-		zero_x=marginWidth_+5;
-		zero_y=vheight-marginHeight_-5;
+        zero_x=5;
+        zero_y=vheight-5;
 	}
 
 	//Width and height of the coordinate system
-	const int width_x=vwidth-zero_x-marginWidth_;
-	const int width_y=zero_y-marginHeight_;
+    const int width_x=vwidth-zero_x;
+    const int width_y=zero_y;
 
 	//Biggest x and y val in the graph
 	const std::size_t maxXVal=graph_->getSize();
@@ -226,6 +215,8 @@ void GUI::GraphWidget::mouseReleaseEvent(QMouseEvent* event) {
 
 void GUI::GraphWidget::resizeEvent(QResizeEvent *event)
 {
+    Q_UNUSED(event);
+
     buildScene();
 }
 
@@ -250,18 +241,21 @@ void GUI::GraphWidget::buildScene() {
 	int zero_y=0;
 
     if(showLabels_) {
-		zero_x=marginWidth_+markLenY_+yLabelWidth_;
-		zero_y=vheight-marginHeight_-markLenX_-xLabelHeight_-markFont_.pixelSize();
+        zero_x=markLenY_+yLabelWidth_+5;
+        zero_y=vheight-markLenX_-xLabelHeight_-markFont_.pixelSize();
 	} else {
-		zero_x=marginWidth_+5;
-		zero_y=vheight-marginHeight_-5;
+        zero_x=5;
+        zero_y=vheight-5;
 	}
+
+    //zero_y=zero_y+20;
+
     zero_x++;
     zero_y--;
 
 	//Width and height of the coordinate system
-	int width_x=vwidth-zero_x-marginWidth_;
-	int width_y=zero_y-marginHeight_;
+    int width_x=vwidth-zero_x-10;
+    int width_y=zero_y-10;
 
 	if(width_x<=0)
 		width_x=1;
@@ -334,7 +328,7 @@ void GUI::GraphWidget::buildScene() {
 		}
 
 		auto xLab=scene_->addText(xLabel_,labelFont_);
-		xLab->setPos(zero_x+width_x-xLab->document()->size().width(),vheight-xLabelHeight_-marginHeight_);
+        xLab->setPos(zero_x+width_x-xLab->document()->size().width(),zero_y+markLenX_+markFont_.pixelSize());
 		auto yLab=scene_->addText(yLabel_,labelFont_);
 		yLab->setPos(zero_x-markLenY_-yLabelWidth_,zero_y-width_y);
 
@@ -410,7 +404,11 @@ void GUI::GraphWidget::updateLabelSizes() {
 	yLab.setFont(labelFont_);
 
 	xLabelHeight_=xLab.document()->size().height();
+    if(xLabel_=="")
+        xLabelHeight_=10;
     yLabelWidth_=yLab.document()->size().width();
+    if(yLabel_=="")
+        yLabelWidth_=0;
 
     if(graph_) {
         double val=graph_->getBiggestValue();

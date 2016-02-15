@@ -71,14 +71,7 @@ class GraphWidget:public QGraphicsView {
 	 * @brief setIsFilles Sets if the grah gets filled.
 	 * @param isFilled true if the graph gets filled
 	 */
-	void setIsFilled(bool isFilled);
-
-	/**
-	 * @brief setMargin Sets the margin for the scene.
-	 * @param marginX The margin on the x axis.
-	 * @param marginY The margin on the y axis.
-	 */
-	void setMargin(int marginX,int marginY);
+    void setIsFilled(bool isFilled);
 
 	/**
 	 * @brief setShowLabels Sets whether the axis labels are shown or not.
@@ -146,9 +139,7 @@ class GraphWidget:public QGraphicsView {
 	QString                     yLabel_;
 	QFont                       labelFont_;
 	QFont                       markFont_;
-	bool                        isFilled_;
-	int                         marginWidth_;
-    int                         marginHeight_;
+    bool                        isFilled_;
 	int                         markLenX_;
 	int                         markLenY_;
 	int                         xLabelHeight_;

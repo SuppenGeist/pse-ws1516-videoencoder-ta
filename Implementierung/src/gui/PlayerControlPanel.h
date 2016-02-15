@@ -78,7 +78,7 @@ class PlayerControlPanel: public QFrame, public ControlPanel {
 	QPushButton*    button_pause_;
 	QComboBox*      comboBox_speed_;
 	QSlider*        slider_timeline_;
-	QTimer          updater_;
+    QTimer          updater_;
 
 	/**
 	 * @brief createUi Creates the ui.

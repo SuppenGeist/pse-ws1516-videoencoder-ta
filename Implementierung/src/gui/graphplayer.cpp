@@ -53,7 +53,6 @@ void GUI::GraphPlayer::setPosition(std::size_t position)
         return;
     if(video_->getNumberOfGraphs()==0)
         return;
-    qDebug()<<position;
 
     if(position>=video_->getNumberOfGraphs()) {
         position=video_->getNumberOfGraphs()-1;

@@ -6,6 +6,7 @@
 #include <QPushButton>
 #include <QComboBox>
 #include <QSlider>
+#include <QDebug>
 #include <QTimer>
 
 #include "Player.h"
@@ -19,7 +20,7 @@ GUI::PlayerControlPanel::PlayerControlPanel(QWidget* parent):QFrame(parent) {
 	connect(button_nextFrame_,SIGNAL(clicked()),this,SLOT(nextFrame()));
 	connect(button_previousFrame_,SIGNAL(clicked()),this,SLOT(previousFrame()));
 	connect(comboBox_speed_,SIGNAL(currentIndexChanged(int)),this,SLOT(changeSpeed(int)));
-	connect(slider_timeline_,SIGNAL(valueChanged(int)),this,SLOT(changeTimeline(int)));
+    connect(slider_timeline_,SIGNAL(sliderMoved(int)),this,SLOT(changeTimeline(int)));
 
 	connect(&updater_,SIGNAL(timeout()),this,SLOT(updateUi()));
 	updater_.start(500);
@@ -42,7 +43,7 @@ void GUI::PlayerControlPanel::updateUi() {
 			slider_timeline_->setRange(0,0);
 			return;
 		}
-	}
+    }
 
 	slider_timeline_->setRange(0,player->getNumberOfFrames()-1);
 	slider_timeline_->setValue(player->getPosition());

@@ -46,7 +46,7 @@ GUI::AnalysisTab::AnalysisTab(QWidget* parent) : QFrame(parent),rawVideo_(nullpt
 	videoPlayer_->setMasterControlPanel(*playerControlPanel_);
 	playerControlPanel_->setMasterVideoPlayer(*forwardPlayer_.get());
 	forwardPlayer_->setForwardControlPanel(globalControlPanel_.get());
-	globalControlPanel_->setMasterVideoPlayer(*videoPlayer_);
+    globalControlPanel_->setMasterVideoPlayer(*videoPlayer_);
 
     analysisBoxContainer_->setControlPanel(globalControlPanel_);
 	analysisBoxContainer_->setTimer(timer_);
