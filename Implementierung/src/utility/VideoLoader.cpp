@@ -136,5 +136,8 @@ void Utility::VideoLoader::loadP() {
 	avcodec_close(codecContext);
 	avformat_close_input(&formatContext);
 	isRunning_=false;
+    if(dict_) {
+        free(dict_);
+    }
 	target_->setIsComplete(true);
 }

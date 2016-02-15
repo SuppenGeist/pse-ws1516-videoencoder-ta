@@ -13,6 +13,11 @@ Model::EncodedVideo::~EncodedVideo() {
 	if(converter_.joinable()) {
 		converter_.join();
 	}
+
+    isMacroblockConverterRunnning_=false;
+    if(macroblockConverter_.joinable()) {
+        macroblockConverter_.join();
+    }
 }
 
 QString Model::EncodedVideo::getPath() {
@@ -86,13 +91,12 @@ Model::Video& Model::EncodedVideo::getMacroBlockVideo() {
         macroblockAVVideo_ = std::make_unique<AVVideo>();
         AVDictionary *dict = NULL;
         av_dict_set(&dict, "vismv", "bf", 0);       // deprecated option vismv
-        loader_ = std::make_unique<Utility::VideoLoader>(path_, dict);
-        loader_->loadVideo(macroblockAVVideo_.get());
-        free(dict);     // free the AVDictionary as it is no longer used
+        macroblockLoader_ = std::make_unique<Utility::VideoLoader>(path_, dict);
+        macroblockLoader_->loadVideo(macroblockAVVideo_.get());
         macroblockVideo_=std::make_unique<Video>();
-        converter_=std::thread(&EncodedVideo::convertVideo,this);
+        macroblockConverter_=std::thread(&EncodedVideo::convertMacroblock,this);
     }
-    return *macroblockVideo_.get();
+    return *macroblockVideo_;
 }
 
 Model::Video& Model::EncodedVideo::getRgbDiffVideo(Video *reference) {
@@ -139,7 +143,22 @@ void Model::EncodedVideo::convertVideo() {
 	} while(!avVideo_->isComplete()&&isConverterRunning_);
 
 	isConverterRunning_=false;
-	video_->setFps(avVideo_->getFps());
+    video_->setFps(avVideo_->getFps());
+}
+
+void Model::EncodedVideo::convertMacroblock()
+{
+    isMacroblockConverterRunnning_=true;
+
+    std::size_t i=0;
+    do {
+        for(; i<macroblockAVVideo_->getNumberOfFrames(); i++) {
+            macroblockVideo_->appendFrame(Utility::VideoConverter::convertAVFrameToQImage(*macroblockAVVideo_->getFrame(i)));
+        }
+    } while(!macroblockAVVideo_->isComplete()&&isMacroblockConverterRunnning_);
+
+    isMacroblockConverterRunnning_=false;
+    macroblockAVVideo_.release();
 }
 
 void Model::EncodedVideo::calculateHistogramms() {

@@ -123,7 +123,10 @@ class EncodedVideo {
 	std::unique_ptr<Utility::VideoLoader> loader_;
 	std::unique_ptr<Utility::BitrateCalculator> bitrateCalculator_;
 	std::thread                 converter_;
+    std::thread                 macroblockConverter_;
+    std::unique_ptr<Utility::VideoLoader>   macroblockLoader_;
 	bool                        isConverterRunning_;
+    bool                        isMacroblockConverterRunnning_;
 
 
 	/**
@@ -137,6 +140,7 @@ class EncodedVideo {
 	void loadVideo();
 
 	void convertVideo();
+    void convertMacroblock();
 };
 }
 

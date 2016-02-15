@@ -58,7 +58,7 @@ class VideoPlayer: public QObject,public Player {
 	 * @brief setVideo Sets the video.
 	 * @param video The video to play.
 	 */
-	void setVideo(Model::Video* video) noexcept;
+    void setVideo(Model::Video* video,bool updateTimer=true) noexcept;
 
 	/**
 	 * If no video is set nullptr is returned.

@@ -18,6 +18,7 @@ class AnalysisTab;
 class Timer;
 class GlobalControlPanel;
 enum class AnalysisGraph;
+enum class AnalysisVideo;
 }
 
 namespace GUI {
@@ -48,6 +49,8 @@ class AnalysisBoxContainer: public QFrame {
 
 	void showGraph(AnalysisGraph graph);
 
+    void showAnalysisVideo(AnalysisVideo video);
+
     AnalysisBox* insertVideo(QString filname,int index);
 
   private slots:
@@ -65,6 +68,7 @@ class AnalysisBoxContainer: public QFrame {
 	std::vector<AnalysisBox*>   boxes_;
 
 	AnalysisGraph               currentGraph_;
+    AnalysisVideo               currentVideo_;
 
 	void createUi();
 

@@ -21,6 +21,7 @@
 namespace GUI {
 class AnalysisBoxContainer;
 enum class AnalysisGraph;
+enum class AnalysisVideo;
 }
 
 namespace GUI {
@@ -49,6 +50,8 @@ class AnalysisBox: public QFrame {
 	void setControlPanel(GlobalControlPanel* controlPanel);
 
 	void showGraph(AnalysisGraph graph);
+
+    void showAnalysisVideo(AnalysisVideo video);
 
 	QString getFilename();
 

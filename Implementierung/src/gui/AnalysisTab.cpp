@@ -147,7 +147,14 @@ void GUI::AnalysisTab::loadRawVideo() {
 }
 
 void GUI::AnalysisTab::showBitrate() {
-	analysisBoxContainer_->showGraph(AnalysisGraph::BITRATE);
+    analysisBoxContainer_->showGraph(AnalysisGraph::BITRATE);
+}
+
+void GUI::AnalysisTab::analysisVideoChanged(int index)
+{
+    if(index==0) {
+        analysisBoxContainer_->showAnalysisVideo(AnalysisVideo::MACROBLOCK);
+    }
 }
 
 void GUI::AnalysisTab::createUi() {
@@ -387,5 +394,6 @@ void GUI::AnalysisTab::createUi() {
 void GUI::AnalysisTab::connectActions() {
 	connect(button_addRawVideo_,SIGNAL(clicked(bool)),this,SLOT(loadRawVideo()));
 	connect(button_bitrate_,SIGNAL(clicked(bool)),this,SLOT(showBitrate()));
+    connect(combobbox_anaVideo_,SIGNAL(currentIndexChanged(int)),this,SLOT(analysisVideoChanged(int)));
 }
 

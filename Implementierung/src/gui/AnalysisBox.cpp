@@ -64,7 +64,7 @@ void GUI::AnalysisBox::setFile(QString filename) {
 	origVideo_=std::make_unique<Model::EncodedVideo>(filename);
 
 
-	origVidPlayer_->setVideo(&origVideo_->getVideo());
+    origVidPlayer_->setVideo(&origVideo_->getVideo(),false);
 }
 
 void GUI::AnalysisBox::setTimer(std::shared_ptr<GUI::Timer> timer) {
@@ -86,7 +86,16 @@ void GUI::AnalysisBox::showGraph(GUI::AnalysisGraph graph) {
 		graphWidget_->drawGraph(origVideo_->getBitrate());
 		graphWidget_->setAxisLabels("frame","kb");
 		break;
-	}
+    }
+}
+
+void GUI::AnalysisBox::showAnalysisVideo(GUI::AnalysisVideo video)
+{
+    switch(video) {
+    case AnalysisVideo::MACROBLOCK:
+        anaVidPlayer_->setVideo(&origVideo_->getMacroBlockVideo(),false);
+        break;
+    }
 }
 
 QString GUI::AnalysisBox::getFilename() {
@@ -162,5 +171,5 @@ void GUI::AnalysisBox::createUi() {
 
 void GUI::AnalysisBox::updateGraphWidget() {
     graphWidget_->buildScene();
-	graphWidget_->repaint();
+    graphWidget_->repaint();
 }

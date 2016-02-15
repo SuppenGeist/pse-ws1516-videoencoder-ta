@@ -20,7 +20,7 @@
 #include "../undo_framework/AddVideo.h"
 
 GUI::AnalysisBoxContainer::AnalysisBoxContainer(QWidget* parent) : QFrame(parent),
-	currentGraph_(AnalysisGraph::BITRATE) {
+    currentGraph_(AnalysisGraph::BITRATE),currentVideo_(AnalysisVideo::MACROBLOCK) {
 	createUi();
 	setContentsMargins(-10,-10,-10,-10);
 
@@ -43,6 +43,7 @@ GUI::AnalysisBox *GUI::AnalysisBoxContainer::appendVideo(QString path) {
 	newBox->setControlPanel(controlPanel_);
 	newBox->setParentContainer(this);
 	newBox->showGraph(currentGraph_);
+    newBox->showAnalysisVideo(currentVideo_);
 	boxes_.push_back(newBox);
 
 	QString objname=QString("x%1").arg((quintptr)newBox,QT_POINTER_SIZE * 2, 16, QChar('0'));
@@ -93,6 +94,14 @@ void GUI::AnalysisBoxContainer::showGraph(GUI::AnalysisGraph graph) {
     currentGraph_=graph;
 }
 
+void GUI::AnalysisBoxContainer::showAnalysisVideo(GUI::AnalysisVideo video)
+{
+    for(auto box:boxes_) {
+        box->showAnalysisVideo(video);
+    }
+    currentVideo_=video;
+}
+
 GUI::AnalysisBox *GUI::AnalysisBoxContainer::insertVideo(QString filname, int index)
 {
     if(index>boxes_.size())
@@ -104,6 +113,7 @@ GUI::AnalysisBox *GUI::AnalysisBoxContainer::insertVideo(QString filname, int in
     newBox->setControlPanel(controlPanel_);
     newBox->setParentContainer(this);
     newBox->showGraph(currentGraph_);
+    newBox->showAnalysisVideo(currentVideo_);
     boxes_.insert(boxes_.begin()+index,newBox);
 
     QString objname=QString("x%1").arg((quintptr)newBox,QT_POINTER_SIZE * 2, 16, QChar('0'));

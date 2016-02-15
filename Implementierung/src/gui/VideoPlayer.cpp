@@ -31,14 +31,14 @@ void GUI::VideoPlayer::removeView(FrameView& view) {
 	}
 }
 
-void GUI::VideoPlayer::setVideo(Model::Video* video) noexcept {
+void GUI::VideoPlayer::setVideo(Model::Video* video, bool updateTimer) noexcept {
 	stop();
 
 	video_=video;
 
 	setPosition(0);
 
-	if(timer_.get()&&video)
+    if(timer_.get()&&video&&updateTimer)
 		timer_->setFps(video->getFps());
 	if(masterPanel_)
 		masterPanel_->updateUi();

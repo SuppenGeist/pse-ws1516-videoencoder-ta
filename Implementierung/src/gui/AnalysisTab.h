@@ -29,6 +29,10 @@ enum class AnalysisGraph {
     BITRATE
 };
 
+enum class AnalysisVideo {
+    MACROBLOCK
+};
+
 /**
  * The tab that shows videos and analyses them.
 */
@@ -56,6 +60,7 @@ class AnalysisTab: public QFrame {
   private slots:
 	void loadRawVideo();
 	void showBitrate();
+    void analysisVideoChanged(int index);
 
   private:
 	QPushButton*            button_saveResults_;
