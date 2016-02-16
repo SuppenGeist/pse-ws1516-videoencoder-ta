@@ -27,3 +27,7 @@ add static conversion methods, so they are in one place
 ##Filtertests
 unclear ranges for Grid/Rectangle filter, scaleFilter (width, height, etc?)
 anlge for rotation filter??
+
+##AnalysisBoxMemento
+getter returns now pointers
+setter parameter are now pointers 

@@ -7,7 +7,7 @@
 #include "../model/FilterList.h"
 #include "../model/filters/Filter.h"
 
-Memento::FilterTabMemento::FilterTabMemento():rawVideo_(nullptr),isPreviewShow_(false),
+Memento::FilterTabMemento::FilterTabMemento():rawVideo_(nullptr),isPreviewShown_(false),
 	currentFrame_(0),currentlySelectedFilter_(-1) {
 
 }
@@ -31,11 +31,11 @@ std::unique_ptr<Model::FilterList> Memento::FilterTabMemento::getFilterList() {
 }
 
 void Memento::FilterTabMemento::setIsPreviewShown(bool isShown) {
-	isPreviewShow_=isShown;
+    isPreviewShown_=isShown;
 }
 
 bool Memento::FilterTabMemento::isPreviewShow() {
-	return isPreviewShow_;
+    return isPreviewShown_;
 }
 
 void Memento::FilterTabMemento::setIsFilteredVideoShown(bool isShown) {

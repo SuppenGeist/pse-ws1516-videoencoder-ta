@@ -14,8 +14,6 @@ namespace Memento {
  */
 class FilterTabMemento {
 
-
-
   public:
 	/**
 	 * @brief FilterTabMemento
@@ -53,7 +51,7 @@ class FilterTabMemento {
   private:
 	Model::YuvVideo*                    rawVideo_;
 	std::unique_ptr<Model::FilterList>  filterlist_;
-	bool                                isPreviewShow_;
+    bool                                isPreviewShown_;
 	bool                                isFilteredVideoShown_;
 	Model::Video*                       filteredVideo_;
 	int                                 currentFrame_;

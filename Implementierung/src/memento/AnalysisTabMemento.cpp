@@ -13,3 +13,11 @@ void Memento::AnalysisTabMemento::setRawVideo(Model::YuvVideo *video) {
 Model::YuvVideo *Memento::AnalysisTabMemento::getRawVideo() {
 	return rawVideo_;
 }
+
+void Memento::AnalysisTabMemento::setAnalysisBoxMemento(Memento::AnalysisBoxMemento* analysisBoxMemento){
+    analysisBoxMemento_ = analysisBoxMemento;
+}
+
+Memento::AnalysisBoxMemento *Memento::AnalysisTabMemento::getAnalysisBoxMemento(){
+    return analysisBoxMemento_;
+}

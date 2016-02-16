@@ -3,15 +3,15 @@
 #include <vector>
 #include "AnalysisBoxMemento.h"
 
-void Memento::AnalysisBoxContainerMemento::analyseBoxMemento() {
-	throw "Not yet implemented";
+void Memento::AnalysisBoxContainerMemento::analysisBoxMemento() {
+
 }
 
-vector<Memento::AnalysisBoxMemento> Memento::AnalysisBoxContainerMemento::getAnalysisBoxList() {
-	throw "Not yet implemented";
+vector<Memento::AnalysisBoxMemento*> Memento::AnalysisBoxContainerMemento::getAnalysisBoxList() {
+    return mementoList_;
 }
 
 void Memento::AnalysisBoxContainerMemento::setAnalysisBoxList(
-    std::vector<Memento::AnalysisBoxMemento> analyseBoxList) {
-	throw "Not yet implemented";
+    std::vector<Memento::AnalysisBoxMemento*> analysisBoxList) {
+    mementoList_=analysisBoxList;
 }

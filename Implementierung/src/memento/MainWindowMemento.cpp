@@ -7,25 +7,25 @@ Memento::MainWindowMemento::MainWindowMemento() {
 }
 
 int Memento::MainWindowMemento::getSelectedTab() {
-	return this->selectedTab;
+    return selectedTab_;
 }
 
 void Memento::MainWindowMemento::setSelectedTab(int selectedTab) {
-	this->selectedTab = selectedTab;
+    selectedTab_ = selectedTab;
 }
 
-Memento::AnalysisTabMemento Memento::MainWindowMemento::getAnalysisTabMemento() {
-	throw "Not yet implemented";
+Memento::AnalysisTabMemento* Memento::MainWindowMemento::getAnalysisTabMemento() {
+    return analysisTab_;
 }
 
-void Memento::MainWindowMemento::setAnalysisTabMemento(AnalysisTabMemento analysisTabMeMento) {
-	throw "Not yet implemented";
+void Memento::MainWindowMemento::setAnalysisTabMemento(AnalysisTabMemento* analysisTabMemento) {
+    analysisTab_ = analysisTabMemento;
 }
 
-Memento::FilterTabMemento Memento::MainWindowMemento::getFilterTabMemento() {
-	throw "Not yet implemented";
+Memento::FilterTabMemento* Memento::MainWindowMemento::getFilterTabMemento() {
+    return filterTab_;
 }
 
-void Memento::MainWindowMemento::setFilterTabMemento(FilterTabMemento filterTabMemento) {
-	throw "Not yet implemented";
+void Memento::MainWindowMemento::setFilterTabMemento(FilterTabMemento* filterTabMemento) {
+    filterTab_ = filterTabMemento;
 }

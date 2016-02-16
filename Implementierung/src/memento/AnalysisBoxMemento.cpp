@@ -8,51 +8,51 @@ Memento::AnalysisBoxMemento::AnalysisBoxMemento() {
 }
 
 QString Memento::AnalysisBoxMemento::getVideoPath() {
-	return this->videoPath;
+    return videoPath_;
 }
 
 void Memento::AnalysisBoxMemento::setVideoPath(QString videoPath) {
-	this->videoPath = videoPath;
+    videoPath_ = videoPath;
 }
 
 QString Memento::AnalysisBoxMemento::getComment() {
-	return this->comment;
+    return comment_;
 }
 
 void Memento::AnalysisBoxMemento::setComment(QString comment) {
-	this->comment = comment;
+    comment_ = comment;
 }
 
 Model::Video* Memento::AnalysisBoxMemento::getMacroVideo() {
-	return this->macroVideo;
+    return macroVideo_;
 }
 
 void Memento::AnalysisBoxMemento::setMacroVideo(Model::Video* macroVideo) {
-	this->macroVideo = macroVideo;
+    macroVideo_ = macroVideo;
 }
 
 Model::Video* Memento::AnalysisBoxMemento::getRgbDiffVideo() {
-	return this->rgbDiffVideo;
+    return rgbDiffVideo_;
 }
 
 void Memento::AnalysisBoxMemento::setRgbDiffVideo(Model::Video* rgbDiffVideo) {
-	this->rgbDiffVideo = rgbDiffVideo;
+    rgbDiffVideo_ = rgbDiffVideo;
 }
 
 Model::Graph Memento::AnalysisBoxMemento::getPsnr() {
-	return this->psnr;
+    return psnr_;
 }
 
 void Memento::AnalysisBoxMemento::setPsnr(Model::Graph psnr) {
-	this->psnr = psnr;
+    psnr_ = psnr;
 }
 
 Model::Graph Memento::AnalysisBoxMemento::getBitrate() {
-	return this->bitrate;
+    return bitrate_;
 }
 
 void Memento::AnalysisBoxMemento::setBitrate(Model::Graph bitrate) {
-	this->bitrate = bitrate;
+    bitrate_ = bitrate;
 }
 
 

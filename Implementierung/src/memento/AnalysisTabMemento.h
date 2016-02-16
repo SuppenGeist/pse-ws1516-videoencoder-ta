@@ -2,6 +2,7 @@
 #define __AnalysisTabMemento_h__
 
 #include "../model/YuvVideo.h"
+#include "../memento/AnalysisBoxMemento.h"
 
 namespace Memento {
 /**
@@ -17,10 +18,16 @@ class AnalysisTabMemento {
 
 	void setRawVideo(Model::YuvVideo* video);
 
-	Model::YuvVideo* getRawVideo();
+    Model::YuvVideo* getRawVideo();
 
-  private:
+    void setAnalysisBoxMemento(Memento::AnalysisBoxMemento* analysisBoxMemento);
+
+    Memento::AnalysisBoxMemento* getAnalysisBoxMemento();
+
+    private:
 	Model::YuvVideo*        rawVideo_;
+
+    Memento::AnalysisBoxMemento* analysisBoxMemento_;
 };
 }
 
