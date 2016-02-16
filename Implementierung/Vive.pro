@@ -126,7 +126,6 @@ HEADERS += \
     src/utility/YuvFileReader.h \
     src/utility/YuvFileSaver.h \
     src/utility/YuvType.h \
-    src/utility/meansquareerrorcalculator.h \
     src/utility/Yuv420FileReader.h \
     src/model/filters/GrayscaleFilter.h \
     src/undo_framework/changefilter.h \
@@ -238,7 +237,6 @@ SOURCES += \
     src/utility/YuvFileReader.cpp \
     src/utility/YuvFileSaver.cpp \
     src/main.cpp \
-    src/utility/meansquareerrorcalculator.cpp \
     src/utility/Yuv422Vector.cpp \
     src/utility/Yuv420FileReader.cpp \
     src/utility/Yuv411Vector.cpp \

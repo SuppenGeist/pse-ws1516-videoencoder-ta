@@ -1,6 +1,10 @@
 #ifndef __PsnrCalculator_h__
 #define __PsnrCalculator_h__
 
+#include <thread>
+
+#include <QImage>
+
 namespace Model {
 class Video;
 class Graph;
@@ -19,17 +23,25 @@ class PsnrCalculator {
 	 */
 	PsnrCalculator(Model::Video& referenceVideo, Model::Video& compareVideo);
 
+    ~PsnrCalculator();
+
 	/**
 	 * @brief calculate Calculates the psnr graph.
 	 * @return The calculated psnr graph.
 	 */
-	Model::Graph calculate();
+    void calculate(Model::Graph* target);
 
   private:
 
 	Model::Video* referenceVideo_;
 	Model::Video* video_;
+    std::thread     calculator_;
+    Model::Graph*   target_;
+    bool isRunning_;
 
+    double calculateMeanSquareError(QImage* frame1, QImage* frame2);
+
+    void calculateP();
 };
 }
 

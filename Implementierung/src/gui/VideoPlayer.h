@@ -140,7 +140,7 @@ class VideoPlayer: public QObject,public Player {
 	 * @brief setPosition Sets the position in the video.
 	 * @param position The new position.
 	 */
-	void setPosition(std::size_t position) override;
+    void setPosition(std::size_t position) override;
 
 	/**
 	 * @brief getPosition Returns the position in the video.

@@ -1,4 +1,7 @@
 #include "RGBHistogrammCalculator.h"
+
+#include <memory>
+
 #include "../model/Video.h"
 #include "../model/Graph.h"
 #include "../model/graphvideo.h"
@@ -37,33 +40,33 @@ void Utility::RGBHistogrammCalculator::calculateP()
     for(; i < video_->getNumberOfFrames()&&isRunning_; i++) {
         QImage *currentFrame = video_->getFrame(i);
 
-        Model::Graph redg;
-        Model::Graph greeng;
-        Model::Graph blueg;
+        auto redg=std::make_unique<Model::Graph>();
+        auto greeng=std::make_unique<Model::Graph>();
+        auto blueg=std::make_unique<Model::Graph>();
 
         for(int j = 0; j < currentFrame->height(); j++) {
             for(int k = 0; k < currentFrame->width(); k++) {
                 auto pixel=currentFrame->pixel(k,j);
                 int blue=qBlue(pixel);
-                blueg.setValue(blue,blueg.getValue(blue)+1);
+                blueg->setValue(blue,blueg->getValue(blue)+1);
 
                 int red=qRed(pixel);
-                redg.setValue(red,redg.getValue(red)+1);
+                redg->setValue(red,redg->getValue(red)+1);
 
                 int green=qGreen(pixel);
-                greeng.setValue(green,greeng.getValue(green)+1);
+                greeng->setValue(green,greeng->getValue(green)+1);
             }
         }
 
         for(int k=0;k<256;k++) {
-            blueg.setValue(k,blueg.getValue(k)+1);
-            redg.setValue(k,redg.getValue(k)+1);
-            greeng.setValue(k,greeng.getValue(k)+1);
+            blueg->setValue(k,blueg->getValue(k)+1);
+            redg->setValue(k,redg->getValue(k)+1);
+            greeng->setValue(k,greeng->getValue(k)+1);
         }
 
-        red_->appendGraph(redg);
-        green_->appendGraph(greeng);
-        blue_->appendGraph(blueg);
+        red_->appendGraph(std::move(redg));
+        green_->appendGraph(std::move(greeng));
+        blue_->appendGraph(std::move(blueg));
     }
     }while (isRunning_&&!video_->isComplete());
     isRunning_=false;

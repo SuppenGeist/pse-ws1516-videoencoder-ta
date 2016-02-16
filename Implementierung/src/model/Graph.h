@@ -15,7 +15,7 @@ class Graph {
 	/**
 	 * @brief Graph Constructor.
 	 */
-	Graph();
+    Graph();
 
 	/**
 	 * @brief addValue Adds a value pair.

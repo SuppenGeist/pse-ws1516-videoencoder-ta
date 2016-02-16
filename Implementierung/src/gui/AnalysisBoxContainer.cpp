@@ -31,7 +31,12 @@ GUI::AnalysisBoxContainer::AnalysisBoxContainer(QWidget* parent) : QFrame(parent
 }
 
 void GUI::AnalysisBoxContainer::setParentTab(GUI::AnalysisTab *parent) {
-	parent_=parent;
+    parent_=parent;
+}
+
+GUI::AnalysisTab *GUI::AnalysisBoxContainer::getParentTab()
+{
+    return parent_;
 }
 
 GUI::AnalysisBox *GUI::AnalysisBoxContainer::appendVideo(QString path) {

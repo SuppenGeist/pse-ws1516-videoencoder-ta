@@ -60,7 +60,7 @@ class EncodedVideo {
 	 * @param reference
 	 * @return The psnr graph.
 	 */
-	Model::Graph& getPsnr(Model::Video* reference = 0);
+    Graph *getPsnr(Model::Video* reference = 0);
 
 	/**
 	 * @brief getRedHistogramm Returns the red histogramm graph.
@@ -124,6 +124,7 @@ class EncodedVideo {
 	std::unique_ptr<Utility::VideoLoader> loader_;
 	std::unique_ptr<Utility::BitrateCalculator> bitrateCalculator_;
     std::unique_ptr<Utility::RGBHistogrammCalculator> rgbHistoCalculator_;
+    std::unique_ptr<Utility::PsnrCalculator>        psnrCalculator_;
 	std::thread                 converter_;
     std::thread                 macroblockConverter_;
     std::unique_ptr<Utility::VideoLoader>   macroblockLoader_;

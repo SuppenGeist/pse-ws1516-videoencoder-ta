@@ -42,9 +42,15 @@ GUI::GraphWidget::GraphWidget(QWidget *parent):QGraphicsView(parent),controlPane
 	updateLabelSizes();
 	buildScene();
 	setScene(scene_);
+
+    connect(&updater_,SIGNAL(timeout()),this,SLOT(updateView()));
+    updater_.start(500);
 }
 
 void GUI::GraphWidget::drawGraph(Model::Graph* graph) {
+    if(graph==graph_)
+        return;
+
     graph_=graph;
 
 	updateLabelSizes();
@@ -157,7 +163,7 @@ void GUI::GraphWidget::mouseReleaseEvent(QMouseEvent* event) {
 
 	if(!graph_) {
 		return;
-	}
+    }
 
 	int x=event->pos().x();
 	int y=event->pos().y();
@@ -220,6 +226,14 @@ void GUI::GraphWidget::resizeEvent(QResizeEvent *event)
     buildScene();
 }
 
+void GUI::GraphWidget::updateView()
+{
+    if(!graph_)
+        return;
+    buildScene();
+    repaint();
+}
+
 void GUI::GraphWidget::buildScene() {
 	if(!scene_) {
 		scene_=new QGraphicsScene();
@@ -227,7 +241,7 @@ void GUI::GraphWidget::buildScene() {
 	scene_->clear();
 
 	if(!graph_)
-		return;
+        return;
 
 	//Get visible area (is not exact)
 	auto visibleArea=mapToScene(viewport()->geometry()).boundingRect();
@@ -385,7 +399,7 @@ void GUI::GraphWidget::buildScene() {
 	scene_->addLine(zero_x,zero_y,zero_x+width_x,zero_y);
 	scene_->addLine(zero_x,zero_y-width_y,zero_x,zero_y);
 
-	setSceneRect(QRect(0,0,vwidth,vheight));
+    setSceneRect(QRect(0,0,vwidth,vheight));
 }
 
 int GUI::GraphWidget::clamp(int val, int max, int min) {

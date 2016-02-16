@@ -55,7 +55,7 @@ void GUI::ForwardPlayer::setSpeed(float speed) {
 void GUI::ForwardPlayer::setPosition(std::size_t position) {
 	if(!forwardPanel_)
 		return;
-	forwardPanel_->setPosition(position);
+    forwardPanel_->setPosition(position);
 }
 
 std::size_t GUI::ForwardPlayer::getPosition() const {

@@ -1,5 +1,7 @@
 #include "EncodedVideo.h"
 
+#include <QDebug>
+
 #include "AVVideo.h"
 
 #include "../utility/BitrateCalculator.h"
@@ -45,13 +47,22 @@ Model::Graph& Model::EncodedVideo::getBitrate() {
 	return *bitrate_;
 }
 
-Model::Graph& Model::EncodedVideo::getPsnr(Video *reference) {
-	/*if(this->psnr == NULL && reference != NULL) {
-		Utility::PsnrCalculator psnrCalculator = Utility::PsnrCalculator(*(reference), *(this->video));
-		this->psnr = new Graph(psnrCalculator.calculate());
-	}
-	return *(this->psnr);*/
-	throw "";
+Model::Graph* Model::EncodedVideo::getPsnr(Video *reference) {
+    if(!psnr_.get()) {
+        if(getVideo().getNumberOfFrames()==0)
+            return nullptr;
+        if(!reference)
+            return nullptr;
+        psnr_=std::make_unique<Graph>();
+        try {
+        psnrCalculator_=std::make_unique<Utility::PsnrCalculator>(getVideo(),*reference);
+        }
+        catch(std::invalid_argument& e) {
+            return psnr_.get();
+        }
+        psnrCalculator_->calculate(psnr_.get());
+    }
+    return psnr_.get();
 }
 
 Model::GraphVideo &Model::EncodedVideo::getRedHistogramm() {
@@ -63,11 +74,11 @@ Model::GraphVideo &Model::EncodedVideo::getRedHistogramm() {
 }
 
 Model::GraphVideo &Model::EncodedVideo::getBlueHistogramm() {
-    if(!greenHisto_.get()) {
+    if(!blueHisto_.get()) {
         calculateHistogramms();
     }
 
-    return *greenHisto_;
+    return *blueHisto_;
 }
 
 Model::GraphVideo &Model::EncodedVideo::getGreenHistogramm() {
@@ -89,8 +100,9 @@ Model::Video& Model::EncodedVideo::getMacroBlockVideo() {
     if(!macroblockVideo_.get()) {
         macroblockAVVideo_ = std::make_unique<AVVideo>();
         AVDictionary *dict = NULL;
-        av_dict_set(&dict, "vismv", "pf", 0);       // deprecated option vismv
+               // deprecated option vismv
         av_dict_set(&dict, "debug", "vis_mb_type", 0);
+        av_dict_set(&dict, "vismv", "pf", 0);
         macroblockLoader_ = std::make_unique<Utility::VideoLoader>(path_, dict);
         macroblockLoader_->loadVideo(macroblockAVVideo_.get());
         macroblockVideo_=std::make_unique<Video>();
@@ -139,9 +151,9 @@ void Model::EncodedVideo::convertVideo() {
 	do {
 		for(; i<avVideo_->getNumberOfFrames(); i++) {
 			video_->appendFrame(Utility::VideoConverter::convertAVFrameToQImage(*avVideo_->getFrame(i)));
-		}
-	} while(!avVideo_->isComplete()&&isConverterRunning_);
-
+        }
+    } while(!avVideo_->isComplete()&&isConverterRunning_);
+    video_->setIsComplete(true);
 	isConverterRunning_=false;
     video_->setFps(avVideo_->getFps());
 }
@@ -158,6 +170,7 @@ void Model::EncodedVideo::convertMacroblock()
     } while(!macroblockAVVideo_->isComplete()&&isMacroblockConverterRunnning_);
 
     isMacroblockConverterRunnning_=false;
+    macroblockVideo_->setIsComplete(true);
     macroblockAVVideo_.release();
 }
 

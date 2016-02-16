@@ -50,7 +50,7 @@ class Player {
 	 * @brief setPosition Sets the position in the video.
 	 * @param position The new position.
 	 */
-	virtual void setPosition(std::size_t position) = 0;
+    virtual void setPosition(std::size_t position) = 0;
 
 	/**
 	 * @brief getPosition Returns the position in the video.

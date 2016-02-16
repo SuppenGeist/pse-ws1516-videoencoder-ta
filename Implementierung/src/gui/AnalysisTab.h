@@ -19,6 +19,7 @@
 #include "Timer.h"
 #include "FrameView.h"
 #include "GlobalControlPanel.h"
+#include "graphplayer.h"
 
 #include "../model/YuvVideo.h"
 
@@ -29,7 +30,8 @@ enum class AnalysisGraph {
     BITRATE,
     RED_HISTOGRAMM,
     BLUE_HISTOGRAMM,
-    GREEN_HISTOGRAMM
+    GREEN_HISTOGRAMM,
+    PSNR
 };
 
 enum class AnalysisVideo {
@@ -55,6 +57,8 @@ class AnalysisTab: public QFrame {
 
 	void setRawVideo(Model::YuvVideo* rawVideo);
 
+    Model::YuvVideo* getRawVideo();
+
 	bool isRawVideoLoaded();
 
   protected:
@@ -66,6 +70,7 @@ class AnalysisTab: public QFrame {
     void showRedHistogramm();
     void showBlueHistogramm();
     void showGreenHistogramm();
+    void showPsnr();
     void analysisVideoChanged(int index);
 
   private:
@@ -88,6 +93,7 @@ class AnalysisTab: public QFrame {
 	Model::YuvVideo*        rawVideo_;
 
 	std::unique_ptr<ForwardPlayer>      forwardPlayer_;
+    std::unique_ptr<GraphPlayer>        graphPlayer_;
 	std::shared_ptr<Timer>              timer_;
     std::shared_ptr<GlobalControlPanel> globalControlPanel_;
 	std::unique_ptr<VideoPlayer>        videoPlayer_;

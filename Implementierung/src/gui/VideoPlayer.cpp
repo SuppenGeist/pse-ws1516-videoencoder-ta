@@ -133,7 +133,7 @@ void GUI::VideoPlayer::setPosition(std::size_t position) {
 		view->setFrame(*(video_->getFrame(position_)));
 	}
 	if(masterPanel_)
-		masterPanel_->updateUi();
+        masterPanel_->updateUi();
 }
 
 std::size_t GUI::VideoPlayer::getPosition() const noexcept {

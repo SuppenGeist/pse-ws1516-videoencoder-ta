@@ -59,7 +59,7 @@ class PlayerControlPanel: public QFrame, public ControlPanel {
 	 * @brief changeTimeline Slot for slider_timeLine.valueChanged(int) signal.
 	 * @param value The new valueof the slider.
 	 */
-	void changeTimeline(int value);
+    void changeTimeline(int value);
 
   public slots:
 	/**

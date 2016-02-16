@@ -4,7 +4,6 @@
 
 GUI::GraphPlayer::GraphPlayer():position_(0),video_(nullptr),view_(nullptr)
 {
-
 }
 
 

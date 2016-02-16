@@ -9,6 +9,7 @@
 #include <QBrush>
 #include <QFont>
 #include <QGraphicsScene>
+#include <QTimer>
 
 namespace GUI {
 class GlobalControlPanel;
@@ -22,7 +23,7 @@ namespace GUI {
  * This class is a widget to draw graphs.
  */
 class GraphWidget:public QGraphicsView {
-
+Q_OBJECT
   public:
 	/**
 	 * @brief GraphWidget Constructor.
@@ -127,6 +128,9 @@ class GraphWidget:public QGraphicsView {
 
     void resizeEvent(QResizeEvent* event);
 
+private slots:
+    void updateView();
+
   private:
 	QPen                        linePen_;
 	QPen                        fillPen_;
@@ -148,6 +152,7 @@ class GraphWidget:public QGraphicsView {
 	int                         markDistanceX_;
 	int                         markDistanceY_;
     double                      fixedMaxYVal_;
+    QTimer                      updater_;
 
 	/**
 	 * @brief clamp Clamps the value to the given index.

@@ -47,6 +47,10 @@ GUI::AnalysisTab::AnalysisTab(QWidget* parent) : QFrame(parent),rawVideo_(nullpt
 	playerControlPanel_->setMasterVideoPlayer(*forwardPlayer_.get());
 	forwardPlayer_->setForwardControlPanel(globalControlPanel_.get());
     globalControlPanel_->setMasterVideoPlayer(*videoPlayer_);
+    graphPlayer_=std::make_unique<GraphPlayer>();
+    graphPlayer_->setView(graphWidget_);
+    globalControlPanel_->addVideoPlayer(graphPlayer_.get());
+    graphPlayer_->setTimer(timer_);
 
     analysisBoxContainer_->setControlPanel(globalControlPanel_);
 	analysisBoxContainer_->setTimer(timer_);
@@ -86,7 +90,13 @@ void GUI::AnalysisTab::setRawVideo(Model::YuvVideo *rawVideo) {
 		rawVideoView_->hide();
 		v_rawVideo_->addWidget(button_addRawVideo_);
 		button_addRawVideo_->show();
-	}
+    }
+    rawVideo_->getRedHistogramm();
+}
+
+Model::YuvVideo *GUI::AnalysisTab::getRawVideo()
+{
+    return rawVideo_;
 }
 
 bool GUI::AnalysisTab::isRawVideoLoaded() {
@@ -148,21 +158,64 @@ void GUI::AnalysisTab::loadRawVideo() {
 
 void GUI::AnalysisTab::showBitrate() {
     analysisBoxContainer_->showGraph(AnalysisGraph::BITRATE);
+    tabs_graphattrs->setCurrentIndex(1);
+    graphPlayer_->setGraphVideo(nullptr);
 }
 
 void GUI::AnalysisTab::showRedHistogramm()
 {
     analysisBoxContainer_->showGraph(AnalysisGraph::RED_HISTOGRAMM);
+    graphPlayer_->setGraphVideo(&rawVideo_->getRedHistogramm());
+    tabs_graphattrs->setCurrentIndex(0);
+    graphWidget_->setAxisLabels("","");
+    graphWidget_->setIsFilled(true);
+    QBrush filler(QColor(255,0,0));
+    graphWidget_->setShowLabels(false);
+    graphWidget_->setFillBrush(filler);
+    QPen filpen(QColor(255,0,0));
+    graphWidget_->setFillPen(filpen);
+    graphWidget_->setLinePen(filpen);
+    graphPlayer_->setPosition(globalControlPanel_->getPosition());
+
 }
 
 void GUI::AnalysisTab::showBlueHistogramm()
 {
     analysisBoxContainer_->showGraph(AnalysisGraph::BLUE_HISTOGRAMM);
+    graphPlayer_->setGraphVideo(&rawVideo_->getBlueHistogramm());
+    tabs_graphattrs->setCurrentIndex(0);
+    graphWidget_->setAxisLabels("","");
+    graphWidget_->setIsFilled(true);
+    QBrush filler(QColor(0,0,255));
+    graphWidget_->setShowLabels(false);
+    graphWidget_->setFillBrush(filler);
+    QPen filpen(QColor(0,0,255));
+    graphWidget_->setFillPen(filpen);
+    graphWidget_->setLinePen(filpen);
+    graphPlayer_->setPosition(globalControlPanel_->getPosition());
 }
 
 void GUI::AnalysisTab::showGreenHistogramm()
 {
     analysisBoxContainer_->showGraph(AnalysisGraph::GREEN_HISTOGRAMM);
+    graphPlayer_->setGraphVideo(&rawVideo_->getGreenHistogramm());
+    tabs_graphattrs->setCurrentIndex(0);
+    graphWidget_->setAxisLabels("","");
+    graphWidget_->setIsFilled(true);
+    QBrush filler(QColor(0,255,0));
+    graphWidget_->setShowLabels(false);
+    graphWidget_->setFillBrush(filler);
+    QPen filpen(QColor(0,255,0));
+    graphWidget_->setFillPen(filpen);
+    graphWidget_->setLinePen(filpen);
+    graphPlayer_->setPosition(globalControlPanel_->getPosition());
+}
+
+void GUI::AnalysisTab::showPsnr()
+{
+    analysisBoxContainer_->showGraph(AnalysisGraph::PSNR);
+    tabs_graphattrs->setCurrentIndex(1);
+    graphPlayer_->setGraphVideo(nullptr);
 }
 
 void GUI::AnalysisTab::analysisVideoChanged(int index)
@@ -413,5 +466,6 @@ void GUI::AnalysisTab::connectActions() {
     connect(button_redHistogramm_,SIGNAL(clicked(bool)),this,SLOT(showRedHistogramm()));
     connect(button_blueHistogramm_,SIGNAL(clicked(bool)),this,SLOT(showBlueHistogramm()));
     connect(button_greenHistogramm_,SIGNAL(clicked(bool)),this,SLOT(showGreenHistogramm()));
+    connect(button_psnr_,SIGNAL(clicked(bool)),this,SLOT(showPsnr()));
 }
 

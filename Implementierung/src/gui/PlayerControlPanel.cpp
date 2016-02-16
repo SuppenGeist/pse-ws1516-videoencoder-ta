@@ -130,7 +130,7 @@ void GUI::PlayerControlPanel::createUi() {
 	v_layout->addLayout(h_layout);
 
 
-	slider_timeline_=new QSlider(Qt::Horizontal);
+    slider_timeline_=new QSlider(Qt::Horizontal);
 
 	v_layout->addWidget(slider_timeline_);
 
@@ -243,9 +243,9 @@ void GUI::PlayerControlPanel::changeSpeed(int index) {
 
 void GUI::PlayerControlPanel::changeTimeline(int value) {
 	if(masterPlayer_)
-		masterPlayer_->setPosition(value);
+        masterPlayer_->setPosition(value);
 
-	for(auto player:players_) {
-		player->setPosition(value);
-	}
+    for(auto player:players_) {
+        player->setPosition(value);
+    }
 }

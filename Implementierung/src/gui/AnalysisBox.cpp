@@ -71,6 +71,10 @@ void GUI::AnalysisBox::setFile(QString filename) {
     if(globalControlPanel_.get()) {
         origVidPlayer_->setPosition(globalControlPanel_->getPosition());
     }
+
+    origVideo_->getRedHistogramm();
+    origVideo_->getBitrate();
+    origVideo_->getPsnr(&parentContainer_->getParentTab()->getRawVideo()->getVideo());
 }
 
 void GUI::AnalysisBox::setTimer(std::shared_ptr<GUI::Timer> timer) {
@@ -96,10 +100,11 @@ void GUI::AnalysisBox::showGraph(GUI::AnalysisGraph graph) {
         graphWidget_->drawGraph(&origVideo_->getBitrate());
 		graphWidget_->setAxisLabels("frame","kb");
         graphWidget_->setControlPanel(globalControlPanel_.get());
-        graphWidget_->setFixedMaxYValue(0);
+        graphWidget_->setShowLabels(true);
         graphWidget_->setIsFilled(false);
         QPen linepen;
         graphWidget_->setLinePen(linepen);
+        tabs_graphs_->setCurrentIndex(0);
 		break;
     }
     case AnalysisGraph::RED_HISTOGRAMM:
@@ -109,8 +114,8 @@ void GUI::AnalysisBox::showGraph(GUI::AnalysisGraph graph) {
         graphPlayer_->setView(graphWidget_);
         graphPlayer_->setGraphVideo(&origVideo_->getRedHistogramm());
         graphWidget_->setAxisLabels("","");
-        graphWidget_->setFixedMaxYValue(1);
         graphWidget_->setIsFilled(true);
+        graphWidget_->setShowLabels(false);
         QBrush filler(QColor(255,0,0));
         graphWidget_->setFillBrush(filler);
         QPen filpen(QColor(255,0,0));
@@ -119,6 +124,7 @@ void GUI::AnalysisBox::showGraph(GUI::AnalysisGraph graph) {
         if(globalControlPanel_.get()) {
             graphPlayer_->setPosition(globalControlPanel_->getPosition());
         }
+        tabs_graphs_->setCurrentIndex(0);
         break;
     }
     case AnalysisGraph::BLUE_HISTOGRAMM:
@@ -128,8 +134,8 @@ void GUI::AnalysisBox::showGraph(GUI::AnalysisGraph graph) {
         graphPlayer_->setView(graphWidget_);
         graphPlayer_->setGraphVideo(&origVideo_->getBlueHistogramm());
         graphWidget_->setAxisLabels("","");
-        graphWidget_->setFixedMaxYValue(1);
         graphWidget_->setIsFilled(true);
+        graphWidget_->setShowLabels(false);
         QBrush filler(QColor(0,0,255));
         graphWidget_->setFillBrush(filler);
         QPen filpen(QColor(0,0,255));
@@ -138,6 +144,7 @@ void GUI::AnalysisBox::showGraph(GUI::AnalysisGraph graph) {
         if(globalControlPanel_.get()) {
             graphPlayer_->setPosition(globalControlPanel_->getPosition());
         }
+        tabs_graphs_->setCurrentIndex(0);
         break;
     }
     case AnalysisGraph::GREEN_HISTOGRAMM:
@@ -147,9 +154,9 @@ void GUI::AnalysisBox::showGraph(GUI::AnalysisGraph graph) {
         graphPlayer_->setView(graphWidget_);
         graphPlayer_->setGraphVideo(&origVideo_->getGreenHistogramm());
         graphWidget_->setAxisLabels("","");
-        graphWidget_->setFixedMaxYValue(1);
         graphWidget_->setIsFilled(true);
         QBrush filler(QColor(0,255,0));
+        graphWidget_->setShowLabels(false);
         graphWidget_->setFillBrush(filler);
         QPen filpen(QColor(0,255,0));
         graphWidget_->setFillPen(filpen);
@@ -157,6 +164,21 @@ void GUI::AnalysisBox::showGraph(GUI::AnalysisGraph graph) {
         if(globalControlPanel_.get()) {
             graphPlayer_->setPosition(globalControlPanel_->getPosition());
         }
+        tabs_graphs_->setCurrentIndex(0);
+        break;
+    }
+    case AnalysisGraph::PSNR:
+    {
+        graphPlayer_->setGraphVideo(nullptr);
+        graphPlayer_->setView(nullptr);
+        graphWidget_->drawGraph(origVideo_->getPsnr(&parentContainer_->getParentTab()->getRawVideo()->getVideo()));
+        graphWidget_->setAxisLabels("frame","dB");
+        graphWidget_->setControlPanel(globalControlPanel_.get());
+        graphWidget_->setShowLabels(true);
+        graphWidget_->setIsFilled(false);
+        QPen linepen;
+        graphWidget_->setLinePen(linepen);
+        tabs_graphs_->setCurrentIndex(0);
         break;
     }
     }

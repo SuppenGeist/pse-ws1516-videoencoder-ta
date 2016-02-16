@@ -37,6 +37,8 @@ class AnalysisBoxContainer: public QFrame {
 
 	void setParentTab(AnalysisTab* parent);
 
+    AnalysisTab* getParentTab();
+
 	AnalysisBox* appendVideo(QString path);
 
     int removeVideo(AnalysisBox* box);

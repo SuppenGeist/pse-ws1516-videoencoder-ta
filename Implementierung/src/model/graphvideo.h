@@ -2,6 +2,7 @@
 #define GRAPHVIDEO_H
 
 #include <vector>
+#include <memory>
 
 #include "Graph.h"
 
@@ -12,14 +13,14 @@ class GraphVideo
 public:
     GraphVideo();
 
-    void appendGraph(Graph& graph);
+    void appendGraph(std::unique_ptr<Graph> graph);
 
     Graph* getGraph(std::size_t index);
 
     std::size_t getNumberOfGraphs();
 
 private:
-    std::vector<Graph>  graphs_;
+    std::vector<std::unique_ptr<Graph>>  graphs_;
 };
 
 }

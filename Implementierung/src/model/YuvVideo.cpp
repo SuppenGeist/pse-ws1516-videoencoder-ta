@@ -49,7 +49,34 @@ int Model::YuvVideo::getHeight() {
 }
 
 int Model::YuvVideo::getFps() {
-	return fps_;
+    return fps_;
+}
+
+Model::GraphVideo &Model::YuvVideo::getRedHistogramm()
+{
+    if(!redHisto_.get()) {
+        calculateHistogramms();
+    }
+
+    return *redHisto_;
+}
+
+Model::GraphVideo &Model::YuvVideo::getGreenHistogramm()
+{
+    if(!greenHisto_.get()) {
+        calculateHistogramms();
+    }
+
+    return *greenHisto_;
+}
+
+Model::GraphVideo &Model::YuvVideo::getBlueHistogramm()
+{
+    if(!blueHisto_.get()) {
+        calculateHistogramms();
+    }
+
+    return *blueHisto_;
 }
 
 Model::AVVideo& Model::YuvVideo::getAvVideo() {
@@ -84,7 +111,17 @@ void Model::YuvVideo::loadVideo() {
 		throw std::logic_error("Should not get here");
 	}
 	displayVideo_=std::make_unique<Video>(fps_);
-	fileReader_->read(displayVideo_.get());
+    fileReader_->read(displayVideo_.get());
+}
+
+void Model::YuvVideo::calculateHistogramms()
+{
+    redHisto_=std::make_unique<GraphVideo>();
+    greenHisto_=std::make_unique<GraphVideo>();
+    blueHisto_=std::make_unique<GraphVideo>();
+
+    histogrammCalculator_=std::make_unique<Utility::RGBHistogrammCalculator>(getVideo());
+    histogrammCalculator_->calculate(redHisto_.get(),greenHisto_.get(),blueHisto_.get());
 }
 
 

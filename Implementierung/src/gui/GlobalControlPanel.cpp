@@ -43,7 +43,7 @@ void GUI::GlobalControlPanel::nextFrame() {
 		masterPlayer_->nextFrame();
 
 	for(auto player:players_) {
-        player->nextFrame();
+        player->setPosition(masterPlayer_->getPosition());
     }
 }
 
@@ -52,13 +52,13 @@ void GUI::GlobalControlPanel::previousFrame() {
 		masterPlayer_->previousFrame();
 
 	for(auto player:players_) {
-        player->previousFrame();
+        player->setPosition(masterPlayer_->getPosition());
     }
 }
 
 void GUI::GlobalControlPanel::setPosition(int position) {
 	if(masterPlayer_)
-		masterPlayer_->setPosition(position);
+        masterPlayer_->setPosition(position);
 
 	for(auto player:players_) {
 		player->setPosition(position);
