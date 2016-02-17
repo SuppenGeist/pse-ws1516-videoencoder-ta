@@ -222,6 +222,8 @@ void GUI::AnalysisTab::analysisVideoChanged(int index)
 {
     if(index==0) {
         analysisBoxContainer_->showAnalysisVideo(AnalysisVideo::MACROBLOCK);
+    }else if(index==1) {
+        analysisBoxContainer_->showAnalysisVideo(AnalysisVideo::RGB_DIFFERENCE);
     }
 }
 

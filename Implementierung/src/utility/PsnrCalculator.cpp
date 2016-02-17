@@ -73,6 +73,6 @@ void Utility::PsnrCalculator::calculateP()
         }
         target_->setValue(i,psnr);
     }
-    }while(isRunning_&&!video_->isComplete()&&!referenceVideo_->isComplete());
+    }while(isRunning_&&(!video_->isComplete()||!referenceVideo_->isComplete()));
     isRunning_=false;
 }

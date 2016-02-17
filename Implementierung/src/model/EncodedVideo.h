@@ -97,7 +97,7 @@ class EncodedVideo {
 	 * @param reference The video to compare to.
 	 * @return The rgb diff video.
 	 */
-	Model::Video& getRgbDiffVideo(Model::Video* reference = 0);
+    Model::Video* getRgbDiffVideo(Model::Video* reference = 0);
 
 	/**
 	 * @brief getVideo Returns the Video.
@@ -125,6 +125,7 @@ class EncodedVideo {
 	std::unique_ptr<Utility::BitrateCalculator> bitrateCalculator_;
     std::unique_ptr<Utility::RGBHistogrammCalculator> rgbHistoCalculator_;
     std::unique_ptr<Utility::PsnrCalculator>        psnrCalculator_;
+    std::unique_ptr<Utility::RGBDifferenceCalculator> rgbDiffCalculator_;
 	std::thread                 converter_;
     std::thread                 macroblockConverter_;
     std::unique_ptr<Utility::VideoLoader>   macroblockLoader_;

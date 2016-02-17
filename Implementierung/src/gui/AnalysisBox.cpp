@@ -190,6 +190,9 @@ void GUI::AnalysisBox::showAnalysisVideo(GUI::AnalysisVideo video)
     case AnalysisVideo::MACROBLOCK:
         anaVidPlayer_->setVideo(&origVideo_->getMacroBlockVideo(),false);
         break;
+    case AnalysisVideo::RGB_DIFFERENCE:
+        anaVidPlayer_->setVideo(origVideo_->getRgbDiffVideo(&parentContainer_->getParentTab()->getRawVideo()->getVideo()),false);
+        break;
     }
 
     if(globalControlPanel_.get()) {

@@ -35,7 +35,8 @@ enum class AnalysisGraph {
 };
 
 enum class AnalysisVideo {
-    MACROBLOCK
+    MACROBLOCK,
+    RGB_DIFFERENCE
 };
 
 /**

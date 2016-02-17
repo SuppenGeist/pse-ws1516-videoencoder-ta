@@ -111,15 +111,15 @@ Model::Video& Model::EncodedVideo::getMacroBlockVideo() {
     return *macroblockVideo_;
 }
 
-Model::Video& Model::EncodedVideo::getRgbDiffVideo(Video *reference) {
-	/*if(this->rgbDiffVideo == NULL && reference != NULL) {
-		Utility::RGBDifferenceCalculator rgbDifferenceCalculator = Utility::RGBDifferenceCalculator(
-		            *reference, *(this->video));
-		this->rgbDiffVideo = new Video(this->video->getFps());
-		rgbDifferenceCalculator.calculateVideo(*(this->rgbDiffVideo));
-	}
-	return *(this->rgbDiffVideo);*/
-	throw "";
+Model::Video* Model::EncodedVideo::getRgbDiffVideo(Video *reference) {
+    if(!rgbDiffVideo_.get()) {
+        if(!reference)
+            return nullptr;
+        rgbDiffVideo_=std::make_unique<Video>();
+        rgbDiffCalculator_=std::make_unique<Utility::RGBDifferenceCalculator>(*reference,getVideo());
+        rgbDiffCalculator_->calculateVideo(rgbDiffVideo_.get());
+    }
+    return rgbDiffVideo_.get();
 }
 
 Model::Video& Model::EncodedVideo::getVideo() {
