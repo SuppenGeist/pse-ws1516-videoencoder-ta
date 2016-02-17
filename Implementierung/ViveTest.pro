@@ -108,7 +108,6 @@ HEADERS += \
     src/utility/FilterApplier.h \
     src/utility/FilterConfigurationLoader.h \
     src/utility/FilterConfigurationSaver.h \
-    src/utility/MacroblockCalculator.h \
     src/utility/ProjectReader.h \
     src/utility/ProjectWriter.h \
     src/utility/PsnrCalculator.h \
@@ -129,7 +128,6 @@ HEADERS += \
     src/utility/YuvFileReader.h \
     src/utility/YuvFileSaver.h \
     src/utility/YuvType.h \
-    src/utility/meansquareerrorcalculator.h \
     src/utility/Yuv420FileReader.h \
     src/model/filters/GrayscaleFilter.h \
     test/model/filters/testblurfilter.h \
@@ -155,7 +153,12 @@ HEADERS += \
     test/model/filters/testsepiafilter.h \
     test/model/filters/testsharpnessfilter.h \
     test/model/filters/testvintagefilter.h \
-    src/undo_framework/changefilter.h
+    src/undo_framework/changefilter.h \
+    src/model/graphvideo.h \
+    src/gui/graphplayer.h \
+    test/gui/filter_boxes/testblurfilterbox.h \
+    test/gui/filter_boxes/filterboxtestsuite.h \
+    test/gui/guitestsuite.h
 
 SOURCES += \
     src/gui/AnalysisBox.cpp \
@@ -244,7 +247,6 @@ SOURCES += \
     src/utility/FilterApplier.cpp \
     src/utility/FilterConfigurationLoader.cpp \
     src/utility/FilterConfigurationSaver.cpp \
-    src/utility/MacroblockCalculator.cpp \
     src/utility/ProjectReader.cpp \
     src/utility/ProjectWriter.cpp \
     src/utility/PsnrCalculator.cpp \
@@ -262,7 +264,6 @@ SOURCES += \
     src/utility/Yuv444Vector.cpp \
     src/utility/YuvFileReader.cpp \
     src/utility/YuvFileSaver.cpp \
-    src/utility/meansquareerrorcalculator.cpp \
     src/utility/Yuv422Vector.cpp \
     src/utility/Yuv420FileReader.cpp \
     src/utility/Yuv411Vector.cpp \
@@ -291,7 +292,13 @@ SOURCES += \
     test/model/filters/testsepiafilter.cpp \
     test/model/filters/testsharpnessfilter.cpp \
     test/model/filters/testvintagefilter.cpp \
-    src/undo_framework/changefilter.cpp
+    src/undo_framework/changefilter.cpp \
+    src/model/graphvideo.cpp \
+    src/gui/graphplayer.cpp \
+    src/utility/BasicColor.cpp \
+    test/gui/filter_boxes/testblurfilterbox.cpp \
+    test/gui/filter_boxes/filterboxtestsuite.cpp \
+    test/gui/guitestsuite.cpp
 
 RESOURCES += \
     resources.qrc \
