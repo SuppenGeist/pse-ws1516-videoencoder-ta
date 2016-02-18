@@ -65,6 +65,8 @@ class AnalysisBoxContainer: public QFrame {
 
     int getIndex(AnalysisBox* box);
 
+    AnalysisBox* appendNewBox();
+
     AnalysisGraph getShownGraph();
 
     AnalysisVideo getShownVideo();

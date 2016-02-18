@@ -97,9 +97,13 @@ void GUI::AnalysisTab::restore(Memento::AnalysisTabMemento *memento) {
 
     switch(memento->getAnalysisVideo()) {
     case AnalysisVideo::MACROBLOCK:
-        tabs_graphattrs->setCurrentIndex(0);
+        combobbox_anaVideo_->setCurrentIndex(0);
+        analysisBoxContainer_->showAnalysisVideo(AnalysisVideo::MACROBLOCK);
+        break;
     case AnalysisVideo::RGB_DIFFERENCE:
-        tabs_graphattrs->setCurrentIndex(1);
+        combobbox_anaVideo_->setCurrentIndex(1);
+        analysisBoxContainer_->showAnalysisVideo(AnalysisVideo::RGB_DIFFERENCE);
+        break;
     }
     globalControlPanel_->setPosition(memento->getPlayerPosition());
 

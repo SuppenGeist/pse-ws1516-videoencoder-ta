@@ -3,6 +3,7 @@
 
 #include <QString>
 
+
 namespace Memento {
 /**
  * This class is the memento for the AnalysisBox.

@@ -47,7 +47,7 @@ void GUI::AnalysisBoxContainer::restore(Memento::AnalysisBoxContainerMemento *me
         return;
 
     for(auto& mem:memento->getAnalysisBoxList()) {
-        appendVideo(mem->getPath())->restore(mem.get());
+        appendNewBox()->restore(mem.get());
     }
 
 }
@@ -62,23 +62,11 @@ GUI::AnalysisTab *GUI::AnalysisBoxContainer::getParentTab()
 }
 
 GUI::AnalysisBox *GUI::AnalysisBoxContainer::appendVideo(QString path) {
-	AnalysisBox* newBox=new AnalysisBox;
-	v_boxes_->removeItem(spacer_);
-    v_boxes_->addWidget(newBox);
-	newBox->setTimer(timer_);
-	newBox->setControlPanel(controlPanel_);
-    newBox->setParentContainer(this);
+    auto newBox=appendNewBox();
     newBox->setFile(path);
-	newBox->showGraph(currentGraph_);
+
+    newBox->showGraph(currentGraph_);
     newBox->showAnalysisVideo(currentVideo_);
-	boxes_.push_back(newBox);
-
-	QString objname=QString("x%1").arg((quintptr)newBox,QT_POINTER_SIZE * 2, 16, QChar('0'));
-	newBox->setObjectName(objname);
-
-	v_boxes_->addSpacerItem(spacer_);
-
-	updateUi();
 
 	return newBox;
 }
@@ -159,6 +147,26 @@ int GUI::AnalysisBoxContainer::getIndex(GUI::AnalysisBox *box)
             return i;
     }
     return -1;
+}
+
+GUI::AnalysisBox *GUI::AnalysisBoxContainer::appendNewBox()
+{
+    AnalysisBox* newBox=new AnalysisBox;
+    v_boxes_->removeItem(spacer_);
+    v_boxes_->addWidget(newBox);
+    newBox->setTimer(timer_);
+    newBox->setControlPanel(controlPanel_);
+    newBox->setParentContainer(this);
+    boxes_.push_back(newBox);
+
+    QString objname=QString("x%1").arg((quintptr)newBox,QT_POINTER_SIZE * 2, 16, QChar('0'));
+    newBox->setObjectName(objname);
+
+    v_boxes_->addSpacerItem(spacer_);
+
+    updateUi();
+
+    return newBox;
 }
 
 GUI::AnalysisGraph GUI::AnalysisBoxContainer::getShownGraph()

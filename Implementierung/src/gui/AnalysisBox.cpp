@@ -73,6 +73,7 @@ void GUI::AnalysisBox::restore(Memento::AnalysisBoxMemento *memento)
     if(!memento)
         return;
 
+    setFile(memento->getPath());
     texteEdit_comment_->document()->setPlainText(memento->getComment());
 }
 
@@ -263,7 +264,7 @@ void GUI::AnalysisBox::updateLabels()
 void GUI::AnalysisBox::commentChanged()
 {
     auto newComment=texteEdit_comment_->toPlainText();
-    qDebug()<<currentComment_.split(" ").size();
+
     if(newComment.split(" ").size()!=currentComment_.split(" ").size()&&newComment!=currentComment_) {
         UndoRedo::UndoStack::getUndoStack().push(new UndoRedo::WriteComment(parentContainer_,parentContainer_->getIndex(this),currentComment_,newComment));
         currentComment_=newComment;
