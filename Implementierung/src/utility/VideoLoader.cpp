@@ -5,7 +5,7 @@
 #include <QDebug>
 
 
-Utility::VideoLoader::VideoLoader(QString path, AVDictionary *dict):path_(path),isRunning_(false),dict_(dict) {
+Utility::VideoLoader::VideoLoader(QString path, AVDictionary *dict):path_(path),isRunning_(false),dict_(dict),codec_(""),averageBitrate_(0) {
 
 }
 
@@ -22,7 +22,17 @@ void Utility::VideoLoader::loadVideo(Model::AVVideo* target) {
 		return;
 	target_=target;
 
-	loader_=std::thread(&VideoLoader::loadP,this);
+    loader_=std::thread(&VideoLoader::loadP,this);
+}
+
+QString Utility::VideoLoader::getCodec()
+{
+    return codec_;
+}
+
+int Utility::VideoLoader::getAverageBitrate()
+{
+    return averageBitrate_;
 }
 
 void Utility::VideoLoader::loadP() {
@@ -75,6 +85,11 @@ void Utility::VideoLoader::loadP() {
 	}
 
 	struct SwsContext      *sws_ctx = NULL;
+
+    averageBitrate_=codecContext->bit_rate;
+    codec_=QString(av_codec_get_codec_descriptor(codecContext)->name);
+    if(codec_=="")
+        codec_="N/A";
 
 	sws_ctx =
 	    sws_getContext

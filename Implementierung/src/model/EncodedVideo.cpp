@@ -26,12 +26,11 @@ QString Model::EncodedVideo::getPath() {
 	return path_;
 }
 
-int Model::EncodedVideo::getNumberOfColors() {
-	return numberOfColors_;
-}
-
 QString Model::EncodedVideo::getCodec() {
-	return codec_;
+    if(!loader_.get()) {
+        loadVideo();
+    }
+    return loader_->getCodec();
 }
 
 Model::Graph& Model::EncodedVideo::getBitrate() {
@@ -53,6 +52,9 @@ Model::Graph* Model::EncodedVideo::getPsnr(Video *reference) {
             return nullptr;
         if(!reference)
             return nullptr;
+        if(reference->getNumberOfFrames()==0)
+            return nullptr;
+
         psnr_=std::make_unique<Graph>();
         try {
         psnrCalculator_=std::make_unique<Utility::PsnrCalculator>(getVideo(),*reference);
@@ -131,7 +133,15 @@ Model::Video& Model::EncodedVideo::getVideo() {
 		converter_=std::thread(&EncodedVideo::convertVideo,this);
 	}
 
-	return *video_.get();
+    return *video_.get();
+}
+
+int Model::EncodedVideo::getAverageBitrate()
+{
+    if(!loader_.get()) {
+        loadVideo();
+    }
+    return loader_->getAverageBitrate();
 }
 
 void Model::EncodedVideo::loadVideo() {

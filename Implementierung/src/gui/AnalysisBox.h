@@ -8,6 +8,8 @@
 #include <QString>
 #include <QLabel>
 #include <QPushButton>
+#include <QPlainTextEdit>
+#include <QTimer>
 
 #include "FrameView.h"
 #include "GraphWidget.h"
@@ -17,6 +19,8 @@
 #include "graphplayer.h"
 
 #include "../model/EncodedVideo.h"
+
+#include "../memento/AnalysisBoxMemento.h"
 
 namespace GUI {
 class AnalysisBoxContainer;
@@ -41,6 +45,10 @@ class AnalysisBox: public QFrame {
 
 	~AnalysisBox();
 
+    std::unique_ptr<Memento::AnalysisBoxMemento> getMemento();
+
+    void restore(Memento::AnalysisBoxMemento* memento);
+
 	void setParentContainer(AnalysisBoxContainer* container);
 
 	void setFile(QString filename);
@@ -53,10 +61,16 @@ class AnalysisBox: public QFrame {
 
     void showAnalysisVideo(AnalysisVideo video);
 
+    void showAttributes();
+
 	QString getFilename();
+
+    QPlainTextEdit* getCommentBox();
 
   private slots:
     void closeBox();
+    void updateLabels();
+    void commentChanged();
 
   private:
 	FrameView*      origView_;
@@ -65,6 +79,11 @@ class AnalysisBox: public QFrame {
 	QPushButton*    button_close_;
 	GraphWidget*    graphWidget_;
     QLabel*         label_title_;
+    QPlainTextEdit* texteEdit_comment_;
+    QLabel*         label_filename_;
+    QLabel*         label_filesize_;
+    QLabel*         label_codec_;
+    QLabel*         label_averageBitrate_;
 
 	AnalysisBoxContainer*                   parentContainer_;
 
@@ -75,6 +94,8 @@ class AnalysisBox: public QFrame {
 
 	QString         filename_;
 	std::unique_ptr<Model::EncodedVideo>      origVideo_;
+    QTimer          timer_updateLabels_;
+    QString currentComment_;
 
 	void createUi();
 

@@ -2,7 +2,12 @@
 #define __AnalysisTabMemento_h__
 
 #include "../model/YuvVideo.h"
-#include "../memento/AnalysisBoxMemento.h"
+#include "../memento/AnalysisBoxContainerMemento.h"
+
+namespace GUI {
+enum class AnalysisGraph;
+enum class AnalysisVideo;
+}
 
 namespace Memento {
 /**
@@ -20,14 +25,28 @@ class AnalysisTabMemento {
 
     Model::YuvVideo* getRawVideo();
 
-    void setAnalysisBoxMemento(Memento::AnalysisBoxMemento* analysisBoxMemento);
+    void setAnalysisBoxContainerMemento(std::unique_ptr<Memento::AnalysisBoxContainerMemento> analysisBoxMemento);
 
-    Memento::AnalysisBoxMemento* getAnalysisBoxMemento();
+    Memento::AnalysisBoxContainerMemento& getAnalysisBoxContainerMemento();
+
+    GUI::AnalysisGraph getAnalysisGraph();
+
+    void setAnalysisGraph(GUI::AnalysisGraph graph);
+
+    GUI::AnalysisVideo getAnalysisVideo();
+
+    void setAnalysisVideo(GUI::AnalysisVideo video);
+
+    int getPlayerPosition();
+
+    void setPlayerPosition(int position);
 
     private:
 	Model::YuvVideo*        rawVideo_;
-
-    Memento::AnalysisBoxMemento* analysisBoxMemento_;
+    std::unique_ptr<Memento::AnalysisBoxContainerMemento> analysisBoxMemento_;
+    GUI::AnalysisGraph      graph_;
+    GUI::AnalysisVideo      video_;
+    int                     position_;
 };
 }
 

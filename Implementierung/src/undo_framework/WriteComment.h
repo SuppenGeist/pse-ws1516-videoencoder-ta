@@ -2,12 +2,10 @@
 #define __WriteComment_h__
 
 #include <QUndoCommand>
-#include <QTextEdit>
+#include <QPlainTextEdit>
+#include <QString>
 
-namespace UndoRedo {
-// class QUndoCommand;
-class WriteComment;
-}
+#include "../gui/AnalysisBoxContainer.h"
 
 namespace UndoRedo {
 class WriteComment: public QUndoCommand {
@@ -15,7 +13,7 @@ class WriteComment: public QUndoCommand {
 	/**
 	 * @brief WriteComment Constuctor
 	 */
-	WriteComment(QTextEdit* textEdit);
+    WriteComment(GUI::AnalysisBoxContainer* container,int index,QString oldcomment,QString newComment);
 
 
 	/**
@@ -30,8 +28,10 @@ class WriteComment: public QUndoCommand {
 	void redo();
 
   private:
-	QTextEdit* textEdit_;
-	bool undoUsed_;
+    GUI::AnalysisBoxContainer* container_;
+    int index_;
+    QString oldComment_;
+    QString newComment_;
 };
 }
 

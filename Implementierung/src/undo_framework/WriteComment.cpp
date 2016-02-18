@@ -2,22 +2,20 @@
 
 #include <QUndoCommand>
 
-UndoRedo::WriteComment::WriteComment(QTextEdit* textEdit) {
-	textEdit_ = textEdit;
-	undoUsed_ = false;
+UndoRedo::WriteComment::WriteComment(GUI::AnalysisBoxContainer *container, int index, QString oldcomment, QString newComment):container_(container),index_(index),oldComment_(oldcomment),newComment_(newComment) {
+
 }
 
 void UndoRedo::WriteComment::undo() {
-	textEdit_->blockSignals(true);
-	textEdit_->undo();
-	textEdit_->blockSignals(false);
-	undoUsed_ = true;
+    auto textEdit=container_->getAnalysisBox(index_)->getCommentBox();
+    textEdit->blockSignals(true);
+    textEdit->document()->setPlainText(oldComment_);
+    textEdit->blockSignals(false);
 }
 
 void UndoRedo::WriteComment::redo() {
-	if(undoUsed_) {
-		textEdit_->blockSignals(true);
-		textEdit_->redo();
-		textEdit_->blockSignals(false);
-	}
+        auto textEdit=container_->getAnalysisBox(index_)->getCommentBox();
+        textEdit->blockSignals(true);
+        textEdit->document()->setPlainText(newComment_);
+        textEdit->blockSignals(false);
 }

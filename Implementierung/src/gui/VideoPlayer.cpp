@@ -32,7 +32,8 @@ void GUI::VideoPlayer::removeView(FrameView& view) {
 }
 
 void GUI::VideoPlayer::setVideo(Model::Video* video, bool updateTimer) noexcept {
-	stop();
+    if(updateTimer)
+        stop();
 
 	video_=video;
 

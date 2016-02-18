@@ -36,6 +36,9 @@ class VideoLoader {
 	 */
 	void loadVideo(Model::AVVideo *target);
 
+    QString getCodec();
+
+    int getAverageBitrate();
 
   private:
 	QString     path_;
@@ -43,6 +46,8 @@ class VideoLoader {
 	Model::AVVideo* target_;
 	bool isRunning_;
     AVDictionary *dict_;
+    QString codec_;
+    int averageBitrate_;
 
 	void loadP();
 };

@@ -69,7 +69,7 @@ void Utility::PsnrCalculator::calculateP()
         double psnr=-1;
         double mse=calculateMeanSquareError(referenceVideo_->getFrame(i),video_->getFrame(i));
         if(mse!=0) {
-            psnr=10*std::log10(65025/mse);
+            psnr=10.0*std::log10(65025/mse);
         }
         target_->setValue(i,psnr);
     }

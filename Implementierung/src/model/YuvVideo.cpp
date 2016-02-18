@@ -86,7 +86,7 @@ Model::AVVideo& Model::YuvVideo::getAvVideo() {
 Model::Video& Model::YuvVideo::getVideo() {
 	if(!displayVideo_.get())
 		loadVideo();
-	return *displayVideo_.get();
+    return *displayVideo_;
 }
 
 

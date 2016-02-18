@@ -13,6 +13,8 @@
 
 #include "AnalysisBox.h"
 
+#include "../memento/AnalysisBoxContainerMemento.h"
+
 namespace GUI {
 class AnalysisTab;
 class Timer;
@@ -35,6 +37,10 @@ class AnalysisBoxContainer: public QFrame {
 	*/
 	AnalysisBoxContainer(QWidget* parent=0);
 
+    std::unique_ptr<Memento::AnalysisBoxContainerMemento> getMemento();
+
+    void restore(Memento::AnalysisBoxContainerMemento* memento);
+
 	void setParentTab(AnalysisTab* parent);
 
     AnalysisTab* getParentTab();
@@ -52,6 +58,16 @@ class AnalysisBoxContainer: public QFrame {
 	void showGraph(AnalysisGraph graph);
 
     void showAnalysisVideo(AnalysisVideo video);
+
+    void showAttributes();
+
+    AnalysisBox* getAnalysisBox(int index);
+
+    int getIndex(AnalysisBox* box);
+
+    AnalysisGraph getShownGraph();
+
+    AnalysisVideo getShownVideo();
 
     AnalysisBox* insertVideo(QString filname,int index);
 

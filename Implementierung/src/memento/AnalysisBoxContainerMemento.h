@@ -1,16 +1,10 @@
-#include <exception>
-#include <vector>
-using namespace std;
-
 #ifndef __AnalysisBoxContainerMemento_h__
 #define __AnalysisBoxContainerMemento_h__
 
-#include "AnalysisBoxMemento.h"
+#include <vector>
+#include <memory>
 
-namespace Memento {
-class AnalysisBoxMemento;
-class AnalysisBoxContainerMemento;
-}
+#include "AnalysisBoxMemento.h"
 
 namespace Memento {
 /**
@@ -19,25 +13,25 @@ namespace Memento {
 class AnalysisBoxContainerMemento {
 
 public:
-    /// <summary>
-    /// Constructor.
-    /// </summary>
-    void analysisBoxMemento();
+    /**
+     * @brief AnalysisBoxContainerMemento Constructor.
+     */
+    AnalysisBoxContainerMemento();
 
-    /// <summary>
-    /// Returns a list of AnalysisBox mementos.
-    /// </summary>
-    /// <returns>The list of AnalysisBoxMemento.</returns>
-    vector<Memento::AnalysisBoxMemento*> getAnalysisBoxList();
+    /**
+     * @brief getAnalysisBoxList Returns a list of AnalysisBox mementos.
+     * @return The list of AnalysisBoxMemento.
+     */
+    std::vector<std::unique_ptr<Memento::AnalysisBoxMemento>>& getAnalysisBoxList();
 
-    /// <summary>
-    /// Sets the list of AnalysisBoxMemento
-	/// </summary>
-	/// <param name="analyseBoxList">The list of the mementos.</param>
-    void setAnalysisBoxList(vector<Memento::AnalysisBoxMemento*> analysisBoxList);
+    /**
+     * @brief addMemento Sets the list of AnalysisBoxMemento
+     * @param memento The list of the mementos.
+     */
+    void addMemento(std::unique_ptr<AnalysisBoxMemento> memento);
 
 private:
-    std::vector<Memento::AnalysisBoxMemento*> mementoList_;
+    std::vector<std::unique_ptr<Memento::AnalysisBoxMemento>> mementoList_;
 };
 }
 

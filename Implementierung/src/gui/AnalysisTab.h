@@ -7,6 +7,7 @@
 #include <QFrame>
 #include <QPushButton>
 #include <QVBoxLayout>
+#include <QTimer>
 #include <QComboBox>
 #include <QTabWidget>
 #include <QScrollArea>
@@ -72,7 +73,9 @@ class AnalysisTab: public QFrame {
     void showBlueHistogramm();
     void showGreenHistogramm();
     void showPsnr();
+    void showAttributes();
     void analysisVideoChanged(int index);
+    void updateLabels();
 
   private:
 	QPushButton*            button_saveResults_;
@@ -90,6 +93,13 @@ class AnalysisTab: public QFrame {
 	GraphWidget*            graphWidget_;
 	AnalysisBoxContainer*   analysisBoxContainer_;
 	QScrollArea*            scroll_anaBoxes_;
+    QString                 stylesheet_buttons_;
+    QString                 stylesheet_buttonsSelected_;
+    QLabel*                 label_filename_;
+    QLabel*                 label_filesize_;
+    QLabel*                 label_resolution_;
+    QLabel*                 label_framesize_;
+    QPushButton*            button_loadnewvideo_;
 
 	Model::YuvVideo*        rawVideo_;
 
@@ -99,6 +109,8 @@ class AnalysisTab: public QFrame {
     std::shared_ptr<GlobalControlPanel> globalControlPanel_;
 	std::unique_ptr<VideoPlayer>        videoPlayer_;
 	FrameView*                          rawVideoView_;
+
+    QTimer                  timer_labelUpdater_;
 
 	void createUi();
 	void connectActions();

@@ -9,6 +9,8 @@
 #include <QHBoxLayout>
 #include <QTabWidget>
 #include <QDebug>
+#include <QFile>
+#include <QFileInfo>
 #include <QVBoxLayout>
 #include <QFont>
 #include <QSpacerItem>
@@ -52,6 +54,8 @@ GUI::AnalysisTab::AnalysisTab(QWidget* parent) : QFrame(parent),rawVideo_(nullpt
     globalControlPanel_->addVideoPlayer(graphPlayer_.get());
     graphPlayer_->setTimer(timer_);
 
+    timer_labelUpdater_.start(200);
+
     analysisBoxContainer_->setControlPanel(globalControlPanel_);
 	analysisBoxContainer_->setTimer(timer_);
 }
@@ -60,18 +64,52 @@ std::unique_ptr<Memento::AnalysisTabMemento> GUI::AnalysisTab::getMemento() {
 	auto memento=std::make_unique<Memento::AnalysisTabMemento>();
 
 	memento->setRawVideo(rawVideo_);
+    memento->setAnalysisBoxContainerMemento(std::move(analysisBoxContainer_->getMemento()));
+    memento->setAnalysisGraph(analysisBoxContainer_->getShownGraph());
+    memento->setAnalysisVideo(analysisBoxContainer_->getShownVideo());
+    memento->setPlayerPosition(globalControlPanel_->getPosition());
 
 	return std::move(memento);
 }
 
 void GUI::AnalysisTab::restore(Memento::AnalysisTabMemento *memento) {
 	setRawVideo(memento->getRawVideo());
+
+    analysisBoxContainer_->restore(&memento->getAnalysisBoxContainerMemento());
+
+    switch(memento->getAnalysisGraph()) {
+    case AnalysisGraph::BITRATE:
+        showBitrate();
+        break;
+    case AnalysisGraph::BLUE_HISTOGRAMM:
+        showBlueHistogramm();
+        break;
+    case AnalysisGraph::RED_HISTOGRAMM:
+        showRedHistogramm();
+        break;
+    case AnalysisGraph::GREEN_HISTOGRAMM:
+        showGreenHistogramm();
+        break;
+    case AnalysisGraph::PSNR:
+        showPsnr();
+        break;
+    }
+
+    switch(memento->getAnalysisVideo()) {
+    case AnalysisVideo::MACROBLOCK:
+        tabs_graphattrs->setCurrentIndex(0);
+    case AnalysisVideo::RGB_DIFFERENCE:
+        tabs_graphattrs->setCurrentIndex(1);
+    }
+    globalControlPanel_->setPosition(memento->getPlayerPosition());
+
 }
 
 void GUI::AnalysisTab::setRawVideo(Model::YuvVideo *rawVideo) {
 	analysisBoxContainer_->clear();
 
 	globalControlPanel_->stop();
+
 
 	if(rawVideo) {
 		videoPlayer_->setVideo(&rawVideo->getVideo());
@@ -85,13 +123,28 @@ void GUI::AnalysisTab::setRawVideo(Model::YuvVideo *rawVideo) {
 		button_addRawVideo_->hide();
 		v_rawVideo_->addWidget(rawVideoView_);
 		rawVideoView_->show();
+
+        QFile f(rawVideo->getPath());
+        QFileInfo info(f);
+
+        label_filename_->setText(info.fileName());
+        label_filesize_->setText(QString::number(info.size()/(double)1000000,'f',2)+" MB");
+        label_resolution_->setText(QString::number(rawVideo->getWidth())+"x"+QString::number(rawVideo->getHeight()));
+        label_framesize_->setText(QString::number((rawVideo->getWidth()*rawVideo->getHeight()*3)/(double)1000,'f',2)+" KB");
+
+        rawVideo_->getRedHistogramm();
+
 	} else {
 		v_rawVideo_->removeWidget(rawVideoView_);
 		rawVideoView_->hide();
 		v_rawVideo_->addWidget(button_addRawVideo_);
 		button_addRawVideo_->show();
+
+        label_filename_->setText("");
+        label_filesize_->setText("");
+        label_resolution_->setText("");
+        label_framesize_->setText("");
     }
-    rawVideo_->getRedHistogramm();
 }
 
 Model::YuvVideo *GUI::AnalysisTab::getRawVideo()
@@ -157,13 +210,23 @@ void GUI::AnalysisTab::loadRawVideo() {
 }
 
 void GUI::AnalysisTab::showBitrate() {
+    if(!rawVideo_)
+        return;
     analysisBoxContainer_->showGraph(AnalysisGraph::BITRATE);
     tabs_graphattrs->setCurrentIndex(1);
     graphPlayer_->setGraphVideo(nullptr);
+
+    button_bitrate_->setStyleSheet(stylesheet_buttonsSelected_);
+    button_blueHistogramm_->setStyleSheet(stylesheet_buttons_);
+    button_greenHistogramm_->setStyleSheet(stylesheet_buttons_);
+    button_psnr_->setStyleSheet(stylesheet_buttons_);
+    button_redHistogramm_->setStyleSheet(stylesheet_buttons_);
 }
 
 void GUI::AnalysisTab::showRedHistogramm()
 {
+    if(!rawVideo_)
+        return;
     analysisBoxContainer_->showGraph(AnalysisGraph::RED_HISTOGRAMM);
     graphPlayer_->setGraphVideo(&rawVideo_->getRedHistogramm());
     tabs_graphattrs->setCurrentIndex(0);
@@ -177,10 +240,18 @@ void GUI::AnalysisTab::showRedHistogramm()
     graphWidget_->setLinePen(filpen);
     graphPlayer_->setPosition(globalControlPanel_->getPosition());
 
+    button_bitrate_->setStyleSheet(stylesheet_buttons_);
+    button_blueHistogramm_->setStyleSheet(stylesheet_buttons_);
+    button_greenHistogramm_->setStyleSheet(stylesheet_buttons_);
+    button_psnr_->setStyleSheet(stylesheet_buttons_);
+    button_redHistogramm_->setStyleSheet(stylesheet_buttonsSelected_);
+
 }
 
 void GUI::AnalysisTab::showBlueHistogramm()
 {
+    if(!rawVideo_)
+        return;
     analysisBoxContainer_->showGraph(AnalysisGraph::BLUE_HISTOGRAMM);
     graphPlayer_->setGraphVideo(&rawVideo_->getBlueHistogramm());
     tabs_graphattrs->setCurrentIndex(0);
@@ -193,10 +264,18 @@ void GUI::AnalysisTab::showBlueHistogramm()
     graphWidget_->setFillPen(filpen);
     graphWidget_->setLinePen(filpen);
     graphPlayer_->setPosition(globalControlPanel_->getPosition());
+
+    button_bitrate_->setStyleSheet(stylesheet_buttons_);
+    button_blueHistogramm_->setStyleSheet(stylesheet_buttonsSelected_);
+    button_greenHistogramm_->setStyleSheet(stylesheet_buttons_);
+    button_psnr_->setStyleSheet(stylesheet_buttons_);
+    button_redHistogramm_->setStyleSheet(stylesheet_buttons_);
 }
 
 void GUI::AnalysisTab::showGreenHistogramm()
 {
+    if(!rawVideo_)
+        return;
     analysisBoxContainer_->showGraph(AnalysisGraph::GREEN_HISTOGRAMM);
     graphPlayer_->setGraphVideo(&rawVideo_->getGreenHistogramm());
     tabs_graphattrs->setCurrentIndex(0);
@@ -209,13 +288,33 @@ void GUI::AnalysisTab::showGreenHistogramm()
     graphWidget_->setFillPen(filpen);
     graphWidget_->setLinePen(filpen);
     graphPlayer_->setPosition(globalControlPanel_->getPosition());
+
+    button_bitrate_->setStyleSheet(stylesheet_buttons_);
+    button_blueHistogramm_->setStyleSheet(stylesheet_buttons_);
+    button_greenHistogramm_->setStyleSheet(stylesheet_buttonsSelected_);
+    button_psnr_->setStyleSheet(stylesheet_buttons_);
+    button_redHistogramm_->setStyleSheet(stylesheet_buttons_);
 }
 
 void GUI::AnalysisTab::showPsnr()
 {
+    if(!rawVideo_)
+        return;
     analysisBoxContainer_->showGraph(AnalysisGraph::PSNR);
     tabs_graphattrs->setCurrentIndex(1);
     graphPlayer_->setGraphVideo(nullptr);
+
+    button_bitrate_->setStyleSheet(stylesheet_buttons_);
+    button_blueHistogramm_->setStyleSheet(stylesheet_buttons_);
+    button_greenHistogramm_->setStyleSheet(stylesheet_buttons_);
+    button_psnr_->setStyleSheet(stylesheet_buttonsSelected_);
+    button_redHistogramm_->setStyleSheet(stylesheet_buttons_);
+}
+
+void GUI::AnalysisTab::showAttributes()
+{
+    tabs_graphattrs->setCurrentIndex(1);
+    analysisBoxContainer_->showAttributes();
 }
 
 void GUI::AnalysisTab::analysisVideoChanged(int index)
@@ -224,6 +323,19 @@ void GUI::AnalysisTab::analysisVideoChanged(int index)
         analysisBoxContainer_->showAnalysisVideo(AnalysisVideo::MACROBLOCK);
     }else if(index==1) {
         analysisBoxContainer_->showAnalysisVideo(AnalysisVideo::RGB_DIFFERENCE);
+    }
+}
+
+void GUI::AnalysisTab::updateLabels()
+{
+    if(!rawVideo_)
+        return;
+
+    label_resolution_->setText(QString::number(rawVideo_->getWidth())+"x"+QString::number(rawVideo_->getHeight()));
+    label_framesize_->setText(QString::number((rawVideo_->getWidth()*rawVideo_->getHeight()*3)/(double)1000,'f',2)+" KB");
+
+    if(rawVideo_->getWidth()!=0&&rawVideo_->getHeight()!=0) {
+        timer_labelUpdater_.stop();
     }
 }
 
@@ -245,7 +357,7 @@ void GUI::AnalysisTab::createUi() {
 	button_redHistogramm_->setFlat(true);
 	button_psnr_->setFlat(true);
 
-	QString stylesheet("QPushButton {"
+    stylesheet_buttons_=QString("QPushButton {"
 	                   "color: rgb(0, 0, 0);"
 	                   "background: rgb(220, 220, 220);"
 	                   "border-width: 1px;"
@@ -260,12 +372,27 @@ void GUI::AnalysisTab::createUi() {
 	                   "}"
 	                  );
 
-	button_attributes_->setStyleSheet(stylesheet);
-	button_bitrate_->setStyleSheet(stylesheet);
-	button_blueHistogramm_->setStyleSheet(stylesheet);
-	button_greenHistogramm_->setStyleSheet(stylesheet);
-	button_redHistogramm_->setStyleSheet(stylesheet);
-	button_psnr_->setStyleSheet(stylesheet);
+    stylesheet_buttonsSelected_=QString("QPushButton {"
+                                        "color: rgb(0, 0, 0);"
+                                        "background: rgb(180,180, 180);"
+                                        "border-width: 1px;"
+                                        "border-color:rgb(0, 0, 0);"
+                                        "border-style: outset;"
+                                        "border-radius: 7px;"
+                                        "font-size: 12px;"
+                                        "}"
+                                        "QPushButton:pressed {"
+                                        "background-color: rgb(160, 160, 160);"
+                                        "border-style: inset;"
+                                        "}"
+                                       );
+
+    button_attributes_->setStyleSheet(stylesheet_buttons_);
+    button_bitrate_->setStyleSheet(stylesheet_buttonsSelected_);
+    button_blueHistogramm_->setStyleSheet(stylesheet_buttons_);
+    button_greenHistogramm_->setStyleSheet(stylesheet_buttons_);
+    button_redHistogramm_->setStyleSheet(stylesheet_buttons_);
+    button_psnr_->setStyleSheet(stylesheet_buttons_);
 
 	button_attributes_->setFixedSize(120,25);
 	button_bitrate_->setFixedSize(120,25);
@@ -318,6 +445,92 @@ void GUI::AnalysisTab::createUi() {
 	tabs_graphattrs->addTab(graphWidget_,"Graphs");
 
 	QWidget* attributes=new QWidget;
+    QHBoxLayout* h_attributes=new QHBoxLayout;
+    QSpacerItem* spacer9=new QSpacerItem(0,0,QSizePolicy::Expanding,QSizePolicy::Expanding);
+    h_attributes->addSpacing(10);
+    h_attributes->addSpacerItem(spacer9);
+    QWidget* attrcontent=new QWidget;
+    attrcontent->setObjectName("attributescon");
+    attrcontent->setStyleSheet("QWidget#attributescon {"
+                              "border-width:1px;"
+                              "border-color:black;"
+                              "border-radius:5px;"
+                              "border-style:outset;"
+                              "background-color:rgb(240,240,240);"
+                              "}");
+    attrcontent->setMaximumWidth(400);
+
+    QVBoxLayout* v_attrcontent=new QVBoxLayout;
+
+    QString styleSheet("QLabel {"
+                       "font-weight:bold;"
+                       "}");
+
+    QLabel* filename=new QLabel("Filename:");
+    QLabel* filesize=new QLabel("Filesize:");
+    QLabel* resolution=new QLabel("Resolution:");
+    QLabel* framesize=new QLabel("Framesize:");
+
+    filename->setStyleSheet(styleSheet);
+    filesize->setStyleSheet(styleSheet);
+    resolution->setStyleSheet(styleSheet);
+    framesize->setStyleSheet(styleSheet);
+
+    label_filename_=new QLabel("");
+    label_filesize_=new QLabel("");
+    label_resolution_=new QLabel("");
+    label_framesize_=new QLabel("");
+
+    QHBoxLayout* h_filename=new QHBoxLayout;
+    h_filename->addWidget(filename);
+    h_filename->addWidget(label_filename_);
+
+    QHBoxLayout* h_filesize=new QHBoxLayout;
+    h_filesize->addWidget(filesize);
+    h_filesize->addWidget(label_filesize_);
+
+    QHBoxLayout* h_resolution=new QHBoxLayout;
+    h_resolution->addWidget(resolution);
+    h_resolution->addWidget(label_resolution_);
+
+    QHBoxLayout* h_framesize=new QHBoxLayout;
+    h_framesize->addWidget(framesize);
+    h_framesize->addWidget(label_framesize_);
+
+    v_attrcontent->addLayout(h_filename);
+    v_attrcontent->addLayout(h_filesize);
+    v_attrcontent->addLayout(h_resolution);
+    v_attrcontent->addLayout(h_framesize);
+
+
+    button_loadnewvideo_=new QPushButton("Load new video");
+    button_loadnewvideo_->setMaximumWidth(300);
+
+    QHBoxLayout* h_button=new QHBoxLayout;
+    QSpacerItem* spacer11=new QSpacerItem(0,0,QSizePolicy::Expanding,QSizePolicy::Expanding);
+    h_button->addSpacerItem(spacer11);
+    h_button->addWidget(button_loadnewvideo_,1);
+    QSpacerItem* spacer12=new QSpacerItem(0,0,QSizePolicy::Expanding,QSizePolicy::Expanding);
+    h_button->addSpacerItem(spacer12);
+    v_attrcontent->addSpacing(5);
+    QFrame* line=new QFrame;
+    line->setFrameShape(QFrame::HLine);
+    line->setFrameShadow(QFrame::Sunken);
+    v_attrcontent->addWidget(line);
+    v_attrcontent->addSpacing(2);
+    v_attrcontent->addLayout(h_button);
+
+    attrcontent->setLayout(v_attrcontent);
+
+    QSpacerItem* spacer10=new QSpacerItem(0,0,QSizePolicy::Expanding,QSizePolicy::Expanding);
+
+    h_attributes->addWidget(attrcontent,1);
+
+    h_attributes->addSpacerItem(spacer10);
+    h_attributes->addSpacing(10);
+
+    attributes->setLayout(h_attributes);
+
 	tabs_graphattrs->addTab(attributes,"Video");
 
 	rawVideoView_=new FrameView;
@@ -469,5 +682,8 @@ void GUI::AnalysisTab::connectActions() {
     connect(button_blueHistogramm_,SIGNAL(clicked(bool)),this,SLOT(showBlueHistogramm()));
     connect(button_greenHistogramm_,SIGNAL(clicked(bool)),this,SLOT(showGreenHistogramm()));
     connect(button_psnr_,SIGNAL(clicked(bool)),this,SLOT(showPsnr()));
+    connect(button_attributes_,SIGNAL(clicked(bool)),this,SLOT(showAttributes()));
+    connect(button_loadnewvideo_,SIGNAL(clicked(bool)),this,SLOT(loadRawVideo()));
+    connect(&timer_labelUpdater_,SIGNAL(timeout()),this,SLOT(updateLabels()));
 }
 

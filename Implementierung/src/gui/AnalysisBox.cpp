@@ -28,6 +28,7 @@
 
 #include "../undo_framework/UndoStack.h"
 #include "../undo_framework/RemoveVideo.h"
+#include "../undo_framework/WriteComment.h"
 
 GUI::AnalysisBox::AnalysisBox(QWidget* parent) : QFrame(parent) {
 	createUi();
@@ -35,6 +36,9 @@ GUI::AnalysisBox::AnalysisBox(QWidget* parent) : QFrame(parent) {
 	setFixedHeight(250);
 
     connect(button_close_,SIGNAL(clicked(bool)),this,SLOT(closeBox()));
+    connect(&timer_updateLabels_,SIGNAL(timeout()),this,SLOT(updateLabels()));
+    connect(texteEdit_comment_,SIGNAL(textChanged()),this,SLOT(commentChanged()));
+    timer_updateLabels_.start(200);
 
 	origVidPlayer_=std::make_unique<VideoPlayer>();
 	anaVidPlayer_=std::make_unique<VideoPlayer>();
@@ -53,6 +57,25 @@ GUI::AnalysisBox::~AnalysisBox() {
     graphPlayer_->clearTimer();
 }
 
+std::unique_ptr<Memento::AnalysisBoxMemento> GUI::AnalysisBox::getMemento()
+{
+    auto memento=std::make_unique<Memento::AnalysisBoxMemento>();
+
+    if(origVideo_) {
+    memento->setPath(origVideo_->getPath());
+    }
+    memento->setComment(texteEdit_comment_->toPlainText());
+    return std::move(memento);
+}
+
+void GUI::AnalysisBox::restore(Memento::AnalysisBoxMemento *memento)
+{
+    if(!memento)
+        return;
+
+    texteEdit_comment_->document()->setPlainText(memento->getComment());
+}
+
 void GUI::AnalysisBox::setParentContainer(GUI::AnalysisBoxContainer *container) {
 	parentContainer_=container;
 }
@@ -60,11 +83,14 @@ void GUI::AnalysisBox::setParentContainer(GUI::AnalysisBoxContainer *container) 
 void GUI::AnalysisBox::setFile(QString filename) {
 	filename_=filename;
 
+    origVideo_=std::make_unique<Model::EncodedVideo>(filename);
+
 	QFile f(filename);
 	QFileInfo info(f);
 
 	label_title_->setText(info.fileName());
-	origVideo_=std::make_unique<Model::EncodedVideo>(filename);
+    label_filename_->setText(info.fileName());
+    label_filesize_->setText(QString::number(info.size()/(double)1000000,'f',2)+" MB");
 
 
     origVidPlayer_->setVideo(&origVideo_->getVideo(),false);
@@ -74,7 +100,12 @@ void GUI::AnalysisBox::setFile(QString filename) {
 
     origVideo_->getRedHistogramm();
     origVideo_->getBitrate();
+    origVideo_->getMacroBlockVideo();
+    origVideo_->getRgbDiffVideo(&parentContainer_->getParentTab()->getRawVideo()->getVideo());
     origVideo_->getPsnr(&parentContainer_->getParentTab()->getRawVideo()->getVideo());
+
+    label_codec_->setText(origVideo_->getCodec());
+    label_averageBitrate_->setText(QString::number(origVideo_->getAverageBitrate()));
 }
 
 void GUI::AnalysisBox::setTimer(std::shared_ptr<GUI::Timer> timer) {
@@ -200,14 +231,43 @@ void GUI::AnalysisBox::showAnalysisVideo(GUI::AnalysisVideo video)
     }
 }
 
+void GUI::AnalysisBox::showAttributes()
+{
+    tabs_graphs_->setCurrentIndex(1);
+}
+
 QString GUI::AnalysisBox::getFilename() {
-	return filename_;
+    return filename_;
+}
+
+QPlainTextEdit *GUI::AnalysisBox::getCommentBox()
+{
+    return texteEdit_comment_;
 }
 
 void GUI::AnalysisBox::closeBox() {
 	auto command=new UndoRedo::RemoveVideo(parentContainer_,this);
 
-	UndoRedo::UndoStack::getUndoStack().push(command);
+    UndoRedo::UndoStack::getUndoStack().push(command);
+}
+
+void GUI::AnalysisBox::updateLabels()
+{
+    label_codec_->setText(origVideo_->getCodec());
+    label_averageBitrate_->setText(QString::number(origVideo_->getAverageBitrate()/(double)1000,'f',2)+" KB/s");
+
+    if(origVideo_->getCodec()!="")
+        timer_updateLabels_.stop();
+}
+
+void GUI::AnalysisBox::commentChanged()
+{
+    auto newComment=texteEdit_comment_->toPlainText();
+    qDebug()<<currentComment_.split(" ").size();
+    if(newComment.split(" ").size()!=currentComment_.split(" ").size()&&newComment!=currentComment_) {
+        UndoRedo::UndoStack::getUndoStack().push(new UndoRedo::WriteComment(parentContainer_,parentContainer_->getIndex(this),currentComment_,newComment));
+        currentComment_=newComment;
+    }
 }
 
 void GUI::AnalysisBox::createUi() {
@@ -243,6 +303,85 @@ void GUI::AnalysisBox::createUi() {
 	tabs_graphs_->setTabPosition(QTabWidget::West);
 	tabs_graphs_->addTab(graphWidget_,"Graphs");
 	QWidget* attr=new QWidget;
+
+    QHBoxLayout* h_videoTab=new QHBoxLayout;
+    QSpacerItem* spacer4=new QSpacerItem(0,0,QSizePolicy::Expanding,QSizePolicy::Expanding);
+    h_videoTab->addSpacerItem(spacer4);
+    h_videoTab->addSpacing(10);
+
+    QVBoxLayout* v_videoTab=new QVBoxLayout;
+
+    QString styleSheet("QLabel {"
+                       "font-weight:bold;"
+                       "}");
+
+    QLabel* filename=new QLabel("Filename:");
+    QLabel* filesize=new QLabel("Filesize:");
+    QLabel* codec=new QLabel("Codec:");
+    QLabel* bitrate=new QLabel("Average bitrate:");
+
+    codec->setStyleSheet(styleSheet);
+    filesize->setStyleSheet(styleSheet);
+    filename->setStyleSheet(styleSheet);
+    bitrate->setStyleSheet(styleSheet);
+
+    label_filename_=new QLabel("testfilename.txt");
+    label_filesize_=new QLabel("2,5MB");
+    label_codec_=new QLabel("H.264");
+    label_averageBitrate_=new QLabel("4444 kb/s");
+
+    QWidget* attributes=new QWidget;
+    QVBoxLayout* v_attributes=new QVBoxLayout;
+
+    QHBoxLayout* h_filename=new QHBoxLayout;
+    h_filename->addWidget(filename);
+    h_filename->addWidget(label_filename_);
+
+    QHBoxLayout* h_filesize=new QHBoxLayout;
+    h_filesize->addWidget(filesize);
+    h_filesize->addWidget(label_filesize_);
+
+    QHBoxLayout* h_codec=new QHBoxLayout;
+    h_codec->addWidget(codec);
+    h_codec->addWidget(label_codec_);
+
+    QHBoxLayout* h_bitrate=new QHBoxLayout;
+    h_bitrate->addWidget(bitrate);
+    h_bitrate->addWidget(label_averageBitrate_);
+
+    texteEdit_comment_=new QPlainTextEdit;
+    texteEdit_comment_->setFixedHeight(50);
+    texteEdit_comment_->document()->setPlainText("Your note...");
+
+    v_attributes->addLayout(h_filename);
+    v_attributes->addLayout(h_filesize);
+    v_attributes->addLayout(h_codec);
+    v_attributes->addLayout(h_bitrate);
+
+    v_videoTab->addLayout(v_attributes);
+
+    attributes->setObjectName("attributes");
+    attributes->setStyleSheet("QWidget#attributes {"
+                              "border-width:1px;"
+                              "border-color:black;"
+                              "border-radius:5px;"
+                              "border-style:outset;"
+                              "background-color:rgb(240,240,240);"
+                              "}");
+    attributes->setMaximumWidth(500);
+
+    QSpacerItem* spacer1=new QSpacerItem(0,0,QSizePolicy::Expanding,QSizePolicy::Expanding);
+
+    v_videoTab->addSpacerItem(spacer1);
+    v_videoTab->addWidget(texteEdit_comment_);
+
+
+     attributes->setLayout(v_videoTab);
+    h_videoTab->addWidget(attributes,1);
+    h_videoTab->addSpacing(10);
+    QSpacerItem* spacer3=new QSpacerItem(0,0,QSizePolicy::Expanding,QSizePolicy::Expanding);
+    h_videoTab->addSpacerItem(spacer3);
+    attr->setLayout(h_videoTab);
 	tabs_graphs_->addTab(attr,"Video");
 
 	QVBoxLayout* v_control=new QVBoxLayout;
@@ -269,4 +408,5 @@ void GUI::AnalysisBox::createUi() {
 	v_control->addLayout(h_content);
 
 	setLayout(v_control);
+    currentComment_=texteEdit_comment_->toPlainText();
 }

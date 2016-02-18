@@ -35,13 +35,7 @@ class EncodedVideo {
 	 * @brief getPath Returns the path to the video.
 	 * @return The path to the video.
 	 */
-	QString getPath();
-
-	/**
-	 * @brief getNumberOfColors Returns the number of colors that appear in the whole video.
-	 * @return The number of colors in the video.
-	 */
-	int getNumberOfColors();
+    QString getPath();
 
 	/**
 	 * @brief getCodec Returns the codec used in the video file.
@@ -105,11 +99,11 @@ class EncodedVideo {
 	 */
 	Model::Video& getVideo();
 
+    int getAverageBitrate();
+
   private:
 
-	QString                     path_;
-	int                         numberOfColors_;
-	QString                     codec_;
+    QString                     path_;
 	std::unique_ptr<Video>      video_;
     std::unique_ptr<AVVideo>    avVideo_;
 	std::unique_ptr<Video>      macroblockVideo_;

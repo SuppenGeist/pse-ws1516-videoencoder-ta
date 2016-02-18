@@ -1,17 +1,19 @@
 #include "AnalysisBoxContainerMemento.h"
 
+#include <memory>
 #include <vector>
-#include "AnalysisBoxMemento.h"
 
-void Memento::AnalysisBoxContainerMemento::analysisBoxMemento() {
+Memento::AnalysisBoxContainerMemento::AnalysisBoxContainerMemento()
+{
 
 }
 
-vector<Memento::AnalysisBoxMemento*> Memento::AnalysisBoxContainerMemento::getAnalysisBoxList() {
+std::vector<std::unique_ptr<Memento::AnalysisBoxMemento> > &Memento::AnalysisBoxContainerMemento::getAnalysisBoxList()
+{
     return mementoList_;
 }
 
-void Memento::AnalysisBoxContainerMemento::setAnalysisBoxList(
-    std::vector<Memento::AnalysisBoxMemento*> analysisBoxList) {
-    mementoList_=analysisBoxList;
+void Memento::AnalysisBoxContainerMemento::addMemento(std::unique_ptr<Memento::AnalysisBoxMemento> memento)
+{
+    mementoList_.push_back(std::move(memento));
 }

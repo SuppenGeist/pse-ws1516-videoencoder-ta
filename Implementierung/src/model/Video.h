@@ -37,7 +37,7 @@ class Video {
 	 */
 	int getFps() const noexcept;
 
-	void setFps(int fps);
+    void setFps(int fps);
 
 	/**
 	 * If the index is invalid nullptr is returned.
