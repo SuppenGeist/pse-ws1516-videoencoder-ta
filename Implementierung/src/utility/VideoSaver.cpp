@@ -1,18 +1,18 @@
 #include "VideoSaver.h"
+
 #include <QString>
 #include <memory>
-#include "../model/AVVideo.h"
-#include "VideoConverter.h"
-#include "../model/AVVideo.h"
  extern "C" {
 #include <libavcodec/avcodec.h>
 #include <libavformat/avformat.h>
 #include<libswscale/swscale.h>
 #include <libavutil/imgutils.h>
  }
-static uint8_t *video_buffer_;
-static int video_buffer_size_;
- Utility::VideoSaver::VideoSaver() {
+
+#include "VideoConverter.h"
+#include "../model/AVVideo.h"
+
+Utility::VideoSaver::VideoSaver() {
         }
 void Utility::VideoSaver::saveVideo(Model::Video* video, QString filename) {
     QByteArray ba = filename.toLatin1(); //byte array to get QString as const char*
@@ -71,9 +71,6 @@ void Utility::VideoSaver::saveVideo(Model::Video* video, QString filename) {
 
         // freeing memory
         av_free(pictureBuffer_);
-
-
-
 
     }
     //catch the delayed images

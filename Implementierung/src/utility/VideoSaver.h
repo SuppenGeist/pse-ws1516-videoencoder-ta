@@ -5,10 +5,8 @@
 extern "C" {
 #include <libavformat/avformat.h>
 }
-#include "../model/AVVideo.h"
 
 namespace Model {
-class Graph;
 class Video;
 }
 
@@ -16,6 +14,11 @@ namespace Utility {
 class VideoSaver
 {
       public:
+        /**
+         * @brief saveVideo Saves a video in the given file.
+         * @param video The video to save.
+         * @param filename The path to save the video.
+         */
         static void saveVideo(Model::Video* video, QString filename);
 
 
