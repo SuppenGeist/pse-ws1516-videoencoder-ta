@@ -130,7 +130,8 @@ HEADERS += \
     src/model/filters/GrayscaleFilter.h \
     src/undo_framework/changefilter.h \
     src/model/graphvideo.h \
-    src/gui/graphplayer.h
+    src/gui/graphplayer.h \
+    src/utility/VideoSaver.h
 
 SOURCES += \
     src/gui/AnalysisBox.cpp \
@@ -243,7 +244,9 @@ SOURCES += \
     src/model/filters/GrayscaleFilter.cpp \
     src/undo_framework/changefilter.cpp \
     src/model/graphvideo.cpp \
-    src/gui/graphplayer.cpp
+    src/gui/graphplayer.cpp \
+    src/utility/BasicColor.cpp \
+    src/utility/VideoSaver.cpp
 
 RESOURCES += \
     resources.qrc \
