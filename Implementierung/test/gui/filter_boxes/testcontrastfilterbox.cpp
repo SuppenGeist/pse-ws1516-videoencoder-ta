@@ -1,6 +1,6 @@
 #include "testcontrastfilterbox.h"
 
-TestContrastFilterBox::init()
+void TestContrastFilterBox::init()
 {
 
 }

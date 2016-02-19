@@ -1,6 +1,6 @@
 #include "testvintagefilterbox.h"
 
-TestVintageFilterBox::init()
+void TestVintageFilterBox::init()
 {
 
 }

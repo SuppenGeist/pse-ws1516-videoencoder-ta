@@ -10,6 +10,7 @@ class TestGrayscaleFilterBox : public QObject
 
 
     private slots:
+    void init();
 };
 
 #endif // TESTGRAYSCALEFILTERBOX_H

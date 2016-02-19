@@ -1,6 +1,6 @@
 #include "testsharpnessfilterbox.h"
 
-TestSharpnessFilterBox::init()
+void TestSharpnessFilterBox::init()
 {
 
 }

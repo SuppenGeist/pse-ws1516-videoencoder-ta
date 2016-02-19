@@ -1,6 +1,6 @@
 #include "testedgefilterbox.h"
 
-TestEdgeFilterBox::init()
+void TestEdgeFilterBox::init()
 {
 
 }

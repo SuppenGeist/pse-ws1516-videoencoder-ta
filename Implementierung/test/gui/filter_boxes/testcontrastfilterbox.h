@@ -10,6 +10,7 @@ class TestContrastFilterBox : public QObject
 
 
     private slots:
+    void init();
 };
 
 #endif // TESTCONTRASTFILTERBOX_H

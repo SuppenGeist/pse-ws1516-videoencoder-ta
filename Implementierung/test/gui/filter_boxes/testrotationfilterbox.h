@@ -10,6 +10,7 @@ class TestRotationFilterBox : public QObject
 
 
     private slots:
+    void init();
 };
 
 #endif // TESTROTATIONFILTERBOX_H

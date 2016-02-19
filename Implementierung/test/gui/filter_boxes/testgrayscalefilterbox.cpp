@@ -1,6 +1,6 @@
 #include "testgrayscalefilterbox.h"
 
-TestGrayscaleFilterBox::init()
+void TestGrayscaleFilterBox::init()
 {
 
 }

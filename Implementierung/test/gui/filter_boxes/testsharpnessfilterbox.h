@@ -10,6 +10,7 @@ class TestSharpnessFilterBox : public QObject
 
 
     private slots:
+    void init();
 };
 
 #endif // TESTSHARPNESSFILTERBOX_H

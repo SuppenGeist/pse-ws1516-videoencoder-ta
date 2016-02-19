@@ -10,6 +10,7 @@ class TestEdgeFilterBox : public QObject
 
 
     private slots:
+    void init();
 };
 
 #endif // TESTEDGEFILTERBOX_H

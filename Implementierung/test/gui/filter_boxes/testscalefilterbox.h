@@ -10,6 +10,7 @@ class TestScaleFilterBox : public QObject
 
 
     private slots:
+    void init();
 };
 
 #endif // TESTSCALEFILTERBOX_H

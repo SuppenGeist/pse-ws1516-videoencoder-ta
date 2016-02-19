@@ -1,6 +1,6 @@
 #include "testnoisefilterbox.h"
 
-TestNoiseFilterBox::init()
+void TestNoiseFilterBox::init()
 {
 
 }

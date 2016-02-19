@@ -1,6 +1,6 @@
 #include "testscalefilterbox.h"
 
-TestScaleFilterBox::init()
+void TestScaleFilterBox::init()
 {
 
 }

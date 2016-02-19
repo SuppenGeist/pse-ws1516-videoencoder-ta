@@ -9,6 +9,7 @@ class TestBorderFilterBox : public QObject
     Q_OBJECT
 
     private slots:
+    void init();
 };
 
 #endif // TESTBORDERFILTERBOX_H

@@ -10,6 +10,7 @@ class TestPosterFilterBox : public QObject
 
 
     private slots:
+    void init();
 };
 
 #endif // TESTPOSTERFILTERBOX_H

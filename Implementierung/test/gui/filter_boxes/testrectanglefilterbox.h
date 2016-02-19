@@ -10,6 +10,7 @@ class TestRectangleFilterBox : public QObject
 
 
     private slots:
+    void init();
 };
 
 #endif // TESTRECTANGLEFILTERBOX_H

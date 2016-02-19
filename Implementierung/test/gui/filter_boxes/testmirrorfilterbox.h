@@ -10,6 +10,7 @@ class TestMirrorFilterBox : public QObject
 
 
     private slots:
+    void init();
 };
 
 #endif // TESTMIRRORFILTERBOX_H

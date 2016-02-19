@@ -10,6 +10,7 @@ class TestBrightnessFilterBox : public QObject
 
 
     private slots:
+    void init();
 };
 
 #endif // TESTBRIGHTNESSFILTERBOX_H

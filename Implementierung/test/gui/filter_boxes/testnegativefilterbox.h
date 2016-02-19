@@ -10,6 +10,7 @@ class TestNegativeFilterBox : public QObject
 
 
     private slots:
+    void init();
 };
 
 #endif // TESTNEGATIVEFILTERBOX_H

@@ -1,6 +1,6 @@
 #include "testbrightnessfilterbox.h"
 
-TestBrightnessFilterBox::init()
+void TestBrightnessFilterBox::init()
 {
 
 }

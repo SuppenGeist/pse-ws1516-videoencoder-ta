@@ -1,6 +1,6 @@
 #include "testrgbfilterbox.h"
 
-TestRGBFilterBox::init()
+void TestRGBFilterBox::init()
 {
 
 }

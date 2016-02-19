@@ -10,6 +10,7 @@ class TestSepiaFilterBox : public QObject
 
 
     private slots:
+    void init();
 };
 
 #endif // TESTSEPIAFILTERBOX_H

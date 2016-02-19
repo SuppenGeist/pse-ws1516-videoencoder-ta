@@ -10,6 +10,7 @@ class TestSaturationFilterBox : public QObject
 
 
     private slots:
+    void init();
 };
 
 #endif // TESTSATURATIONFILTERBOX_H

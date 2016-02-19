@@ -10,6 +10,7 @@ class TestGridFilterBox : public QObject
 
 
     private slots:
+    void init();
 };
 
 #endif // TESTGRIDFILTERBOX_H

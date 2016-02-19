@@ -1,6 +1,6 @@
 #include "testnegativefilterbox.h"
 
-TestNegativeFilterBox::init()
+void TestNegativeFilterBox::init()
 {
 
 }

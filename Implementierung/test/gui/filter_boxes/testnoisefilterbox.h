@@ -10,6 +10,7 @@ class TestNoiseFilterBox : public QObject
 
 
     private slots:
+    void init();
 };
 
 #endif // TESTNOISEFILTERBOX_H

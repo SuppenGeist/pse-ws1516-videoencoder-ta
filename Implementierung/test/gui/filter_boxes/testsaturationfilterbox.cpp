@@ -1,6 +1,6 @@
 #include "testsaturationfilterbox.h"
 
-TestSaturationFilterBox::init()
+void TestSaturationFilterBox::init()
 {
 
 }

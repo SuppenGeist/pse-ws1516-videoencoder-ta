@@ -1,6 +1,6 @@
 #include "testgridfilterbox.h"
 
-TestGridFilterBox::init()
+void TestGridFilterBox::init()
 {
 
 }

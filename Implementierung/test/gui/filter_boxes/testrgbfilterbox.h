@@ -10,6 +10,7 @@ class TestRGBFilterBox : public QObject
 
 
     private slots:
+    void init();
 };
 
 #endif // TESTRGBFILTERBOX_H

@@ -1,6 +1,6 @@
 #include "testmirrorfilterbox.h"
 
-TestMirrorFilterBox::init()
+void TestMirrorFilterBox::init()
 {
 
 }

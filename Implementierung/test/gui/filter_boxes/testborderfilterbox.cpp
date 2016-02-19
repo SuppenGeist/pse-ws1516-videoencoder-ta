@@ -1,6 +1,6 @@
 #include "testborderfilterbox.h"
 
-TestBorderFilterBox::init()
+void TestBorderFilterBox::init()
 {
 
 }

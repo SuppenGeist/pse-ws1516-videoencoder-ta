@@ -10,6 +10,7 @@ class TestVintageFilterBox : public QObject
 
 
     private slots:
+    void init();
 };
 
 #endif // TESTVINTAGEFILTERBOX_H

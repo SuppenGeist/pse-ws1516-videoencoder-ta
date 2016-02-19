@@ -10,6 +10,7 @@ class TestColorbalanceFilterBox : public QObject
 
 
     private slots:
+    void init();
 };
 
 #endif // TESTCOLORBALANCEFILTERBOX_H

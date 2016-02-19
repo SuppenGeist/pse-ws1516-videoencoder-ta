@@ -1,6 +1,6 @@
 #include "testsepiafilterbox.h"
 
-TestSepiaFilterBox::init()
+void TestSepiaFilterBox::init()
 {
 
 }
