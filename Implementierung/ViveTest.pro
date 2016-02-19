@@ -91,7 +91,6 @@ HEADERS += \
     src/model/filters/VintageFilter.h \
     src/undo_framework/AddFilter.h \
     src/undo_framework/AddVideo.h \
-    src/undo_framework/ApplyFilter.h \
     src/undo_framework/FilterReset.h \
     src/undo_framework/LoadAnalysisVideo.h \
     src/undo_framework/LoadFilterconfig.h \
@@ -158,7 +157,11 @@ HEADERS += \
     src/gui/graphplayer.h \
     test/gui/filter_boxes/testblurfilterbox.h \
     test/gui/filter_boxes/filterboxtestsuite.h \
-    test/gui/guitestsuite.h
+    test/gui/guitestsuite.h \
+    test/memento/mementotestsuite.h \
+    test/utility/utilitytestsuite.h \
+    test/undo_frameworktestsuite.h \
+    test/undo_framework/undo_frameworktestsuite.h
 
 SOURCES += \
     src/gui/AnalysisBox.cpp \
@@ -232,7 +235,6 @@ SOURCES += \
     src/model/filters/VintageFilter.cpp \
     src/undo_framework/AddFilter.cpp \
     src/undo_framework/AddVideo.cpp \
-    src/undo_framework/ApplyFilter.cpp \
     src/undo_framework/FilterReset.cpp \
     src/undo_framework/LoadAnalysisVideo.cpp \
     src/undo_framework/LoadFilterconfig.cpp \
@@ -298,7 +300,10 @@ SOURCES += \
     src/utility/BasicColor.cpp \
     test/gui/filter_boxes/testblurfilterbox.cpp \
     test/gui/filter_boxes/filterboxtestsuite.cpp \
-    test/gui/guitestsuite.cpp
+    test/gui/guitestsuite.cpp \
+    test/memento/mementotestsuite.cpp \
+    test/utility/utilitytestsuite.cpp \
+    test/undo_framework/undo_frameworktestsuite.cpp
 
 RESOURCES += \
     resources.qrc \
