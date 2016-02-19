@@ -10,6 +10,8 @@
 
 Utility::RGBDifferenceCalculator::RGBDifferenceCalculator(Model::Video& referenceVideo,
         Model::Video& video):referenceVideo_(&referenceVideo),video_(&video),isRunning_(false) {
+    if(referenceVideo.getWidth()!=video.getWidth()||referenceVideo.getHeight()!=video.getHeight())
+        throw std::invalid_argument("Cant calculate psnr of two completly different videos!");
 }
 
 Utility::RGBDifferenceCalculator::~RGBDifferenceCalculator()
@@ -44,7 +46,6 @@ void Utility::RGBDifferenceCalculator::calculateP()
                     int red =  255-std::abs (qRed(pixel)-qRed(refPixel));
                     int green =  255-std::abs (qGreen(pixel)-qGreen(refPixel));
                     outFrame->setPixel(k,j, qRgb(red, green, blue));
-
                 }
             }
             target_->appendFrame(std::move(outFrame));

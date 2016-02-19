@@ -117,8 +117,18 @@ Model::Video* Model::EncodedVideo::getRgbDiffVideo(Video *reference) {
     if(!rgbDiffVideo_.get()) {
         if(!reference)
             return nullptr;
+        if(getVideo().getNumberOfFrames()==0)
+            return nullptr;
+        if(reference->getNumberOfFrames()==0)
+            return nullptr;
+
         rgbDiffVideo_=std::make_unique<Video>();
+        try {
         rgbDiffCalculator_=std::make_unique<Utility::RGBDifferenceCalculator>(*reference,getVideo());
+        }
+        catch(std::invalid_argument& e) {
+            return rgbDiffVideo_.get();
+        }
         rgbDiffCalculator_->calculateVideo(rgbDiffVideo_.get());
     }
     return rgbDiffVideo_.get();

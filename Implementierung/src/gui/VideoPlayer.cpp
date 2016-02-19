@@ -35,6 +35,10 @@ void GUI::VideoPlayer::setVideo(Model::Video* video, bool updateTimer) noexcept 
     if(updateTimer)
         stop();
 
+    for(auto view:views_) {
+        view->clear();
+    }
+
 	video_=video;
 
 	setPosition(0);
@@ -181,10 +185,15 @@ void GUI::VideoPlayer::updateViews() {
 					view->setFrame(*(video_->getFrame(position_)));
 				}
 			}
-		} else {
-			for(auto view:views_) {
-				view->clear();
-			}
+            else {
+                for(auto view:views_) {
+                    view->clear();
+                }
+            }
+        } else {
+            for(auto view:views_) {
+                view->clear();
+            }
 		}
 	}
 }
