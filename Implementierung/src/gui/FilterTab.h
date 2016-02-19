@@ -129,7 +129,7 @@ class FilterTab: public QFrame {
 
 	bool                                isFilteredVideoShown_;
 
-	std::vector<std::unique_ptr<Utility::YuvFileSaver> > safer_;
+    std::unique_ptr<Utility::YuvFileSaver> safer_;
 
 	GUI::MainWindow*                    mainWindow_;
 

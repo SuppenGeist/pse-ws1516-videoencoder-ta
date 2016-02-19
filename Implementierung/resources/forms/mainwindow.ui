@@ -50,10 +50,10 @@ background-color:rgb(255,255,255);
     <property name="title">
      <string>Project</string>
     </property>
+    <addaction name="actionNew"/>
+    <addaction name="actionLoad"/>
     <addaction name="actionSave"/>
     <addaction name="actionSaveAs"/>
-    <addaction name="actionLoad"/>
-    <addaction name="actionNew"/>
    </widget>
    <widget class="QMenu" name="menuEdit">
     <property name="title">
@@ -66,14 +66,15 @@ background-color:rgb(255,255,255);
    <addaction name="menuEdit"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="actionSave">
+  <action name="actionNew">
    <property name="text">
-    <string>Save</string>
+    <string>New</string>
    </property>
-  </action>
-  <action name="actionSaveAs">
-   <property name="text">
-    <string>SaveAs</string>
+   <property name="iconText">
+    <string>New</string>
+   </property>
+   <property name="toolTip">
+    <string>New</string>
    </property>
   </action>
   <action name="actionLoad">
@@ -81,9 +82,14 @@ background-color:rgb(255,255,255);
     <string>Load</string>
    </property>
   </action>
-  <action name="actionNew">
+  <action name="actionSave">
    <property name="text">
-    <string>New</string>
+    <string>Save</string>
+   </property>
+  </action>
+  <action name="actionSaveAs">
+   <property name="text">
+    <string>Save As</string>
    </property>
   </action>
   <action name="actionUndo">

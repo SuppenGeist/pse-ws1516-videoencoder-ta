@@ -3,7 +3,7 @@
 #include "AnalysisTabMemento.h"
 #include "FilterTabMemento.h"
 
-Memento::MainWindowMemento::MainWindowMemento() {
+Memento::MainWindowMemento::MainWindowMemento():selectedTab_(0) {
 }
 
 int Memento::MainWindowMemento::getSelectedTab() {
@@ -15,17 +15,17 @@ void Memento::MainWindowMemento::setSelectedTab(int selectedTab) {
 }
 
 Memento::AnalysisTabMemento* Memento::MainWindowMemento::getAnalysisTabMemento() {
-    return analysisTab_;
+    return analysisTab_.get();
 }
 
-void Memento::MainWindowMemento::setAnalysisTabMemento(AnalysisTabMemento* analysisTabMemento) {
-    analysisTab_ = analysisTabMemento;
+void Memento::MainWindowMemento::setAnalysisTabMemento(std::unique_ptr<AnalysisTabMemento> analysisTabMemento) {
+    analysisTab_ = std::move(analysisTabMemento);
 }
 
 Memento::FilterTabMemento* Memento::MainWindowMemento::getFilterTabMemento() {
-    return filterTab_;
+    return filterTab_.get();
 }
 
-void Memento::MainWindowMemento::setFilterTabMemento(FilterTabMemento* filterTabMemento) {
-    filterTab_ = filterTabMemento;
+void Memento::MainWindowMemento::setFilterTabMemento(std::unique_ptr<FilterTabMemento> filterTabMemento) {
+    filterTab_ = std::move(filterTabMemento);
 }

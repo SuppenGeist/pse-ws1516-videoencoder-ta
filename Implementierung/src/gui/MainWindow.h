@@ -1,6 +1,8 @@
 #ifndef __MainWindow_h__
 #define __MainWindow_h__
 
+#include <memory>
+
 #include <QStatusBar>
 #include <QAction>
 #include <QMenuBar>
@@ -8,15 +10,13 @@
 #include <QMainWindow>
 #include <QStatusBar>
 
+#include "../model/Project.h"
+
+#include "../memento/MainWindowMemento.h"
+
 namespace GUI {
 class FilterTab;
 class AnalysisTab;
-}
-namespace Memento {
-class MainWindowMemento;
-}
-namespace Model {
-class Project;
 }
 namespace Ui {
 class MainWindow;
@@ -40,19 +40,13 @@ class MainWindow : public QMainWindow {
 	 * @brief getMemento Creates a memento which contains the state of the window.
 	 * @return The created memento.
 	 */
-	Memento::MainWindowMemento getMemento();
+    std::unique_ptr<Memento::MainWindowMemento> getMemento();
 
 	/**
 	 * @brief restore Restores the window based on the memento.
 	 * @param memento The memento which contains the state of the window.
 	 */
-	void restore(Memento::MainWindowMemento memento);
-
-	/**
-	 * @brief getProject Returns the current loaded Project.
-	 * @return the current project
-	 */
-	Model::Project* getProject();
+    void restore(Memento::MainWindowMemento* memento);
 
 	QStatusBar* getStatusBar();
 
@@ -85,9 +79,7 @@ class MainWindow : public QMainWindow {
 	/**
 	 * @brief redo redo action if undo has been used.
 	 */
-	void redo();
-
-
+    void redo();
 
   private:
 
@@ -102,7 +94,8 @@ class MainWindow : public QMainWindow {
 	FilterTab* filterTab_;
 	AnalysisTab* analysisTab_;
 	Ui::MainWindow *ui_;
-	Model::Project* loadedProject_;
+
+    std::unique_ptr<Model::Project> loadedProject_;
 
 	/**
 	 * @brief createUi creates the UI.

@@ -1,7 +1,11 @@
 #ifndef __ProjectReader_h__
 #define __ProjectReader_h__
 
+#include <memory>
+
 #include <QString>
+#include <QFile>
+#include <QTextStream>
 
 namespace Model {
 class Project;
@@ -15,22 +19,27 @@ namespace Utility {
  * This class can read a project from a file.
 */
 class ProjectReader {
-  private:
-	QString path;
-
-	/// <summary>
-	/// Constructor.
-	/// </summary>
-	/// <param name="path">The absolute path to the project file.</param>
   public:
+    /**
+     * @brief ProjectReader Constructor.
+     * @param path The absolute path to the project file.
+     */
 	ProjectReader(QString path);
 
-	/// <summary>
-	/// Reads a project from a file.
-	/// </summary>
-	/// <returns>The loaded project.</returns>
-  public:
-	Model::Project readProject();
+    ~ProjectReader();
+
+    /**
+     * @brief readProject Reads a project from a file.
+     * @return The loaded project.
+     */
+    std::unique_ptr<Model::Project> readProject();
+
+
+private:
+  QString   path_;
+  QFile     file_;
+  QTextStream dataStream_;
+
 };
 }
 

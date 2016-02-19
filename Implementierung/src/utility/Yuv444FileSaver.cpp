@@ -81,14 +81,10 @@ void Utility::Yuv444FileSaver::saveP() {
 	} else {
 		isRunning_=false;
 		throw std::logic_error("Should not get here");
-	}
-	file_.flush();
-	file_.close();
-
-	filterTab_->saveComplete(isRunning_,QFileInfo(file_).fileName());
-	isRunning_=false;
-
-
+    }
+    bool buffer=isRunning_;
+    isRunning_=false;
+    filterTab_->saveComplete(buffer,QFileInfo(file_).fileName());
 }
 
 Utility::Yuv444Vector Utility::Yuv444FileSaver::Rgb888ToYuv444(QRgb pixel1) {

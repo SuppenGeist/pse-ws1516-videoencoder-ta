@@ -1,12 +1,9 @@
-#include <QString>
-#include <exception>
-using namespace std;
-
 #ifndef __Project_h__
 #define __Project_h__
 
-// #include "MainWindow.h"
-// #include "MainWindowMemento.h"
+#include <memory>
+
+#include <QString>
 
 namespace GUI {
 class MainWindow;
@@ -23,56 +20,50 @@ namespace Model {
 /** This class contains the different mementos.
 */
 class Project {
-  private:
-	QString name;
-  private:
-	QString path;
-  private:
-	GUI::MainWindow* loadedProject;
-  private:
-	Memento::MainWindowMemento* mainWindowMemento;
-
-	/// <summary>
-	/// Constructor.
-	/// </summary>
-	/// <param name="name">Name of the project.</param>
   public:
-	Project(QString name);
+    /**
+     * @brief Project Constructor.
+     * @param name Name of the project.
+     */
+    Project(QString name="");
 
-	/// <summary>
-	/// Returns the name of the project.
-	/// </summary>
-	/// <returns>Name of the project.</returns>
-  public:
+    /**
+     * @brief getName Returns the name of the project.
+     * @return Name of the project.
+     */
 	QString getName();
 
-	/// <summary>
-	/// Returns the MainWindowMemento.
-	/// </summary>
-	/// <returns>The MainWindowMemento.</returns>
-  public:
+    /**
+     * @brief getMemento Returns the MainWindowMemento.
+     * @return The MainWindowMemento.
+     */
 	Memento::MainWindowMemento& getMemento();
 
-	/// <summary>
-	/// Sets the MainWindowMemento.
-	/// </summary>
-	/// <param name="memento">The MainWindowMemento.</param>
-  public:
-	void setMemento(Memento::MainWindowMemento memento);
+    /**
+     * @brief setMemento Sets the MainWindowMemento.
+     * @param memento The MainWindowMemento.
+     */
+    void setMemento(std::unique_ptr<Memento::MainWindowMemento> memento);
 
-	/// <summary>
-	/// Sets the path at which the project is saved.
-	/// </summary>
-	/// <param name="path">The project save path.</param>
-  public:
+    /**
+     * @brief setPath Sets the path at which the project is saved.
+     * @param path The project save path.
+     */
 	void setPath(QString path);
 
-	/// <summary>
-	/// Returns the project save path.
-	/// </summary>
-	/// <returns>The project save path.</returns>
-  public:
+    void setName(QString name);
+
+    /**
+     * @brief getPath Returns the project save path.
+     * @return The project save path.
+     */
 	QString getPath();
+
+
+private:
+  QString name_;
+  QString path_;
+  std::unique_ptr<Memento::MainWindowMemento> memento_;
 };
 }
 

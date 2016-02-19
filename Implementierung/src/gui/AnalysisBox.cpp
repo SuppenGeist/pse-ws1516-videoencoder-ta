@@ -271,6 +271,10 @@ void GUI::AnalysisBox::updateLabels()
     label_codec_->setText(origVideo_->getCodec());
     label_averageBitrate_->setText(QString::number(origVideo_->getAverageBitrate()/(double)1000,'f',2)+" KB/s");
 
+    if(!anaVidPlayer_->getVideo()) {
+        showAnalysisVideo(parentContainer_->getShownVideo());
+    }
+
     if(origVideo_->getCodec()!="")
         timer_updateLabels_.stop();
 }

@@ -75,7 +75,9 @@ std::unique_ptr<Memento::AnalysisTabMemento> GUI::AnalysisTab::getMemento() {
 void GUI::AnalysisTab::restore(Memento::AnalysisTabMemento *memento) {
 	setRawVideo(memento->getRawVideo());
 
-    analysisBoxContainer_->restore(&memento->getAnalysisBoxContainerMemento());
+    if(memento->getAnalysisBoxContainerMemento()) {
+        analysisBoxContainer_->restore(memento->getAnalysisBoxContainerMemento());
+    }
 
     switch(memento->getAnalysisGraph()) {
     case AnalysisGraph::BITRATE:

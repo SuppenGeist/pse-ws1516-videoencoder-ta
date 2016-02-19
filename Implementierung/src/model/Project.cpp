@@ -1,26 +1,32 @@
 #include "Project.h"
 
-//#include "MainWindow.h"
 #include "../memento/MainWindowMemento.h"
 
-Model::Project::Project(QString name) {
+Model::Project::Project(QString name):name_(name) {
 }
 
 QString Model::Project::getName() {
-	return this->name;
+    return name_;
 }
 
 Memento::MainWindowMemento& Model::Project::getMemento() {
+    return *memento_;
 }
 
-void Model::Project::setMemento(Memento::MainWindowMemento memento) {
+void Model::Project::setMemento(std::unique_ptr<Memento::MainWindowMemento> memento) {
+    memento_=std::move(memento);
 }
 
 void Model::Project::setPath(QString path) {
-	this->path = path;
+    path_ = path;
+}
+
+void Model::Project::setName(QString name)
+{
+    name_=name;
 }
 
 QString Model::Project::getPath() {
-	return this->path;
+    return path_;
 }
 

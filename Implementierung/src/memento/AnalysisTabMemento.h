@@ -27,7 +27,7 @@ class AnalysisTabMemento {
 
     void setAnalysisBoxContainerMemento(std::unique_ptr<Memento::AnalysisBoxContainerMemento> analysisBoxMemento);
 
-    Memento::AnalysisBoxContainerMemento& getAnalysisBoxContainerMemento();
+    Memento::AnalysisBoxContainerMemento* getAnalysisBoxContainerMemento();
 
     GUI::AnalysisGraph getAnalysisGraph();
 

@@ -322,7 +322,7 @@ void GUI::FilterTab::setFilterList(std::unique_ptr<Model::FilterList> filterlist
 void GUI::FilterTab::resetFilters() {
 	initFilterList();
 	model_filterlist_->removeRows(0,model_filterlist_->rowCount());
-	originalPreviewFrames_.release();
+    originalPreviewFrames_.reset();
 	currentFilterOptionsBox_->hide();
 	showRawVideo();
 }
@@ -394,6 +394,10 @@ void GUI::FilterTab::apply() {
 	if(filterlist_->getSize()==0)
 		return;
 
+    if(isFilteredVideoShown_)
+        return;
+
+    safer_.reset();
 	mainWindow_->getStatusBar()->showMessage("Applying filters to video...");
 
     filteredVideo_=std::make_unique<Model::Video>(rawVideo_->getFps());
@@ -425,18 +429,18 @@ void GUI::FilterTab::save() {
 
 	auto type=rawVideo_->getYuvType();
 	if(type==Utility::YuvType::YUV411) {
-		safer_.push_back(std::make_unique<Utility::Yuv411FileSaver>(filename,*filteredVideo_,
-		                 rawVideo_->getCompression(),this));
+        safer_=std::make_unique<Utility::Yuv411FileSaver>(filename,*filteredVideo_,
+                         rawVideo_->getCompression(),this);
 	} else if(type==Utility::YuvType::YUV420) {
-		safer_.push_back(std::make_unique<Utility::Yuv420FileSaver>(filename,*filteredVideo_,this));
+        safer_=std::make_unique<Utility::Yuv420FileSaver>(filename,*filteredVideo_,this);
 	} else if(type==Utility::YuvType::YUV422) {
-		safer_.push_back(std::make_unique<Utility::Yuv422FileSaver>(filename,*filteredVideo_,
-		                 rawVideo_->getCompression(),this));
+        safer_=std::make_unique<Utility::Yuv422FileSaver>(filename,*filteredVideo_,
+                         rawVideo_->getCompression(),this);
 	} else if(type==Utility::YuvType::YUV444) {
-		safer_.push_back(std::make_unique<Utility::Yuv444FileSaver>(filename,*filteredVideo_,
-		                 rawVideo_->getCompression(),this));
+        safer_=std::make_unique<Utility::Yuv444FileSaver>(filename,*filteredVideo_,
+                         rawVideo_->getCompression(),this);
 	}
-	safer_.back()->save();
+    safer_->save();
 }
 
 void GUI::FilterTab::saveConfiguration() {
@@ -520,10 +524,11 @@ void GUI::FilterTab::notifyOnSaveComplete(bool successful, QString filename) {
 		QMessageBox::information(this,"Video saved successfully!",
 		                         "The video was successfully saved to '"+filename+"'",QMessageBox::Ok);
 		mainWindow_->getStatusBar()->showMessage("Filtered video successfully saved!",3000);
+        safer_.reset();
 	} else {
 		QMessageBox::warning(this,"Video not saved completly!",
 		                     "The video could not be saved completly to '"+filename+"'",QMessageBox::Ok);
-		mainWindow_->getStatusBar()->showMessage("Filtered video could not be saved completly!",3000);
+        mainWindow_->getStatusBar()->showMessage("Filtered video could not be saved completly!",3000);
 	}
 }
 

@@ -1,35 +1,44 @@
 #ifndef __ProjectWriter_h__
 #define __ProjectWriter_h__
 
+#include <thread>
+
+#include <QFile>
+#include <QTextStream>
+
 namespace Model {
 class Project;
 }
-
 
 namespace Utility {
 /**
  * This class can write the project files and the results.
 */
 class ProjectWriter {
-
-	/// <summary>
-	/// Constructor.
-	/// </summary>
-	/// <param name="p">The project to save.</param>
   public:
-	ProjectWriter(Model::Project p);
+    /**
+     * @brief ProjectWriter Constructor.
+     * @param p The project to save.
+     */
+    ProjectWriter(Model::Project* project);
 
-	/// <summary>
-	/// Saves the whole project.
-	/// </summary>
-  public:
+    ~ProjectWriter();
+
+    /**
+     * @brief saveProject Saves the whole project.
+     */
 	void saveProject();
 
-	/// <summary>
-	/// Saves on the analysis results.
-	/// </summary>
-  public:
-	void saveResults();
+    /**
+     * @brief saveResults Saves on the analysis results.
+     */
+    void saveResults();
+
+private:
+    Model::Project*     project_;
+
+    std::unique_ptr<QFile> file_;
+    QTextStream         dataStream_;
 };
 }
 

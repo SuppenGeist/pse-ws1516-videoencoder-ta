@@ -1,14 +1,10 @@
 #ifndef __MainWindowMemento_h__
 #define __MainWindowMemento_h__
 
+#include <memory>
+
 #include "AnalysisTabMemento.h"
 #include "FilterTabMemento.h"
-
-namespace Memento {
-class AnalysisTabMemento;
-class FilterTabMemento;
-class MainWindowMemento;
-}
 
 namespace Memento {
 /**
@@ -17,51 +13,51 @@ namespace Memento {
 class MainWindowMemento {
 
 public:
-	/// <summary>
-	/// Constructor.
-	/// </summary>
-	MainWindowMemento();
+    /**
+     * @brief MainWindowMemento Constructor.
+     */
+    MainWindowMemento();
 
-	/// <summary>
-	/// Returns the currently selected tab.
-	/// </summary>
-	/// <returns>The currently selected tab.</returns>
-	int getSelectedTab();
+    /**
+     * @brief getSelectedTab Returns the currently selected tab.
+     * @return The currently selected tab.
+     */
+    int getSelectedTab();
 
-	/// <summary>
-	/// Sets the currently selected tab.
-	/// </summary>
-	/// <param name="selectedTab">The currently selected tab.</param>
-	void setSelectedTab(int selectedTab);
+    /**
+     * @brief setSelectedTab Sets the currently selected tab.
+     * @param selectedTab The currently selected tab.
+     */
+    void setSelectedTab(int selectedTab);
 
-	/// <summary>
-	/// Returns the AnalysisTabMemento.
-	/// </summary>
-	/// <returns>The AnalysisTabMemento.</returns>
+    /**
+     * @brief getAnalysisTabMemento Returns the AnalysisTabMemento.
+     * @return The AnalysisTabMemento.
+     */
     Memento::AnalysisTabMemento* getAnalysisTabMemento();
 
-	/// <summary>
-	/// Sets the AnalysisTabMemento.
-	/// </summary>
-	/// <param name="analysisTabMeMento">The AnalysisTabMemento.</param>
-    void setAnalysisTabMemento(AnalysisTabMemento* analysisTabMeMento);
+    /**
+     * @brief setAnalysisTabMemento Sets the AnalysisTabMemento.
+     * @param analysisTabMeMento The AnalysisTabMemento.
+     */
+    void setAnalysisTabMemento(std::unique_ptr<AnalysisTabMemento> analysisTabMeMento);
 
-	/// <summary>
-	/// Returns the FilterTabMemento.
-	/// </summary>
-	/// <returns>The FilterTabMemento.</returns>
+    /**
+     * @brief getFilterTabMemento Returns the FilterTabMemento.
+     * @return The FilterTabMemento.
+     */
     Memento::FilterTabMemento* getFilterTabMemento();
 
-	/// <summary>
-	/// Sets the FilterTabMemento.
-	/// </summary>
-	/// <param name="filterTabMemento">The FilterTabMemento.</param>
-    void setFilterTabMemento(FilterTabMemento* filterTabMemento);
+    /**
+     * @brief setFilterTabMemento Sets the FilterTabMemento.
+     * @param filterTabMemento The FilterTabMemento.
+     */
+    void setFilterTabMemento(std::unique_ptr<FilterTabMemento> filterTabMemento);
 
     private:
         int selectedTab_;
-        Memento::AnalysisTabMemento* analysisTab_;
-        Memento::FilterTabMemento* filterTab_;
+        std::unique_ptr<AnalysisTabMemento> analysisTab_;
+        std::unique_ptr<FilterTabMemento> filterTab_;
 };
 }
 

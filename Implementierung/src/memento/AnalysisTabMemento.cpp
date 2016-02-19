@@ -20,8 +20,8 @@ void Memento::AnalysisTabMemento::setAnalysisBoxContainerMemento(std::unique_ptr
     analysisBoxMemento_ = std::move(analysisBoxMemento);
 }
 
-Memento::AnalysisBoxContainerMemento &Memento::AnalysisTabMemento::getAnalysisBoxContainerMemento(){
-    return *analysisBoxMemento_;
+Memento::AnalysisBoxContainerMemento *Memento::AnalysisTabMemento::getAnalysisBoxContainerMemento(){
+    return analysisBoxMemento_.get();
 }
 
 GUI::AnalysisGraph Memento::AnalysisTabMemento::getAnalysisGraph()
