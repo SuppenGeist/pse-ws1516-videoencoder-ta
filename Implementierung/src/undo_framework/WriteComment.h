@@ -9,6 +9,7 @@
 
 namespace UndoRedo {
 class WriteComment: public QUndoCommand {
+
   public:
 	/**
 	 * @brief WriteComment Constuctor
@@ -17,15 +18,29 @@ class WriteComment: public QUndoCommand {
 
 
 	/**
-	 * @brief undo reverts changes to the textbox
+     * @brief undo Reverts changes to the textbox.
 	 */
 	void undo();
 
 
 	/**
-	 * @brief redo applies changes to the textbox
+     * @brief redo Applies changes to the textbox.
 	 */
 	void redo();
+
+    /**
+     * @brief mergeWith Trys to merge command with another command.
+     * @param command The other command.
+     * @return If merge was succesfull.
+     */
+    bool mergeWith(const QUndoCommand *command);
+
+    /**
+     * @brief id Returns the id of this command.
+     * @return In this case 666
+     */
+    int id() const {return 666;}
+
 
   private:
     GUI::AnalysisBoxContainer* container_;

@@ -265,10 +265,8 @@ void GUI::AnalysisBox::commentChanged()
 {
     auto newComment=texteEdit_comment_->toPlainText();
 
-    if(newComment.split(" ").size()!=currentComment_.split(" ").size()&&newComment!=currentComment_) {
-        UndoRedo::UndoStack::getUndoStack().push(new UndoRedo::WriteComment(parentContainer_,parentContainer_->getIndex(this),currentComment_,newComment));
-        currentComment_=newComment;
-    }
+    UndoRedo::UndoStack::getUndoStack().push(new UndoRedo::WriteComment(parentContainer_,parentContainer_->getIndex(this),currentComment_,newComment));
+    currentComment_=newComment;
 }
 
 void GUI::AnalysisBox::createUi() {
