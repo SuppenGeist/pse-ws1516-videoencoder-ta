@@ -161,7 +161,26 @@ HEADERS += \
     test/memento/mementotestsuite.h \
     test/utility/utilitytestsuite.h \
     test/undo_frameworktestsuite.h \
-    test/undo_framework/undo_frameworktestsuite.h
+    test/undo_framework/undo_frameworktestsuite.h \
+    test/gui/filter_boxes/testborderfilterbox.h \
+    test/gui/filter_boxes/testcolorbalancefilterbox.h \
+    test/gui/filter_boxes/testcontrastfilterbox.h \
+    test/gui/filter_boxes/testedgefilterbox.h \
+    test/gui/filter_boxes/testgrayscalefilterbox.h \
+    test/gui/filter_boxes/testgridfilterbox.h \
+    test/gui/filter_boxes/testmirrorfilterbox.h \
+    test/gui/filter_boxes/testnegativefilterbox.h \
+    test/gui/filter_boxes/testnoisefilterbox.h \
+    test/gui/filter_boxes/testposterfilterbox.h \
+    test/gui/filter_boxes/testrectanglefilterbox.h \
+    test/gui/filter_boxes/testrgbfilterbox.h \
+    test/gui/filter_boxes/testrotationfilterbox.h \
+    test/gui/filter_boxes/testsaturationfilterbox.h \
+    test/gui/filter_boxes/testscalefilterbox.h \
+    test/gui/filter_boxes/testsepiafilterbox.h \
+    test/gui/filter_boxes/testsharpnessfilterbox.h \
+    test/gui/filter_boxes/testvintagefilterbox.h \
+    test/gui/filter_boxes/testbrightnessfilterbox.h
 
 SOURCES += \
     src/gui/AnalysisBox.cpp \
@@ -303,7 +322,26 @@ SOURCES += \
     test/gui/guitestsuite.cpp \
     test/memento/mementotestsuite.cpp \
     test/utility/utilitytestsuite.cpp \
-    test/undo_framework/undo_frameworktestsuite.cpp
+    test/undo_framework/undo_frameworktestsuite.cpp \
+    test/gui/filter_boxes/testborderfilterbox.cpp \
+    test/gui/filter_boxes/testcolorbalancefilterbox.cpp \
+    test/gui/filter_boxes/testcontrastfilterbox.cpp \
+    test/gui/filter_boxes/testedgefilterbox.cpp \
+    test/gui/filter_boxes/testgrayscalefilterbox.cpp \
+    test/gui/filter_boxes/testgridfilterbox.cpp \
+    test/gui/filter_boxes/testmirrorfilterbox.cpp \
+    test/gui/filter_boxes/testnegativefilterbox.cpp \
+    test/gui/filter_boxes/testnoisefilterbox.cpp \
+    test/gui/filter_boxes/testposterfilterbox.cpp \
+    test/gui/filter_boxes/testrectanglefilterbox.cpp \
+    test/gui/filter_boxes/testrgbfilterbox.cpp \
+    test/gui/filter_boxes/testrotationfilterbox.cpp \
+    test/gui/filter_boxes/testsaturationfilterbox.cpp \
+    test/gui/filter_boxes/testscalefilterbox.cpp \
+    test/gui/filter_boxes/testsepiafilterbox.cpp \
+    test/gui/filter_boxes/testsharpnessfilterbox.cpp \
+    test/gui/filter_boxes/testvintagefilterbox.cpp \
+    test/gui/filter_boxes/testbrightnessfilterbox.cpp
 
 RESOURCES += \
     resources.qrc \

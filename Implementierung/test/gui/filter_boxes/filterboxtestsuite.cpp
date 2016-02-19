@@ -3,7 +3,7 @@
 #include <QtTest>
 
 #include "testblurfilterbox.h"
-/*#include "testborderfilterbox.h"
+#include "testborderfilterbox.h"
 #include "testbrightnessfilterbox.h"
 #include "testcolorbalancefilterbox.h"
 #include "testcontrastfilterbox.h"
@@ -22,7 +22,7 @@
 #include "testsepiafilterbox.h"
 #include "testsharpnessfilterbox.h"
 #include "testvintagefilterbox.h"
-*/
+
 
 FilterBoxTestSuite::FilterBoxTestSuite(int argc,char* argv[]):argc_(argc),argv_(argv)
 {
