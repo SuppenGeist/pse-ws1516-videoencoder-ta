@@ -41,7 +41,6 @@
 #include "../undo_framework/MoveFilterDown.h"
 #include "../undo_framework/MoveFilterUp.h"
 #include "../undo_framework/LoadFilterconfig.h"
-#include "../undo_framework/ApplyFilter.h"
 
 #include "../memento/FilterTabMemento.h"
 
@@ -97,8 +96,7 @@ std::unique_ptr<Memento::FilterTabMemento> GUI::FilterTab::getMemento() {
 	memento->setRawVideo(rawVideo_);
 	memento->setFilterList(std::make_unique<Model::FilterList>(*filterlist_));
 	memento->setIsPreviewShown(PreviewControlPanel_->isVisible());
-	memento->setIsFilteredVideoShown(isFilteredVideoShown_);
-	memento->setFilteredVideo(filteredVideo_);
+    memento->setIsFilteredVideoShown(isFilteredVideoShown_);
 	memento->setCurrentFrame(player_->getPosition());
 
 	auto index=list_filterlist_->selectionModel()->selectedIndexes();
@@ -112,12 +110,12 @@ std::unique_ptr<Memento::FilterTabMemento> GUI::FilterTab::getMemento() {
 
 void GUI::FilterTab::restore(Memento::FilterTabMemento *memento) {
 	setRawVideo(memento->getRawVideo());
-	setFilterList(memento->getFilterList());
-	setFilteredVideo(memento->getFilteredVideo());
+    setFilterList(memento->getFilterList());
 	if(memento->isPreviewShow()) {
 		showFilterPreview();
 	} else {
 		if(memento->isFilteredVideoShown()) {
+            apply();
 			showFilteredVideo();
 		} else {
 			showRawVideo();
@@ -329,13 +327,9 @@ void GUI::FilterTab::resetFilters() {
 	showRawVideo();
 }
 
-void GUI::FilterTab::setFilteredVideo(Model::Video *filteredVideo) {
-	filteredVideo_=filteredVideo;
-}
-
 void GUI::FilterTab::showFilteredVideo() {
 	showRawVideo();
-	player_->setVideo(filteredVideo_);
+    player_->setVideo(filteredVideo_.get());
 	playerControlPanel_->updateUi();
 	isFilteredVideoShown_=true;
 }
@@ -387,26 +381,8 @@ void GUI::FilterTab::load() {
 	if(path.isEmpty())
 		return;
 
-	std::unique_ptr<YuvInfoDialog> infoDialog;
-	bool inputIsValid=true;
-	do {
-		infoDialog=std::make_unique<YuvInfoDialog>(this);
-
-		inputIsValid=true;
-
-		result=infoDialog->exec();
-
-		if(result!=QDialog::Accepted)
-			return;
-
-		if(infoDialog->getFps()<=0||infoDialog->getHeight()<=0||infoDialog->getWidth()<=0) {
-			inputIsValid=false;
-		}
-
-	} while(!inputIsValid);
-
-	auto video=std::make_unique<Model::YuvVideo>(path,infoDialog->getPixelSheme(),
-	           infoDialog->getCompression(),infoDialog->getWidth(),infoDialog->getHeight(),infoDialog->getFps());
+    auto video=std::make_unique<Model::YuvVideo>(path,fileOpenDiag.getPixelSheme(),
+               fileOpenDiag.getCompression(),fileOpenDiag.getWidth(),fileOpenDiag.getHeight(),fileOpenDiag.getFps());
 	auto command=new UndoRedo::LoadFilterVideo(*this,std::move(video),getMemento());
 
 	UndoRedo::UndoStack::getUndoStack().push(command);
@@ -420,9 +396,12 @@ void GUI::FilterTab::apply() {
 
 	mainWindow_->getStatusBar()->showMessage("Applying filters to video...");
 
-	auto command=new UndoRedo::ApplyFilter(*this,&rawVideo_->getVideo(),
-	                                       std::make_unique<Model::FilterList>(*filterlist_));
-	UndoRedo::UndoStack::getUndoStack().push(command);
+    filteredVideo_=std::make_unique<Model::Video>(rawVideo_->getFps());
+    filterApplier_=std::make_unique<Utility::FilterApplier>(*filterlist_,rawVideo_->getWidth(),
+             rawVideo_->getHeight(),AV_PIX_FMT_RGB24);
+    filterApplier_->applyToVideo(*filteredVideo_,rawVideo_->getVideo(),this);
+
+    showFilteredVideo();
 }
 
 void GUI::FilterTab::save() {

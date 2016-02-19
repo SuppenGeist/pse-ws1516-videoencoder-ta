@@ -1,5 +1,7 @@
 #include "YuvFileOpenDialog.h"
 
+#include <memory>
+
 #include <QWidget>
 #include <QDialog>
 #include <QPushButton>
@@ -7,6 +9,7 @@
 #include <QListView>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
+#include <QDebug>
 #include <QLineEdit>
 #include <QStringListModel>
 #include <QFile>
@@ -17,7 +20,13 @@
 #include <QRegExp>
 #include <QFrame>
 
+#include "../utility/Compression.h"
+#include "../utility/YuvType.h"
+
+#include "YuvInfoDialog.h"
+
 QStringListModel* GUI::YuvFileOpenDialog::model_recentlyUsed_=nullptr;
+std::vector<QString> GUI::YuvFileOpenDialog::attributes_;
 const QString GUI::YuvFileOpenDialog::SAVE_FILENAME="yuv_recently_used.data";
 
 GUI::YuvFileOpenDialog::YuvFileOpenDialog(QWidget* parent):QDialog(parent) {
@@ -41,7 +50,32 @@ QString GUI::YuvFileOpenDialog::getFilename() {
 	if(fileToCheck.exists()&&fileToCheck.isFile()) {
 		return lineEdit_selectedFile_->text();
 	}
-	return tr("");
+    return tr("");
+}
+
+int GUI::YuvFileOpenDialog::getFps()
+{
+    return fps_;
+}
+
+int GUI::YuvFileOpenDialog::getWidth()
+{
+    return width_;
+}
+
+int GUI::YuvFileOpenDialog::getHeight()
+{
+    return height_;
+}
+
+Utility::Compression GUI::YuvFileOpenDialog::getCompression()
+{
+    return compression_;
+}
+
+Utility::YuvType GUI::YuvFileOpenDialog::getPixelSheme()
+{
+    return type_;
 }
 
 void GUI::YuvFileOpenDialog::createUi() {
@@ -89,19 +123,145 @@ void GUI::YuvFileOpenDialog::createUi() {
 	setLayout(v_content);
 
 	setWindowTitle("Load YUV file");
-	setMinimumWidth(500);
+    setMinimumWidth(500);
+}
+
+bool GUI::YuvFileOpenDialog::parseAttributes(QString attributes)
+{
+    QStringList attrs=attributes.split(",");
+
+    if(attrs.size()!=5)
+        return false;
+
+    bool succesful=true;
+    width_=attrs[1].toInt(&succesful);
+    if(!succesful)
+        return false;
+    height_=attrs[2].toInt(&succesful);
+    if(!succesful)
+        return false;
+    fps_=attrs[0].toInt(&succesful);
+    if(!succesful)
+        return false;
+
+    if(attrs[3]=="packed") {
+        compression_=Utility::Compression::PACKED;
+    }
+    else if(attrs[3]=="planar") {
+        compression_=Utility::Compression::PLANAR;
+    }
+    else {
+        return false;
+    }
+
+    if(attrs[4]=="411") {
+        type_=Utility::YuvType::YUV411;
+    } else if(attrs[4]=="420") {
+        type_=Utility::YuvType::YUV420;
+    } else if(attrs[4]=="422") {
+        type_=Utility::YuvType::YUV422;
+    } else if(attrs[4]=="444") {
+        type_=Utility::YuvType::YUV444;
+    }else {
+        return false;
+    }
+
+    return true;
+}
+
+QString GUI::YuvFileOpenDialog::askAttributes()
+{
+    int result;
+
+    std::unique_ptr<YuvInfoDialog> infoDialog;
+
+    bool inputIsValid=true;
+    do {
+        infoDialog=std::make_unique<YuvInfoDialog>(dynamic_cast<QWidget*>(parent()));
+
+        inputIsValid=true;
+
+        result=infoDialog->exec();
+
+        if(result!=QDialog::Accepted)
+            return "";
+
+        if(infoDialog->getFps()<=0||infoDialog->getHeight()<=0||infoDialog->getWidth()<=0) {
+            inputIsValid=false;
+        }
+
+    } while(!inputIsValid);
+
+    if(result==QDialog::Accepted) {
+        QString attrs=QString::number(infoDialog->getFps())+","+QString::number(infoDialog->getWidth())+","+QString::number(infoDialog->getHeight())+",";
+        switch(infoDialog->getCompression()) {
+        case Utility::Compression::PACKED:
+            attrs+="packed";
+            break;
+        case Utility::Compression::PLANAR:
+            attrs+="planar";
+            break;
+        }
+        attrs+=",";
+        switch (infoDialog->getPixelSheme()) {
+        case Utility::YuvType::YUV411:
+            attrs+="411";
+            break;
+        case Utility::YuvType::YUV422:
+            attrs+="42";
+            break;
+        case Utility::YuvType::YUV420:
+            attrs+="420";
+            break;
+        case Utility::YuvType::YUV444:
+            attrs+="444";
+            break;
+        }
+
+        return attrs;
+    }
+    else {
+        return "";
+    }
+    return "";
 }
 
 void GUI::YuvFileOpenDialog::hasFinished(int result) {
 	if(result==QDialog::Accepted) {
-		saveListModel(getFilename());
+        int selectedindex=-1;
+        if(!listView_recentlyUsed_->selectionModel()->selectedIndexes().isEmpty()) {
+            selectedindex=listView_recentlyUsed_->selectionModel()->selectedIndexes().first().row();
+        }
+
+        QString fileattributes;
+        if(selectedindex!=-1&&getFilename()==getListModel()->stringList().at(selectedindex)) {
+            bool res=parseAttributes(attributes_[selectedindex]);
+
+            if(!res) {
+                if((fileattributes=askAttributes()).isEmpty()) {
+                    setResult(QDialog::Rejected);
+                    return;
+                }
+            }
+            else {
+                fileattributes=attributes_[selectedindex];
+            }
+        }
+        else {
+            if(getFilename().isEmpty()||(fileattributes=askAttributes()).isEmpty()) {
+                setResult(QDialog::Rejected);
+                return;
+            }
+        }
+        parseAttributes(fileattributes);
+        saveListModel(getFilename(),fileattributes);
 	}
 }
 
 void GUI::YuvFileOpenDialog::chooseFile() {
 	auto filename=QFileDialog::getOpenFileName(this,tr("OpenYUV File"),QDir::homePath());
 	if(!filename.isEmpty())
-		lineEdit_selectedFile_->setText(filename);
+        lineEdit_selectedFile_->setText(filename);
 }
 
 void GUI::YuvFileOpenDialog::selectionChanged(const QItemSelection& selection) {
@@ -112,14 +272,17 @@ void GUI::YuvFileOpenDialog::selectionChanged(const QItemSelection& selection) {
 
 }
 
-void GUI::YuvFileOpenDialog::saveListModel(QString selectedFile) {
+void GUI::YuvFileOpenDialog::saveListModel(QString selectedFile,QString attributes) {
 	QStringList recentlyUsedFiles=model_recentlyUsed_->stringList();
 
 	if(!selectedFile.isEmpty()) {
 		if(recentlyUsedFiles.contains(selectedFile)) {
-			recentlyUsedFiles.removeAt(recentlyUsedFiles.indexOf(QRegExp(selectedFile)));
+            int index=recentlyUsedFiles.indexOf(QRegExp(selectedFile));
+            recentlyUsedFiles.removeAt(index);
+            attributes_.erase(attributes_.begin()+index);
 		}
 		recentlyUsedFiles.prepend(selectedFile);
+        attributes_.insert(attributes_.begin(),attributes);
 
 		model_recentlyUsed_->setStringList(recentlyUsedFiles);
 	}
@@ -129,8 +292,8 @@ void GUI::YuvFileOpenDialog::saveListModel(QString selectedFile) {
 		QTextStream stream(&outputFile);
 
 		int i=0;
-		for(auto& line:recentlyUsedFiles) {
-			stream<<line<<"\n";
+        for(auto& line:recentlyUsedFiles) {
+            stream<<line<<";"<<attributes_[i]<<"\n";
 
 			i++;
 			if(i>=MAX_SAVED_ENTRIES)
@@ -154,10 +317,15 @@ QStringListModel* GUI::YuvFileOpenDialog::getListModel() {
 		QStringList validFiles;
 		for(int i=0; i<10&&!input.atEnd(); i++) {
 			QString line=input.readLine();
-			QFileInfo fileToCheck(line);
+            QStringList linearr=line.split(";");
+            if(linearr.size()!=2) {
+                continue;
+            }
+            QFileInfo fileToCheck(linearr[0]);
 
-			if(fileToCheck.exists()&&fileToCheck.isFile()) {
-				validFiles.append(line);
+            if(fileToCheck.exists()&&fileToCheck.isFile()&&linearr[1].split(",").size()==5) {
+                validFiles.append(linearr[0]);
+                attributes_.push_back(linearr[1]);
 			}
 		}
 		model_recentlyUsed_->setStringList(validFiles);

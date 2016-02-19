@@ -8,13 +8,14 @@
 
 UndoRedo::RemoveVideo::RemoveVideo(GUI::AnalysisBoxContainer *boxContainer,
                                    GUI::AnalysisBox* box):anaBox_(box),container_(boxContainer) {
-    boxMemento_=std::move(anaBox_->getMemento());
+    boxMemento_=anaBox_->getMemento();
 }
 
 void UndoRedo::RemoveVideo::undo() {
-    anaBox_ = container_->insertNewBox(index_, &*boxMemento_);
+    anaBox_ = container_->insertBox(new GUI::AnalysisBox,index_);
+    anaBox_->restore(boxMemento_.get());
 }
 
 void UndoRedo::RemoveVideo::redo() {
-    index_=container_->removeVideo(anaBox_);
+    index_=container_->removeBox(anaBox_);
 }

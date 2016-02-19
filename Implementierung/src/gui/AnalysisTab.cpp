@@ -169,46 +169,21 @@ void GUI::AnalysisTab::resizeEvent(QResizeEvent *event) {
 }
 
 void GUI::AnalysisTab::loadRawVideo() {
-	YuvFileOpenDialog fileOpenDiag(this);
+    YuvFileOpenDialog fileOpenDiag(this);
 
-	int result=fileOpenDiag.exec();
+    int result=fileOpenDiag.exec();
 
-	if(!(result==QDialog::Accepted))
-		return;
+    if(result!=QDialog::Accepted)
+        return;
 
-	auto path=fileOpenDiag.getFilename();
+    auto path=fileOpenDiag.getFilename();
 
-	if(path.isEmpty())
-		return;
+    if(path.isEmpty())
+        return;
 
-	std::unique_ptr<YuvInfoDialog> infoDialog;
-	bool inputValid=true;
-	do {
-		infoDialog=std::make_unique<YuvInfoDialog>(this);
-		inputValid=true;
-
-		result=infoDialog->exec();
-		if(!(result==QDialog::Accepted))
-			return;
-
-		if(infoDialog->getFps()<=0) {
-			inputValid=false;
-			continue;
-		}
-		if(infoDialog->getHeight()<=0) {
-			inputValid=false;
-			continue;
-		}
-		if(infoDialog->getWidth()<=0) {
-			inputValid=false;
-			continue;
-		}
-
-	} while(!inputValid);
-
-	std::unique_ptr<Model::YuvVideo> yuvVideo =std::make_unique<Model::YuvVideo>(path,
-	        infoDialog->getPixelSheme(),
-	        infoDialog->getCompression(),infoDialog->getWidth(),infoDialog->getHeight(),infoDialog->getFps());
+    auto yuvVideo =std::make_unique<Model::YuvVideo>(path,
+            fileOpenDiag.getPixelSheme(),
+            fileOpenDiag.getCompression(),fileOpenDiag.getWidth(),fileOpenDiag.getHeight(),fileOpenDiag.getFps());
 
 	UndoRedo::UndoStack::getUndoStack().push(new UndoRedo::LoadAnalysisVideo(this,std::move(yuvVideo)));
 }

@@ -47,9 +47,10 @@ void GUI::AnalysisBoxContainer::restore(Memento::AnalysisBoxContainerMemento *me
         return;
 
     for(auto& mem:memento->getAnalysisBoxList()) {
-        appendNewBox()->restore(mem.get());
+        appendBox(new AnalysisBox)->restore(mem.get());
     }
 
+    updateUi();
 }
 
 void GUI::AnalysisBoxContainer::setParentTab(GUI::AnalysisTab *parent) {
@@ -61,17 +62,17 @@ GUI::AnalysisTab *GUI::AnalysisBoxContainer::getParentTab()
     return parent_;
 }
 
-GUI::AnalysisBox *GUI::AnalysisBoxContainer::appendVideo(QString path) {
-    auto newBox=appendNewBox();
-    newBox->setFile(path);
+GUI::AnalysisBox *GUI::AnalysisBoxContainer::appendBox(GUI::AnalysisBox *box)
+{
+    if(!box)
+        return nullptr;
 
-    newBox->showGraph(currentGraph_);
-    newBox->showAnalysisVideo(currentVideo_);
+    insertBox(box,boxes_.size());
 
-	return newBox;
+    return box;
 }
 
-int GUI::AnalysisBoxContainer::removeVideo(AnalysisBox* box) {
+int GUI::AnalysisBoxContainer::removeBox(AnalysisBox* box) {
     std::size_t i=0;
     for(; i<boxes_.size(); i++) {
 		if(boxes_[i]==box) {
@@ -149,26 +150,6 @@ int GUI::AnalysisBoxContainer::getIndex(GUI::AnalysisBox *box)
     return -1;
 }
 
-GUI::AnalysisBox *GUI::AnalysisBoxContainer::appendNewBox()
-{
-    AnalysisBox* newBox=new AnalysisBox;
-    v_boxes_->removeItem(spacer_);
-    v_boxes_->addWidget(newBox);
-    newBox->setTimer(timer_);
-    newBox->setControlPanel(controlPanel_);
-    newBox->setParentContainer(this);
-    boxes_.push_back(newBox);
-
-    QString objname=QString("x%1").arg((quintptr)newBox,QT_POINTER_SIZE * 2, 16, QChar('0'));
-    newBox->setObjectName(objname);
-
-    v_boxes_->addSpacerItem(spacer_);
-
-    updateUi();
-
-    return newBox;
-}
-
 GUI::AnalysisGraph GUI::AnalysisBoxContainer::getShownGraph()
 {
     return currentGraph_;
@@ -179,47 +160,23 @@ GUI::AnalysisVideo GUI::AnalysisBoxContainer::getShownVideo()
     return currentVideo_;
 }
 
-GUI::AnalysisBox *GUI::AnalysisBoxContainer::insertVideo(QString filname, int index)
+GUI::AnalysisBox *GUI::AnalysisBoxContainer::insertBox(GUI::AnalysisBox *box, int index)
 {
     if(index>boxes_.size())
         return nullptr;
-    AnalysisBox* newBox=new AnalysisBox;
-    v_boxes_->insertWidget(index,newBox);
-    newBox->setTimer(timer_);
-    newBox->setControlPanel(controlPanel_);
-    newBox->setParentContainer(this);
-    newBox->setFile(filname);
-    newBox->showGraph(currentGraph_);
-    newBox->showAnalysisVideo(currentVideo_);
-    boxes_.insert(boxes_.begin()+index,newBox);
 
-    QString objname=QString("x%1").arg((quintptr)newBox,QT_POINTER_SIZE * 2, 16, QChar('0'));
-    newBox->setObjectName(objname);
+    v_boxes_->insertWidget(index,box);
+    box->setTimer(timer_);
+    box->setControlPanel(controlPanel_);
+    box->setParentContainer(this);
+    boxes_.insert(boxes_.begin()+index,box);
+
+    QString objname=QString("x%1").arg((quintptr)box,QT_POINTER_SIZE * 2, 16, QChar('0'));
+    box->setObjectName(objname);
 
     updateUi();
 
-    return newBox;
-}
-GUI::AnalysisBox *GUI::AnalysisBoxContainer::insertNewBox(int index, Memento::AnalysisBoxMemento* memento)
-{
-    if(index>boxes_.size())
-        return nullptr;
-    AnalysisBox* newBox=new AnalysisBox;
-    v_boxes_->insertWidget(index,newBox);
-    newBox->setTimer(timer_);
-    newBox->setControlPanel(controlPanel_);
-    newBox->setParentContainer(this);
-    newBox->restore(memento);
-    newBox->showGraph(currentGraph_);
-    newBox->showAnalysisVideo(currentVideo_);
-    boxes_.insert(boxes_.begin()+index,newBox);
-
-    QString objname=QString("x%1").arg((quintptr)newBox,QT_POINTER_SIZE * 2, 16, QChar('0'));
-    newBox->setObjectName(objname);
-
-    updateUi();
-
-    return newBox;
+    return box;
 }
 
 void GUI::AnalysisBoxContainer::addVideo() {
@@ -298,6 +255,8 @@ void GUI::AnalysisBoxContainer::updateUi() {
 			boxes_[i]->setStyleSheet("QFrame#"+boxes_[i]->objectName()
 			                         +" {background-color:rgb(250,250,250);border-bottom-style:outset;border-bottom-color: black;border-bottom-width:1px;}");
 		}
+        boxes_[i]->showGraph(currentGraph_);
+        boxes_[i]->showAnalysisVideo(currentVideo_);
 	}
 	if(boxes_.size()>0) {
 		resize(width(),boxes_.size()*boxes_[0]->height()+65);

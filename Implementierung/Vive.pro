@@ -89,7 +89,6 @@ HEADERS += \
     src/model/filters/VintageFilter.h \
     src/undo_framework/AddFilter.h \
     src/undo_framework/AddVideo.h \
-    src/undo_framework/ApplyFilter.h \
     src/undo_framework/FilterReset.h \
     src/undo_framework/LoadAnalysisVideo.h \
     src/undo_framework/LoadFilterconfig.h \
@@ -205,7 +204,6 @@ SOURCES += \
     src/model/filters/VintageFilter.cpp \
     src/undo_framework/AddFilter.cpp \
     src/undo_framework/AddVideo.cpp \
-    src/undo_framework/ApplyFilter.cpp \
     src/undo_framework/FilterReset.cpp \
     src/undo_framework/LoadAnalysisVideo.cpp \
     src/undo_framework/LoadFilterconfig.cpp \

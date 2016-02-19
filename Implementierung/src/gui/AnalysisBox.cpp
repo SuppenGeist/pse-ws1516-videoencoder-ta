@@ -73,7 +73,7 @@ void GUI::AnalysisBox::restore(Memento::AnalysisBoxMemento *memento)
 
     if(!memento) {
         return;
-}
+    }
     setFile(memento->getPath());
     texteEdit_comment_->blockSignals(true);
     texteEdit_comment_->document()->setPlainText(memento->getComment());
@@ -110,6 +110,11 @@ void GUI::AnalysisBox::setFile(QString filename) {
 
     label_codec_->setText(origVideo_->getCodec());
     label_averageBitrate_->setText(QString::number(origVideo_->getAverageBitrate()));
+
+    if(parentContainer_) {
+        showGraph(parentContainer_->getShownGraph());
+        showAnalysisVideo(parentContainer_->getShownVideo());
+    }
 }
 
 void GUI::AnalysisBox::setTimer(std::shared_ptr<GUI::Timer> timer) {
@@ -127,6 +132,9 @@ void GUI::AnalysisBox::setControlPanel(std::shared_ptr<GlobalControlPanel> contr
 }
 
 void GUI::AnalysisBox::showGraph(GUI::AnalysisGraph graph) {
+    if(!origVideo_.get())
+        return;
+
 	switch(graph) {
 	case AnalysisGraph::BITRATE:
     {
@@ -221,6 +229,9 @@ void GUI::AnalysisBox::showGraph(GUI::AnalysisGraph graph) {
 
 void GUI::AnalysisBox::showAnalysisVideo(GUI::AnalysisVideo video)
 {
+    if(!origVideo_.get())
+        return;
+
     switch(video) {
     case AnalysisVideo::MACROBLOCK:
         anaVidPlayer_->setVideo(&origVideo_->getMacroBlockVideo(),false);

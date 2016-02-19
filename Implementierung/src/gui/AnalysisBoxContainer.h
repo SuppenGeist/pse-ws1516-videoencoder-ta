@@ -45,9 +45,9 @@ class AnalysisBoxContainer: public QFrame {
 
     AnalysisTab* getParentTab();
 
-	AnalysisBox* appendVideo(QString path);
+    AnalysisBox* appendBox(AnalysisBox* box);
 
-    int removeVideo(AnalysisBox* box);
+    int removeBox(AnalysisBox* box);
 
 	void clear();
 
@@ -65,15 +65,11 @@ class AnalysisBoxContainer: public QFrame {
 
     int getIndex(AnalysisBox* box);
 
-    AnalysisBox* appendNewBox();
-
     AnalysisGraph getShownGraph();
 
     AnalysisVideo getShownVideo();
 
-    AnalysisBox* insertVideo(QString filname,int index);
-
-    AnalysisBox* insertNewBox(int index,Memento::AnalysisBoxMemento* memento);
+    AnalysisBox* insertBox(AnalysisBox* box,int index);
 
   private slots:
 	void addVideo();

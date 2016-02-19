@@ -4,6 +4,7 @@
 #include <QString>
 
 #include "../gui/AnalysisBoxContainer.h"
+#include "../gui/AnalysisBox.h"
 
 
 UndoRedo::AddVideo::AddVideo(GUI::AnalysisBoxContainer* anaBoxContainer,
@@ -11,9 +12,10 @@ UndoRedo::AddVideo::AddVideo(GUI::AnalysisBoxContainer* anaBoxContainer,
 }
 
 void UndoRedo::AddVideo::undo() {
-	anaBoxContainer_->removeVideo(box_);
+    anaBoxContainer_->removeBox(box_);
 }
 
 void UndoRedo::AddVideo::redo() {
-	box_=anaBoxContainer_->appendVideo(filename_);
+    box_=anaBoxContainer_->appendBox(new GUI::AnalysisBox);
+    box_->setFile(filename_);
 }
