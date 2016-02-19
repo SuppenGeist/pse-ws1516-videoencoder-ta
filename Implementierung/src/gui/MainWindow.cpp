@@ -55,7 +55,7 @@ void GUI::MainWindow::saveAs() {
 	                   tr("Text Files (*.txt)"));
 	if(fileName.length() > 0) {
 		loadedProject_->setPath(fileName);
-		Utility::ProjectWriter w = Utility::ProjectWriter(*loadedProject_);
+        Utility::ProjectWriter w (*loadedProject_);
 		w.saveProject();
 	}
 }
@@ -76,7 +76,7 @@ void GUI::MainWindow::saveProject() {
 	if (loadedProject_->getPath() == NULL) {
 		saveAs();
 	} else {
-		Utility::ProjectWriter w = Utility::ProjectWriter(*loadedProject_);
+        Utility::ProjectWriter w (*loadedProject_);
 		w.saveProject();
 	}
 }
