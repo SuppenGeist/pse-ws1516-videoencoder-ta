@@ -73,6 +73,8 @@ class AnalysisBoxContainer: public QFrame {
 
     AnalysisBox* insertVideo(QString filname,int index);
 
+    AnalysisBox* insertNewBox(int index,Memento::AnalysisBoxMemento* memento);
+
   private slots:
 	void addVideo();
 

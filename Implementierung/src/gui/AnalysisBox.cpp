@@ -70,11 +70,14 @@ std::unique_ptr<Memento::AnalysisBoxMemento> GUI::AnalysisBox::getMemento()
 
 void GUI::AnalysisBox::restore(Memento::AnalysisBoxMemento *memento)
 {
-    if(!memento)
-        return;
 
+    if(!memento) {
+        return;
+}
     setFile(memento->getPath());
+    texteEdit_comment_->blockSignals(true);
     texteEdit_comment_->document()->setPlainText(memento->getComment());
+    texteEdit_comment_->blockSignals(false);
 }
 
 void GUI::AnalysisBox::setParentContainer(GUI::AnalysisBoxContainer *container) {

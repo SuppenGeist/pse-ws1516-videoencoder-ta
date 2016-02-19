@@ -200,6 +200,27 @@ GUI::AnalysisBox *GUI::AnalysisBoxContainer::insertVideo(QString filname, int in
 
     return newBox;
 }
+GUI::AnalysisBox *GUI::AnalysisBoxContainer::insertNewBox(int index, Memento::AnalysisBoxMemento* memento)
+{
+    if(index>boxes_.size())
+        return nullptr;
+    AnalysisBox* newBox=new AnalysisBox;
+    v_boxes_->insertWidget(index,newBox);
+    newBox->setTimer(timer_);
+    newBox->setControlPanel(controlPanel_);
+    newBox->setParentContainer(this);
+    newBox->restore(memento);
+    newBox->showGraph(currentGraph_);
+    newBox->showAnalysisVideo(currentVideo_);
+    boxes_.insert(boxes_.begin()+index,newBox);
+
+    QString objname=QString("x%1").arg((quintptr)newBox,QT_POINTER_SIZE * 2, 16, QChar('0'));
+    newBox->setObjectName(objname);
+
+    updateUi();
+
+    return newBox;
+}
 
 void GUI::AnalysisBoxContainer::addVideo() {
 	if(!parent_)

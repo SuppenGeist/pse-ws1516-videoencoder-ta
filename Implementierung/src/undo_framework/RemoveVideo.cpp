@@ -6,13 +6,13 @@
 #include "../gui/AnalysisBoxContainer.h"
 #include "../memento/AnalysisBoxMemento.h"
 
-UndoRedo::RemoveVideo::RemoveVideo(GUI::AnalysisBoxContainer *boxConatiner,
-                                   GUI::AnalysisBox* box):anaBox_(box),container_(boxConatiner) {
-	filename_=anaBox_->getFilename();
+UndoRedo::RemoveVideo::RemoveVideo(GUI::AnalysisBoxContainer *boxContainer,
+                                   GUI::AnalysisBox* box):anaBox_(box),container_(boxContainer) {
+    boxMemento_=std::move(anaBox_->getMemento());
 }
 
 void UndoRedo::RemoveVideo::undo() {
-    anaBox_ = container_->insertVideo(filename_,index_);
+    anaBox_ = container_->insertNewBox(index_, &*boxMemento_);
 }
 
 void UndoRedo::RemoveVideo::redo() {

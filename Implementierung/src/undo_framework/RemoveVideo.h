@@ -1,7 +1,10 @@
 #ifndef __RemoveVideo_h__
 #define __RemoveVideo_h__
 
+#include <memory>
 #include <QUndoCommand>
+
+#include "../memento/AnalysisBoxMemento.h"
 
 namespace GUI {
 class AnalysisBox;
@@ -19,7 +22,7 @@ class RemoveVideo: public QUndoCommand {
 	 * @brief RemoveVideo The AnalysisBoxContainer to operate on.
 	 * @param container The video to remove.
 	 */
-	RemoveVideo(GUI::AnalysisBoxContainer* boxConatiner,GUI::AnalysisBox* box);
+    RemoveVideo(GUI::AnalysisBoxContainer* boxContainer, GUI::AnalysisBox* box);
 
 	/**
 	 * @brief undo Re adds the removed video to the analysis tab.
@@ -32,7 +35,7 @@ class RemoveVideo: public QUndoCommand {
 	void redo();
 
   private:
-	QString                     filename_;
+    std::unique_ptr<Memento::AnalysisBoxMemento>  boxMemento_;
 	GUI::AnalysisBox*           anaBox_;
 	GUI::AnalysisBoxContainer*  container_;
     int                         index_;
