@@ -6,19 +6,18 @@
 
 #include "../../../src/model/filters/EdgeFilter.h"
 
-class TestEdgeFilter : public QObject
-{
-    Q_OBJECT
+class TestEdgeFilter : public QObject {
+	Q_OBJECT
 
-private slots:
-    void init();
+  private slots:
+	void init();
 
-    void testGetName();
+	void testGetName();
 
-    void testGetFilterDescription();
+	void testGetFilterDescription();
 
-private:
-    Model::EdgeFilter   filter_;
+  private:
+	Model::EdgeFilter   filter_;
 };
 
 #endif // TESTEDGEFILTER_H

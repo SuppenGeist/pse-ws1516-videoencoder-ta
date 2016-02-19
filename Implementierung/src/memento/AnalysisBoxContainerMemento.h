@@ -12,26 +12,26 @@ namespace Memento {
  */
 class AnalysisBoxContainerMemento {
 
-public:
-    /**
-     * @brief AnalysisBoxContainerMemento Constructor.
-     */
-    AnalysisBoxContainerMemento();
+  public:
+	/**
+	 * @brief AnalysisBoxContainerMemento Constructor.
+	 */
+	AnalysisBoxContainerMemento();
 
-    /**
-     * @brief getAnalysisBoxList Returns a list of AnalysisBox mementos.
-     * @return The list of AnalysisBoxMemento.
-     */
-    std::vector<std::unique_ptr<Memento::AnalysisBoxMemento>>& getAnalysisBoxList();
+	/**
+	 * @brief getAnalysisBoxList Returns a list of AnalysisBox mementos.
+	 * @return The list of AnalysisBoxMemento.
+	 */
+	std::vector<std::unique_ptr<Memento::AnalysisBoxMemento>>& getAnalysisBoxList();
 
-    /**
-     * @brief addMemento Sets the list of AnalysisBoxMemento
-     * @param memento The list of the mementos.
-     */
-    void addMemento(std::unique_ptr<AnalysisBoxMemento> memento);
+	/**
+	 * @brief addMemento Sets the list of AnalysisBoxMemento
+	 * @param memento The list of the mementos.
+	 */
+	void addMemento(std::unique_ptr<AnalysisBoxMemento> memento);
 
-private:
-    std::vector<std::unique_ptr<Memento::AnalysisBoxMemento>> mementoList_;
+  private:
+	std::vector<std::unique_ptr<Memento::AnalysisBoxMemento>> mementoList_;
 };
 }
 

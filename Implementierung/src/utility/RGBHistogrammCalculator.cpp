@@ -10,64 +10,63 @@
 #include <QDebug>
 
 Utility::RGBHistogrammCalculator::RGBHistogrammCalculator(Model::Video& video) {
-    video_ = &video;
+	video_ = &video;
 }
 
-Utility::RGBHistogrammCalculator::~RGBHistogrammCalculator()
-{
-    isRunning_=false;
-    if(calculator_.joinable()) {
-        calculator_.join();
-    }
+Utility::RGBHistogrammCalculator::~RGBHistogrammCalculator() {
+	isRunning_=false;
+	if(calculator_.joinable()) {
+		calculator_.join();
+	}
 }
 
-void Utility::RGBHistogrammCalculator::calculate(Model::GraphVideo *targetRed, Model::GraphVideo *targetGreen, Model::GraphVideo *targetBlue) {
-    if(!targetBlue||!targetGreen||!targetRed)
-        return;
+void Utility::RGBHistogrammCalculator::calculate(Model::GraphVideo *targetRed,
+        Model::GraphVideo *targetGreen, Model::GraphVideo *targetBlue) {
+	if(!targetBlue||!targetGreen||!targetRed)
+		return;
 
-    red_=targetRed;
-    blue_=targetBlue;
-    green_=targetGreen;
+	red_=targetRed;
+	blue_=targetBlue;
+	green_=targetGreen;
 
-    calculator_=std::thread(&RGBHistogrammCalculator::calculateP,this);
+	calculator_=std::thread(&RGBHistogrammCalculator::calculateP,this);
 }
 
-void Utility::RGBHistogrammCalculator::calculateP()
-{
-    isRunning_=true;
-    std::size_t i=0;
-    do {
-    for(; i < video_->getNumberOfFrames()&&isRunning_; i++) {
-        QImage *currentFrame = video_->getFrame(i);
+void Utility::RGBHistogrammCalculator::calculateP() {
+	isRunning_=true;
+	std::size_t i=0;
+	do {
+		for(; i < video_->getNumberOfFrames()&&isRunning_; i++) {
+			QImage *currentFrame = video_->getFrame(i);
 
-        auto redg=std::make_unique<Model::Graph>();
-        auto greeng=std::make_unique<Model::Graph>();
-        auto blueg=std::make_unique<Model::Graph>();
+			auto redg=std::make_unique<Model::Graph>();
+			auto greeng=std::make_unique<Model::Graph>();
+			auto blueg=std::make_unique<Model::Graph>();
 
-        for(int j = 0; j < currentFrame->height(); j++) {
-            for(int k = 0; k < currentFrame->width(); k++) {
-                auto pixel=currentFrame->pixel(k,j);
-                int blue=qBlue(pixel);
-                blueg->setValue(blue,blueg->getValue(blue)+1);
+			for(int j = 0; j < currentFrame->height(); j++) {
+				for(int k = 0; k < currentFrame->width(); k++) {
+					auto pixel=currentFrame->pixel(k,j);
+					int blue=qBlue(pixel);
+					blueg->setValue(blue,blueg->getValue(blue)+1);
 
-                int red=qRed(pixel);
-                redg->setValue(red,redg->getValue(red)+1);
+					int red=qRed(pixel);
+					redg->setValue(red,redg->getValue(red)+1);
 
-                int green=qGreen(pixel);
-                greeng->setValue(green,greeng->getValue(green)+1);
-            }
-        }
+					int green=qGreen(pixel);
+					greeng->setValue(green,greeng->getValue(green)+1);
+				}
+			}
 
-        for(int k=0;k<256;k++) {
-            blueg->setValue(k,blueg->getValue(k)+1);
-            redg->setValue(k,redg->getValue(k)+1);
-            greeng->setValue(k,greeng->getValue(k)+1);
-        }
+			for(int k=0; k<256; k++) {
+				blueg->setValue(k,blueg->getValue(k)+1);
+				redg->setValue(k,redg->getValue(k)+1);
+				greeng->setValue(k,greeng->getValue(k)+1);
+			}
 
-        red_->appendGraph(std::move(redg));
-        green_->appendGraph(std::move(greeng));
-        blue_->appendGraph(std::move(blueg));
-    }
-    }while (isRunning_&&!video_->isComplete());
-    isRunning_=false;
+			red_->appendGraph(std::move(redg));
+			green_->appendGraph(std::move(greeng));
+			blue_->appendGraph(std::move(blueg));
+		}
+	} while (isRunning_&&!video_->isComplete());
+	isRunning_=false;
 }

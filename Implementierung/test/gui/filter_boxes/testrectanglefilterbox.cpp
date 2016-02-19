@@ -1,6 +1,5 @@
 #include "testrectanglefilterbox.h"
 
-void TestRectangleFilterBox::init()
-{
+void TestRectangleFilterBox::init() {
 
 }

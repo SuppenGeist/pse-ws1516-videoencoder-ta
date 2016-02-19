@@ -20,7 +20,7 @@ GUI::PlayerControlPanel::PlayerControlPanel(QWidget* parent):QFrame(parent) {
 	connect(button_nextFrame_,SIGNAL(clicked()),this,SLOT(nextFrame()));
 	connect(button_previousFrame_,SIGNAL(clicked()),this,SLOT(previousFrame()));
 	connect(comboBox_speed_,SIGNAL(currentIndexChanged(int)),this,SLOT(changeSpeed(int)));
-    connect(slider_timeline_,SIGNAL(sliderMoved(int)),this,SLOT(changeTimeline(int)));
+	connect(slider_timeline_,SIGNAL(sliderMoved(int)),this,SLOT(changeTimeline(int)));
 
 	connect(&updater_,SIGNAL(timeout()),this,SLOT(updateUi()));
 	updater_.start(500);
@@ -43,7 +43,7 @@ void GUI::PlayerControlPanel::updateUi() {
 			slider_timeline_->setRange(0,0);
 			return;
 		}
-    }
+	}
 
 	slider_timeline_->setRange(0,player->getNumberOfFrames()-1);
 	slider_timeline_->setValue(player->getPosition());
@@ -130,7 +130,7 @@ void GUI::PlayerControlPanel::createUi() {
 	v_layout->addLayout(h_layout);
 
 
-    slider_timeline_=new QSlider(Qt::Horizontal);
+	slider_timeline_=new QSlider(Qt::Horizontal);
 
 	v_layout->addWidget(slider_timeline_);
 
@@ -243,9 +243,9 @@ void GUI::PlayerControlPanel::changeSpeed(int index) {
 
 void GUI::PlayerControlPanel::changeTimeline(int value) {
 	if(masterPlayer_)
-        masterPlayer_->setPosition(value);
+		masterPlayer_->setPosition(value);
 
-    for(auto player:players_) {
-        player->setPosition(value);
-    }
+	for(auto player:players_) {
+		player->setPosition(value);
+	}
 }

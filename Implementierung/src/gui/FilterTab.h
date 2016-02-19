@@ -66,7 +66,7 @@ class FilterTab: public QFrame {
 
 	void setFilterList(std::unique_ptr<Model::FilterList> filterlist);
 
-    void resetFilters();
+	void resetFilters();
 
 	void showFilteredVideo();
 
@@ -124,12 +124,12 @@ class FilterTab: public QFrame {
 	std::unique_ptr<Model::AVVideo>     originalPreviewFrames_;
 	std::unique_ptr<Model::Video>       filteredPreviewFrames_;
 	std::unique_ptr<Utility::FilterApplier> previewCalculator_;
-    std::unique_ptr<Utility::FilterApplier> filterApplier_;
-    std::unique_ptr<Model::Video>       filteredVideo_;
+	std::unique_ptr<Utility::FilterApplier> filterApplier_;
+	std::unique_ptr<Model::Video>       filteredVideo_;
 
 	bool                                isFilteredVideoShown_;
 
-    std::unique_ptr<Utility::YuvFileSaver> safer_;
+	std::unique_ptr<Utility::YuvFileSaver> safer_;
 
 	GUI::MainWindow*                    mainWindow_;
 

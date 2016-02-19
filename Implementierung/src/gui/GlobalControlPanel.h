@@ -48,7 +48,7 @@ class GlobalControlPanel: public ControlPanel {
 	 * @brief setPosition Sends a setPosition signal to the players.
 	 * @param position The position to show.
 	 */
-    void setPosition(int position);
+	void setPosition(int position);
 
 
 	/**
@@ -57,7 +57,7 @@ class GlobalControlPanel: public ControlPanel {
 	 */
 	void setSpeed(float speed);
 
-    int getPosition();
+	int getPosition();
 };
 }
 

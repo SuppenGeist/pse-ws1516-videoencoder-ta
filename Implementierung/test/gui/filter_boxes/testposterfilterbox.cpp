@@ -1,6 +1,5 @@
 #include "testposterfilterbox.h"
 
-void TestPosterFilterBox::init()
-{
+void TestPosterFilterBox::init() {
 
 }

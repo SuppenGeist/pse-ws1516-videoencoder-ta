@@ -6,25 +6,24 @@
 
 #include "../../../src/model/filters/BrightnessFilter.h"
 
-class TestBrightnessFilter : public QObject
-{
-    Q_OBJECT
+class TestBrightnessFilter : public QObject {
+	Q_OBJECT
 
-private slots:
-    void init();
+  private slots:
+	void init();
 
-    void testSetIntensity();
+	void testSetIntensity();
 
-    void testRestore();
+	void testRestore();
 
-    void testGetSaveString();
+	void testGetSaveString();
 
-    void testFilterCopy();
+	void testFilterCopy();
 
-    void testGetFilterDescription();
+	void testGetFilterDescription();
 
-private:
-    Model::BrightnessFilter   filter_;
+  private:
+	Model::BrightnessFilter   filter_;
 };
 
 #endif // TESTBRIGHTNESSFILTER_H

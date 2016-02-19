@@ -8,19 +8,18 @@
 
 namespace Model {
 
-class GraphVideo
-{
-public:
-    GraphVideo();
+class GraphVideo {
+  public:
+	GraphVideo();
 
-    void appendGraph(std::unique_ptr<Graph> graph);
+	void appendGraph(std::unique_ptr<Graph> graph);
 
-    Graph* getGraph(std::size_t index);
+	Graph* getGraph(std::size_t index);
 
-    std::size_t getNumberOfGraphs();
+	std::size_t getNumberOfGraphs();
 
-private:
-    std::vector<std::unique_ptr<Graph>>  graphs_;
+  private:
+	std::vector<std::unique_ptr<Graph>>  graphs_;
 };
 
 }

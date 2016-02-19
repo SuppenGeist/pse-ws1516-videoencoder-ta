@@ -75,7 +75,7 @@ class ForwardPlayer: public Player {
 	 * @brief setSpeed Sets the position.
 	 * @param speed The new position.
 	 */
-    void setPosition(std::size_t position) override;
+	void setPosition(std::size_t position) override;
 
 	/**
 	 * Dont call this method.

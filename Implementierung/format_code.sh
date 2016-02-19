@@ -17,11 +17,13 @@ AFLAGS="-t -v -r -xC100 -A14"
 #format all .cc files
 printf "\nFormatting all *.cc files...\n\n"
 astyle ${AFLAGS} "src/*.cpp" 
+astyle ${AFLAGS} "test/*.cpp" 
 
 
 #format all header files
 printf "\n\nFormatting all header files...\n\n"
 astyle ${AFLAGS} "src/*.h" 
+astyle ${AFLAGS} "test/*.h" 
 
 #delete all *.orig files created by astyle
 printf "\n\nDeleting all temporary files...\n"

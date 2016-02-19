@@ -18,7 +18,7 @@ Utility::Yuv420FileSaver::~Yuv420FileSaver() {
 	isRunning_=false;
 	if(safer_.joinable()) {
 		safer_.join();
-    }
+	}
 }
 
 void Utility::Yuv420FileSaver::save() {
@@ -57,8 +57,8 @@ void Utility::Yuv420FileSaver::saveP() {
 		if(video_->isComplete())
 			break;
 	} while(isRunning_);
-    bool buffer=isRunning_;
-    isRunning_=false;
-    filterTab_->saveComplete(buffer,QFileInfo(file_).fileName());
+	bool buffer=isRunning_;
+	isRunning_=false;
+	filterTab_->saveComplete(buffer,QFileInfo(file_).fileName());
 }
 

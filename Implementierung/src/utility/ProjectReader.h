@@ -20,25 +20,25 @@ namespace Utility {
 */
 class ProjectReader {
   public:
-    /**
-     * @brief ProjectReader Constructor.
-     * @param path The absolute path to the project file.
-     */
+	/**
+	 * @brief ProjectReader Constructor.
+	 * @param path The absolute path to the project file.
+	 */
 	ProjectReader(QString path);
 
-    ~ProjectReader();
+	~ProjectReader();
 
-    /**
-     * @brief readProject Reads a project from a file.
-     * @return The loaded project.
-     */
-    std::unique_ptr<Model::Project> readProject();
+	/**
+	 * @brief readProject Reads a project from a file.
+	 * @return The loaded project.
+	 */
+	std::unique_ptr<Model::Project> readProject();
 
 
-private:
-  QString   path_;
-  QFile     file_;
-  QTextStream dataStream_;
+  private:
+	QString   path_;
+	QFile     file_;
+	QTextStream dataStream_;
 
 };
 }

@@ -2,10 +2,9 @@
 #define UNDO_FRAMEWORKTESTSUITE_H
 
 
-class undo_frameworktestsuite
-{
-public:
-    undo_frameworktestsuite();
+class undo_frameworktestsuite {
+  public:
+	undo_frameworktestsuite();
 };
 
 #endif // UNDO_FRAMEWORKTESTSUITE_H

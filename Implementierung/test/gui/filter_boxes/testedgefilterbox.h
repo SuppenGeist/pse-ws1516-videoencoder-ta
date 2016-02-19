@@ -4,13 +4,12 @@
 #include <QObject>
 #include <QtTest/QtTest>
 
-class TestEdgeFilterBox : public QObject
-{
-    Q_OBJECT
+class TestEdgeFilterBox : public QObject {
+	Q_OBJECT
 
 
-    private slots:
-    void init();
+  private slots:
+	void init();
 };
 
 #endif // TESTEDGEFILTERBOX_H

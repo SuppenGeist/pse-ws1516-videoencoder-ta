@@ -59,7 +59,7 @@ class PlayerControlPanel: public QFrame, public ControlPanel {
 	 * @brief changeTimeline Slot for slider_timeLine.valueChanged(int) signal.
 	 * @param value The new valueof the slider.
 	 */
-    void changeTimeline(int value);
+	void changeTimeline(int value);
 
   public slots:
 	/**
@@ -78,7 +78,7 @@ class PlayerControlPanel: public QFrame, public ControlPanel {
 	QPushButton*    button_pause_;
 	QComboBox*      comboBox_speed_;
 	QSlider*        slider_timeline_;
-    QTimer          updater_;
+	QTimer          updater_;
 
 	/**
 	 * @brief createUi Creates the ui.

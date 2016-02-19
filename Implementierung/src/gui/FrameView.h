@@ -49,7 +49,7 @@ class FrameView: public QWidget {
 
 	QImage      currentFrame_;
 	QImage*     originalFrame_;
-    QPixmap     drawedImage_;
+	QPixmap     drawedImage_;
 
 	/**
 	 * @brief updateOffset Updates the offset at which the image is drawn within the widget.

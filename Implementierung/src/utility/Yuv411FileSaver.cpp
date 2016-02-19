@@ -97,9 +97,9 @@ void Utility::Yuv411FileSaver::saveP() {
 		isRunning_=false;
 		throw std::logic_error("Should not get here");
 	}
-    bool buffer=isRunning_;
-    isRunning_=false;
-    filterTab_->saveComplete(buffer,QFileInfo(file_).fileName());
+	bool buffer=isRunning_;
+	isRunning_=false;
+	filterTab_->saveComplete(buffer,QFileInfo(file_).fileName());
 }
 
 Utility::Yuv411Vector Utility::Yuv411FileSaver::Rgb888ToYuv411(QRgb pixel1, QRgb pixel2,

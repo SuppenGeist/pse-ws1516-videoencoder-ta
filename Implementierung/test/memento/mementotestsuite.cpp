@@ -1,11 +1,9 @@
 #include "mementotestsuite.h"
 
-MementoTestSuite::MementoTestSuite(int argc, char *argv[]):argc_(argc),argv_(argv)
-{
+MementoTestSuite::MementoTestSuite(int argc, char *argv[]):argc_(argc),argv_(argv) {
 
 }
 
-void MementoTestSuite::testMemento()
-{
+void MementoTestSuite::testMemento() {
 
 }

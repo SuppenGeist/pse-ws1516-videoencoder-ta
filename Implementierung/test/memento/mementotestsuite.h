@@ -2,17 +2,16 @@
 #define MEMENTOTESTSUITE_H
 
 
-class MementoTestSuite
-{
-    public:
-    explicit MementoTestSuite(int argc, char *argv[]);
+class MementoTestSuite {
+  public:
+	explicit MementoTestSuite(int argc, char *argv[]);
 
 
-    void testMemento();
+	void testMemento();
 
-    private:
-    int argc_;
-    char** argv_;
+  private:
+	int argc_;
+	char** argv_;
 };
 
 #endif // MEMENTOTESTSUITE_H

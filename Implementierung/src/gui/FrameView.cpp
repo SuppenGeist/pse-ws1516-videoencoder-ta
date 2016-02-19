@@ -26,7 +26,7 @@ void GUI::FrameView::setFrame(QImage& frame) {
 	originalFrame_=&frame;
 
 	currentFrame_=originalFrame_->scaled(width()-2,height()-2,Qt::KeepAspectRatio);
-    drawedImage_=QPixmap::fromImage(currentFrame_);
+	drawedImage_=QPixmap::fromImage(currentFrame_);
 
 	updateOffset();
 	update();
@@ -43,7 +43,7 @@ void GUI::FrameView::resizeEvent(QResizeEvent* event) {
 
 	QSize eRect=event->size();
 	currentFrame_=originalFrame_->scaled(eRect.width()-2,eRect.height()-2,Qt::KeepAspectRatio);
-    drawedImage_=QPixmap::fromImage(currentFrame_);
+	drawedImage_=QPixmap::fromImage(currentFrame_);
 
 	updateOffset();
 	update();
@@ -67,7 +67,7 @@ void GUI::FrameView::paintEvent(QPaintEvent* event) {
 	//Draw the frame
 	if(originalFrame_) {
 		p.drawPixmap(xOffset_+1,yOffset_+1,currentFrame_.width(),currentFrame_.height(),
-                    drawedImage_);
+		             drawedImage_);
 	}
 
 	p.end();

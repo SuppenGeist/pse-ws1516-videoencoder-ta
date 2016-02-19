@@ -12,30 +12,30 @@ namespace Utility {
 class RGBDifferenceCalculator {
 
   public:
-    /**
-     * @brief RGBDifferenceCalculator Constructor.
-     * @param referenceVideo The reference video->
-     * @param video The video that is compared to the reference video->
-     */
+	/**
+	 * @brief RGBDifferenceCalculator Constructor.
+	 * @param referenceVideo The reference video->
+	 * @param video The video that is compared to the reference video->
+	 */
 	RGBDifferenceCalculator(Model::Video& referenceVideo, Model::Video& video);
 
-    ~RGBDifferenceCalculator();
+	~RGBDifferenceCalculator();
 
-    /**
-     * @brief calculateVideo Calculates the RGB difference between two videos.
-     * @param target The video the calculated frames are added to.
-     */
-    void calculateVideo(Model::Video* target);
+	/**
+	 * @brief calculateVideo Calculates the RGB difference between two videos.
+	 * @param target The video the calculated frames are added to.
+	 */
+	void calculateVideo(Model::Video* target);
 
-private:
-  Model::Video* referenceVideo_;
-  Model::Video* video_;
-  Model::Video* target_;
+  private:
+	Model::Video* referenceVideo_;
+	Model::Video* video_;
+	Model::Video* target_;
 
-  std::thread calculator_;
-  bool isRunning_;
+	std::thread calculator_;
+	bool isRunning_;
 
-  void calculateP();
+	void calculateP();
 };
 }
 

@@ -6,23 +6,22 @@
 
 #include "../../../src/model/filters/PosterFilter.h"
 
-class TestPosterFilter : public QObject
-{
-    Q_OBJECT
+class TestPosterFilter : public QObject {
+	Q_OBJECT
 
-private slots:
-    void init();
+  private slots:
+	void init();
 
-    void testSetNumberOfColors();
+	void testSetNumberOfColors();
 
-    void testRestore();
+	void testRestore();
 
-    void testGetSaveString();
+	void testGetSaveString();
 
-    void testFilterCopy();
+	void testFilterCopy();
 
-private:
-    Model::PosterFilter   filter_;
+  private:
+	Model::PosterFilter   filter_;
 };
 
 

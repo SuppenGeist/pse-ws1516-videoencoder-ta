@@ -6,19 +6,18 @@
 
 #include "../../../src/model/filters/SepiaFilter.h"
 
-class TestSepiaFilter : public QObject
-{
-    Q_OBJECT
+class TestSepiaFilter : public QObject {
+	Q_OBJECT
 
-private slots:
-    void init();
+  private slots:
+	void init();
 
-    void testGetName();
+	void testGetName();
 
-    void testGetFilterDescription();
+	void testGetFilterDescription();
 
-private:
-    Model::SepiaFilter   filter_;
+  private:
+	Model::SepiaFilter   filter_;
 };
 
 #endif // TESTSEPIAFILTER_H

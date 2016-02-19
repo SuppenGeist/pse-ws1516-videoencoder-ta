@@ -6,23 +6,22 @@
 
 #include "../../../src/model/filters/RectangleFilter.h"
 
-class TestRectangleFilter : public QObject
-{
-    Q_OBJECT
+class TestRectangleFilter : public QObject {
+	Q_OBJECT
 
-private slots:
-    void init();
+  private slots:
+	void init();
 
-    void testSetOpacity();
+	void testSetOpacity();
 
-    void testRestore();
+	void testRestore();
 
-    void testGetFilterDescription();
+	void testGetFilterDescription();
 
-    void testFilterCopy();
+	void testFilterCopy();
 
-private:
-    Model::RectangleFilter   filter_;
+  private:
+	Model::RectangleFilter   filter_;
 };
 
 #endif // TESTRECTANGLEFILTER_H

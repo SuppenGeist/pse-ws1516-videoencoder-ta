@@ -23,25 +23,25 @@ class PsnrCalculator {
 	 */
 	PsnrCalculator(Model::Video& referenceVideo, Model::Video& compareVideo);
 
-    ~PsnrCalculator();
+	~PsnrCalculator();
 
 	/**
 	 * @brief calculate Calculates the psnr graph.
 	 * @return The calculated psnr graph.
 	 */
-    void calculate(Model::Graph* target);
+	void calculate(Model::Graph* target);
 
   private:
 
 	Model::Video* referenceVideo_;
 	Model::Video* video_;
-    std::thread     calculator_;
-    Model::Graph*   target_;
-    bool isRunning_;
+	std::thread     calculator_;
+	Model::Graph*   target_;
+	bool isRunning_;
 
-    double calculateMeanSquareError(QImage* frame1, QImage* frame2);
+	double calculateMeanSquareError(QImage* frame1, QImage* frame2);
 
-    void calculateP();
+	void calculateP();
 };
 }
 

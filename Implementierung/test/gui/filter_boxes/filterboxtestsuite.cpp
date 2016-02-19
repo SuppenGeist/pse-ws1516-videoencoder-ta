@@ -24,12 +24,10 @@
 #include "testvintagefilterbox.h"
 
 
-FilterBoxTestSuite::FilterBoxTestSuite(int argc,char* argv[]):argc_(argc),argv_(argv)
-{
+FilterBoxTestSuite::FilterBoxTestSuite(int argc,char* argv[]):argc_(argc),argv_(argv) {
 
 }
-void FilterBoxTestSuite::testAllFilterBoxes()
-{
-    //TestBlurFilterBox testBlurFilterBox();
-    //QTest::qExec(&testBlurFilterBox,argc_,argv_);
+void FilterBoxTestSuite::testAllFilterBoxes() {
+	//TestBlurFilterBox testBlurFilterBox();
+	//QTest::qExec(&testBlurFilterBox,argc_,argv_);
 }

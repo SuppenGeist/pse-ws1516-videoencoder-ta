@@ -6,25 +6,24 @@
 
 #include "../../../src/model/filters/SharpnessFilter.h"
 
-class TestSharpnessFilter : public QObject
-{
-    Q_OBJECT
+class TestSharpnessFilter : public QObject {
+	Q_OBJECT
 
-private slots:
-    void init();
+  private slots:
+	void init();
 
-    void testSetIntensity();
+	void testSetIntensity();
 
-    void testRestore();
+	void testRestore();
 
-    void testGetSaveString();
+	void testGetSaveString();
 
-    void testFilterCopy();
+	void testFilterCopy();
 
-    void testGetFilterdescrition();
+	void testGetFilterdescrition();
 
-private:
-    Model::SharpnessFilter   filter_;
+  private:
+	Model::SharpnessFilter   filter_;
 };
 
 

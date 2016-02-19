@@ -2,16 +2,15 @@
 #define GUITESTSUITE_H
 
 
-class GUITestSuite
-{
-    public:
-    explicit GUITestSuite(int argc, char *argv[]);
+class GUITestSuite {
+  public:
+	explicit GUITestSuite(int argc, char *argv[]);
 
-    void testGUI();
+	void testGUI();
 
-private:
-    int argc_;
-    char** argv_;
+  private:
+	int argc_;
+	char** argv_;
 };
 
 #endif // GUITESTSUITE_H

@@ -23,30 +23,31 @@ class AnalysisTabMemento {
 
 	void setRawVideo(Model::YuvVideo* video);
 
-    Model::YuvVideo* getRawVideo();
+	Model::YuvVideo* getRawVideo();
 
-    void setAnalysisBoxContainerMemento(std::unique_ptr<Memento::AnalysisBoxContainerMemento> analysisBoxMemento);
+	void setAnalysisBoxContainerMemento(std::unique_ptr<Memento::AnalysisBoxContainerMemento>
+	                                    analysisBoxMemento);
 
-    Memento::AnalysisBoxContainerMemento* getAnalysisBoxContainerMemento();
+	Memento::AnalysisBoxContainerMemento* getAnalysisBoxContainerMemento();
 
-    GUI::AnalysisGraph getAnalysisGraph();
+	GUI::AnalysisGraph getAnalysisGraph();
 
-    void setAnalysisGraph(GUI::AnalysisGraph graph);
+	void setAnalysisGraph(GUI::AnalysisGraph graph);
 
-    GUI::AnalysisVideo getAnalysisVideo();
+	GUI::AnalysisVideo getAnalysisVideo();
 
-    void setAnalysisVideo(GUI::AnalysisVideo video);
+	void setAnalysisVideo(GUI::AnalysisVideo video);
 
-    int getPlayerPosition();
+	int getPlayerPosition();
 
-    void setPlayerPosition(int position);
+	void setPlayerPosition(int position);
 
-    private:
+  private:
 	Model::YuvVideo*        rawVideo_;
-    std::unique_ptr<Memento::AnalysisBoxContainerMemento> analysisBoxMemento_;
-    GUI::AnalysisGraph      graph_;
-    GUI::AnalysisVideo      video_;
-    int                     position_;
+	std::unique_ptr<Memento::AnalysisBoxContainerMemento> analysisBoxMemento_;
+	GUI::AnalysisGraph      graph_;
+	GUI::AnalysisVideo      video_;
+	int                     position_;
 };
 }
 

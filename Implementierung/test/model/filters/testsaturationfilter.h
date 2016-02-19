@@ -6,25 +6,24 @@
 
 #include "../../../src/model/filters/SaturationFilter.h"
 
-class TestSaturationFilter : public QObject
-{
-    Q_OBJECT
+class TestSaturationFilter : public QObject {
+	Q_OBJECT
 
-private slots:
-    void init();
+  private slots:
+	void init();
 
-    void testSetIntensity();
+	void testSetIntensity();
 
-    void testRestore();
+	void testRestore();
 
-    void testGetSaveString();
+	void testGetSaveString();
 
-    void testFilterCopy();
+	void testFilterCopy();
 
-    void testGetFilterdescrition();
+	void testGetFilterdescrition();
 
-private:
-    Model::SaturationFilter   filter_;
+  private:
+	Model::SaturationFilter   filter_;
 };
 
 #endif // TESTSATURATIONFILTER_H

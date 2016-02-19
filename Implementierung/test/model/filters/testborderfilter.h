@@ -6,22 +6,21 @@
 
 #include "../../../src/model/filters/BorderFilter.h"
 
-class TestBorderFilter: public QObject
-{
-    Q_OBJECT
-private slots:
-    void init();
+class TestBorderFilter: public QObject {
+	Q_OBJECT
+  private slots:
+	void init();
 
-    void testSetThickness();
+	void testSetThickness();
 
-    void testRestore();
+	void testRestore();
 
-    void testGetSaveString();
+	void testGetSaveString();
 
-    void testFilterCopy();
+	void testFilterCopy();
 
-private:
-    Model::BorderFilter filter_;
+  private:
+	Model::BorderFilter filter_;
 
 };
 

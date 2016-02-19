@@ -22,7 +22,7 @@ class RemoveVideo: public QUndoCommand {
 	 * @brief RemoveVideo The AnalysisBoxContainer to operate on.
 	 * @param container The video to remove.
 	 */
-    RemoveVideo(GUI::AnalysisBoxContainer* boxContainer, GUI::AnalysisBox* box);
+	RemoveVideo(GUI::AnalysisBoxContainer* boxContainer, GUI::AnalysisBox* box);
 
 	/**
 	 * @brief undo Re adds the removed video to the analysis tab.
@@ -35,10 +35,10 @@ class RemoveVideo: public QUndoCommand {
 	void redo();
 
   private:
-    std::unique_ptr<Memento::AnalysisBoxMemento>  boxMemento_;
+	std::unique_ptr<Memento::AnalysisBoxMemento>  boxMemento_;
 	GUI::AnalysisBox*           anaBox_;
 	GUI::AnalysisBoxContainer*  container_;
-    int                         index_;
+	int                         index_;
 };
 }
 

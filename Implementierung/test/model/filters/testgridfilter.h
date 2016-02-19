@@ -6,23 +6,22 @@
 
 #include "../../../src/model/filters/GridFilter.h"
 
-class TestGridFilter : public QObject
-{
-    Q_OBJECT
+class TestGridFilter : public QObject {
+	Q_OBJECT
 
-private slots:
-    void init();
+  private slots:
+	void init();
 
-    void testSetOpacity();
+	void testSetOpacity();
 
-    void testRestore();
+	void testRestore();
 
-    void testFilterCopy();
+	void testFilterCopy();
 
-    void testGetFilterDescription();
+	void testGetFilterDescription();
 
-private:
-    Model::GridFilter   filter_;
+  private:
+	Model::GridFilter   filter_;
 };
 
 #endif // TESTGRIDFILTER_H

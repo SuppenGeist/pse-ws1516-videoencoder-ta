@@ -6,19 +6,18 @@
 
 #include "../../../src/model/filters/VintageFilter.h"
 
-class TestVintageFilter : public QObject
-{
-    Q_OBJECT
+class TestVintageFilter : public QObject {
+	Q_OBJECT
 
-private slots:
-    void init();
+  private slots:
+	void init();
 
-    void testGetName();
+	void testGetName();
 
-    void testGetFilterDescription();
+	void testGetFilterDescription();
 
-private:
-    Model::VintageFilter   filter_;
+  private:
+	Model::VintageFilter   filter_;
 };
 
 #endif // TESTVINTAGEFILTER_H

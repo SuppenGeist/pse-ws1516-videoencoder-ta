@@ -6,25 +6,24 @@
 
 #include "../../../src/model/filters/ColorbalanceFilter.h"
 
-class TestColorbalanceFilter : public QObject
-{
-    Q_OBJECT
+class TestColorbalanceFilter : public QObject {
+	Q_OBJECT
 
-private slots:
-    void init();
+  private slots:
+	void init();
 
-    void testSetIntensity();
+	void testSetIntensity();
 
-    void testRestore();
+	void testRestore();
 
-    void testGetSaveString();
+	void testGetSaveString();
 
-    void testFilterCopy();
+	void testFilterCopy();
 
-    void testGetFilterDescription();
+	void testGetFilterDescription();
 
-private:
-    Model::ColorbalanceFilter   filter_;
+  private:
+	Model::ColorbalanceFilter   filter_;
 };
 
 

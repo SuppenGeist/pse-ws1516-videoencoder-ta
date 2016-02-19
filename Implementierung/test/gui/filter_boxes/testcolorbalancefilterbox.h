@@ -4,13 +4,12 @@
 #include <QObject>
 #include <QtTest/QtTest>
 
-class TestColorbalanceFilterBox : public QObject
-{
-    Q_OBJECT
+class TestColorbalanceFilterBox : public QObject {
+	Q_OBJECT
 
 
-    private slots:
-    void init();
+  private slots:
+	void init();
 };
 
 #endif // TESTCOLORBALANCEFILTERBOX_H

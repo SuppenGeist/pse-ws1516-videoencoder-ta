@@ -1,6 +1,5 @@
 #include "testrotationfilterbox.h"
 
-void TestRotationFilterBox::init()
-{
+void TestRotationFilterBox::init() {
 
 }

@@ -51,7 +51,7 @@ class FilterTabMemento {
   private:
 	Model::YuvVideo*                    rawVideo_;
 	std::unique_ptr<Model::FilterList>  filterlist_;
-    bool                                isPreviewShown_;
+	bool                                isPreviewShown_;
 	bool                                isFilteredVideoShown_;
 	Model::Video*                       filteredVideo_;
 	int                                 currentFrame_;

@@ -6,19 +6,18 @@
 
 #include "../../../src/model/filters/GrayscaleFilter.h"
 
-class TestGrayscaleFilter : public QObject
-{
-    Q_OBJECT
+class TestGrayscaleFilter : public QObject {
+	Q_OBJECT
 
-private slots:
-    void init();
+  private slots:
+	void init();
 
-    void testGetName();
+	void testGetName();
 
-    void testGetFilterDescription();
+	void testGetFilterDescription();
 
-private:
-    Model::GrayscaleFilter   filter_;
+  private:
+	Model::GrayscaleFilter   filter_;
 };
 
 #endif // TESTGRAYSCALEFILTER_H

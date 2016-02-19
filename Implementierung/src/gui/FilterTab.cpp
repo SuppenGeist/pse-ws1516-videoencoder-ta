@@ -96,7 +96,7 @@ std::unique_ptr<Memento::FilterTabMemento> GUI::FilterTab::getMemento() {
 	memento->setRawVideo(rawVideo_);
 	memento->setFilterList(std::make_unique<Model::FilterList>(*filterlist_));
 	memento->setIsPreviewShown(PreviewControlPanel_->isVisible());
-    memento->setIsFilteredVideoShown(isFilteredVideoShown_);
+	memento->setIsFilteredVideoShown(isFilteredVideoShown_);
 	memento->setCurrentFrame(player_->getPosition());
 
 	auto index=list_filterlist_->selectionModel()->selectedIndexes();
@@ -110,12 +110,12 @@ std::unique_ptr<Memento::FilterTabMemento> GUI::FilterTab::getMemento() {
 
 void GUI::FilterTab::restore(Memento::FilterTabMemento *memento) {
 	setRawVideo(memento->getRawVideo());
-    setFilterList(memento->getFilterList());
+	setFilterList(memento->getFilterList());
 	if(memento->isPreviewShow()) {
 		showFilterPreview();
 	} else {
 		if(memento->isFilteredVideoShown()) {
-            apply();
+			apply();
 			showFilteredVideo();
 		} else {
 			showRawVideo();
@@ -322,14 +322,14 @@ void GUI::FilterTab::setFilterList(std::unique_ptr<Model::FilterList> filterlist
 void GUI::FilterTab::resetFilters() {
 	initFilterList();
 	model_filterlist_->removeRows(0,model_filterlist_->rowCount());
-    originalPreviewFrames_.reset();
+	originalPreviewFrames_.reset();
 	currentFilterOptionsBox_->hide();
 	showRawVideo();
 }
 
 void GUI::FilterTab::showFilteredVideo() {
 	showRawVideo();
-    player_->setVideo(filteredVideo_.get());
+	player_->setVideo(filteredVideo_.get());
 	playerControlPanel_->updateUi();
 	isFilteredVideoShown_=true;
 }
@@ -381,8 +381,9 @@ void GUI::FilterTab::load() {
 	if(path.isEmpty())
 		return;
 
-    auto video=std::make_unique<Model::YuvVideo>(path,fileOpenDiag.getPixelSheme(),
-               fileOpenDiag.getCompression(),fileOpenDiag.getWidth(),fileOpenDiag.getHeight(),fileOpenDiag.getFps());
+	auto video=std::make_unique<Model::YuvVideo>(path,fileOpenDiag.getPixelSheme(),
+	           fileOpenDiag.getCompression(),fileOpenDiag.getWidth(),fileOpenDiag.getHeight(),
+	           fileOpenDiag.getFps());
 	auto command=new UndoRedo::LoadFilterVideo(*this,std::move(video),getMemento());
 
 	UndoRedo::UndoStack::getUndoStack().push(command);
@@ -394,18 +395,18 @@ void GUI::FilterTab::apply() {
 	if(filterlist_->getSize()==0)
 		return;
 
-    if(isFilteredVideoShown_)
-        return;
+	if(isFilteredVideoShown_)
+		return;
 
-    safer_.reset();
+	safer_.reset();
 	mainWindow_->getStatusBar()->showMessage("Applying filters to video...");
 
-    filteredVideo_=std::make_unique<Model::Video>(rawVideo_->getFps());
-    filterApplier_=std::make_unique<Utility::FilterApplier>(*filterlist_,rawVideo_->getWidth(),
-             rawVideo_->getHeight(),AV_PIX_FMT_RGB24);
-    filterApplier_->applyToVideo(*filteredVideo_,rawVideo_->getVideo(),this);
+	filteredVideo_=std::make_unique<Model::Video>(rawVideo_->getFps());
+	filterApplier_=std::make_unique<Utility::FilterApplier>(*filterlist_,rawVideo_->getWidth(),
+	               rawVideo_->getHeight(),AV_PIX_FMT_RGB24);
+	filterApplier_->applyToVideo(*filteredVideo_,rawVideo_->getVideo(),this);
 
-    showFilteredVideo();
+	showFilteredVideo();
 }
 
 void GUI::FilterTab::save() {
@@ -429,18 +430,18 @@ void GUI::FilterTab::save() {
 
 	auto type=rawVideo_->getYuvType();
 	if(type==Utility::YuvType::YUV411) {
-        safer_=std::make_unique<Utility::Yuv411FileSaver>(filename,*filteredVideo_,
-                         rawVideo_->getCompression(),this);
+		safer_=std::make_unique<Utility::Yuv411FileSaver>(filename,*filteredVideo_,
+		        rawVideo_->getCompression(),this);
 	} else if(type==Utility::YuvType::YUV420) {
-        safer_=std::make_unique<Utility::Yuv420FileSaver>(filename,*filteredVideo_,this);
+		safer_=std::make_unique<Utility::Yuv420FileSaver>(filename,*filteredVideo_,this);
 	} else if(type==Utility::YuvType::YUV422) {
-        safer_=std::make_unique<Utility::Yuv422FileSaver>(filename,*filteredVideo_,
-                         rawVideo_->getCompression(),this);
+		safer_=std::make_unique<Utility::Yuv422FileSaver>(filename,*filteredVideo_,
+		        rawVideo_->getCompression(),this);
 	} else if(type==Utility::YuvType::YUV444) {
-        safer_=std::make_unique<Utility::Yuv444FileSaver>(filename,*filteredVideo_,
-                         rawVideo_->getCompression(),this);
+		safer_=std::make_unique<Utility::Yuv444FileSaver>(filename,*filteredVideo_,
+		        rawVideo_->getCompression(),this);
 	}
-    safer_->save();
+	safer_->save();
 }
 
 void GUI::FilterTab::saveConfiguration() {
@@ -524,11 +525,11 @@ void GUI::FilterTab::notifyOnSaveComplete(bool successful, QString filename) {
 		QMessageBox::information(this,"Video saved successfully!",
 		                         "The video was successfully saved to '"+filename+"'",QMessageBox::Ok);
 		mainWindow_->getStatusBar()->showMessage("Filtered video successfully saved!",3000);
-        safer_.reset();
+		safer_.reset();
 	} else {
 		QMessageBox::warning(this,"Video not saved completly!",
 		                     "The video could not be saved completly to '"+filename+"'",QMessageBox::Ok);
-        mainWindow_->getStatusBar()->showMessage("Filtered video could not be saved completly!",3000);
+		mainWindow_->getStatusBar()->showMessage("Filtered video could not be saved completly!",3000);
 	}
 }
 

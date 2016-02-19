@@ -23,7 +23,7 @@ namespace GUI {
  * This class is a widget to draw graphs.
  */
 class GraphWidget:public QGraphicsView {
-Q_OBJECT
+	Q_OBJECT
   public:
 	/**
 	 * @brief GraphWidget Constructor.
@@ -35,7 +35,7 @@ Q_OBJECT
 	 * @param graph The graph to draw.
 	 * @param filled Whether the area under the graph is filled.
 	 */
-    void drawGraph(Model::Graph *graph);
+	void drawGraph(Model::Graph *graph);
 
 	/**
 	 * @brief setLineColor Sets the pen which is used to draw the graph line.
@@ -59,7 +59,7 @@ Q_OBJECT
 	 * @brief setControlPanel Sets the GlobalControlPanel to notify if a click on the graph was performed.
 	 * @param panel The panel to notify.
 	 */
-    void setControlPanel(GlobalControlPanel* panel);
+	void setControlPanel(GlobalControlPanel* panel);
 
 	/**
 	 * @brief setAchsisLabels Sets the labels of the achsis.
@@ -72,7 +72,7 @@ Q_OBJECT
 	 * @brief setIsFilles Sets if the grah gets filled.
 	 * @param isFilled true if the graph gets filled
 	 */
-    void setIsFilled(bool isFilled);
+	void setIsFilled(bool isFilled);
 
 	/**
 	 * @brief setShowLabels Sets whether the axis labels are shown or not.
@@ -112,24 +112,24 @@ Q_OBJECT
 	 */
 	void setMarkFont(QFont markFont);
 
-    void setFixedMaxYValue(double maxYVal);
+	void setFixedMaxYValue(double maxYVal);
 
-    /**
-     * @brief buildScene Creates the GraphicsScene.
-     */
-    void buildScene();
+	/**
+	 * @brief buildScene Creates the GraphicsScene.
+	 */
+	void buildScene();
 
   protected:
 	/**
 	 * @brief mouseReleaseEvent This method is called if the was a click on the widget.
 	 * @param event
 	 */
-    void mouseReleaseEvent(QMouseEvent* event);
+	void mouseReleaseEvent(QMouseEvent* event);
 
-    void resizeEvent(QResizeEvent* event);
+	void resizeEvent(QResizeEvent* event);
 
-private slots:
-    void updateView();
+  private slots:
+	void updateView();
 
   private:
 	QPen                        linePen_;
@@ -143,7 +143,7 @@ private slots:
 	QString                     yLabel_;
 	QFont                       labelFont_;
 	QFont                       markFont_;
-    bool                        isFilled_;
+	bool                        isFilled_;
 	int                         markLenX_;
 	int                         markLenY_;
 	int                         xLabelHeight_;
@@ -151,8 +151,8 @@ private slots:
 	bool                        showLabels_;
 	int                         markDistanceX_;
 	int                         markDistanceY_;
-    double                      fixedMaxYVal_;
-    QTimer                      updater_;
+	double                      fixedMaxYVal_;
+	QTimer                      updater_;
 
 	/**
 	 * @brief clamp Clamps the value to the given index.

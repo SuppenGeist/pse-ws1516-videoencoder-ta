@@ -59,7 +59,7 @@ class AnalysisTab: public QFrame {
 
 	void setRawVideo(Model::YuvVideo* rawVideo);
 
-    Model::YuvVideo* getRawVideo();
+	Model::YuvVideo* getRawVideo();
 
 	bool isRawVideoLoaded();
 
@@ -69,13 +69,13 @@ class AnalysisTab: public QFrame {
   private slots:
 	void loadRawVideo();
 	void showBitrate();
-    void showRedHistogramm();
-    void showBlueHistogramm();
-    void showGreenHistogramm();
-    void showPsnr();
-    void showAttributes();
-    void analysisVideoChanged(int index);
-    void updateLabels();
+	void showRedHistogramm();
+	void showBlueHistogramm();
+	void showGreenHistogramm();
+	void showPsnr();
+	void showAttributes();
+	void analysisVideoChanged(int index);
+	void updateLabels();
 
   private:
 	QPushButton*            button_saveResults_;
@@ -93,24 +93,24 @@ class AnalysisTab: public QFrame {
 	GraphWidget*            graphWidget_;
 	AnalysisBoxContainer*   analysisBoxContainer_;
 	QScrollArea*            scroll_anaBoxes_;
-    QString                 stylesheet_buttons_;
-    QString                 stylesheet_buttonsSelected_;
-    QLabel*                 label_filename_;
-    QLabel*                 label_filesize_;
-    QLabel*                 label_resolution_;
-    QLabel*                 label_framesize_;
-    QPushButton*            button_loadnewvideo_;
+	QString                 stylesheet_buttons_;
+	QString                 stylesheet_buttonsSelected_;
+	QLabel*                 label_filename_;
+	QLabel*                 label_filesize_;
+	QLabel*                 label_resolution_;
+	QLabel*                 label_framesize_;
+	QPushButton*            button_loadnewvideo_;
 
 	Model::YuvVideo*        rawVideo_;
 
 	std::unique_ptr<ForwardPlayer>      forwardPlayer_;
-    std::unique_ptr<GraphPlayer>        graphPlayer_;
+	std::unique_ptr<GraphPlayer>        graphPlayer_;
 	std::shared_ptr<Timer>              timer_;
-    std::shared_ptr<GlobalControlPanel> globalControlPanel_;
+	std::shared_ptr<GlobalControlPanel> globalControlPanel_;
 	std::unique_ptr<VideoPlayer>        videoPlayer_;
 	FrameView*                          rawVideoView_;
 
-    QTimer                  timer_labelUpdater_;
+	QTimer                  timer_labelUpdater_;
 
 	void createUi();
 	void connectActions();

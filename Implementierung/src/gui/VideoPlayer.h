@@ -58,7 +58,7 @@ class VideoPlayer: public QObject,public Player {
 	 * @brief setVideo Sets the video.
 	 * @param video The video to play.
 	 */
-    void setVideo(Model::Video* video,bool updateTimer=true) noexcept;
+	void setVideo(Model::Video* video,bool updateTimer=true) noexcept;
 
 	/**
 	 * If no video is set nullptr is returned.
@@ -140,7 +140,7 @@ class VideoPlayer: public QObject,public Player {
 	 * @brief setPosition Sets the position in the video.
 	 * @param position The new position.
 	 */
-    void setPosition(std::size_t position) override;
+	void setPosition(std::size_t position) override;
 
 	/**
 	 * @brief getPosition Returns the position in the video.

@@ -32,18 +32,18 @@ void GUI::VideoPlayer::removeView(FrameView& view) {
 }
 
 void GUI::VideoPlayer::setVideo(Model::Video* video, bool updateTimer) noexcept {
-    if(updateTimer)
-        stop();
+	if(updateTimer)
+		stop();
 
-    for(auto view:views_) {
-        view->clear();
-    }
+	for(auto view:views_) {
+		view->clear();
+	}
 
 	video_=video;
 
 	setPosition(0);
 
-    if(timer_.get()&&video&&updateTimer)
+	if(timer_.get()&&video&&updateTimer)
 		timer_->setFps(video->getFps());
 	if(masterPanel_)
 		masterPanel_->updateUi();
@@ -113,7 +113,7 @@ void GUI::VideoPlayer::nextFrame() {
 }
 
 void GUI::VideoPlayer::previousFrame() {
-    setPosition(getPosition()==0?0:getPosition()-1);
+	setPosition(getPosition()==0?0:getPosition()-1);
 }
 
 void GUI::VideoPlayer::setSpeed(float speed) {
@@ -126,7 +126,7 @@ void GUI::VideoPlayer::setPosition(std::size_t position) {
 	if(!video_)
 		return;
 	if(video_->getNumberOfFrames()==0)
-        return;
+		return;
 
 	if(position>=video_->getNumberOfFrames()) {
 		position=video_->getNumberOfFrames()-1;
@@ -138,7 +138,7 @@ void GUI::VideoPlayer::setPosition(std::size_t position) {
 		view->setFrame(*(video_->getFrame(position_)));
 	}
 	if(masterPanel_)
-        masterPanel_->updateUi();
+		masterPanel_->updateUi();
 }
 
 std::size_t GUI::VideoPlayer::getPosition() const noexcept {
@@ -184,16 +184,15 @@ void GUI::VideoPlayer::updateViews() {
 				for(auto view:views_) {
 					view->setFrame(*(video_->getFrame(position_)));
 				}
+			} else {
+				for(auto view:views_) {
+					view->clear();
+				}
 			}
-            else {
-                for(auto view:views_) {
-                    view->clear();
-                }
-            }
-        } else {
-            for(auto view:views_) {
-                view->clear();
-            }
+		} else {
+			for(auto view:views_) {
+				view->clear();
+			}
 		}
 	}
 }

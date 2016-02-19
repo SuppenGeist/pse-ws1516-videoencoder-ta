@@ -24,69 +24,67 @@
 #include "testvintagefilter.h"
 
 
-FilterTestSuite::FilterTestSuite(int argc,char* argv[]):argc_(argc),argv_(argv)
-{
+FilterTestSuite::FilterTestSuite(int argc,char* argv[]):argc_(argc),argv_(argv) {
 
 }
 
-void FilterTestSuite::testAllFilters()
-{
-    TestBlurFilter testBlurFilter;
-    QTest::qExec(&testBlurFilter,argc_,argv_);
+void FilterTestSuite::testAllFilters() {
+	TestBlurFilter testBlurFilter;
+	QTest::qExec(&testBlurFilter,argc_,argv_);
 
-    TestBorderFilter testBorderFilter;
-    QTest::qExec(&testBorderFilter);
+	TestBorderFilter testBorderFilter;
+	QTest::qExec(&testBorderFilter);
 
-    TestBrightnessFilter testBrightnessFilter;
-    QTest::qExec(&testBrightnessFilter);
+	TestBrightnessFilter testBrightnessFilter;
+	QTest::qExec(&testBrightnessFilter);
 
-    TestColorbalanceFilter testColorbalanceFilter;
-    QTest::qExec(&testColorbalanceFilter);
+	TestColorbalanceFilter testColorbalanceFilter;
+	QTest::qExec(&testColorbalanceFilter);
 
-    TestContrastFilter testContrastFilter;
-    QTest::qExec(&testContrastFilter);
+	TestContrastFilter testContrastFilter;
+	QTest::qExec(&testContrastFilter);
 
-    TestEdgeFilter testEdgeFilter;
-    QTest::qExec(&testEdgeFilter);
+	TestEdgeFilter testEdgeFilter;
+	QTest::qExec(&testEdgeFilter);
 
-    TestGrayscaleFilter testGrayscaleFilter;
-    QTest::qExec(&testGrayscaleFilter);
+	TestGrayscaleFilter testGrayscaleFilter;
+	QTest::qExec(&testGrayscaleFilter);
 
-    TestGridFilter testGridFilter;
-    QTest::qExec(&testGridFilter);
+	TestGridFilter testGridFilter;
+	QTest::qExec(&testGridFilter);
 
-    TestMirrorFilter testMirrorFilter;
-    QTest::qExec(&testMirrorFilter);
+	TestMirrorFilter testMirrorFilter;
+	QTest::qExec(&testMirrorFilter);
 
-    TestNegativeFilter testNegativeFilter;
-    QTest::qExec(&testNegativeFilter);
+	TestNegativeFilter testNegativeFilter;
+	QTest::qExec(&testNegativeFilter);
 
-    TestNoiseFilter testNoiseFilter;
-    QTest::qExec(&testNoiseFilter);
+	TestNoiseFilter testNoiseFilter;
+	QTest::qExec(&testNoiseFilter);
 
-    TestPosterFilter testPosterFilter;
-    QTest::qExec(&testPosterFilter);
+	TestPosterFilter testPosterFilter;
+	QTest::qExec(&testPosterFilter);
 
-    TestRectangleFilter testRectangleFilter;
-    QTest::qExec(&testRectangleFilter);
+	TestRectangleFilter testRectangleFilter;
+	QTest::qExec(&testRectangleFilter);
 
-    TestRGBFilter testRGBFilter;
-    QTest::qExec(&testRGBFilter);
+	TestRGBFilter testRGBFilter;
+	QTest::qExec(&testRGBFilter);
 
-    TestRotationFilter testRotationFilter;
-    QTest::qExec(&testRotationFilter);
+	TestRotationFilter testRotationFilter;
+	QTest::qExec(&testRotationFilter);
 
-    TestScaleFilter testScaleFilter;
-    QTest::qExec(&testScaleFilter);
+	TestScaleFilter testScaleFilter;
+	QTest::qExec(&testScaleFilter);
 
-    TestSepiaFilter testSepiaFilter;
-    QTest::qExec(&testSepiaFilter);
+	TestSepiaFilter testSepiaFilter;
+	QTest::qExec(&testSepiaFilter);
 
-    TestSharpnessFilter testSharpnessFilter;
-    QTest::qExec(&testSharpnessFilter);
+	TestSharpnessFilter testSharpnessFilter;
+	QTest::qExec(&testSharpnessFilter);
 
-    TestVintageFilter testVintageFilter;
-    QTest::qExec(&testVintageFilter);
+	TestVintageFilter testVintageFilter;
+	QTest::qExec(&testVintageFilter);
 
 }
 

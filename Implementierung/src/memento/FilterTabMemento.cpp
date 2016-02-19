@@ -8,8 +8,8 @@
 #include "../model/filters/Filter.h"
 
 Memento::FilterTabMemento::FilterTabMemento():rawVideo_(nullptr),isPreviewShown_(false),
-    currentFrame_(0),currentlySelectedFilter_(-1),isFilteredVideoShown_(false) {
-    filterlist_=std::make_unique<Model::FilterList>();
+	currentFrame_(0),currentlySelectedFilter_(-1),isFilteredVideoShown_(false) {
+	filterlist_=std::make_unique<Model::FilterList>();
 }
 
 void Memento::FilterTabMemento::setRawVideo(Model::YuvVideo *rawVideo) {
@@ -31,11 +31,11 @@ std::unique_ptr<Model::FilterList> Memento::FilterTabMemento::getFilterList() {
 }
 
 void Memento::FilterTabMemento::setIsPreviewShown(bool isShown) {
-    isPreviewShown_=isShown;
+	isPreviewShown_=isShown;
 }
 
 bool Memento::FilterTabMemento::isPreviewShow() {
-    return isPreviewShown_;
+	return isPreviewShown_;
 }
 
 void Memento::FilterTabMemento::setIsFilteredVideoShown(bool isShown) {

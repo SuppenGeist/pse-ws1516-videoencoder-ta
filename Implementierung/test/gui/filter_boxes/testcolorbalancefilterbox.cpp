@@ -1,6 +1,5 @@
 #include "testcolorbalancefilterbox.h"
 
-void TestColorbalanceFilterBox::init()
-{
+void TestColorbalanceFilterBox::init() {
 
 }

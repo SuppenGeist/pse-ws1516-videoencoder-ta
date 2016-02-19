@@ -25,35 +25,35 @@
 
 GUI::MainWindow::MainWindow(QWidget* parent):QMainWindow(parent) {
 	createUi();
-    connectActions();
+	connectActions();
 
-    loadedProject_=std::make_unique<Model::Project>();
+	loadedProject_=std::make_unique<Model::Project>();
 }
 
 std::unique_ptr<Memento::MainWindowMemento> GUI::MainWindow::getMemento() {
-    auto memento=std::make_unique<Memento::MainWindowMemento>();
-    memento->setAnalysisTabMemento(analysisTab_->getMemento());
-    memento->setFilterTabMemento(filterTab_->getMemento());
-    memento->setSelectedTab(tab_tabs_->currentIndex());
-    return memento;
+	auto memento=std::make_unique<Memento::MainWindowMemento>();
+	memento->setAnalysisTabMemento(analysisTab_->getMemento());
+	memento->setFilterTabMemento(filterTab_->getMemento());
+	memento->setSelectedTab(tab_tabs_->currentIndex());
+	return memento;
 }
 
 void GUI::MainWindow::restore(Memento::MainWindowMemento *memento) {
-    analysisTab_->restore(memento->getAnalysisTabMemento());
-    filterTab_->restore(memento->getFilterTabMemento());
+	analysisTab_->restore(memento->getAnalysisTabMemento());
+	filterTab_->restore(memento->getFilterTabMemento());
 
-    if(memento->getSelectedTab()>=0&&memento->getSelectedTab()<=1) {
-        tab_tabs_->setCurrentIndex(memento->getSelectedTab());
-    }
+	if(memento->getSelectedTab()>=0&&memento->getSelectedTab()<=1) {
+		tab_tabs_->setCurrentIndex(memento->getSelectedTab());
+	}
 }
 
 void GUI::MainWindow::newProject() {
-    filterTab_->resetFilters();
-    filterTab_->setRawVideo(nullptr);
+	filterTab_->resetFilters();
+	filterTab_->setRawVideo(nullptr);
 
-    analysisTab_->setRawVideo(nullptr);
+	analysisTab_->setRawVideo(nullptr);
 
-    loadedProject_=std::make_unique<Model::Project>();
+	loadedProject_=std::make_unique<Model::Project>();
 
 	UndoRedo::UndoStack::getUndoStack().clear();
 }
@@ -67,49 +67,48 @@ void GUI::MainWindow::saveAs() {
 }
 
 void GUI::MainWindow::loadProject() {
-    auto filename=QFileDialog::getOpenFileName(this,"Open project",QDir::homePath(),"*.vive");
+	auto filename=QFileDialog::getOpenFileName(this,"Open project",QDir::homePath(),"*.vive");
 
-    try {
-    Utility::ProjectReader reader(filename);
-    loadedProject_=reader.readProject();
-    }
-    catch(std::invalid_argument& e) {
-        return;
-    }
+	try {
+		Utility::ProjectReader reader(filename);
+		loadedProject_=reader.readProject();
+	} catch(std::invalid_argument& e) {
+		return;
+	}
 
-    restore(&loadedProject_->getMemento());
+	restore(&loadedProject_->getMemento());
 
-    setWindowTitle("Vive ["+loadedProject_->getName()+"]");
+	setWindowTitle("Vive ["+loadedProject_->getName()+"]");
 }
 
 void GUI::MainWindow::saveProject() {
-    if(loadedProject_->getName().isEmpty()) {
-        auto name=QFileDialog::getSaveFileName(this,"Save project",QDir::homePath());
-        if(name.isEmpty())
-            return;
+	if(loadedProject_->getName().isEmpty()) {
+		auto name=QFileDialog::getSaveFileName(this,"Save project",QDir::homePath());
+		if(name.isEmpty())
+			return;
 
-        if(!name.endsWith(".vive")) {
-            name+=".vive";
-        }
+		if(!name.endsWith(".vive")) {
+			name+=".vive";
+		}
 
-        QFile file(name);
-        QFileInfo info(file);
-        loadedProject_->setName(info.fileName());
-        loadedProject_->setPath(name);
-    }
+		QFile file(name);
+		QFileInfo info(file);
+		loadedProject_->setName(info.fileName());
+		loadedProject_->setPath(name);
+	}
 
-    loadedProject_->setMemento(getMemento());
+	loadedProject_->setMemento(getMemento());
 
-    Utility::ProjectWriter writer(loadedProject_.get());
-    writer.saveProject();
+	Utility::ProjectWriter writer(loadedProject_.get());
+	writer.saveProject();
 
-    QMessageBox::information(this,"Project saved",
-                         "The project was successfully saved.",QMessageBox::Ok);
-    setWindowTitle("Vive ["+loadedProject_->getName()+"]");
+	QMessageBox::information(this,"Project saved",
+	                         "The project was successfully saved.",QMessageBox::Ok);
+	setWindowTitle("Vive ["+loadedProject_->getName()+"]");
 }
 
 void GUI::MainWindow::redo() {
-    UndoRedo::UndoStack::getUndoStack().redo();
+	UndoRedo::UndoStack::getUndoStack().redo();
 }
 
 void GUI::MainWindow::createUi() {
@@ -172,7 +171,7 @@ void GUI::MainWindow::connectActions() {
 	connect(action_saveProject_,SIGNAL(triggered()),this, SLOT(saveProject()));
 	connect(action_redo_,SIGNAL(triggered()),this, SLOT(redo()));
 	connect(action_saveAs_,SIGNAL(triggered()),this, SLOT(saveAs()));
-    connect(action_undo_,SIGNAL(triggered()),this, SLOT(undo()));
+	connect(action_undo_,SIGNAL(triggered()),this, SLOT(undo()));
 }
 
 QStatusBar *GUI::MainWindow::getStatusBar() {

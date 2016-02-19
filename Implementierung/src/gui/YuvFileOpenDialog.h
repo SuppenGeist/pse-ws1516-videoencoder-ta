@@ -47,15 +47,15 @@ class YuvFileOpenDialog: public QDialog {
 	 */
 	QString getFilename();
 
-    int getFps();
+	int getFps();
 
-    int getWidth();
+	int getWidth();
 
-    int getHeight();
+	int getHeight();
 
-    Utility::Compression getCompression();
+	Utility::Compression getCompression();
 
-    Utility::YuvType getPixelSheme();
+	Utility::YuvType getPixelSheme();
 
   private slots:
 	/**
@@ -86,12 +86,12 @@ class YuvFileOpenDialog: public QDialog {
 	QLabel*                     label_recentlyUsed_;
 	QLineEdit*                  lineEdit_selectedFile_;
 
-    static std::vector<QString>        attributes_;
-    int                         fps_;
-    int                         width_;
-    int                         height_;
-    Utility::Compression        compression_;
-    Utility::YuvType            type_;
+	static std::vector<QString>        attributes_;
+	int                         fps_;
+	int                         width_;
+	int                         height_;
+	Utility::Compression        compression_;
+	Utility::YuvType            type_;
 
 	/**
 	 * @brief getListModel Loads the recently opened yuv files and puts them in the model.
@@ -102,16 +102,16 @@ class YuvFileOpenDialog: public QDialog {
 	 * @brief saveListModel Saves the list model.
 	 * @param selectedFile The new file to add to the model.
 	 */
-    static void saveListModel(QString selectedFile, QString attributes);
+	static void saveListModel(QString selectedFile, QString attributes);
 
 	/**
 	 * @brief createUi Creates the ui.
 	 */
 	void createUi();
 
-    bool parseAttributes(QString attributes);
+	bool parseAttributes(QString attributes);
 
-    QString askAttributes();
+	QString askAttributes();
 
 };
 }

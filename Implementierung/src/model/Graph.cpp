@@ -30,7 +30,7 @@ double Model::Graph::getValue(std::size_t x) {
 }
 
 std::size_t Model::Graph::getSize() {
-    for(std::size_t i=graph_.size(); i>0; i--) {
+	for(std::size_t i=graph_.size(); i>0; i--) {
 		if(graph_[i-1]!=-1)
 			return i;
 	}

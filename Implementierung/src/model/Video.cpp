@@ -23,7 +23,7 @@ int Model::Video::getFps() const noexcept {
 }
 
 void Model::Video::setFps(int fps) {
-    fps_=fps;
+	fps_=fps;
 }
 
 QImage* Model::Video::getFrame(std::size_t index) noexcept {

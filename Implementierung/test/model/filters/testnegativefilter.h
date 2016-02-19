@@ -6,21 +6,20 @@
 
 #include "../../../src/model/filters/NegativeFilter.h"
 
-class TestNegativeFilter : public QObject
-{
-    Q_OBJECT
+class TestNegativeFilter : public QObject {
+	Q_OBJECT
 
-private slots:
-    void init();
+  private slots:
+	void init();
 
-    void testGetName();
+	void testGetName();
 
-    void testGetFilterDescription();
+	void testGetFilterDescription();
 
-    void testGetSaveString();
+	void testGetSaveString();
 
-private:
-    Model::NegativeFilter   filter_;
+  private:
+	Model::NegativeFilter   filter_;
 };
 
 #endif // TESTNEGATIVEFILTER_H

@@ -43,8 +43,8 @@ void GUI::GlobalControlPanel::nextFrame() {
 		masterPlayer_->nextFrame();
 
 	for(auto player:players_) {
-        player->setPosition(masterPlayer_->getPosition());
-    }
+		player->setPosition(masterPlayer_->getPosition());
+	}
 }
 
 void GUI::GlobalControlPanel::previousFrame() {
@@ -52,13 +52,13 @@ void GUI::GlobalControlPanel::previousFrame() {
 		masterPlayer_->previousFrame();
 
 	for(auto player:players_) {
-        player->setPosition(masterPlayer_->getPosition());
-    }
+		player->setPosition(masterPlayer_->getPosition());
+	}
 }
 
 void GUI::GlobalControlPanel::setPosition(int position) {
 	if(masterPlayer_)
-        masterPlayer_->setPosition(position);
+		masterPlayer_->setPosition(position);
 
 	for(auto player:players_) {
 		player->setPosition(position);
@@ -71,13 +71,12 @@ void GUI::GlobalControlPanel::setSpeed(float speed) {
 
 	for(auto player:players_) {
 		player->setSpeed(speed);
-    }
+	}
 }
 
-int GUI::GlobalControlPanel::getPosition()
-{
-    if(masterPlayer_) {
-        return masterPlayer_->getPosition();
-    }
-    return 0;
+int GUI::GlobalControlPanel::getPosition() {
+	if(masterPlayer_) {
+		return masterPlayer_->getPosition();
+	}
+	return 0;
 }

@@ -2,17 +2,16 @@
 #define UNDO_FRAMEWORKTESTSUITE_H
 
 
-class Undo_FrameworkTestSuite
-{
-public:
-    explicit Undo_FrameworkTestSuite(int argc, char *argv[]);
+class Undo_FrameworkTestSuite {
+  public:
+	explicit Undo_FrameworkTestSuite(int argc, char *argv[]);
 
 
-    void testUndo();
+	void testUndo();
 
-    private:
-    int argc_;
-    char** argv_;
+  private:
+	int argc_;
+	char** argv_;
 };
 
 #endif // UNDO_FRAMEWORKTESTSUITE_H

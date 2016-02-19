@@ -17,9 +17,9 @@ void GUI::ControlPanel::setMasterVideoPlayer(GUI::Player& player) noexcept {
 
 void GUI::ControlPanel::addVideoPlayer(GUI::Player* player) {
 	players_.push_back(player);
-    if(masterPlayer_) {
-        player->setPosition(masterPlayer_->getPosition());
-    }
+	if(masterPlayer_) {
+		player->setPosition(masterPlayer_->getPosition());
+	}
 }
 
 

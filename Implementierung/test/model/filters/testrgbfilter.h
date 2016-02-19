@@ -6,23 +6,22 @@
 
 #include "../../../src/model/filters/RGBFilter.h"
 
-class TestRGBFilter : public QObject
-{
-    Q_OBJECT
+class TestRGBFilter : public QObject {
+	Q_OBJECT
 
-private slots:
-    void init();
+  private slots:
+	void init();
 
-    void testRestore();
+	void testRestore();
 
-    void testGetSaveString();
+	void testGetSaveString();
 
-    void testGetFilterDescription();
+	void testGetFilterDescription();
 
-    void testFilterCopy();
+	void testFilterCopy();
 
-private:
-    Model::RGBFilter   filter_;
+  private:
+	Model::RGBFilter   filter_;
 };
 
 #endif // TESTRGBFILTER_H

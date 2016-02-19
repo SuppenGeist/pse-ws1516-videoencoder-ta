@@ -15,30 +15,31 @@ namespace Utility {
 class RGBHistogrammCalculator {
 
   public:
-    /**
-     * @brief RGBHistogrammCalculator Constructor.
-     * @param video the video that is analyzed.
-     */
+	/**
+	 * @brief RGBHistogrammCalculator Constructor.
+	 * @param video the video that is analyzed.
+	 */
 	RGBHistogrammCalculator(Model::Video& video);
 
-    ~RGBHistogrammCalculator();
+	~RGBHistogrammCalculator();
 
-    /**
-     * @brief calculate Calculates the red, green and blue components of a video.
-     */
-    void calculate(Model::GraphVideo* targetRed,Model::GraphVideo* targetGreen,Model::GraphVideo* targetBlue);
+	/**
+	 * @brief calculate Calculates the red, green and blue components of a video.
+	 */
+	void calculate(Model::GraphVideo* targetRed,Model::GraphVideo* targetGreen,
+	               Model::GraphVideo* targetBlue);
 
 
-private:
-  Model::Video*         video_;
-  Model::GraphVideo*    red_;
-  Model::GraphVideo*    green_;
-  Model::GraphVideo*    blue_;
+  private:
+	Model::Video*         video_;
+	Model::GraphVideo*    red_;
+	Model::GraphVideo*    green_;
+	Model::GraphVideo*    blue_;
 
-  std::thread           calculator_;
-  bool                  isRunning_;
+	std::thread           calculator_;
+	bool                  isRunning_;
 
-  void calculateP();
+	void calculateP();
 };
 }
 

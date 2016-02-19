@@ -10,8 +10,8 @@ Utility::YuvFileSaver::YuvFileSaver(QString filename, Model::Video& video):width
 
 
 Utility::YuvFileSaver::~YuvFileSaver() {
-    file_.flush();
-    file_.close();
+	file_.flush();
+	file_.close();
 }
 
 int Utility::YuvFileSaver::RgbToY(QRgb pixel) {

@@ -24,9 +24,9 @@ class VideoLoader {
 	/**
 	 * @brief VideoLoader Constructor.
 	 * @param path Absolute path to the video to load.
-     * @param dict Optional pointer to dictionary
+	 * @param dict Optional pointer to dictionary
 	 */
-    VideoLoader(QString path, AVDictionary *dict = NULL);
+	VideoLoader(QString path, AVDictionary *dict = NULL);
 
 	~VideoLoader();
 
@@ -36,18 +36,18 @@ class VideoLoader {
 	 */
 	void loadVideo(Model::AVVideo *target);
 
-    QString getCodec();
+	QString getCodec();
 
-    int getAverageBitrate();
+	int getAverageBitrate();
 
   private:
 	QString     path_;
 	std::thread loader_;
 	Model::AVVideo* target_;
 	bool isRunning_;
-    AVDictionary *dict_;
-    QString codec_;
-    int averageBitrate_;
+	AVDictionary *dict_;
+	QString codec_;
+	int averageBitrate_;
 
 	void loadP();
 };

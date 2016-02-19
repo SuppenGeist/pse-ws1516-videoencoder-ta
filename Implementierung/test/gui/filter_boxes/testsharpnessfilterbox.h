@@ -4,13 +4,12 @@
 #include <QObject>
 #include <QtTest/QtTest>
 
-class TestSharpnessFilterBox : public QObject
-{
-    Q_OBJECT
+class TestSharpnessFilterBox : public QObject {
+	Q_OBJECT
 
 
-    private slots:
-    void init();
+  private slots:
+	void init();
 };
 
 #endif // TESTSHARPNESSFILTERBOX_H

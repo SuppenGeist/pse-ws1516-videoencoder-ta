@@ -4,13 +4,12 @@
 #include <QObject>
 #include <QtTest/QtTest>
 
-class TestNegativeFilterBox : public QObject
-{
-    Q_OBJECT
+class TestNegativeFilterBox : public QObject {
+	Q_OBJECT
 
 
-    private slots:
-    void init();
+  private slots:
+	void init();
 };
 
 #endif // TESTNEGATIVEFILTERBOX_H

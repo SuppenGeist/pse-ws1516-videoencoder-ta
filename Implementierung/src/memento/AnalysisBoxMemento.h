@@ -10,23 +10,23 @@ namespace Memento {
  */
 class AnalysisBoxMemento {
 
-public:
-    /**
-     * @brief AnalysisBoxMemento Constructor.
-     */
-    AnalysisBoxMemento();
+  public:
+	/**
+	 * @brief AnalysisBoxMemento Constructor.
+	 */
+	AnalysisBoxMemento();
 
-    QString getPath();
+	QString getPath();
 
-    void setPath(QString path);
+	void setPath(QString path);
 
-    QString getComment();
+	QString getComment();
 
-    void setComment(QString comment);
+	void setComment(QString comment);
 
-private:
-    QString path_;
-    QString comment_;
+  private:
+	QString path_;
+	QString comment_;
 };
 }
 

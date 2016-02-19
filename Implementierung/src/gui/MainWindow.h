@@ -40,13 +40,13 @@ class MainWindow : public QMainWindow {
 	 * @brief getMemento Creates a memento which contains the state of the window.
 	 * @return The created memento.
 	 */
-    std::unique_ptr<Memento::MainWindowMemento> getMemento();
+	std::unique_ptr<Memento::MainWindowMemento> getMemento();
 
 	/**
 	 * @brief restore Restores the window based on the memento.
 	 * @param memento The memento which contains the state of the window.
 	 */
-    void restore(Memento::MainWindowMemento* memento);
+	void restore(Memento::MainWindowMemento* memento);
 
 	QStatusBar* getStatusBar();
 
@@ -79,7 +79,7 @@ class MainWindow : public QMainWindow {
 	/**
 	 * @brief redo redo action if undo has been used.
 	 */
-    void redo();
+	void redo();
 
   private:
 
@@ -95,7 +95,7 @@ class MainWindow : public QMainWindow {
 	AnalysisTab* analysisTab_;
 	Ui::MainWindow *ui_;
 
-    std::unique_ptr<Model::Project> loadedProject_;
+	std::unique_ptr<Model::Project> loadedProject_;
 
 	/**
 	 * @brief createUi creates the UI.

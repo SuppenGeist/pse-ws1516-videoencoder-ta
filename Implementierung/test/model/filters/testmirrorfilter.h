@@ -6,21 +6,20 @@
 
 #include "../../../src/model/filters/MirrorFilter.h"
 
-class TestMirrorFilter : public QObject
-{
-    Q_OBJECT
+class TestMirrorFilter : public QObject {
+	Q_OBJECT
 
-private slots:
-    void init();
+  private slots:
+	void init();
 
-    void testGetFilterDescription();
+	void testGetFilterDescription();
 
-    void testRestore();
+	void testRestore();
 
-    void testFilterCopy();
+	void testFilterCopy();
 
-private:
-    Model::MirrorFilter   filter_;
+  private:
+	Model::MirrorFilter   filter_;
 };
 
 #endif // TESTMIRRORFILTER_H

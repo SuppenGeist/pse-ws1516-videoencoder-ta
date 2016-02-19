@@ -6,25 +6,24 @@
 
 #include "../../../src/model/filters/RotationFilter.h"
 
-class TestRotationFilter : public QObject
-{
-    Q_OBJECT
+class TestRotationFilter : public QObject {
+	Q_OBJECT
 
-private slots:
-    void init();
+  private slots:
+	void init();
 
-    void testSetAngle();
+	void testSetAngle();
 
-    void testRestore();
+	void testRestore();
 
-    void testGetSaveString();
+	void testGetSaveString();
 
-    void testGetFilterDescrition();
+	void testGetFilterDescrition();
 
-    void testFilterCopy();
+	void testFilterCopy();
 
-private:
-    Model::RotationFilter   filter_;
+  private:
+	Model::RotationFilter   filter_;
 };
 
 #endif // TESTROTATIONFILTER_H

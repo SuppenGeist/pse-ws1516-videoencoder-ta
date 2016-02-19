@@ -6,23 +6,22 @@
 
 #include "../../../src/model/filters/BlurFilter.h"
 
-class TestBlurFilter : public QObject
-{
-    Q_OBJECT
+class TestBlurFilter : public QObject {
+	Q_OBJECT
 
-private slots:
-    void init();
+  private slots:
+	void init();
 
-    void testSetIntensity();
+	void testSetIntensity();
 
-    void testRestore();
+	void testRestore();
 
-    void testGetSaveString();
+	void testGetSaveString();
 
-    void testFilterCopy();
+	void testFilterCopy();
 
-private:
-    Model::BlurFilter   filter_;
+  private:
+	Model::BlurFilter   filter_;
 };
 
 #endif // TESTBLURFILTER_H

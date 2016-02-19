@@ -16,29 +16,29 @@ namespace Utility {
 */
 class ProjectWriter {
   public:
-    /**
-     * @brief ProjectWriter Constructor.
-     * @param p The project to save.
-     */
-    ProjectWriter(Model::Project* project);
+	/**
+	 * @brief ProjectWriter Constructor.
+	 * @param p The project to save.
+	 */
+	ProjectWriter(Model::Project* project);
 
-    ~ProjectWriter();
+	~ProjectWriter();
 
-    /**
-     * @brief saveProject Saves the whole project.
-     */
+	/**
+	 * @brief saveProject Saves the whole project.
+	 */
 	void saveProject();
 
-    /**
-     * @brief saveResults Saves on the analysis results.
-     */
-    void saveResults();
+	/**
+	 * @brief saveResults Saves on the analysis results.
+	 */
+	void saveResults();
 
-private:
-    Model::Project*     project_;
+  private:
+	Model::Project*     project_;
 
-    std::unique_ptr<QFile> file_;
-    QTextStream         dataStream_;
+	std::unique_ptr<QFile> file_;
+	QTextStream         dataStream_;
 };
 }
 

@@ -11,20 +11,19 @@ class Video;
 }
 
 namespace Utility {
-class VideoSaver
-{
-      public:
-        /**
-         * @brief saveVideo Saves a video in the given file.
-         * @param video The video to save.
-         * @param filename The path to save the video.
-         */
-        static void saveVideo(Model::Video* video, QString filename);
+class VideoSaver {
+  public:
+	/**
+	 * @brief saveVideo Saves a video in the given file.
+	 * @param video The video to save.
+	 * @param filename The path to save the video.
+	 */
+	static void saveVideo(Model::Video* video, QString filename);
 
 
-      private:
-        VideoSaver();
-    };
+  private:
+	VideoSaver();
+};
 
 }
 

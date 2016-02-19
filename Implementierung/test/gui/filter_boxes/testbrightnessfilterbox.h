@@ -4,13 +4,12 @@
 #include <QObject>
 #include <QtTest/QtTest>
 
-class TestBrightnessFilterBox : public QObject
-{
-    Q_OBJECT
+class TestBrightnessFilterBox : public QObject {
+	Q_OBJECT
 
 
-    private slots:
-    void init();
+  private slots:
+	void init();
 };
 
 #endif // TESTBRIGHTNESSFILTERBOX_H

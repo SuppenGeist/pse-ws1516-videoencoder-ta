@@ -5,7 +5,8 @@
 #include <QDebug>
 
 
-Utility::VideoLoader::VideoLoader(QString path, AVDictionary *dict):path_(path),isRunning_(false),dict_(dict),codec_(""),averageBitrate_(0) {
+Utility::VideoLoader::VideoLoader(QString path, AVDictionary *dict):path_(path),isRunning_(false),
+	dict_(dict),codec_(""),averageBitrate_(0) {
 
 }
 
@@ -22,17 +23,15 @@ void Utility::VideoLoader::loadVideo(Model::AVVideo* target) {
 		return;
 	target_=target;
 
-    loader_=std::thread(&VideoLoader::loadP,this);
+	loader_=std::thread(&VideoLoader::loadP,this);
 }
 
-QString Utility::VideoLoader::getCodec()
-{
-    return codec_;
+QString Utility::VideoLoader::getCodec() {
+	return codec_;
 }
 
-int Utility::VideoLoader::getAverageBitrate()
-{
-    return averageBitrate_;
+int Utility::VideoLoader::getAverageBitrate() {
+	return averageBitrate_;
 }
 
 void Utility::VideoLoader::loadP() {
@@ -77,19 +76,19 @@ void Utility::VideoLoader::loadP() {
 	codec = avcodec_find_decoder(codecContext->codec_id);
 	if(codec == NULL) {
 		return;
-    }
+	}
 
 	// Open codec
-    if(avcodec_open2(codecContext, codec, &dict_) < 0) {
+	if(avcodec_open2(codecContext, codec, &dict_) < 0) {
 		return;
 	}
 
 	struct SwsContext      *sws_ctx = NULL;
 
-    averageBitrate_=codecContext->bit_rate;
-    codec_=QString(av_codec_get_codec_descriptor(codecContext)->name);
-    if(codec_=="")
-        codec_="N/A";
+	averageBitrate_=codecContext->bit_rate;
+	codec_=QString(av_codec_get_codec_descriptor(codecContext)->name);
+	if(codec_=="")
+		codec_="N/A";
 
 	sws_ctx =
 	    sws_getContext
@@ -118,11 +117,11 @@ void Utility::VideoLoader::loadP() {
 	av_init_packet(&packet);
 	packet.data = NULL;
 	packet.size = 0;
-    int gotPicture = 0;
+	int gotPicture = 0;
 	while(av_read_frame(formatContext, &packet) >= 0&&isRunning_) {
 		avcodec_decode_video2(codecContext, frame, &gotPicture, &packet);
 
-        if(gotPicture != 0) {
+		if(gotPicture != 0) {
 			rgbframe=av_frame_alloc();
 
 			buffer=(uint8_t *)av_malloc(numbytes*sizeof(uint8_t));
@@ -145,14 +144,14 @@ void Utility::VideoLoader::loadP() {
 			);
 
 			target_->appendFrame(rgbframe);
-        }
+		}
 	}
 	av_frame_free(&frame);
 	avcodec_close(codecContext);
 	avformat_close_input(&formatContext);
 	isRunning_=false;
-    if(dict_) {
-        free(dict_);
-    }
+	if(dict_) {
+		free(dict_);
+	}
 	target_->setIsComplete(true);
 }

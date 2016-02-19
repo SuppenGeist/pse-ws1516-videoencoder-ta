@@ -6,25 +6,24 @@
 
 #include "../../../src/model/filters/ContrastFilter.h"
 
-class TestContrastFilter : public QObject
-{
-    Q_OBJECT
+class TestContrastFilter : public QObject {
+	Q_OBJECT
 
-private slots:
-    void init();
+  private slots:
+	void init();
 
-    void testSetIntensity();
+	void testSetIntensity();
 
-    void testRestore();
+	void testRestore();
 
-    void testGetSaveString();
+	void testGetSaveString();
 
-    void testFilterCopy();
+	void testFilterCopy();
 
-    void testGetFilterDescription();
+	void testGetFilterDescription();
 
-private:
-    Model::ContrastFilter   filter_;
+  private:
+	Model::ContrastFilter   filter_;
 };
 
 

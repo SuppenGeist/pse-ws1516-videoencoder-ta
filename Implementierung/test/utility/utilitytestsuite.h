@@ -2,17 +2,16 @@
 #define UTILITYTESTSUITE_H
 
 
-class UtilityTestSuite
-{
-public:
-    explicit UtilityTestSuite(int argc, char *argv[]);
+class UtilityTestSuite {
+  public:
+	explicit UtilityTestSuite(int argc, char *argv[]);
 
 
-    void testUtility();
+	void testUtility();
 
-    private:
-    int argc_;
-    char** argv_;
+  private:
+	int argc_;
+	char** argv_;
 };
 
 #endif // UTILITYTESTSUITE_H

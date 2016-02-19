@@ -6,21 +6,20 @@
 
 #include "../../../src/model/filters/ScaleFilter.h"
 
-class TestScaleFilter : public QObject
-{
-    Q_OBJECT
+class TestScaleFilter : public QObject {
+	Q_OBJECT
 
-private slots:
-    void init();
+  private slots:
+	void init();
 
-    void testRestore();
+	void testRestore();
 
-    void testFilterCopy();
+	void testFilterCopy();
 
-    void testGetFilterDescription();
+	void testGetFilterDescription();
 
-private:
-    Model::ScaleFilter   filter_;
+  private:
+	Model::ScaleFilter   filter_;
 };
 
 #endif // TESTSCALEFILTER_H

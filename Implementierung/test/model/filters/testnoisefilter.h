@@ -6,23 +6,22 @@
 
 #include "../../../src/model/filters/NoiseFilter.h"
 
-class TestNoiseFilter : public QObject
-{
-    Q_OBJECT
+class TestNoiseFilter : public QObject {
+	Q_OBJECT
 
-private slots:
-    void init();
+  private slots:
+	void init();
 
-    void testSetIntensity();
+	void testSetIntensity();
 
-    void testRestore();
+	void testRestore();
 
-    void testGetDescription();
+	void testGetDescription();
 
-    void testFilterCopy();
+	void testFilterCopy();
 
-private:
-    Model::NoiseFilter   filter_;
+  private:
+	Model::NoiseFilter   filter_;
 };
 
 #endif // TESTNOISEFILTER_H

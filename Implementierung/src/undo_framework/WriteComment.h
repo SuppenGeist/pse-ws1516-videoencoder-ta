@@ -14,39 +14,41 @@ class WriteComment: public QUndoCommand {
 	/**
 	 * @brief WriteComment Constuctor
 	 */
-    WriteComment(GUI::AnalysisBoxContainer* container,int index,QString oldcomment,QString newComment);
+	WriteComment(GUI::AnalysisBoxContainer* container,int index,QString oldcomment,QString newComment);
 
 
 	/**
-     * @brief undo Reverts changes to the textbox.
+	 * @brief undo Reverts changes to the textbox.
 	 */
 	void undo();
 
 
 	/**
-     * @brief redo Applies changes to the textbox.
+	 * @brief redo Applies changes to the textbox.
 	 */
 	void redo();
 
-    /**
-     * @brief mergeWith Trys to merge command with another command.
-     * @param command The other command.
-     * @return If merge was succesfull.
-     */
-    bool mergeWith(const QUndoCommand *command);
+	/**
+	 * @brief mergeWith Trys to merge command with another command.
+	 * @param command The other command.
+	 * @return If merge was succesfull.
+	 */
+	bool mergeWith(const QUndoCommand *command);
 
-    /**
-     * @brief id Returns the id of this command.
-     * @return In this case 666
-     */
-    int id() const {return 666;}
+	/**
+	 * @brief id Returns the id of this command.
+	 * @return In this case 666
+	 */
+	int id() const {
+		return 666;
+	}
 
 
   private:
-    GUI::AnalysisBoxContainer* container_;
-    int index_;
-    QString oldComment_;
-    QString newComment_;
+	GUI::AnalysisBoxContainer* container_;
+	int index_;
+	QString oldComment_;
+	QString newComment_;
 };
 }
 

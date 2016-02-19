@@ -35,7 +35,7 @@ class EncodedVideo {
 	 * @brief getPath Returns the path to the video.
 	 * @return The path to the video.
 	 */
-    QString getPath();
+	QString getPath();
 
 	/**
 	 * @brief getCodec Returns the codec used in the video file.
@@ -54,25 +54,25 @@ class EncodedVideo {
 	 * @param reference
 	 * @return The psnr graph.
 	 */
-    Graph *getPsnr(Model::Video* reference = 0);
+	Graph *getPsnr(Model::Video* reference = 0);
 
 	/**
 	 * @brief getRedHistogramm Returns the red histogramm graph.
 	 * @return The red histogramm.
 	 */
-    Model::GraphVideo& getRedHistogramm();
+	Model::GraphVideo& getRedHistogramm();
 
 	/**
 	 * @brief getBlueHistogramm Returns the blue histogramm graph.
 	 * @return The blue histogramm.
 	 */
-    Model::GraphVideo& getBlueHistogramm();
+	Model::GraphVideo& getBlueHistogramm();
 
 	/**
 	 * @brief getGreenHistogramm Returns the green histogramm graph.
 	 * @return The green histogramm.
 	 */
-    Model::GraphVideo& getGreenHistogramm();
+	Model::GraphVideo& getGreenHistogramm();
 
 	/**
 	 * @brief getAvVideo Returns the AVVideo.
@@ -91,7 +91,7 @@ class EncodedVideo {
 	 * @param reference The video to compare to.
 	 * @return The rgb diff video.
 	 */
-    Model::Video* getRgbDiffVideo(Model::Video* reference = 0);
+	Model::Video* getRgbDiffVideo(Model::Video* reference = 0);
 
 	/**
 	 * @brief getVideo Returns the Video.
@@ -99,32 +99,32 @@ class EncodedVideo {
 	 */
 	Model::Video& getVideo();
 
-    int getAverageBitrate();
+	int getAverageBitrate();
 
   private:
 
-    QString                     path_;
+	QString                     path_;
 	std::unique_ptr<Video>      video_;
-    std::unique_ptr<AVVideo>    avVideo_;
+	std::unique_ptr<AVVideo>    avVideo_;
 	std::unique_ptr<Video>      macroblockVideo_;
-    std::unique_ptr<AVVideo>    macroblockAVVideo_;
+	std::unique_ptr<AVVideo>    macroblockAVVideo_;
 	std::unique_ptr<Video>      rgbDiffVideo_;
 	std::unique_ptr<Graph>      bitrate_;
 	std::unique_ptr<Graph>      psnr_;
-    std::unique_ptr<GraphVideo>      redHisto_;
-    std::unique_ptr<GraphVideo>      greenHisto_;
-    std::unique_ptr<GraphVideo>      blueHisto_;
+	std::unique_ptr<GraphVideo>      redHisto_;
+	std::unique_ptr<GraphVideo>      greenHisto_;
+	std::unique_ptr<GraphVideo>      blueHisto_;
 
 	std::unique_ptr<Utility::VideoLoader> loader_;
 	std::unique_ptr<Utility::BitrateCalculator> bitrateCalculator_;
-    std::unique_ptr<Utility::RGBHistogrammCalculator> rgbHistoCalculator_;
-    std::unique_ptr<Utility::PsnrCalculator>        psnrCalculator_;
-    std::unique_ptr<Utility::RGBDifferenceCalculator> rgbDiffCalculator_;
+	std::unique_ptr<Utility::RGBHistogrammCalculator> rgbHistoCalculator_;
+	std::unique_ptr<Utility::PsnrCalculator>        psnrCalculator_;
+	std::unique_ptr<Utility::RGBDifferenceCalculator> rgbDiffCalculator_;
 	std::thread                 converter_;
-    std::thread                 macroblockConverter_;
-    std::unique_ptr<Utility::VideoLoader>   macroblockLoader_;
+	std::thread                 macroblockConverter_;
+	std::unique_ptr<Utility::VideoLoader>   macroblockLoader_;
 	bool                        isConverterRunning_;
-    bool                        isMacroblockConverterRunnning_;
+	bool                        isMacroblockConverterRunnning_;
 
 
 	/**
@@ -138,7 +138,7 @@ class EncodedVideo {
 	void loadVideo();
 
 	void convertVideo();
-    void convertMacroblock();
+	void convertMacroblock();
 };
 }
 

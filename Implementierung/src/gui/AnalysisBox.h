@@ -45,9 +45,9 @@ class AnalysisBox: public QFrame {
 
 	~AnalysisBox();
 
-    std::unique_ptr<Memento::AnalysisBoxMemento> getMemento();
+	std::unique_ptr<Memento::AnalysisBoxMemento> getMemento();
 
-    void restore(Memento::AnalysisBoxMemento* memento);
+	void restore(Memento::AnalysisBoxMemento* memento);
 
 	void setParentContainer(AnalysisBoxContainer* container);
 
@@ -55,22 +55,22 @@ class AnalysisBox: public QFrame {
 
 	void setTimer(std::shared_ptr<Timer> timer);
 
-    void setControlPanel(std::shared_ptr<GlobalControlPanel> controlPanel);
+	void setControlPanel(std::shared_ptr<GlobalControlPanel> controlPanel);
 
 	void showGraph(AnalysisGraph graph);
 
-    void showAnalysisVideo(AnalysisVideo video);
+	void showAnalysisVideo(AnalysisVideo video);
 
-    void showAttributes();
+	void showAttributes();
 
 	QString getFilename();
 
-    QPlainTextEdit* getCommentBox();
+	QPlainTextEdit* getCommentBox();
 
   private slots:
-    void closeBox();
-    void updateLabels();
-    void commentChanged();
+	void closeBox();
+	void updateLabels();
+	void commentChanged();
 
   private:
 	FrameView*      origView_;
@@ -78,24 +78,24 @@ class AnalysisBox: public QFrame {
 	QTabWidget*     tabs_graphs_;
 	QPushButton*    button_close_;
 	GraphWidget*    graphWidget_;
-    QLabel*         label_title_;
-    QPlainTextEdit* texteEdit_comment_;
-    QLabel*         label_filename_;
-    QLabel*         label_filesize_;
-    QLabel*         label_codec_;
-    QLabel*         label_averageBitrate_;
+	QLabel*         label_title_;
+	QPlainTextEdit* texteEdit_comment_;
+	QLabel*         label_filename_;
+	QLabel*         label_filesize_;
+	QLabel*         label_codec_;
+	QLabel*         label_averageBitrate_;
 
 	AnalysisBoxContainer*                   parentContainer_;
 
 	std::unique_ptr<VideoPlayer>              origVidPlayer_;
 	std::unique_ptr<VideoPlayer>              anaVidPlayer_;
-    std::shared_ptr<GlobalControlPanel>     globalControlPanel_;
-    std::unique_ptr<GraphPlayer>            graphPlayer_;
+	std::shared_ptr<GlobalControlPanel>     globalControlPanel_;
+	std::unique_ptr<GraphPlayer>            graphPlayer_;
 
 	QString         filename_;
 	std::unique_ptr<Model::EncodedVideo>      origVideo_;
-    QTimer          timer_updateLabels_;
-    QString currentComment_;
+	QTimer          timer_updateLabels_;
+	QString currentComment_;
 
 	void createUi();
 

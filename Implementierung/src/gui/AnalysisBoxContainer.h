@@ -37,39 +37,39 @@ class AnalysisBoxContainer: public QFrame {
 	*/
 	AnalysisBoxContainer(QWidget* parent=0);
 
-    std::unique_ptr<Memento::AnalysisBoxContainerMemento> getMemento();
+	std::unique_ptr<Memento::AnalysisBoxContainerMemento> getMemento();
 
-    void restore(Memento::AnalysisBoxContainerMemento* memento);
+	void restore(Memento::AnalysisBoxContainerMemento* memento);
 
 	void setParentTab(AnalysisTab* parent);
 
-    AnalysisTab* getParentTab();
+	AnalysisTab* getParentTab();
 
-    AnalysisBox* appendBox(AnalysisBox* box);
+	AnalysisBox* appendBox(AnalysisBox* box);
 
-    int removeBox(AnalysisBox* box);
+	int removeBox(AnalysisBox* box);
 
 	void clear();
 
 	void setTimer(std::shared_ptr<Timer> timer);
 
-    void setControlPanel(std::shared_ptr<GlobalControlPanel> controlpanel);
+	void setControlPanel(std::shared_ptr<GlobalControlPanel> controlpanel);
 
 	void showGraph(AnalysisGraph graph);
 
-    void showAnalysisVideo(AnalysisVideo video);
+	void showAnalysisVideo(AnalysisVideo video);
 
-    void showAttributes();
+	void showAttributes();
 
-    AnalysisBox* getAnalysisBox(int index);
+	AnalysisBox* getAnalysisBox(int index);
 
-    int getIndex(AnalysisBox* box);
+	int getIndex(AnalysisBox* box);
 
-    AnalysisGraph getShownGraph();
+	AnalysisGraph getShownGraph();
 
-    AnalysisVideo getShownVideo();
+	AnalysisVideo getShownVideo();
 
-    AnalysisBox* insertBox(AnalysisBox* box,int index);
+	AnalysisBox* insertBox(AnalysisBox* box,int index);
 
   private slots:
 	void addVideo();
@@ -81,12 +81,12 @@ class AnalysisBoxContainer: public QFrame {
 
 	AnalysisTab*                parent_;
 	std::shared_ptr<Timer>      timer_;
-    std::shared_ptr<GlobalControlPanel>         controlPanel_;
+	std::shared_ptr<GlobalControlPanel>         controlPanel_;
 
 	std::vector<AnalysisBox*>   boxes_;
 
 	AnalysisGraph               currentGraph_;
-    AnalysisVideo               currentVideo_;
+	AnalysisVideo               currentVideo_;
 
 	void createUi();
 
