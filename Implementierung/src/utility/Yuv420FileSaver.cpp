@@ -58,7 +58,7 @@ void Utility::Yuv420FileSaver::saveP() {
 			break;
 	} while(isRunning_);
 	bool buffer=isRunning_;
-	isRunning_=false;
-	filterTab_->saveComplete(buffer,QFileInfo(file_).fileName());
+    isRunning_=false;
+    filterTab_->saveComplete(buffer,QFileInfo(file_).fileName(),video_->getWidth(),video_->getHeight());
 }
 

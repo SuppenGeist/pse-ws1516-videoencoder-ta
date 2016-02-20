@@ -64,6 +64,28 @@ void GUI::MainWindow::undo() {
 
 void GUI::MainWindow::saveAs() {
 
+        auto name=QFileDialog::getSaveFileName(this,"Save project",QDir::homePath());
+        if(name.isEmpty())
+            return;
+
+        if(!name.endsWith(".vive")) {
+            name+=".vive";
+        }
+
+        QFile file(name);
+        QFileInfo info(file);
+        loadedProject_->setName(info.fileName());
+        loadedProject_->setPath(name);
+
+
+    loadedProject_->setMemento(getMemento());
+
+    Utility::ProjectWriter writer(loadedProject_.get());
+    writer.saveProject();
+
+    QMessageBox::information(this,"Project saved",
+                             "The project was successfully saved.",QMessageBox::Ok);
+    setWindowTitle("Vive ["+loadedProject_->getName()+"]");
 }
 
 void GUI::MainWindow::loadProject() {
@@ -153,6 +175,7 @@ void GUI::MainWindow::createUi() {
 	QVBoxLayout* v_analysisTab=new QVBoxLayout;
 	analysisTab_=new AnalysisTab;
 	v_analysisTab->addWidget(analysisTab_);
+    analysisTab_->setParentWindow(this);
 	wrapper_analysis->setLayout(v_analysisTab);
 
 	tab_tabs_->addTab(wrapper_analysis,"Analysis");

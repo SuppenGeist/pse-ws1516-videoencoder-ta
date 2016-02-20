@@ -15,6 +15,7 @@
 
 #include "AnalysisBox.h"
 #include "AnalysisTab.h"
+#include "MainWindow.h"
 
 #include "../undo_framework/UndoStack.h"
 #include "../undo_framework/AddVideo.h"
@@ -175,10 +176,18 @@ void GUI::AnalysisBoxContainer::addVideo() {
 	if(!parent_->isRawVideoLoaded())
 		return;
 
+    if(parent_->getParentWindow()) {
+        parent_->getParentWindow()->getStatusBar()->showMessage("Loading encoded video...");
+    }
+
 	auto filename=QFileDialog::getOpenFileName(this,"Open encoded video",QDir::homePath());
 
-	if(filename.isEmpty())
+    if(filename.isEmpty()) {
+        if(parent_->getParentWindow()) {
+            parent_->getParentWindow()->getStatusBar()->showMessage("Aborted!",2000);
+        }
 		return;
+    }
 
 	QFileInfo fileToCheck(filename);
 
@@ -188,6 +197,9 @@ void GUI::AnalysisBoxContainer::addVideo() {
 	auto command=new UndoRedo::AddVideo(this,filename);
 	UndoRedo::UndoStack::getUndoStack().push(command);
 
+    if(parent_->getParentWindow()) {
+        parent_->getParentWindow()->getStatusBar()->showMessage("Loading encoded video...",3000);
+    }
 }
 
 void GUI::AnalysisBoxContainer::createUi() {

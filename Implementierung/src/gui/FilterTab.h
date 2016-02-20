@@ -75,7 +75,7 @@ class FilterTab: public QFrame {
 	MainWindow *getMainWindow();
 
   signals:
-	void saveComplete(bool successful,QString filename);
+    void saveComplete(bool successful,QString filename,int width,int height);
 	void applyComplete(bool successful);
 
   private slots:
@@ -89,7 +89,7 @@ class FilterTab: public QFrame {
 	void loadConfiguration();
 	void reset();
 	void listSelectionChanged(QItemSelection selection);
-	void notifyOnSaveComplete(bool successful,QString filename);
+    void notifyOnSaveComplete(bool successful,QString filename,int width,int height);
 	void notifyOnApplyComplete(bool successful);
 
 

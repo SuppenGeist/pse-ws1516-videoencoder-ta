@@ -25,6 +25,7 @@
 #include "VideoPlayer.h"
 #include "Timer.h"
 #include "GlobalControlPanel.h"
+#include "MainWindow.h"
 
 #include "../memento/AnalysisTabMemento.h"
 
@@ -160,7 +161,17 @@ Model::YuvVideo *GUI::AnalysisTab::getRawVideo() {
 }
 
 bool GUI::AnalysisTab::isRawVideoLoaded() {
-	return rawVideo_;
+    return rawVideo_;
+}
+
+void GUI::AnalysisTab::setParentWindow(GUI::MainWindow *window)
+{
+    parentWindow_=window;
+}
+
+GUI::MainWindow *GUI::AnalysisTab::getParentWindow()
+{
+    return parentWindow_;
 }
 
 void GUI::AnalysisTab::resizeEvent(QResizeEvent *event) {

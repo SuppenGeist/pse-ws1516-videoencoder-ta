@@ -83,8 +83,8 @@ void Utility::Yuv444FileSaver::saveP() {
 		throw std::logic_error("Should not get here");
 	}
 	bool buffer=isRunning_;
-	isRunning_=false;
-	filterTab_->saveComplete(buffer,QFileInfo(file_).fileName());
+    isRunning_=false;
+    filterTab_->saveComplete(buffer,QFileInfo(file_).fileName(),video_->getWidth(),video_->getHeight());
 }
 
 Utility::Yuv444Vector Utility::Yuv444FileSaver::Rgb888ToYuv444(QRgb pixel1) {

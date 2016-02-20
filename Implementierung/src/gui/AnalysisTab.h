@@ -27,6 +27,10 @@
 #include "../memento/AnalysisTabMemento.h"
 
 namespace GUI {
+class MainWindow;
+}
+
+namespace GUI {
 enum class AnalysisGraph {
     BITRATE,
     RED_HISTOGRAMM,
@@ -62,6 +66,10 @@ class AnalysisTab: public QFrame {
 	Model::YuvVideo* getRawVideo();
 
 	bool isRawVideoLoaded();
+
+    void setParentWindow(MainWindow* window);
+
+    MainWindow* getParentWindow();
 
   protected:
 	void resizeEvent(QResizeEvent * event);
@@ -111,6 +119,8 @@ class AnalysisTab: public QFrame {
 	FrameView*                          rawVideoView_;
 
 	QTimer                  timer_labelUpdater_;
+
+    MainWindow*             parentWindow_;
 
 	void createUi();
 	void connectActions();

@@ -37,6 +37,8 @@ class GraphWidget:public QGraphicsView {
 	 */
 	void drawGraph(Model::Graph *graph);
 
+    Model::Graph* getGraph();
+
 	/**
 	 * @brief setLineColor Sets the pen which is used to draw the graph line.
 	 * @param color The pen to use.

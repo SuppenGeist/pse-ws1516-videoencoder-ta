@@ -55,7 +55,12 @@ void GUI::GraphWidget::drawGraph(Model::Graph* graph) {
 
 	updateLabelSizes();
 	buildScene();
-	update();
+    update();
+}
+
+Model::Graph *GUI::GraphWidget::getGraph()
+{
+    return graph_;
 }
 
 void GUI::GraphWidget::setLinePen(QPen linePen) {
@@ -216,6 +221,7 @@ void GUI::GraphWidget::mouseReleaseEvent(QMouseEvent* event) {
 		frame++;
 	}
 	controlPanel_->setPosition(frame);
+    controlPanel_->pause();
 }
 
 void GUI::GraphWidget::resizeEvent(QResizeEvent *event) {
