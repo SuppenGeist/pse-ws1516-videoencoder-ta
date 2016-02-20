@@ -109,9 +109,21 @@ std::unique_ptr<Memento::FilterTabMemento> GUI::FilterTab::getMemento() {
 }
 
 void GUI::FilterTab::restore(Memento::FilterTabMemento *memento) {
-	setRawVideo(memento->getRawVideo());
+    if(!memento)
+        return;
+
+    setRawVideo(memento->getRawVideo());
+
+    auto ownedVideo=memento->releaseVideo();
+    if(ownedVideo.get()) {
+        auto dummy=std::make_unique<Memento::FilterTabMemento>();
+        auto command=new UndoRedo::LoadFilterVideo(*this,std::move(ownedVideo),std::move(dummy));
+        UndoRedo::UndoStack::getUndoStack().push(command);
+    }
+
 	setFilterList(memento->getFilterList());
 	if(memento->isPreviewShow()) {
+        updateFilterPreview();
 		showFilterPreview();
 	} else {
 		if(memento->isFilteredVideoShown()) {
@@ -188,7 +200,7 @@ void GUI::FilterTab::updateFilterPreview() {
 	if(!rawVideo_)
 		return;
 
-	if(!originalPreviewFrames_.get()||originalPreviewFrames_->getNumberOfFrames()==0
+    if(!originalPreviewFrames_.get()||originalPreviewFrames_->getNumberOfFrames()!=MAX_PREVIEW_COUNT
 	        ||!rawVideo_->getVideo().isComplete()) {
 		calculatePreviewFrames();
 	}
@@ -788,17 +800,17 @@ void GUI::FilterTab::calculatePreviewFrames() {
 
 	originalPreviewFrames_=std::make_unique<Model::AVVideo>();
 
-	static std::size_t numberOfPreviewFrames=5;
+    int numberOfPreviewFrames=MAX_PREVIEW_COUNT;
 
 	auto videoFramecount=rawVideo_->getVideo().getNumberOfFrames();
-	std::size_t stepsize=videoFramecount/numberOfPreviewFrames;
+    std::size_t stepsize=videoFramecount/numberOfPreviewFrames;
 
-	if(videoFramecount<numberOfPreviewFrames) {
+    if(videoFramecount<numberOfPreviewFrames) {
 		numberOfPreviewFrames=videoFramecount;
 		stepsize=1;
 	}
 
-	for(std::size_t i=0; i<numberOfPreviewFrames; i++) {
+    for(std::size_t i=0; i<numberOfPreviewFrames; i++) {
 		auto frame=Utility::VideoConverter::convertQImageToAVFrame(*rawVideo_->getVideo().getFrame(
 		               i*stepsize));
 		originalPreviewFrames_->appendFrame(frame);

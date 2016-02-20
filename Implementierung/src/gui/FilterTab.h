@@ -38,6 +38,8 @@ namespace GUI {
 class FilterTab: public QFrame {
 	Q_OBJECT
   public:
+    static constexpr int MAX_PREVIEW_COUNT=5;
+
 	FilterTab(QWidget* parent=0);
 
 	std::unique_ptr<Memento::FilterTabMemento> getMemento();
