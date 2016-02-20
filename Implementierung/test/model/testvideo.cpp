@@ -1,3 +1,4 @@
+#include <memory>
 #include "testvideo.h"
 
 void TestVideo::init()
@@ -10,15 +11,90 @@ void TestVideo::testFPS() {
     video_.setFps(testValue1);
     QVERIFY(testValue1 == video_.getFps());
 
-    const int testValue2=30;
+    const int testValue2=100;
     video_.setFps(testValue2);
     QVERIFY(testValue2 == video_.getFps());
 
-    const int testValue3=60;
+    const int testValue3=-10;
     video_.setFps(testValue3);
-    QVERIFY(testValue3 == video_.getFps());
+    QVERIFY(testValue3 != video_.getFps());
+}
 
-    const int testValue4=100;
-    video_.setFps(testValue4);
-    QVERIFY(testValue4 == video_.getFps());
+void TestVideo::TestAppendFrame() {
+    std::unique_ptr<QImage> frame;
+    QVERIFY(true == video_.appendFrame(std::move(frame)));
+}
+
+void TestVideo::TestInsertFrame() {
+    std::unique_ptr<QImage> frame;
+    QVERIFY(true == video_.insertFrame(std::move(frame), 0));
+}
+
+void TestVideo::TestGetNumberOfFrames() {
+    std::unique_ptr<QImage> frame;
+    video_.insertFrame(std::move(frame), 0);
+
+    std::unique_ptr<QImage> frame2;
+    video_.insertFrame(std::move(frame2), 1);
+
+    QVERIFY(2 == video_.getNumberOfFrames());
+}
+
+
+void TestVideo::TestGetFrame() {
+    std::unique_ptr<QImage> frame;
+    video_.appendFrame(std::move(frame));
+    QVERIFY(frame.get() == video_.getFrame(0));
+}
+
+void TestVideo::TestRemoveFrame() {
+    video_.removeFrame(1);
+    QVERIFY(0 == video_.getHeight());
+
+    std::unique_ptr<QImage> frame;
+    video_.insertFrame(std::move(frame), 0);
+
+    std::unique_ptr<QImage> frame2;
+    video_.insertFrame(move(std::move(frame2)), 1);
+
+    video_.removeFrame(1);
+    QVERIFY(frame2.get() != video_.getFrame(1));
+
+    QVERIFY(nullptr == video_.getFrame(2));
+
+
+}
+
+void TestVideo::TestIsComplete(){
+
+    video_.setIsComplete(true);
+    QVERIFY(true == video_.isComplete());
+
+    video_.setIsComplete(false);
+    QVERIFY(false == video_.isComplete());
+}
+
+void TestVideo::TestInsertFrames() {
+    std::vector<std::unique_ptr<QImage>> frames;
+    QVERIFY(true == video_.insertFrames(frames, 0));
+
+    std::vector<std::unique_ptr<QImage>> frames2;
+    QVERIFY(false == video_.insertFrames(frames2, 10));
+
+}
+
+void TestVideo::TestHeight() {
+    std::unique_ptr<QImage> frame;
+    video_.appendFrame(move(frame));
+
+    QVERIFY(frame->height() == video_.getHeight());
+
+}
+
+void TestVideo::TestWidth() {
+    std::unique_ptr<QImage> frame;
+    video_.appendFrame(move(frame));
+
+    QVERIFY(frame->width() == video_.getWidth());
+
 }
