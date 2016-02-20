@@ -187,7 +187,12 @@ HEADERS += \
     test/utility/testyuv411filereader.h \
     test/utility/testyuv422filereader.h \
     test/utility/testyuv420filereader.h \
-    test/utility/testyuv444filereader.h
+    test/utility/testyuv444filereader.h \
+    test/memento/testanalysisboxcontainermemento.h \
+    test/memento/testanalysisboxmemento.h \
+    test/memento/testanalysistabmemento.h \
+    test/memento/testfiltertabmemento.h \
+    test/memento/testmainwindowmemento.h
 
 SOURCES += \
     src/gui/AnalysisBox.cpp \
@@ -355,7 +360,12 @@ SOURCES += \
     test/utility/testyuv411filereader.cpp \
     test/utility/testyuv422filereader.cpp \
     test/utility/testyuv420filereader.cpp \
-    test/utility/testyuv444filereader.cpp
+    test/utility/testyuv444filereader.cpp \
+    test/memento/testanalysisboxcontainermemento.cpp \
+    test/memento/testanalysisboxmemento.cpp \
+    test/memento/testanalysistabmemento.cpp \
+    test/memento/testfiltertabmemento.cpp \
+    test/memento/testmainwindowmemento.cpp
 
 RESOURCES += \
     resources.qrc \
