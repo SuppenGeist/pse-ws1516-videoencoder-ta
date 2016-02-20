@@ -1,4 +1,4 @@
-/*#ifndef TESTBLURFILTERBOX_H
+#ifndef TESTBLURFILTERBOX_H
 #define TESTBLURFILTERBOX_H
 
 #include <QObject>
@@ -16,9 +16,10 @@ private slots:
     void testChangeIntensity();
 
 private:
-    GUI::BlurFilterBox   filterbox_;
+    std::unique_ptr<GUI::BlurFilterBox>   filterbox1_;
+    GUI::BlurFilterBox* filterbox_;
 
 };
 
 #endif
-*/
+

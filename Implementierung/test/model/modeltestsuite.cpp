@@ -5,6 +5,7 @@
 #include "filters/filtertestsuite.h"
 #include "testavvideo.h"
 #include "testvideo.h"
+#include "testgraphvideo.h"
 
 ModelTestSuite::ModelTestSuite(int argc, char* argv[]):argc_(argc),argv_(argv) {
 
@@ -19,5 +20,8 @@ void ModelTestSuite::testModel() {
 
     TestVideo testVideo;
     QTest::qExec(&testVideo);
+
+    TestGraphVideo testGraphVideo;
+    QTest::qExec(&testGraphVideo);
 }
 

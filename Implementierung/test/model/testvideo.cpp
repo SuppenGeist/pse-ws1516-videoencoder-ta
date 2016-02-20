@@ -46,6 +46,8 @@ void TestVideo::TestGetFrame() {
     QImage* tempframe = frame.get();
     video_.appendFrame(std::move(frame));
     QVERIFY(tempframe == video_.getFrame(0));
+
+    QVERIFY(nullptr == video_.getFrame(1));
 }
 
 void TestVideo::TestRemoveFrame() {

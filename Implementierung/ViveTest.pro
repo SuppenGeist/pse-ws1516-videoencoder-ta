@@ -182,7 +182,8 @@ HEADERS += \
     test/gui/filter_boxes/testvintagefilterbox.h \
     test/gui/filter_boxes/testbrightnessfilterbox.h \
     test/model/testavvideo.h \
-    test/model/testvideo.h
+    test/model/testvideo.h \
+    test/model/testgraphvideo.h
 
 SOURCES += \
     src/gui/AnalysisBox.cpp \
@@ -345,7 +346,8 @@ SOURCES += \
     test/gui/filter_boxes/testvintagefilterbox.cpp \
     test/gui/filter_boxes/testbrightnessfilterbox.cpp \
     test/model/testavvideo.cpp \
-    test/model/testvideo.cpp
+    test/model/testvideo.cpp \
+    test/model/testgraphvideo.cpp
 
 RESOURCES += \
     resources.qrc \

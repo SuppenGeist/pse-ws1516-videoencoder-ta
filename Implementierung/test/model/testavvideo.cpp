@@ -43,7 +43,11 @@ void TestAVVideo::TestGetNumberOfFrames() {
 void TestAVVideo::TestGetFrame() {
     AVFrame* frame = new AVFrame();
     avvideo_.appendFrame(frame);
+
     QVERIFY(frame == avvideo_.getFrame(0));
+
+    QVERIFY(nullptr == avvideo_.getFrame(1));
+
 }
 
 void TestAVVideo::TestRemoveFrame() {

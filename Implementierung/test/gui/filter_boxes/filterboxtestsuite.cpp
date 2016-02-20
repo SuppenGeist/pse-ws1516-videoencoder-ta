@@ -28,6 +28,7 @@ FilterBoxTestSuite::FilterBoxTestSuite(int argc,char* argv[]):argc_(argc),argv_(
 
 }
 void FilterBoxTestSuite::testAllFilterBoxes() {
-	//TestBlurFilterBox testBlurFilterBox();
-	//QTest::qExec(&testBlurFilterBox,argc_,argv_);
+    //TestBlurFilterBox testBlurFilterBox;
+    //QTest::qExec(&testBlurFilterBox);
+
 }
