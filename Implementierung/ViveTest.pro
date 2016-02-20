@@ -180,7 +180,9 @@ HEADERS += \
     test/gui/filter_boxes/testsepiafilterbox.h \
     test/gui/filter_boxes/testsharpnessfilterbox.h \
     test/gui/filter_boxes/testvintagefilterbox.h \
-    test/gui/filter_boxes/testbrightnessfilterbox.h
+    test/gui/filter_boxes/testbrightnessfilterbox.h \
+    test/model/testavvideo.h \
+    test/model/testvideo.h
 
 SOURCES += \
     src/gui/AnalysisBox.cpp \
@@ -341,7 +343,9 @@ SOURCES += \
     test/gui/filter_boxes/testsepiafilterbox.cpp \
     test/gui/filter_boxes/testsharpnessfilterbox.cpp \
     test/gui/filter_boxes/testvintagefilterbox.cpp \
-    test/gui/filter_boxes/testbrightnessfilterbox.cpp
+    test/gui/filter_boxes/testbrightnessfilterbox.cpp \
+    test/model/testavvideo.cpp \
+    test/model/testvideo.cpp
 
 RESOURCES += \
     resources.qrc \
