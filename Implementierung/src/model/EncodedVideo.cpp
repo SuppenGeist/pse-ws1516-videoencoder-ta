@@ -102,8 +102,8 @@ Model::Video& Model::EncodedVideo::getMacroBlockVideo() {
 		macroblockAVVideo_ = std::make_unique<AVVideo>();
 		AVDictionary *dict = NULL;
 		// deprecated option vismv
-		av_dict_set(&dict, "debug", "vis_mb_type", 0);
-		av_dict_set(&dict, "vismv", "pf", 0);
+        av_dict_set(&dict, "debug", "vis_mb_type", 0);
+        av_dict_set(&dict, "vismv", "pf+bf+bb", 0);
 		macroblockLoader_ = std::make_unique<Utility::VideoLoader>(path_, dict);
 		macroblockLoader_->loadVideo(macroblockAVVideo_.get());
 		macroblockVideo_=std::make_unique<Video>();

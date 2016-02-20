@@ -4,6 +4,7 @@
 #include <thread>
 
 #include <QFile>
+#include <QDebug>
 #include <QDataStream>
 
 #include "../model/Video.h"
@@ -58,10 +59,10 @@ int Utility::YuvFileReader::clamp(int value) {
 void Utility::YuvFileReader::readP() {
 	std::unique_ptr<QImage> frame;
 	isRunning_=true;
-	while(!dataStream_.atEnd()&&isRunning_) {
+    while(!dataStream_.atEnd()&&isRunning_) {
 		dataStream_.readRawData(reinterpret_cast<char*>(binaryData_),frameSize_);
 		video_->appendFrame(std::move(parseNextFrame()));
 	}
 	isRunning_=false;
-	video_->setIsComplete(true);
+    video_->setIsComplete(true);
 }

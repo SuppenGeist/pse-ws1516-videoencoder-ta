@@ -146,6 +146,39 @@ void Utility::VideoLoader::loadP() {
 			target_->appendFrame(rgbframe);
         }
 	}
+
+    packet.data=NULL;
+    packet.size=0;
+
+    while(isRunning_) {
+        avcodec_decode_video2(codecContext, frame, &gotPicture, &packet);
+
+        if(gotPicture == 0)
+            break;
+
+        rgbframe=av_frame_alloc();
+
+        buffer=(uint8_t *)av_malloc(numbytes*sizeof(uint8_t));
+        avpicture_fill((AVPicture *)rgbframe, buffer, AV_PIX_FMT_RGB24,codecContext->width,
+                       codecContext->height);
+        rgbframe->width=codecContext->width;
+        rgbframe->height=codecContext->height;
+        rgbframe->format=AV_PIX_FMT_RGB24;
+        rgbframe->pkt_size=frame->pkt_size;
+
+        sws_scale
+        (
+            sws_ctx,
+            frame->data,
+            frame->linesize,
+            0,
+            codecContext->height,
+            rgbframe->data,
+            rgbframe->linesize
+        );
+
+        target_->appendFrame(rgbframe);
+    }
 	av_frame_free(&frame);
 	avcodec_close(codecContext);
 	avformat_close_input(&formatContext);
