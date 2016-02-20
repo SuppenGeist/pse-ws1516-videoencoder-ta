@@ -14,13 +14,13 @@ class TestFilterTabMemento : public QObject {
 
     void testSetRawVideo();
 
+    void testSetRawVideo2();
+
     void testSetFilterList();
 
     void testSetIsPreviewShown();
 
     void testSetIsFilteredVideoShown();
-
-    void testSetFilteredVideo();
 
     void testSetCurrentFrame();
 

@@ -14,9 +14,6 @@ class TestAnalysisBoxContainerMemento : public QObject {
 
     void testAddMemento();
 
-    void testGetMementoList();
-
-
   private:
     Memento::AnalysisBoxContainerMemento memento_;
 
