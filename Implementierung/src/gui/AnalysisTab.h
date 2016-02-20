@@ -67,9 +67,9 @@ class AnalysisTab: public QFrame {
 
 	bool isRawVideoLoaded();
 
-    void setParentWindow(MainWindow* window);
+	void setParentWindow(MainWindow* window);
 
-    MainWindow* getParentWindow();
+	MainWindow* getParentWindow();
 
   protected:
 	void resizeEvent(QResizeEvent * event);
@@ -120,7 +120,7 @@ class AnalysisTab: public QFrame {
 
 	QTimer                  timer_labelUpdater_;
 
-    MainWindow*             parentWindow_;
+	MainWindow*             parentWindow_;
 
 	void createUi();
 	void connectActions();

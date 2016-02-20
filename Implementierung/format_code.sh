@@ -28,4 +28,5 @@ astyle ${AFLAGS} "test/*.h"
 #delete all *.orig files created by astyle
 printf "\n\nDeleting all temporary files...\n"
 find src/ -name '*.orig' -delete
+find test/ -name '*.orig' -delete
 printf "Done.\n"

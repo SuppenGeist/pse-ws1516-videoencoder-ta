@@ -23,8 +23,8 @@ int Model::Video::getFps() const noexcept {
 }
 
 void Model::Video::setFps(int fps) {
-    if(fps<0)
-        return;
+	if(fps<0)
+		return;
 	fps_=fps;
 }
 

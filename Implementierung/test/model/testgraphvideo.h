@@ -7,15 +7,14 @@
 #include "../../src/model/graphvideo.h"
 #include "../../src/model/Graph.h"
 
-class TestGraphVideo : public QObject
-{
-    Q_OBJECT
-private slots:
-    void init();
-    void getGraph();
-    void getNumberOfGraphs();
-private:
-  Model::GraphVideo   graphvideo_;
+class TestGraphVideo : public QObject {
+	Q_OBJECT
+  private slots:
+	void init();
+	void getGraph();
+	void getNumberOfGraphs();
+  private:
+	Model::GraphVideo   graphvideo_;
 };
 
 #endif // TESTGRAPHVIDEO_H

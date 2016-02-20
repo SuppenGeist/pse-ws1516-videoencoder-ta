@@ -520,15 +520,17 @@ void GUI::FilterTab::listSelectionChanged(QItemSelection selection) {
 	h_filterOptions_->addItem(spacer_filterOptions_);
 }
 
-void GUI::FilterTab::notifyOnSaveComplete(bool successful, QString filename, int width, int height) {
+void GUI::FilterTab::notifyOnSaveComplete(bool successful, QString filename, int width,
+        int height) {
 	if(successful) {
 		QMessageBox::information(this,"Video saved successfully!",
-                                 "The video was successfully saved to '"+filename+"'.\nResolution: "+QString::number(width)+"x"+QString::number(height),QMessageBox::Ok);
+		                         "The video was successfully saved to '"+filename+"'.\nResolution: "+QString::number(
+		                             width)+"x"+QString::number(height),QMessageBox::Ok);
 		mainWindow_->getStatusBar()->showMessage("Filtered video successfully saved!",3000);
 		safer_.reset();
 	} else {
 		QMessageBox::warning(this,"Video not saved completly!",
-                             "The video could not be successfully saved to '"+filename+"'",QMessageBox::Ok);
+		                     "The video could not be successfully saved to '"+filename+"'",QMessageBox::Ok);
 		mainWindow_->getStatusBar()->showMessage("Filtered video could not be saved completly!",3000);
 	}
 }
@@ -761,7 +763,8 @@ void GUI::FilterTab::connectAtions() {
 	connect(button_up_,SIGNAL(clicked()),this,SLOT(up()));
 	connect(list_filterlist_->selectionModel(),SIGNAL(selectionChanged(QItemSelection,
 	        QItemSelection)),this,SLOT(listSelectionChanged(QItemSelection)));
-    connect(this,SIGNAL(saveComplete(bool,QString,int,int)),this,SLOT(notifyOnSaveComplete(bool,QString,int,int)));
+	connect(this,SIGNAL(saveComplete(bool,QString,int,int)),this,SLOT(notifyOnSaveComplete(bool,QString,
+	        int,int)));
 	connect(this,SIGNAL(applyComplete(bool)),this,SLOT(notifyOnApplyComplete(bool)));
 }
 

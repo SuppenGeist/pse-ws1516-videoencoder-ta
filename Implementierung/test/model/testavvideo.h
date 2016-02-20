@@ -6,26 +6,25 @@
 
 #include "../../src/model/AVVideo.h"
 
-class TestAVVideo : public QObject
-{
-    Q_OBJECT
+class TestAVVideo : public QObject {
+	Q_OBJECT
 
-private slots:
-  void init();
-  void testFPS();
-  void TestRemoveFrame();
-  void TestAppendFrame();
-  void TestInsertFrame();
-  void TestGetNumberOfFrames();
-  void TestGetFrame();
-  void TestIsComplete();
-  void TestInsertFrames();
-  void TestHeight();
-  void TestWidth();
+  private slots:
+	void init();
+	void testFPS();
+	void TestRemoveFrame();
+	void TestAppendFrame();
+	void TestInsertFrame();
+	void TestGetNumberOfFrames();
+	void TestGetFrame();
+	void TestIsComplete();
+	void TestInsertFrames();
+	void TestHeight();
+	void TestWidth();
 
 
-private:
-  Model::AVVideo   avvideo_;
+  private:
+	Model::AVVideo   avvideo_;
 
 };
 

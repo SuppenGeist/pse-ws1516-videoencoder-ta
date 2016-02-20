@@ -15,13 +15,13 @@ void ModelTestSuite::testModel() {
 	FilterTestSuite filterTestSuite(argc_,argv_);
 	filterTestSuite.testAllFilters();
 
-    TestAVVideo testAVVideo;
-    QTest::qExec(&testAVVideo);
+	TestAVVideo testAVVideo;
+	QTest::qExec(&testAVVideo);
 
-    TestVideo testVideo;
-    QTest::qExec(&testVideo);
+	TestVideo testVideo;
+	QTest::qExec(&testVideo);
 
-    TestGraphVideo testGraphVideo;
-    QTest::qExec(&testGraphVideo);
+	TestGraphVideo testGraphVideo;
+	QTest::qExec(&testGraphVideo);
 }
 

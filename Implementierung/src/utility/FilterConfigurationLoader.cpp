@@ -16,7 +16,7 @@ Utility::FilterConfigurationLoader::FilterConfigurationLoader(QString path):file
 std::unique_ptr<Model::FilterList> Utility::FilterConfigurationLoader::getConfiguration() {
 	auto filterconf=std::make_unique<Model::FilterList>();
 
-    if( !file_.open( QIODevice::ReadOnly | QIODevice::Text ) ) {
+	if( !file_.open( QIODevice::ReadOnly | QIODevice::Text ) ) {
 		return std::move(filterconf);
 	}
 

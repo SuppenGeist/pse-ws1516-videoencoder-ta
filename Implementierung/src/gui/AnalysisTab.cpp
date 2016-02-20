@@ -161,17 +161,15 @@ Model::YuvVideo *GUI::AnalysisTab::getRawVideo() {
 }
 
 bool GUI::AnalysisTab::isRawVideoLoaded() {
-    return rawVideo_;
+	return rawVideo_;
 }
 
-void GUI::AnalysisTab::setParentWindow(GUI::MainWindow *window)
-{
-    parentWindow_=window;
+void GUI::AnalysisTab::setParentWindow(GUI::MainWindow *window) {
+	parentWindow_=window;
 }
 
-GUI::MainWindow *GUI::AnalysisTab::getParentWindow()
-{
-    return parentWindow_;
+GUI::MainWindow *GUI::AnalysisTab::getParentWindow() {
+	return parentWindow_;
 }
 
 void GUI::AnalysisTab::resizeEvent(QResizeEvent *event) {

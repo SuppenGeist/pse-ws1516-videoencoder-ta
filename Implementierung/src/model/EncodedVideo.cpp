@@ -188,7 +188,7 @@ void Model::EncodedVideo::convertMacroblock() {
 
 	isMacroblockConverterRunnning_=false;
 	macroblockVideo_->setIsComplete(true);
-    macroblockAVVideo_.reset();
+	macroblockAVVideo_.reset();
 }
 
 void Model::EncodedVideo::calculateHistogramms() {

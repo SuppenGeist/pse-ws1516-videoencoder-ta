@@ -11,7 +11,7 @@ Model::AVVideo::AVVideo(int fps):fps_(fps),width_(0),height_(0),isComplete_(fals
 
 Model::AVVideo::~AVVideo() {
 	for(auto frame:video_) {
-        av_frame_free(&frame);
+		av_frame_free(&frame);
 	}
 }
 
@@ -28,8 +28,8 @@ int Model::AVVideo::getFps() {
 }
 
 void Model::AVVideo::setFps(int fps) {
-    if(fps<0)
-        return;
+	if(fps<0)
+		return;
 	fps_=fps;
 }
 

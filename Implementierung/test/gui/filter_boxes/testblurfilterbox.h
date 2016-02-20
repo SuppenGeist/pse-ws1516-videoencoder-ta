@@ -6,18 +6,17 @@
 
 #include "../../../src/gui/filter_boxes/BlurFilterBox.h"
 
-class TestBlurFilterBox : public QObject
-{
-Q_OBJECT
+class TestBlurFilterBox : public QObject {
+	Q_OBJECT
 
-private slots:
-    void init();
+  private slots:
+	void init();
 
-    void testChangeIntensity();
+	void testChangeIntensity();
 
-private:
-    std::unique_ptr<GUI::BlurFilterBox>   filterbox1_;
-    GUI::BlurFilterBox* filterbox_;
+  private:
+	std::unique_ptr<GUI::BlurFilterBox>   filterbox1_;
+	GUI::BlurFilterBox* filterbox_;
 
 };
 
