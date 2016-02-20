@@ -20,7 +20,6 @@ class TestYuv411FileReader : public QObject {
 
   private:
     Utility::Yuv411FileReader fileReader_;
-    Utility::Yuv411Vector vector_;
 };
 
 
