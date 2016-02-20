@@ -183,7 +183,11 @@ HEADERS += \
     test/gui/filter_boxes/testbrightnessfilterbox.h \
     test/model/testavvideo.h \
     test/model/testvideo.h \
-    test/model/testgraphvideo.h
+    test/model/testgraphvideo.h \
+    test/utility/testyuv411filereader.h \
+    test/utility/testyuv422filereader.h \
+    test/utility/testyuv420filereader.h \
+    test/utility/testyuv444filereader.h
 
 SOURCES += \
     src/gui/AnalysisBox.cpp \
@@ -347,7 +351,11 @@ SOURCES += \
     test/gui/filter_boxes/testbrightnessfilterbox.cpp \
     test/model/testavvideo.cpp \
     test/model/testvideo.cpp \
-    test/model/testgraphvideo.cpp
+    test/model/testgraphvideo.cpp \
+    test/utility/testyuv411filereader.cpp \
+    test/utility/testyuv422filereader.cpp \
+    test/utility/testyuv420filereader.cpp \
+    test/utility/testyuv444filereader.cpp
 
 RESOURCES += \
     resources.qrc \
