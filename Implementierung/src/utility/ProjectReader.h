@@ -8,6 +8,7 @@
 #include <QTextStream>
 
 #include "../memento/FilterTabMemento.h"
+#include "../memento/AnalysisTabMemento.h"
 
 namespace Model {
 class Project;
@@ -43,6 +44,7 @@ class ProjectReader {
 	QTextStream dataStream_;
 
     void parseFilterTab(Memento::FilterTabMemento* memento,QString line);
+    void parseAnalysisTab(Memento::AnalysisTabMemento* memento,QString line);
 
 };
 }

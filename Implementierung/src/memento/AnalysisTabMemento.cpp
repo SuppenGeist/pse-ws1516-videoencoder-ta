@@ -10,7 +10,17 @@ Memento::AnalysisTabMemento::AnalysisTabMemento():rawVideo_(nullptr),
 }
 
 void Memento::AnalysisTabMemento::setRawVideo(Model::YuvVideo *video) {
-	rawVideo_=video;
+    rawVideo_=video;
+}
+
+void Memento::AnalysisTabMemento::setRawVideo(std::unique_ptr<Model::YuvVideo> video)
+{
+    ownedVideo_=std::move(video);
+}
+
+std::unique_ptr<Model::YuvVideo> Memento::AnalysisTabMemento::releaseVideo()
+{
+    return std::move(ownedVideo_);
 }
 
 Model::YuvVideo *Memento::AnalysisTabMemento::getRawVideo() {

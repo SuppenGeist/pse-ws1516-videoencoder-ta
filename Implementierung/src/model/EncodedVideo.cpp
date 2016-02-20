@@ -168,11 +168,11 @@ void Model::EncodedVideo::convertVideo() {
 	do {
 		for(; i<avVideo_->getNumberOfFrames(); i++) {
 			video_->appendFrame(Utility::VideoConverter::convertAVFrameToQImage(*avVideo_->getFrame(i)));
-		}
-	} while(!avVideo_->isComplete()&&isConverterRunning_);
+        }
+    } while(isConverterRunning_&&(!avVideo_->isComplete()||avVideo_->getNumberOfFrames()!=video_->getNumberOfFrames()));
 	video_->setIsComplete(true);
 	isConverterRunning_=false;
-	video_->setFps(avVideo_->getFps());
+    video_->setFps(avVideo_->getFps());
 }
 
 void Model::EncodedVideo::convertMacroblock() {

@@ -27,7 +27,7 @@ class LoadAnalysisVideo: public QUndoCommand {
 	 * @param anaTab The AnalyseTab to operate on.
 	 * @param video The new raw video.
 	 */
-	LoadAnalysisVideo(GUI::AnalysisTab* anaTab, std::unique_ptr<Model::YuvVideo> video);
+    LoadAnalysisVideo(GUI::AnalysisTab* anaTab, std::unique_ptr<Model::YuvVideo> video, std::unique_ptr<Memento::AnalysisTabMemento> memento);
 
 	/**
 	 * @brief undo Restores the anlysis tab to the state before the new video was loaded.

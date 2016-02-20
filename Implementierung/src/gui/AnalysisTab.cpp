@@ -55,8 +55,6 @@ GUI::AnalysisTab::AnalysisTab(QWidget* parent) : QFrame(parent),rawVideo_(nullpt
 	globalControlPanel_->addVideoPlayer(graphPlayer_.get());
 	graphPlayer_->setTimer(timer_);
 
-	timer_labelUpdater_.start(200);
-
 	analysisBoxContainer_->setControlPanel(globalControlPanel_);
 	analysisBoxContainer_->setTimer(timer_);
 }
@@ -74,7 +72,17 @@ std::unique_ptr<Memento::AnalysisTabMemento> GUI::AnalysisTab::getMemento() {
 }
 
 void GUI::AnalysisTab::restore(Memento::AnalysisTabMemento *memento) {
+    if(!memento)
+        return;
+
 	setRawVideo(memento->getRawVideo());
+
+    auto ownedVideo=memento->releaseVideo();
+    if(ownedVideo.get()) {
+        auto dummy=std::make_unique<Memento::AnalysisTabMemento>();
+        auto command=new UndoRedo::LoadAnalysisVideo(this,std::move(ownedVideo),std::move(dummy));
+        UndoRedo::UndoStack::getUndoStack().push(command);
+    }
 
 	if(memento->getAnalysisBoxContainerMemento()) {
 		analysisBoxContainer_->restore(memento->getAnalysisBoxContainerMemento());
@@ -113,9 +121,14 @@ void GUI::AnalysisTab::restore(Memento::AnalysisTabMemento *memento) {
 }
 
 void GUI::AnalysisTab::setRawVideo(Model::YuvVideo *rawVideo) {
-	analysisBoxContainer_->clear();
+    timer_labelUpdater_.stop();
+
+    analysisBoxContainer_->clear();
 
 	globalControlPanel_->stop();
+
+    graphPlayer_->setGraphVideo(nullptr);
+    graphWidget_->drawGraph(nullptr);
 
 
 	if(rawVideo) {
@@ -142,6 +155,7 @@ void GUI::AnalysisTab::setRawVideo(Model::YuvVideo *rawVideo) {
 		                          (double)1000,'f',2)+" KB");
 
 		rawVideo_->getRedHistogramm();
+        timer_labelUpdater_.start(200);
 
 	} else {
 		v_rawVideo_->removeWidget(rawVideoView_);
@@ -198,7 +212,7 @@ void GUI::AnalysisTab::loadRawVideo() {
 	               fileOpenDiag.getCompression(),fileOpenDiag.getWidth(),fileOpenDiag.getHeight(),
 	               fileOpenDiag.getFps());
 
-	UndoRedo::UndoStack::getUndoStack().push(new UndoRedo::LoadAnalysisVideo(this,std::move(yuvVideo)));
+    UndoRedo::UndoStack::getUndoStack().push(new UndoRedo::LoadAnalysisVideo(this,std::move(yuvVideo),getMemento()));
 }
 
 void GUI::AnalysisTab::showBitrate() {
@@ -320,6 +334,24 @@ void GUI::AnalysisTab::updateLabels() {
 	                               rawVideo_->getHeight()));
 	label_framesize_->setText(QString::number((rawVideo_->getWidth()*rawVideo_->getHeight()*3)/
 	                          (double)1000,'f',2)+" KB");
+
+    switch(analysisBoxContainer_->getShownGraph()) {
+    case AnalysisGraph::BLUE_HISTOGRAMM:
+        showBlueHistogramm();
+        break;
+    case AnalysisGraph::RED_HISTOGRAMM:
+        showRedHistogramm();
+        break;
+    case AnalysisGraph::GREEN_HISTOGRAMM:
+        showGreenHistogramm();
+        break;
+    case AnalysisGraph::BITRATE:
+        showBitrate();
+        break;
+    case AnalysisGraph::PSNR:
+        showPsnr();
+        break;
+    }
 
 	if(rawVideo_->getWidth()!=0&&rawVideo_->getHeight()!=0) {
 		timer_labelUpdater_.stop();

@@ -121,7 +121,7 @@ void Utility::VideoLoader::loadP() {
 	while(av_read_frame(formatContext, &packet) >= 0&&isRunning_) {
 		avcodec_decode_video2(codecContext, frame, &gotPicture, &packet);
 
-		if(gotPicture != 0) {
+        if(gotPicture != 0) {
 			rgbframe=av_frame_alloc();
 
 			buffer=(uint8_t *)av_malloc(numbytes*sizeof(uint8_t));
@@ -144,7 +144,7 @@ void Utility::VideoLoader::loadP() {
 			);
 
 			target_->appendFrame(rgbframe);
-		}
+        }
 	}
 	av_frame_free(&frame);
 	avcodec_close(codecContext);
@@ -153,5 +153,5 @@ void Utility::VideoLoader::loadP() {
 	if(dict_) {
 		free(dict_);
 	}
-	target_->setIsComplete(true);
+    target_->setIsComplete(true);
 }

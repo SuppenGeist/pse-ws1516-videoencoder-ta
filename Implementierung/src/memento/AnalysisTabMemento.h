@@ -1,6 +1,8 @@
 #ifndef __AnalysisTabMemento_h__
 #define __AnalysisTabMemento_h__
 
+#include <memory>
+
 #include "../model/YuvVideo.h"
 #include "../memento/AnalysisBoxContainerMemento.h"
 
@@ -22,6 +24,10 @@ class AnalysisTabMemento {
 	AnalysisTabMemento();
 
 	void setRawVideo(Model::YuvVideo* video);
+
+    void setRawVideo(std::unique_ptr<Model::YuvVideo> video);
+
+    std::unique_ptr<Model::YuvVideo> releaseVideo();
 
 	Model::YuvVideo* getRawVideo();
 
@@ -45,6 +51,7 @@ class AnalysisTabMemento {
   private:
 	Model::YuvVideo*        rawVideo_;
 	std::unique_ptr<Memento::AnalysisBoxContainerMemento> analysisBoxMemento_;
+    std::unique_ptr<Model::YuvVideo> ownedVideo_;
 	GUI::AnalysisGraph      graph_;
 	GUI::AnalysisVideo      video_;
 	int                     position_;

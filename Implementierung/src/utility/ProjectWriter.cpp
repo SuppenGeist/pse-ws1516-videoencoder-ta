@@ -2,6 +2,8 @@
 
 #include <QDataStream>
 
+#include "../gui/AnalysisTab.h"
+
 #include "../model/Project.h"
 
 #include "../memento/MainWindowMemento.h"
@@ -68,7 +70,66 @@ void Utility::ProjectWriter::saveProject() {
     }else {
         dataStream_<<"NULL|";
     }
-}
 
-void Utility::ProjectWriter::saveResults() {
+    if(anamemento&&anamemento->getRawVideo()) {
+        dataStream_<<anamemento->getRawVideo()->getPath()<<",";
+        switch(anamemento->getRawVideo()->getCompression()) {
+        case Compression::PLANAR:
+            dataStream_<<"planar,";
+            break;
+        case Compression::PACKED:
+            dataStream_<<"packed,";
+            break;
+        }
+        switch(anamemento->getRawVideo()->getYuvType()) {
+        case YuvType::YUV411:
+            dataStream_<<"411,";
+            break;
+        case YuvType::YUV422:
+            dataStream_<<"42,";
+            break;
+        case YuvType::YUV444:
+            dataStream_<<"444,";
+            break;
+        case YuvType::YUV420:
+            dataStream_<<"420,";
+            break;
+        }
+        dataStream_<<anamemento->getRawVideo()->getWidth()<<","<<anamemento->getRawVideo()->getHeight()<<",";
+        dataStream_<<anamemento->getRawVideo()->getFps()<<",";
+
+        switch(anamemento->getAnalysisGraph()) {
+        case GUI::AnalysisGraph::BITRATE:
+            dataStream_<<"bitrate,";
+            break;
+        case GUI::AnalysisGraph::PSNR:
+            dataStream_<<"psnr,";
+            break;
+        case GUI::AnalysisGraph::BLUE_HISTOGRAMM:
+            dataStream_<<"blueh,";
+            break;
+        case GUI::AnalysisGraph::RED_HISTOGRAMM:
+            dataStream_<<"redh,";
+            break;
+        case GUI::AnalysisGraph::GREEN_HISTOGRAMM:
+            dataStream_<<"greenh,";
+            break;
+        }
+
+        switch(anamemento->getAnalysisVideo()) {
+        case GUI::AnalysisVideo::MACROBLOCK:
+            dataStream_<<"macro,";
+            break;
+        case GUI::AnalysisVideo::RGB_DIFFERENCE:
+            dataStream_<<"diff,";
+            break;
+        }
+
+        auto conmem=anamemento->getAnalysisBoxContainerMemento();
+        for(auto& box:conmem->getAnalysisBoxList()) {
+            dataStream_<<box->getPath()<<";"<<box->getComment()<<"#";
+        }
+    }else {
+        dataStream_<<"NULL";
+    }
 }
