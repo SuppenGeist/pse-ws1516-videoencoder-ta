@@ -13,12 +13,16 @@ class TestAVVideo : public QObject
 private slots:
   void init();
   void testFPS();
-  void TestInsertFrame();
-  void TestAppendFrame();
   void TestRemoveFrame();
+  void TestAppendFrame();
+  void TestInsertFrame();
+  void TestGetNumberOfFrames();
+  void TestGetFrame();
   void TestIsComplete();
   void TestInsertFrames();
-  void TestHeightWidth();
+  void TestHeight();
+  void TestWidth();
+
 
 private:
   Model::AVVideo   avvideo_;

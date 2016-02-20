@@ -28,6 +28,8 @@ int Model::AVVideo::getFps() {
 }
 
 void Model::AVVideo::setFps(int fps) {
+    if(fps<0)
+        return;
 	fps_=fps;
 }
 
