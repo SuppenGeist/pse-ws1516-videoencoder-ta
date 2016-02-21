@@ -129,14 +129,14 @@ void GUI::AnalysisBoxContainer::showAttributes() {
 	}
 }
 
-GUI::AnalysisBox *GUI::AnalysisBoxContainer::getAnalysisBox(int index) {
-	if(index<0||index>boxes_.size())
+GUI::AnalysisBox *GUI::AnalysisBoxContainer::getAnalysisBox(unsigned int index) {
+    if(index>boxes_.size())
 		return nullptr;
 	return boxes_[index];
 }
 
 int GUI::AnalysisBoxContainer::getIndex(GUI::AnalysisBox *box) {
-	for(int i=0; i<boxes_.size(); i++) {
+    for(unsigned int i=0; i<boxes_.size(); i++) {
 		if(boxes_[i]==box)
 			return i;
 	}
@@ -151,7 +151,7 @@ GUI::AnalysisVideo GUI::AnalysisBoxContainer::getShownVideo() {
 	return currentVideo_;
 }
 
-GUI::AnalysisBox *GUI::AnalysisBoxContainer::insertBox(GUI::AnalysisBox *box, int index) {
+GUI::AnalysisBox *GUI::AnalysisBoxContainer::insertBox(GUI::AnalysisBox *box, unsigned int index) {
 	if(index>boxes_.size())
 		return nullptr;
 

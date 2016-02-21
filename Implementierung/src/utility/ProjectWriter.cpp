@@ -63,7 +63,7 @@ void Utility::ProjectWriter::saveProject() {
         dataStream_<<filtermemento->isFilteredVideoShown()<<","<<filtermemento->isPreviewShow()<<",";
 
         auto filterlist=filtermemento->getFilterList();
-        for(int i=0;i<filterlist->getSize();i++) {
+        for(unsigned int i=0;i<filterlist->getSize();i++) {
             dataStream_<<filterlist->getFilter(i)->getName()<<";"<<filterlist->getFilter(i)->getSaveString()<<"#";
         }
         dataStream_<<"|";

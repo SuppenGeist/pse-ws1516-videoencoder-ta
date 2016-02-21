@@ -2,7 +2,7 @@
 
 #include <memory>
 
-#include "../../src/memento/MainWindowMemento.h";
+#include "../../src/memento/MainWindowMemento.h"
 
 void TestProject::init(){
     project_ = new Model::Project(QString("TestProject"));

@@ -61,7 +61,7 @@ class AnalysisBoxContainer: public QFrame {
 
 	void showAttributes();
 
-	AnalysisBox* getAnalysisBox(int index);
+    AnalysisBox* getAnalysisBox(unsigned int index);
 
 	int getIndex(AnalysisBox* box);
 
@@ -69,7 +69,7 @@ class AnalysisBoxContainer: public QFrame {
 
 	AnalysisVideo getShownVideo();
 
-	AnalysisBox* insertBox(AnalysisBox* box,int index);
+    AnalysisBox* insertBox(AnalysisBox* box,unsigned int index);
 
   private slots:
 	void addVideo();
