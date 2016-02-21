@@ -11,8 +11,8 @@ class TestGraphVideo : public QObject {
 	Q_OBJECT
   private slots:
 	void init();
-    void TestGetGraph();
-    void TestGetNumberOfGraphs();
+    void testGetGraph();
+    void testGetNumberOfGraphs();
   private:
 	Model::GraphVideo   graphvideo_;
 };

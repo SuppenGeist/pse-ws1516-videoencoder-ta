@@ -5,7 +5,7 @@ void TestGraphVideo::init() {
 	graphvideo_=Model::GraphVideo();
 }
 
-void TestGraphVideo::TestGetGraph() {
+void TestGraphVideo::testGetGraph() {
 
 	QVERIFY(nullptr == graphvideo_.getGraph(0));
 
@@ -18,7 +18,7 @@ void TestGraphVideo::TestGetGraph() {
 	QVERIFY(nullptr == graphvideo_.getGraph(1));
 }
 
-void TestGraphVideo::TestGetNumberOfGraphs() {
+void TestGraphVideo::testGetNumberOfGraphs() {
 
 	QVERIFY(0 == graphvideo_.getNumberOfGraphs());
 

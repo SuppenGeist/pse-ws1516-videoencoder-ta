@@ -18,7 +18,7 @@ QString Model::NegativeFilter::getName() const {
 	return FILTERNAME;
 }
 
-void Model::NegativeFilter::restore(QString description) {
+void Model::NegativeFilter::restore(QString) {
 	//nothing to load
 }
 

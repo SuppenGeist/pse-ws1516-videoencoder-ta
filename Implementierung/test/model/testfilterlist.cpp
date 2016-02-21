@@ -60,7 +60,7 @@ void TestFilterList::testGetSize(){
     filterList_->appendFilter(QString("Edge"));
 }
 
-void TestFilterList::TestRemoveFilter(){
+void TestFilterList::testRemoveFilter(){
     filterList_->removeFilter(1);
     QVERIFY(filterList_->getFilter(0)->getName() == "Blur");
     QVERIFY(filterList_->getFilter(1)== 0);

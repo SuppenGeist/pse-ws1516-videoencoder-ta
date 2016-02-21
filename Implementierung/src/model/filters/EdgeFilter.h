@@ -37,7 +37,7 @@ class EdgeFilter: public Model::Filter {
 	 * @brief restoreFilter
 	 * @param description
 	 */
-	void restore(QString description);
+    void restore(QString);
 
 	/**
 	 * @brief getSaveString

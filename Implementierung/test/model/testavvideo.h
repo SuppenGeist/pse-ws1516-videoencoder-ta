@@ -11,16 +11,16 @@ class TestAVVideo : public QObject {
 
   private slots:
 	void init();
-    void TestFPS();
-	void TestRemoveFrame();
-	void TestAppendFrame();
-	void TestInsertFrame();
-	void TestGetNumberOfFrames();
-	void TestGetFrame();
-	void TestIsComplete();
-	void TestInsertFrames();
-	void TestHeight();
-	void TestWidth();
+    void testFPS();
+    void testRemoveFrame();
+    void testAppendFrame();
+    void testInsertFrame();
+    void testGetNumberOfFrames();
+    void testGetFrame();
+    void testIsComplete();
+    void testInsertFrames();
+    void testHeight();
+    void testWidth();
 
 
   private:

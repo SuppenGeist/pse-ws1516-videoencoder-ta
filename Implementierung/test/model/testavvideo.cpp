@@ -4,7 +4,7 @@ void TestAVVideo::init() {
 	avvideo_=Model::AVVideo(10);
 }
 
-void TestAVVideo::TestFPS() {
+void TestAVVideo::testFPS() {
 	const int testValue1=0;
 	avvideo_.setFps(testValue1);
 	QVERIFY(testValue1 == avvideo_.getFps());
@@ -18,17 +18,17 @@ void TestAVVideo::TestFPS() {
 	QVERIFY(testValue3 != avvideo_.getFps());
 }
 
-void TestAVVideo::TestAppendFrame() {
+void TestAVVideo::testAppendFrame() {
 	AVFrame* frame = new AVFrame();
 	QVERIFY(true == avvideo_.appendFrame(frame));
 }
 
-void TestAVVideo::TestInsertFrame() {
+void TestAVVideo::testInsertFrame() {
 	AVFrame* frame = new AVFrame();
 	QVERIFY(true == avvideo_.insertFrame(frame, 0));
 }
 
-void TestAVVideo::TestGetNumberOfFrames() {
+void TestAVVideo::testGetNumberOfFrames() {
 	AVFrame* frame = new AVFrame();
 	avvideo_.insertFrame(frame, 0);
 
@@ -39,7 +39,7 @@ void TestAVVideo::TestGetNumberOfFrames() {
 }
 
 
-void TestAVVideo::TestGetFrame() {
+void TestAVVideo::testGetFrame() {
 	AVFrame* frame = new AVFrame();
 	avvideo_.appendFrame(frame);
 
@@ -49,7 +49,7 @@ void TestAVVideo::TestGetFrame() {
 
 }
 
-void TestAVVideo::TestRemoveFrame() {
+void TestAVVideo::testRemoveFrame() {
 	avvideo_.removeFrame(1);
 	QVERIFY(0 == avvideo_.getHeight());
 
@@ -67,7 +67,7 @@ void TestAVVideo::TestRemoveFrame() {
 
 }
 
-void TestAVVideo::TestIsComplete() {
+void TestAVVideo::testIsComplete() {
 
 	avvideo_.setIsComplete(true);
 	QVERIFY(true == avvideo_.isComplete());
@@ -76,7 +76,7 @@ void TestAVVideo::TestIsComplete() {
 	QVERIFY(false == avvideo_.isComplete());
 }
 
-void TestAVVideo::TestInsertFrames() {
+void TestAVVideo::testInsertFrames() {
 	std::vector<AVFrame*> frames;
 	QVERIFY(true == avvideo_.insertFrames(frames, 0));
 
@@ -85,7 +85,7 @@ void TestAVVideo::TestInsertFrames() {
 
 }
 
-void TestAVVideo::TestHeight() {
+void TestAVVideo::testHeight() {
 	AVFrame* frame = new AVFrame();
 	avvideo_.appendFrame(frame);
 
@@ -93,7 +93,7 @@ void TestAVVideo::TestHeight() {
 
 }
 
-void TestAVVideo::TestWidth() {
+void TestAVVideo::testWidth() {
 	AVFrame* frame = new AVFrame();
 	avvideo_.appendFrame(frame);
 

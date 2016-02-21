@@ -5,7 +5,7 @@ void TestVideo::init() {
 	video_=Model::Video(10);
 }
 
-void TestVideo::TestFPS() {
+void TestVideo::testFPS() {
 	const int testValue1=0;
 	video_.setFps(testValue1);
 	QVERIFY(testValue1 == video_.getFps());
@@ -19,17 +19,17 @@ void TestVideo::TestFPS() {
 	QVERIFY(testValue3 != video_.getFps());
 }
 
-void TestVideo::TestAppendFrame() {
+void TestVideo::testAppendFrame() {
 	std::unique_ptr<QImage> frame(new QImage);
 	QVERIFY(true == video_.appendFrame(std::move(frame)));
 }
 
-void TestVideo::TestInsertFrame() {
+void TestVideo::testInsertFrame() {
 	std::unique_ptr<QImage> frame(new QImage);
 	QVERIFY(true == video_.insertFrame(std::move(frame), 0));
 }
 
-void TestVideo::TestGetNumberOfFrames() {
+void TestVideo::testGetNumberOfFrames() {
 	std::unique_ptr<QImage> frame(new QImage);
 	video_.insertFrame(std::move(frame), 0);
 
@@ -40,7 +40,7 @@ void TestVideo::TestGetNumberOfFrames() {
 }
 
 
-void TestVideo::TestGetFrame() {
+void TestVideo::testGetFrame() {
 	std::unique_ptr<QImage> frame(new QImage);
 	QImage* tempframe = frame.get();
 	video_.appendFrame(std::move(frame));
@@ -49,7 +49,7 @@ void TestVideo::TestGetFrame() {
 	QVERIFY(nullptr == video_.getFrame(1));
 }
 
-void TestVideo::TestRemoveFrame() {
+void TestVideo::testRemoveFrame() {
 	video_.removeFrame(1);
 	QVERIFY(0 == video_.getHeight());
 
@@ -70,7 +70,7 @@ void TestVideo::TestRemoveFrame() {
 
 }
 
-void TestVideo::TestIsComplete() {
+void TestVideo::testIsComplete() {
 
 	video_.setIsComplete(true);
 	QVERIFY(true == video_.isComplete());
@@ -79,7 +79,7 @@ void TestVideo::TestIsComplete() {
 	QVERIFY(false == video_.isComplete());
 }
 
-void TestVideo::TestInsertFrames() {
+void TestVideo::testInsertFrames() {
 	std::vector<std::unique_ptr<QImage>> frames;
 	QVERIFY(true == video_.insertFrames(frames, 0));
 
@@ -88,7 +88,7 @@ void TestVideo::TestInsertFrames() {
 
 }
 
-void TestVideo::TestHeight() {
+void TestVideo::testHeight() {
 	std::unique_ptr<QImage> frame(new QImage);
 	int height_ = frame->height();
 	video_.appendFrame(move(frame));
@@ -97,7 +97,7 @@ void TestVideo::TestHeight() {
 
 }
 
-void TestVideo::TestWidth() {
+void TestVideo::testWidth() {
 	std::unique_ptr<QImage> frame(new QImage);
 	int width_ = frame->width();
 	video_.appendFrame(move(frame));
