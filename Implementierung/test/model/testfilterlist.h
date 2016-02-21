@@ -16,6 +16,7 @@ private slots:
     void testInsertFilter();
     void testAppendFilter();
     void testGetSize();
+    void TestRemoveFilter();
 private:
     Model::FilterList* filterList_;
 };

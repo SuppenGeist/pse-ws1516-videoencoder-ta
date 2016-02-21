@@ -41,10 +41,7 @@ void TestFilterList::testInsertFilter(){
     QVERIFY(filterList_->getFilter(0)->getName() == "Blur");
     QVERIFY(filterList_->getFilter(1)->getName() == "Grid");
     QVERIFY(filterList_->getFilter(2)->getName() == "Edge");
-    filterList_->removeFilter(1);
-    QVERIFY(filterList_->getFilter(0)->getName() == "Blur");
-    QVERIFY(filterList_->getFilter(1)->getName() == "Edge");
-    QVERIFY(filterList_->getFilter(2) == 0);
+
 }
 
 void TestFilterList::testAppendFilter(){
@@ -61,4 +58,16 @@ void TestFilterList::testGetSize(){
     QVERIFY(filterList_->getSize() == 0);
     filterList_->appendFilter(QString("Blur"));
     filterList_->appendFilter(QString("Edge"));
+}
+
+void TestFilterList::TestRemoveFilter(){
+    filterList_->removeFilter(1);
+    QVERIFY(filterList_->getFilter(0)->getName() == "Blur");
+    QVERIFY(filterList_->getFilter(1)== 0);
+    filterList_= new Model::FilterList();
+    filterList_->appendFilter(QString("Blur"));
+    filterList_->appendFilter(QString("Edge"));
+    filterList_->removeFilter(0);
+    QVERIFY(filterList_->getFilter(0)->getName() == "Edge");
+    QVERIFY(filterList_->getFilter(1)== 0);
 }
