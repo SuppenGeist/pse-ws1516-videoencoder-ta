@@ -6,6 +6,7 @@
 #include "testavvideo.h"
 #include "testvideo.h"
 #include "testgraphvideo.h"
+#include "testproject.h"
 
 ModelTestSuite::ModelTestSuite(int argc, char* argv[]):argc_(argc),argv_(argv) {
 
@@ -23,5 +24,8 @@ void ModelTestSuite::testModel() {
 
 	TestGraphVideo testGraphVideo;
 	QTest::qExec(&testGraphVideo);
+
+    TestProject testProject;
+    QTest::qExec(&testProject);
 }
 

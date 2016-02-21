@@ -192,7 +192,8 @@ HEADERS += \
     test/memento/testanalysisboxmemento.h \
     test/memento/testanalysistabmemento.h \
     test/memento/testfiltertabmemento.h \
-    test/memento/testmainwindowmemento.h
+    test/memento/testmainwindowmemento.h \
+    test/model/testproject.h
 
 SOURCES += \
     src/gui/AnalysisBox.cpp \
@@ -365,7 +366,8 @@ SOURCES += \
     test/memento/testanalysisboxmemento.cpp \
     test/memento/testanalysistabmemento.cpp \
     test/memento/testfiltertabmemento.cpp \
-    test/memento/testmainwindowmemento.cpp
+    test/memento/testmainwindowmemento.cpp \
+    test/model/testproject.cpp
 
 RESOURCES += \
     resources.qrc \
