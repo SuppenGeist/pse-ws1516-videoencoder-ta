@@ -64,6 +64,8 @@ void GUI::FilterView::setFilter(QString filtername) {
 	filterImage_=Utility::VideoConverter::convertAVFrameToQImage(*filteredFrame);
 	filterView_->setFrame(*filterImage_);
 
+    av_frame_unref(avframe);
+    av_frame_unref(filteredFrame);
 	av_frame_free(&avframe);
 	av_frame_free(&filteredFrame);
 }

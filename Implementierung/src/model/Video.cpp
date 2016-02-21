@@ -1,6 +1,7 @@
 #include "Video.h"
 
 #include <QImage>
+#include <QDebug>
 
 #include <vector>
 #include <memory>

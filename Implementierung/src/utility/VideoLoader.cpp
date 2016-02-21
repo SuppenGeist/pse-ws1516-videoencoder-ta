@@ -179,6 +179,7 @@ void Utility::VideoLoader::loadP() {
 
         target_->appendFrame(rgbframe);
     }
+    av_frame_unref(frame);
 	av_frame_free(&frame);
 	avcodec_close(codecContext);
 	avformat_close_input(&formatContext);

@@ -144,6 +144,8 @@ void GUI::FilterConfigurationBox::updatePreview() {
 	filteredImage_=Utility::VideoConverter::convertAVFrameToQImage(*filteredFrame);
 	filterPreview_->setFrame(*filteredImage_);
 
+    av_frame_unref(avframe);
+    av_frame_unref(filteredFrame);
 	av_frame_free(&avframe);
 	av_frame_free(&filteredFrame);
 }
