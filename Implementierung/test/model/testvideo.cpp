@@ -5,7 +5,7 @@ void TestVideo::init() {
 	video_=Model::Video(10);
 }
 
-void TestVideo::testFPS() {
+void TestVideo::TestFPS() {
 	const int testValue1=0;
 	video_.setFps(testValue1);
 	QVERIFY(testValue1 == video_.getFps());

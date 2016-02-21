@@ -11,7 +11,7 @@ class TestAVVideo : public QObject {
 
   private slots:
 	void init();
-	void testFPS();
+    void TestFPS();
 	void TestRemoveFrame();
 	void TestAppendFrame();
 	void TestInsertFrame();

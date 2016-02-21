@@ -89,6 +89,8 @@ bool Model::AVVideo::appendFrame(AVFrame* frame) {
 		return false;
 
 	video_.push_back(frame);
+
+    return true;
 }
 
 std::size_t Model::AVVideo::getNumberOfFrames() {

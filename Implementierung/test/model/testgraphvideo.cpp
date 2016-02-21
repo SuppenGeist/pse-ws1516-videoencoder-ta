@@ -1,12 +1,11 @@
 #include "testgraphvideo.h"
 
-#include "../../src/model/Graph.h"
 
 void TestGraphVideo::init() {
 	graphvideo_=Model::GraphVideo();
 }
 
-void TestGraphVideo::getGraph() {
+void TestGraphVideo::TestGetGraph() {
 
 	QVERIFY(nullptr == graphvideo_.getGraph(0));
 
@@ -19,7 +18,7 @@ void TestGraphVideo::getGraph() {
 	QVERIFY(nullptr == graphvideo_.getGraph(1));
 }
 
-void TestGraphVideo::getNumberOfGraphs() {
+void TestGraphVideo::TestGetNumberOfGraphs() {
 
 	QVERIFY(0 == graphvideo_.getNumberOfGraphs());
 

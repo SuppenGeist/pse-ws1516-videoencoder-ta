@@ -4,7 +4,7 @@ void TestAVVideo::init() {
 	avvideo_=Model::AVVideo(10);
 }
 
-void TestAVVideo::testFPS() {
+void TestAVVideo::TestFPS() {
 	const int testValue1=0;
 	avvideo_.setFps(testValue1);
 	QVERIFY(testValue1 == avvideo_.getFps());
