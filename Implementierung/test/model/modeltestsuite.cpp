@@ -7,7 +7,7 @@
 #include "testvideo.h"
 #include "testgraphvideo.h"
 #include "testproject.h"
-
+#include "testfilterlist.h"
 ModelTestSuite::ModelTestSuite(int argc, char* argv[]):argc_(argc),argv_(argv) {
 
 }
@@ -27,5 +27,8 @@ void ModelTestSuite::testModel() {
 
     TestProject testProject;
     QTest::qExec(&testProject);
+
+    TestFilterList testFilterList;
+    QTest::qExec(&testFilterList);
 }
 
