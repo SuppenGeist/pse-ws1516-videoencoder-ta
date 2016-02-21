@@ -7,6 +7,7 @@
 #include <QResizeEvent>
 #include <QPen>
 #include <QBrush>
+#include <QImage>
 #include <QFont>
 #include <QGraphicsScene>
 #include <QTimer>
@@ -25,7 +26,7 @@ namespace GUI {
 class GraphWidget:public QGraphicsView {
 	Q_OBJECT
   public:
-	/**
+    /**
 	 * @brief GraphWidget Constructor.
 	 */
 	GraphWidget(QWidget* parent=0);
@@ -121,6 +122,8 @@ class GraphWidget:public QGraphicsView {
 	 */
 	void buildScene();
 
+    QImage graphToImage(Model::Graph* graph,int width,int height);
+
   protected:
 	/**
 	 * @brief mouseReleaseEvent This method is called if the was a click on the widget.
@@ -169,6 +172,8 @@ class GraphWidget:public QGraphicsView {
 	 * @brief updateLabelSizes Updates the sizes of the labels.
 	 */
 	void updateLabelSizes();
+
+    void buildScene(QGraphicsScene* scene, Model::Graph* graph, int vwidth, int vheight);
 };
 }
 

@@ -26,6 +26,8 @@
 
 #include "../memento/AnalysisTabMemento.h"
 
+#include "../utility/resultsaver.h"
+
 namespace GUI {
 class MainWindow;
 }
@@ -74,6 +76,9 @@ class AnalysisTab: public QFrame {
   protected:
 	void resizeEvent(QResizeEvent * event);
 
+signals:
+    void resultsSaved();
+
   private slots:
 	void loadRawVideo();
 	void showBitrate();
@@ -84,6 +89,8 @@ class AnalysisTab: public QFrame {
 	void showAttributes();
 	void analysisVideoChanged(int index);
 	void updateLabels();
+    void resultSavingFinished();
+    void saveResults();
 
   private:
 	QPushButton*            button_saveResults_;
@@ -117,6 +124,8 @@ class AnalysisTab: public QFrame {
 	std::shared_ptr<GlobalControlPanel> globalControlPanel_;
 	std::unique_ptr<VideoPlayer>        videoPlayer_;
 	FrameView*                          rawVideoView_;
+
+    std::unique_ptr<Utility::ResultSaver> resultsSaver_;
 
 	QTimer                  timer_labelUpdater_;
 

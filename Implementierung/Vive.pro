@@ -130,7 +130,8 @@ HEADERS += \
     src/undo_framework/changefilter.h \
     src/model/graphvideo.h \
     src/gui/graphplayer.h \
-    src/utility/VideoSaver.h
+    src/utility/VideoSaver.h \
+    src/utility/resultsaver.h
 
 SOURCES += \
     src/gui/AnalysisBox.cpp \
@@ -244,7 +245,8 @@ SOURCES += \
     src/model/graphvideo.cpp \
     src/gui/graphplayer.cpp \
     src/utility/BasicColor.cpp \
-    src/utility/VideoSaver.cpp
+    src/utility/VideoSaver.cpp \
+    src/utility/resultsaver.cpp
 
 RESOURCES += \
     resources.qrc \

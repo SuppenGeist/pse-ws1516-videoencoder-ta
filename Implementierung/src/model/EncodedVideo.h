@@ -2,7 +2,6 @@
 #define __EncodedVideo_h__
 
 #include <memory>
-#include <thread>
 
 #include "Video.h"
 #include "AVVideo.h"
@@ -120,11 +119,9 @@ class EncodedVideo {
 	std::unique_ptr<Utility::RGBHistogrammCalculator> rgbHistoCalculator_;
 	std::unique_ptr<Utility::PsnrCalculator>        psnrCalculator_;
 	std::unique_ptr<Utility::RGBDifferenceCalculator> rgbDiffCalculator_;
-	std::thread                 converter_;
-	std::thread                 macroblockConverter_;
-	std::unique_ptr<Utility::VideoLoader>   macroblockLoader_;
-	bool                        isConverterRunning_;
-	bool                        isMacroblockConverterRunnning_;
+    std::unique_ptr<Utility::VideoConverter>        macroblockConverter_;
+    std::unique_ptr<Utility::VideoConverter>        videoConverter_;
+    std::unique_ptr<Utility::VideoLoader>   macroblockLoader_;
 
 
 	/**
@@ -135,10 +132,7 @@ class EncodedVideo {
 	/**
 	 * @brief loadVideo Loads the video from the file.
 	 */
-	void loadVideo();
-
-	void convertVideo();
-	void convertMacroblock();
+    void loadVideo();
 };
 }
 

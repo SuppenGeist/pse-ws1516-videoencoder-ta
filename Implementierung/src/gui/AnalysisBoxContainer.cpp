@@ -129,7 +129,7 @@ void GUI::AnalysisBoxContainer::showAttributes() {
 	}
 }
 
-GUI::AnalysisBox *GUI::AnalysisBoxContainer::getAnalysisBox(unsigned int index) {
+GUI::AnalysisBox *GUI::AnalysisBoxContainer::getAnalysisBox(std::size_t index) {
     if(index>boxes_.size())
 		return nullptr;
 	return boxes_[index];
@@ -151,7 +151,7 @@ GUI::AnalysisVideo GUI::AnalysisBoxContainer::getShownVideo() {
 	return currentVideo_;
 }
 
-GUI::AnalysisBox *GUI::AnalysisBoxContainer::insertBox(GUI::AnalysisBox *box, unsigned int index) {
+GUI::AnalysisBox *GUI::AnalysisBoxContainer::insertBox(GUI::AnalysisBox *box, std::size_t index) {
 	if(index>boxes_.size())
 		return nullptr;
 
@@ -166,7 +166,30 @@ GUI::AnalysisBox *GUI::AnalysisBoxContainer::insertBox(GUI::AnalysisBox *box, un
 
 	updateUi();
 
-	return box;
+    return box;
+}
+
+std::size_t GUI::AnalysisBoxContainer::getNumberOfBoxes()
+{
+    return boxes_.size();
+}
+
+void GUI::AnalysisBoxContainer::lockUi()
+{
+    button_addVideo_->setEnabled(false);
+
+    for(auto box:boxes_) {
+        box->lockUi();
+    }
+}
+
+void GUI::AnalysisBoxContainer::unlockUi()
+{
+    button_addVideo_->setEnabled(true);
+
+    for(auto box:boxes_) {
+        box->unlockUi();
+    }
 }
 
 void GUI::AnalysisBoxContainer::addVideo() {

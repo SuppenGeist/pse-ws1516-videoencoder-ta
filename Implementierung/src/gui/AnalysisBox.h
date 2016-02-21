@@ -63,9 +63,13 @@ class AnalysisBox: public QFrame {
 
 	void showAttributes();
 
-	QString getFilename();
+    QString getPath();
 
 	QPlainTextEdit* getCommentBox();
+
+    void lockUi();
+
+    void unlockUi();
 
   private slots:
 	void closeBox();

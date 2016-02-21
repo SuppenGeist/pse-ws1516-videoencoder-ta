@@ -13,10 +13,6 @@ extern "C" {
 #include "../model/Video.h"
 #include "../model/AVVideo.h"
 
-Utility::VideoConverter::VideoConverter() {
-
-}
-
 std::unique_ptr<QImage> Utility::VideoConverter::convertAVFrameToQImage(AVFrame& frame) {
 	auto image=std::make_unique<QImage>(frame.width,frame.height,QImage::Format_RGB888);
 
@@ -30,15 +26,13 @@ std::unique_ptr<QImage> Utility::VideoConverter::convertAVFrameToQImage(AVFrame&
 	return std::move(image);
 }
 
-std::unique_ptr<Model::Video> Utility::VideoConverter::convertAVVideoToVideo(
-    Model::AVVideo& avvideo) {
-	auto video = std::make_unique<Model::Video>(avvideo.getFps());
+void Utility::VideoConverter::convertAVVideoToVideo(Model::Video *target) {
+    if(!target||!avvideo_)
+        return;
 
-	for(std::size_t i = 0; i < avvideo.getNumberOfFrames(); i++) {
-		video->appendFrame(convertAVFrameToQImage(*avvideo.getFrame(i)));
-	}
+    videoTarget_=target;
 
-	return std::move(video);
+    converter_=std::thread(&VideoConverter::convertAVVideoP,this);
 }
 
 AVFrame* Utility::VideoConverter::convertQImageToAVFrame(QImage& image) {
@@ -63,15 +57,62 @@ AVFrame* Utility::VideoConverter::convertQImageToAVFrame(QImage& image) {
 	}
 	avpicture_fill((AVPicture*)frame,data,AV_PIX_FMT_RGB24,width,height);
 
-	return frame;
+    return frame;
 }
-std::unique_ptr<Model::AVVideo> Utility::VideoConverter::convertVideoToAVVideo(
-    Model::Video& video) {
-	auto avvideo = std::make_unique<Model::AVVideo>(video.getFps());
 
-	for(std::size_t i = 0; i < video.getNumberOfFrames(); i++) {
-		avvideo->appendFrame(convertQImageToAVFrame(*video.getFrame(i)));
-	}
+Utility::VideoConverter::VideoConverter(Model::Video *video):video_(video),videoTarget_(nullptr),avvideo_(nullptr),avvideoTarget_(nullptr),isRunning_(false)
+{
 
-	return std::move(avvideo);
+}
+
+Utility::VideoConverter::VideoConverter(Model::AVVideo *video):avvideo_(video),video_(nullptr),videoTarget_(nullptr),avvideoTarget_(nullptr),isRunning_(false)
+{
+
+}
+
+Utility::VideoConverter::~VideoConverter()
+{
+    isRunning_=false;
+    if(converter_.joinable())
+        converter_.join();
+}
+
+void Utility::VideoConverter::convertVideoToAVVideo(Model::AVVideo *target) {
+    if(!target||!video_)
+        return;
+
+    avvideoTarget_=target;
+
+    converter_=std::thread(&VideoConverter::convertVideoP,this);
+}
+
+void Utility::VideoConverter::convertVideoP()
+{
+    isRunning_=true;
+    avvideoTarget_->setIsComplete(false);
+    std::size_t i = 0;
+    do {
+    for(; i < video_->getNumberOfFrames()&&isRunning_; i++) {
+        avvideoTarget_->appendFrame(convertQImageToAVFrame(*video_->getFrame(i)));
+    }
+    }while(isRunning_&&!video_->isComplete());
+    avvideoTarget_->setIsComplete(true);
+    avvideoTarget_->setFps(video_->getFps());
+    isRunning_=false;
+}
+
+void Utility::VideoConverter::convertAVVideoP()
+{
+    isRunning_=true;
+    videoTarget_->setIsComplete(false);
+    std::size_t i = 0;
+    do {
+    for(; i < avvideo_->getNumberOfFrames()&&isRunning_; i++) {
+        videoTarget_->appendFrame(convertAVFrameToQImage(*avvideo_->getFrame(i)));
+    }
+    }
+    while(isRunning_&&!avvideo_->isComplete());
+    videoTarget_->setIsComplete(true);
+    videoTarget_->setFps(avvideo_->getFps());
+    isRunning_=false;
 }

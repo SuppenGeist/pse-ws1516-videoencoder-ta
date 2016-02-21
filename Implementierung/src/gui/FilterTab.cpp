@@ -135,7 +135,7 @@ void GUI::FilterTab::restore(Memento::FilterTabMemento *memento) {
 	}
 	player_->setPosition(memento->getCurrentFrame());
 
-    unsigned int index=memento->getCurrentlySelectedFilter();
+    std::size_t index=memento->getCurrentlySelectedFilter();
 	if(index>=filterlist_->getSize()) {
 		index=filterlist_->getSize()-1;
 	}
@@ -800,7 +800,7 @@ void GUI::FilterTab::calculatePreviewFrames() {
 
 	originalPreviewFrames_=std::make_unique<Model::AVVideo>();
 
-    unsigned int numberOfPreviewFrames=MAX_PREVIEW_COUNT;
+    std::size_t numberOfPreviewFrames=MAX_PREVIEW_COUNT;
 
 	auto videoFramecount=rawVideo_->getVideo().getNumberOfFrames();
     std::size_t stepsize=videoFramecount/numberOfPreviewFrames;

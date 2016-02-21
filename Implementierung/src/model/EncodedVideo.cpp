@@ -6,20 +6,11 @@
 
 #include "../utility/BitrateCalculator.h"
 
-Model::EncodedVideo::EncodedVideo(QString path):path_(path),isConverterRunning_(false) {
+Model::EncodedVideo::EncodedVideo(QString path):path_(path) {
 
 }
 
 Model::EncodedVideo::~EncodedVideo() {
-	isConverterRunning_=false;
-	if(converter_.joinable()) {
-		converter_.join();
-	}
-
-	isMacroblockConverterRunnning_=false;
-	if(macroblockConverter_.joinable()) {
-		macroblockConverter_.join();
-	}
 }
 
 QString Model::EncodedVideo::getPath() {
@@ -107,7 +98,8 @@ Model::Video& Model::EncodedVideo::getMacroBlockVideo() {
 		macroblockLoader_ = std::make_unique<Utility::VideoLoader>(path_, dict);
 		macroblockLoader_->loadVideo(macroblockAVVideo_.get());
 		macroblockVideo_=std::make_unique<Video>();
-		macroblockConverter_=std::thread(&EncodedVideo::convertMacroblock,this);
+        macroblockConverter_=std::make_unique<Utility::VideoConverter>(macroblockAVVideo_.get());
+        macroblockConverter_->convertAVVideoToVideo(macroblockVideo_.get());
 	}
 	return *macroblockVideo_;
 }
@@ -138,7 +130,8 @@ Model::Video& Model::EncodedVideo::getVideo() {
 	}
 	if(!video_.get()) {
 		video_=std::make_unique<Video>();
-		converter_=std::thread(&EncodedVideo::convertVideo,this);
+        videoConverter_=std::make_unique<Utility::VideoConverter>(avVideo_.get());
+        videoConverter_->convertAVVideoToVideo(video_.get());
 	}
 
 	return *video_.get();
@@ -159,36 +152,6 @@ void Model::EncodedVideo::loadVideo() {
 
 	loader_ = std::make_unique<Utility::VideoLoader>(path_);
 	loader_->loadVideo(avVideo_.get());
-}
-
-void Model::EncodedVideo::convertVideo() {
-	isConverterRunning_=true;
-
-	std::size_t i=0;
-	do {
-		for(; i<avVideo_->getNumberOfFrames(); i++) {
-			video_->appendFrame(Utility::VideoConverter::convertAVFrameToQImage(*avVideo_->getFrame(i)));
-        }
-    } while(isConverterRunning_&&(!avVideo_->isComplete()||avVideo_->getNumberOfFrames()!=video_->getNumberOfFrames()));
-	video_->setIsComplete(true);
-	isConverterRunning_=false;
-    video_->setFps(avVideo_->getFps());
-}
-
-void Model::EncodedVideo::convertMacroblock() {
-	isMacroblockConverterRunnning_=true;
-
-	std::size_t i=0;
-	do {
-		for(; i<macroblockAVVideo_->getNumberOfFrames(); i++) {
-			macroblockVideo_->appendFrame(Utility::VideoConverter::convertAVFrameToQImage(
-			                                  *macroblockAVVideo_->getFrame(i)));
-		}
-	} while(!macroblockAVVideo_->isComplete()&&isMacroblockConverterRunnning_);
-
-	isMacroblockConverterRunnning_=false;
-	macroblockVideo_->setIsComplete(true);
-	macroblockAVVideo_.reset();
 }
 
 void Model::EncodedVideo::calculateHistogramms() {

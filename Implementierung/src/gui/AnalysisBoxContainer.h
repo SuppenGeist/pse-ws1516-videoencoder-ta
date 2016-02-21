@@ -61,7 +61,7 @@ class AnalysisBoxContainer: public QFrame {
 
 	void showAttributes();
 
-    AnalysisBox* getAnalysisBox(unsigned int index);
+    AnalysisBox* getAnalysisBox(std::size_t index);
 
 	int getIndex(AnalysisBox* box);
 
@@ -69,7 +69,13 @@ class AnalysisBoxContainer: public QFrame {
 
 	AnalysisVideo getShownVideo();
 
-    AnalysisBox* insertBox(AnalysisBox* box,unsigned int index);
+    AnalysisBox* insertBox(AnalysisBox* box,std::size_t index);
+
+    std::size_t getNumberOfBoxes();
+
+    void lockUi();
+
+    void unlockUi();
 
   private slots:
 	void addVideo();

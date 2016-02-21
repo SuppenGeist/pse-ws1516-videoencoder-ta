@@ -8,8 +8,10 @@
 #include <QComboBox>
 #include <QHBoxLayout>
 #include <QTabWidget>
+#include <QMessageBox>
 #include <QDebug>
 #include <QFile>
+#include <QFileDialog>
 #include <QFileInfo>
 #include <QVBoxLayout>
 #include <QFont>
@@ -33,6 +35,8 @@
 
 #include "../undo_framework/UndoStack.h"
 #include "../undo_framework/LoadAnalysisVideo.h"
+
+#include "../utility/resultsaver.h"
 
 GUI::AnalysisTab::AnalysisTab(QWidget* parent) : QFrame(parent),rawVideo_(nullptr) {
 	createUi();
@@ -355,7 +359,37 @@ void GUI::AnalysisTab::updateLabels() {
 
 	if(rawVideo_->getWidth()!=0&&rawVideo_->getHeight()!=0) {
 		timer_labelUpdater_.stop();
-	}
+    }
+}
+
+void GUI::AnalysisTab::resultSavingFinished()
+{
+    analysisBoxContainer_->unlockUi();
+
+    button_loadnewvideo_->setEnabled(true);
+    button_saveResults_->setEnabled(true);
+
+    QMessageBox::information(this,"Saving results finished","The results have been saved!");
+}
+
+void GUI::AnalysisTab::saveResults()
+{
+    if(!rawVideo_||analysisBoxContainer_->getNumberOfBoxes()==0)
+        return;
+
+    auto path=QFileDialog::getExistingDirectory(this,"Save results",QDir::homePath(),QFileDialog::ShowDirsOnly|QFileDialog::DontResolveSymlinks);
+
+    if(path.isEmpty())
+        return;
+
+    resultsSaver_=std::make_unique<Utility::ResultSaver>(this,analysisBoxContainer_->getMemento(),path);
+
+    analysisBoxContainer_->lockUi();
+    button_loadnewvideo_->setEnabled(false);
+    button_saveResults_->setEnabled(false);
+
+    resultsSaver_->save();
+
 }
 
 void GUI::AnalysisTab::createUi() {
@@ -704,5 +738,7 @@ void GUI::AnalysisTab::connectActions() {
 	connect(button_attributes_,SIGNAL(clicked(bool)),this,SLOT(showAttributes()));
 	connect(button_loadnewvideo_,SIGNAL(clicked(bool)),this,SLOT(loadRawVideo()));
 	connect(&timer_labelUpdater_,SIGNAL(timeout()),this,SLOT(updateLabels()));
+    connect(this,SIGNAL(resultsSaved()),this,SLOT(resultSavingFinished()));
+    connect(button_saveResults_,SIGNAL(clicked(bool)),this,SLOT(saveResults()));
 }
 

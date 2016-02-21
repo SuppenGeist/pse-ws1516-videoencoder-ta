@@ -62,8 +62,11 @@ std::unique_ptr<Memento::AnalysisBoxMemento> GUI::AnalysisBox::getMemento() {
 
 	if(origVideo_) {
 		memento->setPath(origVideo_->getPath());
+        memento->setMacroBlockVideo(&origVideo_->getMacroBlockVideo());
+        memento->setRgbDiffVideo(origVideo_->getRgbDiffVideo(&parentContainer_->getParentTab()->getRawVideo()->getVideo()));
 	}
 	memento->setComment(texteEdit_comment_->toPlainText());
+
 	return std::move(memento);
 }
 
@@ -244,12 +247,24 @@ void GUI::AnalysisBox::showAttributes() {
 	tabs_graphs_->setCurrentIndex(1);
 }
 
-QString GUI::AnalysisBox::getFilename() {
-	return filename_;
+QString GUI::AnalysisBox::getPath() {
+    return filename_;
 }
 
 QPlainTextEdit *GUI::AnalysisBox::getCommentBox() {
-	return texteEdit_comment_;
+    return texteEdit_comment_;
+}
+
+void GUI::AnalysisBox::lockUi()
+{
+    button_close_->setEnabled(false);
+    texteEdit_comment_->setEnabled(false);
+}
+
+void GUI::AnalysisBox::unlockUi()
+{
+    button_close_->setEnabled(true);
+    texteEdit_comment_->setEnabled(true);
 }
 
 void GUI::AnalysisBox::closeBox() {
@@ -269,7 +284,10 @@ void GUI::AnalysisBox::updateLabels() {
 	if(!graphWidget_->getGraph()&&parentContainer_) {
 		showGraph(parentContainer_->getShownGraph());
 	}
-
+    if(parentContainer_) {
+        origVideo_->getRgbDiffVideo(&parentContainer_->getParentTab()->getRawVideo()->getVideo());
+        origVideo_->getPsnr(&parentContainer_->getParentTab()->getRawVideo()->getVideo());
+    }
 	if(origVideo_->getCodec()!="")
 		timer_updateLabels_.stop();
 }
