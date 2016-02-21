@@ -120,11 +120,11 @@ class RectangleFilter: public Model::Filter {
 	QString getSaveString() const;
 
   private:
-	QColor color_;
+    int x_;
+    int y_;
 	int width_;
 	int height_;
-	int x_;
-	int y_;
+    QColor color_;
 	int opacity_;
 };
 }

@@ -104,9 +104,9 @@ class GridFilter: public Model::Filter {
   private:
 	int    horizontalCells_;
 	int    verticalCells_;
-	int    opacity_;
 	int     thickness_;
 	QColor    color_;
+    int    opacity_;
 };
 }
 

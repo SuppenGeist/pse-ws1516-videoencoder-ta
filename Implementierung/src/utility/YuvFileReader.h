@@ -48,10 +48,10 @@ class YuvFileReader {
   protected:
 	unsigned char*   binaryData_;
 	QDataStream                    dataStream_;
+    QFile                          file_;
 	int                            width_;
 	int                            height_;
 	Model::Video*                  video_;
-	QFile                          file_;
 	int                            frameSize_;
 	bool*                          complete_;
 

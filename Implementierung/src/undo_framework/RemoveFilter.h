@@ -39,8 +39,8 @@ class RemoveFilter: public QUndoCommand {
 	void redo();
 
   private:
+    GUI::FilterTab*                 filterTab_;
 	int                             index_;
-	GUI::FilterTab*                 filterTab_;
 	std::unique_ptr<Model::Filter>  filter_;
 	std::unique_ptr<Memento::FilterTabMemento>  memento_;
 };

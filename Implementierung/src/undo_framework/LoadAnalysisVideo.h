@@ -41,8 +41,9 @@ class LoadAnalysisVideo: public QUndoCommand {
 
   private:
 	GUI::AnalysisTab* anaTab_;
+    std::unique_ptr<Model::YuvVideo>                rawVideo_;
 	std::unique_ptr<Memento::AnalysisTabMemento>    memento_;
-	std::unique_ptr<Model::YuvVideo>                rawVideo_;
+
 };
 }
 

@@ -74,8 +74,9 @@ class NoiseFilter: public Model::Filter {
 	QString getSaveString() const;
 
   private:
+    Model::NoiseMode mode_;
 	int intensity_;
-	Model::NoiseMode mode_;
+
 };
 }
 

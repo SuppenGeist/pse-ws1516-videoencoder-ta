@@ -195,6 +195,8 @@ HEADERS += \
     test/memento/testmainwindowmemento.h \
     test/model/testproject.h \
     test/model/testfilterlist.h \
+    test/model/testencodedvideo.h \
+    test/model/testyuvvideo.h
 
 SOURCES += \
     src/gui/AnalysisBox.cpp \
@@ -370,6 +372,8 @@ SOURCES += \
     test/memento/testmainwindowmemento.cpp \
     test/model/testproject.cpp \
     test/model/testfilterlist.cpp\
+    test/model/testencodedvideo.cpp \
+    test/model/testyuvvideo.cpp
 
 RESOURCES += \
     resources.qrc \
