@@ -1,4 +1,4 @@
-#include "RGBHistogrammCalculator.h"
+#include "RGBHistogramCalculator.h"
 
 #include <memory>
 
@@ -9,18 +9,18 @@
 #include <QColor>
 #include <QDebug>
 
-Utility::RGBHistogrammCalculator::RGBHistogrammCalculator(Model::Video& video) {
+Utility::RGBHistogramCalculator::RGBHistogramCalculator(Model::Video& video) {
 	video_ = &video;
 }
 
-Utility::RGBHistogrammCalculator::~RGBHistogrammCalculator() {
+Utility::RGBHistogramCalculator::~RGBHistogramCalculator() {
 	isRunning_=false;
 	if(calculator_.joinable()) {
 		calculator_.join();
 	}
 }
 
-void Utility::RGBHistogrammCalculator::calculate(Model::GraphVideo *targetRed,
+void Utility::RGBHistogramCalculator::calculate(Model::GraphVideo *targetRed,
         Model::GraphVideo *targetGreen, Model::GraphVideo *targetBlue) {
 	if(!targetBlue||!targetGreen||!targetRed)
 		return;
@@ -29,10 +29,10 @@ void Utility::RGBHistogrammCalculator::calculate(Model::GraphVideo *targetRed,
 	blue_=targetBlue;
 	green_=targetGreen;
 
-	calculator_=std::thread(&RGBHistogrammCalculator::calculateP,this);
+    calculator_=std::thread(&RGBHistogramCalculator::calculateP,this);
 }
 
-void Utility::RGBHistogrammCalculator::calculateP() {
+void Utility::RGBHistogramCalculator::calculateP() {
 	isRunning_=true;
 	std::size_t i=0;
 	do {

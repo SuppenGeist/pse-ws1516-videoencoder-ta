@@ -109,7 +109,7 @@ HEADERS += \
     src/utility/ProjectWriter.h \
     src/utility/PsnrCalculator.h \
     src/utility/RGBDifferenceCalculator.h \
-    src/utility/RGBHistogrammCalculator.h \
+    src/utility/RGBHistogramCalculator.h \
     src/utility/VideoConverter.h \
     src/utility/VideoLoader.h \
     src/utility/Yuv411FileReader.h \
@@ -223,7 +223,7 @@ SOURCES += \
     src/utility/ProjectWriter.cpp \
     src/utility/PsnrCalculator.cpp \
     src/utility/RGBDifferenceCalculator.cpp \
-    src/utility/RGBHistogrammCalculator.cpp \
+    src/utility/RGBHistogramCalculator.cpp \
     src/utility/VideoConverter.cpp \
     src/utility/VideoLoader.cpp \
     src/utility/Yuv411FileReader.cpp \
