@@ -27,7 +27,7 @@ class YuvVideo {
 	/**
 	 * @brief YuvVideo Constructor.
 	 * @param path Path to the yuv file.
-	 * @param type Pixelsheme of the yuv video.
+         * @param type Pixelscheme of the yuv video.
 	 * @param compression Compression mode of the video.
 	 * @param width Width of the video.
 	 * @param height Height of the video.
@@ -51,7 +51,7 @@ class YuvVideo {
 	Utility::Compression getCompression();
 
 	/**
-	 * @brief getYuvType Returns the pixel sheme of the video.
+         * @brief getYuvType Returns the pixel scheme of the video.
 	 * @return The pixel scheme.
 	 */
 	Utility::YuvType getYuvType();
@@ -69,7 +69,7 @@ class YuvVideo {
 	int getHeight();
 
 	/**
-	 * @brief getFps Return sthe fps of the video.
+         * @brief getFps Returns the fps of the video.
 	 * @return
 	 */
 	int getFps();

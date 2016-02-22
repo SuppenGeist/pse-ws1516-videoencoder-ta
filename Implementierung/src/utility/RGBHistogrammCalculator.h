@@ -17,7 +17,7 @@ class RGBHistogrammCalculator {
   public:
 	/**
 	 * @brief RGBHistogrammCalculator Constructor.
-	 * @param video the video that is analyzed.
+         * @param video The video that is analyzed.
 	 */
 	RGBHistogrammCalculator(Model::Video& video);
 

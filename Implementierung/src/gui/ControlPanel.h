@@ -34,9 +34,9 @@ class ControlPanel {
 	void setMasterVideoPlayer(Player& player) noexcept;
 
 	/**
-	 * If the player is already in the list nothing happens.
+         * If the player is already in the list, nothing happens.
 	 *
-	 * @brief addVideoPlayer Adds the video player the list of players to notify.
+         * @brief addVideoPlayer Adds the video player to the list of players to notify.
 	 * @param player The player to add to the list.
 	 */
 	void addVideoPlayer(Player *player);
@@ -47,7 +47,7 @@ class ControlPanel {
 	virtual void updateUi() = 0;
 
 	/**
-	 * If the player is not in th elist nothing happens.
+         * If the player is not in the list nothing happens.
 	 *
 	 * @brief removeVideoPlayer Removes the video player from the list of the players to notify.
 	 * @param player The player to remove.

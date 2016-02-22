@@ -15,7 +15,7 @@ extern "C" {
 
 namespace Utility {
 /**
- * This class can load a encoded video.
+ * This class can load an encoded video.
  */
 
 class VideoLoader {

@@ -57,13 +57,13 @@ class PlayerControlPanel: public QFrame, public ControlPanel {
 
 	/**
 	 * @brief changeTimeline Slot for slider_timeLine.valueChanged(int) signal.
-	 * @param value The new valueof the slider.
+         * @param value The new value of the slider.
 	 */
 	void changeTimeline(int value);
 
   public slots:
 	/**
-	 * If no master player is set the first player of the player list is taken.
+         * If no master player is set, the first player of the player list is taken.
 	 * If this list is empty nothing happens.
 	 *
 	 * @brief updateUi Updates the ui of the control panel.

@@ -53,21 +53,21 @@ class GraphWidget:public QGraphicsView {
 	void setFillPen(QPen fillPen);
 
 	/**
-	 * @brief setFillBrush The brish which is used to fill the graph.
+         * @brief setFillBrush The brush which is used to fill the graph.
 	 * @param fillBrush The brush to use.
 	 */
 	void setFillBrush(QBrush fillBrush);
 
 	/**
-	 * @brief setControlPanel Sets the GlobalControlPanel to notify if a click on the graph was performed.
+         * @brief setControlPanel Sets the GlobalControlPanel to notify, if a click on the graph was performed.
 	 * @param panel The panel to notify.
 	 */
 	void setControlPanel(GlobalControlPanel* panel);
 
 	/**
-	 * @brief setAchsisLabels Sets the labels of the achsis.
-	 * @param xLabel x-achsis label.
-	 * @param yLabel y-achsis label;
+         * @brief setAchsisLabels Sets the labels of the axis.
+         * @param xLabel x-axis label.
+         * @param yLabel y-axis label;
 	 */
 	void setAxisLabels(QString xLabel,QString yLabel);
 
@@ -85,8 +85,8 @@ class GraphWidget:public QGraphicsView {
 
 	/**
 	 * @brief setMarkLength Sets the length of the marks.
-	 * @param xMarkLen Marks on the x axis.
-	 * @param yMarkLen Marks on the y axis.
+         * @param xMarkLen Marks on the x-axis.
+         * @param yMarkLen Marks on the y-axis.
 	 */
 	void setMarkLength(int xMarkLen,int yMarkLen);
 
@@ -98,8 +98,8 @@ class GraphWidget:public QGraphicsView {
 
 	/**
 	 * @brief setMarkDistance Sets the distance between the marks.
-	 * @param disX Distance on the x axis.
-	 * @param disY Distance on the y axis.
+         * @param disX Distance on the x-axis.
+         * @param disY Distance on the y-axis.
 	 */
 	void setMarkDistance(int disX,int disY);
 

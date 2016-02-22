@@ -32,7 +32,7 @@ class VideoConverter {
     static std::unique_ptr<QImage> convertAVFrameToQImage(AVFrame& frame);
 
     /**
-     * @brief convertQImageToAVFrame Converts a qimage to a avframe.
+     * @brief convertQImageToAVFrame Converts a qimage to an avframe.
      * CAUTION: An owning pointer is returned.
      * @param image The qimage to convert.
      * @return The converted qimage.

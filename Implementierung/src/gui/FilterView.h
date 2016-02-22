@@ -19,14 +19,14 @@ class FilterView;
 
 namespace GUI {
 /**
- * Represents a selectable filter in the gui. Shows a example of the filter and  a checkbox as well as its name.
+ * Represents a selectable filter in the gui. Shows an example of the filter and  a checkbox as well as its name.
 */
 class FilterView : public QFrame {
 	Q_OBJECT
 
   public:
 	/**
-	 * @brief FilterViewCcontructor
+         * @brief FilterView Contructor
 	 * @param parent Parent of object
 	 */
 	FilterView(QWidget* parent=0);

@@ -33,7 +33,7 @@ class AnalysisBoxContainer: public QFrame {
 
 	/**
 	* @brief AnalysisBoxContainer Constructor
-	* @param parent parent of this object
+        * @param parent The parent of this object
 	*/
 	AnalysisBoxContainer(QWidget* parent=0);
 

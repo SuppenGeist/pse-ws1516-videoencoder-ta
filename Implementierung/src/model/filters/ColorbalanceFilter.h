@@ -11,7 +11,7 @@
 
 namespace Model {
 /**
- * Adjusts the colorbalance of the video for the 3 basic colors.
+ * Adjusts the color balance of the video for the 3 basic colors.
 */
 class ColorbalanceFilter: public Filter {
   public:
@@ -83,7 +83,7 @@ class ColorbalanceFilter: public Filter {
 	QString getName() const;
 
 	/**
-	 * @brief getDarkPixels Whether the drak pixels shall be changed.
+         * @brief getDarkPixels Whether the dark pixels shall be changed.
 	 * @return True if the dark pixels are changed.
 	 */
 	bool getDarkPixels();

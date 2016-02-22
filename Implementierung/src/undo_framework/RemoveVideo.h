@@ -13,7 +13,7 @@ class AnalysisBoxContainer;
 
 namespace UndoRedo {
 /**
- * This class is the undo command for removing a encoded video in the analysis tab.
+ * This class is the undo command for removing an encoded video from the analysis tab.
 */
 class RemoveVideo: public QUndoCommand {
   public:
@@ -25,7 +25,7 @@ class RemoveVideo: public QUndoCommand {
 	RemoveVideo(GUI::AnalysisBoxContainer* boxContainer, GUI::AnalysisBox* box);
 
 	/**
-	 * @brief undo Re adds the removed video to the analysis tab.
+         * @brief undo Readds the removed video to the analysis tab.
 	 */
 	void undo();
 

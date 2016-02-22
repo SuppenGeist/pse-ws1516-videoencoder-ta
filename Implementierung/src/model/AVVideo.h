@@ -49,14 +49,14 @@ class AVVideo {
 	/**
 	 * @brief getFrame Returns the frame at the given index.
 	 * If the index is invalid nullptr is returned. This is not an owning pointer.
-	 * @param index the index of the frame to return
+         * @param index The index of the frame to return
 	 * @return The frame at the given index.
 	 */
 	AVFrame* getFrame(std::size_t index);
 
 	/**
 	 * @brief insertFrame Inserts a frame at the given index.
-	 * If the width and height of the frame dont match the size of the video false is returned.
+         * If the width and height of the frame don't match the size of the video, false is returned.
 	 * CAUTION:Ownership is transferred.
 	 * @param frame The frame to insert.
 	 * @param index The index to insert the frame at.
@@ -71,7 +71,7 @@ class AVVideo {
 
 	/**
 	 * @brief insertFrames Inserts a vector of frames at the given index.
-	 * If the width and height of one frame dont match the size of the video false is returned.
+         * If the width and height of one frame don't match the size of the video, false is returned.
 	 * All frames that match the size of the video are inserted either way.
 	 * CAUTION:Ownership is transferred.
 	 * @param frames The frames to insert.

@@ -39,7 +39,7 @@ class NoiseFilter: public Model::Filter {
 
 	/**
 	 * @brief Returns the intensity of the noise.
-	 * @return The new intensity of the noise.
+         * @return The intensity of the noise.
 	 */
 	int getIntensity();
 

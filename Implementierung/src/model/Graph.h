@@ -6,7 +6,7 @@
 namespace Model {
 /**
  * This class is a graph.
- * Only integer x values and doubley values are supported.
+ * Only integer x values and double y values are supported.
  * x and y values must both be greater or equal to zero.
  */
 class Graph {
@@ -20,8 +20,8 @@ class Graph {
 	/**
 	 * @brief addValue Adds a value pair.
 	 * The graph is automatically to the given x extended.
-	 * @param x Value on the x-axes.
-	 * @param y Value on the y-axes.
+         * @param x Value on the x-axis.
+         * @param y Value on the y-axis.
 	 */
 	void setValue(std::size_t x, double y);
 

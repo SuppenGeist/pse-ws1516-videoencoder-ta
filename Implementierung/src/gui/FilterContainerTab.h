@@ -26,7 +26,7 @@ class FilterContainerTab : public QFrame {
 
 	/**
 	 * @brief FilterContainerTab constructor
-	 * @param parent parent of this object
+         * @param parent The parent of this object
 	 */
 	FilterContainerTab(QWidget* parent=0);
 

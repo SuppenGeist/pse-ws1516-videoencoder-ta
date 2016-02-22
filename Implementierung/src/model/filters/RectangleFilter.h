@@ -25,7 +25,7 @@ class RectangleFilter: public Model::Filter {
 
 	/**
 	* @brief Returns the color of the rectangle.
-	* @return The new color of the rectangle.
+        * @return The color of the rectangle.
 	*/
 	QColor getColor();
 

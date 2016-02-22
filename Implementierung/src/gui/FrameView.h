@@ -8,7 +8,7 @@ namespace GUI {
 /**
  * This class displays QImages.
  * The width and height of the displayed image automatically scale with
- * the size of the widget but the ratio is always preserved.
+ * the size of the widget, but the ratio is always preserved.
  */
 class FrameView: public QWidget {
   public:

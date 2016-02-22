@@ -11,7 +11,7 @@ class AnalysisBox;
 
 namespace UndoRedo {
 /**
- * This class is the undo command for adding a encoded video on the analysis tab.
+ * This class is the undo command for adding an encoded video to the analysis tab.
 */
 class AddVideo: public QUndoCommand {
 
