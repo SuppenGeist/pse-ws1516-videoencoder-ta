@@ -6,36 +6,31 @@
 
 #include "../gui/AnalysisTab.h"
 #include "../gui/GraphWidget.h"
+#include "../gui/graphcalculator.h"
 
 #include "../model/Graph.h"
+#include "../model/graphvideo.h"
 
-Utility::ResultSaver::ResultSaver(GUI::AnalysisTab* tab,std::unique_ptr<Memento::AnalysisBoxContainerMemento> memento, QString folder):tab_(tab),memento_(std::move(memento)),path_(folder),isRunning_(false)
+#include "VideoConverter.h"
+
+Utility::ResultSaver::ResultSaver(std::unique_ptr<Memento::AnalysisBoxContainerMemento> memento, QString folder):memento_(std::move(memento)),path_(folder)
 {
 
 }
 
 Utility::ResultSaver::~ResultSaver()
 {
-    isRunning_=false;
-    if(saver_.joinable())
-        saver_.join();
 }
 
-void Utility::ResultSaver::save()
+
+void Utility::ResultSaver::run()
 {
     if(!memento_.get())
         return;
 
-    saver_=std::thread(&ResultSaver::saveP,this);
-}
-
-void Utility::ResultSaver::saveP()
-{
-    isRunning_=true;
-
     std::size_t size=memento_->getAnalysisBoxList().size();
 
-    for(std::size_t i=0;i<size&&isRunning_;i++) {
+    for(std::size_t i=0;i<size;i++) {
         auto& memento=memento_->getAnalysisBoxList()[i];
 
         QFile f(memento->getPath());
@@ -64,19 +59,76 @@ void Utility::ResultSaver::saveP()
             videoSavers_.push_back(std::move(diffSaver));
         }
 
+        GUI::GraphCalculator calculator;
+
         auto psnrPath=prefix+"_psnr.png";
 
         QFile psnrFile(psnrPath);
-        if(!psnrFile.exists()) {
-            if(!memento->getPsnrGraph().isNull())
-                memento->getPsnrGraph().save(psnrPath);
+        if(!psnrFile.exists()&&memento->getPsnrGraph()&&memento->getPsnrGraph()->getSize()!=0) {
+            calculator.setAxisLabels("frame","dB");
+            VideoConverter::convertGraphToImage(memento->getPsnrGraph(),1500,500,&calculator)->save(psnrPath);
         }
 
         auto bitratePath=prefix+"_bitrate.png";
 
         QFile bitrateFile(bitratePath);
         if(!bitrateFile.exists()) {
-            memento->getBitrateGraph().save(bitratePath);
+            calculator.setAxisLabels("frame","kb");
+            VideoConverter::convertGraphToImage(memento->getBitrateGraph(),1500,500,&calculator)->save(bitratePath);
+        }
+
+        auto redhpath=prefix+"_redHistogram.mp4";
+
+        QFile redhFile(redhpath);
+        if(!redhFile.exists()) {
+            calculator.setShowLabels(false);
+            calculator.setIsFilled(true);
+            QBrush filler(QColor(255,0,0));
+            calculator.setFillBrush(filler);
+            QPen filpen(QColor(255,0,0));
+            calculator.setFillPen(filpen);
+            calculator.setLinePen(filpen);
+            redHistogram_=VideoConverter::convertGraphVideoToVideo(memento->getRedHistogram(),1500,500,&calculator);
+            auto redhSaver=std::make_unique<VideoSaver>(redHistogram_.get(),redhpath);
+            redhSaver->save();
+
+            videoSavers_.push_back(std::move(redhSaver));
+        }
+
+        auto greenhpath=prefix+"_greenHistogram.mp4";
+
+        QFile greenhFile(greenhpath);
+        if(!greenhFile.exists()) {
+            calculator.setShowLabels(false);
+            calculator.setIsFilled(true);
+            QBrush filler(QColor(255,0,0));
+            calculator.setFillBrush(filler);
+            QPen filpen(QColor(255,0,0));
+            calculator.setFillPen(filpen);
+            calculator.setLinePen(filpen);
+            greenHistogram_=VideoConverter::convertGraphVideoToVideo(memento->getGreenHistogram(),1500,500,&calculator);
+            auto greenhSaver=std::make_unique<VideoSaver>(greenHistogram_.get(),greenhpath);
+            greenhSaver->save();
+
+            videoSavers_.push_back(std::move(greenhSaver));
+        }
+
+        auto bluehpath=prefix+"_blueHistogram.mp4";
+
+        QFile bluehFile(bluehpath);
+        if(!bluehFile.exists()) {
+            calculator.setShowLabels(false);
+            calculator.setIsFilled(true);
+            QBrush filler(QColor(255,0,0));
+            calculator.setFillBrush(filler);
+            QPen filpen(QColor(255,0,0));
+            calculator.setFillPen(filpen);
+            calculator.setLinePen(filpen);
+            blueHistogram_=VideoConverter::convertGraphVideoToVideo(memento->getBlueHistogram(),1500,500,&calculator);
+            auto bluehSaver=std::make_unique<VideoSaver>(blueHistogram_.get(),bluehpath);
+            bluehSaver->save();
+
+            videoSavers_.push_back(std::move(bluehSaver));
         }
 
         auto attributesPath=prefix+"_attributes";
@@ -98,9 +150,5 @@ void Utility::ResultSaver::saveP()
     for(auto& saver:videoSavers_) {
         saver->join();
     }
-
-    if(tab_)
-        tab_->resultsSaved();
-    isRunning_=false;
 }
 

@@ -6,6 +6,7 @@
 
 #include "../model/Video.h"
 #include "../model/Graph.h"
+#include "../model/graphvideo.h"
 
 
 namespace Memento {
@@ -36,13 +37,13 @@ class AnalysisBoxMemento {
 
     Model::Video* getRgbDiffVideo();
 
-    void setPsnrGraph(QImage graph);
+    void setPsnrGraph(Model::Graph* graph);
 
-    QImage getPsnrGraph();
+    Model::Graph* getPsnrGraph();
 
-    void setBitrateGraph(QImage graph);
+    void setBitrateGraph(Model::Graph* graph);
 
-    QImage getBitrateGraph();
+    Model::Graph* getBitrateGraph();
 
     void setEncoder(QString encoder);
 
@@ -60,17 +61,32 @@ class AnalysisBoxMemento {
 
     QString getFilesize();
 
+    void setRedHistogram(Model::GraphVideo* video);
+
+    Model::GraphVideo* getRedHistogram();
+
+    void setGreenHistogram(Model::GraphVideo* video);
+
+    Model::GraphVideo* getGreenHistogram();
+
+    void setBlueHistogram(Model::GraphVideo* video);
+
+    Model::GraphVideo* getBlueHistogram();
+
   private:
 	QString path_;
 	QString comment_;
     Model::Video* macroblockVideo_;
     Model::Video* rgbDiffVideo_;
-    QImage psnrGraph_;
-    QImage bitrateGraph_;
+    Model::Graph* psnrGraph_;
+    Model::Graph* bitrateGraph_;
     QString encoder_;
     QString avergaeBitrate_;
     QString filename_;
     QString filesize_;
+    Model::GraphVideo* redHistogram_;
+    Model::GraphVideo* greenHistogram_;
+    Model::GraphVideo* blueHistogram_;
 };
 }
 

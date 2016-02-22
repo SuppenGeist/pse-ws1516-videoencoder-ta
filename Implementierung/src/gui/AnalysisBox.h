@@ -17,6 +17,7 @@
 #include "Timer.h"
 #include "GlobalControlPanel.h"
 #include "graphplayer.h"
+#include "graphcalculator.h"
 
 #include "../model/EncodedVideo.h"
 
@@ -45,7 +46,7 @@ class AnalysisBox: public QFrame {
 
 	~AnalysisBox();
 
-    std::unique_ptr<Memento::AnalysisBoxMemento> getMemento(bool calculateImages=false);
+    std::unique_ptr<Memento::AnalysisBoxMemento> getMemento();
 
 	void restore(Memento::AnalysisBoxMemento* memento);
 
@@ -95,6 +96,7 @@ class AnalysisBox: public QFrame {
 	std::unique_ptr<VideoPlayer>              anaVidPlayer_;
 	std::shared_ptr<GlobalControlPanel>     globalControlPanel_;
 	std::unique_ptr<GraphPlayer>            graphPlayer_;
+    std::unique_ptr<GraphCalculator>        calculator_;
 
 	QString         filename_;
 	std::unique_ptr<Model::EncodedVideo>      origVideo_;

@@ -46,6 +46,9 @@ GUI::AnalysisBox::AnalysisBox(QWidget* parent) : QFrame(parent) {
 
 	origVidPlayer_->addView(*origView_);
 	anaVidPlayer_->addView(*anaView_);
+
+    calculator_=std::make_unique<GraphCalculator>();
+    graphWidget_->setGraphCalculator(calculator_.get());
 }
 
 GUI::AnalysisBox::~AnalysisBox() {
@@ -57,25 +60,18 @@ GUI::AnalysisBox::~AnalysisBox() {
 	graphPlayer_->clearTimer();
 }
 
-std::unique_ptr<Memento::AnalysisBoxMemento> GUI::AnalysisBox::getMemento(bool calculateImages) {
+std::unique_ptr<Memento::AnalysisBoxMemento> GUI::AnalysisBox::getMemento() {
 	auto memento=std::make_unique<Memento::AnalysisBoxMemento>();
 
 	if(origVideo_) {
 		memento->setPath(origVideo_->getPath());
         memento->setMacroBlockVideo(&origVideo_->getMacroBlockVideo());
         memento->setRgbDiffVideo(origVideo_->getRgbDiffVideo(&parentContainer_->getParentTab()->getRawVideo()->getVideo()));
-
-        if(calculateImages) {
-        GraphWidget w;
-
-        w.setAxisLabels("frame","dB");
-        w.drawGraph(origVideo_->getPsnr());
-        memento->setPsnrGraph(w.toImage(1500,500));
-
-        w.setAxisLabels("frame","kb");
-        w.drawGraph(&origVideo_->getBitrate());
-        memento->setBitrateGraph(w.toImage(1500,500));
-        }
+        memento->setPsnrGraph(origVideo_->getPsnr());
+        memento->setBitrateGraph(&origVideo_->getBitrate());
+        memento->setRedHistogram(&origVideo_->getRedHistogram());
+        memento->setGreenHistogram(&origVideo_->getGreenHistogram());
+        memento->setBlueHistogram(&origVideo_->getBlueHistogram());
 	}
     memento->setEncoder(label_codec_->text());
     memento->setAverageBitrate(label_averageBitrate_->text());
@@ -155,30 +151,30 @@ void GUI::AnalysisBox::showGraph(GUI::AnalysisGraph graph) {
 	switch(graph) {
 	case AnalysisGraph::BITRATE: {
 		graphPlayer_->setGraphVideo(nullptr);
-		graphPlayer_->setView(nullptr);
-		graphWidget_->drawGraph(&origVideo_->getBitrate());
-		graphWidget_->setAxisLabels("frame","kb");
-		graphWidget_->setControlPanel(globalControlPanel_.get());
-		graphWidget_->setShowLabels(true);
-		graphWidget_->setIsFilled(false);
+        graphPlayer_->setView(nullptr);
+        calculator_->setAxisLabels("frame","kb");
+        graphWidget_->setControlPanel(globalControlPanel_.get());
+        calculator_->setShowLabels(true);
+        calculator_->setIsFilled(false);
 		QPen linepen;
-		graphWidget_->setLinePen(linepen);
+        calculator_->setLinePen(linepen);
+        graphWidget_->drawGraph(&origVideo_->getBitrate());
 		tabs_graphs_->setCurrentIndex(0);
 		break;
 	}
         case AnalysisGraph::RED_HISTOGRAM: {
-		graphWidget_->setControlPanel(nullptr);
-		graphWidget_->drawGraph(nullptr);
-		graphPlayer_->setView(graphWidget_);
-                graphPlayer_->setGraphVideo(&origVideo_->getRedHistogram());
-		graphWidget_->setAxisLabels("","");
-		graphWidget_->setIsFilled(true);
-		graphWidget_->setShowLabels(false);
+        graphWidget_->drawGraph(nullptr);
+        graphWidget_->setControlPanel(nullptr);
+        graphPlayer_->setView(graphWidget_);
+        calculator_->setAxisLabels("","");
+        calculator_->setIsFilled(true);
+        calculator_->setShowLabels(false);
 		QBrush filler(QColor(255,0,0));
-		graphWidget_->setFillBrush(filler);
+        calculator_->setFillBrush(filler);
 		QPen filpen(QColor(255,0,0));
-		graphWidget_->setFillPen(filpen);
-		graphWidget_->setLinePen(filpen);
+        calculator_->setFillPen(filpen);
+        calculator_->setLinePen(filpen);
+        graphPlayer_->setGraphVideo(&origVideo_->getRedHistogram());
 		if(globalControlPanel_.get()) {
 			graphPlayer_->setPosition(globalControlPanel_->getPosition());
 		}
@@ -188,16 +184,16 @@ void GUI::AnalysisBox::showGraph(GUI::AnalysisGraph graph) {
         case AnalysisGraph::BLUE_HISTOGRAM: {
 		graphWidget_->setControlPanel(nullptr);
 		graphWidget_->drawGraph(nullptr);
-		graphPlayer_->setView(graphWidget_);
-                graphPlayer_->setGraphVideo(&origVideo_->getBlueHistogram());
-		graphWidget_->setAxisLabels("","");
-		graphWidget_->setIsFilled(true);
-		graphWidget_->setShowLabels(false);
+        graphPlayer_->setView(graphWidget_);
+        calculator_->setAxisLabels("","");
+        calculator_->setIsFilled(true);
+        calculator_->setShowLabels(false);
 		QBrush filler(QColor(0,0,255));
-		graphWidget_->setFillBrush(filler);
+        calculator_->setFillBrush(filler);
 		QPen filpen(QColor(0,0,255));
-		graphWidget_->setFillPen(filpen);
-		graphWidget_->setLinePen(filpen);
+        calculator_->setFillPen(filpen);
+        calculator_->setLinePen(filpen);
+        graphPlayer_->setGraphVideo(&origVideo_->getBlueHistogram());
 		if(globalControlPanel_.get()) {
 			graphPlayer_->setPosition(globalControlPanel_->getPosition());
 		}
@@ -207,16 +203,16 @@ void GUI::AnalysisBox::showGraph(GUI::AnalysisGraph graph) {
         case AnalysisGraph::GREEN_HISTOGRAM: {
 		graphWidget_->setControlPanel(nullptr);
 		graphWidget_->drawGraph(nullptr);
-		graphPlayer_->setView(graphWidget_);
-                graphPlayer_->setGraphVideo(&origVideo_->getGreenHistogram());
-		graphWidget_->setAxisLabels("","");
-		graphWidget_->setIsFilled(true);
+        graphPlayer_->setView(graphWidget_);
+        calculator_->setAxisLabels("","");
+        calculator_->setIsFilled(true);
 		QBrush filler(QColor(0,255,0));
-		graphWidget_->setShowLabels(false);
-		graphWidget_->setFillBrush(filler);
+        calculator_->setShowLabels(false);
+        calculator_->setFillBrush(filler);
 		QPen filpen(QColor(0,255,0));
-		graphWidget_->setFillPen(filpen);
-		graphWidget_->setLinePen(filpen);
+        calculator_->setFillPen(filpen);
+        calculator_->setLinePen(filpen);
+        graphPlayer_->setGraphVideo(&origVideo_->getGreenHistogram());
 		if(globalControlPanel_.get()) {
 			graphPlayer_->setPosition(globalControlPanel_->getPosition());
 		}
@@ -225,15 +221,15 @@ void GUI::AnalysisBox::showGraph(GUI::AnalysisGraph graph) {
 	}
 	case AnalysisGraph::PSNR: {
 		graphPlayer_->setGraphVideo(nullptr);
-		graphPlayer_->setView(nullptr);
-		graphWidget_->drawGraph(origVideo_->getPsnr(
-		                            &parentContainer_->getParentTab()->getRawVideo()->getVideo()));
-		graphWidget_->setAxisLabels("frame","dB");
+        graphPlayer_->setView(nullptr);
+        calculator_->setAxisLabels("frame","dB");
 		graphWidget_->setControlPanel(globalControlPanel_.get());
-		graphWidget_->setShowLabels(true);
-		graphWidget_->setIsFilled(false);
+        calculator_->setShowLabels(true);
+        calculator_->setIsFilled(false);
 		QPen linepen;
-		graphWidget_->setLinePen(linepen);
+        calculator_->setLinePen(linepen);
+        graphWidget_->drawGraph(origVideo_->getPsnr(
+                                    &parentContainer_->getParentTab()->getRawVideo()->getVideo()));
 		tabs_graphs_->setCurrentIndex(0);
 		break;
 	}

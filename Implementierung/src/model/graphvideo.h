@@ -10,7 +10,7 @@ namespace Model {
 
 class GraphVideo {
   public:
-	GraphVideo();
+    GraphVideo(int fps=1);
 
 	void appendGraph(std::unique_ptr<Graph> graph);
 
@@ -18,8 +18,18 @@ class GraphVideo {
 
 	std::size_t getNumberOfGraphs();
 
+    int getFps();
+
+    void setFps(int fps);
+
+    bool isComplete();
+
+    void setIsComplete(bool isComplete);
+
   private:
 	std::vector<std::unique_ptr<Graph>>  graphs_;
+    int fps_;
+    bool isComplete_;
 };
 
 }

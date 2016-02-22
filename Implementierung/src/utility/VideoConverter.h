@@ -13,7 +13,10 @@ extern "C" {
 
 #include "../model/Video.h"
 #include "../model/AVVideo.h"
+#include "../model/Graph.h"
+#include "../model/graphvideo.h"
 
+#include "../gui/graphcalculator.h"
 
 namespace Utility {
 /**
@@ -39,6 +42,9 @@ class VideoConverter {
      */
     static AVFrame* convertQImageToAVFrame(QImage& image);
 
+    static std::unique_ptr<QImage> convertGraphToImage(Model::Graph* graph,int width,int height, GUI::GraphCalculator* calculator=0);
+
+    static std::unique_ptr<Model::Video> convertGraphVideoToVideo(Model::GraphVideo* video,int width,int height,GUI::GraphCalculator* calculator);
 
     VideoConverter(Model::Video* video);
 
@@ -61,7 +67,7 @@ class VideoConverter {
 	 */
     void convertVideoToAVVideo(Model::AVVideo* target);
 
-  private:
+private:
     Model::Video* video_;
     Model::Video* videoTarget_;
     Model::AVVideo* avvideo_;

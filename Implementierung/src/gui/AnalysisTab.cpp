@@ -61,6 +61,9 @@ GUI::AnalysisTab::AnalysisTab(QWidget* parent) : QFrame(parent),rawVideo_(nullpt
 
 	analysisBoxContainer_->setControlPanel(globalControlPanel_);
 	analysisBoxContainer_->setTimer(timer_);
+
+    calculator_=std::make_unique<GraphCalculator>();
+    graphWidget_->setGraphCalculator(calculator_.get());
 }
 
 std::unique_ptr<Memento::AnalysisTabMemento> GUI::AnalysisTab::getMemento() {
@@ -237,16 +240,16 @@ void GUI::AnalysisTab::showRedHistogram() {
 	if(!rawVideo_)
 		return;
         analysisBoxContainer_->showGraph(AnalysisGraph::RED_HISTOGRAM);
-        graphPlayer_->setGraphVideo(&rawVideo_->getRedHistogram());
 	tabs_graphattrs->setCurrentIndex(0);
-	graphWidget_->setAxisLabels("","");
-	graphWidget_->setIsFilled(true);
+    calculator_->setAxisLabels("","");
+    calculator_->setIsFilled(true);
 	QBrush filler(QColor(255,0,0));
-	graphWidget_->setShowLabels(false);
-	graphWidget_->setFillBrush(filler);
+    calculator_->setShowLabels(false);
+    calculator_->setFillBrush(filler);
 	QPen filpen(QColor(255,0,0));
-	graphWidget_->setFillPen(filpen);
-	graphWidget_->setLinePen(filpen);
+    calculator_->setFillPen(filpen);
+    calculator_->setLinePen(filpen);
+    graphPlayer_->setGraphVideo(&rawVideo_->getRedHistogram());
 	graphPlayer_->setPosition(globalControlPanel_->getPosition());
 
 	button_bitrate_->setStyleSheet(stylesheet_buttons_);
@@ -261,16 +264,16 @@ void GUI::AnalysisTab::showBlueHistogram() {
 	if(!rawVideo_)
 		return;
         analysisBoxContainer_->showGraph(AnalysisGraph::BLUE_HISTOGRAM);
-        graphPlayer_->setGraphVideo(&rawVideo_->getBlueHistogram());
 	tabs_graphattrs->setCurrentIndex(0);
-	graphWidget_->setAxisLabels("","");
-	graphWidget_->setIsFilled(true);
+    calculator_->setAxisLabels("","");
+    calculator_->setIsFilled(true);
 	QBrush filler(QColor(0,0,255));
-	graphWidget_->setShowLabels(false);
-	graphWidget_->setFillBrush(filler);
-	QPen filpen(QColor(0,0,255));
-	graphWidget_->setFillPen(filpen);
-	graphWidget_->setLinePen(filpen);
+    calculator_->setShowLabels(false);
+    calculator_->setFillBrush(filler);
+    QPen filpen(QColor(0,0,255));
+    calculator_->setFillPen(filpen);
+    calculator_->setLinePen(filpen);
+    graphPlayer_->setGraphVideo(&rawVideo_->getBlueHistogram());
 	graphPlayer_->setPosition(globalControlPanel_->getPosition());
 
 	button_bitrate_->setStyleSheet(stylesheet_buttons_);
@@ -284,16 +287,16 @@ void GUI::AnalysisTab::showGreenHistogram() {
 	if(!rawVideo_)
 		return;
         analysisBoxContainer_->showGraph(AnalysisGraph::GREEN_HISTOGRAM);
-        graphPlayer_->setGraphVideo(&rawVideo_->getGreenHistogram());
 	tabs_graphattrs->setCurrentIndex(0);
-	graphWidget_->setAxisLabels("","");
-	graphWidget_->setIsFilled(true);
+    calculator_->setAxisLabels("","");
+    calculator_->setIsFilled(true);
 	QBrush filler(QColor(0,255,0));
-	graphWidget_->setShowLabels(false);
-	graphWidget_->setFillBrush(filler);
+    calculator_->setShowLabels(false);
+    calculator_->setFillBrush(filler);
 	QPen filpen(QColor(0,255,0));
-	graphWidget_->setFillPen(filpen);
-	graphWidget_->setLinePen(filpen);
+    calculator_->setFillPen(filpen);
+    calculator_->setLinePen(filpen);
+    graphPlayer_->setGraphVideo(&rawVideo_->getGreenHistogram());
 	graphPlayer_->setPosition(globalControlPanel_->getPosition());
 
 	button_bitrate_->setStyleSheet(stylesheet_buttons_);
@@ -382,13 +385,16 @@ void GUI::AnalysisTab::saveResults()
     if(path.isEmpty())
         return;
 
-    resultsSaver_=std::make_unique<Utility::ResultSaver>(this,analysisBoxContainer_->getMemento(true),path);
+    resultsSaver_=std::make_unique<Utility::ResultSaver>(analysisBoxContainer_->getMemento(),path);
 
     analysisBoxContainer_->lockUi();
     button_loadnewvideo_->setEnabled(false);
     button_saveResults_->setEnabled(false);
 
-    resultsSaver_->save();
+    connect(resultsSaver_.get(),SIGNAL(finished()),this,SLOT(resultSavingFinished()));
+    resultsSaver_->start();
+
+    //resultsSaver_->save();
 
 }
 

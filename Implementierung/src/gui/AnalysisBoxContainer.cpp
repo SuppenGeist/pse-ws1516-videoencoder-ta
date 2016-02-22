@@ -28,14 +28,14 @@ GUI::AnalysisBoxContainer::AnalysisBoxContainer(QWidget* parent) : QFrame(parent
 	connect(button_addVideo_,SIGNAL(clicked(bool)),this,SLOT(addVideo()));
 
 	setObjectName("anacontainer");
-	setStyleSheet("QFrame#anacontainer {background-color:white;}");
+    setStyleSheet("QFrame#anacontainer {background-color:white;}");
 }
 
-std::unique_ptr<Memento::AnalysisBoxContainerMemento> GUI::AnalysisBoxContainer::getMemento(bool calculateImages) {
+std::unique_ptr<Memento::AnalysisBoxContainerMemento> GUI::AnalysisBoxContainer::getMemento() {
 	auto memento=std::make_unique<Memento::AnalysisBoxContainerMemento>();
 
 	for(auto box:boxes_) {
-        memento->addMemento(std::move(box->getMemento(calculateImages)));
+        memento->addMemento(std::move(box->getMemento()));
 	}
 
 	return std::move(memento);

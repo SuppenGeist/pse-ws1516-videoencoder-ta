@@ -28,6 +28,9 @@ void Utility::RGBHistogramCalculator::calculate(Model::GraphVideo *targetRed,
 	red_=targetRed;
 	blue_=targetBlue;
 	green_=targetGreen;
+    red_->setFps(video_->getFps());
+    green_->setFps(video_->getFps());
+    blue_->setFps(video_->getFps());
 
     calculator_=std::thread(&RGBHistogramCalculator::calculateP,this);
 }
@@ -68,5 +71,8 @@ void Utility::RGBHistogramCalculator::calculateP() {
 			blue_->appendGraph(std::move(blueg));
 		}
 	} while (isRunning_&&!video_->isComplete());
-	isRunning_=false;
+    red_->setIsComplete(true);
+    green_->setIsComplete(true);
+    blue_->setIsComplete(true);
+    isRunning_=false;
 }

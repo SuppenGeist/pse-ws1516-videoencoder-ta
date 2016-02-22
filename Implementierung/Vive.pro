@@ -131,7 +131,8 @@ HEADERS += \
     src/model/graphvideo.h \
     src/gui/graphplayer.h \
     src/utility/VideoSaver.h \
-    src/utility/resultsaver.h
+    src/utility/resultsaver.h \
+    src/gui/graphcalculator.h
 
 SOURCES += \
     src/gui/AnalysisBox.cpp \
@@ -246,7 +247,8 @@ SOURCES += \
     src/gui/graphplayer.cpp \
     src/utility/BasicColor.cpp \
     src/utility/VideoSaver.cpp \
-    src/utility/resultsaver.cpp
+    src/utility/resultsaver.cpp \
+    src/gui/graphcalculator.cpp
 
 RESOURCES += \
     resources.qrc \

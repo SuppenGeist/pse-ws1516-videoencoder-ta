@@ -37,7 +37,7 @@ class AnalysisBoxContainer: public QFrame {
 	*/
 	AnalysisBoxContainer(QWidget* parent=0);
 
-    std::unique_ptr<Memento::AnalysisBoxContainerMemento> getMemento(bool calculateImages=false);
+    std::unique_ptr<Memento::AnalysisBoxContainerMemento> getMemento();
 
 	void restore(Memento::AnalysisBoxContainerMemento* memento);
 

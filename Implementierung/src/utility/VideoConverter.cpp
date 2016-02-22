@@ -60,6 +60,50 @@ AVFrame* Utility::VideoConverter::convertQImageToAVFrame(QImage& image) {
     return frame;
 }
 
+std::unique_ptr<QImage> Utility::VideoConverter::convertGraphToImage(Model::Graph *graph, int width, int height, GUI::GraphCalculator *calculator)
+{
+    if(!graph) {
+        return std::make_unique<QImage>(width,height,QImage::Format_ARGB32_Premultiplied);
+    }
+    std::unique_ptr<GUI::GraphCalculator> defaultCalculator;
+    GUI::GraphCalculator* usedCalculator=nullptr;
+    if(calculator) {
+        usedCalculator=calculator;
+    }else {
+        defaultCalculator=std::make_unique<GUI::GraphCalculator>();
+        usedCalculator=defaultCalculator.get();
+    }
+    usedCalculator->setGraph(graph);
+
+    return usedCalculator->toImage(width,height);
+}
+
+std::unique_ptr<Model::Video> Utility::VideoConverter::convertGraphVideoToVideo(Model::GraphVideo *video, int width, int height, GUI::GraphCalculator *calculator)
+{
+    if(!video) {
+        return std::make_unique<Model::Video>();
+    }
+    std::unique_ptr<GUI::GraphCalculator> defaultCalculator;
+    GUI::GraphCalculator* usedCalculator=nullptr;
+    if(calculator) {
+        usedCalculator=calculator;
+    }else {
+        defaultCalculator=std::make_unique<GUI::GraphCalculator>();
+        usedCalculator=defaultCalculator.get();
+    }
+
+    auto newVideo=std::make_unique<Model::Video>(video->getFps());
+    std::size_t i=0;
+    do{
+    for(;i<video->getNumberOfGraphs();i++) {
+        newVideo->appendFrame(convertGraphToImage(video->getGraph(i),width,height,usedCalculator));
+    }
+    }while(!video->isComplete());
+    newVideo->setIsComplete(true);
+
+    return std::move(newVideo);
+}
+
 Utility::VideoConverter::VideoConverter(Model::Video *video):video_(video),videoTarget_(nullptr),avvideo_(nullptr),avvideoTarget_(nullptr),isRunning_(false)
 {
 

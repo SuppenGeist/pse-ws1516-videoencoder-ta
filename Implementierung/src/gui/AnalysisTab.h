@@ -21,6 +21,7 @@
 #include "FrameView.h"
 #include "GlobalControlPanel.h"
 #include "graphplayer.h"
+#include "graphcalculator.h"
 
 #include "../model/YuvVideo.h"
 
@@ -123,11 +124,12 @@ signals:
 	std::shared_ptr<Timer>              timer_;
 	std::shared_ptr<GlobalControlPanel> globalControlPanel_;
 	std::unique_ptr<VideoPlayer>        videoPlayer_;
+    std::unique_ptr<GraphCalculator>    calculator_;
 	FrameView*                          rawVideoView_;
 
     std::unique_ptr<Utility::ResultSaver> resultsSaver_;
 
-	QTimer                  timer_labelUpdater_;
+    QTimer                  timer_labelUpdater_;
 
 	MainWindow*             parentWindow_;
 
