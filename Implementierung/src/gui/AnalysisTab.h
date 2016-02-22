@@ -35,9 +35,9 @@ class MainWindow;
 namespace GUI {
 enum class AnalysisGraph {
     BITRATE,
-    RED_HISTOGRAMM,
-    BLUE_HISTOGRAMM,
-    GREEN_HISTOGRAMM,
+    RED_HISTOGRAM,
+    BLUE_HISTOGRAM,
+    GREEN_HISTOGRAM,
     PSNR
 };
 
@@ -82,9 +82,9 @@ signals:
   private slots:
 	void loadRawVideo();
 	void showBitrate();
-	void showRedHistogramm();
-	void showBlueHistogramm();
-	void showGreenHistogramm();
+        void showRedHistogram();
+        void showBlueHistogram();
+        void showGreenHistogram();
 	void showPsnr();
 	void showAttributes();
 	void analysisVideoChanged(int index);
@@ -96,9 +96,9 @@ signals:
 	QPushButton*            button_saveResults_;
 	QPushButton*            button_addRawVideo_;
 	QPushButton*            button_attributes_;
-	QPushButton*            button_redHistogramm_;
-	QPushButton*            button_blueHistogramm_;
-	QPushButton*            button_greenHistogramm_;
+        QPushButton*            button_redHistogram_;
+        QPushButton*            button_blueHistogram_;
+        QPushButton*            button_greenHistogram_;
 	QPushButton*            button_bitrate_;
 	QPushButton*            button_psnr_;
 	PlayerControlPanel*     playerControlPanel_;

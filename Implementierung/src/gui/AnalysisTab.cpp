@@ -96,14 +96,14 @@ void GUI::AnalysisTab::restore(Memento::AnalysisTabMemento *memento) {
 	case AnalysisGraph::BITRATE:
 		showBitrate();
 		break;
-	case AnalysisGraph::BLUE_HISTOGRAMM:
-		showBlueHistogramm();
+        case AnalysisGraph::BLUE_HISTOGRAM:
+                showBlueHistogram();
 		break;
-	case AnalysisGraph::RED_HISTOGRAMM:
-		showRedHistogramm();
+        case AnalysisGraph::RED_HISTOGRAM:
+                showRedHistogram();
 		break;
-	case AnalysisGraph::GREEN_HISTOGRAMM:
-		showGreenHistogramm();
+        case AnalysisGraph::GREEN_HISTOGRAM:
+                showGreenHistogram();
 		break;
 	case AnalysisGraph::PSNR:
 		showPsnr();
@@ -158,7 +158,7 @@ void GUI::AnalysisTab::setRawVideo(Model::YuvVideo *rawVideo) {
 		label_framesize_->setText(QString::number((rawVideo->getWidth()*rawVideo->getHeight()*3)/
 		                          (double)1000,'f',2)+" KB");
 
-		rawVideo_->getRedHistogramm();
+                rawVideo_->getRedHistogram();
         timer_labelUpdater_.start(200);
 
 	} else {
@@ -227,17 +227,17 @@ void GUI::AnalysisTab::showBitrate() {
 	graphPlayer_->setGraphVideo(nullptr);
 
 	button_bitrate_->setStyleSheet(stylesheet_buttonsSelected_);
-	button_blueHistogramm_->setStyleSheet(stylesheet_buttons_);
-	button_greenHistogramm_->setStyleSheet(stylesheet_buttons_);
+        button_blueHistogram_->setStyleSheet(stylesheet_buttons_);
+        button_greenHistogram_->setStyleSheet(stylesheet_buttons_);
 	button_psnr_->setStyleSheet(stylesheet_buttons_);
-	button_redHistogramm_->setStyleSheet(stylesheet_buttons_);
+        button_redHistogram_->setStyleSheet(stylesheet_buttons_);
 }
 
-void GUI::AnalysisTab::showRedHistogramm() {
+void GUI::AnalysisTab::showRedHistogram() {
 	if(!rawVideo_)
 		return;
-	analysisBoxContainer_->showGraph(AnalysisGraph::RED_HISTOGRAMM);
-	graphPlayer_->setGraphVideo(&rawVideo_->getRedHistogramm());
+        analysisBoxContainer_->showGraph(AnalysisGraph::RED_HISTOGRAM);
+        graphPlayer_->setGraphVideo(&rawVideo_->getRedHistogram());
 	tabs_graphattrs->setCurrentIndex(0);
 	graphWidget_->setAxisLabels("","");
 	graphWidget_->setIsFilled(true);
@@ -250,18 +250,18 @@ void GUI::AnalysisTab::showRedHistogramm() {
 	graphPlayer_->setPosition(globalControlPanel_->getPosition());
 
 	button_bitrate_->setStyleSheet(stylesheet_buttons_);
-	button_blueHistogramm_->setStyleSheet(stylesheet_buttons_);
-	button_greenHistogramm_->setStyleSheet(stylesheet_buttons_);
+        button_blueHistogram_->setStyleSheet(stylesheet_buttons_);
+        button_greenHistogram_->setStyleSheet(stylesheet_buttons_);
 	button_psnr_->setStyleSheet(stylesheet_buttons_);
-	button_redHistogramm_->setStyleSheet(stylesheet_buttonsSelected_);
+        button_redHistogram_->setStyleSheet(stylesheet_buttonsSelected_);
 
 }
 
-void GUI::AnalysisTab::showBlueHistogramm() {
+void GUI::AnalysisTab::showBlueHistogram() {
 	if(!rawVideo_)
 		return;
-	analysisBoxContainer_->showGraph(AnalysisGraph::BLUE_HISTOGRAMM);
-	graphPlayer_->setGraphVideo(&rawVideo_->getBlueHistogramm());
+        analysisBoxContainer_->showGraph(AnalysisGraph::BLUE_HISTOGRAM);
+        graphPlayer_->setGraphVideo(&rawVideo_->getBlueHistogram());
 	tabs_graphattrs->setCurrentIndex(0);
 	graphWidget_->setAxisLabels("","");
 	graphWidget_->setIsFilled(true);
@@ -274,17 +274,17 @@ void GUI::AnalysisTab::showBlueHistogramm() {
 	graphPlayer_->setPosition(globalControlPanel_->getPosition());
 
 	button_bitrate_->setStyleSheet(stylesheet_buttons_);
-	button_blueHistogramm_->setStyleSheet(stylesheet_buttonsSelected_);
-	button_greenHistogramm_->setStyleSheet(stylesheet_buttons_);
+        button_blueHistogram_->setStyleSheet(stylesheet_buttonsSelected_);
+        button_greenHistogram_->setStyleSheet(stylesheet_buttons_);
 	button_psnr_->setStyleSheet(stylesheet_buttons_);
-	button_redHistogramm_->setStyleSheet(stylesheet_buttons_);
+        button_redHistogram_->setStyleSheet(stylesheet_buttons_);
 }
 
-void GUI::AnalysisTab::showGreenHistogramm() {
+void GUI::AnalysisTab::showGreenHistogram() {
 	if(!rawVideo_)
 		return;
-	analysisBoxContainer_->showGraph(AnalysisGraph::GREEN_HISTOGRAMM);
-	graphPlayer_->setGraphVideo(&rawVideo_->getGreenHistogramm());
+        analysisBoxContainer_->showGraph(AnalysisGraph::GREEN_HISTOGRAM);
+        graphPlayer_->setGraphVideo(&rawVideo_->getGreenHistogram());
 	tabs_graphattrs->setCurrentIndex(0);
 	graphWidget_->setAxisLabels("","");
 	graphWidget_->setIsFilled(true);
@@ -297,10 +297,10 @@ void GUI::AnalysisTab::showGreenHistogramm() {
 	graphPlayer_->setPosition(globalControlPanel_->getPosition());
 
 	button_bitrate_->setStyleSheet(stylesheet_buttons_);
-	button_blueHistogramm_->setStyleSheet(stylesheet_buttons_);
-	button_greenHistogramm_->setStyleSheet(stylesheet_buttonsSelected_);
+        button_blueHistogram_->setStyleSheet(stylesheet_buttons_);
+        button_greenHistogram_->setStyleSheet(stylesheet_buttonsSelected_);
 	button_psnr_->setStyleSheet(stylesheet_buttons_);
-	button_redHistogramm_->setStyleSheet(stylesheet_buttons_);
+        button_redHistogram_->setStyleSheet(stylesheet_buttons_);
 }
 
 void GUI::AnalysisTab::showPsnr() {
@@ -311,10 +311,10 @@ void GUI::AnalysisTab::showPsnr() {
 	graphPlayer_->setGraphVideo(nullptr);
 
 	button_bitrate_->setStyleSheet(stylesheet_buttons_);
-	button_blueHistogramm_->setStyleSheet(stylesheet_buttons_);
-	button_greenHistogramm_->setStyleSheet(stylesheet_buttons_);
+        button_blueHistogram_->setStyleSheet(stylesheet_buttons_);
+        button_greenHistogram_->setStyleSheet(stylesheet_buttons_);
 	button_psnr_->setStyleSheet(stylesheet_buttonsSelected_);
-	button_redHistogramm_->setStyleSheet(stylesheet_buttons_);
+        button_redHistogram_->setStyleSheet(stylesheet_buttons_);
 }
 
 void GUI::AnalysisTab::showAttributes() {
@@ -340,14 +340,14 @@ void GUI::AnalysisTab::updateLabels() {
 	                          (double)1000,'f',2)+" KB");
 
     switch(analysisBoxContainer_->getShownGraph()) {
-    case AnalysisGraph::BLUE_HISTOGRAMM:
-        showBlueHistogramm();
+    case AnalysisGraph::BLUE_HISTOGRAM:
+        showBlueHistogram();
         break;
-    case AnalysisGraph::RED_HISTOGRAMM:
-        showRedHistogramm();
+    case AnalysisGraph::RED_HISTOGRAM:
+        showRedHistogram();
         break;
-    case AnalysisGraph::GREEN_HISTOGRAMM:
-        showGreenHistogramm();
+    case AnalysisGraph::GREEN_HISTOGRAM:
+        showGreenHistogram();
         break;
     case AnalysisGraph::BITRATE:
         showBitrate();
@@ -397,17 +397,17 @@ void GUI::AnalysisTab::createUi() {
 	button_addRawVideo_=new QPushButton("Load video");
 	button_attributes_=new QPushButton("Attributes");
 	button_bitrate_=new QPushButton("Bitrate");
-	button_blueHistogramm_=new QPushButton("Blue histogramm");
-	button_greenHistogramm_=new QPushButton("Green histogramm");
-	button_redHistogramm_=new QPushButton("Red histogramm");
+        button_blueHistogram_=new QPushButton("Blue histogram");
+        button_greenHistogram_=new QPushButton("Green histogram");
+        button_redHistogram_=new QPushButton("Red histogram");
 	button_psnr_=new QPushButton("PSNR");
 
 	button_saveResults_->setFlat(true);
 	button_attributes_->setFlat(true);
 	button_bitrate_->setFlat(true);
-	button_blueHistogramm_->setFlat(true);
-	button_greenHistogramm_->setFlat(true);
-	button_redHistogramm_->setFlat(true);
+        button_blueHistogram_->setFlat(true);
+        button_greenHistogram_->setFlat(true);
+        button_redHistogram_->setFlat(true);
 	button_psnr_->setFlat(true);
 
 	stylesheet_buttons_=QString("QPushButton {"
@@ -442,16 +442,16 @@ void GUI::AnalysisTab::createUi() {
 
 	button_attributes_->setStyleSheet(stylesheet_buttons_);
 	button_bitrate_->setStyleSheet(stylesheet_buttonsSelected_);
-	button_blueHistogramm_->setStyleSheet(stylesheet_buttons_);
-	button_greenHistogramm_->setStyleSheet(stylesheet_buttons_);
-	button_redHistogramm_->setStyleSheet(stylesheet_buttons_);
+        button_blueHistogram_->setStyleSheet(stylesheet_buttons_);
+        button_greenHistogram_->setStyleSheet(stylesheet_buttons_);
+        button_redHistogram_->setStyleSheet(stylesheet_buttons_);
 	button_psnr_->setStyleSheet(stylesheet_buttons_);
 
 	button_attributes_->setFixedSize(120,25);
 	button_bitrate_->setFixedSize(120,25);
-	button_blueHistogramm_->setFixedSize(120,25);
-	button_greenHistogramm_->setFixedSize(120,25);
-	button_redHistogramm_->setFixedSize(120,25);
+        button_blueHistogram_->setFixedSize(120,25);
+        button_greenHistogram_->setFixedSize(120,25);
+        button_redHistogram_->setFixedSize(120,25);
 	button_psnr_->setFixedSize(120,25);
 
 	QString stylesheet1("QPushButton {"
@@ -623,9 +623,9 @@ void GUI::AnalysisTab::createUi() {
 
 	QVBoxLayout* v_buttongrp=new QVBoxLayout;
 	v_buttongrp->addWidget(button_attributes_);
-	v_buttongrp->addWidget(button_redHistogramm_);
-	v_buttongrp->addWidget(button_greenHistogramm_);
-	v_buttongrp->addWidget(button_blueHistogramm_);
+        v_buttongrp->addWidget(button_redHistogram_);
+        v_buttongrp->addWidget(button_greenHistogram_);
+        v_buttongrp->addWidget(button_blueHistogram_);
 	v_buttongrp->addWidget(button_psnr_);
 	v_buttongrp->addWidget(button_bitrate_);
 
@@ -731,9 +731,9 @@ void GUI::AnalysisTab::connectActions() {
 	connect(button_addRawVideo_,SIGNAL(clicked(bool)),this,SLOT(loadRawVideo()));
 	connect(button_bitrate_,SIGNAL(clicked(bool)),this,SLOT(showBitrate()));
 	connect(combobbox_anaVideo_,SIGNAL(currentIndexChanged(int)),this,SLOT(analysisVideoChanged(int)));
-	connect(button_redHistogramm_,SIGNAL(clicked(bool)),this,SLOT(showRedHistogramm()));
-	connect(button_blueHistogramm_,SIGNAL(clicked(bool)),this,SLOT(showBlueHistogramm()));
-	connect(button_greenHistogramm_,SIGNAL(clicked(bool)),this,SLOT(showGreenHistogramm()));
+        connect(button_redHistogram_,SIGNAL(clicked(bool)),this,SLOT(showRedHistogram()));
+        connect(button_blueHistogram_,SIGNAL(clicked(bool)),this,SLOT(showBlueHistogram()));
+        connect(button_greenHistogram_,SIGNAL(clicked(bool)),this,SLOT(showGreenHistogram()));
 	connect(button_psnr_,SIGNAL(clicked(bool)),this,SLOT(showPsnr()));
 	connect(button_attributes_,SIGNAL(clicked(bool)),this,SLOT(showAttributes()));
 	connect(button_loadnewvideo_,SIGNAL(clicked(bool)),this,SLOT(loadRawVideo()));
