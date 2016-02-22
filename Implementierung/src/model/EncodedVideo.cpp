@@ -57,25 +57,25 @@ Model::Graph* Model::EncodedVideo::getPsnr(Video *reference) {
 	return psnr_.get();
 }
 
-Model::GraphVideo &Model::EncodedVideo::getRedHistogramm() {
+Model::GraphVideo &Model::EncodedVideo::getRedHistogram() {
 	if(!redHisto_.get()) {
-		calculateHistogramms();
+                calculateHistograms();
 	}
 
 	return *redHisto_;
 }
 
-Model::GraphVideo &Model::EncodedVideo::getBlueHistogramm() {
+Model::GraphVideo &Model::EncodedVideo::getBlueHistogram() {
 	if(!blueHisto_.get()) {
-		calculateHistogramms();
+                calculateHistograms();
 	}
 
 	return *blueHisto_;
 }
 
-Model::GraphVideo &Model::EncodedVideo::getGreenHistogramm() {
+Model::GraphVideo &Model::EncodedVideo::getGreenHistogram() {
 	if(!greenHisto_.get()) {
-		calculateHistogramms();
+                calculateHistograms();
 	}
 
 	return *greenHisto_;
@@ -155,11 +155,11 @@ void Model::EncodedVideo::loadVideo() {
 	loader_->loadVideo(avVideo_.get());
 }
 
-void Model::EncodedVideo::calculateHistogramms() {
+void Model::EncodedVideo::calculateHistograms() {
 	redHisto_=std::make_unique<GraphVideo>();
 	greenHisto_=std::make_unique<GraphVideo>();
 	blueHisto_=std::make_unique<GraphVideo>();
 
-	rgbHistoCalculator_=std::make_unique<Utility::RGBHistogrammCalculator>(getVideo());
+        rgbHistoCalculator_=std::make_unique<Utility::RGBHistogramCalculator>(getVideo());
 	rgbHistoCalculator_->calculate(redHisto_.get(),greenHisto_.get(),blueHisto_.get());
 }

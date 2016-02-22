@@ -52,25 +52,25 @@ int Model::YuvVideo::getFps() {
 	return fps_;
 }
 
-Model::GraphVideo &Model::YuvVideo::getRedHistogramm() {
+Model::GraphVideo &Model::YuvVideo::getRedHistogram() {
 	if(!redHisto_.get()) {
-		calculateHistogramms();
+                calculateHistograms();
 	}
 
 	return *redHisto_;
 }
 
-Model::GraphVideo &Model::YuvVideo::getGreenHistogramm() {
+Model::GraphVideo &Model::YuvVideo::getGreenHistogram() {
 	if(!greenHisto_.get()) {
-		calculateHistogramms();
+                calculateHistograms();
 	}
 
 	return *greenHisto_;
 }
 
-Model::GraphVideo &Model::YuvVideo::getBlueHistogramm() {
+Model::GraphVideo &Model::YuvVideo::getBlueHistogram() {
 	if(!blueHisto_.get()) {
-		calculateHistogramms();
+                calculateHistograms();
 	}
 
 	return *blueHisto_;
@@ -111,13 +111,13 @@ void Model::YuvVideo::loadVideo() {
 	fileReader_->read(displayVideo_.get());
 }
 
-void Model::YuvVideo::calculateHistogramms() {
+void Model::YuvVideo::calculateHistograms() {
 	redHisto_=std::make_unique<GraphVideo>();
 	greenHisto_=std::make_unique<GraphVideo>();
 	blueHisto_=std::make_unique<GraphVideo>();
 
-	histogrammCalculator_=std::make_unique<Utility::RGBHistogrammCalculator>(getVideo());
-	histogrammCalculator_->calculate(redHisto_.get(),greenHisto_.get(),blueHisto_.get());
+        histogramCalculator_=std::make_unique<Utility::RGBHistogramCalculator>(getVideo());
+        histogramCalculator_->calculate(redHisto_.get(),greenHisto_.get(),blueHisto_.get());
 }
 
 

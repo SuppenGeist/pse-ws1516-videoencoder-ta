@@ -10,7 +10,7 @@
 #include "graphvideo.h"
 
 #include "../utility/YuvFileReader.h"
-#include "../utility/RGBHistogrammCalculator.h"
+#include "../utility/RGBHistogramCalculator.h"
 
 namespace Utility {
 enum class Compression;
@@ -74,11 +74,11 @@ class YuvVideo {
 	 */
 	int getFps();
 
-	GraphVideo& getRedHistogramm();
+        GraphVideo& getRedHistogram();
 
-	GraphVideo& getGreenHistogramm();
+        GraphVideo& getGreenHistogram();
 
-	GraphVideo& getBlueHistogramm();
+        GraphVideo& getBlueHistogram();
 
 	/**
 	 * @brief getAvVideo Returns the AVVideo.
@@ -103,7 +103,7 @@ class YuvVideo {
 	Utility::YuvType                    yuvType_;
 	std::unique_ptr<Utility::YuvFileReader> fileReader_;
 	bool                                isComplete_;
-	std::unique_ptr<Utility::RGBHistogrammCalculator> histogrammCalculator_;
+        std::unique_ptr<Utility::RGBHistogramCalculator> histogramCalculator_;
 	std::unique_ptr<GraphVideo>         redHisto_;
 	std::unique_ptr<GraphVideo>         greenHisto_;
 	std::unique_ptr<GraphVideo>         blueHisto_;
@@ -113,7 +113,7 @@ class YuvVideo {
 	 */
 	void loadVideo();
 
-	void calculateHistogramms();
+        void calculateHistograms();
 };
 }
 
