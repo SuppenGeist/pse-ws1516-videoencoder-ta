@@ -119,7 +119,7 @@ void GUI::AnalysisBox::setFile(QString filename) {
 		origVidPlayer_->setPosition(globalControlPanel_->getPosition());
 	}
 
-	origVideo_->getRedHistogramm();
+        origVideo_->getRedHistogram();
 	origVideo_->getBitrate();
 	origVideo_->getMacroBlockVideo();
 	origVideo_->getRgbDiffVideo(&parentContainer_->getParentTab()->getRawVideo()->getVideo());
@@ -166,11 +166,11 @@ void GUI::AnalysisBox::showGraph(GUI::AnalysisGraph graph) {
 		tabs_graphs_->setCurrentIndex(0);
 		break;
 	}
-	case AnalysisGraph::RED_HISTOGRAMM: {
+        case AnalysisGraph::RED_HISTOGRAM: {
 		graphWidget_->setControlPanel(nullptr);
 		graphWidget_->drawGraph(nullptr);
 		graphPlayer_->setView(graphWidget_);
-		graphPlayer_->setGraphVideo(&origVideo_->getRedHistogramm());
+                graphPlayer_->setGraphVideo(&origVideo_->getRedHistogram());
 		graphWidget_->setAxisLabels("","");
 		graphWidget_->setIsFilled(true);
 		graphWidget_->setShowLabels(false);
@@ -185,11 +185,11 @@ void GUI::AnalysisBox::showGraph(GUI::AnalysisGraph graph) {
 		tabs_graphs_->setCurrentIndex(0);
 		break;
 	}
-	case AnalysisGraph::BLUE_HISTOGRAMM: {
+        case AnalysisGraph::BLUE_HISTOGRAM: {
 		graphWidget_->setControlPanel(nullptr);
 		graphWidget_->drawGraph(nullptr);
 		graphPlayer_->setView(graphWidget_);
-		graphPlayer_->setGraphVideo(&origVideo_->getBlueHistogramm());
+                graphPlayer_->setGraphVideo(&origVideo_->getBlueHistogram());
 		graphWidget_->setAxisLabels("","");
 		graphWidget_->setIsFilled(true);
 		graphWidget_->setShowLabels(false);
@@ -204,11 +204,11 @@ void GUI::AnalysisBox::showGraph(GUI::AnalysisGraph graph) {
 		tabs_graphs_->setCurrentIndex(0);
 		break;
 	}
-	case AnalysisGraph::GREEN_HISTOGRAMM: {
+        case AnalysisGraph::GREEN_HISTOGRAM: {
 		graphWidget_->setControlPanel(nullptr);
 		graphWidget_->drawGraph(nullptr);
 		graphPlayer_->setView(graphWidget_);
-		graphPlayer_->setGraphVideo(&origVideo_->getGreenHistogramm());
+                graphPlayer_->setGraphVideo(&origVideo_->getGreenHistogram());
 		graphWidget_->setAxisLabels("","");
 		graphWidget_->setIsFilled(true);
 		QBrush filler(QColor(0,255,0));
