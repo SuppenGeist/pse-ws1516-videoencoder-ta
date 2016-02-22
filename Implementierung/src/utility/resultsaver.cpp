@@ -101,9 +101,9 @@ void Utility::ResultSaver::run()
         if(!greenhFile.exists()) {
             calculator.setShowLabels(false);
             calculator.setIsFilled(true);
-            QBrush filler(QColor(255,0,0));
+            QBrush filler(QColor(0,255,0));
             calculator.setFillBrush(filler);
-            QPen filpen(QColor(255,0,0));
+            QPen filpen(QColor(0,255,0));
             calculator.setFillPen(filpen);
             calculator.setLinePen(filpen);
             greenHistogram_=VideoConverter::convertGraphVideoToVideo(memento->getGreenHistogram(),1500,500,&calculator);
@@ -119,9 +119,9 @@ void Utility::ResultSaver::run()
         if(!bluehFile.exists()) {
             calculator.setShowLabels(false);
             calculator.setIsFilled(true);
-            QBrush filler(QColor(255,0,0));
+            QBrush filler(QColor(0,0,255));
             calculator.setFillBrush(filler);
-            QPen filpen(QColor(255,0,0));
+            QPen filpen(QColor(0,0,255));
             calculator.setFillPen(filpen);
             calculator.setLinePen(filpen);
             blueHistogram_=VideoConverter::convertGraphVideoToVideo(memento->getBlueHistogram(),1500,500,&calculator);

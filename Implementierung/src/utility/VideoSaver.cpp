@@ -71,10 +71,11 @@ void Utility::VideoSaver::saveP()
     context->time_base=fps;
     context->gop_size=10;
     context->max_b_frames=1;
-    context->pix_fmt=AV_PIX_FMT_YUV420P;
+    context->pix_fmt=AV_PIX_FMT_YUV444P;
 
     if(codecID==AV_CODEC_ID_H264) {
-        av_opt_set(context->priv_data,"preset","slow",0);
+        av_opt_set(context->priv_data,"preset","veryslow",0);
+        av_opt_set(context->priv_data,"crf","0",0);
     }
 
     if(avcodec_open2(context,codec,NULL)<0) {
@@ -110,7 +111,7 @@ void Utility::VideoSaver::saveP()
                                                    AV_PIX_FMT_RGB24,
                                                    context->width,
                                                    context->height,
-                                                   AV_PIX_FMT_YUV420P,
+                                                   AV_PIX_FMT_YUV444P,
                                                    0,
                                                    0,
                                                    0,
