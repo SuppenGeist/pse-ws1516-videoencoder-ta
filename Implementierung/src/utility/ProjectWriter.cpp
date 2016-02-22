@@ -105,13 +105,13 @@ void Utility::ProjectWriter::saveProject() {
         case GUI::AnalysisGraph::PSNR:
             dataStream_<<"psnr,";
             break;
-        case GUI::AnalysisGraph::BLUE_HISTOGRAMM:
+        case GUI::AnalysisGraph::BLUE_HISTOGRAM:
             dataStream_<<"blueh,";
             break;
-        case GUI::AnalysisGraph::RED_HISTOGRAMM:
+        case GUI::AnalysisGraph::RED_HISTOGRAM:
             dataStream_<<"redh,";
             break;
-        case GUI::AnalysisGraph::GREEN_HISTOGRAMM:
+        case GUI::AnalysisGraph::GREEN_HISTOGRAM:
             dataStream_<<"greenh,";
             break;
         }

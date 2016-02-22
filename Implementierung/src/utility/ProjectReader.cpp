@@ -226,11 +226,11 @@ void Utility::ProjectReader::parseAnalysisTab(Memento::AnalysisTabMemento *memen
     } else if(anat[6]=="psnr") {
         graph=GUI::AnalysisGraph::PSNR;
     }else if(anat[6]=="redh") {
-        graph=GUI::AnalysisGraph::RED_HISTOGRAMM;
+        graph=GUI::AnalysisGraph::RED_HISTOGRAM;
     }else if(anat[6]=="blueh") {
-        graph=GUI::AnalysisGraph::BLUE_HISTOGRAMM;
+        graph=GUI::AnalysisGraph::BLUE_HISTOGRAM;
     }else if(anat[6]=="green") {
-        graph=GUI::AnalysisGraph::GREEN_HISTOGRAMM;
+        graph=GUI::AnalysisGraph::GREEN_HISTOGRAM;
     }
 
     GUI::AnalysisVideo video=GUI::AnalysisVideo::MACROBLOCK;
