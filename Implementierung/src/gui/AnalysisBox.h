@@ -45,7 +45,7 @@ class AnalysisBox: public QFrame {
 
 	~AnalysisBox();
 
-	std::unique_ptr<Memento::AnalysisBoxMemento> getMemento();
+    std::unique_ptr<Memento::AnalysisBoxMemento> getMemento(bool calculateImages=false);
 
 	void restore(Memento::AnalysisBoxMemento* memento);
 

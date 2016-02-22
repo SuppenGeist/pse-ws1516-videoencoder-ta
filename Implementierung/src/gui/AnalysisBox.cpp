@@ -57,14 +57,30 @@ GUI::AnalysisBox::~AnalysisBox() {
 	graphPlayer_->clearTimer();
 }
 
-std::unique_ptr<Memento::AnalysisBoxMemento> GUI::AnalysisBox::getMemento() {
+std::unique_ptr<Memento::AnalysisBoxMemento> GUI::AnalysisBox::getMemento(bool calculateImages) {
 	auto memento=std::make_unique<Memento::AnalysisBoxMemento>();
 
 	if(origVideo_) {
 		memento->setPath(origVideo_->getPath());
         memento->setMacroBlockVideo(&origVideo_->getMacroBlockVideo());
         memento->setRgbDiffVideo(origVideo_->getRgbDiffVideo(&parentContainer_->getParentTab()->getRawVideo()->getVideo()));
+
+        if(calculateImages) {
+        GraphWidget w;
+
+        w.setAxisLabels("frame","dB");
+        w.drawGraph(origVideo_->getPsnr());
+        memento->setPsnrGraph(w.toImage(1500,500));
+
+        w.setAxisLabels("frame","kb");
+        w.drawGraph(&origVideo_->getBitrate());
+        memento->setBitrateGraph(w.toImage(1500,500));
+        }
 	}
+    memento->setEncoder(label_codec_->text());
+    memento->setAverageBitrate(label_averageBitrate_->text());
+    memento->setFilename(label_filename_->text());
+    memento->setFilesize(label_filesize_->text());
 	memento->setComment(texteEdit_comment_->toPlainText());
 
 	return std::move(memento);

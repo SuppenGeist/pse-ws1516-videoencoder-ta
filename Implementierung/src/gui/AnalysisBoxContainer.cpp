@@ -31,11 +31,11 @@ GUI::AnalysisBoxContainer::AnalysisBoxContainer(QWidget* parent) : QFrame(parent
 	setStyleSheet("QFrame#anacontainer {background-color:white;}");
 }
 
-std::unique_ptr<Memento::AnalysisBoxContainerMemento> GUI::AnalysisBoxContainer::getMemento() {
+std::unique_ptr<Memento::AnalysisBoxContainerMemento> GUI::AnalysisBoxContainer::getMemento(bool calculateImages) {
 	auto memento=std::make_unique<Memento::AnalysisBoxContainerMemento>();
 
 	for(auto box:boxes_) {
-		memento->addMemento(std::move(box->getMemento()));
+        memento->addMemento(std::move(box->getMemento(calculateImages)));
 	}
 
 	return std::move(memento);

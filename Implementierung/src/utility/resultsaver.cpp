@@ -68,7 +68,30 @@ void Utility::ResultSaver::saveP()
 
         QFile psnrFile(psnrPath);
         if(!psnrFile.exists()) {
+            if(!memento->getPsnrGraph().isNull())
+                memento->getPsnrGraph().save(psnrPath);
+        }
 
+        auto bitratePath=prefix+"_bitrate.png";
+
+        QFile bitrateFile(bitratePath);
+        if(!bitrateFile.exists()) {
+            memento->getBitrateGraph().save(bitratePath);
+        }
+
+        auto attributesPath=prefix+"_attributes";
+
+        QFile attributesFile(attributesPath);
+        if(!attributesFile.exists()) {
+            if(attributesFile.open(QIODevice::ReadWrite)) {
+            QTextStream str(&attributesFile);
+            str<<"Filename: "<<memento->getFilename()<<"\n";
+            str<<"Filesize: "<<memento->getFilesize()<<"\n";
+            str<<"Codec: "<<memento->getEncoder()<<"\n";
+            str<<"Average bitrate: "<<memento->getAverageBitrate();
+
+            attributesFile.close();
+            }
         }
     }
 

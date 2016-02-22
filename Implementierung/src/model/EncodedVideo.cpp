@@ -117,6 +117,7 @@ Model::Video* Model::EncodedVideo::getRgbDiffVideo(Video *reference) {
 		try {
 			rgbDiffCalculator_=std::make_unique<Utility::RGBDifferenceCalculator>(*reference,getVideo());
 		} catch(std::invalid_argument& e) {
+            rgbDiffVideo_->setIsComplete(true);
 			return rgbDiffVideo_.get();
 		}
 		rgbDiffCalculator_->calculateVideo(rgbDiffVideo_.get());

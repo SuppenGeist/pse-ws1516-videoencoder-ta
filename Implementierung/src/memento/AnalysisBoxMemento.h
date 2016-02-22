@@ -36,11 +36,41 @@ class AnalysisBoxMemento {
 
     Model::Video* getRgbDiffVideo();
 
+    void setPsnrGraph(QImage graph);
+
+    QImage getPsnrGraph();
+
+    void setBitrateGraph(QImage graph);
+
+    QImage getBitrateGraph();
+
+    void setEncoder(QString encoder);
+
+    QString getEncoder();
+
+    void setAverageBitrate(QString bitrate);
+
+    QString getAverageBitrate();
+
+    void setFilename(QString filename);
+
+    QString getFilename();
+
+    void setFilesize(QString size);
+
+    QString getFilesize();
+
   private:
 	QString path_;
 	QString comment_;
     Model::Video* macroblockVideo_;
     Model::Video* rgbDiffVideo_;
+    QImage psnrGraph_;
+    QImage bitrateGraph_;
+    QString encoder_;
+    QString avergaeBitrate_;
+    QString filename_;
+    QString filesize_;
 };
 }
 

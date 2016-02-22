@@ -30,11 +30,9 @@ Utility::VideoSaver::~VideoSaver()
 void Utility::VideoSaver::saveP()
 {
     isRunning_=true;
-
     auto converter=std::make_unique<VideoConverter>(video_);
     auto video=std::make_unique<Model::AVVideo>();
     converter->convertVideoToAVVideo(video.get());
-    while(video->getNumberOfFrames()<1);
     std::string fn=filename_.toUtf8().constData();
     const char* filename=fn.c_str();
     const AVCodecID codecID=AV_CODEC_ID_H264;
@@ -167,7 +165,6 @@ void Utility::VideoSaver::saveP()
             fwrite(pckt.data,1,pckt.size,f);
             av_packet_unref(&pckt);
         }
-        qDebug()<<"written";
     }
 
     fwrite(endcode,1,sizeof(endcode),f);

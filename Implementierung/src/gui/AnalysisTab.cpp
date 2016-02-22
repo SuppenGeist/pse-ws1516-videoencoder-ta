@@ -382,7 +382,7 @@ void GUI::AnalysisTab::saveResults()
     if(path.isEmpty())
         return;
 
-    resultsSaver_=std::make_unique<Utility::ResultSaver>(this,analysisBoxContainer_->getMemento(),path);
+    resultsSaver_=std::make_unique<Utility::ResultSaver>(this,analysisBoxContainer_->getMemento(true),path);
 
     analysisBoxContainer_->lockUi();
     button_loadnewvideo_->setEnabled(false);

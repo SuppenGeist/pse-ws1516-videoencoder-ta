@@ -250,12 +250,19 @@ void GUI::GraphWidget::buildScene() {
 
     buildScene(scene_,graph_,vwidth,vheight);
 
-	setSceneRect(QRect(0,0,vwidth,vheight));
+    setSceneRect(QRect(0,0,vwidth,vheight));
 }
 
-QImage GUI::GraphWidget::graphToImage(Model::Graph *graph, int width, int height)
+QImage GUI::GraphWidget::toImage(int width, int height)
 {
-
+    if(graph_->getSize()==0)
+        return QImage();
+    int pwidth=size().width();
+    int pheight=size().height();
+    resize(width,height);
+    QImage img=grab().toImage();
+    resize(pwidth,pheight);
+    return img;
 }
 
 int GUI::GraphWidget::clamp(int val, int max, int min) {

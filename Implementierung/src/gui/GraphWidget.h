@@ -122,7 +122,7 @@ class GraphWidget:public QGraphicsView {
 	 */
 	void buildScene();
 
-    QImage graphToImage(Model::Graph* graph,int width,int height);
+    QImage toImage(int width,int height);
 
   protected:
 	/**
