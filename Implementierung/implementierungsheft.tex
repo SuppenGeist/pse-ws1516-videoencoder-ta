@@ -423,5 +423,182 @@ FilterTabMemento* => std::unique_ptr<FilterTabMemento>
 
 \end{verbatim}
 Unnoetiges Kopieren vermeiden.
+\subsection{AddFilter}
+\begin{verbatim}
+# (public) AddFilter(GUI::FilterTab* filterTab,Model::Filter filter)
+
+(...) => (GUI::FilterTab& filterTab, QString filternam)
+
+- (private) Model::Filter filter
++ (private) QString filtername
++ (private) std::unique_ptr<Memento::FilterTabMemento> memento
+\end{verbatim}
+Es lies sich im Entwurf nur schwer einschaetzen, was fuer Attribute noetig fuer das Rueckgaengig machen sind. 
+
+\subsection{AddVideo}
+\begin{verbatim}
+# (public) AddVideo(GUI::AnalysisBoxContainer* container,Model::EncodedVideo video)
+
+Model::EncodedVideo => QString
+
+- (private) Model::EncodedVideo video
++ (private) QString filename
+\end{verbatim}
+Es lies sich im Entwurf nur schwer einschaetzen, was fuer Attribute noetig fuer das Rueckgaengig machen sind. 
+\subsection{ChangeFilter}
+\begin{verbatim}
+class ChangeFilter => erstellt
+\end{verbatim}
+Hat sich angeboten.
+\subsection{FilterReset}
+\begin{verbatim}
+# (public) FilterReset(GUI::FilterTab* tab,Model::FilterList list)
+
+(...) => (GUI::FilterTab& filterTab)
+
+# (private) Model::FilterList filterList
+
+Model::FilterList => std::unique_ptr<Model::FilterList>
+
++ (private) std::unique_ptr<Memento::FilterTabMemento> memento
+\end{verbatim}
+Es lies sich im Entwurf nur schwer einschaetzen, was fuer Attribute noetig fuer das Rueckgaengig machen sind. 
+\subsection{LoadAnalysisVideo}
+\begin{verbatim}
+# (public) LoadAnalysisVideo(GUI::AnalysisTab* tab, 
+Memento::AnalysisTabMemento memento, Model::YuvVideo video)
+
+(...) => (GUI::AnalysisTab* tab, std::unique_ptr<YuvVideo> video)
+
+# (private) Model::YuvVideo* video
+
+Model::YuvVideo* => std::unique_ptr<YuvVideo>
+
++ (private) std::unique_ptr<Memento::AnalysisTabMemento> memento
+\end{verbatim}
+Es lies sich im Entwurf nur schwer einschaetzen, was fuer Attribute noetig fuer das Rueckgaengig machen sind. 
+\subsection{LoadFilterConfig}
+\begin{verbatim}
+# (public) LoadFilterConfig(GUI::FilterTab* tab,
+Model::FilterList old,Model::FilterList new)
+
+(...) => (GUI::FilterTab& tab,std::unique_ptr<Model::FilterList> newList)
+
+# (private) Model::Filter:ist* newList
+
+Model::FilterList* => std::unique_ptr<Model::FilterList>
+
+- (private) Model::FilterList* oldList
++ (private) std::unique_ptr<Memento::FilterTabMemento> memento
+\end{verbatim}
+Es lies sich im Entwurf nur schwer einschaetzen, was fuer Attribute noetig fuer das Rueckgaengig machen sind.
+\subsection{LoadFilterVideo}
+\begin{verbatim}
+# (public) LoadFilterVideo(GUI::FilterTab* tab,Model::YuvVideo video,
+Memento::FilterTabMemento memento)
+
+(...) => (GUI::FilterTab& tab,std::unique_ptr<Model::YuvVideo> video,
+std::unique_ptr<Memento::FilterTabMemento> memento)
+
+# (private) Memento::FilterTabMemento* memento
+# (private) Model::YuvVideo* video
+
+Memento::FilterTabMemento* => std::unique_ptr<FilterTabMemento>
+Model::YuvVideo* => std::unique_ptr<Model::YuvVideo>
+\end{verbatim}
+Es lies sich im Entwurf nur schwer einschaetzen, was fuer Attribute noetig fuer das Rueckgaengig machen sind.
+\subsection{MoveFilterDown}
+\begin{verbatim}
+# (public) MoveFilterDown(GUI::FilterTab* tab, int oldIndex, int newIndex)
+
+(...) => (GUI::FilterTab& tab, int index)
+
+- (private) int newIndex
+- (private) int oldIndex
++ (private) int index
++ (private) std::unique_ptr<Memento::FilterTabMemento>
+\end{verbatim}
+Es lies sich im Entwurf nur schwer einschaetzen, was fuer Attribute noetig fuer das Rueckgaengig machen sind.
+\subsection{MoveFilterUp}
+Genau diesselben Aenderungen wie in der Klasse 'MoveFilterDown'.
+\subsection{RemoveFilter}
+\begin{verbatim}
+# (public) RemoveFilter(GUI::FilterTab* tab,Model::Filter filter, int index)
+
+(...) => (GUI::FilterTab& tab, int index)
+
+# (private) Model::Filter* filter
+
+Model::Filter* => std::unique_ptr<Model::filter>
+
++ (private) std::unique_ptr<Memento::FilterTabMemento> memento
+\end{verbatim}
+Es lies sich im Entwurf nur schwer einschaetzen, was fuer Attribute noetig fuer das Rueckgaengig machen sind.
+\subsection{RemoveVideo}
+\begin{verbatim}
+# (public) RemoveVideo(GUI::AnalysisBoxContainer* container, Model::EncodedVideo video)
+
+(...) => (GUI::AnalysisBoxContainer* container, GUI::AnalysisBox* box)
+
+- (private) Model::EncodedVideo* video
++ (private) int index
++ (private) std::unique_ptr<Memento::AnalysisBoxMemento> memento
+\end{verbatim}
+Es lies sich im Entwurf nur schwer einschaetzen, was fuer Attribute noetig fuer das Rueckgaengig machen sind.
+\subsection{WriteComment}
+\begin{verbatim}
+# (public) WriteComment()
+
+() => (GUI::AnalysisBoxContainer* container, int index, QString oldComment,
+QString newComment)
+
++ (private) GUI::AnalysisBoxContainer* container
++ (private) int index
++ (private) QString oldComment
++ (private) QString newComment
+\end{verbatim}
+Es lies sich im Entwurf nur schwer einschaetzen, was fuer Attribute noetig fuer das Rueckgaengig machen sind.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \end{document}
