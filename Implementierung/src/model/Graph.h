@@ -23,13 +23,7 @@ class Graph {
          * @param x Value on the x-axis.
          * @param y Value on the y-axis.
 	 */
-	void setValue(std::size_t x, double y);
-
-	/**
-	 * @brief cut Cuts the number of vectors down up to a certain value x. x is included.
-	 * @param x The last x-value in the cut down vectors.
-	 */
-	void cut(std::size_t x);
+    void setValue(std::size_t x, double y);
 
 	/**
 	 * @brief getValue Returns the y-value to a specific x-value.

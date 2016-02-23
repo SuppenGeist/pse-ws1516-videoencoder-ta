@@ -127,7 +127,7 @@ void GUI::FilterConfigurationBox::setFilterTab(GUI::FilterTab &filterTab) {
 	filterTab_=&filterTab;
 }
 
-void GUI::FilterConfigurationBox::setFilterIndex(int index) {
+void GUI::FilterConfigurationBox::setFilterIndex(std::size_t index) {
 	index_=index;
 }
 

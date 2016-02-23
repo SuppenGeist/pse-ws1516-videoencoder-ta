@@ -17,12 +17,6 @@ void Model::Graph::setValue(std::size_t x, double y) {
 	graph_[x]=y;
 }
 
-void Model::Graph::cut(std::size_t x) {
-	if(x<graph_.size()) {
-		graph_.erase(graph_.begin()+x,graph_.end());
-	}
-}
-
 double Model::Graph::getValue(std::size_t x) {
 	if(x>=graph_.size())
 		return -1;

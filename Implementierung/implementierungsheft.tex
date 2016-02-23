@@ -463,6 +463,11 @@ Model::FilterList => std::unique_ptr<Model::FilterList>
 + (private) std::unique_ptr<Memento::FilterTabMemento> memento
 \end{verbatim}
 Es lies sich im Entwurf nur schwer einschaetzen, was fuer Attribute noetig fuer das Rueckgaengig machen sind. 
+\subsection{ApplyFilter}
+\begin{verbatim}
+class ApplyFilter => geloescht
+\end{verbatim}
+War unnoetig.
 \subsection{LoadAnalysisVideo}
 \begin{verbatim}
 # (public) LoadAnalysisVideo(GUI::AnalysisTab* tab, 
@@ -558,41 +563,247 @@ QString newComment)
 + (private) QString newComment
 \end{verbatim}
 Es lies sich im Entwurf nur schwer einschaetzen, was fuer Attribute noetig fuer das Rueckgaengig machen sind.
+\subsection{AVVideo}
+\begin{verbatim}
+std::unique_ptr<AVFrame> => AVFrame*
+int index => std::size_t index
+\end{verbatim}
+Aenderungen aufgrund der Implementierung von AVFrame und std::vector.
+\begin{verbatim}
+# (public) AVVideo(int fps, int width, int height)
 
+(...) => (int fps)
+\end{verbatim}
+Die Dimension wird jetzt vom ersten Frame, dass in das Video gesteckt wird, bestimmt.
 
+\begin{verbatim}
+- (public) void insertFrames(int index, std::vector<std::unique_ptr<AVFrame>>& frames)
+\end{verbatim}
+Wird nicht benoetigt.
 
+\begin{verbatim}
++ (public) void setFps(int fps)
+\end{verbatim}
+Um beim Konvertieren die Fps korrekt zu setzen.
+\begin{verbatim}
++ (public) void appendFrame(AVFrame* frame)
+\end{verbatim}
+Komfortablere Schnittstelle.
+\begin{verbatim}
++ (public) bool isComplete()
++ (public) void setIsComplete(bool isComplete)
++ (private) bool isComplete
+\end{verbatim}
+Um feststellen zu koennen, ob das Video vollstaendig ist, oder noch auf Frames gewartet werden muss.
+\subsection{EncodedVideo}
+\begin{verbatim}
+- (public) int getFileSize()
+- (public) getNumberOfColors()
+- (public) void setBitrate (Model::Graph graph)
+- (public) void setPsnr (Model::Graph graph)
+- (public) void setRedHistogramm (Model::Graph graph)
+- (public) void setGreenHistogramm (Model::Graph graph)
+- (public) void setBlueHistogramm (Model::Graph graph)
+- (public) void setMacroblockVideo (GUI::Video video)
+- (public) void setRgbDiffVideo (GUI::Video video)
+- (private) int fileSize
+- (private) int numberOfColors
+- (private) QString codec
+\end{verbatim}
+Wird nicht benoetigt.
+\begin{verbatim}
+# (public) Model::Graph& getRedHistogram()
+# (public) Model::Graph& getGreenHistogram()
+# (public) Model::Graph& getBlueHistogram()
+# (private) Model::Graph* redHisto
+# (private) Model::Graph* greenHisto
+# (private) Model::Graph* blueHisto
 
+Model::Graph& => Model::GraphVideo&
+Model::Graph* => std::unique_ptr<Model::GraphVideo>
+\end{verbatim}
+Ein Histogramm von einem Video ist kein einzelner Graph.
+\begin{verbatim}
+# (public) Model::Graph& getPsnr()
 
+Model::Graph& => Model::Graph*
+() => (Model::Video* reference)
 
+# (public) Model::Video& getRgbDiffVideo(Model::Video* reference)
 
+Model::Video& => Model::Video*
+\end{verbatim}
+Wenn die reference null ist und nicht berechnet werden kann, muss ein nullptr zurueck gegeben werden.
 
+\begin{verbatim}
++ (public) int getAverageBitrate()
+\end{verbatim}
+Zusaetzliches Attribut zum Anzeigen.
+\begin{verbatim}
+# (private) Model::Video* video
+# (private) Model::AVVideo* avVideo
+# (private) Model::Video* rgbDiffVideo
+# (private) Model::Video* macroBlockVideo
+# (private) Model::Graph* bitrate
+# (private) Model::Graph* psnr
 
+Model::Video* => std::unique_ptr<Model::Video>
+Model::AVVideo* => std::unique_ptr<Model::AVVideo>
+Model::Graph* => std::unique_ptr<Model::Graph>
 
+- (private) Model::Video* displayVideo
+\end{verbatim}
+Pointer werden in smartpointer gepackt.
+\begin{verbatim}
++ (private) std::unique_ptr<Utility::VideoLoader> loader
++ (private) 	std::unique_ptr<Utility::BitrateCalculator> bitrateCalculator
++ (private) std::unique_ptr<Utility::RGBHistogramCalculator> rgbHistoCalculator
++ (private) std::unique_ptr<Utility::PsnrCalculator> psnrCalculator
++ (private) std::unique_ptr<Utility::RGBDifferenceCalculator> rgbDiffCalculator
++ (private) std::unique_ptr<Utility::VideoConverter> macroblockConverter
++ (private) std::unique_ptr<Utility::VideoConverter> videoConverter
++ (private) std::unique_ptr<Utility::VideoLoader> macroblockLoader
++ (private) void calculateHistograms()
+\end{verbatim}
+Attribute zur Berrechnung der einzelnen Videos und Graphen.
+\subsection{FilterList}
+\begin{verbatim}
+- (public) Filter* getFilterByName(std::string name)
+- (public) int getIndex(std::string name)
+- (public) void addFilter(std::string name, int index)
+- (public) void removeFilter(std::string name)
+\end{verbatim}
+Werden nicht benoetigt
+\begin{verbatim}
++ (public) std::unique_ptr<Filter> removeFilter(std::size_t index)
++ (public) Filter* appendFilter(QString name)
++ (public) void insertFilter(std::unique_ptr<Filter> filter, std::size_t index)
++ (public) std::size_t getSize()
 
+# (public) void moveFilter(int oldPos, int newPos)
 
+int => std::size_t
+\end{verbatim}
+Bessere Schnittstelle
+\begin{verbatim}
+# (private) std::vector<Filter*> filters
 
+Filter => std::unique_ptr<Filter>
+\end{verbatim}
+Packe pointer in smartpointer
+\subsection{Graph}
+\begin{verbatim}
+- (public) void cut(int x)
+\end{verbatim}
+Wird nicht benoetigt.
+\begin{verbatim}
+# (public) void addValue(int x, double y)
+# (public) double getValue(int x)
+# (public) removeValue(int x)
+# (public) int getLength()
 
+addValue => setValue
+getLength => getSize
+int => std::size_t
 
++ (public) getBiggestValue()
+\end{verbatim}
+Bessere Schnittstelle.
+\subsection{GraphVideo}
+\begin{verbatim}
+class GraphVideo => erstellt
+\end{verbatim}
+Um RgbHistogramms fuer Videos anzeigen zu koennen.
+\subsection{Project}
+\begin{verbatim}
+# (public) void setMemento(Memento::MainWindowMemento memento)
+# (private) Memento::MainWindowMemento* memento
 
+Memento::MainWindoeMemento => std::unique_ptr<Memento::MainWindowMemento>
+Memento::MainWindoeMemento* => std::unique_ptr<Memento::MainWindowMemento>
+\end{verbatim}
+Verhindere unnoetiges Kopieren.
+\begin{verbatim}
++ (public) void setName(QString name)
+\end{verbatim}
+Um den Namen des Projectes setzen zu koenne, dass beim Start des Programms als leeres Projekt erstellt wird.
+\subsection{Video}
+\begin{verbatim}
+# (public) Video(int fps, int width, int height)
 
+(...) => (int fps)
+\end{verbatim}
+Die Dimension wird jetzt vom ersten Frame, dass in das Video gesteckt wird, bestimmt.
 
+\begin{verbatim}
+- (public) void insertFrames(int index, std::vector<std::unique_ptr<QImage>>& frames)
+\end{verbatim}
+Wird nicht benoetigt.
 
+\begin{verbatim}
+# (public) QImage* getFrame(int index)
+# (public) void insertFrame(std::unique_ptr<QImage> frame, int index)
+# (public) void removeFrame(int index)
+# (public) int getNumberOfFrames()
 
+int => std::size_t
+\end{verbatim}
+an vector anpassen
 
+\begin{verbatim}
++ (public) void setFps(int fps)
++ (public) bool appendFrame(std::unique_ptr<QImage> frame)
+\end{verbatim}
+Schnittstelle erweitern
 
+\begin{verbatim}
++ (public) void setIsComplete(bool isComplete)
++ (public) bool isComplete()
++ (private) bool isComplete
+\end{verbatim}
+Um feststellen zu koennen, ob das Video vollstaendig ist, oder noch auf Frames gewartet werden muss.
+\subsection{YuvVideo}
+\begin{verbatim}
+# (public) YuvVideo(QString path,Utility::PixelSheme type, int width, int height, int fps)
 
+(...) => (QString path, Utility::YuvType type, Utility::Compression compression, int width, int height, int fps)
 
+# (private) Utility::PixelSheme yuvType
 
+Utility::PixelSheme => Utility::YuvType
+\end{verbatim}
+Compression wurde im Design vergessen.
 
+\begin{verbatim}
++ (public) int getWidth()
++ (public) int getHeight()
++ (public) int getFps()
+\end{verbatim}
+Getter wurden im Design vergessen.
 
+\begin{verbatim}
++ (public) GraphVideo& getRedHistogram()
++ (public) GraphVideo& getGreenHistogram()
++ (public) GraphVideo& getBlueHistogram()
++ (private) std::unique_ptr<GraphVideo> redHisto
++ (private) std::unique_ptr<GraphVideo> greenHisto
++ (private) std::unique_ptr<GraphVideo> blueHisto
++ (private) std::unique_ptr<Utility::RGBHistogramCalculator> histogramCalculator
++ (private) void calculateHistograms();
+\end{verbatim}
+Zum berrechnen von histogrammen
 
+\begin{verbatim}
+- (public) Model::AVVideo& getAvVideo()
+- (private) std::unique_ptr<Model::AVVideo> avVideo
+\end{verbatim}
+Wird nicht benoetigt.
 
-
-
-
-
-
-
+\begin{verbatim}
++ (private) std::unique_ptr<Utility::YuvFileReader> fileReader
++ (private) void loadVideo()
+\end{verbatim}
+Zum laden des Videos.
 
 
 

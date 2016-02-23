@@ -67,17 +67,7 @@ class AVVideo {
 	 * @brief removeFrame Removes the frame at the given index.
 	 * @param index The index of the frame to remove.
 	 */
-	void removeFrame(std::size_t index);
-
-	/**
-	 * @brief insertFrames Inserts a vector of frames at the given index.
-         * If the width and height of one frame don't match the size of the video, false is returned.
-	 * All frames that match the size of the video are inserted either way.
-	 * CAUTION:Ownership is transferred.
-	 * @param frames The frames to insert.
-	 * @param index The index to insert the frames at.
-	 */
-	bool insertFrames(std::vector<AVFrame *> &frames, std::size_t index);
+    void removeFrame(std::size_t index);
 
 	/**
 	 * @brief appendFrame

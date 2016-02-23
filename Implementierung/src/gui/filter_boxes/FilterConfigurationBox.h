@@ -1,6 +1,8 @@
 #ifndef __FilterConfigurationBox_h__
 #define __FilterConfigurationBox_h__
 
+#include <memory>
+
 #include <QWidget>
 #include <QFrame>
 #include <QImage>
@@ -9,7 +11,6 @@
 #include <QScrollArea>
 #include <QPushButton>
 
-#include <memory>
 
 namespace Model {
 class Filter;
@@ -54,7 +55,7 @@ class FilterConfigurationBox:public QFrame {
 
 	virtual void updateUi()=0;
 
-	void setFilterIndex(int index);
+    void setFilterIndex(std::size_t index);
 
 
 
@@ -78,7 +79,7 @@ class FilterConfigurationBox:public QFrame {
 	QPushButton*                    button_apply_;
 	QPushButton*                    button_reset_;
 	FilterTab* filterTab_;
-	int index_;
+    std::size_t index_;
 	static QImage &getDefaultImage();
 	void createUi();
 

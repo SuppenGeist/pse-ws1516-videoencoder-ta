@@ -18,7 +18,7 @@
 
 Model::YuvVideo::YuvVideo(QString path, Utility::YuvType type, Utility::Compression compression,
                           int width, int height, int fps):path_(path),height_(height),width_(width),fps_(fps),
-	compression_(compression),yuvType_(type),isComplete_(false) {
+    compression_(compression),yuvType_(type) {
 
 }
 
@@ -74,10 +74,6 @@ Model::GraphVideo &Model::YuvVideo::getBlueHistogram() {
 	}
 
 	return *blueHisto_;
-}
-
-Model::AVVideo& Model::YuvVideo::getAvVideo() {
-	throw "Not yet implemented";
 }
 
 Model::Video& Model::YuvVideo::getVideo() {

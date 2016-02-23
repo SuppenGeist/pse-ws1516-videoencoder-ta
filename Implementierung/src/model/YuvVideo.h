@@ -81,12 +81,6 @@ class YuvVideo {
         GraphVideo& getBlueHistogram();
 
 	/**
-	 * @brief getAvVideo Returns the AVVideo.
-	 * @return The AVVideo.
-	 */
-	Model::AVVideo& getAvVideo();
-
-	/**
 	 * @brief getVideo Returns the Video.
 	 * @return The Video.
 	 */
@@ -101,8 +95,7 @@ class YuvVideo {
 	std::unique_ptr<Model::Video>       displayVideo_;
 	std::unique_ptr<Model::AVVideo>     avVideo_;
 	Utility::YuvType                    yuvType_;
-	std::unique_ptr<Utility::YuvFileReader> fileReader_;
-	bool                                isComplete_;
+    std::unique_ptr<Utility::YuvFileReader> fileReader_;
         std::unique_ptr<Utility::RGBHistogramCalculator> histogramCalculator_;
 	std::unique_ptr<GraphVideo>         redHisto_;
 	std::unique_ptr<GraphVideo>         greenHisto_;

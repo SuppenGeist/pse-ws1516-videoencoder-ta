@@ -71,19 +71,6 @@ void Model::AVVideo::removeFrame(std::size_t index) {
 	}
 }
 
-bool Model::AVVideo::insertFrames(std::vector<AVFrame*>& frames,
-                                  std::size_t index) {
-	bool returnVal=true;
-
-	if(index>video_.size())
-		return false;
-
-	for(std::size_t i=index; i<index+frames.size(); i++) {
-		returnVal&=insertFrame(frames[i-index],i);
-	}
-	return returnVal;
-}
-
 bool Model::AVVideo::appendFrame(AVFrame* frame) {
 	if(video_.empty()) {
 		width_=frame->width;
