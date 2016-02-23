@@ -13,6 +13,8 @@ class TestGraphVideo : public QObject {
 	void init();
     void testGetGraph();
     void testGetNumberOfGraphs();
+    void testIsComplete();
+    void testFPS();
   private:
 	Model::GraphVideo   graphvideo_;
 };

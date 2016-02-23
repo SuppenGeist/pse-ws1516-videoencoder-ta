@@ -111,7 +111,7 @@ HEADERS += \
     src/utility/ProjectWriter.h \
     src/utility/PsnrCalculator.h \
     src/utility/RGBDifferenceCalculator.h \
-    src/utility/RGBHistogrammCalculator.h \
+    src/utility/RGBHistogramCalculator.h \
     src/utility/VideoConverter.h \
     src/utility/VideoLoader.h \
     src/utility/Yuv411FileReader.h \
@@ -160,7 +160,6 @@ HEADERS += \
     test/gui/guitestsuite.h \
     test/memento/mementotestsuite.h \
     test/utility/utilitytestsuite.h \
-    test/undo_frameworktestsuite.h \
     test/undo_framework/undo_frameworktestsuite.h \
     test/gui/filter_boxes/testborderfilterbox.h \
     test/gui/filter_boxes/testcolorbalancefilterbox.h \
@@ -196,7 +195,10 @@ HEADERS += \
     test/model/testproject.h \
     test/model/testfilterlist.h \
     test/model/testencodedvideo.h \
-    test/model/testyuvvideo.h
+    test/model/testyuvvideo.h \
+    src/gui/graphcalculator.h \
+    src/utility/resultsaver.h \
+    src/utility/VideoSaver.h
 
 SOURCES += \
     src/gui/AnalysisBox.cpp \
@@ -288,7 +290,7 @@ SOURCES += \
     src/utility/ProjectWriter.cpp \
     src/utility/PsnrCalculator.cpp \
     src/utility/RGBDifferenceCalculator.cpp \
-    src/utility/RGBHistogrammCalculator.cpp \
+    src/utility/RGBHistogramCalculator.cpp \
     src/utility/VideoConverter.cpp \
     src/utility/VideoLoader.cpp \
     src/utility/Yuv411FileReader.cpp \
@@ -373,7 +375,10 @@ SOURCES += \
     test/model/testproject.cpp \
     test/model/testfilterlist.cpp\
     test/model/testencodedvideo.cpp \
-    test/model/testyuvvideo.cpp
+    test/model/testyuvvideo.cpp \
+    src/gui/graphcalculator.cpp \
+    src/utility/resultsaver.cpp \
+    src/utility/VideoSaver.cpp
 
 RESOURCES += \
     resources.qrc \

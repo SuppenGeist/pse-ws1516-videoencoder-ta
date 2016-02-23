@@ -26,6 +26,8 @@ int Model::GraphVideo::getFps()
 
 void Model::GraphVideo::setFps(int fps)
 {
+    if(fps<0)
+        return;
     fps_=fps;
 }
 

@@ -109,7 +109,7 @@ Utility::VideoConverter::VideoConverter(Model::Video *video):video_(video),video
 
 }
 
-Utility::VideoConverter::VideoConverter(Model::AVVideo *video):avvideo_(video),video_(nullptr),videoTarget_(nullptr),avvideoTarget_(nullptr),isRunning_(false)
+Utility::VideoConverter::VideoConverter(Model::AVVideo *video):video_(nullptr),videoTarget_(nullptr),avvideo_(video),avvideoTarget_(nullptr),isRunning_(false)
 {
 
 }
