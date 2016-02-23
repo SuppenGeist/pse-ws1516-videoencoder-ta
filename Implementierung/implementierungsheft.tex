@@ -222,4 +222,206 @@ Komfortablerer Umgang mit QColor.
 class ZoomFilter => geloescht
 \end{verbatim}
 Bug in libavfilter.
+
+\subsection{AnalysisBoxContainerMemento}
+\begin{verbatim}
+# (public) std::vector<AnalysisBoxMemento> getAnalysisBoxList()
+
+std::vector<AnalysisBoxMemento> 
+=> std::vector<std::unique_ptr<AnalysisBoxMemento>>&
+
+- (private) std::vector<AnalysisBoxMemento*> mementoList
+
+std::vector<AnalysisBoxMemento*>
+=>std::vector<std::unique_ptr<AnalysisBoxMemento>>
+\end{verbatim}
+Unnoetiges kopieren vermeiden.
+\begin{verbatim}
+- (public) void setAnalysisBoxList(std::vector<AnalysisBoxMemento> analysisBoxList)
++ (public) void addMemento(std::unique_ptr<AnalysisBoxMemento> memento)
+\end{verbatim}
+Komfortablere Schnittstelle.
+
+\subsection{AnalysisBoxMemento}
+\begin{verbatim}
+# (public) QString getVideoPath()
+# (public) void setVideoPath(QString videoPath)
+# (private) QString videoPath
+
+videoPath => \{P,p\}ath
+
+# (public) Model::Video* getMacroVideo()
+# (public) void setMacroVideo(Model::Video* macroVideo)
+# (private) Model::Video* macroVideo
+
+\{M,m\}acro => \{M,m\}acro\{B,b\}lockVideo
+
+# (public) Model::Graph getPsnr()
+# (public) void setPsnr(Model::Graph psnr)
+# (private) Model::Graph psnr
+
+\{P,p\}snr => \{P,p\}snrGraph
+
+# (public) Model::Graph getBitrate()
+# (public) void setBitrate(Model::Graph Bitrate)
+# (private) Model::Graph bitrate
+
+\{B,p=b\}snr => \{B,b\}snrGraph
+
+\end{verbatim}
+Sauberere Namensgebung.
+
+\begin{verbatim}
+# (public) Model::Graph getPsnr()
+# (public) void setPsnr(Model::Graph psnr)
+# (private) Model::Graph psnr
+# (public) Model::Graph getBitrate()
+# (public) void setBitrate(Model::Graph Bitrate)
+# (private) Model::Graph bitrate
+
+Model::Graph => Model::Graph*
+\end{verbatim}
+Unnoetiges kopieren vermeiden.
+
+\begin{verbatim}
++ (public) void setEncoder(QString encoder)
++ (public) QString getEncoder()
++ (public) void setAverageBitrate(QString bitrate)
++ (public) QString getAverageBitrate()
++ (public) void setFilename(QString filename)
++ (public) QString getFilename()
++ (public) void setFilesize(QString size)
++ (public) QString getFilesize()
++ (public) void setRedHistogram(Model::GraphVideo* video)
++ (public) Model::GraphVideo* getRedHistogram()
++ (public) void setGreenHistogram(Model::GraphVideo* video)
++ (public) Model::GraphVideo* getGreenHistogram()
++ (public) void setBlueHistogram(Model::GraphVideo* video)
++ (public) Model::GraphVideo* getBlueHistogram()
++ (private) QString encoder
++ (private) QString avergaeBitrate
++ (private) QString filename
++ (private) QString filesize
++ (private) Model::GraphVideo* redHistogram
++ (private) Model::GraphVideo* greenHistogram
++ (private) Model::GraphVideo* blueHistogram
+\end{verbatim}
+Vergessene Attribute, die auch gespeichert werden muessen.
+
+\subsection{AnalysisTabMemento}
+\begin{verbatim}
+# (public) int getCurrentVideoPosition()
+# (public) void setCurrentVideoPosition(int currentVideoPosition)
+# (private) int currentVideoPosition
+
+\{C,c\}urrentVideo => Player
+\end{verbatim}
+Sauberere Namensgebung.
+\begin{verbatim}
+- (public) int getCurrentlyShownAnalysisVideo()
+- (public) void setCurrentlyShownAnalysisVideo(int currentVideo)
+- (private) int currentlyShownAnalysisVideo
+- (public) float getCurrentSpeed()
+- (public) void setCurrentSpeed(float currentSpeed)
+- (private) currentSpeed
+\end{verbatim}
+Nicht realisierbar bzw. nicht mehr von noeten.
+\begin{verbatim}
+# (public) AnalysisBoxContainerMemento getAnalysisBoxContainerMemento()
+
+AnalysisBoxContainerMemento => AnalysisBoxContainerMemento*
+
+# (public) void setAnalysisBoxContainerMemento(AnalysisBoxContainerMemento memento)
+
+AnalysisBoxContainerMemento => std::unique_ptr<AnalysisBoxContainerMemento>
+
++ (private) std::unique_ptr<AnalysisBoxContainerMemento> analysisboxMemento
+\end{verbatim}
+Unnoetiges Kopieren vermeiden.
+\begin{verbatim}
++ (public) void setRawVideo(Model::YuvVideo* video)
++ (public) void setRawVideo(std::unique_ptr<Model::YuvVideo> video)
++ (public) std::unique_ptr<Model::YuvVideo> releaseVideo()
++ (public) Model::YuvVideo* getRawVideo()
++ (public) GUI::AnalysisGraph getAnalysisGraph()
++ (public) void setAnalysisGraph(GUI::AnalysisGraph graph)
++ (public) GUI::AnalysisVideo getAnalysisVideo()
++ (public) void setAnalysisVideo(GUI::AnalysisVideo video)
++ (private) Model::YuvVideo* rawVideo
++ (private) std::unique_ptr<Model::YuvVideo> ownedVideo
++ (private) GUI::AnalysisGraph graph
++ (private) GUI::AnalysisVideo video
+\end{verbatim}
+Vergessene Attribute, die auch gespeichert werden muessen.
+\subsection{FilterTabMemento}
+\begin{verbatim}
+# (public) bool getWasApplied()
+# (public) void setWasApplied(bool wasApplied)
+# (private) bool wasApplied
+
+WasApplied => IsFilteredVideoShown
+
+# (public) int getDisplayedFrame()
+# (public) void setDisplayedFrame(int displayedFrame)
+# (private) int displayedFrame
+
+DisplayedFrame => CurrentFrame
+
+\end{verbatim}
+Sauberere Namensgebung.
+\begin{verbatim}
+# (public) Model::FilterList getFilterList()
+# (public) void setFilterList(Model::FilterList list)
+# (private) Model::FilterList  filterList
+
+Model::FilterList => std::unique_ptr<Model::FilterList>
+\end{verbatim}
+Abstrakte Klassen lassen sich nicht kopieren.
+\begin{verbatim}
+- (public) std::string getLoadedFile()
+- (public) void setLoadedFile(std::string loadedFile)
+- (private) std::string loadedFile
+\end{verbatim}
+Wurden ersetzt durch bessere Methoden.
+\begin{verbatim}
++ (public) void setRawVideo(Model::YuvVideo* rawVideo)
++ (public) void setRawVideo(std::unique_ptr<Model::YuvVideo> video)
++ (public) std::unique_ptr<Model::YuvVideo> releaseVideo()
++ (public) Model::YuvVideo* getRawVideo()
++ (public) void setIsPreviewShown(bool isShown)
++ (public) bool isPreviewShow()
++ (public) void setCurrentFrame(int currentFrame)
++ (public) int getCurrentFrame()
++ (public) void setCurrentlySelectedFilter(int filter)
++ (public) int getCurrentlySelectedFilter()
++ (private) Model::YuvVideo* rawVideo
++ (private) std::unique_ptr<Model::YuvVideo> ownedRawVideo
++ (private) bool isPreviewShown
++ (private) int currentFrame
++ (private) int currentlySelectedFilter
+\end{verbatim}
+Vergessene Attribute, die auch gespeichert werden muessen.
+\subsection{MainWindowMemento}
+\begin{verbatim}
+# (public) AnalysisTabMemento getAnalysisTabMemento()
+# (public) FilterTabMemento getFilterTabMemento()
+
+AnalysisTabMemento => AnalysisTabMemento*
+FilterTabMemento => FilterTabMemento*
+
+# (public) void setAnalysisTabMemento(AnalysisTabMemento memento)
+# (public) void setFilterTabMemento(FilterTabMemento memento)
+
+AnalysisTabMemento => std::unique_ptr<AnalysisTabMemento>
+FilterTabMemento => std::unique_ptr<FilterTabMemento>
+
+# (private) AnalysisTabMemento* analysisTab
+# (private) FilterTabMemento* filterTab
+
+AnalysisTabMemento* => std::unique_ptr<AnalysisTabMemento>
+FilterTabMemento* => std::unique_ptr<FilterTabMemento>
+
+\end{verbatim}
+Unnoetiges Kopieren vermeiden.
+
 \end{document}
