@@ -1,0 +1,99 @@
+\documentclass[parskip=full]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[german]{babel}
+\usepackage{hyperref}
+\usepackage{mathptmx} 
+\usepackage[scaled]{helvet} %
+\usepackage{graphicx}
+\hypersetup{
+pdftitle={Implementierungsheft},
+bookmarks=true,
+}
+
+\makeatletter
+\setlength{\@fptop}{0pt}
+\makeatother
+
+\usepackage{csquotes} 
+
+{
+\titlehead{\centering\includegraphics[width=10cm]{Logo.png}}
+\title{\fontsize{40}{48} \selectfont \textsc{Implementierungsheft}\\
+{\fontsize{18}{18} \selectfont Multimediatool zum Testen von Videoencodern}}}
+\author {Jan Benedikt Schwarz, Johannes Werner, Noel Schuhmacher, Carina Weber,\\
+Sascha Rapp, Simon Grafenhorst}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\newpage
+\tableofcontents
+\newpage
+\section{Entwurfsänderungen}
+\subsection{Allgemeines}
+\begin{itemize}
+\item Korrigierte Rechtschreibfehler in den Klassen-/Methodennamen werden nicht dokumentiert. 
+\item Allen Attributen wird ein Unterstrich zur bessern Lesbarkeit des Codes angehaengt.
+\item Gui-Klassen werden folgende Methoden bei Bedarf hinzugefuegt:
+\begin{verbatim}
+(private) void createUi()
+(private) void connectActions()
+\end{verbatim}
+Diese Methoden dienen allein der Lesbarkeit des Codes.
+
+\item Aenderungen an den folgenden Methodenspezifizieren werden nicht dokumentiert:
+\begin{verbatim}
+const
+noexcept
+\end{verbatim}
+
+\end{itemize}
+\subsection{Filterconfigurationboxes}
+\subsubsection{Basisklasse: FilterConfigurationBox}
+\begin{verbatim}(public) void setFilterTab(FilterTab& filterTab)
+(public) void setFilterIndex(std::size_t index)
+(private) std::size_t index
+(private) FilterTab* filterTab
+\end{verbatim}
+Dass der UndoCommand zum Rueckgaengig machen der Aenderung korrekt erstellt werden kann.
+\begin{verbatim}
+(public) virtaul void updateUi()
+\end{verbatim}
+Um der FilterConfigurationBox bescheid sagen zu koennen, dass der Filter sich ausserhalb der Box geaendert hat.
+\begin{verbatim}
+(protected) void updatePreview()
+\end{verbatim}
+Wird von der erbenden Klasse aufgerufen, um die Vorschau entsprechend den Aenderungen des Benutzers anzupassen.
+\begin{verbatim}
+(protected) void updateTempFilter();
+\end{verbatim}
+Wird von der erbenden Klasse aufgerufen, um den temporaeren Filter auf den Stand des originalen Filters zu bringen.
+\begin{verbatim}
+(private slots) applyFilter()
+(private slots) resetFilter()
+\end{verbatim}
+Slots fuer die entsprechenden Buttons.
+\begin{verbatim}
+(private) static QImage& getDefaultImage()
+(private) static std::unique_ptr<QImage> defaultImage
+\end{verbatim}
+Stellt das Standardbild zur Vorschau zur Verfuegung.
+\begin{verbatim}
+(protected) std::unique_ptr<Model::Filter> tempFilter
+\end{verbatim}
+Temporaeres Filterobjekt, auf welched die erbende Klasse die Aenderungen des Benutzers anwendet.
+\begin{verbatim}
+(protected) QScrollArea* filterOptionsArea
+(private) std::unique_ptr<QImage>
+(private) FrameView* filterPreview
+(private) QLabel* label_filter
+(private) QPushButton* button_apply
+(private) QPushButton* button_reset
+\end{verbatim}
+Diese Attribute sind zur Steuerung der Gui.
+
+
+
+\end{document}
