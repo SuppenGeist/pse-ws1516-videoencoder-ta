@@ -22,8 +22,8 @@ bookmarks=true,
 \titlehead{\centering\includegraphics[width=10cm]{Logo.png}}
 \title{\fontsize{40}{48} \selectfont \textsc{Implementierungsheft}\\
 {\fontsize{18}{18} \selectfont Multimediatool zum Testen von Videoencodern}}}
-\author {Jan Benedikt Schwarz, Johannes Werner, Noel Schuhmacher, Carina Weber,\\
-Sascha Rapp, Simon Grafenhorst}
+\author {Johannes Werner, Noel Schuhmacher, Sascha Rapp, Simon Grafenhorst,\\
+Carina Weber, Jan Benedikt Schwarz}
 
 \begin{document}
 \maketitle
@@ -32,68 +32,194 @@ Sascha Rapp, Simon Grafenhorst}
 \tableofcontents
 \newpage
 \section{Entwurfsänderungen}
+\subsection{Legende}
+\textbf{Aufbau eines Eintrags:}
+\begin{verbatim}
+{+,-,#} {Sichtbarkeitsbereich} ...
+\end{verbatim}
+Grund der Aenderung.\\
+\\
+\textbf{Aenderungszeichen:}
+\begin{itemize}
+\item[] + \hspace{5mm}-->\hspace{5mm} Hinzugefuegt
+\item[] - \hspace{5mm}-->\hspace{5mm} Entfernt
+\item[] \# \hspace{5mm}-->\hspace{5mm} Geaendert
+\end{itemize}
+\textbf{Sichtbarkeitsbereiche:}
+\begin{itemize}
+\item public
+\item public slots
+\item signals
+\item protected
+\item private slots
+\item private
+\end{itemize}
+\newpage
 \subsection{Allgemeines}
 \begin{itemize}
 \item Korrigierte Rechtschreibfehler in den Klassen-/Methodennamen werden nicht dokumentiert. 
 \item Allen Attributen wird ein Unterstrich zur bessern Lesbarkeit des Codes angehaengt.
 \item Gui-Klassen werden folgende Methoden bei Bedarf hinzugefuegt:
 \begin{verbatim}
-(private) void createUi()
-(private) void connectActions()
++ (private) void createUi()
++ (private) void connectActions()
 \end{verbatim}
 Diese Methoden dienen allein der Lesbarkeit des Codes.
 
-\item Aenderungen an den folgenden Methodenspezifizieren werden nicht dokumentiert:
+\item Aenderungen an den folgenden Methodenspezifizierern werden nicht dokumentiert:
 \begin{verbatim}
 const
 noexcept
 \end{verbatim}
 
 \end{itemize}
-\subsection{Filterconfigurationboxes}
+\newpage
+\subsection{Filterkofigurationsboxen}
 \subsubsection{Basisklasse: FilterConfigurationBox}
-\begin{verbatim}(public) void setFilterTab(FilterTab& filterTab)
-(public) void setFilterIndex(std::size_t index)
-(private) std::size_t index
-(private) FilterTab* filterTab
-\end{verbatim}
-Dass der UndoCommand zum Rueckgaengig machen der Aenderung korrekt erstellt werden kann.
 \begin{verbatim}
-(public) virtaul void updateUi()
++ (public) static std::unique_ptr<FilterConfigurationBox>
+CreateConfigurationBox(FilterTab& filterTab, Model::Filter& filter)
+\end{verbatim}
+Fabrikmethode zur Erstellung einer FilterConfigurationBox fuer einen bestimmten Filter.
+\begin{verbatim}
++ (public) void setFilterTab(FilterTab& filterTab)
++ (public) void setFilterIndex(std::size_t index)
++ (private) std::size_t index
++ (private) FilterTab* filterTab
+\end{verbatim}
+Dass der UndoCommand zum Rueckgaengig machen der Aenderung am Filter korrekt erstellt werden kann.
+\begin{verbatim}
++ (public) virtaul void updateUi()
 \end{verbatim}
 Um der FilterConfigurationBox bescheid sagen zu koennen, dass der Filter sich ausserhalb der Box geaendert hat.
 \begin{verbatim}
-(protected) void updatePreview()
++ (protected) void updatePreview()
 \end{verbatim}
 Wird von der erbenden Klasse aufgerufen, um die Vorschau entsprechend den Aenderungen des Benutzers anzupassen.
 \begin{verbatim}
-(protected) void updateTempFilter();
++ (protected) void updateTempFilter();
 \end{verbatim}
 Wird von der erbenden Klasse aufgerufen, um den temporaeren Filter auf den Stand des originalen Filters zu bringen.
 \begin{verbatim}
-(private slots) applyFilter()
-(private slots) resetFilter()
++ (private slots) applyFilter()
++ (private slots) resetFilter()
 \end{verbatim}
 Slots fuer die entsprechenden Buttons.
 \begin{verbatim}
-(private) static QImage& getDefaultImage()
-(private) static std::unique_ptr<QImage> defaultImage
++ (private) static QImage& getDefaultImage()
++ (private) static std::unique_ptr<QImage> defaultImage
 \end{verbatim}
-Stellt das Standardbild zur Vorschau zur Verfuegung.
+Stellt das Standardbild fuer die Vorschau zur Verfuegung.
 \begin{verbatim}
-(protected) std::unique_ptr<Model::Filter> tempFilter
++ (protected) std::unique_ptr<Model::Filter> tempFilter
 \end{verbatim}
 Temporaeres Filterobjekt, auf welched die erbende Klasse die Aenderungen des Benutzers anwendet.
 \begin{verbatim}
-(protected) QScrollArea* filterOptionsArea
-(private) std::unique_ptr<QImage>
-(private) FrameView* filterPreview
-(private) QLabel* label_filter
-(private) QPushButton* button_apply
-(private) QPushButton* button_reset
++ (protected) QScrollArea* filterOptionsArea
++ (private) std::unique_ptr<QImage>
++ (private) FrameView* filterPreview
++ (private) QLabel* label_filter
++ (private) QPushButton* button_apply
++ (private) QPushButton* button_reset
 \end{verbatim}
-Diese Attribute sind zur Steuerung der Gui.
+Steuerung der Gui.
+\subsubsection{Allgemein erbende Klassen}
+\begin{verbatim}
++ (protected) void updateUi()
+\end{verbatim}
+Zum updaten der Gui. Wird geerebt von der Basisklasse.
+\begin{verbatim}
++ (private) void createFilterOptions()
+\end{verbatim}
+Erstellt die Gui.
+\begin{verbatim}
++ (private slots) ...
+\end{verbatim}
+Slots fuer die Gui-Elemente.
+\begin{verbatim}
++ (private) ...
+\end{verbatim}
+Attribute zur Steuerung der Gui.
+\newpage
+\subsection{Filter}
+\subsubsection{Basisklasse: Filter}
+\begin{verbatim}
++ (public) static std::unique_ptr<Filter> CreateFilter(QString filtername)
+\end{verbatim}
+Fabrikmethode um einen Filter aufgrund dessen Name zu erstellen.
+\begin{verbatim}
+# (public) virtual std::string getName()=0
 
+std::string => QString
+\end{verbatim}
+Bessere Kompatibilitaet mit den Qt Gui Elementen.
 
+\begin{verbatim}
++ (public) virtual void restore(QString description)=0
++ (public) virtual QString getSaveString()=0
+\end{verbatim}
+Zum einfachen kopieren von Filtern, wenn die konkrete Klasse nicht bekannt ist und zum einfachen Laden und Speichern der Filter.
 
+\subsubsection{Allgemein erbende Klassen}
+\begin{verbatim}
++ (public) static const QString FILENAME
+\end{verbatim}
+Um Filternamen nicht 'nackt' in den Quelltext zu schreiben.
+\begin{verbatim}
+# (public) void std::string getName()
++ (public) void restore(QString description)
++ (public) void QString getSaveString()
+\end{verbatim}
+Uebernommene Aenderungen aus der Basisklasse.
+\subsubsection{BlackWhiteFilter}
+\begin{verbatim}
+class BlackWhitefilter => class GrayscaleFilter
+\end{verbatim}
+Korrekte Uebersetzung ins Englische.
+\subsubsection{BlendingFilter}
+\begin{verbatim}
+class BlendingFilter => geloescht
+\end{verbatim}
+Widerspruch mit der FilterPreview Funktionalitaet.
+\subsubsection{BlurFilter}
+\begin{verbatim}
+- (public) bool getPreserveEdges()
+- (public) bool setPreserveEdges()
+- (private) bool preserveEdges
+\end{verbatim}
+Die Option hatte keinen Effekt auf das Ergebnis.
+
+\subsubsection{BorderFilter}
+\begin{verbatim}
+# (public) void setColor(QRgb color)
+# (public) QRgb getColor()
+# (private) QRgb color
+
+QRgb => QColor
+\end{verbatim}
+Komfortablerer Umgang mit QColor.
+
+\subsubsection{GridFilter}
+\begin{verbatim}
+# (public) void setColor(QRgb color)
+# (public) QRgb getColor()
+# (private) QRgb color
+
+QRgb => QColor
+\end{verbatim}
+Komfortablerer Umgang mit QColor.
+\subsubsection{RectangleFilter}
+\begin{verbatim}
+# (public) void setColor(QRgb color)
+# (public) QRgb getColor()
+# (private) QRgb color
+
+QRgb => QColor
+\end{verbatim}
+Komfortablerer Umgang mit QColor.
+\subsubsection{ZoomFilter}
+\begin{verbatim}
+class ZoomFilter => geloescht
+\end{verbatim}
+Bug in libavfilter.
 \end{document}
