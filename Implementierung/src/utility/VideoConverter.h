@@ -25,39 +25,41 @@ namespace Utility {
 
 class VideoConverter {
   public:
-    /**
-     * @brief convertAVFrameToQImage Converts the given AVFrame to a QImage.
-     * @param frame The avframe to convert.
-     * @param width The width of the frame.
-     * @param height The height of the frame.
-     * @return The converted AVFrame.
-     */
-    static std::unique_ptr<QImage> convertAVFrameToQImage(AVFrame& frame);
+	/**
+	 * @brief convertAVFrameToQImage Converts the given AVFrame to a QImage.
+	 * @param frame The avframe to convert.
+	 * @param width The width of the frame.
+	 * @param height The height of the frame.
+	 * @return The converted AVFrame.
+	 */
+	static std::unique_ptr<QImage> convertAVFrameToQImage(AVFrame& frame);
 
-    /**
-     * @brief convertQImageToAVFrame Converts a qimage to an avframe.
-     * CAUTION: An owning pointer is returned.
-     * @param image The qimage to convert.
-     * @return The converted qimage.
-     */
-    static AVFrame* convertQImageToAVFrame(QImage& image);
+	/**
+	 * @brief convertQImageToAVFrame Converts a qimage to an avframe.
+	 * CAUTION: An owning pointer is returned.
+	 * @param image The qimage to convert.
+	 * @return The converted qimage.
+	 */
+	static AVFrame* convertQImageToAVFrame(QImage& image);
 
-    static std::unique_ptr<QImage> convertGraphToImage(Model::Graph* graph,int width,int height, GUI::GraphCalculator* calculator=0);
+	static std::unique_ptr<QImage> convertGraphToImage(Model::Graph* graph,int width,int height,
+	        GUI::GraphCalculator* calculator=0);
 
-    static std::unique_ptr<Model::Video> convertGraphVideoToVideo(Model::GraphVideo* video,int width,int height,GUI::GraphCalculator* calculator);
+	static std::unique_ptr<Model::Video> convertGraphVideoToVideo(Model::GraphVideo* video,int width,
+	        int height,GUI::GraphCalculator* calculator);
 
-    VideoConverter(Model::Video* video);
+	VideoConverter(Model::Video* video);
 
-    VideoConverter(Model::AVVideo* video);
+	VideoConverter(Model::AVVideo* video);
 
-    ~VideoConverter();
+	~VideoConverter();
 
 	/**
 	 * @brief convertAVVideoToVideo Converts a AVVideo to a Video
 	 * @param video The video to convert.
 	 * @return The converted AVVideo.
 	 */
-    void convertAVVideoToVideo(Model::Video* target);
+	void convertAVVideoToVideo(Model::Video* target);
 
 
 	/**
@@ -65,19 +67,19 @@ class VideoConverter {
 	 * @param video The video to convert.
 	 * @return The converted video.
 	 */
-    void convertVideoToAVVideo(Model::AVVideo* target);
+	void convertVideoToAVVideo(Model::AVVideo* target);
 
-private:
-    Model::Video* video_;
-    Model::Video* videoTarget_;
-    Model::AVVideo* avvideo_;
-    Model::AVVideo* avvideoTarget_;
+  private:
+	Model::Video* video_;
+	Model::Video* videoTarget_;
+	Model::AVVideo* avvideo_;
+	Model::AVVideo* avvideoTarget_;
 
-    std::thread converter_;
-    bool isRunning_;
+	std::thread converter_;
+	bool isRunning_;
 
-    void convertVideoP();
-    void convertAVVideoP();
+	void convertVideoP();
+	void convertAVVideoP();
 };
 }
 

@@ -7,18 +7,18 @@
 #include "../../src/memento/AnalysisBoxMemento.h"
 
 class TestAnalysisBoxMemento : public QObject {
-    Q_OBJECT
+	Q_OBJECT
 
   private slots:
-    void init();
+	void init();
 
-    void testSetPath();
+	void testSetPath();
 
-    void testSetComment();
+	void testSetComment();
 
 
   private:
-    Memento::AnalysisBoxMemento memento_;
+	Memento::AnalysisBoxMemento memento_;
 
 };
 

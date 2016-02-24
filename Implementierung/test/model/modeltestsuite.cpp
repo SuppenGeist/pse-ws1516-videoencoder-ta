@@ -25,10 +25,10 @@ void ModelTestSuite::testModel() {
 	TestGraphVideo testGraphVideo;
 	QTest::qExec(&testGraphVideo);
 
-    TestProject testProject;
-    QTest::qExec(&testProject);
+	TestProject testProject;
+	QTest::qExec(&testProject);
 
-    TestFilterList testFilterList;
-    QTest::qExec(&testFilterList);
+	TestFilterList testFilterList;
+	QTest::qExec(&testFilterList);
 }
 

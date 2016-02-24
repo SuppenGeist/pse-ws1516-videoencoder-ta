@@ -14,7 +14,7 @@
 
 Utility::Yuv422FileSaver::Yuv422FileSaver(QString filename, Model::Video& video,
         Utility::Compression compression):YuvFileSaver(filename,video),
-    compression_(compression),isRunning_(false) {
+	compression_(compression),isRunning_(false) {
 
 }
 
@@ -92,7 +92,7 @@ void Utility::Yuv422FileSaver::saveP() {
 	}
 	bool buffer=isRunning_;
 	isRunning_=false;
-    emit saveComplete(buffer,QFileInfo(file_).fileName(),video_->getWidth(),video_->getHeight());
+	emit saveComplete(buffer,QFileInfo(file_).fileName(),video_->getWidth(),video_->getHeight());
 }
 
 Utility::Yuv422Vector Utility::Yuv422FileSaver::Rgb888ToYuv422(QRgb pixel1, QRgb pixel2) {

@@ -98,10 +98,10 @@ class ScaleFilter: public Model::Filter {
 	QString getSaveString() const;
 
 
-private:
+  private:
 	int width_;
 	int height_;
-    bool keepRatio_;
+	bool keepRatio_;
 	int ratio_;
 };
 }

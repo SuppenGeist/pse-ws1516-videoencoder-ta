@@ -1,6 +1,5 @@
 #include "testyuvvideo.h"
 
-void TestYuvVideo::init()
-{
+void TestYuvVideo::init() {
 
 }

@@ -7,24 +7,24 @@
 #include "../../src/memento/AnalysisTabMemento.h"
 
 class TestAnalysisTabMemento : public QObject {
-    Q_OBJECT
+	Q_OBJECT
 
   private slots:
-    void init();
+	void init();
 
-    void testSetRawVideo();
+	void testSetRawVideo();
 
-    void testSetAnalysisBoxContainerMemento();
+	void testSetAnalysisBoxContainerMemento();
 
-    void testSetAnalysisGraph();
+	void testSetAnalysisGraph();
 
-    void testSetAnalysisVideo();
+	void testSetAnalysisVideo();
 
-    void testSetPlayerPosition();
+	void testSetPlayerPosition();
 
 
   private:
-    Memento::AnalysisTabMemento memento_;
+	Memento::AnalysisTabMemento memento_;
 
 };
 

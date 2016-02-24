@@ -27,12 +27,12 @@ std::unique_ptr<QImage> Utility::VideoConverter::convertAVFrameToQImage(AVFrame&
 }
 
 void Utility::VideoConverter::convertAVVideoToVideo(Model::Video *target) {
-    if(!target||!avvideo_)
-        return;
+	if(!target||!avvideo_)
+		return;
 
-    videoTarget_=target;
+	videoTarget_=target;
 
-    converter_=std::thread(&VideoConverter::convertAVVideoP,this);
+	converter_=std::thread(&VideoConverter::convertAVVideoP,this);
 }
 
 AVFrame* Utility::VideoConverter::convertQImageToAVFrame(QImage& image) {
@@ -57,106 +57,102 @@ AVFrame* Utility::VideoConverter::convertQImageToAVFrame(QImage& image) {
 	}
 	avpicture_fill((AVPicture*)frame,data,AV_PIX_FMT_RGB24,width,height);
 
-    return frame;
+	return frame;
 }
 
-std::unique_ptr<QImage> Utility::VideoConverter::convertGraphToImage(Model::Graph *graph, int width, int height, GUI::GraphCalculator *calculator)
-{
-    if(!graph) {
-        return std::make_unique<QImage>(width,height,QImage::Format_ARGB32_Premultiplied);
-    }
-    std::unique_ptr<GUI::GraphCalculator> defaultCalculator;
-    GUI::GraphCalculator* usedCalculator=nullptr;
-    if(calculator) {
-        usedCalculator=calculator;
-    }else {
-        defaultCalculator=std::make_unique<GUI::GraphCalculator>();
-        usedCalculator=defaultCalculator.get();
-    }
-    usedCalculator->setGraph(graph);
+std::unique_ptr<QImage> Utility::VideoConverter::convertGraphToImage(Model::Graph *graph, int width,
+        int height, GUI::GraphCalculator *calculator) {
+	if(!graph) {
+		return std::make_unique<QImage>(width,height,QImage::Format_ARGB32_Premultiplied);
+	}
+	std::unique_ptr<GUI::GraphCalculator> defaultCalculator;
+	GUI::GraphCalculator* usedCalculator=nullptr;
+	if(calculator) {
+		usedCalculator=calculator;
+	} else {
+		defaultCalculator=std::make_unique<GUI::GraphCalculator>();
+		usedCalculator=defaultCalculator.get();
+	}
+	usedCalculator->setGraph(graph);
 
-    return usedCalculator->toImage(width,height);
+	return usedCalculator->toImage(width,height);
 }
 
-std::unique_ptr<Model::Video> Utility::VideoConverter::convertGraphVideoToVideo(Model::GraphVideo *video, int width, int height, GUI::GraphCalculator *calculator)
-{
-    if(!video) {
-        return std::make_unique<Model::Video>();
-    }
-    std::unique_ptr<GUI::GraphCalculator> defaultCalculator;
-    GUI::GraphCalculator* usedCalculator=nullptr;
-    if(calculator) {
-        usedCalculator=calculator;
-    }else {
-        defaultCalculator=std::make_unique<GUI::GraphCalculator>();
-        usedCalculator=defaultCalculator.get();
-    }
+std::unique_ptr<Model::Video> Utility::VideoConverter::convertGraphVideoToVideo(
+    Model::GraphVideo *video, int width, int height, GUI::GraphCalculator *calculator) {
+	if(!video) {
+		return std::make_unique<Model::Video>();
+	}
+	std::unique_ptr<GUI::GraphCalculator> defaultCalculator;
+	GUI::GraphCalculator* usedCalculator=nullptr;
+	if(calculator) {
+		usedCalculator=calculator;
+	} else {
+		defaultCalculator=std::make_unique<GUI::GraphCalculator>();
+		usedCalculator=defaultCalculator.get();
+	}
 
-    auto newVideo=std::make_unique<Model::Video>(video->getFps());
-    std::size_t i=0;
-    do{
-    for(;i<video->getNumberOfGraphs();i++) {
-        newVideo->appendFrame(convertGraphToImage(video->getGraph(i),width,height,usedCalculator));
-    }
-    }while(!video->isComplete());
-    newVideo->setIsComplete(true);
+	auto newVideo=std::make_unique<Model::Video>(video->getFps());
+	std::size_t i=0;
+	do {
+		for(; i<video->getNumberOfGraphs(); i++) {
+			newVideo->appendFrame(convertGraphToImage(video->getGraph(i),width,height,usedCalculator));
+		}
+	} while(!video->isComplete());
+	newVideo->setIsComplete(true);
 
-    return std::move(newVideo);
+	return std::move(newVideo);
 }
 
-Utility::VideoConverter::VideoConverter(Model::Video *video):video_(video),videoTarget_(nullptr),avvideo_(nullptr),avvideoTarget_(nullptr),isRunning_(false)
-{
-
-}
-
-Utility::VideoConverter::VideoConverter(Model::AVVideo *video):video_(nullptr),videoTarget_(nullptr),avvideo_(video),avvideoTarget_(nullptr),isRunning_(false)
-{
+Utility::VideoConverter::VideoConverter(Model::Video *video):video_(video),videoTarget_(nullptr),
+	avvideo_(nullptr),avvideoTarget_(nullptr),isRunning_(false) {
 
 }
 
-Utility::VideoConverter::~VideoConverter()
-{
-    isRunning_=false;
-    if(converter_.joinable())
-        converter_.join();
+Utility::VideoConverter::VideoConverter(Model::AVVideo *video):video_(nullptr),
+	videoTarget_(nullptr),avvideo_(video),avvideoTarget_(nullptr),isRunning_(false) {
+
+}
+
+Utility::VideoConverter::~VideoConverter() {
+	isRunning_=false;
+	if(converter_.joinable())
+		converter_.join();
 }
 
 void Utility::VideoConverter::convertVideoToAVVideo(Model::AVVideo *target) {
-    if(!target||!video_)
-        return;
+	if(!target||!video_)
+		return;
 
-    avvideoTarget_=target;
+	avvideoTarget_=target;
 
-    converter_=std::thread(&VideoConverter::convertVideoP,this);
+	converter_=std::thread(&VideoConverter::convertVideoP,this);
 }
 
-void Utility::VideoConverter::convertVideoP()
-{
-    isRunning_=true;
-    avvideoTarget_->setIsComplete(false);
-    std::size_t i = 0;
-    do {
-    for(; i < video_->getNumberOfFrames()&&isRunning_; i++) {
-        avvideoTarget_->appendFrame(convertQImageToAVFrame(*video_->getFrame(i)));
-    }
-    }while(isRunning_&&!video_->isComplete());
-    avvideoTarget_->setIsComplete(true);
-    avvideoTarget_->setFps(video_->getFps());
-    isRunning_=false;
+void Utility::VideoConverter::convertVideoP() {
+	isRunning_=true;
+	avvideoTarget_->setIsComplete(false);
+	std::size_t i = 0;
+	do {
+		for(; i < video_->getNumberOfFrames()&&isRunning_; i++) {
+			avvideoTarget_->appendFrame(convertQImageToAVFrame(*video_->getFrame(i)));
+		}
+	} while(isRunning_&&!video_->isComplete());
+	avvideoTarget_->setIsComplete(true);
+	avvideoTarget_->setFps(video_->getFps());
+	isRunning_=false;
 }
 
-void Utility::VideoConverter::convertAVVideoP()
-{
-    isRunning_=true;
-    videoTarget_->setIsComplete(false);
-    std::size_t i = 0;
-    do {
-    for(; i < avvideo_->getNumberOfFrames()&&isRunning_; i++) {
-        videoTarget_->appendFrame(convertAVFrameToQImage(*avvideo_->getFrame(i)));
-    }
-    }
-    while(isRunning_&&!avvideo_->isComplete());
-    videoTarget_->setIsComplete(true);
-    videoTarget_->setFps(avvideo_->getFps());
-    isRunning_=false;
+void Utility::VideoConverter::convertAVVideoP() {
+	isRunning_=true;
+	videoTarget_->setIsComplete(false);
+	std::size_t i = 0;
+	do {
+		for(; i < avvideo_->getNumberOfFrames()&&isRunning_; i++) {
+			videoTarget_->appendFrame(convertAVFrameToQImage(*avvideo_->getFrame(i)));
+		}
+	} while(isRunning_&&!avvideo_->isComplete());
+	videoTarget_->setIsComplete(true);
+	videoTarget_->setFps(avvideo_->getFps());
+	isRunning_=false;
 }

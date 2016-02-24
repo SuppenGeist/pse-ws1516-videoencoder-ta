@@ -52,6 +52,6 @@ void Utility::RGBDifferenceCalculator::calculateP() {
 
 		}
 	} while (isRunning_&&(!video_->isComplete()||!referenceVideo_->isComplete()));
-    target_->setIsComplete(true);
+	target_->setIsComplete(true);
 	isRunning_ = false;
 }

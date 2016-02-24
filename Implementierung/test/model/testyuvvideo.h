@@ -6,12 +6,11 @@
 
 #include "../../src/model/YuvVideo.h"
 
-class TestYuvVideo : public QObject
-{
-    Q_OBJECT
+class TestYuvVideo : public QObject {
+	Q_OBJECT
 
-private slots:
-    void init();
+  private slots:
+	void init();
 };
 
 #endif // TESTYUVVIDEO_H

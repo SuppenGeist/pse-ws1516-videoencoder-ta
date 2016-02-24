@@ -33,11 +33,11 @@ class AnalysisBoxContainer: public QFrame {
 
 	/**
 	* @brief AnalysisBoxContainer Constructor
-        * @param parent The parent of this object
+	    * @param parent The parent of this object
 	*/
 	AnalysisBoxContainer(QWidget* parent=0);
 
-    std::unique_ptr<Memento::AnalysisBoxContainerMemento> getMemento();
+	std::unique_ptr<Memento::AnalysisBoxContainerMemento> getMemento();
 
 	void restore(Memento::AnalysisBoxContainerMemento* memento);
 
@@ -61,7 +61,7 @@ class AnalysisBoxContainer: public QFrame {
 
 	void showAttributes();
 
-    AnalysisBox* getAnalysisBox(std::size_t index);
+	AnalysisBox* getAnalysisBox(std::size_t index);
 
 	int getIndex(AnalysisBox* box);
 
@@ -69,13 +69,13 @@ class AnalysisBoxContainer: public QFrame {
 
 	AnalysisVideo getShownVideo();
 
-    AnalysisBox* insertBox(AnalysisBox* box,std::size_t index);
+	AnalysisBox* insertBox(AnalysisBox* box,std::size_t index);
 
-    std::size_t getNumberOfBoxes();
+	std::size_t getNumberOfBoxes();
 
-    void lockUi();
+	void lockUi();
 
-    void unlockUi();
+	void unlockUi();
 
   private slots:
 	void addVideo();
@@ -95,6 +95,7 @@ class AnalysisBoxContainer: public QFrame {
 	AnalysisVideo               currentVideo_;
 
 	void createUi();
+	void connectActions();
 
 	void updateUi();
 };

@@ -83,7 +83,7 @@ class ColorbalanceFilter: public Filter {
 	QString getName() const;
 
 	/**
-         * @brief getDarkPixels Whether the dark pixels shall be changed.
+	     * @brief getDarkPixels Whether the dark pixels shall be changed.
 	 * @return True if the dark pixels are changed.
 	 */
 	bool getDarkPixels();

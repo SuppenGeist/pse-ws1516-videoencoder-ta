@@ -16,7 +16,7 @@ class TestBlurFilterBox : public QObject {
 
   private:
 	std::unique_ptr<GUI::BlurFilterBox>   filterbox1_;
-    GUI::BlurFilterBox* filterbox_;
+	GUI::BlurFilterBox* filterbox_;
 
 };
 

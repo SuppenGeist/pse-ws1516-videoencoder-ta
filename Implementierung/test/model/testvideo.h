@@ -11,16 +11,16 @@ class TestVideo : public QObject {
 
   private slots:
 	void init();
-    void testFPS();
-    void testAppendFrame();
-    void testInsertFrame();
-    void testGetNumberOfFrames();
-    void testIsComplete();
-    void testInsertFrames();
-    void testHeight();
-    void testWidth();
-    void testGetFrame();
-    void testRemoveFrame();
+	void testFPS();
+	void testAppendFrame();
+	void testInsertFrame();
+	void testGetNumberOfFrames();
+	void testIsComplete();
+	void testInsertFrames();
+	void testHeight();
+	void testWidth();
+	void testGetFrame();
+	void testRemoveFrame();
 
   private:
 	Model::Video   video_;

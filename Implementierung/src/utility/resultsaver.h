@@ -11,31 +11,30 @@
 
 #include "VideoSaver.h"
 
-namespace GUI{
+namespace GUI {
 class AnalysisTab;
 }
 
 namespace Utility {
 
-class ResultSaver:public QThread
-{
-    Q_OBJECT
-public:
-    ResultSaver(std::unique_ptr<Memento::AnalysisBoxContainerMemento> memento, QString folder);
+class ResultSaver:public QThread {
+	Q_OBJECT
+  public:
+	ResultSaver(std::unique_ptr<Memento::AnalysisBoxContainerMemento> memento, QString folder);
 
-    ~ResultSaver();
+	~ResultSaver();
 
-private:
-    std::unique_ptr<Memento::AnalysisBoxContainerMemento>   memento_;
-    QString path_;
+  private:
+	std::unique_ptr<Memento::AnalysisBoxContainerMemento>   memento_;
+	QString path_;
 
-    std::vector<std::unique_ptr<VideoSaver>>    videoSavers_;
+	std::vector<std::unique_ptr<VideoSaver>>    videoSavers_;
 
-    std::unique_ptr<Model::Video>  redHistogram_;
-    std::unique_ptr<Model::Video>  greenHistogram_;
-    std::unique_ptr<Model::Video>  blueHistogram_;
+	std::unique_ptr<Model::Video>  redHistogram_;
+	std::unique_ptr<Model::Video>  greenHistogram_;
+	std::unique_ptr<Model::Video>  blueHistogram_;
 
-    void run();
+	void run();
 };
 
 }

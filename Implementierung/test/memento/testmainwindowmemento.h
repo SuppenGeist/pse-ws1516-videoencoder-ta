@@ -7,20 +7,20 @@
 #include "../../src/memento/MainWindowMemento.h"
 
 class TestMainWindowMemento : public QObject {
-    Q_OBJECT
+	Q_OBJECT
 
   private slots:
-    void init();
+	void init();
 
-    void testSetSelectedTab();
+	void testSetSelectedTab();
 
-    void testSetAnalysisTab();
+	void testSetAnalysisTab();
 
-    void testSetFilterTab();
+	void testSetFilterTab();
 
 
   private:
-    Memento::MainWindowMemento memento_;
+	Memento::MainWindowMemento memento_;
 
 };
 

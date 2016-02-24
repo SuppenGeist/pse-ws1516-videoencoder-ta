@@ -52,12 +52,12 @@ class MainWindow : public QMainWindow {
 
   private slots:
 	/**
-         * @brief newProject Creates new project.
+	     * @brief newProject Creates new project.
 	 */
 	void newProject();
 
 	/**
-         * @brief undo Undoes last action if possible
+	     * @brief undo Undoes last action if possible
 	 */
 	void undo();
 
@@ -67,17 +67,17 @@ class MainWindow : public QMainWindow {
 	void saveAs();
 
 	/**
-         * @brief loadProject Opens QFileDialog and opens project in the selected file if possible.
+	     * @brief loadProject Opens QFileDialog and opens project in the selected file if possible.
 	 */
 	void loadProject();
 
 	/**
-         * @brief saveProject Opens QFileDialog and saves project in selected file.
+	     * @brief saveProject Opens QFileDialog and saves project in selected file.
 	 */
 	void saveProject();
 
 	/**
-         * @brief redo Redoes action if undo has been used.
+	     * @brief redo Redoes action if undo has been used.
 	 */
 	void redo();
 

@@ -55,7 +55,7 @@ class FilterConfigurationBox:public QFrame {
 
 	virtual void updateUi()=0;
 
-    void setFilterIndex(std::size_t index);
+	void setFilterIndex(std::size_t index);
 
 
 
@@ -79,7 +79,7 @@ class FilterConfigurationBox:public QFrame {
 	QPushButton*                    button_apply_;
 	QPushButton*                    button_reset_;
 	FilterTab* filterTab_;
-    std::size_t index_;
+	std::size_t index_;
 	static QImage &getDefaultImage();
 	void createUi();
 

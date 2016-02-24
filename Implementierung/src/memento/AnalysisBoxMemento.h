@@ -23,70 +23,70 @@ class AnalysisBoxMemento {
 
 	QString getPath();
 
-    void setPath(QString path);
+	void setPath(QString path);
 
 	QString getComment();
 
 	void setComment(QString comment);
 
-    void setMacroBlockVideo(Model::Video* macroblockVideo);
+	void setMacroBlockVideo(Model::Video* macroblockVideo);
 
-    Model::Video* getMacroBlockVideo();
+	Model::Video* getMacroBlockVideo();
 
-    void setRgbDiffVideo(Model::Video* rgbDiffVideo);
+	void setRgbDiffVideo(Model::Video* rgbDiffVideo);
 
-    Model::Video* getRgbDiffVideo();
+	Model::Video* getRgbDiffVideo();
 
-    void setPsnrGraph(Model::Graph* graph);
+	void setPsnrGraph(Model::Graph* graph);
 
-    Model::Graph* getPsnrGraph();
+	Model::Graph* getPsnrGraph();
 
-    void setBitrateGraph(Model::Graph* graph);
+	void setBitrateGraph(Model::Graph* graph);
 
-    Model::Graph* getBitrateGraph();
+	Model::Graph* getBitrateGraph();
 
-    void setEncoder(QString encoder);
+	void setEncoder(QString encoder);
 
-    QString getEncoder();
+	QString getEncoder();
 
-    void setAverageBitrate(QString bitrate);
+	void setAverageBitrate(QString bitrate);
 
-    QString getAverageBitrate();
+	QString getAverageBitrate();
 
-    void setFilename(QString filename);
+	void setFilename(QString filename);
 
-    QString getFilename();
+	QString getFilename();
 
-    void setFilesize(QString size);
+	void setFilesize(QString size);
 
-    QString getFilesize();
+	QString getFilesize();
 
-    void setRedHistogram(Model::GraphVideo* video);
+	void setRedHistogram(Model::GraphVideo* video);
 
-    Model::GraphVideo* getRedHistogram();
+	Model::GraphVideo* getRedHistogram();
 
-    void setGreenHistogram(Model::GraphVideo* video);
+	void setGreenHistogram(Model::GraphVideo* video);
 
-    Model::GraphVideo* getGreenHistogram();
+	Model::GraphVideo* getGreenHistogram();
 
-    void setBlueHistogram(Model::GraphVideo* video);
+	void setBlueHistogram(Model::GraphVideo* video);
 
-    Model::GraphVideo* getBlueHistogram();
+	Model::GraphVideo* getBlueHistogram();
 
   private:
 	QString path_;
 	QString comment_;
-    Model::Video* macroblockVideo_;
-    Model::Video* rgbDiffVideo_;
-    Model::Graph* psnrGraph_;
-    Model::Graph* bitrateGraph_;
-    QString encoder_;
-    QString avergaeBitrate_;
-    QString filename_;
-    QString filesize_;
-    Model::GraphVideo* redHistogram_;
-    Model::GraphVideo* greenHistogram_;
-    Model::GraphVideo* blueHistogram_;
+	Model::Video* macroblockVideo_;
+	Model::Video* rgbDiffVideo_;
+	Model::Graph* psnrGraph_;
+	Model::Graph* bitrateGraph_;
+	QString encoder_;
+	QString avergaeBitrate_;
+	QString filename_;
+	QString filesize_;
+	Model::GraphVideo* redHistogram_;
+	Model::GraphVideo* greenHistogram_;
+	Model::GraphVideo* blueHistogram_;
 };
 }
 

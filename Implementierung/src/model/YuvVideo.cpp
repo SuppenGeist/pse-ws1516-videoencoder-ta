@@ -18,7 +18,7 @@
 
 Model::YuvVideo::YuvVideo(QString path, Utility::YuvType type, Utility::Compression compression,
                           int width, int height, int fps):path_(path),height_(height),width_(width),fps_(fps),
-    compression_(compression),yuvType_(type) {
+	compression_(compression),yuvType_(type) {
 
 }
 
@@ -54,7 +54,7 @@ int Model::YuvVideo::getFps() {
 
 Model::GraphVideo &Model::YuvVideo::getRedHistogram() {
 	if(!redHisto_.get()) {
-                calculateHistograms();
+		calculateHistograms();
 	}
 
 	return *redHisto_;
@@ -62,7 +62,7 @@ Model::GraphVideo &Model::YuvVideo::getRedHistogram() {
 
 Model::GraphVideo &Model::YuvVideo::getGreenHistogram() {
 	if(!greenHisto_.get()) {
-                calculateHistograms();
+		calculateHistograms();
 	}
 
 	return *greenHisto_;
@@ -70,7 +70,7 @@ Model::GraphVideo &Model::YuvVideo::getGreenHistogram() {
 
 Model::GraphVideo &Model::YuvVideo::getBlueHistogram() {
 	if(!blueHisto_.get()) {
-                calculateHistograms();
+		calculateHistograms();
 	}
 
 	return *blueHisto_;
@@ -112,8 +112,8 @@ void Model::YuvVideo::calculateHistograms() {
 	greenHisto_=std::make_unique<GraphVideo>();
 	blueHisto_=std::make_unique<GraphVideo>();
 
-        histogramCalculator_=std::make_unique<Utility::RGBHistogramCalculator>(getVideo());
-        histogramCalculator_->calculate(redHisto_.get(),greenHisto_.get(),blueHisto_.get());
+	histogramCalculator_=std::make_unique<Utility::RGBHistogramCalculator>(getVideo());
+	histogramCalculator_->calculate(redHisto_.get(),greenHisto_.get(),blueHisto_.get());
 }
 
 

@@ -4,7 +4,8 @@
 #include <QFile>
 #include <QFileInfo>
 
-Memento::AnalysisBoxMemento::AnalysisBoxMemento():path_(""),comment_(""),macroblockVideo_(nullptr),rgbDiffVideo_(nullptr),redHistogram_(nullptr) {
+Memento::AnalysisBoxMemento::AnalysisBoxMemento():path_(""),comment_(""),macroblockVideo_(nullptr),
+	rgbDiffVideo_(nullptr),redHistogram_(nullptr) {
 
 }
 
@@ -13,7 +14,7 @@ QString Memento::AnalysisBoxMemento::getPath() {
 }
 
 void Memento::AnalysisBoxMemento::setPath(QString path) {
-    path_=path;
+	path_=path;
 }
 
 QString Memento::AnalysisBoxMemento::getComment() {
@@ -21,115 +22,93 @@ QString Memento::AnalysisBoxMemento::getComment() {
 }
 
 void Memento::AnalysisBoxMemento::setComment(QString comment) {
-    comment_=comment;
+	comment_=comment;
 }
 
-void Memento::AnalysisBoxMemento::setMacroBlockVideo(Model::Video *macroblockVideo)
-{
-    macroblockVideo_=macroblockVideo;
+void Memento::AnalysisBoxMemento::setMacroBlockVideo(Model::Video *macroblockVideo) {
+	macroblockVideo_=macroblockVideo;
 }
 
-Model::Video *Memento::AnalysisBoxMemento::getMacroBlockVideo()
-{
-    return macroblockVideo_;
+Model::Video *Memento::AnalysisBoxMemento::getMacroBlockVideo() {
+	return macroblockVideo_;
 }
 
-void Memento::AnalysisBoxMemento::setRgbDiffVideo(Model::Video *rgbDiffVideo)
-{
-    rgbDiffVideo_=rgbDiffVideo;
+void Memento::AnalysisBoxMemento::setRgbDiffVideo(Model::Video *rgbDiffVideo) {
+	rgbDiffVideo_=rgbDiffVideo;
 }
 
-Model::Video *Memento::AnalysisBoxMemento::getRgbDiffVideo()
-{
-    return rgbDiffVideo_;
+Model::Video *Memento::AnalysisBoxMemento::getRgbDiffVideo() {
+	return rgbDiffVideo_;
 }
 
-void Memento::AnalysisBoxMemento::setPsnrGraph(Model::Graph *graph)
-{
-    psnrGraph_=graph;
+void Memento::AnalysisBoxMemento::setPsnrGraph(Model::Graph *graph) {
+	psnrGraph_=graph;
 }
 
-Model::Graph *Memento::AnalysisBoxMemento::getPsnrGraph()
-{
-    return psnrGraph_;
+Model::Graph *Memento::AnalysisBoxMemento::getPsnrGraph() {
+	return psnrGraph_;
 }
 
-void Memento::AnalysisBoxMemento::setBitrateGraph(Model::Graph *graph)
-{
-    bitrateGraph_=graph;
+void Memento::AnalysisBoxMemento::setBitrateGraph(Model::Graph *graph) {
+	bitrateGraph_=graph;
 }
 
-Model::Graph *Memento::AnalysisBoxMemento::getBitrateGraph()
-{
-    return bitrateGraph_;
+Model::Graph *Memento::AnalysisBoxMemento::getBitrateGraph() {
+	return bitrateGraph_;
 }
 
-void Memento::AnalysisBoxMemento::setEncoder(QString encoder)
-{
-    encoder_=encoder;
+void Memento::AnalysisBoxMemento::setEncoder(QString encoder) {
+	encoder_=encoder;
 }
 
-QString Memento::AnalysisBoxMemento::getEncoder()
-{
-    return encoder_;
+QString Memento::AnalysisBoxMemento::getEncoder() {
+	return encoder_;
 }
 
-void Memento::AnalysisBoxMemento::setAverageBitrate(QString bitrate)
-{
-    avergaeBitrate_=bitrate;
+void Memento::AnalysisBoxMemento::setAverageBitrate(QString bitrate) {
+	avergaeBitrate_=bitrate;
 }
 
-QString Memento::AnalysisBoxMemento::getAverageBitrate()
-{
-    return avergaeBitrate_;
+QString Memento::AnalysisBoxMemento::getAverageBitrate() {
+	return avergaeBitrate_;
 }
 
-void Memento::AnalysisBoxMemento::setFilename(QString filename)
-{
-    filename_=filename;
+void Memento::AnalysisBoxMemento::setFilename(QString filename) {
+	filename_=filename;
 }
 
-QString Memento::AnalysisBoxMemento::getFilename()
-{
-    return filename_;
+QString Memento::AnalysisBoxMemento::getFilename() {
+	return filename_;
 }
 
-void Memento::AnalysisBoxMemento::setFilesize(QString size)
-{
-    filesize_=size;
+void Memento::AnalysisBoxMemento::setFilesize(QString size) {
+	filesize_=size;
 }
 
-QString Memento::AnalysisBoxMemento::getFilesize()
-{
-    return filesize_;
+QString Memento::AnalysisBoxMemento::getFilesize() {
+	return filesize_;
 }
 
-void Memento::AnalysisBoxMemento::setRedHistogram(Model::GraphVideo *video)
-{
-    redHistogram_=video;
+void Memento::AnalysisBoxMemento::setRedHistogram(Model::GraphVideo *video) {
+	redHistogram_=video;
 }
 
-Model::GraphVideo *Memento::AnalysisBoxMemento::getRedHistogram()
-{
-    return redHistogram_;
+Model::GraphVideo *Memento::AnalysisBoxMemento::getRedHistogram() {
+	return redHistogram_;
 }
 
-void Memento::AnalysisBoxMemento::setGreenHistogram(Model::GraphVideo *video)
-{
-    greenHistogram_=video;
+void Memento::AnalysisBoxMemento::setGreenHistogram(Model::GraphVideo *video) {
+	greenHistogram_=video;
 }
 
-Model::GraphVideo *Memento::AnalysisBoxMemento::getGreenHistogram()
-{
-    return greenHistogram_;
+Model::GraphVideo *Memento::AnalysisBoxMemento::getGreenHistogram() {
+	return greenHistogram_;
 }
 
-void Memento::AnalysisBoxMemento::setBlueHistogram(Model::GraphVideo *video)
-{
-    blueHistogram_=video;
+void Memento::AnalysisBoxMemento::setBlueHistogram(Model::GraphVideo *video) {
+	blueHistogram_=video;
 }
 
-Model::GraphVideo *Memento::AnalysisBoxMemento::getBlueHistogram()
-{
-    return blueHistogram_;
+Model::GraphVideo *Memento::AnalysisBoxMemento::getBlueHistogram() {
+	return blueHistogram_;
 }

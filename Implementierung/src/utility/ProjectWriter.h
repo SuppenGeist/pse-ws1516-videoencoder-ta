@@ -27,7 +27,7 @@ class ProjectWriter {
 	/**
 	 * @brief saveProject Saves the whole project.
 	 */
-    void saveProject();
+	void saveProject();
 
   private:
 	Model::Project*     project_;

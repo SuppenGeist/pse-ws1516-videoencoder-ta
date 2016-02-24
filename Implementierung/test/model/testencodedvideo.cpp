@@ -1,6 +1,5 @@
 #include "testencodedvideo.h"
 
-void TestEncodedVideo::init()
-{
+void TestEncodedVideo::init() {
 
 }

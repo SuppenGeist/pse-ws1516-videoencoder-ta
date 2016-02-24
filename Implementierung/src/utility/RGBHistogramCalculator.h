@@ -16,12 +16,12 @@ class RGBHistogramCalculator {
 
   public:
 	/**
-         * @brief RGBHistogramCalculator Constructor.
-         * @param video The video that is analyzed.
+	     * @brief RGBHistogramCalculator Constructor.
+	     * @param video The video that is analyzed.
 	 */
-        RGBHistogramCalculator(Model::Video& video);
+	RGBHistogramCalculator(Model::Video& video);
 
-        ~RGBHistogramCalculator();
+	~RGBHistogramCalculator();
 
 	/**
 	 * @brief calculate Calculates the red, green and blue components of a video.

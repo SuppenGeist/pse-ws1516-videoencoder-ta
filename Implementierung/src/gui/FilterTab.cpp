@@ -109,21 +109,21 @@ std::unique_ptr<Memento::FilterTabMemento> GUI::FilterTab::getMemento() {
 }
 
 void GUI::FilterTab::restore(Memento::FilterTabMemento *memento) {
-    if(!memento)
-        return;
+	if(!memento)
+		return;
 
-    setRawVideo(memento->getRawVideo());
+	setRawVideo(memento->getRawVideo());
 
-    auto ownedVideo=memento->releaseVideo();
-    if(ownedVideo.get()) {
-        auto dummy=std::make_unique<Memento::FilterTabMemento>();
-        auto command=new UndoRedo::LoadFilterVideo(*this,std::move(ownedVideo),std::move(dummy));
-        UndoRedo::UndoStack::getUndoStack().push(command);
-    }
+	auto ownedVideo=memento->releaseVideo();
+	if(ownedVideo.get()) {
+		auto dummy=std::make_unique<Memento::FilterTabMemento>();
+		auto command=new UndoRedo::LoadFilterVideo(*this,std::move(ownedVideo),std::move(dummy));
+		UndoRedo::UndoStack::getUndoStack().push(command);
+	}
 
 	setFilterList(memento->getFilterList());
 	if(memento->isPreviewShow()) {
-        updateFilterPreview();
+		updateFilterPreview();
 		showFilterPreview();
 	} else {
 		if(memento->isFilteredVideoShown()) {
@@ -135,7 +135,7 @@ void GUI::FilterTab::restore(Memento::FilterTabMemento *memento) {
 	}
 	player_->setPosition(memento->getCurrentFrame());
 
-    std::size_t index=memento->getCurrentlySelectedFilter();
+	std::size_t index=memento->getCurrentlySelectedFilter();
 	if(index>=filterlist_->getSize()) {
 		index=filterlist_->getSize()-1;
 	}
@@ -200,7 +200,7 @@ void GUI::FilterTab::updateFilterPreview() {
 	if(!rawVideo_)
 		return;
 
-    if(!originalPreviewFrames_.get()||originalPreviewFrames_->getNumberOfFrames()!=MAX_PREVIEW_COUNT
+	if(!originalPreviewFrames_.get()||originalPreviewFrames_->getNumberOfFrames()!=MAX_PREVIEW_COUNT
 	        ||!rawVideo_->getVideo().isComplete()) {
 		calculatePreviewFrames();
 	}
@@ -294,7 +294,7 @@ std::unique_ptr<Model::Filter> GUI::FilterTab::removeFilter(std::size_t index) {
 }
 
 void GUI::FilterTab::moveFilter(std::size_t oldIndex, std::size_t newIndex) {
-    if(oldIndex>=filterlist_->getSize()||newIndex>=filterlist_->getSize()
+	if(oldIndex>=filterlist_->getSize()||newIndex>=filterlist_->getSize()
 	        ||oldIndex==newIndex)
 		return;
 
@@ -416,8 +416,8 @@ void GUI::FilterTab::apply() {
 	filteredVideo_=std::make_unique<Model::Video>(rawVideo_->getFps());
 	filterApplier_=std::make_unique<Utility::FilterApplier>(*filterlist_,rawVideo_->getWidth(),
 	               rawVideo_->getHeight(),AV_PIX_FMT_RGB24);
-    connect(filterApplier_.get(),SIGNAL(applyComplete(bool)),this,SLOT(notifyOnApplyComplete(bool)));
-    filterApplier_->applyToVideo(*filteredVideo_,rawVideo_->getVideo());
+	connect(filterApplier_.get(),SIGNAL(applyComplete(bool)),this,SLOT(notifyOnApplyComplete(bool)));
+	filterApplier_->applyToVideo(*filteredVideo_,rawVideo_->getVideo());
 
 	showFilteredVideo();
 }
@@ -444,17 +444,18 @@ void GUI::FilterTab::save() {
 	auto type=rawVideo_->getYuvType();
 	if(type==Utility::YuvType::YUV411) {
 		safer_=std::make_unique<Utility::Yuv411FileSaver>(filename,*filteredVideo_,
-                rawVideo_->getCompression());
+		        rawVideo_->getCompression());
 	} else if(type==Utility::YuvType::YUV420) {
-        safer_=std::make_unique<Utility::Yuv420FileSaver>(filename,*filteredVideo_);
+		safer_=std::make_unique<Utility::Yuv420FileSaver>(filename,*filteredVideo_);
 	} else if(type==Utility::YuvType::YUV422) {
 		safer_=std::make_unique<Utility::Yuv422FileSaver>(filename,*filteredVideo_,
-                rawVideo_->getCompression());
+		        rawVideo_->getCompression());
 	} else if(type==Utility::YuvType::YUV444) {
 		safer_=std::make_unique<Utility::Yuv444FileSaver>(filename,*filteredVideo_,
-                rawVideo_->getCompression());
+		        rawVideo_->getCompression());
 	}
-    connect(safer_.get(),SIGNAL(saveComplete(bool,QString,int,int)),this,SLOT(notifyOnSaveComplete(bool,QString,int,int)));
+	connect(safer_.get(),SIGNAL(saveComplete(bool,QString,int,int)),this,SLOT(notifyOnSaveComplete(bool,
+	        QString,int,int)));
 	safer_->save();
 }
 
@@ -776,7 +777,7 @@ void GUI::FilterTab::connectAtions() {
 	connect(button_saveConf_,SIGNAL(clicked()),this,SLOT(saveConfiguration()));
 	connect(button_up_,SIGNAL(clicked()),this,SLOT(up()));
 	connect(list_filterlist_->selectionModel(),SIGNAL(selectionChanged(QItemSelection,
-            QItemSelection)),this,SLOT(listSelectionChanged(QItemSelection)));
+	        QItemSelection)),this,SLOT(listSelectionChanged(QItemSelection)));
 }
 
 void GUI::FilterTab::initPlayer() {
@@ -799,17 +800,17 @@ void GUI::FilterTab::calculatePreviewFrames() {
 
 	originalPreviewFrames_=std::make_unique<Model::AVVideo>();
 
-    std::size_t numberOfPreviewFrames=MAX_PREVIEW_COUNT;
+	std::size_t numberOfPreviewFrames=MAX_PREVIEW_COUNT;
 
 	auto videoFramecount=rawVideo_->getVideo().getNumberOfFrames();
-    std::size_t stepsize=videoFramecount/numberOfPreviewFrames;
+	std::size_t stepsize=videoFramecount/numberOfPreviewFrames;
 
-    if(videoFramecount<numberOfPreviewFrames) {
+	if(videoFramecount<numberOfPreviewFrames) {
 		numberOfPreviewFrames=videoFramecount;
 		stepsize=1;
 	}
 
-    for(std::size_t i=0; i<numberOfPreviewFrames; i++) {
+	for(std::size_t i=0; i<numberOfPreviewFrames; i++) {
 		auto frame=Utility::VideoConverter::convertQImageToAVFrame(*rawVideo_->getVideo().getFrame(
 		               i*stepsize));
 		originalPreviewFrames_->appendFrame(frame);

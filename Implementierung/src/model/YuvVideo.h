@@ -27,7 +27,7 @@ class YuvVideo {
 	/**
 	 * @brief YuvVideo Constructor.
 	 * @param path Path to the yuv file.
-         * @param type Pixelscheme of the yuv video.
+	     * @param type Pixelscheme of the yuv video.
 	 * @param compression Compression mode of the video.
 	 * @param width Width of the video.
 	 * @param height Height of the video.
@@ -51,7 +51,7 @@ class YuvVideo {
 	Utility::Compression getCompression();
 
 	/**
-         * @brief getYuvType Returns the pixel scheme of the video.
+	     * @brief getYuvType Returns the pixel scheme of the video.
 	 * @return The pixel scheme.
 	 */
 	Utility::YuvType getYuvType();
@@ -69,16 +69,16 @@ class YuvVideo {
 	int getHeight();
 
 	/**
-         * @brief getFps Returns the fps of the video.
+	     * @brief getFps Returns the fps of the video.
 	 * @return
 	 */
 	int getFps();
 
-        GraphVideo& getRedHistogram();
+	GraphVideo& getRedHistogram();
 
-        GraphVideo& getGreenHistogram();
+	GraphVideo& getGreenHistogram();
 
-        GraphVideo& getBlueHistogram();
+	GraphVideo& getBlueHistogram();
 
 	/**
 	 * @brief getVideo Returns the Video.
@@ -95,8 +95,8 @@ class YuvVideo {
 	std::unique_ptr<Model::Video>       displayVideo_;
 	std::unique_ptr<Model::AVVideo>     avVideo_;
 	Utility::YuvType                    yuvType_;
-    std::unique_ptr<Utility::YuvFileReader> fileReader_;
-        std::unique_ptr<Utility::RGBHistogramCalculator> histogramCalculator_;
+	std::unique_ptr<Utility::YuvFileReader> fileReader_;
+	std::unique_ptr<Utility::RGBHistogramCalculator> histogramCalculator_;
 	std::unique_ptr<GraphVideo>         redHisto_;
 	std::unique_ptr<GraphVideo>         greenHisto_;
 	std::unique_ptr<GraphVideo>         blueHisto_;
@@ -106,7 +106,7 @@ class YuvVideo {
 	 */
 	void loadVideo();
 
-        void calculateHistograms();
+	void calculateHistograms();
 };
 }
 

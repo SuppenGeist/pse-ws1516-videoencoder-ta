@@ -19,13 +19,14 @@ void UndoRedo::WriteComment::redo() {
 	auto textEdit=container_->getAnalysisBox(index_)->getCommentBox();
 	textEdit->blockSignals(true);
 	textEdit->document()->setPlainText(newComment_);
-    textEdit->blockSignals(false);
+	textEdit->blockSignals(false);
 }
 bool UndoRedo::WriteComment::mergeWith(const QUndoCommand *command) {
 
-    const UndoRedo::WriteComment* writeCommand = static_cast<const UndoRedo::WriteComment*>(command);
-    if (index_!=writeCommand->index_ || (newComment_.split(" ").size() != writeCommand->newComment_.split(" ").size()))
-        return false;
+	const UndoRedo::WriteComment* writeCommand = static_cast<const UndoRedo::WriteComment*>(command);
+	if (index_!=writeCommand->index_
+	        || (newComment_.split(" ").size() != writeCommand->newComment_.split(" ").size()))
+		return false;
 
 	newComment_ = writeCommand->newComment_;
 

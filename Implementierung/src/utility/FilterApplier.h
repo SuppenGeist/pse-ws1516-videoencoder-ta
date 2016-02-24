@@ -31,7 +31,7 @@ namespace Utility {
  * Applies filters of a given FilterList to a video.
  */
 class FilterApplier:public QObject {
-    Q_OBJECT
+	Q_OBJECT
   public:
 	/**
 	 * @brief FilterApplier Constructor.
@@ -41,7 +41,7 @@ class FilterApplier:public QObject {
 
 	~FilterApplier();
 
-    void applyToVideo(Model::Video& target, Model::Video& source);
+	void applyToVideo(Model::Video& target, Model::Video& source);
 
 	void applyToVideo(Model::Video& target,Model::AVVideo& source);
 
@@ -54,7 +54,7 @@ class FilterApplier:public QObject {
 	AVFrame *applyToFrame(AVFrame& source);
 
   signals:
-    void applyComplete(bool successfull);
+	void applyComplete(bool successfull);
 
 
   private:
@@ -70,15 +70,15 @@ class FilterApplier:public QObject {
 	Model::Video*       source_;
 	Model::AVVideo*     source1_;
 	Model::Video*       target_;
-    bool                isRunning_;
+	bool                isRunning_;
 
 	void createFilterString();
 	void applyToVideoP();
-    void applyToAVVideoP();
-    /**
-     * @brief initFilters Initializes the filters.
-     */
-    void initFilters();
+	void applyToAVVideoP();
+	/**
+	 * @brief initFilters Initializes the filters.
+	 */
+	void initFilters();
 };
 }
 

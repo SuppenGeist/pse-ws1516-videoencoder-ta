@@ -97,7 +97,7 @@ class GraphPlayer:public Player {
 	void clearTimer();
 
   private:
-    std::size_t             position_;
+	std::size_t             position_;
 	Model::GraphVideo*      video_;
 	GraphWidget*            view_;
 	std::shared_ptr<Timer>  timer_;

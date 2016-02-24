@@ -43,8 +43,8 @@ class ProjectReader {
 	QFile     file_;
 	QTextStream dataStream_;
 
-    void parseFilterTab(Memento::FilterTabMemento* memento,QString line);
-    void parseAnalysisTab(Memento::AnalysisTabMemento* memento,QString line);
+	void parseFilterTab(Memento::FilterTabMemento* memento,QString line);
+	void parseAnalysisTab(Memento::AnalysisTabMemento* memento,QString line);
 
 };
 }

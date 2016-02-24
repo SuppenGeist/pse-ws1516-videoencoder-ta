@@ -31,7 +31,7 @@ class YuvFileOpenDialog: public QDialog {
 	static constexpr int MAX_SAVED_ENTRIES=10;
 
 	/**
-         * @brief SAVE_FILENAME The file the recenlty used files are saved in.
+	     * @brief SAVE_FILENAME The file the recenlty used files are saved in.
 	 */
 	static const QString SAVE_FILENAME;
 

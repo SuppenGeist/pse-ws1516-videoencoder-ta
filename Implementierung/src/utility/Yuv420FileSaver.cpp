@@ -10,8 +10,7 @@
 #include <QFileInfo>
 
 Utility::Yuv420FileSaver::Yuv420FileSaver(QString filename,
-        Model::Video& video):YuvFileSaver(filename,video),isRunning_(false)
-     {
+        Model::Video& video):YuvFileSaver(filename,video),isRunning_(false) {
 }
 
 Utility::Yuv420FileSaver::~Yuv420FileSaver() {
@@ -59,6 +58,6 @@ void Utility::Yuv420FileSaver::saveP() {
 	} while(isRunning_);
 	bool buffer=isRunning_;
 	isRunning_=false;
-    emit saveComplete(buffer,QFileInfo(file_).fileName(),video_->getWidth(),video_->getHeight());
+	emit saveComplete(buffer,QFileInfo(file_).fileName(),video_->getWidth(),video_->getHeight());
 }
 

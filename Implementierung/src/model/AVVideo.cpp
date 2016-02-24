@@ -13,9 +13,9 @@ Model::AVVideo::AVVideo(int fps):fps_(fps),width_(0),height_(0),isComplete_(fals
 
 Model::AVVideo::~AVVideo() {
 	for(auto frame:video_) {
-        av_frame_unref(frame);
+		av_frame_unref(frame);
 		av_frame_free(&frame);
-    }
+	}
 }
 
 int Model::AVVideo::getWidth() {
@@ -61,7 +61,7 @@ bool Model::AVVideo::insertFrame(AVFrame *frame, std::size_t index) {
 
 void Model::AVVideo::removeFrame(std::size_t index) {
 	if(index < video_.size()) {
-        av_frame_unref(video_[index]);
+		av_frame_unref(video_[index]);
 		av_frame_free(&video_[index]);
 		video_.erase(video_.begin() + index);
 	}
@@ -81,7 +81,7 @@ bool Model::AVVideo::appendFrame(AVFrame* frame) {
 
 	video_.push_back(frame);
 
-    return true;
+	return true;
 }
 
 std::size_t Model::AVVideo::getNumberOfFrames() {

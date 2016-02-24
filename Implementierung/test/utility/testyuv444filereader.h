@@ -7,19 +7,19 @@
 #include "../../src/utility/Yuv444FileReader.h"
 
 class TestYuv444FileReader : public QObject {
-    Q_OBJECT
+	Q_OBJECT
 
   private slots:
-    void init();
+	void init();
 
-    void testParseNextFrame();
+	void testParseNextFrame();
 
-    void testReadNextVectorPacked();
+	void testReadNextVectorPacked();
 
-    void testReadNextVectorPlanar();
+	void testReadNextVectorPlanar();
 
   private:
-    Utility::Yuv444FileReader fileReader_;
+	Utility::Yuv444FileReader fileReader_;
 };
 
 #endif // TESTYUV444FILEREADER_H

@@ -52,7 +52,7 @@ class Video {
 	 * If the index is invalid nothing happens.
 	 *
 	 * @brief insertFrame Inserts a frame at the given index.
-         * If the width and height of the frame don't match the size of the video, false is returned.
+	     * If the width and height of the frame don't match the size of the video, false is returned.
 	 * @param index The index to insert the frame at.
 	 * @param frame The frame to insert.
 	 */
@@ -70,7 +70,7 @@ class Video {
 	 * If the index is invalid false is returned.
 	 *
 	 * @brief insertFrames Inserts a vector of frames at the given index.
-         * If the width and height of one frame don't match the size of the video, false is returned.
+	     * If the width and height of one frame don't match the size of the video, false is returned.
 	 * All frames that match the size of the video are inserted either way.
 	 * @param index The index to insert the frames at.
 	 * @param frames The frames to insert.

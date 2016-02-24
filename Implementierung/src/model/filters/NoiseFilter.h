@@ -39,7 +39,7 @@ class NoiseFilter: public Model::Filter {
 
 	/**
 	 * @brief Returns the intensity of the noise.
-         * @return The intensity of the noise.
+	     * @return The intensity of the noise.
 	 */
 	int getIntensity();
 
@@ -74,7 +74,7 @@ class NoiseFilter: public Model::Filter {
 	QString getSaveString() const;
 
   private:
-    Model::NoiseMode mode_;
+	Model::NoiseMode mode_;
 	int intensity_;
 
 };

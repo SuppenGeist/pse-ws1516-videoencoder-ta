@@ -28,7 +28,7 @@ namespace GUI {
 class GraphWidget:public QGraphicsView {
 	Q_OBJECT
   public:
-    /**
+	/**
 	 * @brief GraphWidget Constructor.
 	 */
 	GraphWidget(QWidget* parent=0);
@@ -42,18 +42,18 @@ class GraphWidget:public QGraphicsView {
 
 	Model::Graph* getGraph();
 
-    void setGraphCalculator(GraphCalculator* calculator);
+	void setGraphCalculator(GraphCalculator* calculator);
 
-    /**
-         * @brief setControlPanel Sets the GlobalControlPanel to notify, if a click on the graph was performed.
+	/**
+	     * @brief setControlPanel Sets the GlobalControlPanel to notify, if a click on the graph was performed.
 	 * @param panel The panel to notify.
 	 */
 	void setControlPanel(GlobalControlPanel* panel);
 
-    /**
+	/**
 	 * @brief buildScene Creates the GraphicsScene.
 	 */
-    void buildScene();
+	void buildScene();
 
   protected:
 	/**
@@ -68,11 +68,11 @@ class GraphWidget:public QGraphicsView {
 	void updateView();
 
   private:
-    GlobalControlPanel*         controlPanel_;
+	GlobalControlPanel*         controlPanel_;
 	Model::Graph*               graph_;
-    QGraphicsScene*             scene_;
-    QTimer                      updater_;
-    GraphCalculator*            calculator_;
+	QGraphicsScene*             scene_;
+	QTimer                      updater_;
+	GraphCalculator*            calculator_;
 };
 }
 

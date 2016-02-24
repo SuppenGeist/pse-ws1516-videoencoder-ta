@@ -15,11 +15,11 @@ namespace Utility {
  * This is the base class for yuv savers.
  */
 class YuvFileSaver:public QObject {
-    Q_OBJECT
+	Q_OBJECT
   public:
-    static int RgbToY(QRgb pixel);
-    static int RgbToU(QRgb pixel);
-    static int RgbToV(QRgb pixel);
+	static int RgbToY(QRgb pixel);
+	static int RgbToU(QRgb pixel);
+	static int RgbToV(QRgb pixel);
 	/**
 	 * @brief YuvFileSaver Constructor.
 	 * @param filename Absolute path to the file to save to.
@@ -37,8 +37,8 @@ class YuvFileSaver:public QObject {
 	 */
 	virtual void save() = 0;
 
-signals:
-    void saveComplete(bool successful,QString filename,int width,int height);
+  signals:
+	void saveComplete(bool successful,QString filename,int width,int height);
 
   protected:
 	int             width_;

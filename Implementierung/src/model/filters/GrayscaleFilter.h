@@ -38,7 +38,7 @@ class GrayscaleFilter: public Filter {
 	 * @brief restoreFilter
 	 * @param description
 	 */
-    void restore(QString);
+	void restore(QString);
 
 	/**
 	 * @brief getSaveString

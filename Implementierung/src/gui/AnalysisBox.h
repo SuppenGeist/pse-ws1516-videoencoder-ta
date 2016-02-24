@@ -46,7 +46,7 @@ class AnalysisBox: public QFrame {
 
 	~AnalysisBox();
 
-    std::unique_ptr<Memento::AnalysisBoxMemento> getMemento();
+	std::unique_ptr<Memento::AnalysisBoxMemento> getMemento();
 
 	void restore(Memento::AnalysisBoxMemento* memento);
 
@@ -64,16 +64,16 @@ class AnalysisBox: public QFrame {
 
 	void showAttributes();
 
-    QString getPath();
+	QString getPath();
 
 	QPlainTextEdit* getCommentBox();
 
-    void lockUi();
+	void lockUi();
 
-    void unlockUi();
+	void unlockUi();
 
   private slots:
-	void closeBox();
+	void close();
 	void updateLabels();
 	void commentChanged();
 
@@ -96,14 +96,14 @@ class AnalysisBox: public QFrame {
 	std::unique_ptr<VideoPlayer>              anaVidPlayer_;
 	std::shared_ptr<GlobalControlPanel>     globalControlPanel_;
 	std::unique_ptr<GraphPlayer>            graphPlayer_;
-    std::unique_ptr<GraphCalculator>        calculator_;
+	std::unique_ptr<GraphCalculator>        calculator_;
 
-	QString         filename_;
 	std::unique_ptr<Model::EncodedVideo>      origVideo_;
 	QTimer          timer_updateLabels_;
 	QString currentComment_;
 
 	void createUi();
+	void connectActions();
 
 
 };

@@ -25,7 +25,7 @@ class RemoveVideo: public QUndoCommand {
 	RemoveVideo(GUI::AnalysisBoxContainer* boxContainer, GUI::AnalysisBox* box);
 
 	/**
-         * @brief undo Readds the removed video to the analysis tab.
+	     * @brief undo Readds the removed video to the analysis tab.
 	 */
 	void undo();
 

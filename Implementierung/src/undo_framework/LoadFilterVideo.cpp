@@ -14,7 +14,7 @@ UndoRedo::LoadFilterVideo::LoadFilterVideo(GUI::FilterTab& filterTab,
 }
 
 void UndoRedo::LoadFilterVideo::undo() {
-     filterTab_->restore(memento_.get());
+	filterTab_->restore(memento_.get());
 }
 
 void UndoRedo::LoadFilterVideo::redo() {

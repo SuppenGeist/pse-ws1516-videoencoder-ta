@@ -38,7 +38,7 @@ namespace GUI {
 class FilterTab: public QFrame {
 	Q_OBJECT
   public:
-    static constexpr int MAX_PREVIEW_COUNT=5;
+	static constexpr int MAX_PREVIEW_COUNT=5;
 
 	FilterTab(QWidget* parent=0);
 
@@ -74,7 +74,7 @@ class FilterTab: public QFrame {
 
 	void setMainWindow(GUI::MainWindow* mainwindow);
 
-    MainWindow *getMainWindow();
+	MainWindow *getMainWindow();
 
   private slots:
 	void up();

@@ -62,8 +62,8 @@ GUI::AnalysisTab::AnalysisTab(QWidget* parent) : QFrame(parent),rawVideo_(nullpt
 	analysisBoxContainer_->setControlPanel(globalControlPanel_);
 	analysisBoxContainer_->setTimer(timer_);
 
-    calculator_=std::make_unique<GraphCalculator>();
-    graphWidget_->setGraphCalculator(calculator_.get());
+	calculator_=std::make_unique<GraphCalculator>();
+	graphWidget_->setGraphCalculator(calculator_.get());
 }
 
 std::unique_ptr<Memento::AnalysisTabMemento> GUI::AnalysisTab::getMemento() {
@@ -79,17 +79,17 @@ std::unique_ptr<Memento::AnalysisTabMemento> GUI::AnalysisTab::getMemento() {
 }
 
 void GUI::AnalysisTab::restore(Memento::AnalysisTabMemento *memento) {
-    if(!memento)
-        return;
+	if(!memento)
+		return;
 
 	setRawVideo(memento->getRawVideo());
 
-    auto ownedVideo=memento->releaseVideo();
-    if(ownedVideo.get()) {
-        auto dummy=std::make_unique<Memento::AnalysisTabMemento>();
-        auto command=new UndoRedo::LoadAnalysisVideo(this,std::move(ownedVideo),std::move(dummy));
-        UndoRedo::UndoStack::getUndoStack().push(command);
-    }
+	auto ownedVideo=memento->releaseVideo();
+	if(ownedVideo.get()) {
+		auto dummy=std::make_unique<Memento::AnalysisTabMemento>();
+		auto command=new UndoRedo::LoadAnalysisVideo(this,std::move(ownedVideo),std::move(dummy));
+		UndoRedo::UndoStack::getUndoStack().push(command);
+	}
 
 	if(memento->getAnalysisBoxContainerMemento()) {
 		analysisBoxContainer_->restore(memento->getAnalysisBoxContainerMemento());
@@ -99,14 +99,14 @@ void GUI::AnalysisTab::restore(Memento::AnalysisTabMemento *memento) {
 	case AnalysisGraph::BITRATE:
 		showBitrate();
 		break;
-        case AnalysisGraph::BLUE_HISTOGRAM:
-                showBlueHistogram();
+	case AnalysisGraph::BLUE_HISTOGRAM:
+		showBlueHistogram();
 		break;
-        case AnalysisGraph::RED_HISTOGRAM:
-                showRedHistogram();
+	case AnalysisGraph::RED_HISTOGRAM:
+		showRedHistogram();
 		break;
-        case AnalysisGraph::GREEN_HISTOGRAM:
-                showGreenHistogram();
+	case AnalysisGraph::GREEN_HISTOGRAM:
+		showGreenHistogram();
 		break;
 	case AnalysisGraph::PSNR:
 		showPsnr();
@@ -128,14 +128,14 @@ void GUI::AnalysisTab::restore(Memento::AnalysisTabMemento *memento) {
 }
 
 void GUI::AnalysisTab::setRawVideo(Model::YuvVideo *rawVideo) {
-    timer_labelUpdater_.stop();
+	timer_labelUpdater_.stop();
 
-    analysisBoxContainer_->clear();
+	analysisBoxContainer_->clear();
 
 	globalControlPanel_->stop();
 
-    graphPlayer_->setGraphVideo(nullptr);
-    graphWidget_->drawGraph(nullptr);
+	graphPlayer_->setGraphVideo(nullptr);
+	graphWidget_->drawGraph(nullptr);
 
 
 	if(rawVideo) {
@@ -161,8 +161,8 @@ void GUI::AnalysisTab::setRawVideo(Model::YuvVideo *rawVideo) {
 		label_framesize_->setText(QString::number((rawVideo->getWidth()*rawVideo->getHeight()*3)/
 		                          (double)1000,'f',2)+" KB");
 
-                rawVideo_->getRedHistogram();
-        timer_labelUpdater_.start(200);
+		rawVideo_->getRedHistogram();
+		timer_labelUpdater_.start(200);
 
 	} else {
 		v_rawVideo_->removeWidget(rawVideoView_);
@@ -219,7 +219,8 @@ void GUI::AnalysisTab::loadRawVideo() {
 	               fileOpenDiag.getCompression(),fileOpenDiag.getWidth(),fileOpenDiag.getHeight(),
 	               fileOpenDiag.getFps());
 
-    UndoRedo::UndoStack::getUndoStack().push(new UndoRedo::LoadAnalysisVideo(this,std::move(yuvVideo),getMemento()));
+	UndoRedo::UndoStack::getUndoStack().push(new UndoRedo::LoadAnalysisVideo(this,std::move(yuvVideo),
+	        getMemento()));
 }
 
 void GUI::AnalysisTab::showBitrate() {
@@ -230,80 +231,80 @@ void GUI::AnalysisTab::showBitrate() {
 	graphPlayer_->setGraphVideo(nullptr);
 
 	button_bitrate_->setStyleSheet(stylesheet_buttonsSelected_);
-        button_blueHistogram_->setStyleSheet(stylesheet_buttons_);
-        button_greenHistogram_->setStyleSheet(stylesheet_buttons_);
+	button_blueHistogram_->setStyleSheet(stylesheet_buttons_);
+	button_greenHistogram_->setStyleSheet(stylesheet_buttons_);
 	button_psnr_->setStyleSheet(stylesheet_buttons_);
-        button_redHistogram_->setStyleSheet(stylesheet_buttons_);
+	button_redHistogram_->setStyleSheet(stylesheet_buttons_);
 }
 
 void GUI::AnalysisTab::showRedHistogram() {
 	if(!rawVideo_)
 		return;
-        analysisBoxContainer_->showGraph(AnalysisGraph::RED_HISTOGRAM);
+	analysisBoxContainer_->showGraph(AnalysisGraph::RED_HISTOGRAM);
 	tabs_graphattrs->setCurrentIndex(0);
-    calculator_->setAxisLabels("","");
-    calculator_->setIsFilled(true);
+	calculator_->setAxisLabels("","");
+	calculator_->setIsFilled(true);
 	QBrush filler(QColor(255,0,0));
-    calculator_->setShowLabels(false);
-    calculator_->setFillBrush(filler);
+	calculator_->setShowLabels(false);
+	calculator_->setFillBrush(filler);
 	QPen filpen(QColor(255,0,0));
-    calculator_->setFillPen(filpen);
-    calculator_->setLinePen(filpen);
-    graphPlayer_->setGraphVideo(&rawVideo_->getRedHistogram());
+	calculator_->setFillPen(filpen);
+	calculator_->setLinePen(filpen);
+	graphPlayer_->setGraphVideo(&rawVideo_->getRedHistogram());
 	graphPlayer_->setPosition(globalControlPanel_->getPosition());
 
 	button_bitrate_->setStyleSheet(stylesheet_buttons_);
-        button_blueHistogram_->setStyleSheet(stylesheet_buttons_);
-        button_greenHistogram_->setStyleSheet(stylesheet_buttons_);
+	button_blueHistogram_->setStyleSheet(stylesheet_buttons_);
+	button_greenHistogram_->setStyleSheet(stylesheet_buttons_);
 	button_psnr_->setStyleSheet(stylesheet_buttons_);
-        button_redHistogram_->setStyleSheet(stylesheet_buttonsSelected_);
+	button_redHistogram_->setStyleSheet(stylesheet_buttonsSelected_);
 
 }
 
 void GUI::AnalysisTab::showBlueHistogram() {
 	if(!rawVideo_)
 		return;
-        analysisBoxContainer_->showGraph(AnalysisGraph::BLUE_HISTOGRAM);
+	analysisBoxContainer_->showGraph(AnalysisGraph::BLUE_HISTOGRAM);
 	tabs_graphattrs->setCurrentIndex(0);
-    calculator_->setAxisLabels("","");
-    calculator_->setIsFilled(true);
+	calculator_->setAxisLabels("","");
+	calculator_->setIsFilled(true);
 	QBrush filler(QColor(0,0,255));
-    calculator_->setShowLabels(false);
-    calculator_->setFillBrush(filler);
-    QPen filpen(QColor(0,0,255));
-    calculator_->setFillPen(filpen);
-    calculator_->setLinePen(filpen);
-    graphPlayer_->setGraphVideo(&rawVideo_->getBlueHistogram());
+	calculator_->setShowLabels(false);
+	calculator_->setFillBrush(filler);
+	QPen filpen(QColor(0,0,255));
+	calculator_->setFillPen(filpen);
+	calculator_->setLinePen(filpen);
+	graphPlayer_->setGraphVideo(&rawVideo_->getBlueHistogram());
 	graphPlayer_->setPosition(globalControlPanel_->getPosition());
 
 	button_bitrate_->setStyleSheet(stylesheet_buttons_);
-        button_blueHistogram_->setStyleSheet(stylesheet_buttonsSelected_);
-        button_greenHistogram_->setStyleSheet(stylesheet_buttons_);
+	button_blueHistogram_->setStyleSheet(stylesheet_buttonsSelected_);
+	button_greenHistogram_->setStyleSheet(stylesheet_buttons_);
 	button_psnr_->setStyleSheet(stylesheet_buttons_);
-        button_redHistogram_->setStyleSheet(stylesheet_buttons_);
+	button_redHistogram_->setStyleSheet(stylesheet_buttons_);
 }
 
 void GUI::AnalysisTab::showGreenHistogram() {
 	if(!rawVideo_)
 		return;
-        analysisBoxContainer_->showGraph(AnalysisGraph::GREEN_HISTOGRAM);
+	analysisBoxContainer_->showGraph(AnalysisGraph::GREEN_HISTOGRAM);
 	tabs_graphattrs->setCurrentIndex(0);
-    calculator_->setAxisLabels("","");
-    calculator_->setIsFilled(true);
+	calculator_->setAxisLabels("","");
+	calculator_->setIsFilled(true);
 	QBrush filler(QColor(0,255,0));
-    calculator_->setShowLabels(false);
-    calculator_->setFillBrush(filler);
+	calculator_->setShowLabels(false);
+	calculator_->setFillBrush(filler);
 	QPen filpen(QColor(0,255,0));
-    calculator_->setFillPen(filpen);
-    calculator_->setLinePen(filpen);
-    graphPlayer_->setGraphVideo(&rawVideo_->getGreenHistogram());
+	calculator_->setFillPen(filpen);
+	calculator_->setLinePen(filpen);
+	graphPlayer_->setGraphVideo(&rawVideo_->getGreenHistogram());
 	graphPlayer_->setPosition(globalControlPanel_->getPosition());
 
 	button_bitrate_->setStyleSheet(stylesheet_buttons_);
-        button_blueHistogram_->setStyleSheet(stylesheet_buttons_);
-        button_greenHistogram_->setStyleSheet(stylesheet_buttonsSelected_);
+	button_blueHistogram_->setStyleSheet(stylesheet_buttons_);
+	button_greenHistogram_->setStyleSheet(stylesheet_buttonsSelected_);
 	button_psnr_->setStyleSheet(stylesheet_buttons_);
-        button_redHistogram_->setStyleSheet(stylesheet_buttons_);
+	button_redHistogram_->setStyleSheet(stylesheet_buttons_);
 }
 
 void GUI::AnalysisTab::showPsnr() {
@@ -314,10 +315,10 @@ void GUI::AnalysisTab::showPsnr() {
 	graphPlayer_->setGraphVideo(nullptr);
 
 	button_bitrate_->setStyleSheet(stylesheet_buttons_);
-        button_blueHistogram_->setStyleSheet(stylesheet_buttons_);
-        button_greenHistogram_->setStyleSheet(stylesheet_buttons_);
+	button_blueHistogram_->setStyleSheet(stylesheet_buttons_);
+	button_greenHistogram_->setStyleSheet(stylesheet_buttons_);
 	button_psnr_->setStyleSheet(stylesheet_buttonsSelected_);
-        button_redHistogram_->setStyleSheet(stylesheet_buttons_);
+	button_redHistogram_->setStyleSheet(stylesheet_buttons_);
 }
 
 void GUI::AnalysisTab::showAttributes() {
@@ -342,59 +343,58 @@ void GUI::AnalysisTab::updateLabels() {
 	label_framesize_->setText(QString::number((rawVideo_->getWidth()*rawVideo_->getHeight()*3)/
 	                          (double)1000,'f',2)+" KB");
 
-    switch(analysisBoxContainer_->getShownGraph()) {
-    case AnalysisGraph::BLUE_HISTOGRAM:
-        showBlueHistogram();
-        break;
-    case AnalysisGraph::RED_HISTOGRAM:
-        showRedHistogram();
-        break;
-    case AnalysisGraph::GREEN_HISTOGRAM:
-        showGreenHistogram();
-        break;
-    case AnalysisGraph::BITRATE:
-        showBitrate();
-        break;
-    case AnalysisGraph::PSNR:
-        showPsnr();
-        break;
-    }
+	switch(analysisBoxContainer_->getShownGraph()) {
+	case AnalysisGraph::BLUE_HISTOGRAM:
+		showBlueHistogram();
+		break;
+	case AnalysisGraph::RED_HISTOGRAM:
+		showRedHistogram();
+		break;
+	case AnalysisGraph::GREEN_HISTOGRAM:
+		showGreenHistogram();
+		break;
+	case AnalysisGraph::BITRATE:
+		showBitrate();
+		break;
+	case AnalysisGraph::PSNR:
+		showPsnr();
+		break;
+	}
 
 	if(rawVideo_->getWidth()!=0&&rawVideo_->getHeight()!=0) {
 		timer_labelUpdater_.stop();
-    }
+	}
 }
 
-void GUI::AnalysisTab::resultSavingFinished()
-{
-    analysisBoxContainer_->unlockUi();
+void GUI::AnalysisTab::resultSavingFinished() {
+	analysisBoxContainer_->unlockUi();
 
-    button_loadnewvideo_->setEnabled(true);
-    button_saveResults_->setEnabled(true);
+	button_loadnewvideo_->setEnabled(true);
+	button_saveResults_->setEnabled(true);
 
-    QMessageBox::information(this,"Saving results finished","The results have been saved!");
+	QMessageBox::information(this,"Saving results finished","The results have been saved!");
 }
 
-void GUI::AnalysisTab::saveResults()
-{
-    if(!rawVideo_||analysisBoxContainer_->getNumberOfBoxes()==0)
-        return;
+void GUI::AnalysisTab::saveResults() {
+	if(!rawVideo_||analysisBoxContainer_->getNumberOfBoxes()==0)
+		return;
 
-    auto path=QFileDialog::getExistingDirectory(this,"Save results",QDir::homePath(),QFileDialog::ShowDirsOnly|QFileDialog::DontResolveSymlinks);
+	auto path=QFileDialog::getExistingDirectory(this,"Save results",QDir::homePath(),
+	          QFileDialog::ShowDirsOnly|QFileDialog::DontResolveSymlinks);
 
-    if(path.isEmpty())
-        return;
+	if(path.isEmpty())
+		return;
 
-    resultsSaver_=std::make_unique<Utility::ResultSaver>(analysisBoxContainer_->getMemento(),path);
+	resultsSaver_=std::make_unique<Utility::ResultSaver>(analysisBoxContainer_->getMemento(),path);
 
-    analysisBoxContainer_->lockUi();
-    button_loadnewvideo_->setEnabled(false);
-    button_saveResults_->setEnabled(false);
+	analysisBoxContainer_->lockUi();
+	button_loadnewvideo_->setEnabled(false);
+	button_saveResults_->setEnabled(false);
 
-    connect(resultsSaver_.get(),SIGNAL(finished()),this,SLOT(resultSavingFinished()));
-    resultsSaver_->start();
+	connect(resultsSaver_.get(),SIGNAL(finished()),this,SLOT(resultSavingFinished()));
+	resultsSaver_->start();
 
-    //resultsSaver_->save();
+	//resultsSaver_->save();
 
 }
 
@@ -403,17 +403,17 @@ void GUI::AnalysisTab::createUi() {
 	button_addRawVideo_=new QPushButton("Load video");
 	button_attributes_=new QPushButton("Attributes");
 	button_bitrate_=new QPushButton("Bitrate");
-        button_blueHistogram_=new QPushButton("Blue histogram");
-        button_greenHistogram_=new QPushButton("Green histogram");
-        button_redHistogram_=new QPushButton("Red histogram");
+	button_blueHistogram_=new QPushButton("Blue histogram");
+	button_greenHistogram_=new QPushButton("Green histogram");
+	button_redHistogram_=new QPushButton("Red histogram");
 	button_psnr_=new QPushButton("PSNR");
 
 	button_saveResults_->setFlat(true);
 	button_attributes_->setFlat(true);
 	button_bitrate_->setFlat(true);
-        button_blueHistogram_->setFlat(true);
-        button_greenHistogram_->setFlat(true);
-        button_redHistogram_->setFlat(true);
+	button_blueHistogram_->setFlat(true);
+	button_greenHistogram_->setFlat(true);
+	button_redHistogram_->setFlat(true);
 	button_psnr_->setFlat(true);
 
 	stylesheet_buttons_=QString("QPushButton {"
@@ -448,16 +448,16 @@ void GUI::AnalysisTab::createUi() {
 
 	button_attributes_->setStyleSheet(stylesheet_buttons_);
 	button_bitrate_->setStyleSheet(stylesheet_buttonsSelected_);
-        button_blueHistogram_->setStyleSheet(stylesheet_buttons_);
-        button_greenHistogram_->setStyleSheet(stylesheet_buttons_);
-        button_redHistogram_->setStyleSheet(stylesheet_buttons_);
+	button_blueHistogram_->setStyleSheet(stylesheet_buttons_);
+	button_greenHistogram_->setStyleSheet(stylesheet_buttons_);
+	button_redHistogram_->setStyleSheet(stylesheet_buttons_);
 	button_psnr_->setStyleSheet(stylesheet_buttons_);
 
 	button_attributes_->setFixedSize(120,25);
 	button_bitrate_->setFixedSize(120,25);
-        button_blueHistogram_->setFixedSize(120,25);
-        button_greenHistogram_->setFixedSize(120,25);
-        button_redHistogram_->setFixedSize(120,25);
+	button_blueHistogram_->setFixedSize(120,25);
+	button_greenHistogram_->setFixedSize(120,25);
+	button_redHistogram_->setFixedSize(120,25);
 	button_psnr_->setFixedSize(120,25);
 
 	QString stylesheet1("QPushButton {"
@@ -629,9 +629,9 @@ void GUI::AnalysisTab::createUi() {
 
 	QVBoxLayout* v_buttongrp=new QVBoxLayout;
 	v_buttongrp->addWidget(button_attributes_);
-        v_buttongrp->addWidget(button_redHistogram_);
-        v_buttongrp->addWidget(button_greenHistogram_);
-        v_buttongrp->addWidget(button_blueHistogram_);
+	v_buttongrp->addWidget(button_redHistogram_);
+	v_buttongrp->addWidget(button_greenHistogram_);
+	v_buttongrp->addWidget(button_blueHistogram_);
 	v_buttongrp->addWidget(button_psnr_);
 	v_buttongrp->addWidget(button_bitrate_);
 
@@ -737,14 +737,14 @@ void GUI::AnalysisTab::connectActions() {
 	connect(button_addRawVideo_,SIGNAL(clicked(bool)),this,SLOT(loadRawVideo()));
 	connect(button_bitrate_,SIGNAL(clicked(bool)),this,SLOT(showBitrate()));
 	connect(combobbox_anaVideo_,SIGNAL(currentIndexChanged(int)),this,SLOT(analysisVideoChanged(int)));
-        connect(button_redHistogram_,SIGNAL(clicked(bool)),this,SLOT(showRedHistogram()));
-        connect(button_blueHistogram_,SIGNAL(clicked(bool)),this,SLOT(showBlueHistogram()));
-        connect(button_greenHistogram_,SIGNAL(clicked(bool)),this,SLOT(showGreenHistogram()));
+	connect(button_redHistogram_,SIGNAL(clicked(bool)),this,SLOT(showRedHistogram()));
+	connect(button_blueHistogram_,SIGNAL(clicked(bool)),this,SLOT(showBlueHistogram()));
+	connect(button_greenHistogram_,SIGNAL(clicked(bool)),this,SLOT(showGreenHistogram()));
 	connect(button_psnr_,SIGNAL(clicked(bool)),this,SLOT(showPsnr()));
 	connect(button_attributes_,SIGNAL(clicked(bool)),this,SLOT(showAttributes()));
 	connect(button_loadnewvideo_,SIGNAL(clicked(bool)),this,SLOT(loadRawVideo()));
 	connect(&timer_labelUpdater_,SIGNAL(timeout()),this,SLOT(updateLabels()));
-    connect(this,SIGNAL(resultsSaved()),this,SLOT(resultSavingFinished()));
-    connect(button_saveResults_,SIGNAL(clicked(bool)),this,SLOT(saveResults()));
+	connect(this,SIGNAL(resultsSaved()),this,SLOT(resultSavingFinished()));
+	connect(button_saveResults_,SIGNAL(clicked(bool)),this,SLOT(saveResults()));
 }
 

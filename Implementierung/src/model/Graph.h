@@ -20,10 +20,10 @@ class Graph {
 	/**
 	 * @brief addValue Adds a value pair.
 	 * The graph is automatically to the given x extended.
-         * @param x Value on the x-axis.
-         * @param y Value on the y-axis.
+	     * @param x Value on the x-axis.
+	     * @param y Value on the y-axis.
 	 */
-    void setValue(std::size_t x, double y);
+	void setValue(std::size_t x, double y);
 
 	/**
 	 * @brief getValue Returns the y-value to a specific x-value.

@@ -6,12 +6,11 @@
 
 #include "../../src/model/EncodedVideo.h"
 
-class TestEncodedVideo : public QObject
-{
-    Q_OBJECT
+class TestEncodedVideo : public QObject {
+	Q_OBJECT
 
-private slots:
-    void init();
+  private slots:
+	void init();
 };
 
 #endif // TESTENCODEDVIDEO_H

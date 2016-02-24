@@ -64,13 +64,13 @@ AVFrame* Utility::FilterApplier::applyToFrame(AVFrame &source) {
 	auto frame=av_frame_alloc();
 
 	if(av_buffersrc_add_frame_flags(buffersourceContext_, &source, AV_BUFFERSRC_FLAG_KEEP_REF) < 0) {
-        av_frame_unref(frame);
+		av_frame_unref(frame);
 		av_frame_free(&frame);
 		throw std::runtime_error("Could not feed the frame into the filtergraph.");
 	}
 
 	if(av_buffersink_get_frame(buffersinkContext_, frame)<0) {
-        av_frame_unref(frame);
+		av_frame_unref(frame);
 		av_frame_free(&frame);
 		throw std::runtime_error("Could not pull the filtered frame from the filtergraph.");
 	}
@@ -160,8 +160,8 @@ void Utility::FilterApplier::applyToVideoP() {
 			auto filteredImage=applyToFrame(*image);
 			target_->appendFrame(VideoConverter::convertAVFrameToQImage(*filteredImage));
 
-            av_frame_unref(image);
-            av_frame_unref(filteredImage);
+			av_frame_unref(image);
+			av_frame_unref(filteredImage);
 			av_frame_free(&image);
 			av_frame_free(&filteredImage);
 		}
@@ -170,9 +170,9 @@ void Utility::FilterApplier::applyToVideoP() {
 		}
 	} while(isRunning_);
 	target_->setIsComplete(true);
-    bool buffer=isRunning_;
-    isRunning_=false;
-    emit applyComplete(buffer);
+	bool buffer=isRunning_;
+	isRunning_=false;
+	emit applyComplete(buffer);
 }
 
 void Utility::FilterApplier::applyToAVVideoP() {
@@ -181,7 +181,7 @@ void Utility::FilterApplier::applyToAVVideoP() {
 		auto filteredImage=applyToFrame(*source1_->getFrame(i));
 		target_->appendFrame(VideoConverter::convertAVFrameToQImage(*filteredImage));
 
-        av_frame_unref(filteredImage);
+		av_frame_unref(filteredImage);
 		av_frame_free(&filteredImage);
 	}
 	isRunning_=false;

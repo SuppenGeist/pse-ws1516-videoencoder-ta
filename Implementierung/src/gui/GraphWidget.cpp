@@ -20,17 +20,17 @@
 
 
 GUI::GraphWidget::GraphWidget(QWidget *parent):QGraphicsView(parent),controlPanel_(nullptr),
-    graph_(nullptr),scene_(nullptr),calculator_(nullptr) {
+	graph_(nullptr),scene_(nullptr),calculator_(nullptr) {
 	setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
 
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
-    scene_=new QGraphicsScene;
-    setScene(scene_);
+	scene_=new QGraphicsScene;
+	setScene(scene_);
 
-    connect(&updater_,SIGNAL(timeout()),this,SLOT(updateView()));
-    updater_.start(500);
+	connect(&updater_,SIGNAL(timeout()),this,SLOT(updateView()));
+	updater_.start(500);
 }
 
 void GUI::GraphWidget::drawGraph(Model::Graph* graph) {
@@ -38,21 +38,20 @@ void GUI::GraphWidget::drawGraph(Model::Graph* graph) {
 		return;
 
 	graph_=graph;
-    calculator_->setGraph(graph);
+	calculator_->setGraph(graph);
 
 	buildScene();
 	update();
 }
 
 Model::Graph *GUI::GraphWidget::getGraph() {
-    return graph_;
+	return graph_;
 }
 
-void GUI::GraphWidget::setGraphCalculator(GUI::GraphCalculator *calculator)
-{
-    calculator_=calculator;
+void GUI::GraphWidget::setGraphCalculator(GUI::GraphCalculator *calculator) {
+	calculator_=calculator;
 
-    buildScene();
+	buildScene();
 }
 
 void GUI::GraphWidget::setControlPanel(GlobalControlPanel *panel) {
@@ -64,7 +63,8 @@ void GUI::GraphWidget::mouseReleaseEvent(QMouseEvent* event) {
 		return;
 	}
 
-    auto frame=calculator_->calculateFrame(event->pos().x(),event->pos().y(),sceneRect().width(),sceneRect().height());
+	auto frame=calculator_->calculateFrame(event->pos().x(),event->pos().y(),sceneRect().width(),
+	                                       sceneRect().height());
 
 	controlPanel_->setPosition(frame);
 	controlPanel_->pause();
@@ -89,10 +89,10 @@ void GUI::GraphWidget::buildScene() {
 	const int vwidth=visibleArea.width();
 	const int vheight=visibleArea.height();
 
-    if(vwidth==0||vheight==0)
-        return;
+	if(vwidth==0||vheight==0)
+		return;
 
-    calculator_->drawGraph(scene_,vwidth,vheight);
+	calculator_->drawGraph(scene_,vwidth,vheight);
 }
 
 

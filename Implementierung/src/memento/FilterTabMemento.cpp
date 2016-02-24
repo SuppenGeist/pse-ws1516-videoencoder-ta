@@ -13,17 +13,15 @@ Memento::FilterTabMemento::FilterTabMemento():rawVideo_(nullptr),isPreviewShown_
 }
 
 void Memento::FilterTabMemento::setRawVideo(Model::YuvVideo *rawVideo) {
-    rawVideo_=rawVideo;
+	rawVideo_=rawVideo;
 }
 
-void Memento::FilterTabMemento::setRawVideo(std::unique_ptr<Model::YuvVideo> video)
-{
-    ownedRawVideo_=std::move(video);
+void Memento::FilterTabMemento::setRawVideo(std::unique_ptr<Model::YuvVideo> video) {
+	ownedRawVideo_=std::move(video);
 }
 
-std::unique_ptr<Model::YuvVideo> Memento::FilterTabMemento::releaseVideo()
-{
-    return std::move(ownedRawVideo_);
+std::unique_ptr<Model::YuvVideo> Memento::FilterTabMemento::releaseVideo() {
+	return std::move(ownedRawVideo_);
 }
 
 Model::YuvVideo *Memento::FilterTabMemento::getRawVideo() {

@@ -72,7 +72,7 @@ bool Model::Video::appendFrame(std::unique_ptr<QImage> frame) {
 
 	frames_.push_back(std::move(frame));
 
-    return true;
+	return true;
 }
 
 bool Model::Video::insertFrames(std::vector<std::unique_ptr<QImage> >& frames, std::size_t index) {

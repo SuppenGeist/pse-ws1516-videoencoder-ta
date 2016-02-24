@@ -7,18 +7,18 @@
 #include "../../src/utility/Yuv420FileReader.h"
 
 class TestYuv420FileReader : public QObject {
-    Q_OBJECT
+	Q_OBJECT
 
   private slots:
-    void init();
+	void init();
 
-    void testParseNextFrame();
+	void testParseNextFrame();
 
-    void testReadNextVector();
+	void testReadNextVector();
 
 
   private:
-    Utility::Yuv420FileReader fileReader_;
+	Utility::Yuv420FileReader fileReader_;
 
 };
 

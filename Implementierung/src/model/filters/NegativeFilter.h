@@ -35,7 +35,7 @@ class NegativeFilter: public Model::Filter {
 	 * @brief restoreFilter
 	 * @param description
 	 */
-    void restore(QString);
+	void restore(QString);
 
 	/**
 	 * @brief getSaveString

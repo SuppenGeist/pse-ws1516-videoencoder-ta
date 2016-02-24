@@ -57,15 +57,15 @@ class YuvInfoDialog: public QDialog {
 	Utility::Compression getCompression();
 
 	/**
-         * @brief getPixelSheme Returns the pixelscheme the user entered.
-         * @return The pixelscheme.
+	     * @brief getPixelSheme Returns the pixelscheme the user entered.
+	     * @return The pixelscheme.
 	 */
 	Utility::YuvType getPixelSheme();
 
   private slots:
 
 	/**
-         * @brief pixelShemeSelectionChanged Slot for comboBox_pixelSheme selectionChanged() signal.
+	     * @brief pixelShemeSelectionChanged Slot for comboBox_pixelSheme selectionChanged() signal.
 	 * @param selection
 	 */
 	void pixelShemeSelectionChanged(int selection);

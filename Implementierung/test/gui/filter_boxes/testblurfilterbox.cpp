@@ -8,7 +8,7 @@
 void TestBlurFilterBox::init() {
 
 	std::unique_ptr<GUI::BlurFilterBox> filterbox1_;
-    filterbox_=filterbox1_.get();
+	filterbox_=filterbox1_.get();
 
 }
 

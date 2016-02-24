@@ -17,9 +17,9 @@ class Video;
 namespace Utility {
 class VideoSaver {
   public:
-    VideoSaver(Model::Video* video,QString filename);
+	VideoSaver(Model::Video* video,QString filename);
 
-    ~VideoSaver();
+	~VideoSaver();
 
 
 	/**
@@ -27,19 +27,19 @@ class VideoSaver {
 	 * @param video The video to save.
 	 * @param filename The path to save the video.
 	 */
-    void save();
+	void save();
 
-    void join();
+	void join();
 
 
   private:
-    Model::Video* video_;
-    QString filename_;
+	Model::Video* video_;
+	QString filename_;
 
-    std::thread saver_;
-    bool isRunning_;
+	std::thread saver_;
+	bool isRunning_;
 
-    void saveP();
+	void saveP();
 
 };
 

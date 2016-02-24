@@ -56,22 +56,22 @@ class EncodedVideo {
 	Graph *getPsnr(Model::Video* reference = 0);
 
 	/**
-         * @brief getRedHistogram Returns the red histogram graph.
-         * @return The red histogram.
+	     * @brief getRedHistogram Returns the red histogram graph.
+	     * @return The red histogram.
 	 */
-        Model::GraphVideo& getRedHistogram();
+	Model::GraphVideo& getRedHistogram();
 
 	/**
-         * @brief getBlueHistogram Returns the blue histogram graph.
-         * @return The blue histogram.
+	     * @brief getBlueHistogram Returns the blue histogram graph.
+	     * @return The blue histogram.
 	 */
-        Model::GraphVideo& getBlueHistogram();
+	Model::GraphVideo& getBlueHistogram();
 
 	/**
-         * @brief getGreenHistogram Returns the green histogram graph.
-         * @return The green histogram.
+	     * @brief getGreenHistogram Returns the green histogram graph.
+	     * @return The green histogram.
 	 */
-        Model::GraphVideo& getGreenHistogram();
+	Model::GraphVideo& getGreenHistogram();
 
 	/**
 	 * @brief getAvVideo Returns the AVVideo.
@@ -116,23 +116,23 @@ class EncodedVideo {
 
 	std::unique_ptr<Utility::VideoLoader> loader_;
 	std::unique_ptr<Utility::BitrateCalculator> bitrateCalculator_;
-        std::unique_ptr<Utility::RGBHistogramCalculator> rgbHistoCalculator_;
+	std::unique_ptr<Utility::RGBHistogramCalculator> rgbHistoCalculator_;
 	std::unique_ptr<Utility::PsnrCalculator>        psnrCalculator_;
 	std::unique_ptr<Utility::RGBDifferenceCalculator> rgbDiffCalculator_;
-    std::unique_ptr<Utility::VideoConverter>        macroblockConverter_;
-    std::unique_ptr<Utility::VideoConverter>        videoConverter_;
-    std::unique_ptr<Utility::VideoLoader>   macroblockLoader_;
+	std::unique_ptr<Utility::VideoConverter>        macroblockConverter_;
+	std::unique_ptr<Utility::VideoConverter>        videoConverter_;
+	std::unique_ptr<Utility::VideoLoader>   macroblockLoader_;
 
 
 	/**
-         * @brief calculateHistograms Calculates the Histograms.
+	     * @brief calculateHistograms Calculates the Histograms.
 	 */
-        void calculateHistograms();
+	void calculateHistograms();
 
 	/**
 	 * @brief loadVideo Loads the video from the file.
 	 */
-    void loadVideo();
+	void loadVideo();
 };
 }
 

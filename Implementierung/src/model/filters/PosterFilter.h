@@ -29,7 +29,7 @@ class PosterFilter: public Model::Filter {
 	std::string getFilterDescription();
 
 	/**
-         * @brief Returns the maximum number of colors.
+	     * @brief Returns the maximum number of colors.
 	 * @return The maximum number of colors.
 	 */
 	int getNumberOfColors();

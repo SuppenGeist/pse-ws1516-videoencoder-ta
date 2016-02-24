@@ -16,28 +16,24 @@ Model::Graph *Model::GraphVideo::getGraph(std::size_t index) {
 }
 
 std::size_t Model::GraphVideo::getNumberOfGraphs() {
-    return graphs_.size();
+	return graphs_.size();
 }
 
-int Model::GraphVideo::getFps()
-{
-    return fps_;
+int Model::GraphVideo::getFps() {
+	return fps_;
 }
 
-void Model::GraphVideo::setFps(int fps)
-{
-    if(fps<0)
-        return;
-    fps_=fps;
+void Model::GraphVideo::setFps(int fps) {
+	if(fps<0)
+		return;
+	fps_=fps;
 }
 
-bool Model::GraphVideo::isComplete()
-{
-    return isComplete_;
+bool Model::GraphVideo::isComplete() {
+	return isComplete_;
 }
 
-void Model::GraphVideo::setIsComplete(bool isComplete)
-{
-    isComplete_=isComplete;
+void Model::GraphVideo::setIsComplete(bool isComplete) {
+	isComplete_=isComplete;
 }
 

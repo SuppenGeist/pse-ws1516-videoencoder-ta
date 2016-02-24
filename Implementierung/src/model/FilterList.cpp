@@ -23,7 +23,7 @@ Model::FilterList::FilterList(Model::FilterList &obj) {
 }
 
 void Model::FilterList::moveFilter(std::size_t oldPosition, std::size_t newPosition) {
-    if(oldPosition>=filters_.size()||newPosition>filters_.size()-1||oldPosition==newPosition)
+	if(oldPosition>=filters_.size()||newPosition>filters_.size()-1||oldPosition==newPosition)
 		return;
 	auto filter=removeFilter(oldPosition);
 	insertFilter(std::move(filter),newPosition);

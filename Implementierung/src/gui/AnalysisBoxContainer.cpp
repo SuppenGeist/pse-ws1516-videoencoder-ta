@@ -23,19 +23,19 @@
 GUI::AnalysisBoxContainer::AnalysisBoxContainer(QWidget* parent) : QFrame(parent),
 	currentGraph_(AnalysisGraph::BITRATE),currentVideo_(AnalysisVideo::MACROBLOCK) {
 	createUi();
+	connectActions();
 	setContentsMargins(-10,-10,-10,-10);
 
-	connect(button_addVideo_,SIGNAL(clicked(bool)),this,SLOT(addVideo()));
 
 	setObjectName("anacontainer");
-    setStyleSheet("QFrame#anacontainer {background-color:white;}");
+	setStyleSheet("QFrame#anacontainer {background-color:white;}");
 }
 
 std::unique_ptr<Memento::AnalysisBoxContainerMemento> GUI::AnalysisBoxContainer::getMemento() {
 	auto memento=std::make_unique<Memento::AnalysisBoxContainerMemento>();
 
 	for(auto box:boxes_) {
-        memento->addMemento(std::move(box->getMemento()));
+		memento->addMemento(std::move(box->getMemento()));
 	}
 
 	return std::move(memento);
@@ -70,6 +70,9 @@ GUI::AnalysisBox *GUI::AnalysisBoxContainer::appendBox(GUI::AnalysisBox *box) {
 }
 
 int GUI::AnalysisBoxContainer::removeBox(AnalysisBox* box) {
+	if(!box)
+		return -1;
+
 	std::size_t i=0;
 	for(; i<boxes_.size(); i++) {
 		if(boxes_[i]==box) {
@@ -130,13 +133,13 @@ void GUI::AnalysisBoxContainer::showAttributes() {
 }
 
 GUI::AnalysisBox *GUI::AnalysisBoxContainer::getAnalysisBox(std::size_t index) {
-    if(index>boxes_.size())
+	if(index>boxes_.size())
 		return nullptr;
 	return boxes_[index];
 }
 
 int GUI::AnalysisBoxContainer::getIndex(GUI::AnalysisBox *box) {
-    for(unsigned int i=0; i<boxes_.size(); i++) {
+	for(unsigned int i=0; i<boxes_.size(); i++) {
 		if(boxes_[i]==box)
 			return i;
 	}
@@ -166,30 +169,27 @@ GUI::AnalysisBox *GUI::AnalysisBoxContainer::insertBox(GUI::AnalysisBox *box, st
 
 	updateUi();
 
-    return box;
+	return box;
 }
 
-std::size_t GUI::AnalysisBoxContainer::getNumberOfBoxes()
-{
-    return boxes_.size();
+std::size_t GUI::AnalysisBoxContainer::getNumberOfBoxes() {
+	return boxes_.size();
 }
 
-void GUI::AnalysisBoxContainer::lockUi()
-{
-    button_addVideo_->setEnabled(false);
+void GUI::AnalysisBoxContainer::lockUi() {
+	button_addVideo_->setEnabled(false);
 
-    for(auto box:boxes_) {
-        box->lockUi();
-    }
+	for(auto box:boxes_) {
+		box->lockUi();
+	}
 }
 
-void GUI::AnalysisBoxContainer::unlockUi()
-{
-    button_addVideo_->setEnabled(true);
+void GUI::AnalysisBoxContainer::unlockUi() {
+	button_addVideo_->setEnabled(true);
 
-    for(auto box:boxes_) {
-        box->unlockUi();
-    }
+	for(auto box:boxes_) {
+		box->unlockUi();
+	}
 }
 
 void GUI::AnalysisBoxContainer::addVideo() {
@@ -268,6 +268,10 @@ void GUI::AnalysisBoxContainer::createUi() {
 	v_content->addSpacing(15);
 
 	setLayout(v_content);
+}
+
+void GUI::AnalysisBoxContainer::connectActions() {
+	connect(button_addVideo_,SIGNAL(clicked(bool)),this,SLOT(addVideo()));
 }
 
 void GUI::AnalysisBoxContainer::updateUi() {

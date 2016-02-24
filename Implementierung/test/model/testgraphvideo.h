@@ -11,10 +11,10 @@ class TestGraphVideo : public QObject {
 	Q_OBJECT
   private slots:
 	void init();
-    void testGetGraph();
-    void testGetNumberOfGraphs();
-    void testIsComplete();
-    void testFPS();
+	void testGetGraph();
+	void testGetNumberOfGraphs();
+	void testIsComplete();
+	void testFPS();
   private:
 	Model::GraphVideo   graphvideo_;
 };

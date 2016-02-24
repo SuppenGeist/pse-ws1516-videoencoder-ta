@@ -7,28 +7,28 @@
 #include "../../src/memento/FilterTabMemento.h"
 
 class TestFilterTabMemento : public QObject {
-    Q_OBJECT
+	Q_OBJECT
 
   private slots:
-    void init();
+	void init();
 
-    void testSetRawVideo();
+	void testSetRawVideo();
 
-    void testSetRawVideo2();
+	void testSetRawVideo2();
 
-    void testSetFilterList();
+	void testSetFilterList();
 
-    void testSetIsPreviewShown();
+	void testSetIsPreviewShown();
 
-    void testSetIsFilteredVideoShown();
+	void testSetIsFilteredVideoShown();
 
-    void testSetCurrentFrame();
+	void testSetCurrentFrame();
 
-    void testSetCurrentlySelectedFilter();
+	void testSetCurrentlySelectedFilter();
 
 
   private:
-    Memento::FilterTabMemento memento_;
+	Memento::FilterTabMemento memento_;
 
 };
 

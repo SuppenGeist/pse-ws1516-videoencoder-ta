@@ -25,7 +25,7 @@ class RectangleFilter: public Model::Filter {
 
 	/**
 	* @brief Returns the color of the rectangle.
-        * @return The color of the rectangle.
+	    * @return The color of the rectangle.
 	*/
 	QColor getColor();
 
@@ -120,11 +120,11 @@ class RectangleFilter: public Model::Filter {
 	QString getSaveString() const;
 
   private:
-    int x_;
-    int y_;
+	int x_;
+	int y_;
 	int width_;
 	int height_;
-    QColor color_;
+	QColor color_;
 	int opacity_;
 };
 }

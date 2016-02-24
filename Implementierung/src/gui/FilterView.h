@@ -26,7 +26,7 @@ class FilterView : public QFrame {
 
   public:
 	/**
-         * @brief FilterView Contructor
+	     * @brief FilterView Contructor
 	 * @param parent Parent of object
 	 */
 	FilterView(QWidget* parent=0);

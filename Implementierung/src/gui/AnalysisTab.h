@@ -77,29 +77,29 @@ class AnalysisTab: public QFrame {
   protected:
 	void resizeEvent(QResizeEvent * event);
 
-signals:
-    void resultsSaved();
+  signals:
+	void resultsSaved();
 
   private slots:
 	void loadRawVideo();
 	void showBitrate();
-        void showRedHistogram();
-        void showBlueHistogram();
-        void showGreenHistogram();
+	void showRedHistogram();
+	void showBlueHistogram();
+	void showGreenHistogram();
 	void showPsnr();
 	void showAttributes();
 	void analysisVideoChanged(int index);
 	void updateLabels();
-    void resultSavingFinished();
-    void saveResults();
+	void resultSavingFinished();
+	void saveResults();
 
   private:
 	QPushButton*            button_saveResults_;
 	QPushButton*            button_addRawVideo_;
 	QPushButton*            button_attributes_;
-        QPushButton*            button_redHistogram_;
-        QPushButton*            button_blueHistogram_;
-        QPushButton*            button_greenHistogram_;
+	QPushButton*            button_redHistogram_;
+	QPushButton*            button_blueHistogram_;
+	QPushButton*            button_greenHistogram_;
 	QPushButton*            button_bitrate_;
 	QPushButton*            button_psnr_;
 	PlayerControlPanel*     playerControlPanel_;
@@ -124,12 +124,12 @@ signals:
 	std::shared_ptr<Timer>              timer_;
 	std::shared_ptr<GlobalControlPanel> globalControlPanel_;
 	std::unique_ptr<VideoPlayer>        videoPlayer_;
-    std::unique_ptr<GraphCalculator>    calculator_;
+	std::unique_ptr<GraphCalculator>    calculator_;
 	FrameView*                          rawVideoView_;
 
-    std::unique_ptr<Utility::ResultSaver> resultsSaver_;
+	std::unique_ptr<Utility::ResultSaver> resultsSaver_;
 
-    QTimer                  timer_labelUpdater_;
+	QTimer                  timer_labelUpdater_;
 
 	MainWindow*             parentWindow_;
 

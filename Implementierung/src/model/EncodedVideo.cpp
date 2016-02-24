@@ -59,7 +59,7 @@ Model::Graph* Model::EncodedVideo::getPsnr(Video *reference) {
 
 Model::GraphVideo &Model::EncodedVideo::getRedHistogram() {
 	if(!redHisto_.get()) {
-                calculateHistograms();
+		calculateHistograms();
 	}
 
 	return *redHisto_;
@@ -67,7 +67,7 @@ Model::GraphVideo &Model::EncodedVideo::getRedHistogram() {
 
 Model::GraphVideo &Model::EncodedVideo::getBlueHistogram() {
 	if(!blueHisto_.get()) {
-                calculateHistograms();
+		calculateHistograms();
 	}
 
 	return *blueHisto_;
@@ -75,7 +75,7 @@ Model::GraphVideo &Model::EncodedVideo::getBlueHistogram() {
 
 Model::GraphVideo &Model::EncodedVideo::getGreenHistogram() {
 	if(!greenHisto_.get()) {
-                calculateHistograms();
+		calculateHistograms();
 	}
 
 	return *greenHisto_;
@@ -93,13 +93,13 @@ Model::Video& Model::EncodedVideo::getMacroBlockVideo() {
 		macroblockAVVideo_ = std::make_unique<AVVideo>();
 		AVDictionary *dict = NULL;
 		// deprecated option vismv
-        av_dict_set(&dict, "debug", "vis_mb_type", 0);
-        av_dict_set(&dict, "vismv", "pf+bf+bb", 0);
+		av_dict_set(&dict, "debug", "vis_mb_type", 0);
+		av_dict_set(&dict, "vismv", "pf+bf+bb", 0);
 		macroblockLoader_ = std::make_unique<Utility::VideoLoader>(path_, dict);
 		macroblockLoader_->loadVideo(macroblockAVVideo_.get());
 		macroblockVideo_=std::make_unique<Video>();
-        macroblockConverter_=std::make_unique<Utility::VideoConverter>(macroblockAVVideo_.get());
-        macroblockConverter_->convertAVVideoToVideo(macroblockVideo_.get());
+		macroblockConverter_=std::make_unique<Utility::VideoConverter>(macroblockAVVideo_.get());
+		macroblockConverter_->convertAVVideoToVideo(macroblockVideo_.get());
 	}
 	return *macroblockVideo_;
 }
@@ -117,7 +117,7 @@ Model::Video* Model::EncodedVideo::getRgbDiffVideo(Video *reference) {
 		try {
 			rgbDiffCalculator_=std::make_unique<Utility::RGBDifferenceCalculator>(*reference,getVideo());
 		} catch(std::invalid_argument& e) {
-            rgbDiffVideo_->setIsComplete(true);
+			rgbDiffVideo_->setIsComplete(true);
 			return rgbDiffVideo_.get();
 		}
 		rgbDiffCalculator_->calculateVideo(rgbDiffVideo_.get());
@@ -131,8 +131,8 @@ Model::Video& Model::EncodedVideo::getVideo() {
 	}
 	if(!video_.get()) {
 		video_=std::make_unique<Video>();
-        videoConverter_=std::make_unique<Utility::VideoConverter>(avVideo_.get());
-        videoConverter_->convertAVVideoToVideo(video_.get());
+		videoConverter_=std::make_unique<Utility::VideoConverter>(avVideo_.get());
+		videoConverter_->convertAVVideoToVideo(video_.get());
 	}
 
 	return *video_.get();
@@ -160,6 +160,6 @@ void Model::EncodedVideo::calculateHistograms() {
 	greenHisto_=std::make_unique<GraphVideo>();
 	blueHisto_=std::make_unique<GraphVideo>();
 
-        rgbHistoCalculator_=std::make_unique<Utility::RGBHistogramCalculator>(getVideo());
+	rgbHistoCalculator_=std::make_unique<Utility::RGBHistogramCalculator>(getVideo());
 	rgbHistoCalculator_->calculate(redHisto_.get(),greenHisto_.get(),blueHisto_.get());
 }
