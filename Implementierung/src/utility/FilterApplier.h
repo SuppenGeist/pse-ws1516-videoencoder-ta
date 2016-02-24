@@ -5,6 +5,8 @@
 #include <string>
 #include <thread>
 
+#include <QObject>
+
 extern "C" {
 #include <libavcodec/avcodec.h>
 #include <libavformat/avformat.h>
@@ -28,7 +30,8 @@ namespace Utility {
 /**
  * Applies filters of a given FilterList to a video.
  */
-class FilterApplier {
+class FilterApplier:public QObject {
+    Q_OBJECT
   public:
 	/**
 	 * @brief FilterApplier Constructor.
@@ -38,7 +41,7 @@ class FilterApplier {
 
 	~FilterApplier();
 
-	void applyToVideo(Model::Video& target, Model::Video& source,GUI::FilterTab* filtertab=0);
+    void applyToVideo(Model::Video& target, Model::Video& source);
 
 	void applyToVideo(Model::Video& target,Model::AVVideo& source);
 
@@ -50,11 +53,9 @@ class FilterApplier {
 	 */
 	AVFrame *applyToFrame(AVFrame& source);
 
-  private:
-	/**
-	 * @brief initFilters Initializes the filters.
-	 */
-	void initFilters();
+  signals:
+    void applyComplete(bool successfull);
+
 
   private:
 	int                 width_;
@@ -69,12 +70,15 @@ class FilterApplier {
 	Model::Video*       source_;
 	Model::AVVideo*     source1_;
 	Model::Video*       target_;
-	bool                isRunning_;
-	GUI::FilterTab*     filterTab_;
+    bool                isRunning_;
 
 	void createFilterString();
 	void applyToVideoP();
-	void applyToAVVideoP();
+    void applyToAVVideoP();
+    /**
+     * @brief initFilters Initializes the filters.
+     */
+    void initFilters();
 };
 }
 

@@ -41,12 +41,10 @@ Utility::FilterApplier::~FilterApplier() {
 	}
 }
 
-void Utility::FilterApplier::applyToVideo(Model::Video &target, Model::Video &source,
-        GUI::FilterTab* filtertab) {
+void Utility::FilterApplier::applyToVideo(Model::Video &target, Model::Video &source) {
 	if(isRunning_)
 		return;
 
-	filterTab_=filtertab;
 	target_=&target;
 	source_=&source;
 
@@ -172,10 +170,9 @@ void Utility::FilterApplier::applyToVideoP() {
 		}
 	} while(isRunning_);
 	target_->setIsComplete(true);
-	if(filterTab_) {
-		filterTab_->applyComplete(isRunning_);
-	}
-	isRunning_=false;
+    bool buffer=isRunning_;
+    isRunning_=false;
+    emit applyComplete(buffer);
 }
 
 void Utility::FilterApplier::applyToAVVideoP() {

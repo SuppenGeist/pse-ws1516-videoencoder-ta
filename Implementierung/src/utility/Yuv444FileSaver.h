@@ -31,8 +31,7 @@ class Yuv444FileSaver: public Utility::YuvFileSaver {
 	 * @param video The video to save.
 	 * @param compression The compression mode.
 	 */
-	Yuv444FileSaver(QString filename, Model::Video& video, Utility::Compression compression,
-	                GUI::FilterTab* filterTab);
+    Yuv444FileSaver(QString filename, Model::Video& video, Utility::Compression compression);
 
 	~Yuv444FileSaver();
 
@@ -48,8 +47,7 @@ class Yuv444FileSaver: public Utility::YuvFileSaver {
 
   private:
 	Compression compression_;
-	std::thread safer_;
-	GUI::FilterTab* filterTab_;
+    std::thread safer_;
 	bool    isRunning_;
 
 	/**

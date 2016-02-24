@@ -27,7 +27,7 @@ class Yuv420FileSaver: public YuvFileSaver {
 	 * @param filename Absolute path to the file to save to.
 	 * @param video The video to save.
 	 */
-	Yuv420FileSaver(QString filename, Model::Video& video, GUI::FilterTab *filterTab);
+    Yuv420FileSaver(QString filename, Model::Video& video);
 
 	~Yuv420FileSaver();
 
@@ -36,8 +36,7 @@ class Yuv420FileSaver: public YuvFileSaver {
 
   private:
 	std::thread     safer_;
-	bool            isRunning_;
-	GUI::FilterTab* filterTab_;
+    bool            isRunning_;
 
 	void saveP();
 };

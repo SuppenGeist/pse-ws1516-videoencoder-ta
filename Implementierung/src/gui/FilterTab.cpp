@@ -416,7 +416,8 @@ void GUI::FilterTab::apply() {
 	filteredVideo_=std::make_unique<Model::Video>(rawVideo_->getFps());
 	filterApplier_=std::make_unique<Utility::FilterApplier>(*filterlist_,rawVideo_->getWidth(),
 	               rawVideo_->getHeight(),AV_PIX_FMT_RGB24);
-	filterApplier_->applyToVideo(*filteredVideo_,rawVideo_->getVideo(),this);
+    filterApplier_->applyToVideo(*filteredVideo_,rawVideo_->getVideo());
+    connect(filterApplier_.get(),SIGNAL(applyComplete(bool)),this,SLOT(notifyOnApplyComplete(bool)));
 
 	showFilteredVideo();
 }
@@ -443,16 +444,17 @@ void GUI::FilterTab::save() {
 	auto type=rawVideo_->getYuvType();
 	if(type==Utility::YuvType::YUV411) {
 		safer_=std::make_unique<Utility::Yuv411FileSaver>(filename,*filteredVideo_,
-		        rawVideo_->getCompression(),this);
+                rawVideo_->getCompression());
 	} else if(type==Utility::YuvType::YUV420) {
-		safer_=std::make_unique<Utility::Yuv420FileSaver>(filename,*filteredVideo_,this);
+        safer_=std::make_unique<Utility::Yuv420FileSaver>(filename,*filteredVideo_);
 	} else if(type==Utility::YuvType::YUV422) {
 		safer_=std::make_unique<Utility::Yuv422FileSaver>(filename,*filteredVideo_,
-		        rawVideo_->getCompression(),this);
+                rawVideo_->getCompression());
 	} else if(type==Utility::YuvType::YUV444) {
 		safer_=std::make_unique<Utility::Yuv444FileSaver>(filename,*filteredVideo_,
-		        rawVideo_->getCompression(),this);
+                rawVideo_->getCompression());
 	}
+    connect(safer_.get(),SIGNAL(saveComplete(bool,QString,int,int)),this,SLOT(notifyOnSaveComplete(bool,QString,int,int)));
 	safer_->save();
 }
 
@@ -774,10 +776,7 @@ void GUI::FilterTab::connectAtions() {
 	connect(button_saveConf_,SIGNAL(clicked()),this,SLOT(saveConfiguration()));
 	connect(button_up_,SIGNAL(clicked()),this,SLOT(up()));
 	connect(list_filterlist_->selectionModel(),SIGNAL(selectionChanged(QItemSelection,
-	        QItemSelection)),this,SLOT(listSelectionChanged(QItemSelection)));
-	connect(this,SIGNAL(saveComplete(bool,QString,int,int)),this,SLOT(notifyOnSaveComplete(bool,QString,
-	        int,int)));
-	connect(this,SIGNAL(applyComplete(bool)),this,SLOT(notifyOnApplyComplete(bool)));
+            QItemSelection)),this,SLOT(listSelectionChanged(QItemSelection)));
 }
 
 void GUI::FilterTab::initPlayer() {

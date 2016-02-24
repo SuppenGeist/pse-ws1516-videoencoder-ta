@@ -4,6 +4,7 @@
 #include <QFile>
 #include <QDataStream>
 #include <QColor>
+#include <QObject>
 
 namespace Model {
 class Video;
@@ -13,7 +14,8 @@ namespace Utility {
 /**
  * This is the base class for yuv savers.
  */
-class YuvFileSaver {
+class YuvFileSaver:public QObject {
+    Q_OBJECT
   public:
 	/**
 	 * @brief YuvFileSaver Constructor.
@@ -31,6 +33,9 @@ class YuvFileSaver {
 	 * @brief save Saves the video to the file.
 	 */
 	virtual void save() = 0;
+
+signals:
+    void saveComplete(bool successful,QString filename,int width,int height);
 
   protected:
 	int             width_;

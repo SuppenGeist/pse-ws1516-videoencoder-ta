@@ -10,8 +10,8 @@
 
 
 Utility::Yuv411FileSaver::Yuv411FileSaver(QString filename, Model::Video& video,
-        Utility::Compression compression, GUI::FilterTab *filterTab):YuvFileSaver(filename,video),
-	compression_(compression),filterTab_(filterTab),isRunning_(false) {
+        Utility::Compression compression):YuvFileSaver(filename,video),
+    compression_(compression),isRunning_(false) {
 
 }
 
@@ -99,7 +99,7 @@ void Utility::Yuv411FileSaver::saveP() {
 	}
 	bool buffer=isRunning_;
 	isRunning_=false;
-	filterTab_->saveComplete(buffer,QFileInfo(file_).fileName(),video_->getWidth(),video_->getHeight());
+    emit saveComplete(buffer,QFileInfo(file_).fileName(),video_->getWidth(),video_->getHeight());
 }
 
 Utility::Yuv411Vector Utility::Yuv411FileSaver::Rgb888ToYuv411(QRgb pixel1, QRgb pixel2,

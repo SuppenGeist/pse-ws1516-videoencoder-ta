@@ -74,11 +74,7 @@ class FilterTab: public QFrame {
 
 	void setMainWindow(GUI::MainWindow* mainwindow);
 
-	MainWindow *getMainWindow();
-
-  signals:
-	void saveComplete(bool successful,QString filename,int width,int height);
-	void applyComplete(bool successful);
+    MainWindow *getMainWindow();
 
   private slots:
 	void up();
