@@ -37,13 +37,13 @@ class FilterView : public QFrame {
 	 * @brief setFilter Sets the filter this view represents.
 	 * @param filter The filter for this view.
 	 */
-	void setFilter(QString filtername);
+    void setFilter(QString filtername);
 
 	/**
 	 * @brief setFilterTab Sets the tab this view is contained in.
 	 * @param filtertab The parent filtertab.
 	 */
-	void setFilterTab(FilterTab& filtertab);
+    void setFilterTab(FilterTab* filtertab);
 
   private slots:
 	void buttonPressed();
@@ -64,6 +64,7 @@ class FilterView : public QFrame {
 	static QImage& getDefaultImage();
 
 	void createUi();
+    void connectActions();
 
 };
 }

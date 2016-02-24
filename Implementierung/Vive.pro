@@ -132,7 +132,9 @@ HEADERS += \
     src/gui/graphplayer.h \
     src/utility/VideoSaver.h \
     src/utility/resultsaver.h \
-    src/gui/graphcalculator.h
+    src/gui/graphcalculator.h \
+    src/gui/analysisvideo.h \
+    src/gui/analysisgraph.h
 
 SOURCES += \
     src/gui/AnalysisBox.cpp \

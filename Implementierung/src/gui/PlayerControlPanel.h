@@ -84,6 +84,7 @@ class PlayerControlPanel: public QFrame, public ControlPanel {
 	 * @brief createUi Creates the ui.
 	 */
 	void createUi();
+    void connectActions();
 };
 }
 

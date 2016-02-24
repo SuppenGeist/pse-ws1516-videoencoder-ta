@@ -22,6 +22,8 @@
 #include "GlobalControlPanel.h"
 #include "graphplayer.h"
 #include "graphcalculator.h"
+#include "analysisvideo.h"
+#include "analysisgraph.h"
 
 #include "../model/YuvVideo.h"
 
@@ -34,18 +36,6 @@ class MainWindow;
 }
 
 namespace GUI {
-enum class AnalysisGraph {
-    BITRATE,
-    RED_HISTOGRAM,
-    BLUE_HISTOGRAM,
-    GREEN_HISTOGRAM,
-    PSNR
-};
-
-enum class AnalysisVideo {
-    MACROBLOCK,
-    RGB_DIFFERENCE
-};
 
 /**
  * The tab that shows videos and analyses them.
@@ -76,9 +66,6 @@ class AnalysisTab: public QFrame {
 
   protected:
 	void resizeEvent(QResizeEvent * event);
-
-  signals:
-	void resultsSaved();
 
   private slots:
 	void loadRawVideo();

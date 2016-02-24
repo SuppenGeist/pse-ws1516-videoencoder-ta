@@ -51,6 +51,7 @@ class PreviewControlPanel: public QFrame, public GUI::ControlPanel {
 	 * @brief createUi Creates the ui.
 	 */
 	void createUi();
+    void connectActions();
 };
 }
 

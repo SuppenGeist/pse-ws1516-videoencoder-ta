@@ -45,7 +45,7 @@ void GUI::GraphWidget::drawGraph(Model::Graph* graph) {
 }
 
 Model::Graph *GUI::GraphWidget::getGraph() {
-	return graph_;
+    return graph_;
 }
 
 void GUI::GraphWidget::setGraphCalculator(GUI::GraphCalculator *calculator) {

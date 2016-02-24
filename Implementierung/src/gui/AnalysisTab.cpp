@@ -392,9 +392,7 @@ void GUI::AnalysisTab::saveResults() {
 	button_saveResults_->setEnabled(false);
 
 	connect(resultsSaver_.get(),SIGNAL(finished()),this,SLOT(resultSavingFinished()));
-	resultsSaver_->start();
-
-	//resultsSaver_->save();
+    resultsSaver_->start();
 
 }
 
@@ -743,8 +741,7 @@ void GUI::AnalysisTab::connectActions() {
 	connect(button_psnr_,SIGNAL(clicked(bool)),this,SLOT(showPsnr()));
 	connect(button_attributes_,SIGNAL(clicked(bool)),this,SLOT(showAttributes()));
 	connect(button_loadnewvideo_,SIGNAL(clicked(bool)),this,SLOT(loadRawVideo()));
-	connect(&timer_labelUpdater_,SIGNAL(timeout()),this,SLOT(updateLabels()));
-	connect(this,SIGNAL(resultsSaved()),this,SLOT(resultSavingFinished()));
+    connect(&timer_labelUpdater_,SIGNAL(timeout()),this,SLOT(updateLabels()));
 	connect(button_saveResults_,SIGNAL(clicked(bool)),this,SLOT(saveResults()));
 }
 

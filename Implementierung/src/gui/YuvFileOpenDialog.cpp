@@ -30,16 +30,8 @@ std::vector<QString> GUI::YuvFileOpenDialog::attributes_;
 const QString GUI::YuvFileOpenDialog::SAVE_FILENAME="yuv_recently_used.data";
 
 GUI::YuvFileOpenDialog::YuvFileOpenDialog(QWidget* parent):QDialog(parent) {
-	createUi();
-
-	listView_recentlyUsed_->setModel(getListModel());
-
-	connect(button_ok_,SIGNAL(clicked()),this,SLOT(accept()));
-	connect(button_cancel_,SIGNAL(clicked()),this,SLOT(reject()));
-	connect(button_chooseFile_,SIGNAL(clicked()),this,SLOT(chooseFile()));
-	connect(listView_recentlyUsed_->selectionModel(),SIGNAL(selectionChanged(QItemSelection,
-	        QItemSelection)),this,SLOT(selectionChanged(QItemSelection)));
-	connect(this,SIGNAL(finished(int)),this,SLOT(hasFinished(int)));
+    createUi();
+    connectActions();
 
 
 }
@@ -118,7 +110,19 @@ void GUI::YuvFileOpenDialog::createUi() {
 	setLayout(v_content);
 
 	setWindowTitle("Load YUV file");
-	setMinimumWidth(500);
+    setMinimumWidth(500);
+    listView_recentlyUsed_->setModel(getListModel());
+}
+
+void GUI::YuvFileOpenDialog::connectActions()
+{
+    connect(button_ok_,SIGNAL(clicked()),this,SLOT(accept()));
+    connect(button_cancel_,SIGNAL(clicked()),this,SLOT(reject()));
+    connect(button_chooseFile_,SIGNAL(clicked()),this,SLOT(chooseFile()));
+    connect(listView_recentlyUsed_->selectionModel(),SIGNAL(selectionChanged(QItemSelection,
+            QItemSelection)),this,SLOT(selectionChanged(QItemSelection)));
+    connect(this,SIGNAL(finished(int)),this,SLOT(hasFinished(int)));
+
 }
 
 bool GUI::YuvFileOpenDialog::parseAttributes(QString attributes) {

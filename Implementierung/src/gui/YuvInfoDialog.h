@@ -82,14 +82,15 @@ class YuvInfoDialog: public QDialog {
 	QLabel*         label_pixelSheme_;
 	QLabel*         label_x_;
 	QPushButton*    button_ok_;
-	QPushButton*    button_cancel_;
-	QStringList     compressionList_;
+    QPushButton*    button_cancel_;
+    QStringList     compressionList_;
 	QStringList     pixelShemeList_;
 
 	/**
 	 * @brief createUi Creates the gui.
 	 */
 	void createUi();
+    void connectActions();
 };
 }
 

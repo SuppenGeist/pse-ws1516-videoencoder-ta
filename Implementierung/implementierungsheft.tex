@@ -1105,6 +1105,602 @@ Vergessen im design.
 + (private) Compression compression
 \end{verbatim}
 Vergessen im design.
+\subsection{AnalysisBox}
+\begin{verbatim}
+# (public) Memento::AnalysisBoxMemento getMemento()
 
+Memento::AnalysisBoxMemento => std::unique_ptr<AnalysisBoxMemento>
 
+# (public) void restore(Memento::AnalysisBoxMemento memento)
+
+Memento::AnalysisBoxMemento => Memento::AnanlysisBoxMemento*
+\end{verbatim}
+Kopieren verhindern
+
+\begin{verbatim}
+- (public) void setRawVideo(Model::Video* video
+- (private) Model::Video rawVideo*
+
++ (public) void setParentContainer(AnalysisBoxContainer* container)
++ (private) AnalysisBoxContainer* parentContainer
+\end{verbatim}
+Hole das rohvideo ueber den parent.
+
+\begin{verbatim}
+- (public) void setAnalysisVideo(Model::EncodedVideo video)
++ (public) void setFile(QString filename)
+
+# (private) Model::EncodedVideo* origVideo
+
+Model::EncodedVideo* => std::unique_ptr<Model::EncodedVideo>
+\end{verbatim}
+Kapsle das Video in der box
+\begin{verbatim}
+# (public) void setControlPanel(GlobalControlPanel* panel)
+# (private) GlobalControlPanel* controlPanel
+
+GlobalControlPanel* => std::shared_ptr<GlobalControlPanel>
+\end{verbatim}
+Destructor dependencies
+
+\begin{verbatim}
+- (public) void showRGBDifferenceVideo()
+- (public) void showMacroBlockVideo()
+
++ (public) void showGraph(AnalysisGraph graph)
++ (public) void showAnalysisVideo(AnalysisVideo video)
++ (public) void showAttributes()
+\end{verbatim}
+Saubrere Schnittstelle
+\begin{verbatim}
++ (public) QString getPath()
++ (public) QPlainTextEdit* getCommentBox()
++ (private) QString currentComment
+\end{verbatim}
+Fuer UndoCommands
+\begin{verbatim}
++ (public) void lockUi()
++ (public) void unlockUi()
+\end{verbatim}
+Ui locken fuer das save results
+\begin{verbatim}
++ (private slots) void updateLabels()
++ (private) QTimer timer_updateLabels
+\end{verbatim}
+Um labels so lange zu updaten bis alle information vorhanden sind
+\begin{verbatim}
+- (private) int currentlyPlayedVideo
++ (private) GraphWidget* graphWidget
++ (private) QLabel* label_title
++ (private) QLabel* label_filename
++ (private) QLabel* label_filesize
++ (private) QLabel* label_codec
++ (private) QLabel* label_averageBitrate
++ (private) std::unique_ptr<GraphPlayer> graphPlayer
++ (private) std::unique_ptr<GraphCalculator> calculator
+
+# (private) VideoPlayer* plainVideoPlayer
+# (private) VideoPlayer* analysisVideoPLayer
+
+VideoPlayer* => std::unique_ptr<VideoPlayer>
+\end{verbatim}
+Zusaetzlich fue dri gui benoetigt
+\begin{verbatim}
+- (private) GraphWidget psnrGraph
+- (private) GraphWidget bitrateGraph
+- (private) GraphWidget redHistogramm
+- (private) GraphWidget blueHistogramm
+- (private) GraphWidget greenHistogramm
+\end{verbatim}
+Wird in EncodedVideo gespeichert
+\subsection{AnalysisBoxContainer}
+\begin{verbatim}
+# (public) Memento::AnalysisBoxContainerMemento getMemento()
+
+Memento::AnalysisBoxContainerMemento => std::unique_ptr<Memento::AnalysisBoxContainerMemento>
+
+# (public) void restore(Memento::AnalysisBoxContainerMemento memento)
+
+Memento::AnalysisBoxContainerMemento => Memento::AnalysisBoxContainerMemento*
+\end{verbatim}
+Kopieren verhindern.
+\begin{verbatim}
++ (public) void setParentTab(AnalysisTab* parent)
++ (public) AnalysisTab* getParentTab()
++ (private) AnalysisTab* parent
+\end{verbatim}
+Parent sichtbar fuer analysisboxen
+\begin{verbatim}
+- (public) void addVideo(QString path)
+- (public) void addVideo(Model::EncodedVideo video)
++ (public) AnalysisBox* appendBox(AnalysisBox* box)
+
+# (public) void removeBox(AnalysisBox& box)
+
+AnalysisBox& => AnalysisBox*
+void => int
+
+- (public) void setRawVideo(Model::Video* video)
+- (private) Model::Video* video
+
+- (public) void showMacroBlockVideo()
+- (public) void showRGBDifferenceVideo()
+
++ (public) void showGraph(AnalysisGraph graph)
++ (public) void showAnalysisVideo(AnalysisVideo video)
++ (public) void showAttributes()
++ (public) AnalysisGraph getShownGraph()
++ (public) AnalysisVideo getShownVideo()
++ (private) AnalysisGraph currentGraph
++ (private) AnalysisVideo currentVideo
+
++ (public) void clear()
++ (public) AnalysisBox* insertBox(AnalysisBox* box, std::size_t index)
++ (public) AnalysisBox* getAnalysisBox(std:size_t index)
++ (public) int getIndex(AnalysisBox* box)
++ (public) std::size_t getNumberOfBoxes()
+\end{verbatim}
+Bessres schnittstelle
+\begin{verbatim}
++ (private) QVBoxLayout v_boxes
++ (private) QSpacerItem* spacer
++ (private) QPushButton* button_addVideo
+
++ (private slots) void addVideo()
++ (private) void updateUi()
+\end{verbatim}
+Zusaetlich fue dir gui.
+\begin{verbatim}
+# (public) void setControlPanel(GloablControlPanel* panel)
+# (private) GlobalControlPanel* panel
+
+GloablControlPanel* => std::shared_ptr<GlobalControlPanel>
+\end{verbatim}
+Destructor dependencies
+\begin{verbatim}
++ (public) void lockUi()
++ (public) void unlockUi()
+\end{verbatim}
+Fuer das results saven
+\subsection{AnalysisGraph}
+\begin{verbatim}
+enum class AnalysisGraph => erstellt
+\end{verbatim}
+\subsection{AnalysisVideo}
+\begin{verbatim}
+enum class AnalysisVideo => erstellt
+\end{verbatim}
+\subsection{AnalysisTab}
+\begin{verbatim}
+# (public) Memento::AnalysisTabMemento getMemento()
+
+Memento::AnalysisTabMemento => std::unique_ptr<Memento::AnalysisTabMemento>
+
+# (public) void restore(Memento::AnalysisTabMemento memento)
+
+Memento::AnalysisTabMemento => Memento::AnalysisTabMemento*
+\end{verbatim}
+Kopieren verhindern.
+\begin{verbatim}
+# (public) void setRawVideo(Model::YuvVideo video)
+
+Model::YuvVideo => Model::YuvVideo*
+
++ (public) Model::YuvVideo* getRawVideo()
+\end{verbatim}
+Rawvideo wird im undocommand gespeichert
+\begin{verbatim}
++ (public) bool isRawVideoLoaded()
+\end{verbatim}
+Fuert den container, ob er en video adden darf
+\begin{verbatim}
++ (public) void setParentWindow(MainWindow* window)
++ (public) MainWindow* getParentWindow()
++ (private) MainWindow* parentWindow
+\end{verbatim}
+Fuer statusbar
+\begin{verbatim}
++ (protected) void resizeEvent(QResizeEvent * event)
+
++ (private slots) void showBitrate()
++ (private slots) void showRedHistogram()
++ (private slots) void showBlueHistogram()
++ (private slots) void showGreenHistogram()
++ (private slots) void showPsnr()
++ (private slots) void showAttributes()
++ (private slots) void analysisVideoChanged(int index)
++ (private slots) void updateLabels()
++ (private slots) void resultSavingFinished()
+- (private slots) void addVideo()
+
++ (private) QPushButton* button_attributes
++ (private) 	QPushButton* button_redHistogram
++ (private) 	QPushButton* button_blueHistogram
++ (private) QPushButton* button_greenHistogram
++ (private) QPushButton* button_bitrate
++ (private) QPushButton* button_psnr
++ (private) QVBoxLayout* v_rawVideo
++ (private) GraphWidget* graphWidget
++ (private) QString stylesheet_buttons
++ (private) QString stylesheet_buttonsSelected
++ (private) QLabel* label_filesize
++ (private) QLabel* label_resolution
++ (private) QLabel* label_framesize
++ (private) QPushButton* button_loadnewvideo
+- (private) QPushButton button_addVideo
++ (private) std::unique_ptr<ForwardPlayer> forwardPlayer
++ (private) std::unique_ptr<GraphPlayer> graphPlayer
++ (private) std::unique_ptr<GraphCalculator> calculator
++ (private) FrameView* rawVideoView
++ (private) std::unique_ptr<Utility::ResultSaver> resultsSaver
++ (private) QTimer timer_labelUpdater
+	
+# (private) VideoPLayer* player
+
+VideoPlayer* => std::unique_ptr<VideoPlayer>
+\end{verbatim}
+Zusaetzlich fue die gui
+\subsection{ControlPanel}
+\begin{verbatim}
+# (public) void addVideoPlayer(Player& player)
+
+PLayer& => Player*
+\end{verbatim}
+\begin{verbatim}
+# (private) std::vector<VideoPayer*>
+
+VideoPlayer* => Player*
+\end{verbatim}
+Dass auch graphplayers rein koennen
+\subsection{FilterContainerTab}
+\begin{verbatim}
+# (public) void addFilter(Model::Filter filter)
+
+Model::Filter => QString
+\end{verbatim}
+komfortabler
+\begin{verbatim}
+- (public) void unchecl(QString filtername)
+\end{verbatim}
+Nicht merh benoetigt
+\begin{verbatim}
++ (private) container
++ (private) filterContainer
+\end{verbatim}
+Zusaetzlich fuer die gui.
+\subsection{FilterTab}
+\begin{verbatim}
+# (public) Memento::FilterTabMemento getMemento()
+
+FilterTabMemento => std::unique_ptr<FilterTabMemento>
+
+# (public) void restor(Memento::FilterTabMemento memento)
+
+FilterTabMemento => FilterTabMemento*
+\end{verbatim}
+Kopiren vermeiden.
+\begin{verbatim}
++ (public) static constexpr int MAX_PREVIEW_COUNT
+\end{verbatim}
+Magic numbers vermeiden.
+
+\begin{verbatim}
+# (public) void insertFilter(Model::Filter filter, int index)
+
+Model::Filter =-> std::unique_ptr<Filter>
+int => std::size_t
+
+# (public) void removeFilter(std::string filter)
+
+void => std::unique_ptr<Model::Filter>
+std::string => std::size_t
+
+# (public) void moveFilter(int pos1, int pos2)
+
+int -> std::size_t
+
++ (public) void changeFilter(int index, QString newState)
++ (public) Model::Filter* appendFilter(QString filtername)
+
+# (public) void setFilterList(Model::FilterList list)
+
+Model::FilterList => std::unique_ptr<Model::FilerList>
+
++ (public) Model::FilterList* getFilterList()
+\end{verbatim}
+Besseres schnittstelle fuer filter
+\begin{verbatim}
+# (public) void setRawVideo(Model::YuvVideo video)
+
+Model::YuvVideo => Model::YuvVideo*
+\end{verbatim}
+Video wird in undocommand gespeichert
+\begin{verbatim}
++ (public) void updateFilterPreview()
++ (public) void showFilteredVideo()
+\end{verbatim}
+Mehr Kontroll ueber den tab.
+\begin{verbatim}
++ (public) void setMainWindow(MainWindow* window)
++ (public) MainWindow* getMainWindow()
++ (private) MainWindow* mainWindow
+
++ (private slots) void notifyOnSaveComplete(bool successful,QString filename,int width,int height)
++ (private slots) void notifyOnApplyComplete(bool successful)
+\end{verbatim}
+Fuer statusbar
+\begin{verbatim}
+- (private) QLabel* filterOptions
+- (private) QFrame* filterContainer
++ (private) QVBoxLayout* v_player
+
+# (private) VideoPlayer* player
+
+VideoPlayer* => std::unique_ptr<VideoPlayer>
+
++ (private) QHBoxLayout* h_filterOptions
++ (private) QSpacerItem* spacer_filterOptions
++ (private) FilterConfigurationBox* currentFilterOptionsBox
+	
+# (private) Model::FilterList filterList
+	
+Model::FilterList => std::unique_ptr<Model::FilterList>
+	
++ (private) std::unique_ptr<Model::AVVideo> originalPreviewFrames
++ (private) std::unique_ptr<Model::Video> filteredPreviewFrames
++ (private) std::unique_ptr<Utility::FilterApplier> previewCalculator
++ (private) std::unique_ptr<Utility::FilterApplier> filterApplier
++ (private) std::unique_ptr<Model::Video> filteredVideo
++ (private) bool isFilteredVideoShown
++ (private) std::unique_ptr<Utility::YuvFileSaver> safer
+- (private) st::vector<FilterContainerTab> filterContainerTab
+
++ (private) void createButtons()
++ (private) void createListView()
++ (private) void createVideoPlayer()
++ (private) void createFilterTabs()
++ (private) void initPlayer()
++ (private) void initFilterList()
++ (private) void calculatePreviewFrames()
+\end{verbatim}
+Zuseatzlih fue gui
+\subsection{FilterView}
+\begin{verbatim}
+# (public) void setFilter(Model::Filter filter)
+
+Model::Filter => QString
+\end{verbatim}
+Komfortabler
+\begin{verbatim}
++ (private) static std::unique_ptr<QImage> defaultImage
+
+- (private) void checkBoxStateChanged()
+- (private) QCheckBox* checkbox
+- (private) QLabel* preview
+
+# (private) Model::Filter* filter
+Model::Filter* => std::unique_ptr<Model::Filter>
+
++ (private) QPushButton* button_addFilter
++ (private slots) void buttonPressed()
++ (private) std::unique_ptr<QImage> filterImage
+\end{verbatim}
+Fue gui
+\subsection{ForwardPlayer}
+\begin{verbatim}
++ (public) void setMasterVideoPlayer(Player* player)
++ (private) Player* player
+- (private) ControlPanel controlPanel
+\end{verbatim}
+Um alles Methoden implementieren zu koennen.
+\begin{verbatim}
++ (public) std::size_t getNumberOfFrames()
+\end{verbatim}
+\subsection{FrameView}
+\begin{verbatim}
+# (protected) void repaintEvent(QPaintEvent* event)
+repaintEvent => paintEvent
+\end{verbatim}
+Falscher name.
+\begin{verbatim}
++ (private) QPixmap drawedImage
+\end{verbatim}
+Konvertierun vermeiden.
+\subsection{GlobalControlPanel}
+\begin{verbatim}
++ (public) int getPosition()
+\end{verbatim}
+War noetig
+\subsection{GraphCalculator}
+\begin{verbatim}
+class GraphCalculator => erstellt
+\end{verbatim}
+Um das Berrechnen vom anzeigen zu trennen.
+\subsection{GraphPlayer}
+\begin{verbatim}
+class GraphPlayer => erstellt
+\end{verbatim}
+um Rgb histogramme abspielen zu koenne.
+\subsection{GraphWidget}
+\begin{verbatim}
+# (public) void drawGraph(Model::Graph g, bool filled)
+(...) => (Model::Graph* graph)
+
++ (public) Model::Graph* getGraph()
+\end{verbatim}
+Bessere schnittstelle
+\begin{verbatim}
+- (public) void setLineColor(QRgb color)
+- (public) void setFillColor(QRgb color)
+- (private) QRgb lineColor
+- (private) QRgb fillColor
+
++ (public) void setGraphCalculator(GraphCalculator* calculator)
++ (private) GraphCalculator* calculator
+\end{verbatim}
+Berrechnen wird ausgelagert.
+\begin{verbatim}
++ (public) void buildScene()
++ (protected) void resizeEvent(QResizeEvent* event)
++ (private) QTimer updater
++ (private) QGraphicsScene scene
++ (private slots) void updateView()
+\end{verbatim}
+Zum zeichnen.
+\subsection{MainWindow}
+\begin{verbatim}
+# (public) Memento::MainWindowMemento getMemento()
+Memento::MainWindowMemento => std::unique_ptr<Memento::MainWindowMemento>
+
+# (public) void restore(Memento::MainWindowMemento memento)
+Memento::MainWindowMemento => Memento::MainWindowMemento*
+\end{verbatim}
+Kopieren vermeiden.
+\begin{verbatim}
+- (public) Model::Project& getProject()
+\end{verbatim}
+nicht benoetigt.
+\begin{verbatim}
+# (private) Model::Project* loadedProject
+Model::Project* => std::unique_ptr<Model::Project>
+\end{verbatim}
+Packs in nen msartpointer
+\begin{verbatim}
++ (public) QStatusBar* getStatusBar()
+\end{verbatim}
+Fuer statusbar
+\begin{verbatim}
+- (private) void createMenuBar()
+
+- (private) QMenuBar* menubar_project
+- (private) QMenuBar* menubar_edit
+
++ (private) FilterTab* filterTab
++ (private) AnalysisTab* analysisTab
++ (private) Ui::MainWindow* ui
+\end{verbatim}
+Fuer gui
+\subsection{Player}
+\begin{verbatim}
+# (public) virtual void setPosition(int position)
+# (public) virtual int getPosition()
+
+int => std::size_t
+\end{verbatim}
+\begin{verbatim}
++ (public) std::size_t getNumberOfFrames()
+\end{verbatim}
+\subsection{PlayerControlPanel}
+\begin{verbatim}
+# (public) void updateUi()
+public => public slots
+
++ (private) QTimer updater
+\end{verbatim}
+Um die gui dem player anzupassen.
+\subsection{PreviewControlPanel}
+\begin{verbatim}
+# (public) void updateUi()
+public => public slots
+
++ (private) QTimer updater
+- (private) void updateLabel()
+\end{verbatim}
+Um die guid em video anzupassen.
+\subsection{Timer}
+\begin{verbatim}
+# (public) void addPlayer(VideoPlayer& player)
+# (public) void removePlayer(VideoPlayer& player)
+
+VideoPlayer& => Player&
+
++ (private) std::vector<Player*> players
+\end{verbatim}
+Um auch graphplayers reinpacken zu koenne.
+\subsection{VideoPlayer}
+\begin{verbatim}
+# (public) void setVideo(Video& video)
+
+(...) => (Video* video,bool updateTimer)
+\end{verbatim}
+Um videos zu clearn oder um hinzuzufuegen ohne den timer zu stoppen.
+\begin{verbatim}
+# (public) void setPosition(int position)
+# (public) int getPosition()
+# (private) int position
+
+int => std::size_t
+\end{verbatim}
+geerebt.
+\begin{verbatim}
++ (public) std::size_t getNumberOfFrames()
+\end{verbatim}
+\begin{verbatim}
++ (private) QTimer viewUpdater
++ (private slots) void updateViews()
+
+# (private) Timer timer
+Timer => std::shared_ptr<Timer>
+\end{verbatim}
+\subsection{YuvFileOpenDialog}
+\begin{verbatim}
++ (public) static constexpr int MAX_SAVED_ENTRIES
++ (public) static const QString SAVE_FILENAME
+\end{verbatim}
+Magische zahlen vermeiden.
+\begin{verbatim}
++ (public) int getFps()
++ (public) int getWidth()
++ (public) int getHeight()
++ (public) Utility::Compression getCompression()
++ (public) Utility::YuvType getPixelSheme()
+
++ (private) int fps
++ (private) int width
++ (private) int height
++ (private) Utility::Compression compression
++ (private) Utility::YuvType type
+
++ (private) void askAttributes()
++ (private) bool parseAttributes()
+\end{verbatim}
+Speichere auch attribute der yuv datei.
+\begin{verbatim}
+- (public) void show()
+- (public) bool wasSuccessfull()
+\end{verbatim}
+Wird von QDialg uebernommen.
+\begin{verbatim}
++ (private slots) void chooseFile()
++ (private slots) void selectionChanged(const QItemSelection& selection)
++ (private slots) void hasFinished(int result)
+
++ (private) QLineEdit* lineEdit_selectedFile
+\end{verbatim}
+Fuer gui
+\begin{verbatim}
+- (private) static void loadRecentlyUsed()
+- (private) static QListViewModel model_recentlyUsed
+
++ (private) static QStringListModel* getListModel()
++ (private) static void saveListModel(QString selectedFile, QString attributes)
++ (private) static QStringListModel* model_recentlyUsed
+\end{verbatim}
+Fui recently used dateien
+\subsection{YuvInfoDialog}
+\begin{verbatim}
+# (public) PixelSheme getPixelSheme()
+PixelSheme => Utility::YuvType
+\end{verbatim}
+klasse war doppelt.
+\begin{verbatim}
+- (public) void show()
+- (public) bool wasSuccessfull()
+\end{verbatim}
+Wird von QDialg uebernommen.
+\begin{verbatim}
++ (private) QStringList pixelShemeList
++ (private) QStringList compressionList
+\end{verbatim}
+Fuer gui
 \end{document}
