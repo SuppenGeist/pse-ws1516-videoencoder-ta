@@ -5,7 +5,7 @@
 \usepackage[german]{babel}
 \usepackage{hyperref}
 \usepackage{mathptmx} 
-\usepackage[scaled]{helvet} %
+\usepackage[scaled]{helvet}
 \usepackage{graphicx}
 \hypersetup{
 pdftitle={Implementierungsheft},
@@ -804,12 +804,307 @@ Wird nicht benoetigt.
 + (private) void loadVideo()
 \end{verbatim}
 Zum laden des Videos.
+\subsection{BitrateCalculator}
+\begin{verbatim}
+- (public) Model::Graph calculate()
++ (public) void calculate(Model::Graph* target)
 
++ (private) std::thread calculator
++ (private) bool isRunning
++ (private) Model::Graph* target
++ (private) void calculateP()
+\end{verbatim}
+Ermoegliche threads.
+\subsection{FilterApplier}
+\begin{verbatim}
+# (public) FilterApplier(Model::FilterList& list)
 
+(...) => (Model::FilterList& list, int width, int height, int pixelFormat)
+\end{verbatim}
+Mehr informatioon benoetigt.
+\begin{verbatim}
+# (public) void applyToVideo(Model::AVVideo& target, Model::AVVideo& source)
 
+Model::AVVideo => Model::Video
 
++ (public) void applyToVideo(Model::Video& target, Model::AVVideo& source)
 
+- (private) AVFrame applyToFrame(AVFrame& source)
++ (public) AVFrame* applyToFrame(AVFrame& source)
+\end{verbatim}
+Bessere Schnittstelle
+\begin{verbatim}
++ (signals) void applyComplete(bool successful)
+\end{verbatim}
+Um die stausbar updaten zu koennen.
+\begin{verbatim}
++ (private) int width
++ (private) int height
++ (private) int pixelFormat
++ (private) AVFilterGraph* filterGraph
++ (private) AVFilterContext* buffersinkContext
++ (private) AVFilterContext* buffersourceContext
++ (private) std::string filterDescription
++ (private) std::thread applier
++ (private) Model::Video* source
++ (private) Model::AVVideo* source1
++ (private) Model::Video* target
++ (private) bool isRunning
 
++ (private) void createFilterString()
++ (private) void applyToVideoP()
++ (private) void applyToAVVideoP()
+\end{verbatim}
+Fuer multithreading und berechnung
+\subsection{FilterConfigurationLoader}
+\begin{verbatim}
+# (public) Model::FilterList getConfiguratin()
+
+Model::FilterList => std::unique_ptr<Model::FilterList>
+\end{verbatim}
+Kopieren vermeiden
+\subsection{FilterConfigurationSaver}
+\begin{verbatim}
++ (private) Model::FilterList* filterList
+\end{verbatim}
+Speichern der Liste vom Konstruktor
+\subsection{ProjectReader}
+\begin{verbatim}
+# (public) Model::Project readProject()
+
+Model::Project => std::unique_ptr<Model::Project>
+\end{verbatim}
+Kopieren vermeiden.
+\begin{verbatim}
+- (private) QFile file
+- (private) QTextStream dataStream
+
+- (private) void parseFilterTab(Memento::FilterTabMemento* memento,QString line)
+- (private) void parseAnalysisTab(Memento::AnalysisTabMemento* memento,QString line)
+\end{verbatim}
+\subsection{ProjectWriter}
+\begin{verbatim}
+# (public) ProjectWriter(Model::Project project)
+
+Model::Project => Model::Project*
+\end{verbatim}
+Kopieren verhindern
+
+\begin{verbatim}
+- (public) void saveResults()
+\end{verbatim}
+Wurde in eigene Klasse ausgelagert
+\begin{verbatim}
++ (private) Model::Project* project
++ (private) std::unique_ptr<QFile> file
++ (private) QTextStream dataStream
+\end{verbatim}
+\subsection{PsnrCalculator}
+\begin{verbatim}
+# (public) PsnrCalculator(Model::AVVideo& reference, Model::AVVideo& video)
+
+Model::AVVideo => Model::Video
+\end{verbatim}
+Einfacher zu benutzen
+\begin{verbatim}
++ (private) double calculateMeanSquareError(QImage* frame1, QImage* frame2);
+\end{verbatim}
+Wird zum berrechen benoetigt
+\begin{verbatim}
++ (private) std::thread calculator
++ (private) Model::Graph* target
++ (private) bool isRunning
+
++ (private) void calculateP()
+\end{verbatim}
+Fuer threading.
+\subsection{ResultSaver}
+\begin{verbatim}
+class ResultSaver => erstellen
+\end{verbatim}
+Auslagerung vom result saven aus dem project
+\subsection{RgbDifferenceCalculator}
+\begin{verbatim}
+# (public) void calculateVideo(Model::Video& target)
+
+Model::Video& => Model::Video*
+\end{verbatim}
+\begin{verbatim}
++ (private) Model::Video* target
++ (private) std::thread calculator
++ (private) bool isRunning
+
++ (private) void calculateP()
+\end{verbatim}
+Threading.
+\subsection{RGBHistogramCalculator}
+\begin{verbatim}
+# (public) void calculate()
+
+() => (Model::GraphVideo* targetRed,Model::GraphVideo* targetGreen, Model::GraphVideo* targetBlue)
+
++ (private) std::thread calculator
++ (private) bool isRunning
+\end{verbatim}
+Threading.
+\begin{verbatim}
+# (private) Model::Graph red
+# (private) Model::Graph green
+# (private) Model::Graph blue
+
+Model::Graph => Model::GraphVideo*
+\end{verbatim}
+Histogramm fuer ein Video ist auch ein Video.
+\subsection{VideoConverter}
+\begin{verbatim}
++ (public) VideoConverter(Model::AVVideo* video)
++ (public) VideoConverter(Model::Video* video)
+
+- (public) static std::unique_ptr<Model::AVVideo> convertVideoToAVVideo(Model::Video& video)
+- (public) static std::unique_ptr<Model::Video> convertAVVideoToVideo(Model::AVVideo& video)
+
++ (public) void convertAVVideoToVideo(Model::Video* target)
++ (public) void convertVideoToAVVideo(Model::AVVideo* target)
++ (private) Model::Video* video
++ (private) Model::Video* videoTarget
++ (private) Model::AVVideo* avvideo
++ (private) Model::AVVideo* avvideoTarget
+
++ (private) std::thread converter
++ (private) bool isRunning
+
++ (private) void convertVideoP()
++ (private) void convertAVVideoP()
+\end{verbatim}
+Threading
+\begin{verbatim}
+# (public) std::unique_ptr<AVFrame> convertImageToAVFrame(Qimage& image)
+
+std::unique_ptr<AVFrame> => AVFrame*
+
+# (public) static std::unique_ptr<QImage> convertAVFrameToImage(AVFrame& frame, int width, int height)
+
+(...) => (AVFrame& frame)
+\end{verbatim}
+Andere werden nicht benoetigt.
+\begin{verbatim}
++ (public) static std::unique_ptr<QImage> convertGraphToImage(Model::Graph* graph,int width,int height, GUI::GraphCalculator* calculator=0);
+
++ (public) static std::unique_ptr<Model::Video> convertGraphVideoToVideo(Model::GraphVideo* video,int width,int height,GUI::GraphCalculator* calculator);
+
+\end{verbatim}
+Konvertiere Graphen zu Images.
+\subsection{VideoLoader}
+\begin{verbatim}
+# (public) VideoLoader(QString path)
+
+(...) => (QString path, AVDictionary* dict)
+
++ (private) 	AVDictionary *dict_;
+\end{verbatim}
+Macroblocks.
+\begin{verbatim}
+- (public) std::unique_ptr<Model::AVVideo> loadVideo()
++ (public) void loadVideo(Model::AVVideo *target)
+
++ (private) std::thread loader
++ (private) bool isRunning
+
++ (private) void loadP()
+\end{verbatim}
+Threading.
+\begin{verbatim}
++ (public) QString getCodec()
++ (public) int getAverageBitrate()
+
++ (private) QString codec
++ (private) int averageBitrate
+\end{verbatim}
+Attribute des videos
+\subsection{VideoSaver}
+\begin{verbatim}
+class VideoSaver => erstellen
+\end{verbatim}
+Um encodierte Videos speichern zu koenne.
+\subsection{YuvFileReaders}
+\subsubsection{Basisklasse: YuvFileReader}
+\begin{verbatim}
+# (public) YuvFileReader(QString filename, int width, int height)
+
+(...) => (QString filename, int width, int height, int framesize)
+\end{verbatim}
+Um den buffer alloziieren zu koennen.
+
+\begin{verbatim}
+- (public) virtual std::unique_ptr<Model::Video> read()
++ (public) void read(Model::Video* target)
+
++ (public)	void stopReading();
++ (public)	bool isRunning();
+	
+	
++ (private) bool isRunning
++ (private) std::thread reader
+
++ (private) void readP()
+\end{verbatim}
+Threading
+\begin{verbatim}
+- (protected) std::unique_ptr<QByteArray> binaryData
+- (protected) std::unique_ptr<Model::Video> video
+
++ (protected) virtual std::unique_ptr<QImage> parseNextFrame()
+
++ (protected) unsigned char* binaryData
++ (protected) QDataStream dataStream
++ (protected) QFile file
++ (protected) Model::Video* video
++ (protected) int frameSize
++ (protected) bool* complete
+\end{verbatim}
+\subsubsection{Allgemein erbende Klassen}
+\begin{verbatim}
+- (public) std::unique_ptr<Model::Video> read()
+
+# (private) std::unique_ptr<QImage> parseNextFrame()
+
+private => protected
+\end{verbatim}
+\subsection{YuvFileSavers}
+\subsubsection{Basisklasse: YuvFileSaver}
+\begin{verbatim}
++ (signals) void saveComplete(bool successful,QString filename,int width,int height)
+\end{verbatim}
+Signalisierung des Endes
+\begin{verbatim}
++ (public) static int RgbToY(QRgb pixel)
++ (public) static int RgbToU(QRgb pixel)
++ (public) static int RgbToV(QRgb pixel)
+\end{verbatim}
+Funktionen zue konvertierung.
+\subsubsection{Allgemein erbende Klassen}
+\begin{verbatim}
++ (private) std::thread safer
++ (private) bool isRunning
+
++ (private) void saveP()
+\end{verbatim}
+Threading.
+\subsubsection{Yuv420FileSaver}
+\begin{verbatim}
+- (private) void saveFrame(int index)
+\end{verbatim}
+Nicht gebraucht.
+\subsubsection{Yuv422FileSaver}
+\begin{verbatim}
++ (private) Compression compression
+\end{verbatim}
+Vergessen im design.
+\subsubsection{Yuv444FileSaver}
+\begin{verbatim}
++ (private) Compression compression
+\end{verbatim}
+Vergessen im design.
 
 
 \end{document}

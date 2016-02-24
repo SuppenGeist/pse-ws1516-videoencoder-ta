@@ -15,6 +15,13 @@ namespace Utility {
 class YuvFileReader {
 
   public:
+    /**
+     * @brief clamp Clamps the given value to the range [0,255].
+     * @param value <param name="value">The value to clamp.</param>
+     * @return The clamped value.
+     */
+    static int clamp(int value);
+
 	/**
 	 * @brief YuvFileReader Constructor.
 	 * @param filename The absolute path to the file to load.
@@ -31,35 +38,27 @@ class YuvFileReader {
 	 */
 	void read(Model::Video* target);
 
-	void stopReading();
+    void stopReading();
 
 	bool isRunning();
 
   protected:
 	virtual std::unique_ptr<QImage> parseNextFrame()=0;
 
-	/**
-	 * @brief clamp Clamps the given value to the range [0,255].
-	 * @param value <param name="value">The value to clamp.</param>
-	 * @return The clamped value.
-	 */
-	static int clamp(int value);
-
-  protected:
 	unsigned char*   binaryData_;
 	QDataStream                    dataStream_;
     QFile                          file_;
 	int                            width_;
 	int                            height_;
-	Model::Video*                  video_;
-	int                            frameSize_;
+    Model::Video*                  video_;
+    int                            frameSize_;
 	bool*                          complete_;
 
   private:
 	bool                           isRunning_;
 	std::thread                     reader_;
 
-	void readP();
+    void readP();
 
 };
 }

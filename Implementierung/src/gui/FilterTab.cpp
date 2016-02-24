@@ -416,8 +416,8 @@ void GUI::FilterTab::apply() {
 	filteredVideo_=std::make_unique<Model::Video>(rawVideo_->getFps());
 	filterApplier_=std::make_unique<Utility::FilterApplier>(*filterlist_,rawVideo_->getWidth(),
 	               rawVideo_->getHeight(),AV_PIX_FMT_RGB24);
-    filterApplier_->applyToVideo(*filteredVideo_,rawVideo_->getVideo());
     connect(filterApplier_.get(),SIGNAL(applyComplete(bool)),this,SLOT(notifyOnApplyComplete(bool)));
+    filterApplier_->applyToVideo(*filteredVideo_,rawVideo_->getVideo());
 
 	showFilteredVideo();
 }

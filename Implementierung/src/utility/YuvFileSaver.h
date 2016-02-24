@@ -17,6 +17,9 @@ namespace Utility {
 class YuvFileSaver:public QObject {
     Q_OBJECT
   public:
+    static int RgbToY(QRgb pixel);
+    static int RgbToU(QRgb pixel);
+    static int RgbToV(QRgb pixel);
 	/**
 	 * @brief YuvFileSaver Constructor.
 	 * @param filename Absolute path to the file to save to.
@@ -43,10 +46,6 @@ signals:
 	Model::Video*   video_;
 	QFile           file_;
 	QDataStream     dataStream_;
-
-	static int RgbToY(QRgb pixel);
-	static int RgbToU(QRgb pixel);
-	static int RgbToV(QRgb pixel);
 };
 }
 
