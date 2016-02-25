@@ -1,37 +1,57 @@
-\documentclass[parskip=full]{scrartcl}
+\documentclass{scrartcl}
 
+\usepackage[german]{babel}
+\usepackage{graphicx}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[german]{babel}
-\usepackage{hyperref}
-\usepackage{mathptmx} 
+\usepackage[pdfborderstyle={/S/U/W 1}]{hyperref}
 \usepackage[scaled]{helvet}
-\usepackage{graphicx}
-\hypersetup{
-pdftitle={Implementierungsheft},
-bookmarks=true,
-}
+\usepackage{geometry}
 
-\makeatletter
-\setlength{\@fptop}{0pt}
-\makeatother
+\geometry{a4paper,left=30mm,right=30mm, top=3cm, bottom=3cm}
 
-\usepackage{csquotes} 
-
-{
 \titlehead{\centering\includegraphics[width=10cm]{Logo.png}}
 \title{\fontsize{40}{48} \selectfont \textsc{Implementierungsheft}\\
-{\fontsize{18}{18} \selectfont Multimediatool zum Testen von Videoencodern}}}
-\author {Johannes Werner, Noel Schuhmacher, Sascha Rapp, Simon Grafenhorst,\\
+{\fontsize{18}{18} \selectfont Multimediatool zum Testen von Videoencodern}}
+\author {Johannes Werner, Noel Schuhmacher, Sascha Rapp,\\ Simon Grafenhorst,
 Carina Weber, Jan Benedikt Schwarz}
 
-\begin{document}
+\begin{document} {
+\pagestyle{empty}
 \maketitle
-\thispagestyle{empty}
 \newpage
+\pdfbookmark{\contentsname}{toc}
 \tableofcontents
+\clearpage
+\pagestyle{plain}
+\newpage
+\section{Einleitung}
+In der Implementierungsphase ist es das Ziel, die Planung aus den zwei vorhergehenden Phasen in Code umzusetzen.  Dieses Dokument zeigt dabei den Verlauf der Phase und entstandene Änderungen sowohl an der geplanten Funkionalität als auch am Entwurf auf.
+
+\paragraph{Verlauf der Phase} Unser Zeitplan war auf 4 Tage pro Woche mit einer Gesamtdauer von 4 Wochen ausgelegt. Ziemlich am Anfang wurde klar, dass wir uns bei der Dauer der einzelenen Implementierungszeiten sehr verschätzt hatten. Bei den GUI-Klassen war zu wenig Zeit eingeplant, während bei den Model- und Utility-Klassen zu viel Zeit war. Allerdings konnten wir trotz dieser Schwierigkeiten die Implementation innerhalb von 29 Tagen abschließen.
 \newpage
 \section{Entwurfsänderungen}
+\subsection{Entfernte Klassen}
+\subsubsection{ApplyFilter}
+Wurde entfernt, da das Anwenden der Filter nicht Rueckgaengig gemacht werden kann.
+\subsubsection{BlendingFilter}
+Wurde entfernt, da der Filter im Konflikt mit der Filtervorschau Funktionalitatet stand.
+\subsubsection{ZoomFilter}
+Wurde entfernt, da ein Bug in libavfilter auftrat aufgrunddessen das Bild falsch skaliet wurde.
+\subsection{Hinzugefuegte Klassen}
+
+
+
+
+
+
+
+
+
+
+
+
+
 \subsection{Legende}
 \textbf{Aufbau eines Eintrags:}
 \begin{verbatim}
@@ -57,7 +77,7 @@ Grund der Aenderung.\\
 \newpage
 \subsection{Allgemeines}
 \begin{itemize}
-\item Korrigierte Rechtschreibfehler in den Klassen-/Methodennamen werden nicht dokumentiert. 
+\item Korrigierte Rechtschreibfehler in den Klassen-/Methodennamen werden nicht dokumentiert.
 \item Allen Attributen wird ein Unterstrich zur bessern Lesbarkeit des Codes angehaengt.
 \item Gui-Klassen werden folgende Methoden bei Bedarf hinzugefuegt:
 \begin{verbatim}
@@ -176,11 +196,7 @@ Uebernommene Aenderungen aus der Basisklasse.
 class BlackWhitefilter => class GrayscaleFilter
 \end{verbatim}
 Korrekte Uebersetzung ins Englische.
-\subsubsection{BlendingFilter}
-\begin{verbatim}
-class BlendingFilter => geloescht
-\end{verbatim}
-Widerspruch mit der FilterPreview Funktionalitaet.
+
 \subsubsection{BlurFilter}
 \begin{verbatim}
 - (public) bool getPreserveEdges()
@@ -217,12 +233,6 @@ Komfortablerer Umgang mit QColor.
 QRgb => QColor
 \end{verbatim}
 Komfortablerer Umgang mit QColor.
-\subsubsection{ZoomFilter}
-\begin{verbatim}
-class ZoomFilter => geloescht
-\end{verbatim}
-Bug in libavfilter.
-
 \subsection{AnalysisBoxContainerMemento}
 \begin{verbatim}
 # (public) std::vector<AnalysisBoxMemento> getAnalysisBoxList()
@@ -463,11 +473,6 @@ Model::FilterList => std::unique_ptr<Model::FilterList>
 + (private) std::unique_ptr<Memento::FilterTabMemento> memento
 \end{verbatim}
 Es lies sich im Entwurf nur schwer einschaetzen, was fuer Attribute noetig fuer das Rueckgaengig machen sind. 
-\subsection{ApplyFilter}
-\begin{verbatim}
-class ApplyFilter => geloescht
-\end{verbatim}
-War unnoetig.
 \subsection{LoadAnalysisVideo}
 \begin{verbatim}
 # (public) LoadAnalysisVideo(GUI::AnalysisTab* tab, 
@@ -1703,4 +1708,73 @@ Wird von QDialg uebernommen.
 + (private) QStringList compressionList
 \end{verbatim}
 Fuer gui
+\section{Ergebnis}
+\subsection{Grobuebersicht der Entwurfsaenderungen}
+In diesem Abschnitt werden die groesten der Aenderungen in den einzelnen Pakten kurz erlautert.
+\subsubsection{Allgemein}
+Auch wenn die Aenderungen auf den ersten Blick gros und umfrangreich erscheinen, hat sich die grobe Idee, wie die Klassen mit einander kommunizieren und interagieren nicht geandert.
+\paragraph{Smartpointer} Viele Aenderung im gesamten Packet beziehen sich auf die Benutzung von Smartpointer anstatt von "nackten" Pointern. Obwohl uns waehrend des Entwurfs schon klar war, dass wir auf Smartpointer setzen werden, hatten wir keine Moeglichkeit dies im Entwurf korrekt darzustellen. Hauptproblem war dabei, dass Smartpointer haeufig Attribute in Klassen waren und wir diese Attribute mittels Aggregationen und Kompositionen dargestellt haben. Daher waren diese Aggregationen hinterher nur Pointer und keine Smartpointer.
+\paragraph{Abstrakte Klassen} Waerend der Entwurfsphase war uns nicht bewusst, dass es in C++ nur moeglich ist Objekte von abstrakten Klassen als Pointer zu uebergeben. Deshalb mussten vorallem viele Methoden die einen Filter als Parameter geaendert werden.
+\paragraph{Vergessenes} Ein kleiner Teil der Aenderungen sind Attribute, die im Entwurf einfach vergessen wurden. Ein weiterer Faktor war auch, dass beim Aendern einer Klasse andere Klassen die diese benutzten nicht korrekt angepasstw urden.
+\subsubsection{Utility Paket}
+\paragraph{Threading}
+Viele Aenderungen in diesem Packet wurden gemacht, um das  asynhrone Laden und Berrechnen von Videos zu ermoeglichen.
+\subsubsection{Model Paket}
+\paragraph{Bessere Schnittstelle} Die meisten Aenderungen in diesem Paket wurden gemacht, um das Benutzen der Klassen einfacher zu machen. Teilweise passte die Schnittstelle, aufgrund von Aenderungen an anderen Stellen, nicht mehr zu dem was benoetigt wurde.
+\subsubsection{UndoRedo Paket}
+Bei den Klassen in diesem Packet hattenm wir schon waerend des Entwurfs grosse Schwierigkeiten einzuschaetzen, was noetig ist, um eine Aktion wieder rueckgaengig zu machen, vorallem da Aenderungen an einer Stelle im Entwurf sich sofort auf den entsprechenden Undo-command ausgewirkt hat.
+\subsubsection{Memento Paket}
+\paragraph{Pointer} Bei den Mementos hatten wir urspruenglich die Idee, dass sie die Daten, die sie halten, auch besitzen. Das impliziert, dass jedes mal, wenn ein Memento erstellt wird, viel kopiert wird. Das hat sich vorallem im Hinblick auf die Videos als eher unpracktikabel rausgestellt. Daher wurden viele Attribute und Parameter zu Pointern geandert.
+\paragraph{Vergessene Daten} Ebenfalls viele Aenderungen beziehen sich auf Attribute, die wir einfach vergessen haben zu speichern.
+\subsubsection{GUI Paket}
+\paragraph{Aenderungen an der GUI} In diesem Packet sind die meisten Aenderungen passiert. Das haengt vorallem damit zusammen, dass wir Teile der GUI abgaendert haben, weil sich der geplante Aufbau als unpraktikabel rausgestellt hat. Allerdings loesen selbst kleine Aenderungen an der GUI recht grose Aenderungen am Entwurf aus.
+\paragraph{Unvorhergesehene Abhaeigkeiten} Viele Aenderungen kamen auch zustande, weil das Abschaetzen, welches GUI-element welche Methode braucht recht schwer ist.
+\subsection{Aenderungen an der GUI}
+Es gab keine grossen Aenderungen am geplanten Aufbau der GUI. Alle Aenderungen die gemacht wurde, dienten der Aesthetik und der praktikabilitaet.
+\newpage
+\subsubsection{FilterTab}
+
+\section{Testueberdeckung}
+
+sdgfgdfg
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \end{document}
