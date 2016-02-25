@@ -366,7 +366,7 @@ void GUI::FilterTab::up() {
 void GUI::FilterTab::down() {
 	QModelIndexList selected = list_filterlist_->selectionModel()->selectedIndexes();
 	if (!selected.isEmpty()) {
-		if(selected.first().row()==filterlist_->getSize()-1)
+        if(selected.first().row()==(int)filterlist_->getSize()-1)
 			return;
 		UndoRedo::UndoStack::getUndoStack().push(new UndoRedo::MoveFilterDown(*this,
 		        selected.first().row()));
