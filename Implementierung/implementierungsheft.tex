@@ -31,40 +31,24 @@ In der Implementierungsphase ist es das Ziel, die Planung aus den zwei vorhergeh
 \paragraph{Verlauf der Phase} Unser Zeitplan war auf 4 Tage pro Woche mit einer Gesamtdauer von 4 Wochen ausgelegt. Ziemlich am Anfang wurde klar, dass wir uns bei der Dauer der einzelenen Implementierungszeiten sehr verschätzt hatten. Bei den GUI-Klassen war zu wenig Zeit eingeplant, während bei den Model- und Utility-Klassen zu viel Zeit war. Allerdings konnten wir trotz dieser Schwierigkeiten die Implementation innerhalb von 29 Tagen abschließen.
 \newpage
 \section{Entwurfsänderungen}
-\subsection{Entfernte Klassen}
-\subsubsection{ApplyFilter}
-Wurde entfernt, da das Anwenden der Filter nicht Rueckgaengig gemacht werden kann.
-\subsubsection{BlendingFilter}
-Wurde entfernt, da der Filter im Konflikt mit der Filtervorschau Funktionalitatet stand.
-\subsubsection{ZoomFilter}
-Wurde entfernt, da ein Bug in libavfilter auftrat aufgrunddessen das Bild falsch skaliet wurde.
-\subsection{Hinzugefuegte Klassen}
-
-
-
-
-
-
-
-
-
-
-
-
-
 \subsection{Legende}
+\bigskip
 \textbf{Aufbau eines Eintrags:}
 \begin{verbatim}
-{+,-,#} {Sichtbarkeitsbereich} ...
+{+,-,#} (Sichtbarkeitsbereich) ...
+
+(optional) alter Ausdruck => neuer Ausdruck
 \end{verbatim}
-Grund der Aenderung.\\
+Grund der Änderung.\\
 \\
-\textbf{Aenderungszeichen:}
+\bigskip
+\textbf{Änderungszeichen:}
 \begin{itemize}
-\item[] + \hspace{5mm}-->\hspace{5mm} Hinzugefuegt
-\item[] - \hspace{5mm}-->\hspace{5mm} Entfernt
-\item[] \# \hspace{5mm}-->\hspace{5mm} Geaendert
+\item[] + \hspace{5mm}-->\hspace{5mm} Hinzugefügt
+\item[] -  \hspace{5mm}-->\hspace{5mm} Entfernt
+\item[] \# \hspace{5mm}-->\hspace{5mm} Geändert
 \end{itemize}
+\bigskip
 \textbf{Sichtbarkeitsbereiche:}
 \begin{itemize}
 \item public
@@ -76,31 +60,67 @@ Grund der Aenderung.\\
 \end{itemize}
 \newpage
 \subsection{Allgemeines}
+\bigskip
 \begin{itemize}
 \item Korrigierte Rechtschreibfehler in den Klassen-/Methodennamen werden nicht dokumentiert.
-\item Allen Attributen wird ein Unterstrich zur bessern Lesbarkeit des Codes angehaengt.
-\item Gui-Klassen werden folgende Methoden bei Bedarf hinzugefuegt:
+\item Allen Attributen wird ein Unterstrich zur bessern Lesbarkeit des Codes angehängt.
+\item Gui-Klassen werden folgende Methoden bei Bedarf hinzugefügt:
 \begin{verbatim}
 + (private) void createUi()
 + (private) void connectActions()
 \end{verbatim}
 Diese Methoden dienen allein der Lesbarkeit des Codes.
-
-\item Aenderungen an den folgenden Methodenspezifizierern werden nicht dokumentiert:
+\item Änderungen an den folgenden Methodenspezifizierern werden nicht dokumentiert:
 \begin{verbatim}
 const
 noexcept
 \end{verbatim}
-
+\item Destruktoren werden in allen Klassen als implzit gegeben betrachtet und bei Bedarf implementiert.
 \end{itemize}
+\newpage
+\subsection{Entfernte Klassen}
+\bigskip
+\subsubsection{ApplyFilter}
+Wurde entfernt, da das Anwenden der Filter nicht Rückgängig gemacht werden kann.
+\subsubsection{BlendingFilter}
+Wurde entfernt, da der Filter im Konflikt mit der Filtervorschau Funktionalität stand.
+\subsubsection{ZoomFilter}
+Wurde entfernt, da ein Bug in libavfilter auftrat aufgrunddessen das Bild falsch skaliet wurde.
+\bigskip
+\subsection{Umbenannte Klassen}
+\bigskip
+\subsubsection{BlackWhiteFilter}
+Wurde umbenannt in GrayscaleFilter.\\
+Korrekte Übersetzung ins Englische.
+\newpage
+\subsection{Hinzugefügte Klassen}
+\bigskip
+\subsubsection{ChangeFilter}
+War implementierungstechnische kein Mehraufwand.
+\subsubsection{GraphVideo}
+Um Rgb Histogramme für Videos anzeigen zu können.
+\subsubsection{ResultSaver}
+Trennen vom Speichern des Projektes und der Ergebnisse.
+\subsubsection{VideoSaver}
+Um encodierte Videos speichern zu koennen.
+\subsubsection{AnalysisGraph}
+Enum für bessere Schnittstelle.
+\subsubsection{AnalysisVideo}
+Enum für bessere Schnittstelle.
+\subsubsection{GraphCalculator}
+Um das Berrechnen vom Anzeigen zu trennen.
+\subsubsection{GraphPlayer}
+Um Rgb Histogramme abspielen zu können.
 \newpage
 \subsection{Filterkofigurationsboxen}
 \subsubsection{Basisklasse: FilterConfigurationBox}
+\bigskip
 \begin{verbatim}
 + (public) static std::unique_ptr<FilterConfigurationBox>
 CreateConfigurationBox(FilterTab& filterTab, Model::Filter& filter)
 \end{verbatim}
 Fabrikmethode zur Erstellung einer FilterConfigurationBox fuer einen bestimmten Filter.
+\bigskip
 \begin{verbatim}
 + (public) void setFilterTab(FilterTab& filterTab)
 + (public) void setFilterIndex(std::size_t index)
@@ -108,32 +128,39 @@ Fabrikmethode zur Erstellung einer FilterConfigurationBox fuer einen bestimmten 
 + (private) FilterTab* filterTab
 \end{verbatim}
 Dass der UndoCommand zum Rueckgaengig machen der Aenderung am Filter korrekt erstellt werden kann.
+\bigskip
 \begin{verbatim}
 + (public) virtaul void updateUi()
 \end{verbatim}
 Um der FilterConfigurationBox bescheid sagen zu koennen, dass der Filter sich ausserhalb der Box geaendert hat.
+\bigskip
 \begin{verbatim}
 + (protected) void updatePreview()
 \end{verbatim}
 Wird von der erbenden Klasse aufgerufen, um die Vorschau entsprechend den Aenderungen des Benutzers anzupassen.
+\bigskip
 \begin{verbatim}
 + (protected) void updateTempFilter();
 \end{verbatim}
 Wird von der erbenden Klasse aufgerufen, um den temporaeren Filter auf den Stand des originalen Filters zu bringen.
+\bigskip
 \begin{verbatim}
 + (private slots) applyFilter()
 + (private slots) resetFilter()
 \end{verbatim}
 Slots fuer die entsprechenden Buttons.
+\bigskip
 \begin{verbatim}
 + (private) static QImage& getDefaultImage()
 + (private) static std::unique_ptr<QImage> defaultImage
 \end{verbatim}
 Stellt das Standardbild fuer die Vorschau zur Verfuegung.
+\bigskip
 \begin{verbatim}
 + (protected) std::unique_ptr<Model::Filter> tempFilter
 \end{verbatim}
-Temporaeres Filterobjekt, auf welched die erbende Klasse die Aenderungen des Benutzers anwendet.
+Temporaeres Filterobjekt, auf welches die erbende Klasse die Aenderungen des Benutzers anwendet.
+\bigskip
 \begin{verbatim}
 + (protected) QScrollArea* filterOptionsArea
 + (private) std::unique_ptr<QImage>
@@ -143,19 +170,24 @@ Temporaeres Filterobjekt, auf welched die erbende Klasse die Aenderungen des Ben
 + (private) QPushButton* button_reset
 \end{verbatim}
 Steuerung der Gui.
+\bigskip
 \subsubsection{Allgemein erbende Klassen}
+\bigskip
 \begin{verbatim}
 + (protected) void updateUi()
 \end{verbatim}
-Zum updaten der Gui. Wird geerebt von der Basisklasse.
+Geerbt aus der Basisklasse.
+\bigskip
 \begin{verbatim}
 + (private) void createFilterOptions()
 \end{verbatim}
 Erstellt die Gui.
+\bigskip
 \begin{verbatim}
 + (private slots) ...
 \end{verbatim}
 Slots fuer die Gui-Elemente.
+\bigskip
 \begin{verbatim}
 + (private) ...
 \end{verbatim}
@@ -163,49 +195,49 @@ Attribute zur Steuerung der Gui.
 \newpage
 \subsection{Filter}
 \subsubsection{Basisklasse: Filter}
+\bigskip
 \begin{verbatim}
 + (public) static std::unique_ptr<Filter> CreateFilter(QString filtername)
 \end{verbatim}
-Fabrikmethode um einen Filter aufgrund dessen Name zu erstellen.
+Fabrikmethode um einen Filter aufgrund des Namens zu erstellen.
+\bigskip
 \begin{verbatim}
-# (public) virtual std::string getName()=0
+# (public) virtual std::string getName()
 
 std::string => QString
 \end{verbatim}
-Bessere Kompatibilitaet mit den Qt Gui Elementen.
-
+Bessere Kompatibilität mit den Qt Gui Elementen.
+\bigskip
 \begin{verbatim}
-+ (public) virtual void restore(QString description)=0
-+ (public) virtual QString getSaveString()=0
++ (public) virtual void restore(QString description)
++ (public) virtual QString getSaveString()
 \end{verbatim}
 Zum einfachen kopieren von Filtern, wenn die konkrete Klasse nicht bekannt ist und zum einfachen Laden und Speichern der Filter.
-
+\bigskip
 \subsubsection{Allgemein erbende Klassen}
 \begin{verbatim}
-+ (public) static const QString FILENAME
++ (public) static const QString FILTERNAME
 \end{verbatim}
 Um Filternamen nicht 'nackt' in den Quelltext zu schreiben.
+\bigskip
 \begin{verbatim}
-# (public) void std::string getName()
++ (public) void QString getName()
 + (public) void restore(QString description)
 + (public) void QString getSaveString()
 \end{verbatim}
-Uebernommene Aenderungen aus der Basisklasse.
-\subsubsection{BlackWhiteFilter}
-\begin{verbatim}
-class BlackWhitefilter => class GrayscaleFilter
-\end{verbatim}
-Korrekte Uebersetzung ins Englische.
-
+Geerbt aus der Basisklasse. 
+\newpage
 \subsubsection{BlurFilter}
+\bigskip
 \begin{verbatim}
 - (public) bool getPreserveEdges()
 - (public) bool setPreserveEdges()
 - (private) bool preserveEdges
 \end{verbatim}
 Die Option hatte keinen Effekt auf das Ergebnis.
-
+\bigskip
 \subsubsection{BorderFilter}
+\bigskip
 \begin{verbatim}
 # (public) void setColor(QRgb color)
 # (public) QRgb getColor()
@@ -214,8 +246,9 @@ Die Option hatte keinen Effekt auf das Ergebnis.
 QRgb => QColor
 \end{verbatim}
 Komfortablerer Umgang mit QColor.
-
+\bigskip
 \subsubsection{GridFilter}
+\bigskip
 \begin{verbatim}
 # (public) void setColor(QRgb color)
 # (public) QRgb getColor()
@@ -224,7 +257,9 @@ Komfortablerer Umgang mit QColor.
 QRgb => QColor
 \end{verbatim}
 Komfortablerer Umgang mit QColor.
+\bigskip
 \subsubsection{RectangleFilter}
+\bigskip
 \begin{verbatim}
 # (public) void setColor(QRgb color)
 # (public) QRgb getColor()
@@ -233,66 +268,70 @@ Komfortablerer Umgang mit QColor.
 QRgb => QColor
 \end{verbatim}
 Komfortablerer Umgang mit QColor.
-\subsection{AnalysisBoxContainerMemento}
+\newpage
+\subsection{Mementos}
+\subsubsection{AnalysisBoxContainerMemento}
+\bigskip
 \begin{verbatim}
 # (public) std::vector<AnalysisBoxMemento> getAnalysisBoxList()
 
 std::vector<AnalysisBoxMemento> 
 => std::vector<std::unique_ptr<AnalysisBoxMemento>>&
 
-- (private) std::vector<AnalysisBoxMemento*> mementoList
+# (private) std::vector<AnalysisBoxMemento*> mementoList
 
 std::vector<AnalysisBoxMemento*>
 =>std::vector<std::unique_ptr<AnalysisBoxMemento>>
 \end{verbatim}
-Unnoetiges kopieren vermeiden.
+Unnötiges Kopieren vermeiden und nackte Pointer vermeiden.
+\bigskip
 \begin{verbatim}
 - (public) void setAnalysisBoxList(std::vector<AnalysisBoxMemento> analysisBoxList)
 + (public) void addMemento(std::unique_ptr<AnalysisBoxMemento> memento)
 \end{verbatim}
 Komfortablere Schnittstelle.
-
-\subsection{AnalysisBoxMemento}
+\bigskip
+\subsubsection{AnalysisBoxMemento}
+\bigskip
 \begin{verbatim}
 # (public) QString getVideoPath()
 # (public) void setVideoPath(QString videoPath)
 # (private) QString videoPath
 
-videoPath => \{P,p\}ath
+VideoPath => Path
 
 # (public) Model::Video* getMacroVideo()
 # (public) void setMacroVideo(Model::Video* macroVideo)
 # (private) Model::Video* macroVideo
 
-\{M,m\}acro => \{M,m\}acro\{B,b\}lockVideo
+Macro => MacroBlock
 
 # (public) Model::Graph getPsnr()
 # (public) void setPsnr(Model::Graph psnr)
 # (private) Model::Graph psnr
 
-\{P,p\}snr => \{P,p\}snrGraph
+Psnr => PsnrGraph
 
 # (public) Model::Graph getBitrate()
 # (public) void setBitrate(Model::Graph Bitrate)
 # (private) Model::Graph bitrate
 
-\{B,p=b\}snr => \{B,b\}snrGraph
-
+bitrate => bitrateGraph
 \end{verbatim}
 Sauberere Namensgebung.
-
+\newpage
 \begin{verbatim}
-# (public) Model::Graph getPsnr()
-# (public) void setPsnr(Model::Graph psnr)
-# (private) Model::Graph psnr
-# (public) Model::Graph getBitrate()
-# (public) void setBitrate(Model::Graph Bitrate)
-# (private) Model::Graph bitrate
+# (public) Model::Graph getPsnrGraph()
+# (public) void setPsnrGraph(Model::Graph psnr)
+# (private) Model::Graph psnrGraph
+# (public) Model::Graph getBitrateGraph()
+# (public) void setBitrateGraph(Model::Graph bitrate)
+# (private) Model::Graph bitrateGraph
 
 Model::Graph => Model::Graph*
 \end{verbatim}
-Unnoetiges kopieren vermeiden.
-
+Unnötiges Kopieren vermeiden.
+\bigskip
 \begin{verbatim}
 + (public) void setEncoder(QString encoder)
 + (public) QString getEncoder()
@@ -308,6 +347,7 @@ Unnoetiges kopieren vermeiden.
 + (public) Model::GraphVideo* getGreenHistogram()
 + (public) void setBlueHistogram(Model::GraphVideo* video)
 + (public) Model::GraphVideo* getBlueHistogram()
+
 + (private) QString encoder
 + (private) QString avergaeBitrate
 + (private) QString filename
@@ -316,17 +356,19 @@ Unnoetiges kopieren vermeiden.
 + (private) Model::GraphVideo* greenHistogram
 + (private) Model::GraphVideo* blueHistogram
 \end{verbatim}
-Vergessene Attribute, die auch gespeichert werden muessen.
-
-\subsection{AnalysisTabMemento}
+Vergessene Attribute, die auch gespeichert werden müssen.
+\newpage
+\subsubsection{AnalysisTabMemento}
+\bigskip
 \begin{verbatim}
 # (public) int getCurrentVideoPosition()
 # (public) void setCurrentVideoPosition(int currentVideoPosition)
 # (private) int currentVideoPosition
 
-\{C,c\}urrentVideo => Player
+CurrentVideo => Player
 \end{verbatim}
 Sauberere Namensgebung.
+\bigskip
 \begin{verbatim}
 - (public) int getCurrentlyShownAnalysisVideo()
 - (public) void setCurrentlyShownAnalysisVideo(int currentVideo)
@@ -335,7 +377,8 @@ Sauberere Namensgebung.
 - (public) void setCurrentSpeed(float currentSpeed)
 - (private) currentSpeed
 \end{verbatim}
-Nicht realisierbar bzw. nicht mehr von noeten.
+Nicht realisierbar bzw. nicht mehr von nöten.
+\bigskip
 \begin{verbatim}
 # (public) AnalysisBoxContainerMemento getAnalysisBoxContainerMemento()
 
@@ -347,7 +390,8 @@ AnalysisBoxContainerMemento => std::unique_ptr<AnalysisBoxContainerMemento>
 
 + (private) std::unique_ptr<AnalysisBoxContainerMemento> analysisboxMemento
 \end{verbatim}
-Unnoetiges Kopieren vermeiden.
+Unnötiges Kopieren vermeiden.
+\bigskip
 \begin{verbatim}
 + (public) void setRawVideo(Model::YuvVideo* video)
 + (public) void setRawVideo(std::unique_ptr<Model::YuvVideo> video)
@@ -362,8 +406,10 @@ Unnoetiges Kopieren vermeiden.
 + (private) GUI::AnalysisGraph graph
 + (private) GUI::AnalysisVideo video
 \end{verbatim}
-Vergessene Attribute, die auch gespeichert werden muessen.
-\subsection{FilterTabMemento}
+Vergessene Attribute, die auch gespeichert werden müssen.
+\newpage
+\subsubsection{FilterTabMemento}
+\bigskip
 \begin{verbatim}
 # (public) bool getWasApplied()
 # (public) void setWasApplied(bool wasApplied)
@@ -376,9 +422,9 @@ WasApplied => IsFilteredVideoShown
 # (private) int displayedFrame
 
 DisplayedFrame => CurrentFrame
-
 \end{verbatim}
 Sauberere Namensgebung.
+\bigskip
 \begin{verbatim}
 # (public) Model::FilterList getFilterList()
 # (public) void setFilterList(Model::FilterList list)
@@ -386,13 +432,15 @@ Sauberere Namensgebung.
 
 Model::FilterList => std::unique_ptr<Model::FilterList>
 \end{verbatim}
-Abstrakte Klassen lassen sich nicht kopieren.
+Abstrakte Klassen können nur als Pointer übergeben werden.
+\bigskip
 \begin{verbatim}
 - (public) std::string getLoadedFile()
 - (public) void setLoadedFile(std::string loadedFile)
 - (private) std::string loadedFile
 \end{verbatim}
 Wurden ersetzt durch bessere Methoden.
+\bigskip
 \begin{verbatim}
 + (public) void setRawVideo(Model::YuvVideo* rawVideo)
 + (public) void setRawVideo(std::unique_ptr<Model::YuvVideo> video)
@@ -411,7 +459,9 @@ Wurden ersetzt durch bessere Methoden.
 + (private) int currentlySelectedFilter
 \end{verbatim}
 Vergessene Attribute, die auch gespeichert werden muessen.
-\subsection{MainWindowMemento}
+\newpage
+\subsubsection{MainWindowMemento}
+\bigskip
 \begin{verbatim}
 # (public) AnalysisTabMemento getAnalysisTabMemento()
 # (public) FilterTabMemento getFilterTabMemento()
@@ -430,10 +480,11 @@ FilterTabMemento => std::unique_ptr<FilterTabMemento>
 
 AnalysisTabMemento* => std::unique_ptr<AnalysisTabMemento>
 FilterTabMemento* => std::unique_ptr<FilterTabMemento>
-
 \end{verbatim}
-Unnoetiges Kopieren vermeiden.
-\subsection{AddFilter}
+Unnötiges Kopieren und nackte Pointer vermeiden.
+\newpage
+\subsection{Undo Commands}
+\subsubsection{AddFilter}
 \begin{verbatim}
 # (public) AddFilter(GUI::FilterTab* filterTab,Model::Filter filter)
 
@@ -443,9 +494,9 @@ Unnoetiges Kopieren vermeiden.
 + (private) QString filtername
 + (private) std::unique_ptr<Memento::FilterTabMemento> memento
 \end{verbatim}
-Es lies sich im Entwurf nur schwer einschaetzen, was fuer Attribute noetig fuer das Rueckgaengig machen sind. 
-
-\subsection{AddVideo}
+Benötigte Attribute zum Rückgängig machen haben sich geändert.
+\bigskip
+\subsubsection{AddVideo}
 \begin{verbatim}
 # (public) AddVideo(GUI::AnalysisBoxContainer* container,Model::EncodedVideo video)
 
@@ -454,13 +505,9 @@ Model::EncodedVideo => QString
 - (private) Model::EncodedVideo video
 + (private) QString filename
 \end{verbatim}
-Es lies sich im Entwurf nur schwer einschaetzen, was fuer Attribute noetig fuer das Rueckgaengig machen sind. 
-\subsection{ChangeFilter}
-\begin{verbatim}
-class ChangeFilter => erstellt
-\end{verbatim}
-Hat sich angeboten.
-\subsection{FilterReset}
+Benötigte Attribute zum Rückgängig machen haben sich geändert.
+\bigskip
+\subsubsection{FilterReset}
 \begin{verbatim}
 # (public) FilterReset(GUI::FilterTab* tab,Model::FilterList list)
 
@@ -472,8 +519,9 @@ Model::FilterList => std::unique_ptr<Model::FilterList>
 
 + (private) std::unique_ptr<Memento::FilterTabMemento> memento
 \end{verbatim}
-Es lies sich im Entwurf nur schwer einschaetzen, was fuer Attribute noetig fuer das Rueckgaengig machen sind. 
-\subsection{LoadAnalysisVideo}
+Benötigte Attribute zum Rückgängig machen haben sich geändert.
+\newpage
+\subsubsection{LoadAnalysisVideo}
 \begin{verbatim}
 # (public) LoadAnalysisVideo(GUI::AnalysisTab* tab, 
 Memento::AnalysisTabMemento memento, Model::YuvVideo video)
@@ -486,8 +534,9 @@ Model::YuvVideo* => std::unique_ptr<YuvVideo>
 
 + (private) std::unique_ptr<Memento::AnalysisTabMemento> memento
 \end{verbatim}
-Es lies sich im Entwurf nur schwer einschaetzen, was fuer Attribute noetig fuer das Rueckgaengig machen sind. 
-\subsection{LoadFilterConfig}
+Benötigte Attribute zum Rückgängig machen haben sich geändert.
+\bigskip
+\subsubsection{LoadFilterConfig}
 \begin{verbatim}
 # (public) LoadFilterConfig(GUI::FilterTab* tab,
 Model::FilterList old,Model::FilterList new)
@@ -501,8 +550,9 @@ Model::FilterList* => std::unique_ptr<Model::FilterList>
 - (private) Model::FilterList* oldList
 + (private) std::unique_ptr<Memento::FilterTabMemento> memento
 \end{verbatim}
-Es lies sich im Entwurf nur schwer einschaetzen, was fuer Attribute noetig fuer das Rueckgaengig machen sind.
-\subsection{LoadFilterVideo}
+Benötigte Attribute zum Rückgängig machen haben sich geändert.
+\bigskip
+\subsubsection{LoadFilterVideo}
 \begin{verbatim}
 # (public) LoadFilterVideo(GUI::FilterTab* tab,Model::YuvVideo video,
 Memento::FilterTabMemento memento)
@@ -516,8 +566,9 @@ std::unique_ptr<Memento::FilterTabMemento> memento)
 Memento::FilterTabMemento* => std::unique_ptr<FilterTabMemento>
 Model::YuvVideo* => std::unique_ptr<Model::YuvVideo>
 \end{verbatim}
-Es lies sich im Entwurf nur schwer einschaetzen, was fuer Attribute noetig fuer das Rueckgaengig machen sind.
-\subsection{MoveFilterDown}
+Benötigte Attribute zum Rückgängig machen haben sich geändert.
+\newpage
+\subsubsection{MoveFilterDown}
 \begin{verbatim}
 # (public) MoveFilterDown(GUI::FilterTab* tab, int oldIndex, int newIndex)
 
@@ -528,10 +579,11 @@ Es lies sich im Entwurf nur schwer einschaetzen, was fuer Attribute noetig fuer 
 + (private) int index
 + (private) std::unique_ptr<Memento::FilterTabMemento>
 \end{verbatim}
-Es lies sich im Entwurf nur schwer einschaetzen, was fuer Attribute noetig fuer das Rueckgaengig machen sind.
-\subsection{MoveFilterUp}
+Benötigte Attribute zum Rückgängig machen haben sich geändert.
+\bigskip
+\subsubsection{MoveFilterUp}
 Genau diesselben Aenderungen wie in der Klasse 'MoveFilterDown'.
-\subsection{RemoveFilter}
+\subsubsection{RemoveFilter}
 \begin{verbatim}
 # (public) RemoveFilter(GUI::FilterTab* tab,Model::Filter filter, int index)
 
@@ -543,8 +595,9 @@ Model::Filter* => std::unique_ptr<Model::filter>
 
 + (private) std::unique_ptr<Memento::FilterTabMemento> memento
 \end{verbatim}
-Es lies sich im Entwurf nur schwer einschaetzen, was fuer Attribute noetig fuer das Rueckgaengig machen sind.
-\subsection{RemoveVideo}
+Benötigte Attribute zum Rückgängig machen haben sich geändert.
+\bigskip
+\subsubsection{RemoveVideo}
 \begin{verbatim}
 # (public) RemoveVideo(GUI::AnalysisBoxContainer* container, Model::EncodedVideo video)
 
@@ -554,8 +607,9 @@ Es lies sich im Entwurf nur schwer einschaetzen, was fuer Attribute noetig fuer 
 + (private) int index
 + (private) std::unique_ptr<Memento::AnalysisBoxMemento> memento
 \end{verbatim}
-Es lies sich im Entwurf nur schwer einschaetzen, was fuer Attribute noetig fuer das Rueckgaengig machen sind.
-\subsection{WriteComment}
+Benötigte Attribute zum Rückgängig machen haben sich geändert.
+\newpage
+\subsubsection{WriteComment}
 \begin{verbatim}
 # (public) WriteComment()
 
@@ -567,40 +621,48 @@ QString newComment)
 + (private) QString oldComment
 + (private) QString newComment
 \end{verbatim}
-Es lies sich im Entwurf nur schwer einschaetzen, was fuer Attribute noetig fuer das Rueckgaengig machen sind.
-\subsection{AVVideo}
+Benötigte Attribute zum Rückgängig machen haben sich geändert.
+\newpage
+\subsection{Model}
+\subsubsection{AVVideo}
+\bigskip
 \begin{verbatim}
 std::unique_ptr<AVFrame> => AVFrame*
 int index => std::size_t index
 \end{verbatim}
-Aenderungen aufgrund der Implementierung von AVFrame und std::vector.
+Änderungen aufgrund der Implementierung von AVFrame und std::vector.
+\bigskip
 \begin{verbatim}
 # (public) AVVideo(int fps, int width, int height)
 
 (...) => (int fps)
 \end{verbatim}
 Die Dimension wird jetzt vom ersten Frame, dass in das Video gesteckt wird, bestimmt.
-
+\bigskip
 \begin{verbatim}
 - (public) void insertFrames(int index, std::vector<std::unique_ptr<AVFrame>>& frames)
 \end{verbatim}
-Wird nicht benoetigt.
-
+Wird nicht benötigt.
+\bigskip
 \begin{verbatim}
 + (public) void setFps(int fps)
 \end{verbatim}
 Um beim Konvertieren die Fps korrekt zu setzen.
+\bigskip
 \begin{verbatim}
 + (public) void appendFrame(AVFrame* frame)
 \end{verbatim}
 Komfortablere Schnittstelle.
+\bigskip
 \begin{verbatim}
 + (public) bool isComplete()
 + (public) void setIsComplete(bool isComplete)
 + (private) bool isComplete
 \end{verbatim}
-Um feststellen zu koennen, ob das Video vollstaendig ist, oder noch auf Frames gewartet werden muss.
-\subsection{EncodedVideo}
+Um feststellen zu können, ob das Video vollständig ist, oder noch auf Frames gewartet werden muss.
+\newpage
+\subsubsection{EncodedVideo}
+\bigskip
 \begin{verbatim}
 - (public) int getFileSize()
 - (public) getNumberOfColors()
@@ -615,7 +677,8 @@ Um feststellen zu koennen, ob das Video vollstaendig ist, oder noch auf Frames g
 - (private) int numberOfColors
 - (private) QString codec
 \end{verbatim}
-Wird nicht benoetigt.
+Wird nicht benötigt.
+\bigskip
 \begin{verbatim}
 # (public) Model::Graph& getRedHistogram()
 # (public) Model::Graph& getGreenHistogram()
@@ -627,7 +690,8 @@ Wird nicht benoetigt.
 Model::Graph& => Model::GraphVideo&
 Model::Graph* => std::unique_ptr<Model::GraphVideo>
 \end{verbatim}
-Ein Histogramm von einem Video ist kein einzelner Graph.
+Um Rgb Histogramme für das Video speichern zu können.
+\bigskip
 \begin{verbatim}
 # (public) Model::Graph& getPsnr()
 
@@ -638,12 +702,13 @@ Model::Graph& => Model::Graph*
 
 Model::Video& => Model::Video*
 \end{verbatim}
-Wenn die reference null ist und nicht berechnet werden kann, muss ein nullptr zurueck gegeben werden.
-
+Wenn die reference null ist und nicht berechnet werden kann, muss ein nullptr zurück gegeben werden.
+\bigskip
 \begin{verbatim}
 + (public) int getAverageBitrate()
 \end{verbatim}
-Zusaetzliches Attribut zum Anzeigen.
+Zusätzliches Attribut zum Anzeigen.
+\bigskip
 \begin{verbatim}
 # (private) Model::Video* video
 # (private) Model::AVVideo* avVideo
@@ -658,7 +723,8 @@ Model::Graph* => std::unique_ptr<Model::Graph>
 
 - (private) Model::Video* displayVideo
 \end{verbatim}
-Pointer werden in smartpointer gepackt.
+Nackte Pointer vermeiden.
+\bigskip
 \begin{verbatim}
 + (private) std::unique_ptr<Utility::VideoLoader> loader
 + (private) 	std::unique_ptr<Utility::BitrateCalculator> bitrateCalculator
@@ -671,14 +737,17 @@ Pointer werden in smartpointer gepackt.
 + (private) void calculateHistograms()
 \end{verbatim}
 Attribute zur Berrechnung der einzelnen Videos und Graphen.
-\subsection{FilterList}
+\newpage
+\subsubsection{FilterList}
+\bigskip
 \begin{verbatim}
 - (public) Filter* getFilterByName(std::string name)
 - (public) int getIndex(std::string name)
 - (public) void addFilter(std::string name, int index)
 - (public) void removeFilter(std::string name)
 \end{verbatim}
-Werden nicht benoetigt
+Schlechte Schnittstelle.
+\bigskip
 \begin{verbatim}
 + (public) std::unique_ptr<Filter> removeFilter(std::size_t index)
 + (public) Filter* appendFilter(QString name)
@@ -689,18 +758,22 @@ Werden nicht benoetigt
 
 int => std::size_t
 \end{verbatim}
-Bessere Schnittstelle
+Bessere Schnittstelle.
+\bigskip
 \begin{verbatim}
 # (private) std::vector<Filter*> filters
 
 Filter => std::unique_ptr<Filter>
 \end{verbatim}
-Packe pointer in smartpointer
-\subsection{Graph}
+Nackt Pointer vermeiden.
+\bigskip
+\subsubsection{Graph}
+\bigskip
 \begin{verbatim}
 - (public) void cut(int x)
 \end{verbatim}
-Wird nicht benoetigt.
+Wird nicht benötigt.
+\bigskip
 \begin{verbatim}
 # (public) void addValue(int x, double y)
 # (public) double getValue(int x)
@@ -714,12 +787,9 @@ int => std::size_t
 + (public) getBiggestValue()
 \end{verbatim}
 Bessere Schnittstelle.
-\subsection{GraphVideo}
-\begin{verbatim}
-class GraphVideo => erstellt
-\end{verbatim}
-Um RgbHistogramms fuer Videos anzeigen zu koennen.
-\subsection{Project}
+\newpage
+\subsubsection{Project}
+\bigskip
 \begin{verbatim}
 # (public) void setMemento(Memento::MainWindowMemento memento)
 # (private) Memento::MainWindowMemento* memento
@@ -727,24 +797,27 @@ Um RgbHistogramms fuer Videos anzeigen zu koennen.
 Memento::MainWindoeMemento => std::unique_ptr<Memento::MainWindowMemento>
 Memento::MainWindoeMemento* => std::unique_ptr<Memento::MainWindowMemento>
 \end{verbatim}
-Verhindere unnoetiges Kopieren.
+Unnötiges Kopieren vermeiden.
+\bigskip
 \begin{verbatim}
 + (public) void setName(QString name)
 \end{verbatim}
-Um den Namen des Projectes setzen zu koenne, dass beim Start des Programms als leeres Projekt erstellt wird.
-\subsection{Video}
+Um den Namen des Projectes setzen zu können, dass beim Start des Programms als leeres Projekt erstellt wird.
+\bigskip
+\subsubsection{Video}
+\bigskip
 \begin{verbatim}
 # (public) Video(int fps, int width, int height)
 
 (...) => (int fps)
 \end{verbatim}
 Die Dimension wird jetzt vom ersten Frame, dass in das Video gesteckt wird, bestimmt.
-
+\bigskip
 \begin{verbatim}
 - (public) void insertFrames(int index, std::vector<std::unique_ptr<QImage>>& frames)
 \end{verbatim}
-Wird nicht benoetigt.
-
+Wird nicht benötigt.
+\bigskip
 \begin{verbatim}
 # (public) QImage* getFrame(int index)
 # (public) void insertFrame(std::unique_ptr<QImage> frame, int index)
@@ -753,39 +826,42 @@ Wird nicht benoetigt.
 
 int => std::size_t
 \end{verbatim}
-an vector anpassen
-
+An die Schnittstelle von vector anpassen.
+\bigskip
 \begin{verbatim}
 + (public) void setFps(int fps)
 + (public) bool appendFrame(std::unique_ptr<QImage> frame)
 \end{verbatim}
-Schnittstelle erweitern
-
+Schnittstelle erweitern.
+\bigskip
 \begin{verbatim}
 + (public) void setIsComplete(bool isComplete)
 + (public) bool isComplete()
 + (private) bool isComplete
 \end{verbatim}
-Um feststellen zu koennen, ob das Video vollstaendig ist, oder noch auf Frames gewartet werden muss.
-\subsection{YuvVideo}
+Um feststellen zu können, ob das Video vollständig ist, oder noch auf Frames gewartet werden muss.
+\newpage
+\subsubsection{YuvVideo}
+\bigskip
 \begin{verbatim}
 # (public) YuvVideo(QString path,Utility::PixelSheme type, int width, int height, int fps)
 
-(...) => (QString path, Utility::YuvType type, Utility::Compression compression, int width, int height, int fps)
+(...) => (QString path, Utility::YuvType type, 
+Utility::Compression compression, int width, int height, int fps)
 
 # (private) Utility::PixelSheme yuvType
 
 Utility::PixelSheme => Utility::YuvType
 \end{verbatim}
-Compression wurde im Design vergessen.
-
+Compression wurde im Design vergessen und Pixelsheme und YuvType waren diesselben Klassen.
+\bigskip
 \begin{verbatim}
 + (public) int getWidth()
 + (public) int getHeight()
 + (public) int getFps()
 \end{verbatim}
 Getter wurden im Design vergessen.
-
+\bigskip
 \begin{verbatim}
 + (public) GraphVideo& getRedHistogram()
 + (public) GraphVideo& getGreenHistogram()
@@ -796,20 +872,22 @@ Getter wurden im Design vergessen.
 + (private) std::unique_ptr<Utility::RGBHistogramCalculator> histogramCalculator
 + (private) void calculateHistograms();
 \end{verbatim}
-Zum berrechnen von histogrammen
-
+Zum Berrechnen von den Histogrammen.
+\bigskip
 \begin{verbatim}
 - (public) Model::AVVideo& getAvVideo()
 - (private) std::unique_ptr<Model::AVVideo> avVideo
 \end{verbatim}
-Wird nicht benoetigt.
-
+Wird nicht benötigt.
+\bigskip
 \begin{verbatim}
 + (private) std::unique_ptr<Utility::YuvFileReader> fileReader
 + (private) void loadVideo()
 \end{verbatim}
-Zum laden des Videos.
-\subsection{BitrateCalculator}
+Zum Laden des Videos.
+\newpage
+\subsection{Utility}
+\subsubsection{BitrateCalculator}
 \begin{verbatim}
 - (public) Model::Graph calculate()
 + (public) void calculate(Model::Graph* target)
@@ -819,14 +897,15 @@ Zum laden des Videos.
 + (private) Model::Graph* target
 + (private) void calculateP()
 \end{verbatim}
-Ermoegliche threads.
-\subsection{FilterApplier}
+Threading.
+\subsubsection{FilterApplier}
 \begin{verbatim}
 # (public) FilterApplier(Model::FilterList& list)
 
 (...) => (Model::FilterList& list, int width, int height, int pixelFormat)
 \end{verbatim}
-Mehr informatioon benoetigt.
+Mehr informationen für Ffmpeg benötigt.
+\bigskip
 \begin{verbatim}
 # (public) void applyToVideo(Model::AVVideo& target, Model::AVVideo& source)
 
@@ -837,11 +916,13 @@ Model::AVVideo => Model::Video
 - (private) AVFrame applyToFrame(AVFrame& source)
 + (public) AVFrame* applyToFrame(AVFrame& source)
 \end{verbatim}
-Bessere Schnittstelle
+Bessere Schnittstelle.
+\bigskip
 \begin{verbatim}
 + (signals) void applyComplete(bool successful)
 \end{verbatim}
-Um die stausbar updaten zu koennen.
+Um die stausbar updaten zu können.
+\bigskip
 \begin{verbatim}
 + (private) int width
 + (private) int height
@@ -855,66 +936,77 @@ Um die stausbar updaten zu koennen.
 + (private) Model::AVVideo* source1
 + (private) Model::Video* target
 + (private) bool isRunning
-
 + (private) void createFilterString()
 + (private) void applyToVideoP()
 + (private) void applyToAVVideoP()
 \end{verbatim}
-Fuer multithreading und berechnung
-\subsection{FilterConfigurationLoader}
+Threading und Attribute für Ffmpeg.
+\newpage
+\subsubsection{FilterConfigurationLoader}
 \begin{verbatim}
 # (public) Model::FilterList getConfiguratin()
 
 Model::FilterList => std::unique_ptr<Model::FilterList>
 \end{verbatim}
-Kopieren vermeiden
-\subsection{FilterConfigurationSaver}
+Unnötiges Kopieren vermeiden.
+\bigskip
+\subsubsection{FilterConfigurationSaver}
 \begin{verbatim}
 + (private) Model::FilterList* filterList
 \end{verbatim}
-Speichern der Liste vom Konstruktor
-\subsection{ProjectReader}
+Speichern der Liste, die im Konstruktor übergeben wird.
+\bigskip
+\subsubsection{ProjectReader}
+\bigskip
 \begin{verbatim}
 # (public) Model::Project readProject()
 
 Model::Project => std::unique_ptr<Model::Project>
 \end{verbatim}
-Kopieren vermeiden.
+Unnötiges Kopieren vermeiden.
+\bigskip
 \begin{verbatim}
-- (private) QFile file
-- (private) QTextStream dataStream
++ (private) QFile file
++ (private) QTextStream dataStream
 
-- (private) void parseFilterTab(Memento::FilterTabMemento* memento,QString line)
-- (private) void parseAnalysisTab(Memento::AnalysisTabMemento* memento,QString line)
++ (private) void parseFilterTab(Memento::FilterTabMemento* memento,QString line)
++ (private) void parseAnalysisTab(Memento::AnalysisTabMemento* memento,QString line)
 \end{verbatim}
-\subsection{ProjectWriter}
+Mehr Lesbarkeit des Codes.
+\bigskip
+\subsubsection{ProjectWriter}
+\bigskip
 \begin{verbatim}
 # (public) ProjectWriter(Model::Project project)
 
 Model::Project => Model::Project*
 \end{verbatim}
-Kopieren verhindern
-
+Unnötiges Kopieren vermeiden.
+\bigskip
 \begin{verbatim}
 - (public) void saveResults()
 \end{verbatim}
-Wurde in eigene Klasse ausgelagert
+Wurde in eigene Klasse ausgelagert.
 \begin{verbatim}
 + (private) Model::Project* project
 + (private) std::unique_ptr<QFile> file
 + (private) QTextStream dataStream
 \end{verbatim}
-\subsection{PsnrCalculator}
+Attribute zum Speichern benötigt.
+\newpage
+\subsubsection{PsnrCalculator}
+\bigskip
 \begin{verbatim}
 # (public) PsnrCalculator(Model::AVVideo& reference, Model::AVVideo& video)
 
 Model::AVVideo => Model::Video
 \end{verbatim}
-Einfacher zu benutzen
+Bessere Schnittstelle.
 \begin{verbatim}
 + (private) double calculateMeanSquareError(QImage* frame1, QImage* frame2);
 \end{verbatim}
-Wird zum berrechen benoetigt
+Wird zum Berrechen benötigt.
+\bigskip
 \begin{verbatim}
 + (private) std::thread calculator
 + (private) Model::Graph* target
@@ -922,18 +1014,16 @@ Wird zum berrechen benoetigt
 
 + (private) void calculateP()
 \end{verbatim}
-Fuer threading.
-\subsection{ResultSaver}
-\begin{verbatim}
-class ResultSaver => erstellen
-\end{verbatim}
-Auslagerung vom result saven aus dem project
-\subsection{RgbDifferenceCalculator}
+Threading.
+\bigskip
+\subsubsection{RgbDifferenceCalculator}
 \begin{verbatim}
 # (public) void calculateVideo(Model::Video& target)
 
 Model::Video& => Model::Video*
 \end{verbatim}
+Bessere Schnittstelle.
+\bigskip
 \begin{verbatim}
 + (private) Model::Video* target
 + (private) std::thread calculator
@@ -942,16 +1032,19 @@ Model::Video& => Model::Video*
 + (private) void calculateP()
 \end{verbatim}
 Threading.
-\subsection{RGBHistogramCalculator}
+\newpage
+\subsubsection{RGBHistogramCalculator}
 \begin{verbatim}
 # (public) void calculate()
 
-() => (Model::GraphVideo* targetRed,Model::GraphVideo* targetGreen, Model::GraphVideo* targetBlue)
+() => (Model::GraphVideo* targetRed,Model::GraphVideo* targetGreen, 
+Model::GraphVideo* targetBlue)
 
 + (private) std::thread calculator
 + (private) bool isRunning
 \end{verbatim}
 Threading.
+\bigskip
 \begin{verbatim}
 # (private) Model::Graph red
 # (private) Model::Graph green
@@ -959,14 +1052,48 @@ Threading.
 
 Model::Graph => Model::GraphVideo*
 \end{verbatim}
-Histogramm fuer ein Video ist auch ein Video.
-\subsection{VideoConverter}
+Um Rgb Histogramm für ein ganzes Video berrechnen zu können.
+\bigskip
+\subsubsection{VideoLoader}
+\begin{verbatim}
+# (public) VideoLoader(QString path)
+
+(...) => (QString path, AVDictionary* dict)
+
++ (private) 	AVDictionary *dict_;
+\end{verbatim}
+Um Macroblöcke laden zu könne.
+\bigskip
+\begin{verbatim}
+- (public) std::unique_ptr<Model::AVVideo> loadVideo()
++ (public) void loadVideo(Model::AVVideo *target)
+
++ (private) std::thread loader
++ (private) bool isRunning
+
++ (private) void loadP()
+\end{verbatim}
+Threading.
+\bigskip
+\begin{verbatim}
++ (public) QString getCodec()
++ (public) int getAverageBitrate()
+
++ (private) QString codec
++ (private) int averageBitrate
+\end{verbatim}
+Attribute des Videos.
+\newpage
+\subsubsection{VideoConverter}
+\bigskip
 \begin{verbatim}
 + (public) VideoConverter(Model::AVVideo* video)
 + (public) VideoConverter(Model::Video* video)
 
-- (public) static std::unique_ptr<Model::AVVideo> convertVideoToAVVideo(Model::Video& video)
-- (public) static std::unique_ptr<Model::Video> convertAVVideoToVideo(Model::AVVideo& video)
+- (public) static std::unique_ptr<Model::AVVideo> 
+convertVideoToAVVideo(Model::Video& video)
+- (public) static std::unique_ptr<Model::Video> 
+convertAVVideoToVideo(Model::AVVideo& video)
 
 + (public) void convertAVVideoToVideo(Model::Video* target)
 + (public) void convertVideoToAVVideo(Model::AVVideo* target)
@@ -981,7 +1108,8 @@ Histogramm fuer ein Video ist auch ein Video.
 + (private) void convertVideoP()
 + (private) void convertAVVideoP()
 \end{verbatim}
-Threading
+Threading.
+\bigskip
 \begin{verbatim}
 # (public) std::unique_ptr<AVFrame> convertImageToAVFrame(Qimage& image)
 
@@ -991,55 +1119,27 @@ std::unique_ptr<AVFrame> => AVFrame*
 
 (...) => (AVFrame& frame)
 \end{verbatim}
-Andere werden nicht benoetigt.
+AVFrames kann man nicht in Smartpointer packen und die übergebenen Attribute sind bereits in AVFrame enthalten.
+\bigskip
 \begin{verbatim}
-+ (public) static std::unique_ptr<QImage> convertGraphToImage(Model::Graph* graph,int width,int height, GUI::GraphCalculator* calculator=0);
++ (public) static std::unique_ptr<QImage> convertGraphToImage(
+Model::Graph* graph,int width,int height, GUI::GraphCalculator* calculator=0);
 
-+ (public) static std::unique_ptr<Model::Video> convertGraphVideoToVideo(Model::GraphVideo* video,int width,int height,GUI::GraphCalculator* calculator);
-
++ (public) static std::unique_ptr<Model::Video> convertGraphVideoToVideo(
+Model::GraphVideo* video,int width, int height,GUI::GraphCalculator* calculator);
 \end{verbatim}
-Konvertiere Graphen zu Images.
-\subsection{VideoLoader}
-\begin{verbatim}
-# (public) VideoLoader(QString path)
-
-(...) => (QString path, AVDictionary* dict)
-
-+ (private) 	AVDictionary *dict_;
-\end{verbatim}
-Macroblocks.
-\begin{verbatim}
-- (public) std::unique_ptr<Model::AVVideo> loadVideo()
-+ (public) void loadVideo(Model::AVVideo *target)
-
-+ (private) std::thread loader
-+ (private) bool isRunning
-
-+ (private) void loadP()
-\end{verbatim}
-Threading.
-\begin{verbatim}
-+ (public) QString getCodec()
-+ (public) int getAverageBitrate()
-
-+ (private) QString codec
-+ (private) int averageBitrate
-\end{verbatim}
-Attribute des videos
-\subsection{VideoSaver}
-\begin{verbatim}
-class VideoSaver => erstellen
-\end{verbatim}
-Um encodierte Videos speichern zu koenne.
+Konvertieren Graphen zu Images.
+\newpage
 \subsection{YuvFileReaders}
 \subsubsection{Basisklasse: YuvFileReader}
+\bigskip
 \begin{verbatim}
 # (public) YuvFileReader(QString filename, int width, int height)
 
 (...) => (QString filename, int width, int height, int framesize)
 \end{verbatim}
-Um den buffer alloziieren zu koennen.
-
+Um den Buffer alloziieren zu können, in den die Datei gelesen wird.
+\bigskip
 \begin{verbatim}
 - (public) virtual std::unique_ptr<Model::Video> read()
 + (public) void read(Model::Video* target)
@@ -1053,7 +1153,7 @@ Um den buffer alloziieren zu koennen.
 
 + (private) void readP()
 \end{verbatim}
-Threading
+Threading.
 \begin{verbatim}
 - (protected) std::unique_ptr<QByteArray> binaryData
 - (protected) std::unique_ptr<Model::Video> video
@@ -1067,6 +1167,8 @@ Threading
 + (protected) int frameSize
 + (protected) bool* complete
 \end{verbatim}
+Attibute, die zum Einlesen benötigt werden und Verhinderung von Codedopplung.
+\bigskip
 \subsubsection{Allgemein erbende Klassen}
 \begin{verbatim}
 - (public) std::unique_ptr<Model::Video> read()
@@ -1075,18 +1177,22 @@ Threading
 
 private => protected
 \end{verbatim}
+Geerbt von der Basisklasse.
+\newpage
 \subsection{YuvFileSavers}
 \subsubsection{Basisklasse: YuvFileSaver}
 \begin{verbatim}
 + (signals) void saveComplete(bool successful,QString filename,int width,int height)
 \end{verbatim}
-Signalisierung des Endes
+Um dem Nutzer bescheid sagen zu können.
+\bigskip
 \begin{verbatim}
 + (public) static int RgbToY(QRgb pixel)
 + (public) static int RgbToU(QRgb pixel)
 + (public) static int RgbToV(QRgb pixel)
 \end{verbatim}
-Funktionen zue konvertierung.
+Funktionen zur Konvertierung.
+\bigskip
 \subsubsection{Allgemein erbende Klassen}
 \begin{verbatim}
 + (private) std::thread safer
@@ -1095,22 +1201,27 @@ Funktionen zue konvertierung.
 + (private) void saveP()
 \end{verbatim}
 Threading.
+\bigskip
 \subsubsection{Yuv420FileSaver}
 \begin{verbatim}
 - (private) void saveFrame(int index)
 \end{verbatim}
-Nicht gebraucht.
+Nicht benötigt.
+\bigskip
 \subsubsection{Yuv422FileSaver}
 \begin{verbatim}
 + (private) Compression compression
 \end{verbatim}
-Vergessen im design.
+Vergessen im Design.
 \subsubsection{Yuv444FileSaver}
 \begin{verbatim}
 + (private) Compression compression
 \end{verbatim}
-Vergessen im design.
-\subsection{AnalysisBox}
+Vergessen im Design.
+\newpage
+\subsection{GUI}
+\subsubsection{AnalysisBox}
+\bigskip
 \begin{verbatim}
 # (public) Memento::AnalysisBoxMemento getMemento()
 
@@ -1120,8 +1231,8 @@ Memento::AnalysisBoxMemento => std::unique_ptr<AnalysisBoxMemento>
 
 Memento::AnalysisBoxMemento => Memento::AnanlysisBoxMemento*
 \end{verbatim}
-Kopieren verhindern
-
+Unnötiges Kopieren vermeiden.
+\bigskip
 \begin{verbatim}
 - (public) void setRawVideo(Model::Video* video
 - (private) Model::Video rawVideo*
@@ -1129,8 +1240,8 @@ Kopieren verhindern
 + (public) void setParentContainer(AnalysisBoxContainer* container)
 + (private) AnalysisBoxContainer* parentContainer
 \end{verbatim}
-Hole das rohvideo ueber den parent.
-
+Hole das Rohvideo über den Container.
+\bigskip
 \begin{verbatim}
 - (public) void setAnalysisVideo(Model::EncodedVideo video)
 + (public) void setFile(QString filename)
@@ -1139,15 +1250,16 @@ Hole das rohvideo ueber den parent.
 
 Model::EncodedVideo* => std::unique_ptr<Model::EncodedVideo>
 \end{verbatim}
-Kapsle das Video in der box
+Kapsle das Video in der box.
+\bigskip
 \begin{verbatim}
 # (public) void setControlPanel(GlobalControlPanel* panel)
 # (private) GlobalControlPanel* controlPanel
 
 GlobalControlPanel* => std::shared_ptr<GlobalControlPanel>
 \end{verbatim}
-Destructor dependencies
-
+Destructor Abhängigkeiten.
+\bigskip
 \begin{verbatim}
 - (public) void showRGBDifferenceVideo()
 - (public) void showMacroBlockVideo()
@@ -1156,23 +1268,27 @@ Destructor dependencies
 + (public) void showAnalysisVideo(AnalysisVideo video)
 + (public) void showAttributes()
 \end{verbatim}
-Saubrere Schnittstelle
+Bessere Schnittstelle.
+\bigskip
 \begin{verbatim}
 + (public) QString getPath()
 + (public) QPlainTextEdit* getCommentBox()
 + (private) QString currentComment
 \end{verbatim}
-Fuer UndoCommands
+Um den WriteComment UndoCommand erstellen zu können.
+\bigskip
 \begin{verbatim}
 + (public) void lockUi()
 + (public) void unlockUi()
 \end{verbatim}
-Ui locken fuer das save results
+Ui locken um Ergebnisse speichern zu können.
+\bigskip
 \begin{verbatim}
 + (private slots) void updateLabels()
 + (private) QTimer timer_updateLabels
 \end{verbatim}
-Um labels so lange zu updaten bis alle information vorhanden sind
+Um labels so lange zu aktualisieren, bis alle Information angeyeigt werden.
+\bigskip
 \begin{verbatim}
 - (private) int currentlyPlayedVideo
 + (private) GraphWidget* graphWidget
@@ -1189,7 +1305,8 @@ Um labels so lange zu updaten bis alle information vorhanden sind
 
 VideoPlayer* => std::unique_ptr<VideoPlayer>
 \end{verbatim}
-Zusaetzlich fue dri gui benoetigt
+Zusaetzlich für die GUI benötigt.
+\bigskip
 \begin{verbatim}
 - (private) GraphWidget psnrGraph
 - (private) GraphWidget bitrateGraph
@@ -1197,24 +1314,29 @@ Zusaetzlich fue dri gui benoetigt
 - (private) GraphWidget blueHistogramm
 - (private) GraphWidget greenHistogramm
 \end{verbatim}
-Wird in EncodedVideo gespeichert
-\subsection{AnalysisBoxContainer}
+Wird in EncodedVideo gespeichert.
+\newpage
+\subsubsection{AnalysisBoxContainer}
+\bigskip
 \begin{verbatim}
 # (public) Memento::AnalysisBoxContainerMemento getMemento()
 
-Memento::AnalysisBoxContainerMemento => std::unique_ptr<Memento::AnalysisBoxContainerMemento>
+Memento::AnalysisBoxContainerMemento =>
+ std::unique_ptr<Memento::AnalysisBoxContainerMemento>
 
 # (public) void restore(Memento::AnalysisBoxContainerMemento memento)
 
 Memento::AnalysisBoxContainerMemento => Memento::AnalysisBoxContainerMemento*
 \end{verbatim}
-Kopieren verhindern.
+Unnötiges Kopieren vermeiden.
+\bigskip
 \begin{verbatim}
 + (public) void setParentTab(AnalysisTab* parent)
 + (public) AnalysisTab* getParentTab()
 + (private) AnalysisTab* parent
 \end{verbatim}
-Parent sichtbar fuer analysisboxen
+Dass sich die Analysisboxen das Rohvideo holen können.
+\bigskip
 \begin{verbatim}
 - (public) void addVideo(QString path)
 - (public) void addVideo(Model::EncodedVideo video)
@@ -1245,7 +1367,8 @@ void => int
 + (public) int getIndex(AnalysisBox* box)
 + (public) std::size_t getNumberOfBoxes()
 \end{verbatim}
-Bessres schnittstelle
+Bessere Schnittstelle.
+\bigskip
 \begin{verbatim}
 + (private) QVBoxLayout v_boxes
 + (private) QSpacerItem* spacer
@@ -1254,28 +1377,23 @@ Bessres schnittstelle
 + (private slots) void addVideo()
 + (private) void updateUi()
 \end{verbatim}
-Zusaetlich fue dir gui.
+Zusaetlich für die GUI benötigt.
+\bigskip
 \begin{verbatim}
 # (public) void setControlPanel(GloablControlPanel* panel)
 # (private) GlobalControlPanel* panel
 
 GloablControlPanel* => std::shared_ptr<GlobalControlPanel>
 \end{verbatim}
-Destructor dependencies
+Destructor Abhängigkeiten.
 \begin{verbatim}
 + (public) void lockUi()
 + (public) void unlockUi()
 \end{verbatim}
-Fuer das results saven
-\subsection{AnalysisGraph}
-\begin{verbatim}
-enum class AnalysisGraph => erstellt
-\end{verbatim}
-\subsection{AnalysisVideo}
-\begin{verbatim}
-enum class AnalysisVideo => erstellt
-\end{verbatim}
-\subsection{AnalysisTab}
+Um Ergebnisse speichern zu können.
+\newpage
+\subsubsection{AnalysisTab}
+\bigskip
 \begin{verbatim}
 # (public) Memento::AnalysisTabMemento getMemento()
 
@@ -1285,7 +1403,8 @@ Memento::AnalysisTabMemento => std::unique_ptr<Memento::AnalysisTabMemento>
 
 Memento::AnalysisTabMemento => Memento::AnalysisTabMemento*
 \end{verbatim}
-Kopieren verhindern.
+Unnötiges Kopieren vermeiden.
+\bigskip
 \begin{verbatim}
 # (public) void setRawVideo(Model::YuvVideo video)
 
@@ -1293,17 +1412,20 @@ Model::YuvVideo => Model::YuvVideo*
 
 + (public) Model::YuvVideo* getRawVideo()
 \end{verbatim}
-Rawvideo wird im undocommand gespeichert
+Rawvideo wird im UndoCommand gespeichert.
+\bigskip
 \begin{verbatim}
 + (public) bool isRawVideoLoaded()
 \end{verbatim}
-Fuert den container, ob er en video adden darf
+Für den Container, ob er ein Video hinzufügen darf.
+\bigskip
 \begin{verbatim}
 + (public) void setParentWindow(MainWindow* window)
 + (public) MainWindow* getParentWindow()
 + (private) MainWindow* parentWindow
 \end{verbatim}
-Fuer statusbar
+Für die Statusbar.
+\bigskip
 \begin{verbatim}
 + (protected) void resizeEvent(QResizeEvent * event)
 
@@ -1344,36 +1466,44 @@ Fuer statusbar
 
 VideoPlayer* => std::unique_ptr<VideoPlayer>
 \end{verbatim}
-Zusaetzlich fue die gui
-\subsection{ControlPanel}
+Zusätzlich für die GUI benötigt.
+\newpage
+\subsubsection{ControlPanel}
 \begin{verbatim}
 # (public) void addVideoPlayer(Player& player)
 
 PLayer& => Player*
 \end{verbatim}
+Bessere Schnittstelle.
+\bigskip
 \begin{verbatim}
 # (private) std::vector<VideoPayer*>
 
 VideoPlayer* => Player*
 \end{verbatim}
-Dass auch graphplayers rein koennen
-\subsection{FilterContainerTab}
+Dass auch GraphPlayer akzeptiert werden.
+\bigskip
+\subsubsection{FilterContainerTab}
 \begin{verbatim}
 # (public) void addFilter(Model::Filter filter)
 
 Model::Filter => QString
 \end{verbatim}
-komfortabler
+Bessere Schnittstelle.
+\bigskip
 \begin{verbatim}
 - (public) void unchecl(QString filtername)
 \end{verbatim}
-Nicht merh benoetigt
+Nicht mehr benötigt.
+\bigskip
 \begin{verbatim}
 + (private) container
 + (private) filterContainer
 \end{verbatim}
-Zusaetzlich fuer die gui.
-\subsection{FilterTab}
+Zusätzlich für die GUI benötigt.
+\newpage
+\subsubsection{FilterTab}
+\bigskip
 \begin{verbatim}
 # (public) Memento::FilterTabMemento getMemento()
 
@@ -1383,12 +1513,13 @@ FilterTabMemento => std::unique_ptr<FilterTabMemento>
 
 FilterTabMemento => FilterTabMemento*
 \end{verbatim}
-Kopiren vermeiden.
+Unnötiges Kopieren vermeiden.
+\bigskip
 \begin{verbatim}
 + (public) static constexpr int MAX_PREVIEW_COUNT
 \end{verbatim}
 Magic numbers vermeiden.
-
+\bigskip
 \begin{verbatim}
 # (public) void insertFilter(Model::Filter filter, int index)
 
@@ -1413,18 +1544,21 @@ Model::FilterList => std::unique_ptr<Model::FilerList>
 
 + (public) Model::FilterList* getFilterList()
 \end{verbatim}
-Besseres schnittstelle fuer filter
+Bessere Schnittstelle für Filter.
+\bigskip
 \begin{verbatim}
 # (public) void setRawVideo(Model::YuvVideo video)
 
 Model::YuvVideo => Model::YuvVideo*
 \end{verbatim}
-Video wird in undocommand gespeichert
+Video wird in UndoCommand gespeichert.
+\newpage
 \begin{verbatim}
 + (public) void updateFilterPreview()
 + (public) void showFilteredVideo()
 \end{verbatim}
-Mehr Kontroll ueber den tab.
+Mehr Kontroll über den Tab.
+\bigskip
 \begin{verbatim}
 + (public) void setMainWindow(MainWindow* window)
 + (public) MainWindow* getMainWindow()
@@ -1433,7 +1567,8 @@ Mehr Kontroll ueber den tab.
 + (private slots) void notifyOnSaveComplete(bool successful,QString filename,int width,int height)
 + (private slots) void notifyOnApplyComplete(bool successful)
 \end{verbatim}
-Fuer statusbar
+Für Statusbar.
+\bigskip
 \begin{verbatim}
 - (private) QLabel* filterOptions
 - (private) QFrame* filterContainer
@@ -1468,8 +1603,9 @@ Model::FilterList => std::unique_ptr<Model::FilterList>
 + (private) void initFilterList()
 + (private) void calculatePreviewFrames()
 \end{verbatim}
-Zuseatzlih fue gui
-\subsection{FilterView}
+Zusätzlich für die GUI benötigt.
+\newpage
+\subsubsection{FilterView}
 \begin{verbatim}
 # (public) void setFilter(Model::Filter filter)
 
@@ -1491,49 +1627,48 @@ Model::Filter* => std::unique_ptr<Model::Filter>
 + (private) std::unique_ptr<QImage> filterImage
 \end{verbatim}
 Fue gui
-\subsection{ForwardPlayer}
+\subsubsection{ForwardPlayer}
+\bigskip
 \begin{verbatim}
 + (public) void setMasterVideoPlayer(Player* player)
 + (private) Player* player
 - (private) ControlPanel controlPanel
 \end{verbatim}
-Um alles Methoden implementieren zu koennen.
+Um alle Methoden implementieren zu können.
+\bigskip
 \begin{verbatim}
 + (public) std::size_t getNumberOfFrames()
 \end{verbatim}
-\subsection{FrameView}
+Geerbt von Player.
+\bigskip
+\subsubsection{FrameView}
 \begin{verbatim}
 # (protected) void repaintEvent(QPaintEvent* event)
 repaintEvent => paintEvent
 \end{verbatim}
-Falscher name.
+Falscher Name.
+\bigskip
 \begin{verbatim}
 + (private) QPixmap drawedImage
 \end{verbatim}
-Konvertierun vermeiden.
-\subsection{GlobalControlPanel}
+Unnötiges Konvertieren vermeiden.
+\bigskip
+\subsubsection{GlobalControlPanel}
 \begin{verbatim}
 + (public) int getPosition()
 \end{verbatim}
-War noetig
-\subsection{GraphCalculator}
-\begin{verbatim}
-class GraphCalculator => erstellt
-\end{verbatim}
-Um das Berrechnen vom anzeigen zu trennen.
-\subsection{GraphPlayer}
-\begin{verbatim}
-class GraphPlayer => erstellt
-\end{verbatim}
-um Rgb histogramme abspielen zu koenne.
-\subsection{GraphWidget}
+War nötig.
+\newpage
+\subsubsection{GraphWidget}
+\bigskip
 \begin{verbatim}
 # (public) void drawGraph(Model::Graph g, bool filled)
 (...) => (Model::Graph* graph)
 
 + (public) Model::Graph* getGraph()
 \end{verbatim}
-Bessere schnittstelle
+Bessere Schnittstelle.
+\bigskip
 \begin{verbatim}
 - (public) void setLineColor(QRgb color)
 - (public) void setFillColor(QRgb color)
@@ -1544,6 +1679,7 @@ Bessere schnittstelle
 + (private) GraphCalculator* calculator
 \end{verbatim}
 Berrechnen wird ausgelagert.
+\bigskip
 \begin{verbatim}
 + (public) void buildScene()
 + (protected) void resizeEvent(QResizeEvent* event)
@@ -1551,8 +1687,10 @@ Berrechnen wird ausgelagert.
 + (private) QGraphicsScene scene
 + (private slots) void updateView()
 \end{verbatim}
-Zum zeichnen.
-\subsection{MainWindow}
+Zum Zeichnen.
+\newpage
+\subsubsection{MainWindow}
+\bigskip
 \begin{verbatim}
 # (public) Memento::MainWindowMemento getMemento()
 Memento::MainWindowMemento => std::unique_ptr<Memento::MainWindowMemento>
@@ -1560,20 +1698,24 @@ Memento::MainWindowMemento => std::unique_ptr<Memento::MainWindowMemento>
 # (public) void restore(Memento::MainWindowMemento memento)
 Memento::MainWindowMemento => Memento::MainWindowMemento*
 \end{verbatim}
-Kopieren vermeiden.
+Unnötiges Kopieren vermeiden.
+\bigskip
 \begin{verbatim}
 - (public) Model::Project& getProject()
 \end{verbatim}
-nicht benoetigt.
+Nicht benötigt.
+\bigskip
 \begin{verbatim}
 # (private) Model::Project* loadedProject
 Model::Project* => std::unique_ptr<Model::Project>
 \end{verbatim}
-Packs in nen msartpointer
+Nackte Pointer vermeiden.
+\bigskip
 \begin{verbatim}
 + (public) QStatusBar* getStatusBar()
 \end{verbatim}
-Fuer statusbar
+Für Statusbar.
+\bigskip
 \begin{verbatim}
 - (private) void createMenuBar()
 
@@ -1584,26 +1726,31 @@ Fuer statusbar
 + (private) AnalysisTab* analysisTab
 + (private) Ui::MainWindow* ui
 \end{verbatim}
-Fuer gui
-\subsection{Player}
+Für GUI.
+\newpage
+\subsubsection{Player}
 \begin{verbatim}
 # (public) virtual void setPosition(int position)
 # (public) virtual int getPosition()
 
 int => std::size_t
 \end{verbatim}
+An vector anpassen.
+\bigskip
 \begin{verbatim}
 + (public) std::size_t getNumberOfFrames()
 \end{verbatim}
-\subsection{PlayerControlPanel}
+Um die ControlPanels korrekt aktualisieren zu können.
+\bigskip
+\subsubsection{PlayerControlPanel}
 \begin{verbatim}
 # (public) void updateUi()
 public => public slots
 
 + (private) QTimer updater
 \end{verbatim}
-Um die gui dem player anzupassen.
-\subsection{PreviewControlPanel}
+Um die Gui dem Player anzupassen.
+\subsubsection{PreviewControlPanel}
 \begin{verbatim}
 # (public) void updateUi()
 public => public slots
@@ -1611,8 +1758,9 @@ public => public slots
 + (private) QTimer updater
 - (private) void updateLabel()
 \end{verbatim}
-Um die guid em video anzupassen.
-\subsection{Timer}
+Um die GUI dem Video anzupassen.
+\bigskip
+\subsubsection{Timer}
 \begin{verbatim}
 # (public) void addPlayer(VideoPlayer& player)
 # (public) void removePlayer(VideoPlayer& player)
@@ -1621,25 +1769,28 @@ VideoPlayer& => Player&
 
 + (private) std::vector<Player*> players
 \end{verbatim}
-Um auch graphplayers reinpacken zu koenne.
-\subsection{VideoPlayer}
+Um auch GraphPlayer reinpacken zu können.
+\newpage
+\subsubsection{VideoPlayer}
+\bigskip
 \begin{verbatim}
 # (public) void setVideo(Video& video)
 
 (...) => (Video* video,bool updateTimer)
 \end{verbatim}
-Um videos zu clearn oder um hinzuzufuegen ohne den timer zu stoppen.
+Um Videos hinzuzufügen ohne den Timer zu stoppen.
+\bigskip
 \begin{verbatim}
 # (public) void setPosition(int position)
 # (public) int getPosition()
 # (private) int position
 
 int => std::size_t
-\end{verbatim}
-geerebt.
-\begin{verbatim}
+
 + (public) std::size_t getNumberOfFrames()
 \end{verbatim}
+Geerbt von der Basisklasse.
+\bigskip
 \begin{verbatim}
 + (private) QTimer viewUpdater
 + (private slots) void updateViews()
@@ -1647,12 +1798,35 @@ geerebt.
 # (private) Timer timer
 Timer => std::shared_ptr<Timer>
 \end{verbatim}
-\subsection{YuvFileOpenDialog}
+War nötig.
+\bigskip
+\subsubsection{YuvInfoDialog}
+\begin{verbatim}
+# (public) PixelSheme getPixelSheme()
+PixelSheme => Utility::YuvType
+\end{verbatim}
+PixelSheme und YuvType waren doppelt.
+\bigskip
+\begin{verbatim}
+- (public) void show()
+- (public) bool wasSuccessfull()
+\end{verbatim}
+Wird von QDialg übernommen.
+\bigskip
+\begin{verbatim}
++ (private) QStringList pixelShemeList
++ (private) QStringList compressionList
+\end{verbatim}
+Zusätzlich für GUI benötigt.
+\newpage
+\subsubsection{YuvFileOpenDialog}
+\bigskip
 \begin{verbatim}
 + (public) static constexpr int MAX_SAVED_ENTRIES
 + (public) static const QString SAVE_FILENAME
 \end{verbatim}
 Magische zahlen vermeiden.
+\bigskip
 \begin{verbatim}
 + (public) int getFps()
 + (public) int getWidth()
@@ -1669,12 +1843,14 @@ Magische zahlen vermeiden.
 + (private) void askAttributes()
 + (private) bool parseAttributes()
 \end{verbatim}
-Speichere auch attribute der yuv datei.
+Speichere auch Attribute der Yuv datei.
+\bigskip
 \begin{verbatim}
 - (public) void show()
 - (public) bool wasSuccessfull()
 \end{verbatim}
-Wird von QDialg uebernommen.
+Wird von QDialg übernommen.
+\bigskip
 \begin{verbatim}
 + (private slots) void chooseFile()
 + (private slots) void selectionChanged(const QItemSelection& selection)
@@ -1682,7 +1858,8 @@ Wird von QDialg uebernommen.
 
 + (private) QLineEdit* lineEdit_selectedFile
 \end{verbatim}
-Fuer gui
+Zusätzlich für GUI benötigt.
+\bigskip
 \begin{verbatim}
 - (private) static void loadRecentlyUsed()
 - (private) static QListViewModel model_recentlyUsed
@@ -1691,23 +1868,8 @@ Fuer gui
 + (private) static void saveListModel(QString selectedFile, QString attributes)
 + (private) static QStringListModel* model_recentlyUsed
 \end{verbatim}
-Fui recently used dateien
-\subsection{YuvInfoDialog}
-\begin{verbatim}
-# (public) PixelSheme getPixelSheme()
-PixelSheme => Utility::YuvType
-\end{verbatim}
-klasse war doppelt.
-\begin{verbatim}
-- (public) void show()
-- (public) bool wasSuccessfull()
-\end{verbatim}
-Wird von QDialg uebernommen.
-\begin{verbatim}
-+ (private) QStringList pixelShemeList
-+ (private) QStringList compressionList
-\end{verbatim}
-Fuer gui
+Für recently used Dateien.
+\newpage
 \section{Ergebnis}
 \subsection{Grobuebersicht der Entwurfsaenderungen}
 In diesem Abschnitt werden die groesten der Aenderungen in den einzelnen Pakten kurz erlautert.
