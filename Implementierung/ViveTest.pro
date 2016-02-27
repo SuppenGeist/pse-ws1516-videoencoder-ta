@@ -201,7 +201,11 @@ HEADERS += \
     src/utility/VideoSaver.h \
     test/utility/testvideoconverter.h \
     test/model/testgraph.h \
-    test/utility/testvideoloader.h
+    test/utility/testvideoloader.h \
+    test/utility/testyuvfilereader.h \
+    test/utility/testyuv444vector.h \
+    test/utility/testyuv422vector.h \
+    test/utility/testyuv411vector.h
 
 SOURCES += \
     src/gui/AnalysisBox.cpp \
@@ -384,7 +388,11 @@ SOURCES += \
     src/utility/VideoSaver.cpp \
     test/utility/testvideoconverter.cpp \
     test/model/testgraph.cpp \
-    test/utility/testvideoloader.cpp
+    test/utility/testvideoloader.cpp \
+    test/utility/testyuvfilereader.cpp \
+    test/utility/testyuv444vector.cpp \
+    test/utility/testyuv422vector.cpp \
+    test/utility/testyuv411vector.cpp
 
 RESOURCES += \
     resources.qrc \
