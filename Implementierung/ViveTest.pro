@@ -200,6 +200,7 @@ HEADERS += \
     src/utility/resultsaver.h \
     src/utility/VideoSaver.h \
     test/utility/testvideoconverter.h \
+    test/model/testgraph.h
 
 SOURCES += \
     src/gui/AnalysisBox.cpp \
@@ -381,6 +382,7 @@ SOURCES += \
     src/utility/resultsaver.cpp \
     src/utility/VideoSaver.cpp \
     test/utility/testvideoconverter.cpp \
+    test/model/testgraph.cpp
 
 RESOURCES += \
     resources.qrc \
