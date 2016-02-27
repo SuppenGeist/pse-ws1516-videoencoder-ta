@@ -4,7 +4,6 @@
 #include <QObject>
 #include <QtTest/QtTest>
 
-#include "../../src/utility/Yuv444FileReader.h"
 
 class TestYuv444FileReader : public QObject {
 	Q_OBJECT
@@ -12,14 +11,10 @@ class TestYuv444FileReader : public QObject {
   private slots:
 	void init();
 
-	void testParseNextFrame();
-
-	void testReadNextVectorPacked();
-
-	void testReadNextVectorPlanar();
+    void testYuv444ToRgb888();
 
   private:
-	Utility::Yuv444FileReader fileReader_;
+
 };
 
 #endif // TESTYUV444FILEREADER_H

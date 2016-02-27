@@ -4,6 +4,7 @@
 
 #include "testvideoconverter.h"
 #include "testvideoloader.h"
+#include "testyuv444filereader.h"
 
 UtilityTestSuite::UtilityTestSuite(int argc, char *argv[]):argc_(argc),argv_(argv) {
 
@@ -15,4 +16,8 @@ void UtilityTestSuite::testUtility() {
 
     TestVideoLoader testVideoLoader;
     QTest::qExec(&testVideoLoader);
+
+    TestYuv444FileReader testYuv444FileReader;
+    QTest::qExec(&testYuv444FileReader);
+
 }
