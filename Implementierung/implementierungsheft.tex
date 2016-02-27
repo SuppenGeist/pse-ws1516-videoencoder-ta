@@ -34,7 +34,7 @@ In der Implementierungsphase ist es das Ziel, die Planung aus den zwei vorhergeh
 \bigskip
 \paragraph{2 Entwurfsänderungen} In diesem Kapitel werden alle Änderungen, die am Entwurf gemacht wurden, nacheinander mit einer kurzen Begründung aufgelistet. Die Klassen wurden nach Vererbunghierachien und nach Paketen in Unterkapitel sortiert, um das Auffinden einzelner Klassen zu erleichtern.
 \paragraph{3 Ergebnis} Im ersten Teil dieses Kapitels wird der zeitliche Verlauf der Phase kurz dargestellt. Dannach werden alle Änderungen, die bereits im vorigen Kapitel aufgelistet wurden, auf einer gröberen Ebene dargestellt und die Gründe für die größten Änderungen erläutert. Dannach wird auf die Unterschiede zwischen den im Pflichtenheft gemachten Angaben und dem fertigen Programm eingangen. Angefangen wird mit der GUI, über weggelassene Funktionalität hin zu zusätzlich implementierter Funktionalität.
-\paragraph{4 Testüberdeckung} Dieses Kapitel gibt einen kurzen Ausblick auf die nächste Phase und nennt die aktuelle Testüberdeckung des Codes.
+\paragraph{4 Testüberdeckung} Dieses Kapitel gibt einen kurzen Einblick in die Testüberdeckung des Codes.
 \newpage
 \section{Entwurfsänderungen}
 \subsection{Legende}
@@ -91,7 +91,7 @@ Wurde entfernt, da das Anwenden der Filter nicht Rückgängig gemacht werden kan
 \subsubsection{BlendingFilter}
 Wurde entfernt, da der Filter im Konflikt mit der Filtervorschau Funktionalität stand.
 \subsubsection{ZoomFilter}
-Wurde entfernt, da ein Bug in libavfilter auftrat aufgrunddessen das Bild falsch skaliet wurde.
+Wurde entfernt, da ein Bug in libavfilter auftrat, aufgrunddessen das Bild falsch skaliet wurde.
 \bigskip
 \subsection{Umbenannte Klassen}
 \bigskip
@@ -102,13 +102,13 @@ Korrekte Übersetzung ins Englische.
 \subsection{Hinzugefügte Klassen}
 \bigskip
 \subsubsection{ChangeFilter}
-War implementierungstechnische kein Mehraufwand.
+War implementierungstechnisch kein Mehraufwand.
 \subsubsection{GraphVideo}
 Um Rgb Histogramme für Videos anzeigen zu können.
 \subsubsection{ResultSaver}
 Trennen vom Speichern des Projektes und der Ergebnisse.
 \subsubsection{VideoSaver}
-Um encodierte Videos speichern zu koennen.
+Um encodierte Videos speichern zu können.
 \subsubsection{AnalysisGraph}
 Enum für bessere Schnittstelle.
 \subsubsection{AnalysisVideo}
@@ -125,7 +125,7 @@ Um Rgb Histogramme abspielen zu können.
 + (public) static std::unique_ptr<FilterConfigurationBox>
 CreateConfigurationBox(FilterTab& filterTab, Model::Filter& filter)
 \end{verbatim}
-Fabrikmethode zur Erstellung einer FilterConfigurationBox fuer einen bestimmten Filter.
+Fabrikmethode zur Erstellung einer FilterConfigurationBox für einen bestimmten Filter.
 \bigskip
 \begin{verbatim}
 + (public) void setFilterTab(FilterTab& filterTab)
@@ -133,39 +133,39 @@ Fabrikmethode zur Erstellung einer FilterConfigurationBox fuer einen bestimmten 
 + (private) std::size_t index
 + (private) FilterTab* filterTab
 \end{verbatim}
-Dass der UndoCommand zum Rueckgaengig machen der Aenderung am Filter korrekt erstellt werden kann.
+Dass der UndoCommand zum Rückgaengig machen der Änderung am Filter korrekt erstellt werden kann.
 \bigskip
 \begin{verbatim}
 + (public) virtaul void updateUi()
 \end{verbatim}
-Um der FilterConfigurationBox bescheid sagen zu koennen, dass der Filter sich ausserhalb der Box geaendert hat.
+Um der FilterConfigurationBox bescheid sagen zu können, dass der Filter sich ausserhalb der Box geändert hat.
 \bigskip
 \begin{verbatim}
 + (protected) void updatePreview()
 \end{verbatim}
-Wird von der erbenden Klasse aufgerufen, um die Vorschau entsprechend den Aenderungen des Benutzers anzupassen.
+Wird von der erbenden Klasse aufgerufen, um die Vorschau entsprechend den Änderungen des Benutzers anzupassen.
 \bigskip
 \begin{verbatim}
 + (protected) void updateTempFilter();
 \end{verbatim}
-Wird von der erbenden Klasse aufgerufen, um den temporaeren Filter auf den Stand des originalen Filters zu bringen.
+Wird von der erbenden Klasse aufgerufen, um den temporären Filter auf den Stand des originalen Filters zu bringen.
 \bigskip
 \begin{verbatim}
 + (private slots) applyFilter()
 + (private slots) resetFilter()
 \end{verbatim}
-Slots fuer die entsprechenden Buttons.
+Slots für die entsprechenden Buttons.
 \bigskip
 \begin{verbatim}
 + (private) static QImage& getDefaultImage()
 + (private) static std::unique_ptr<QImage> defaultImage
 \end{verbatim}
-Stellt das Standardbild fuer die Vorschau zur Verfuegung.
+Stellt das Standardbild für die Vorschau zur Verfuegung.
 \bigskip
 \begin{verbatim}
 + (protected) std::unique_ptr<Model::Filter> tempFilter
 \end{verbatim}
-Temporäres Filterobjekt, auf welches die erbende Klasse die Aenderungen des Benutzers anwendet.
+Temporäres Filterobjekt, auf welches die erbende Klasse die Änderungen des Benutzers anwendet.
 \bigskip
 \begin{verbatim}
 + (protected) QScrollArea* filterOptionsArea
@@ -218,7 +218,7 @@ Bessere Kompatibilität mit den Qt Gui Elementen.
 + (public) virtual void restore(QString description)
 + (public) virtual QString getSaveString()
 \end{verbatim}
-Zum einfachen kopieren von Filtern, wenn die konkrete Klasse nicht bekannt ist und zum einfachen Laden und Speichern der Filter.
+Zum einfachen Kopieren von Filtern, wenn die konkrete Klasse nicht bekannt ist und zum einfachen Laden und Speichern der Filter.
 \bigskip
 \subsubsection{Allgemein erbende Klassen}
 \begin{verbatim}
@@ -464,7 +464,7 @@ Wurden ersetzt durch bessere Methoden.
 + (private) int currentFrame
 + (private) int currentlySelectedFilter
 \end{verbatim}
-Vergessene Attribute, die auch gespeichert werden muessen.
+Vergessene Attribute, die auch gespeichert werden müssen.
 \newpage
 \subsubsection{MainWindowMemento}
 \bigskip
@@ -714,7 +714,7 @@ Wenn die reference null ist und nicht berechnet werden kann, muss ein nullptr zu
 + (public) int getAverageBitrate()
 \end{verbatim}
 Zusätzliches Attribut zum Anzeigen.
-\bigskip
+\newpage
 \begin{verbatim}
 # (private) Model::Video* video
 # (private) Model::AVVideo* avVideo
@@ -808,7 +808,7 @@ Unnötiges Kopieren vermeiden.
 \begin{verbatim}
 + (public) void setName(QString name)
 \end{verbatim}
-Um den Namen des Projectes setzen zu können, dass beim Start des Programms als leeres Projekt erstellt wird.
+Um den Namen des Projektes setzen zu können, welches beim Start des Programms als leeres Projekt erstellt wird.
 \bigskip
 \subsubsection{Video}
 \bigskip
@@ -1275,7 +1275,7 @@ Destructor Abhängigkeiten.
 + (public) void showAttributes()
 \end{verbatim}
 Bessere Schnittstelle.
-\bigskip
+\newpage
 \begin{verbatim}
 + (public) QString getPath()
 + (public) QPlainTextEdit* getCommentBox()
@@ -1293,7 +1293,7 @@ Ui locken um Ergebnisse speichern zu können.
 + (private slots) void updateLabels()
 + (private) QTimer timer_updateLabels
 \end{verbatim}
-Um labels so lange zu aktualisieren, bis alle Information angeyeigt werden.
+Um labels so lange zu aktualisieren, bis alle Information angezeigt werden.
 \bigskip
 \begin{verbatim}
 - (private) int currentlyPlayedVideo
@@ -1311,7 +1311,7 @@ Um labels so lange zu aktualisieren, bis alle Information angeyeigt werden.
 
 VideoPlayer* => std::unique_ptr<VideoPlayer>
 \end{verbatim}
-Zusaetzlich für die GUI benötigt.
+Zusätzlich für die GUI benötigt.
 \bigskip
 \begin{verbatim}
 - (private) GraphWidget psnrGraph
@@ -1383,7 +1383,7 @@ Bessere Schnittstelle.
 + (private slots) void addVideo()
 + (private) void updateUi()
 \end{verbatim}
-Zusaetlich für die GUI benötigt.
+Zusätzlich für die GUI benötigt.
 \bigskip
 \begin{verbatim}
 # (public) void setControlPanel(GloablControlPanel* panel)
@@ -1881,7 +1881,7 @@ Für recently used Dateien.
 \section{Ergebnis}
 \subsection{Verlauf der Phase} 
 \bigskip
-Unser Zeitplan war auf 4 Tage pro Woche mit einer Gesamtdauer von 4 Wochen ausgelegt. Ziemlich am Anfang wurde klar, dass wir uns bei der Dauer der einzelenen Implementierungszeiten sehr verschätzt hatten. Bei den GUI-Klassen war zu wenig Zeit eingeplant, während bei den Model- und Utility-Klassen zu viel Zeit war. Aufgrund dieser Schwierigkeiten hatten wir die Klausurpause innerhalb der Implementierungsphase gewählt, um genügend Zeit zu haben, fallss zeitlich etwas knapp wird. Allerdings konnten wir unerwarteterweise die Implementation trotzdem innerhalb von 29 Tagen abschließen.
+Unser Zeitplan war auf 4 Tage pro Woche mit einer Gesamtdauer von 4 Wochen ausgelegt. Ziemlich am Anfang wurde klar, dass wir uns bei der Dauer der einzelenen Implementierungszeiten sehr verschätzt hatten. Bei den GUI-Klassen war zu wenig Zeit eingeplant, während bei den Model- und Utility-Klassen zu viel Zeit war. Aufgrund dieser Schwierigkeiten hatten wir die Klausurpause innerhalb der Implementierungsphase gewählt, um genügend Zeit zu haben, falls es zeitlich knapp wird. Allerdings konnten wir unerwarteterweise die Implementation trotzdem innerhalb von 29 Tagen abschließen.
 \begin{figure}[ht]
 \centering
 \includegraphics[width=1.0\textwidth]{Pictures/gantt.png}
@@ -1891,8 +1891,8 @@ Unser Zeitplan war auf 4 Tage pro Woche mit einer Gesamtdauer von 4 Wochen ausge
 \subsection{Grobübersicht der Entwurfsänderungen}
 In diesem Abschnitt werden die größten Änderungen in den einzelnen Pakten kurz erlätert und begründet.
 \subsubsection{Allgemein}
-Auch wenn die Änderungen auf den ersten Blick groß und umfrangreich erscheinen, hat sich die grobe Idee, wie die Klassen miteinander kommunizieren und interagieren nicht gändert.
-\paragraph{Smartpointer} Viele Änderung im gesamten Entwurf beziehen sich auf die Benutzung von Smartpointer anstatt von "nackten" Pointern. Obwohl uns während des Entwurfs schon klar war, dass wir auf Smartpointer setzen werden, hatten wir keine Möglichkeit dies im Klassen diagramm korrekt darzustellen. Hauptproblem war dabei, dass Smartpointer häufig Attribute in den Klassen waren und wir diese Attribute mittels Aggregationen und Kompositionen dargestellt haben. Daher waren diese Aggregationen hinterher nur Pointer und keine Smartpointer.
+Auch wenn die Änderungen auf den ersten Blick groß und umfrangreich erscheinen, hat sich die grobe Idee, wie die Klassen miteinander kommunizieren und interagieren, nicht gändert.
+\paragraph{Smartpointer} Viele Änderung im gesamten Entwurf beziehen sich auf die Benutzung von Smartpointer anstatt von 'nackten' Pointern. Obwohl uns während des Entwurfs schon klar war, dass wir auf Smartpointer setzen werden, hatten wir keine Möglichkeit dies im Klassen diagramm korrekt darzustellen. Hauptproblem war dabei, dass Smartpointer häufig Attribute in den Klassen waren und wir diese Attribute mittels Aggregationen und Kompositionen dargestellt haben. Daher waren diese Aggregationen hinterher nur Pointer und keine Smartpointer.
 \paragraph{Abstrakte Klassen} Während der Entwurfsphase war uns nicht bewusst, dass es in C++ nur möglich ist, Objekte von abstrakten Klassen als Pointer zu übergeben. Deshalb mussten vorallem viele Methoden, die einen Filter als Parameter nehmen, geändert werden.
 \paragraph{Vergessenes} Ein kleiner Teil der Änderungen sind Attribute, die im Entwurf einfach vergessen wurden. Ein weiterer Faktor war auch, dass beim Ändern einer Klasse andere Klassen, die diese benutzten, nicht korrekt angepasst wurden.
 \bigskip
@@ -1904,14 +1904,14 @@ Fast alle Änderungen in diesem Packet wurden gemacht, um das  asynchrone Laden 
 \paragraph{Bessere Schnittstelle} Die meisten Änderungen in diesem Paket wurden gemacht, um das Benutzen der Klassen einfacher zu machen. Teilweise passte die Schnittstelle, aufgrund von Änderungen an anderen Stellen, nicht mehr zu dem, was benötigt wurde. 
 \bigskip
 \subsubsection{UndoRedo Paket}
-Bei den Klassen in diesem Packet hatten wir schon während des Entwurfs große Schwierigkeiten einzuschätzen, was notwendig ist, um eine Aktion wieder rückgängig zu machen. Vorallem da Änderungen an einer Stelle im Entwurf sich sofort auf den entsprechenden Undo-command ausgewirken, hat dieses Packet schon im Entwurf viele Änderungen erfahren.
+Bei den Klassen in diesem Packet hatten wir schon während des Entwurfs große Schwierigkeiten einzuschätzen, was notwendig ist, um eine Aktion wieder rückgängig zu machen. Vorallem da Änderungen an einer Stelle im Entwurf sich sofort auf den entsprechenden Undo-command auswirken, hat dieses Packet schon im Entwurf viele Änderungen erfahren.
 \bigskip
 \subsubsection{Memento Paket}
 \paragraph{Pointer} Bei den Mementos hatten wir ursprünglich die Idee, dass sie die Daten, die sie halten, auch besitzen. Das impliziert, dass jedes mal, wenn ein Memento erstellt wird, viel kopiert wird. Das hat sich vorallem im Hinblick auf die Videos als eher unpracktikabel herrausgestellt. Daher wurden viele Attribute und Parameter zu Pointern gemacht.
 \paragraph{Vergessene Daten} Ebenfalls viele Änderungen beziehen sich auf Attribute, die wir einfach vergessen haben anzugeben.
 \bigskip
 \subsubsection{GUI Paket}
-\paragraph{Änderungen an der GUI} In diesem Packet sind die meisten Änderungen passiert. Das hängt vorallem damit zusammen, dass wir Teile der GUI abgändert haben, weil sich Teile des geplanten Aufbaus zu Umständlich in der Bedienung entpuppt haben, oder einfach nicht ins Gesamtbild passten. Allerdings lösen selbst kleine Änderungen ziemlich große Änderungen am Entwurf aus. Auch das Zusammenspiel der einzelnen GUI-Komponeneten hatten wir nicht richtig durchdacht, weshalb es in diesem Bereich auch einige Änderungen gab.
+\paragraph{Änderungen an der GUI} In diesem Packet sind,qie zu erwarten, die meisten Änderungen passiert. Das hängt vorallem damit zusammen, dass wir an manchen Stellen die GUI abgändert haben, weil sich Teile des geplanten Aufbaus als zu Umständlich in der Bedienung entpuppt haben, oder einfach nicht ins Gesamtbild passten. Allerdings lösen selbst kleine Änderungen ziemlich große Änderungen am Entwurf aus. Auch das Zusammenspiel der einzelnen GUI-Komponeneten hatten wir nicht richtig durchdacht, weshalb es in diesem Bereich auch etliche Änderungen gab.
 \newpage
 \subsection{Änderungen an der GUI}
 Es gab keine großen struktuellen Änderungen an der GUI. Das Look and Feel unterscheidet sich aber trotzdem deutlich von der erstellten Beispieloberfläche im Pflichtenheft. Sieht dort alles noch recht unorganisiert und gestaucht aus, setzt die fertige Oberfläche auf weiche Kanten, deutliche Übergänge zwischen den einzelnen Elementen und ein allgemein stimmiges Gesamtbild. In den folgenden Abschnitten werden die konkreten Unterschiede beschrieben und erläutert.
@@ -1928,7 +1928,7 @@ Es gab keine großen struktuellen Änderungen an der GUI. Das Look and Feel unte
 \includegraphics[width=0.7\textwidth]{Pictures/fileopenneu.png}
 \caption{YuvFileOpenDialog im fertigen Pogramm}
 \end{figure}
-Die Tabs wurden zu einem verschmolzen und der Dateiexplorer ganz entfernt. Dieser ist nun über den Button (...) erreichbar. Wir haben uns für diese Änderung entschieden, da es nicht ohne weiteres möglich war einen Dateiexplorer direkt einzubinden und haben uns daher für eine einfachere Variante entschieden.
+Die Tabs wurden zu einem verschmolzen und der Dateiexplorer ganz entfernt. Dieser ist nun über den Button (...) erreichbar. Wir haben uns für diese Änderung entschieden, da es nicht ohne weiteres möglich war, einen Dateiexplorer direkt einzubinden und haben daher eine einfachere Variante gewählt.
 \newpage
 \subsubsection{YuvFileInfo Dialog}
 \bigskip
@@ -1942,7 +1942,7 @@ Die Tabs wurden zu einem verschmolzen und der Dateiexplorer ganz entfernt. Diese
 \includegraphics[width=0.5\textwidth]{Pictures/fileinfoneu.png}
 \caption{YuvFileInfoDialog im fertigen Pogramm}
 \end{figure}
-Neben kleinen Umordungen der Elemente sind außerdem noch Eingabefelder für die Kompression und die Fps des Videos hinzugekommen. Die Kompression ist hinzugekommen, da wir jedes Pixelformat, außer 420, nun auch planar als auch packed unterstützen. Das Fps Feld ist dazu gekommen, um es dem Nutzer zu ermöglichen, Videos mit einer beliebigen Fps abzuspielen.
+Neben kleinen Umordungen der Elemente sind außerdem noch weitere Eingabefelder für die Kompression und die Fps des Videos hinzugekommen. Die Kompression ist hinzugekommen, da wir jedes Pixelformat, außer 420, nun auch planar als auch packed unterstützen. Das Fps Feld ist dazu gekommen, um es dem Nutzer zu ermöglichen, Videos mit einer beliebigen Fps abzuspielen.
 \newpage
 \subsubsection{Filtertab}
 \bigskip
@@ -1956,7 +1956,7 @@ Neben kleinen Umordungen der Elemente sind außerdem noch Eingabefelder für die
 \includegraphics[width=0.9\textwidth]{Pictures/filtertabneu.png}
 \caption{Filtertab im fertigen Pogramm}
 \end{figure}
-Im Filtertab gab es keine großartigen Anpassungen. Der deutlichste Unterschied ist, dass die Oberfläche im fertigen Programm farblich besser abgestimmt und wesentlich ansprechender ist. Einige kleine Änderungen gab es aber trotzdem. Zum einem wurden die Checkboxen bei der Filterauswahl durch Buttons ersetzt, einfach um es dem Nutzer zu ermöglichen, einen Filter mehr als einmal anzuwenden. Die zweite und letzt Änderung am Filtertab, ist, dass die Filteroptionen einen eigenen Tab bekommen haben und nicht mehr mitten in der GUI hängen. Diese Änderung wurde rein aus Platzgründen gemacht.
+Im Filtertab gab es keine großartigen Anpassungen. Der deutlichste Unterschied ist, dass die Oberfläche im fertigen Programm farblich besser abgestimmt und wesentlich ansprechender ist. Einige kleine Änderungen gab es aber dennoch. Zum einem wurden die Checkboxen bei der Filterauswahl durch Buttons ersetzt, einfach um es dem Nutzer zu ermöglichen, einen Filter mehr als einmal anzuwenden. Die zweite und letzt Änderung am Filtertab, ist, dass die Filteroptionen einen eigenen Tab bekommen haben und nicht mehr mitten in der GUI hängen. Diese Änderung wurde rein aus Platzgründen gemacht.
 \newpage
 \hfill
 \newpage
@@ -1972,7 +1972,7 @@ Im Filtertab gab es keine großartigen Anpassungen. Der deutlichste Unterschied 
 \includegraphics[width=0.9\textwidth]{Pictures/analysistabneu.png}
 \caption{Analysistab im fertigen Pogramm}
 \end{figure}
-Ähnlich wie beim Filtertab ist auch hier die größte Änderung die optische Verschönerung des Gesamtbildes. Die einzige wichtige Veränderung ist, dass bei den encodeden Videos statt der einzelnen Tabs Buttons neben das Rohvideo gesetzt wurde, mit denen man auswählen kann, welcher Graph für alle Videos angezeigt werden soll. Diese Änderung erhöht den Komfort bei der Analyses immens, da nun nicht immer bei jedem Video einzeln der entsprechende Graph ausgeählt werden muss, um diese zu vergleichen.
+Ähnlich wie beim Filtertab ist auch hier die größte Änderung die optische Verschönerung des Gesamtbildes. Die einzige wichtige Veränderung, die passiert ist, ist, dass bei den encodeden Videos statt der einzelnen Tabs nun Buttons neben das Rohvideo gesetzt wurde, mit denen man auswählen kann, welcher Graph für alle Videos angezeigt werden soll. Diese Änderung erhöht den Komfort bei der Analyses immens, da nun nicht immer bei jedem Video einzeln der entsprechende Graph ausgeählt werden muss, um diese zu vergleichen.
 \newpage
 \hfill
 \newpage
@@ -1985,7 +1985,7 @@ Im Filtertab gab es keine großartigen Anpassungen. Der deutlichste Unterschied 
 \newpage
 \subsection{Zusätzlich implementierte Funtionalität}
 \bigskip
-\paragraph{Filter mehr als einmal anwenden} Im Pflichtenheft war vorgesehen, dass ein Filter nur maximal einmal auf ein Video angewendet werden kann. Da diese Einschränkung implementierungstechnisch jedoch mehr Aufwand gewesen wäre haben wir sie weggelassen.
+\paragraph{Filter mehr als einmal anwenden} Im Pflichtenheft war vorgesehen, dass ein Filter nur maximal einmal auf ein Video angewendet werden kann. Da diese Einschränkung implementierungstechnisch jedoch mehr Aufwand gewesen wäre, haben wir sie weggelassen.
 \paragraph{Attribute für das Rohvideo im Analysistab} Folgende Attribute werden für das Rohvideo angezeigt: Dateiname, Dateigröße, Auflösung und die Größe eines Frames im Arbeitsspeicher.
 \paragraph{Zusätzliches Attribut für encodierte Videos} Folgendes Attribut wird zusatzlich für encodierte Videos angezeigt: Durchschnittliche Bitrate.
 \paragraph{Bei Klick auf Bitrategraph im Video springen} Diese Funktionalität wurde nur für den Psnrgraphen spezifiziert. Allerdings war es kein großer Aufwand, diese Funktionalität auch dem Bitrategraphen zu geben, weshalb man nun auch bei einem Klick auf den Bitrategraphen im Video springen kann.
@@ -1993,5 +1993,10 @@ Im Filtertab gab es keine großartigen Anpassungen. Der deutlichste Unterschied 
 \paragraph{Zusätzliche Angaben im YuvFileInfoDialog} Folgende Zusätzliche Angaben können gemacht werden: Fps, Kompression.
 \newpage
 \section{Testüberdeckung}
+Während der Implementierung haben wir bereits damit begonnen, Testcode zu schreiben.
+\paragraph{Getestete Klassen} Es sind Unit Tests für alle Klassen der Packete Model und Memento vorhanden, sowie für die Klasse VideoConverter aus dem Packet Utility. Das ergibt eine insgesamte Anzahl von 35 Klassen.
+
+\paragraph{Testüberdeckung} Alle Testfälle ergeben eine Zeilenanzahl von 1900, was einer Testüberdeckung von 23\% entsprichht.
+
 
 \end{document}

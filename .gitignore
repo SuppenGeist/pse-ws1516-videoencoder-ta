@@ -35,6 +35,8 @@ build-*/
 #LaTEX
 *.aux
 *.log
+*.bbl
+*.blg
 *.out
 *.synctex.gz
 *.toc
