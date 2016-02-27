@@ -8,6 +8,10 @@
 #include "testgraphvideo.h"
 #include "testproject.h"
 #include "testfilterlist.h"
+#include "testencodedvideo.h"
+#include "testyuvvideo.h"
+
+
 ModelTestSuite::ModelTestSuite(int argc, char* argv[]):argc_(argc),argv_(argv) {
 
 }
@@ -30,5 +34,11 @@ void ModelTestSuite::testModel() {
 
 	TestFilterList testFilterList;
 	QTest::qExec(&testFilterList);
+
+    TestEncodedVideo testEncodedVideo;
+    QTest::qExec(&testEncodedVideo);
+
+    TestYuvVideo testYuvVideo;
+    QTest::qExec(&testYuvVideo);
 }
 
