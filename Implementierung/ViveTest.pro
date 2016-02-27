@@ -198,7 +198,8 @@ HEADERS += \
     test/model/testyuvvideo.h \
     src/gui/graphcalculator.h \
     src/utility/resultsaver.h \
-    src/utility/VideoSaver.h
+    src/utility/VideoSaver.h \
+    test/utility/testvideoconverter.h \
 
 SOURCES += \
     src/gui/AnalysisBox.cpp \
@@ -378,7 +379,8 @@ SOURCES += \
     test/model/testyuvvideo.cpp \
     src/gui/graphcalculator.cpp \
     src/utility/resultsaver.cpp \
-    src/utility/VideoSaver.cpp
+    src/utility/VideoSaver.cpp \
+    test/utility/testvideoconverter.cpp \
 
 RESOURCES += \
     resources.qrc \

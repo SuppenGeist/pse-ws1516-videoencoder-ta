@@ -18,6 +18,7 @@ void MainTestSuit::runAllTests() {
 	UtilityTestSuite utilitytestsuite(argc_,argv_);
 	modelTestSuite.testModel();
 	//guiTestSuite.testGUI();
-	mementotestsuite.testMemento();
+    mementotestsuite.testMemento();
+    utilitytestsuite.testUtility();
 }
 
