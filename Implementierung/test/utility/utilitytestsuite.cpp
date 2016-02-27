@@ -7,6 +7,11 @@
 #include "testyuv444filereader.h"
 #include "testyuv422filereader.h"
 #include "testyuv411filereader.h"
+#include "testyuvfilereader.h"
+#include "testyuv411vector.h"
+#include "testyuv422vector.h"
+#include "testyuv444vector.h"
+
 
 UtilityTestSuite::UtilityTestSuite(int argc, char *argv[]):argc_(argc),argv_(argv) {
 
@@ -27,5 +32,18 @@ void UtilityTestSuite::testUtility() {
 
     TestYuv411FileReader testYuv411FileReader;
     QTest::qExec(&testYuv411FileReader);
+
+    TestYuvFileReader testYuvFileReader;
+    QTest::qExec(&testYuvFileReader);
+
+    TestYuv444Vector testYuv444Vector;
+    QTest::qExec(&testYuv444Vector);
+
+    TestYuv422Vector testYuv422Vector;
+    QTest::qExec(&testYuv422Vector);
+
+    TestYuv411Vector testYuv411Vector;
+    QTest::qExec(&testYuv411Vector);
+
 
 }
