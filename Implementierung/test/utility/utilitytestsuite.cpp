@@ -6,6 +6,7 @@
 #include "testvideoloader.h"
 #include "testyuv444filereader.h"
 #include "testyuv422filereader.h"
+#include "testyuv411filereader.h"
 
 UtilityTestSuite::UtilityTestSuite(int argc, char *argv[]):argc_(argc),argv_(argv) {
 
@@ -23,5 +24,8 @@ void UtilityTestSuite::testUtility() {
 
     TestYuv422FileReader testYuv422FileReader;
     QTest::qExec(&testYuv422FileReader);
+
+    TestYuv411FileReader testYuv411FileReader;
+    QTest::qExec(&testYuv411FileReader);
 
 }
