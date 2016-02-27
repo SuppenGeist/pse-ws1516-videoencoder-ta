@@ -3,6 +3,7 @@
 #include <QtTest/QtTest>
 
 #include "testvideoconverter.h"
+#include "testvideoloader.h"
 
 UtilityTestSuite::UtilityTestSuite(int argc, char *argv[]):argc_(argc),argv_(argv) {
 
@@ -11,4 +12,7 @@ UtilityTestSuite::UtilityTestSuite(int argc, char *argv[]):argc_(argc),argv_(arg
 void UtilityTestSuite::testUtility() {
     TestVideoConverter testVideoConverter;
     QTest::qExec(&testVideoConverter);
+
+    TestVideoLoader testVideoLoader;
+    QTest::qExec(&testVideoLoader);
 }
