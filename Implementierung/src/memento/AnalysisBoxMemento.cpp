@@ -110,5 +110,5 @@ void Memento::AnalysisBoxMemento::setBlueHistogram(Model::GraphVideo *video) {
 }
 
 Model::GraphVideo *Memento::AnalysisBoxMemento::getBlueHistogram() {
-	return blueHistogram_;
+    return blueHistogram_;
 }

@@ -142,7 +142,8 @@ void Utility::ResultSaver::run() {
 				str<<"Filename: "<<memento->getFilename()<<"\n";
 				str<<"Filesize: "<<memento->getFilesize()<<"\n";
 				str<<"Codec: "<<memento->getEncoder()<<"\n";
-				str<<"Average bitrate: "<<memento->getAverageBitrate();
+                str<<"Average bitrate: "<<memento->getAverageBitrate()<<"\n";
+                str<<"Note: "<<memento->getComment();
 
 				attributesFile.close();
 			}
