@@ -1,5 +1,7 @@
 #include "BitrateCalculator.h"
 
+#include <QDebug>
+
 extern "C" {
 #include <libavcodec/avcodec.h>
 #include <libavformat/avformat.h>
@@ -36,6 +38,6 @@ void Utility::BitrateCalculator::calculateP() {
 		for(; i<video_->getNumberOfFrames()&&isRunning_; i++) {
 			target_->setValue(i,video_->getFrame(i)->pkt_size*8/(double)1000);
 		}
-	} while(isRunning_&&!video_->isComplete());
+    } while(isRunning_&&(!video_->isComplete()||i!=video_->getNumberOfFrames()));
 	isRunning_=false;
 }

@@ -143,7 +143,7 @@ void GUI::AnalysisBox::setControlPanel(std::shared_ptr<GlobalControlPanel> contr
 
 void GUI::AnalysisBox::showGraph(GUI::AnalysisGraph graph) {
 	if(!origVideo_.get())
-		return;
+        return;
 
 	switch(graph) {
 	case AnalysisGraph::BITRATE: {

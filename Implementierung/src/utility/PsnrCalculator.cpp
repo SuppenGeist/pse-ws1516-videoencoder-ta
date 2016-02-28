@@ -71,6 +71,6 @@ void Utility::PsnrCalculator::calculateP() {
 			}
 			target_->setValue(i,psnr);
 		}
-	} while(isRunning_&&(!video_->isComplete()||!referenceVideo_->isComplete()));
+    } while(isRunning_&&(!video_->isComplete()||!referenceVideo_->isComplete()||i!=(video_->getNumberOfFrames()>referenceVideo_->getNumberOfFrames()?referenceVideo_->getNumberOfFrames():video_->getNumberOfFrames())));
 	isRunning_=false;
 }

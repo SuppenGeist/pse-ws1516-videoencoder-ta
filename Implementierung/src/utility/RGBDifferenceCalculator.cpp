@@ -32,8 +32,8 @@ void Utility::RGBDifferenceCalculator::calculateP() {
 	isRunning_ = true;
 	std::size_t i=0;
 	do {
-		for(; i<(video_->getNumberOfFrames()>referenceVideo_->getNumberOfFrames()
-		         ?referenceVideo_->getNumberOfFrames():video_->getNumberOfFrames())&&isRunning_; i++) {
+        for(; i<(video_->getNumberOfFrames()>referenceVideo_->getNumberOfFrames()
+                 ?referenceVideo_->getNumberOfFrames():video_->getNumberOfFrames())&&isRunning_; i++) {
 			QImage *currentFrame = video_->getFrame(i);
 			QImage *refCurrentFrame = referenceVideo_->getFrame(i);
 			auto outFrame = std::make_unique<QImage>(currentFrame->width(), currentFrame->height(),
@@ -51,7 +51,7 @@ void Utility::RGBDifferenceCalculator::calculateP() {
 			target_->appendFrame(std::move(outFrame));
 
 		}
-	} while (isRunning_&&(!video_->isComplete()||!referenceVideo_->isComplete()));
+    } while (isRunning_&&(!video_->isComplete()||!referenceVideo_->isComplete()||i!=(video_->getNumberOfFrames()>referenceVideo_->getNumberOfFrames()?referenceVideo_->getNumberOfFrames():video_->getNumberOfFrames())));
 	target_->setIsComplete(true);
 	isRunning_ = false;
 }

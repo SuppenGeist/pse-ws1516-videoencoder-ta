@@ -187,5 +187,5 @@ void Utility::VideoLoader::loadP() {
 	if(dict_) {
 		free(dict_);
 	}
-	target_->setIsComplete(true);
+    target_->setIsComplete(true);
 }

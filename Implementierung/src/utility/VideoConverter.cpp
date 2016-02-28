@@ -137,7 +137,7 @@ void Utility::VideoConverter::convertVideoP() {
 		for(; i < video_->getNumberOfFrames()&&isRunning_; i++) {
 			avvideoTarget_->appendFrame(convertQImageToAVFrame(*video_->getFrame(i)));
 		}
-	} while(isRunning_&&!video_->isComplete());
+    } while(isRunning_&&(!video_->isComplete()||video_->getNumberOfFrames()!=avvideoTarget_->getNumberOfFrames()));
 	avvideoTarget_->setIsComplete(true);
 	avvideoTarget_->setFps(video_->getFps());
 	isRunning_=false;
@@ -151,8 +151,8 @@ void Utility::VideoConverter::convertAVVideoP() {
 		for(; i < avvideo_->getNumberOfFrames()&&isRunning_; i++) {
 			videoTarget_->appendFrame(convertAVFrameToQImage(*avvideo_->getFrame(i)));
 		}
-	} while(isRunning_&&!avvideo_->isComplete());
+    } while(isRunning_&&(!avvideo_->isComplete()||avvideo_->getNumberOfFrames()!=videoTarget_->getNumberOfFrames()));
 	videoTarget_->setIsComplete(true);
 	videoTarget_->setFps(avvideo_->getFps());
-	isRunning_=false;
+    isRunning_=false;
 }
