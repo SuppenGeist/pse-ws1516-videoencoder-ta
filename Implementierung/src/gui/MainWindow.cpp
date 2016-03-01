@@ -141,15 +141,20 @@ void GUI::MainWindow::createUi() {
 	statusbar_=ui_->statusbar;
 	action_newProject_=ui_->actionNew;
     action_newProject_->setIcon(QIcon(":/icons/resources/icons/newProject.png"));
+    action_newProject_->setShortcut(Qt::CTRL + Qt::Key_N);
 	action_loadProject_=ui_->actionLoad;
     action_loadProject_->setIcon(QIcon(":/icons/resources/icons/loadProject.png"));
+    action_loadProject_->setShortcut(Qt::CTRL + Qt::Key_O);
 	action_saveAs_=ui_->actionSaveAs;
 	action_saveProject_=ui_->actionSave;
     action_saveProject_->setIcon(QIcon(":/icons/resources/icons/saveProject.png"));
+    action_saveProject_->setShortcut(Qt::CTRL + Qt::Key_S);
 	action_redo_=ui_->actionRedo;
     action_redo_->setIcon(QIcon(":/icons/resources/icons/redo.png"));
+    action_redo_->setShortcut(Qt::CTRL + Qt::SHIFT + Qt::Key_Z);
 	action_undo_=ui_->actionUndo;
     action_undo_->setIcon(QIcon(":/icons/resources/icons/undo.png"));
+    action_undo_->setShortcut(Qt::CTRL + Qt::Key_Z);
 
 	QVBoxLayout* v_content=new QVBoxLayout;
 	v_content->addSpacing(10);
