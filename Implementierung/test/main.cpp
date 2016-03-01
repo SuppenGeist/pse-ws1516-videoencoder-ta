@@ -1,5 +1,5 @@
 #include "maintestsuite.h"
-
+#include <QApplication>
 extern "C" {
 #include <libavcodec/avcodec.h>
 #include <libavfilter/avfiltergraph.h>
@@ -7,6 +7,7 @@ extern "C" {
 }
 
 int main(int argc,char* argv[]) {
+    QApplication a(argc, argv);
     av_register_all();
     avcodec_register_all();
     avfilter_register_all();

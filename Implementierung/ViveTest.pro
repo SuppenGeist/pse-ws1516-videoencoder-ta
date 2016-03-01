@@ -205,7 +205,8 @@ HEADERS += \
     test/utility/testyuvfilereader.h \
     test/utility/testyuv444vector.h \
     test/utility/testyuv422vector.h \
-    test/utility/testyuv411vector.h
+    test/utility/testyuv411vector.h \
+    test/gui/testmainwindow.h \
 
 SOURCES += \
     src/gui/AnalysisBox.cpp \
@@ -392,7 +393,8 @@ SOURCES += \
     test/utility/testyuvfilereader.cpp \
     test/utility/testyuv444vector.cpp \
     test/utility/testyuv422vector.cpp \
-    test/utility/testyuv411vector.cpp
+    test/utility/testyuv411vector.cpp \
+    test/gui/testmainwindow.cpp \
 
 RESOURCES += \
     resources.qrc \
