@@ -1,0 +1,65 @@
+name		x	y
+
+FilterTab:	20	55	
+
+LoadVid: 	350 	124
+aplly 		350 	157
+save		350	191
+filterUp	350	244
+filtDown	350	278
+loadCOn		350	364
+saveCin		350	399
+reset		350	452
+
+FilterListe:
+1 item		30	115
+2 item 		30 	135
+(~ 20 pixel abstand)
+
+FramePreview:
+back		550	443
+next		750	443
+
+video:
+play		535	415
+pause		585	415
+stop		630	415
+nextF		675	415
+lastF		715	415
+speedBox	780	415
+slider		530;450 - 820;450
+
+tabFilters: 	60	515
+1 item		75	725
+2 item		250	725
+(175 pixel abstand)	
+scrollbar:		35:770 - 830:770
+
+tabArtefacts: 	115	515
+items wie bei tabFilters
+
+tabFilterOption	220	515
+berech von 373:553 bis 701:751
+
+AnalysisTab:	200	60
+
+loadYuv		150	200
+attributes	770	105
+redHisto	800	135
+greenHisto	800	170
+blueHisto	800	200
+psnr		800	235
+bitrate		800	265
+	
+saveresult	160	355
+
+video:
+play		300	340
+pause		350	340
+stop		390	340
+nextF		440	340
+lastF		475	340
+speedBox	530	340
+
+addVideo	450	450
+
