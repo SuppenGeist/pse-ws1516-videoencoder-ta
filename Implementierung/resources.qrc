@@ -6,6 +6,11 @@
         <file>resources/icons/prev.png</file>
         <file>resources/icons/stop.png</file>
         <file>resources/icons/close.png</file>
+        <file>resources/icons/loadProject.png</file>
+        <file>resources/icons/newProject.png</file>
+        <file>resources/icons/redo.png</file>
+        <file>resources/icons/saveProject.png</file>
+        <file>resources/icons/undo.png</file>
     </qresource>
     <qresource prefix="/pictures">
         <file>resources/flower_example.png</file>
