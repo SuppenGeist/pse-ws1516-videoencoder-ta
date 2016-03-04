@@ -15,7 +15,6 @@ class TestEncodedVideo : public QObject {
     void testgetAverageBitrate();
   private:
    Model::EncodedVideo* encodedVideo_;
-   Utility::VideoLoader* videoLoader_;
 
 };
 

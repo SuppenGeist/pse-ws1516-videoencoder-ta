@@ -12,3 +12,4 @@ void TestVideoLoader::testgetCodec(){
 void TestVideoLoader::testgetAverageBitrate(){
 
 }
+
