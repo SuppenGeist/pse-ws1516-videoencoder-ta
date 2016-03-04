@@ -40,7 +40,7 @@ void TestAnalysisTabMemento::testSetPlayerPosition() {
 }
 
 void TestAnalysisTabMemento::testSetRawVideo() {
-	Model::YuvVideo* vid ;
+    Model::YuvVideo* vid ;
 	memento_.setRawVideo(vid);
 	QVERIFY(memento_.getRawVideo() != nullptr);
 

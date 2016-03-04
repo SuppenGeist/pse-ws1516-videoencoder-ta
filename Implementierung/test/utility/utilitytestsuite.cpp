@@ -11,18 +11,21 @@
 #include "testyuv411vector.h"
 #include "testyuv422vector.h"
 #include "testyuv444vector.h"
-
+#include "filterconfigurationtest.h"
 
 UtilityTestSuite::UtilityTestSuite(int argc, char *argv[]):argc_(argc),argv_(argv) {
 
 }
 
 void UtilityTestSuite::testUtility() {
+    //FilterConfigurationTest filterConfigurationTest;
+    //QTest::qExec(&filterConfigurationTest);
+
     TestVideoConverter testVideoConverter;
     QTest::qExec(&testVideoConverter);
 
-    TestVideoLoader testVideoLoader;
-    QTest::qExec(&testVideoLoader);
+    //TestVideoLoader testVideoLoader;
+    //QTest::qExec(&testVideoLoader);
 
     TestYuv444FileReader testYuv444FileReader;
     QTest::qExec(&testYuv444FileReader);
