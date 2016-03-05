@@ -1,7 +1,7 @@
 #include "testencodedvideo.h"
 
 void TestEncodedVideo::init() {
-    QString path_ = QFINDTESTDATA("SampleVideo_360x240_2mb.mp4");
+    QString path_ = QFINDTESTDATA("blume.mp4");
     encodedVideo_ = new Model::EncodedVideo(path_);
 }
 
@@ -11,5 +11,5 @@ void TestEncodedVideo::testgetCodec(){
 
 
 void TestEncodedVideo::testgetAverageBitrate(){
-
+    //QVERIFY(encodedVideo_->getAverageBitrate()==306);
 }

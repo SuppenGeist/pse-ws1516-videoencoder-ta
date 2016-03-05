@@ -1,7 +1,7 @@
 #include "testvideoloader.h"
 
 void TestVideoLoader::init(){
-    QString path_ = QFINDTESTDATA("SampleVideo_360x240_2mb.mp4");
+    QString path_ = QFINDTESTDATA("blume.mp4");
     videoLoader_ = new Utility::VideoLoader(path_);
 }
 
@@ -10,6 +10,6 @@ void TestVideoLoader::testgetCodec(){
 }
 
 void TestVideoLoader::testgetAverageBitrate(){
-
+    //QVERIFY(videoLoader_->getAverageBitrate()==306);
 }
 
