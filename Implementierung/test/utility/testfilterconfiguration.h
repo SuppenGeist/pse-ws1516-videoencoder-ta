@@ -1,12 +1,12 @@
-#ifndef FILTERCONFIGURATIONTEST_H
-#define FILTERCONFIGURATIONTEST_H
+#ifndef TESTFILTERCONFIGURATION_H
+#define TESTFILTERCONFIGURATION_H
 
 #include <QObject>
 #include <QtTest/QtTest>
 
 #include "../../src/utility/FilterConfigurationLoader.h"
 #include "../../src/utility/FilterConfigurationSaver.h"
-class FilterConfigurationTest : public QObject
+class TestFilterConfiguration : public QObject
 {
     Q_OBJECT
 private slots:
@@ -17,4 +17,4 @@ private:
   Utility::FilterConfigurationLoader* configLoader_;
 };
 
-#endif // FILTERCONFIGURATIONTEST_H
+#endif // TESTFILTERCONFIGURATION_H
