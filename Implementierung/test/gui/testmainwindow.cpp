@@ -36,6 +36,7 @@ void TestMainWindow::testAddFilterWithoutVid() {
     std::unique_ptr<Memento::MainWindowMemento> newMemo = mw ->getMemento();
 
     QVERIFY2(oldMemo->getFilterTabMemento()->getFilterList()->getSize() == newMemo->getFilterTabMemento()->getFilterList()->getSize(), "filter got added without picking a video");
+    QVERIFY2(newMemo->getFilterTabMemento()->isPreviewShow() == oldMemo->getFilterTabMemento()->isPreviewShow(),"shows preview");
     delete mw;
 
 }
