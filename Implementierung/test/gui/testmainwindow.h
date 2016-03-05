@@ -11,6 +11,7 @@ class TestMainWindow : public QObject {
   private slots:
     void init();
     void testAddFilterWithoutVid();
+    void testSwitchTab();
  private:
     GUI::MainWindow* mw;
 };
