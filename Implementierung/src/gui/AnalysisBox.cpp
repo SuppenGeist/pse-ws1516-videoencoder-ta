@@ -16,6 +16,7 @@
 #include <QPushButton>
 #include <QSpacerItem>
 #include <QTimer>
+#include <QMessageBox>
 
 #include "FrameView.h"
 #include "GraphWidget.h"
@@ -295,8 +296,14 @@ void GUI::AnalysisBox::updateLabels() {
 		origVideo_->getRgbDiffVideo(&parentContainer_->getParentTab()->getRawVideo()->getVideo());
 		origVideo_->getPsnr(&parentContainer_->getParentTab()->getRawVideo()->getVideo());
 	}
-	if(origVideo_->getCodec()!="")
+    if(origVideo_->getAvVideo().isComplete()) {
 		timer_updateLabels_.stop();
+        if(origVideo_->getAvVideo().getNumberOfFrames()==0) {
+            QMessageBox::warning(this,"Error while loading video","Video could not be loaded!");
+            auto& stack=UndoRedo::UndoStack::getUndoStack();
+            stack.setIndex(stack.index()-1);
+        }
+    }
 }
 
 void GUI::AnalysisBox::commentChanged() {

@@ -45,6 +45,7 @@ void GUI::MainWindow::restore(Memento::MainWindowMemento *memento) {
 	if(memento->getSelectedTab()>=0&&memento->getSelectedTab()<=1) {
 		tab_tabs_->setCurrentIndex(memento->getSelectedTab());
 	}
+    UndoRedo::UndoStack::getUndoStack().clear();
 }
 
 void GUI::MainWindow::newProject() {

@@ -51,11 +51,13 @@ void Utility::VideoLoader::loadP() {
 	// format = NULL means autodetect
 	if(!path_.isEmpty()
 	        && avformat_open_input(&formatContext, path_.toUtf8(), NULL, NULL)!=0) {
+        target_->setIsComplete(true);
 		return;
 	}
 
 	// Retrieve stream information
 	if(avformat_find_stream_info(formatContext, NULL)<0) {
+        target_->setIsComplete(true);
 		return;
 	}
 
@@ -66,6 +68,7 @@ void Utility::VideoLoader::loadP() {
 	// Find the best video stream in context
 	int videoStreamIndex = av_find_best_stream(formatContext, AVMEDIA_TYPE_VIDEO, -1, -1, NULL, 0);
 	if(videoStreamIndex == -1) {
+        target_->setIsComplete(true);
 		return;
 	}
 
@@ -75,11 +78,13 @@ void Utility::VideoLoader::loadP() {
 	// Find the decoder for the video stream
 	codec = avcodec_find_decoder(codecContext->codec_id);
 	if(codec == NULL) {
+        target_->setIsComplete(true);
 		return;
 	}
 
 	// Open codec
 	if(avcodec_open2(codecContext, codec, &dict_) < 0) {
+        target_->setIsComplete(true);
 		return;
 	}
 
@@ -144,7 +149,7 @@ void Utility::VideoLoader::loadP() {
 			);
 
 			target_->appendFrame(rgbframe);
-		}
+        }
 	}
 
 	packet.data=NULL;
@@ -177,7 +182,7 @@ void Utility::VideoLoader::loadP() {
 		    rgbframe->linesize
 		);
 
-		target_->appendFrame(rgbframe);
+        target_->appendFrame(rgbframe);
 	}
 	av_frame_unref(frame);
 	av_frame_free(&frame);
