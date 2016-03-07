@@ -1,6 +1,7 @@
 #include "testanalysistabmemento.h"
 #include "../../src/gui/AnalysisTab.h"
 #include "../../src/utility/YuvType.h"
+#include "../../src/utility/Compression.h"
 
 void TestAnalysisTabMemento::init() {
 
@@ -40,7 +41,8 @@ void TestAnalysisTabMemento::testSetPlayerPosition() {
 }
 
 void TestAnalysisTabMemento::testSetRawVideo() {
-    Model::YuvVideo* vid ;
+    auto ptr=std::make_unique<Model::YuvVideo>("haha",Utility::YuvType::YUV411,Utility::Compression::PACKED,10,10,1);
+    Model::YuvVideo* vid=ptr.get();
 	memento_.setRawVideo(vid);
 	QVERIFY(memento_.getRawVideo() != nullptr);
 

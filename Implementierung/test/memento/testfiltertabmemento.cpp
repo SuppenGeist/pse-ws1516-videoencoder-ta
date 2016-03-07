@@ -1,5 +1,8 @@
 #include "testfiltertabmemento.h"
 
+#include "../../src/utility/Compression.h"
+#include "../../src/utility/YuvType.h"
+
 void TestFilterTabMemento::init() {
 
 	memento_ = Memento::FilterTabMemento();
@@ -41,18 +44,9 @@ void TestFilterTabMemento::testSetIsPreviewShown() {
 }
 
 void TestFilterTabMemento::testSetRawVideo() {
-	Model::YuvVideo* vid ;
+    auto ptr=std::make_unique<Model::YuvVideo>("haha",Utility::YuvType::YUV411,Utility::Compression::PACKED,10,10,1);
+    Model::YuvVideo* vid=ptr.get();
 	memento_.setRawVideo(vid);
 	QVERIFY(memento_.getRawVideo() != nullptr);
-
-}
-
-void TestFilterTabMemento::testSetRawVideo2() {
-	/*    std::unique_ptr<Model::YuvVideo> video;
-	    QVERIFY(memento_.releaseVideo() == video);
-	    auto old = memento_.releaseVideo();
-	    memento_.setRawVideo(std::move(video));
-	    QVERIFY(memento_.releaseVideo() == video);
-	*/
 
 }

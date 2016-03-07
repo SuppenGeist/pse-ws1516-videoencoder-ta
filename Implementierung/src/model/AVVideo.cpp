@@ -12,7 +12,7 @@ Model::AVVideo::AVVideo(int fps):fps_(fps),width_(0),height_(0),isComplete_(fals
 }
 
 Model::AVVideo::~AVVideo() {
-	for(auto frame:video_) {
+    for(auto& frame:video_) {
 		av_frame_unref(frame);
 		av_frame_free(&frame);
 	}
