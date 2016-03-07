@@ -48,6 +48,8 @@ class FilterTab: public QFrame {
 
 	void setRawVideo(Model::YuvVideo* rawVideo);
 
+    Model::YuvVideo* getRawVideo();
+
 	void showRawVideo();
 
 	void showFilterPreview();

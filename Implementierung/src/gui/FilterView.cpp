@@ -44,6 +44,8 @@ GUI::FilterView::~FilterView() {
 void GUI::FilterView::buttonPressed() {
 	if(!filterTab_)
 		return;
+    if(!filterTab_->getRawVideo())
+        return;
 	UndoRedo::UndoStack::getUndoStack().push(new UndoRedo::AddFilter(*filterTab_,filter_->getName()));
 }
 

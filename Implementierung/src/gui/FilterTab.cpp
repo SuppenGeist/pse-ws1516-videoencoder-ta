@@ -153,7 +153,12 @@ void GUI::FilterTab::setRawVideo(Model::YuvVideo *rawVideo) {
 
 	rawVideo_=rawVideo;
 
-	resetFilters();
+    resetFilters();
+}
+
+Model::YuvVideo *GUI::FilterTab::getRawVideo()
+{
+    return rawVideo_;
 }
 
 void GUI::FilterTab::showRawVideo() {

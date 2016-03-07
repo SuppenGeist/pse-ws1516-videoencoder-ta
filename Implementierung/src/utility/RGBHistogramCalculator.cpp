@@ -71,11 +71,11 @@ void Utility::RGBHistogramCalculator::calculateP() {
 			blue_->appendGraph(std::move(blueg));
 		}
     } while (isRunning_&&(!video_->isComplete()||i!=video_->getNumberOfFrames()));
-	red_->setIsComplete(true);
-	green_->setIsComplete(true);
-	blue_->setIsComplete(true);
     blue_->setFps(video_->getFps());
     green_->setFps(video_->getFps());
     red_->setFps(video_->getFps());
+	red_->setIsComplete(true);
+	green_->setIsComplete(true);
+    blue_->setIsComplete(true);
 	isRunning_=false;
 }
