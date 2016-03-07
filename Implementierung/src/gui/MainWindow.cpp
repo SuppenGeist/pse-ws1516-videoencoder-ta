@@ -91,6 +91,9 @@ void GUI::MainWindow::saveAs() {
 void GUI::MainWindow::loadProject() {
 	auto filename=QFileDialog::getOpenFileName(this,"Open project",QDir::homePath(),"*.vive");
 
+    if(filename.isEmpty())
+        return;
+
 	try {
 		Utility::ProjectReader reader(filename);
 		loadedProject_=reader.readProject();

@@ -74,5 +74,8 @@ void Utility::RGBHistogramCalculator::calculateP() {
 	red_->setIsComplete(true);
 	green_->setIsComplete(true);
 	blue_->setIsComplete(true);
+    blue_->setFps(video_->getFps());
+    green_->setFps(video_->getFps());
+    red_->setFps(video_->getFps());
 	isRunning_=false;
 }
