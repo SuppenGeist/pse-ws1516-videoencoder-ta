@@ -9,11 +9,10 @@
 #include <QList>
 #include "../../src/memento/MainWindowMemento.h"
 
-
+GUI::MainWindow* TestMainWindow::mainWindow;
+std::unique_ptr<Memento::MainWindowMemento> TestMainWindow::originMemento;
 void TestMainWindow::init() {
-    mw = new GUI::MainWindow;
-    mw->show();
-    QTest::qWaitForWindowActive(mw);
+    mw = getMainWindow();
 
 }
 void TestMainWindow::testAddFilterWithoutVid() {
@@ -37,7 +36,6 @@ void TestMainWindow::testAddFilterWithoutVid() {
 
     QVERIFY2(oldMemo->getFilterTabMemento()->getFilterList()->getSize() == newMemo->getFilterTabMemento()->getFilterList()->getSize(), "filter got added without picking a video");
     QVERIFY2(newMemo->getFilterTabMemento()->isPreviewShow() == oldMemo->getFilterTabMemento()->isPreviewShow(),"shows preview");
-    delete mw;
 
 }
 void TestMainWindow::testSwitchTab() {
@@ -50,6 +48,20 @@ void TestMainWindow::testSwitchTab() {
     QTest::qSleep(500);
     std::unique_ptr<Memento::MainWindowMemento> newMemo = mw ->getMemento();
 
+    QTest::qSleep(1000);
     QVERIFY(oldMemo->getSelectedTab() != newMemo->getSelectedTab());
-    delete mw;
+
+}
+GUI::MainWindow* TestMainWindow::getMainWindow() {
+    if(mainWindow){
+        mainWindow->restore(&*originMemento);
+        qApp->processEvents();
+    } else {
+        mainWindow = new GUI::MainWindow();
+        originMemento = mainWindow->getMemento();
+        mainWindow->show();
+        QTest::qWaitForWindowActive(mainWindow);
+    }
+
+    return mainWindow;
 }
