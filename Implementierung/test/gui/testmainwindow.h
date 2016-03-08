@@ -18,8 +18,31 @@
 class TestMainWindow : public QObject {
     Q_OBJECT
 public:
+    /**
+     * @brief getMainWindow returns the m
+     * @return
+     */
     static GUI::MainWindow* getMainWindow();
-  private slots:
+
+    /**
+     * @brief clickButton clicks a button
+     * @param text the button with this text
+     * @param parent and is a child (direct or not) of this parent
+     */
+    static void clickButton(QString text,QObject* parent = mainWindow);
+    /**
+     * @brief triggerAction triggers a action
+     * @param text the action with this text
+     * @param parent and is a child (direct or not) of this parent
+     */
+    static void triggerAction(QString text,QObject* parent = mainWindow);
+
+    /**
+     * @brief getCurrentMainWindow returns the MainWindow without restting it
+     * @return the MainWindow
+     */
+    static GUI::MainWindow* getCurrentMainWindow();
+ private slots:
     void init();
     void testSwitchTab();
  private:

@@ -686,6 +686,7 @@ void GUI::FilterTab::createListView() {
 
 	model_filterlist_=new QStringListModel;
 	list_filterlist_->setModel(model_filterlist_);
+    list_filterlist_->setObjectName("list_filterlist_");
 }
 
 void GUI::FilterTab::createVideoPlayer() {

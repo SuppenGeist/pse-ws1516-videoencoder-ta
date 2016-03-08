@@ -9,10 +9,16 @@
 class TestFilterTab : public QObject
 {
     Q_OBJECT
+public:
+    static void clickItemInFilterList(int index);
+private:
+    void loadVideo(QString path);
+    void clickButton(QString text);
 private slots:
     void init();
     void testAddFilterWithoutVid();
     void testLoadVideo();
+    void testAddRemoveFilters();
 private:
     GUI::MainWindow* mw;
 };
