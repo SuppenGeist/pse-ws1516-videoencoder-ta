@@ -87,8 +87,11 @@ void GUI::YuvInfoDialog::createUi() {
 	label_x_=new QLabel(tr("x"));
 
 	lineEdit_fps_=new QLineEdit;
+    lineEdit_fps_->setObjectName("lineEdit_fps_");
 	lineEdit_height_=new QLineEdit;
+    lineEdit_height_->setObjectName("lineEdit_height_");
 	lineEdit_width_=new QLineEdit;
+    lineEdit_width_->setObjectName("lineEdit_width_");
 
 	comboBox_compression_=new QComboBox;
 	comboBox_pixelSheme_=new QComboBox;
