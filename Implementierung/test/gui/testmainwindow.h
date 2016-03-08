@@ -9,6 +9,7 @@
 #include <QLineEdit>
 #include <QKeyEvent>
 #include <QApplication>
+
 #include "../../src/gui/MainWindow.h"
 #include "../../src/memento/MainWindowMemento.h"
 
@@ -21,14 +22,12 @@ public:
   private slots:
     void init();
     void testSwitchTab();
-    void testAddFilterWithoutVid();
-    void testLoadVideoFilterTab();
  private:
     GUI::MainWindow* mw;
     static std::unique_ptr<Memento::MainWindowMemento> originMemento;
     static GUI::MainWindow* mainWindow;
 };
-class WriteFilePath : public QThread {
+class WriteYuvFilePath : public QThread {
     Q_OBJECT
 public:
     void setPath(QString path) {

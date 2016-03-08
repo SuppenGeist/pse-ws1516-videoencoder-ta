@@ -186,7 +186,8 @@ HEADERS += \
     test/utility/testyuv422vector.h \
     test/utility/testyuv411vector.h \
     test/gui/testmainwindow.h \
-    test/utility/testfilterconfiguration.h
+    test/utility/testfilterconfiguration.h \
+    test/gui/testfiltertab.h
 
 SOURCES += \
     src/gui/AnalysisBox.cpp \
@@ -354,7 +355,8 @@ SOURCES += \
     test/utility/testyuv422vector.cpp \
     test/utility/testyuv411vector.cpp \
     test/gui/testmainwindow.cpp \
-    test/utility/testfilterconfiguration.cpp
+    test/utility/testfilterconfiguration.cpp \
+    test/gui/testfiltertab.cpp
 
 RESOURCES += \
     resources.qrc \
