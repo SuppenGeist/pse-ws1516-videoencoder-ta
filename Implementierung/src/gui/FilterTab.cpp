@@ -578,7 +578,7 @@ void GUI::FilterTab::createUi() {
 	h_list_button_player->addWidget(list_filterlist_);
 	h_list_button_player->addSpacing(20);
 
-	QVBoxLayout* v_buttons=new QVBoxLayout;
+    QVBoxLayout* v_buttons=new QVBoxLayout;
 	v_buttons->addWidget(button_load_);
 	v_buttons->addWidget(button_apply_);
 	v_buttons->addWidget(button_save_);
@@ -639,14 +639,23 @@ void GUI::FilterTab::createButtons() {
 	button_up_=new QPushButton(tr("Filter up"));
 
 	button_apply_->setFlat(true);
+    button_apply_->setObjectName("filterTab_button_apply_");
 	button_down_->setFlat(true);
+    button_down_->setObjectName("filterTab_button_down_");
 	button_loadConf_->setFlat(true);
+    button_loadConf_->setObjectName("filterTab_button_loadConf_");
 	button_load_->setFlat(true);
+    button_load_->setObjectName("filterTab_button_load_");
 	button_remove_->setFlat(true);
+    button_remove_->setObjectName("filterTab_button_remove_");
 	button_reset_->setFlat(true);
+    button_reset_->setObjectName("filterTab_button_reset_");
 	button_saveConf_->setFlat(true);
+    button_saveConf_->setObjectName("filterTab_button_saveConf_");
 	button_save_->setFlat(true);
+    button_save_->setObjectName("filterTab_button_save_");
 	button_up_->setFlat(true);
+    button_up_->setObjectName("filterTab_button_up_");
 
 	QString styleSheet_buttonGroup("QPushButton {"
 	                               "color: rgb(255, 255, 255);"
