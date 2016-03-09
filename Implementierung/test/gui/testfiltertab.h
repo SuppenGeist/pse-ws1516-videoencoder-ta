@@ -19,6 +19,7 @@ private slots:
     void testAddFilterWithoutVid();
     void testLoadVideo();
     void testAddRemoveFilters();
+    void testFilterList();
 private:
     GUI::MainWindow* mw;
 };

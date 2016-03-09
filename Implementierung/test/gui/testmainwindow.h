@@ -23,6 +23,11 @@ public:
      * @return
      */
     static GUI::MainWindow* getMainWindow();
+    /**
+     * @brief waitForWindow waits the given time in ms and calls qApp->processEvents() after two third of the time;
+     * @param time the total waiting time in ms
+     */
+    static void waitForWindow(int time = 1500);
 
     /**
      * @brief clickButton clicks a button

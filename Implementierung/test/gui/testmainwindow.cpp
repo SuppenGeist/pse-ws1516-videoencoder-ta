@@ -26,6 +26,12 @@ void TestMainWindow::clickButton(QString text, QObject* parent) {
     qApp->processEvents();
     QTest::qSleep(500);
 }
+void TestMainWindow::waitForWindow(int time) {
+    QTest::qSleep(time * 2 / 3);
+    qApp->processEvents();
+    QTest::qSleep(time / 3);
+}
+
 GUI::MainWindow* TestMainWindow::getCurrentMainWindow(){
     return mainWindow;
 }
