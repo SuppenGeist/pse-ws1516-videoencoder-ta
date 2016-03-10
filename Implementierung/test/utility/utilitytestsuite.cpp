@@ -12,6 +12,8 @@
 #include "testyuv422vector.h"
 #include "testyuv444vector.h"
 #include "testfilterconfiguration.h"
+#include "testbitratecalculator.h"
+#include "testrgbhistogramcalculator.h"
 
 UtilityTestSuite::UtilityTestSuite(int argc, char *argv[]):argc_(argc),argv_(argv) {
 
@@ -48,5 +50,9 @@ void UtilityTestSuite::testUtility() {
     TestYuv411Vector testYuv411Vector;
     QTest::qExec(&testYuv411Vector);
 
+    TestBitrateCalculator testBitrateCalculator;
+    QTest::qExec(&testBitrateCalculator);
 
+    TestRGBHistogramCalculator testRGBHistogramCalculator;
+    QTest::qExec(&testRGBHistogramCalculator);
 }

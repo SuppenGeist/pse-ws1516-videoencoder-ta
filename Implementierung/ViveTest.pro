@@ -187,7 +187,9 @@ HEADERS += \
     test/utility/testyuv411vector.h \
     test/gui/testmainwindow.h \
     test/utility/testfilterconfiguration.h \
-    test/gui/testfiltertab.h
+    test/gui/testfiltertab.h \
+    test/utility/testbitratecalculator.h \
+    test/utility/testrgbhistogramcalculator.h \
 
 SOURCES += \
     src/gui/AnalysisBox.cpp \
@@ -356,7 +358,9 @@ SOURCES += \
     test/utility/testyuv411vector.cpp \
     test/gui/testmainwindow.cpp \
     test/utility/testfilterconfiguration.cpp \
-    test/gui/testfiltertab.cpp
+    test/gui/testfiltertab.cpp \
+    test/utility/testbitratecalculator.cpp \
+    test/utility/testrgbhistogramcalculator.cpp \
 
 RESOURCES += \
     resources.qrc \
