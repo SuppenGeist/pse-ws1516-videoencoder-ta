@@ -190,6 +190,7 @@ HEADERS += \
     test/gui/testfiltertab.h \
     test/utility/testbitratecalculator.h \
     test/utility/testrgbhistogramcalculator.h \
+    test/gui/testanalysistab.h
 
 SOURCES += \
     src/gui/AnalysisBox.cpp \
@@ -361,6 +362,7 @@ SOURCES += \
     test/gui/testfiltertab.cpp \
     test/utility/testbitratecalculator.cpp \
     test/utility/testrgbhistogramcalculator.cpp \
+    test/gui/testanalysistab.cpp
 
 RESOURCES += \
     resources.qrc \
