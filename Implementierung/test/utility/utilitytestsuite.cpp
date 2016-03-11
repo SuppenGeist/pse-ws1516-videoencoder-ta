@@ -14,6 +14,11 @@
 #include "testfilterconfiguration.h"
 #include "testbitratecalculator.h"
 #include "testrgbhistogramcalculator.h"
+#include "testyuvfilesaver.h"
+#include "testyuv444filesaver.h"
+#include "testyuv422filesaver.h"
+#include "testyuv411filesaver.h"
+
 
 UtilityTestSuite::UtilityTestSuite(int argc, char *argv[]):argc_(argc),argv_(argv) {
 
@@ -55,4 +60,17 @@ void UtilityTestSuite::testUtility() {
 
     TestRGBHistogramCalculator testRGBHistogramCalculator;
     QTest::qExec(&testRGBHistogramCalculator);
+
+    TestYuvFileSaver testYuvFileSaver;
+    QTest::qExec(&testYuvFileSaver);
+
+    TestYuv444FileSaver testYuv444FileSaver;
+    QTest::qExec(&testYuv444FileSaver);
+
+    TestYuv422FileSaver testYuv422FileSaver;
+    QTest::qExec(&testYuv422FileSaver);
+
+    TestYuv411FileSaver testYuv411FileSaver;
+    QTest::qExec(&testYuv411FileSaver);
+
 }

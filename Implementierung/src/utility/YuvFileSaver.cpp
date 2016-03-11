@@ -15,7 +15,7 @@ Utility::YuvFileSaver::~YuvFileSaver() {
 }
 
 int Utility::YuvFileSaver::RgbToY(QRgb pixel) {
-	return (0.257*qRed(pixel)) + (0.504*qGreen(pixel)) + (0.098*qBlue(pixel))+16;
+    return (0.257*qRed(pixel)) + (0.504*qGreen(pixel)) + (0.098*qBlue(pixel))+16;
 }
 
 int Utility::YuvFileSaver::RgbToU(QRgb pixel) {

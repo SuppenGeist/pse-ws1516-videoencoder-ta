@@ -45,7 +45,7 @@ class Yuv411FileSaver: public YuvFileSaver {
 	 * @param pixel4 Pixel 4 to convert.
 	 * @return The Yuv411Vector
 	 */
-	Utility::Yuv411Vector Rgb888ToYuv411(QRgb pixel1, QRgb pixel2, QRgb pixel3, QRgb pixel4);
+    static Utility::Yuv411Vector Rgb888ToYuv411(QRgb pixel1, QRgb pixel2, QRgb pixel3, QRgb pixel4);
 
   private:
 	Compression compression_;
