@@ -20,10 +20,12 @@ void TestFilterTab::init() {
     mw = TestMainWindow::getMainWindow();
 
 }
-void TestFilterTab::loadVideo(QString path) {
+void TestFilterTab::loadVideo(QString path, int width, int height, int fps,
+                              Utility::Compression compression, Utility::YuvType type) {
     //get LoadVideo button
+
     QPushButton* loadVideo;
-    QList<QPushButton*> buttonList = mw->findChildren<QPushButton*>();
+    QList<QPushButton*> buttonList = TestMainWindow::getCurrentMainWindow()->findChildren<QPushButton*>();
     for(int i = 0; i < buttonList.length() ; i++) {
         if(buttonList.at(i)->text() == "Load video") {
             loadVideo = buttonList.at(i);
@@ -33,17 +35,24 @@ void TestFilterTab::loadVideo(QString path) {
     QTest::qSleep(500);
     WriteYuvFilePath* writer = new WriteYuvFilePath;
     writer->setPath(path);
+    writer->setHeight(height);
+    writer->setWidth(width);
+    writer->setFps(fps);
+    writer->setYuvType(type);
+    writer->setCompression(compression);
     writer->setThread(QThread::currentThread());
     writer->start();
     loadVideo->clicked();
 
     QCoreApplication::processEvents();
     QTest::qSleep(2000);
-    QVERIFY2(path == mw->getMemento()->getFilterTabMemento()->getRawVideo()->getPath(), "Wrong video path");
+    QVERIFY2(path == TestMainWindow::getCurrentMainWindow()->getMemento()->getFilterTabMemento()->getRawVideo()->getPath(), "Wrong video path");
 
 }
 void TestFilterTab::testLoadVideo() {
+    //this video is already tested in other tests
     //loadVideo(QFINDTESTDATA("akiyo_qcif.yuv"));
+    loadVideo(QFINDTESTDATA("blumeYuv444_packed_176x144.yuv"),176,144,30,Utility::Compression::PACKED,Utility::YuvType::YUV444);
 }
 void TestFilterTab::testAddFilterWithoutVid() {
     std::unique_ptr<Memento::MainWindowMemento> oldMemo = mw->getMemento();

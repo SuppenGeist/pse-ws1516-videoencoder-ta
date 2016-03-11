@@ -94,7 +94,9 @@ void GUI::YuvInfoDialog::createUi() {
     lineEdit_width_->setObjectName("lineEdit_width_");
 
 	comboBox_compression_=new QComboBox;
+    comboBox_compression_->setObjectName("comboBox_compression_");
 	comboBox_pixelSheme_=new QComboBox;
+    comboBox_pixelSheme_->setObjectName("comboBox_pixelSheme_");
 
     compressionList_<<tr("Packed")<<tr("Planar");
     comboBox_compression_->addItems(compressionList_);

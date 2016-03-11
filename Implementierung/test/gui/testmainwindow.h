@@ -12,9 +12,10 @@
 
 #include "../../src/gui/MainWindow.h"
 #include "../../src/memento/MainWindowMemento.h"
-
+#include "../../src/utility/Compression.h"
 #include "../../src/gui/YuvFileOpenDialog.h"
 #include "../../src/gui/YuvInfoDialog.h"
+#include "../../src/utility/YuvType.h"
 class TestMainWindow : public QObject {
     Q_OBJECT
 public:
@@ -58,17 +59,15 @@ public:
 class WriteYuvFilePath : public QThread {
     Q_OBJECT
 public:
-    void setPath(QString path) {
-        path_ = path;
-    }
-    void setThread(QThread* thread) {
-        mainThread_ = thread;
-    }
-
+    void setPath(QString path) {path_ = path;}
+    void setThread(QThread* thread) {mainThread_ = thread;}
+    void setHeight(int height) {height_ = QString::number(height);}
+    void setWidth(int width) {width_ = QString::number(width);}
+    void setCompression(Utility::Compression compression) {compression_ = compression;}
+    void setYuvType(Utility::YuvType type) { type_ = type;}
+    void setFps(int fps) { fps_=QString::number(fps);}
 private:
     void run() {
-
-
         QTest::qSleep(500);
         QList<QWidget*> list = qApp->allWidgets();
         GUI::YuvFileOpenDialog* fileDialog;
@@ -99,8 +98,30 @@ private:
                 QApplication::postEvent(lineEditList.at(i),new QKeyEvent(QEvent::KeyPress,Qt::Key_A,Qt::NoModifier,width_));
             } else if(lineEditList.at(i)->objectName()== QString("lineEdit_height_")) {
                 QApplication::postEvent(lineEditList.at(i),new QKeyEvent(QEvent::KeyPress,Qt::Key_A,Qt::NoModifier,height_));
+            } else  if(lineEditList.at(i)->objectName()==QString("lineEdit_fps_")) {
+                QApplication::postEvent(lineEditList.at(i),new QMouseEvent(QEvent::MouseButtonDblClick,QPoint(5,5),Qt::LeftButton,Qt::LeftButton,Qt::NoModifier));
+                QApplication::postEvent(lineEditList.at(i),new QKeyEvent(QEvent::KeyPress,Qt::Key_A,Qt::NoModifier,fps_));
             }
         }
+        QTest::qSleep(500);
+        QComboBox* comboBox= infoDialog->findChild<QComboBox*>("comboBox_pixelSheme_");
+        QVERIFY2(comboBox != NULL, "Error: pixelSheme comboBox not found");
+        QApplication::postEvent(comboBox,new QFocusEvent(QEvent::FocusIn));
+        switch (type_) {
+                case Utility::YuvType::YUV444 : QApplication::postEvent(comboBox,new QKeyEvent(QEvent::KeyPress,Qt::Key_Down,Qt::NoModifier));
+                case Utility::YuvType::YUV422 : QApplication::postEvent(comboBox,new QKeyEvent(QEvent::KeyPress,Qt::Key_Down,Qt::NoModifier));
+                case Utility::YuvType::YUV411 : QApplication::postEvent(comboBox,new QKeyEvent(QEvent::KeyPress,Qt::Key_Down,Qt::NoModifier));break;
+                default:
+                    break;
+                }
+        QTest::qSleep(500);
+        comboBox = infoDialog->findChild<QComboBox*>("comboBox_compression_");
+        QVERIFY2(comboBox != NULL, "Error: compression comboBox not found");
+        if(type_ != Utility::YuvType::YUV420 && compression_ == Utility::Compression::PACKED) {
+                    QApplication::postEvent(comboBox,new QKeyEvent(QEvent::KeyPress,Qt::Key_Up,Qt::NoModifier));
+                    QTest::qSleep(500);
+            }
+
         QTest::qSleep(500);
         buttonList = infoDialog->findChildren<QPushButton*>();
         for(int i = 0; i < buttonList.length() ; i++) {
@@ -108,8 +129,6 @@ private:
                    okButton = buttonList.at(i);
                 }
         }
-
-
         QApplication::postEvent(okButton, new QMouseEvent(QEvent::MouseButtonPress,QPoint(1,1),Qt::LeftButton,Qt::LeftButton,Qt::KeyboardModifier::NoModifier));
         QApplication::postEvent(okButton, new QMouseEvent(QEvent::MouseButtonRelease,QPoint(1,1),Qt::LeftButton,Qt::LeftButton,Qt::KeyboardModifier::NoModifier));
 
@@ -118,6 +137,9 @@ private:
     QString path_;
     QString width_ = "176";
     QString height_ = "144";
+    QString fps_ = "30";
+    Utility::YuvType type_ = Utility::YuvType::YUV420;
+    Utility::Compression compression_ = Utility::Compression::PLANAR;
 
 };
 #endif // TESTMAINWINDOW_H
