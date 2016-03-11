@@ -190,7 +190,11 @@ HEADERS += \
     test/gui/testfiltertab.h \
     test/utility/testbitratecalculator.h \
     test/utility/testrgbhistogramcalculator.h \
-    test/gui/testanalysistab.h
+    test/gui/testanalysistab.h \
+    test/utility/testyuvfilesaver.h \
+    test/utility/testyuv411filesaver.h \
+    test/utility/testyuv422filesaver.h \
+    test/utility/testyuv444filesaver.h
 
 SOURCES += \
     src/gui/AnalysisBox.cpp \
@@ -362,7 +366,11 @@ SOURCES += \
     test/gui/testfiltertab.cpp \
     test/utility/testbitratecalculator.cpp \
     test/utility/testrgbhistogramcalculator.cpp \
-    test/gui/testanalysistab.cpp
+    test/gui/testanalysistab.cpp \
+    test/utility/testyuvfilesaver.cpp \
+    test/utility/testyuv411filesaver.cpp \
+    test/utility/testyuv422filesaver.cpp \
+    test/utility/testyuv444filesaver.cpp
 
 RESOURCES += \
     resources.qrc \
