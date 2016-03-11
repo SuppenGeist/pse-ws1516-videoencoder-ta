@@ -1,7 +1,7 @@
 #include "testanalysistab.h"
 #include "testmainwindow.h"
 
-void TestFilterTab::loadVideo(QString path, int width, int height, int fps,
+void TestAnalysisTab::loadVideo(QString path, int width, int height, int fps,
                               Utility::Compression compression, Utility::YuvType type) {
     //get LoadVideo button
     QPushButton* loadVideo;

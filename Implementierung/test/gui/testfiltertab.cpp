@@ -47,7 +47,6 @@ void TestFilterTab::loadVideo(QString path, int width, int height, int fps,
     QCoreApplication::processEvents();
     QTest::qSleep(2000);
     QVERIFY2(path == TestMainWindow::getCurrentMainWindow()->getMemento()->getFilterTabMemento()->getRawVideo()->getPath(), "Wrong video path");
-
 }
 void TestFilterTab::testLoadVideo() {
     //this video is already tested in other tests
