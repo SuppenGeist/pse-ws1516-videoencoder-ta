@@ -14,13 +14,16 @@ void TestRGBHistogramCalculator::init()
     }
     video_=Model::Video();
     video_.appendFrame(std::move(image_));
-    red_= new Model::GraphVideo();
-    green_= new Model::GraphVideo();
-    blue_= new Model::GraphVideo();
-    rgbHistogramCalculator_ = new Utility::RGBHistogramCalculator(video_);
+    redHisto_=std::make_unique<Model::GraphVideo>();
+    greenHisto_=std::make_unique<Model::GraphVideo>();
+    blueHisto_=std::make_unique<Model::GraphVideo>();
+
+    rgbHistoCalculator_=std::make_unique<Utility::RGBHistogramCalculator>(video_);
 }
 
 void TestRGBHistogramCalculator::testCalculate()
 {
-    //rgbHistogramCalculator_->calculate(red_,green_,blue_);
+    //rgbHistoCalculator_->calculate(redHisto_.get(),greenHisto_.get(),blueHisto_.get());
+
+    //QVERIFY(greenHisto_->getGraph(0)==);
 }

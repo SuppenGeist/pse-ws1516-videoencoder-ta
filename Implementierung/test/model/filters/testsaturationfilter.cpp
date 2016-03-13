@@ -52,6 +52,6 @@ void TestSaturationFilter::testFilterCopy() {
 void TestSaturationFilter::testGetFilterdescrition() {
 	filter_.setIntensity(66);
 	QVERIFY(filter_.getFilterDescription()==
-	        "eq=contrast=1:brightness=0:saturation='2.000000':gamma=1:gamma_r=1:gamma_g=1:gamma_b=1:gamma_weight=1");
+            "eq=contrast=1:brightness=0:saturation='2,000000':gamma=1:gamma_r=1:gamma_g=1:gamma_b=1:gamma_weight=1");
 
 }

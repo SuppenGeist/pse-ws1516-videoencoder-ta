@@ -19,11 +19,11 @@ private slots:
     void init();
     void testCalculate();
 private:
-        Model::GraphVideo*      red_;
-        Model::GraphVideo*      green_;
-        Model::GraphVideo*      blue_;
+        std::unique_ptr<Model::GraphVideo>      redHisto_;
+        std::unique_ptr<Model::GraphVideo>      greenHisto_;
+        std::unique_ptr<Model::GraphVideo>      blueHisto_;
         Model::Video            video_;
-        Utility::RGBHistogramCalculator* rgbHistogramCalculator_;
+        std::unique_ptr<Utility::RGBHistogramCalculator> rgbHistoCalculator_;
 };
 
 #endif // TESTRGBHISTOGRAMCALCULATOR_H

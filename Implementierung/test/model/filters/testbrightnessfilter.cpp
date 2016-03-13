@@ -52,5 +52,5 @@ void TestBrightnessFilter::testFilterCopy() {
 void TestBrightnessFilter::testGetFilterDescription() {
 	filter_.setIntensity(100);
 	QVERIFY(filter_.getFilterDescription()==
-	        "eq=contrast=1:brightness='1.000000':saturation=1:gamma=1:gamma_r=1:gamma_g=1:gamma_b=1:gamma_weight=1");
+            "eq=contrast=1:brightness='1,000000':saturation=1:gamma=1:gamma_r=1:gamma_g=1:gamma_b=1:gamma_weight=1");
 }

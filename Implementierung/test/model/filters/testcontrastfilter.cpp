@@ -52,5 +52,5 @@ void TestContrastFilter::testFilterCopy() {
 void TestContrastFilter::testGetFilterDescription() {
 	filter_.setIntensity(100);
 	QVERIFY(filter_.getFilterDescription()==
-	        "eq=contrast='2.000000':brightness=0:saturation=1:gamma=1:gamma_r=1:gamma_g=1:gamma_b=1:gamma_weight=1");
+            "eq=contrast='2,000000':brightness=0:saturation=1:gamma=1:gamma_r=1:gamma_g=1:gamma_b=1:gamma_weight=1");
 }
