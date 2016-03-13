@@ -39,13 +39,13 @@ std::unique_ptr<Memento::MainWindowMemento> GUI::MainWindow::getMemento() {
 }
 
 void GUI::MainWindow::restore(Memento::MainWindowMemento *memento) {
+    UndoRedo::UndoStack::getUndoStack().clear();
 	analysisTab_->restore(memento->getAnalysisTabMemento());
 	filterTab_->restore(memento->getFilterTabMemento());
 
 	if(memento->getSelectedTab()>=0&&memento->getSelectedTab()<=1) {
 		tab_tabs_->setCurrentIndex(memento->getSelectedTab());
-	}
-    UndoRedo::UndoStack::getUndoStack().clear();
+    }
 }
 
 void GUI::MainWindow::newProject() {
