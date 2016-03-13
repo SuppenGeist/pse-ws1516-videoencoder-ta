@@ -24,8 +24,9 @@ private slots:
 private:
         AVFrame* frame_;
         Model::Graph* graph_;
+        std::unique_ptr<Model::Graph>      bitrate_;
         Model::AVVideo* avVideo_;
-        Utility::BitrateCalculator* bitrateCalculator_;
+        std::unique_ptr<Utility::BitrateCalculator> bitrateCalculator_;
 };
 
 #endif // TESTBITRATECALCULATOR_H

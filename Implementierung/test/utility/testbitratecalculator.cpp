@@ -29,12 +29,20 @@ void TestBitrateCalculator::init()
     avVideo_= new Model::AVVideo();
     avVideo_->appendFrame(frame_);
     graph_= new Model::Graph();
-    bitrateCalculator_ = new Utility::BitrateCalculator(*avVideo_);
+    bitrateCalculator_=std::make_unique<Utility::BitrateCalculator>(*avVideo_);
+    bitrate_=std::make_unique<Model::Graph>();
 
 }
 
 void TestBitrateCalculator::testCalculate()
 {
-    //bitrateCalculator_->calculate(graph_);
+    std::size_t i=0;
+    for(; i<avVideo_->getNumberOfFrames(); i++) {
+        graph_->setValue(i,avVideo_->getFrame(i)->pkt_size*8/(double)1000);
+    }
+
+
+    bitrateCalculator_->calculate(bitrate_.get());
+    QVERIFY(graph_->getBiggestValue()==bitrate_->getBiggestValue());
 
 }
