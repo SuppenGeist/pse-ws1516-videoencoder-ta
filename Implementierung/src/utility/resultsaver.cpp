@@ -36,7 +36,7 @@ void Utility::ResultSaver::run() {
 
 		auto prefix=path_+"/"+info.fileName().section(".",0,0);
 
-		auto macroPath=prefix+"_macroblocks.mp4";
+        auto macroPath=prefix+"_macroblocks.mp4";
 
 		QFile macroFile(macroPath);
 		if(!macroFile.exists()) {
@@ -47,7 +47,7 @@ void Utility::ResultSaver::run() {
 			videoSavers_.push_back(std::move(macroBSaver));
 		}
 
-		auto diffPath=prefix+"_rgbDiff.mp4";
+        auto diffPath=prefix+"_rgbDiff.mp4";
 
 		QFile diffFile(diffPath);
 		if(!diffFile.exists()) {
