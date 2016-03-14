@@ -17,6 +17,7 @@ public:
 private slots:
     void init();
     void testAddVideo();
+    void testGraphs();
 private:
     GUI::MainWindow* mw;
 };
