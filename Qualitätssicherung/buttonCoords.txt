@@ -1,5 +1,18 @@
 name		x	y
 
+Players:	
+
+FilterTab	523:102 - 835:385
+AnaTabYuvPlayer	41:91   - 245:292
+AnaTabYuvGraps	302:90	- 679:285
+
+Video1:		
+PlayerNormal	63:459	- 272:663
+Graphs		307:454	- 588:663
+PlayerAnalysis	596:460	- 798:661
+
+
+
 FilterTab:	20	55	
 
 LoadVid: 	350 	124
