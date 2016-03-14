@@ -130,9 +130,10 @@ void GUI::AnalysisTab::restore(Memento::AnalysisTabMemento *memento) {
 void GUI::AnalysisTab::setRawVideo(Model::YuvVideo *rawVideo) {
 	timer_labelUpdater_.stop();
 
+    globalControlPanel_->stop();
+
 	analysisBoxContainer_->clear();
 
-	globalControlPanel_->stop();
 
 	graphPlayer_->setGraphVideo(nullptr);
 	graphWidget_->drawGraph(nullptr);

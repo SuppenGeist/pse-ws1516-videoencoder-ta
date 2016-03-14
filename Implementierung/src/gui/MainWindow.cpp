@@ -39,6 +39,8 @@ std::unique_ptr<Memento::MainWindowMemento> GUI::MainWindow::getMemento() {
 }
 
 void GUI::MainWindow::restore(Memento::MainWindowMemento *memento) {
+    analysisTab_->setRawVideo(nullptr);
+    filterTab_->setRawVideo(nullptr);
     UndoRedo::UndoStack::getUndoStack().clear();
 	analysisTab_->restore(memento->getAnalysisTabMemento());
 	filterTab_->restore(memento->getFilterTabMemento());
