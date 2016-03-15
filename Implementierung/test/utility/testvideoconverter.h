@@ -18,6 +18,7 @@ private slots:
     void init();
     void testConvertAVFrameToQImage();
     void testConvertQImageToAVFrame();
+    void testConvertGraphToImage();
 private:
         AVFrame* frame_;
         Model::AVVideo* avVideo_;

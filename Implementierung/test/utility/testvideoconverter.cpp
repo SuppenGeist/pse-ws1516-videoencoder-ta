@@ -1,6 +1,7 @@
 #include "testvideoconverter.h"
 
 #include <memory>
+#include <qrgb.h>
 
 #include "../../src/utility/VideoConverter.h"
 
@@ -56,4 +57,16 @@ void TestVideoConverter::testConvertQImageToAVFrame() {
            // QVERIFY((int) tmpFrame->data[2][y * tmpFrame->linesize[2] + x] == (int) frame_->data[2][y * frame_->linesize[2] + x]);
         }
     }
+}
+
+void TestVideoConverter::testConvertGraphToImage() {
+    std::unique_ptr<QImage> image =
+            Utility::VideoConverter::convertGraphToImage(nullptr, 0, 0, nullptr);
+    QVERIFY(image.get()->height() == 0);
+    QVERIFY(image.get()->width() == 0);
+    Model::Graph *graph = new Model::Graph();
+    graph->setValue(0,2);
+    graph->setValue(1,1);
+    image = Utility::VideoConverter::convertGraphToImage(graph, 2, 2, nullptr);
+    QVERIFY(qGray(image.get()->pixel(1,0))==255);
 }
