@@ -62,7 +62,7 @@ void Utility::VideoLoader::loadP() {
 	}
 
 	// Print stream information
-	av_dump_format(formatContext, 0, path_.toUtf8(), 0);
+    // av_dump_format(formatContext, 0, path_.toUtf8(), 0);
 
 
 	// Find the best video stream in context
