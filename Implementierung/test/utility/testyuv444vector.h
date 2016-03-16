@@ -7,19 +7,19 @@
 #include "../../src/utility/Yuv444Vector.h"
 
 class TestYuv444Vector : public QObject {
-    Q_OBJECT
+	Q_OBJECT
 
   private slots:
-    void init();
+	void init();
 
-    void testSetY();
+	void testSetY();
 
-    void testSetU();
+	void testSetU();
 
-    void testSetV();
+	void testSetV();
 
   private:
-    Utility::Yuv444Vector vector_;
+	Utility::Yuv444Vector vector_;
 
 };
 

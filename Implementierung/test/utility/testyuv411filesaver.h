@@ -6,18 +6,18 @@
 
 
 class TestYuv411FileSaver : public QObject {
-    Q_OBJECT
+	Q_OBJECT
 
   private slots:
-    void init();
+	void init();
 
-    void testRgb888ToYuv411();
+	void testRgb888ToYuv411();
 
   private:
-    QRgb pixel1;
-    QRgb pixel2;
-    QRgb pixel3;
-    QRgb pixel4;
+	QRgb pixel1;
+	QRgb pixel2;
+	QRgb pixel3;
+	QRgb pixel4;
 
 };
 

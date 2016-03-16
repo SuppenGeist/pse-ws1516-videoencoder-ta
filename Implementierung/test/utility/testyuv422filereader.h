@@ -12,7 +12,7 @@ class TestYuv422FileReader : public QObject {
   private slots:
 	void init();
 
-    void testYuv422ToRgb888();
+	void testYuv422ToRgb888();
 
 };
 

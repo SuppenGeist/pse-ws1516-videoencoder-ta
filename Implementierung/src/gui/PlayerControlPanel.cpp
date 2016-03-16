@@ -12,8 +12,8 @@
 #include "Player.h"
 
 GUI::PlayerControlPanel::PlayerControlPanel(QWidget* parent):QFrame(parent) {
-    createUi();
-    connectActions();
+	createUi();
+	connectActions();
 	updater_.start(500);
 }
 
@@ -134,19 +134,18 @@ void GUI::PlayerControlPanel::createUi() {
 	              "border-style:outset;"
 	              "background: rgb(200, 200, 200);"
 	              "}"
-                  "");
+	              "");
 }
 
-void GUI::PlayerControlPanel::connectActions()
-{
-    connect(button_play_,SIGNAL(clicked()),this,SLOT(play()));
-    connect(button_pause_,SIGNAL(clicked()),this,SLOT(pause()));
-    connect(button_stop_,SIGNAL(clicked()),this,SLOT(stop()));
-    connect(button_nextFrame_,SIGNAL(clicked()),this,SLOT(nextFrame()));
-    connect(button_previousFrame_,SIGNAL(clicked()),this,SLOT(previousFrame()));
-    connect(comboBox_speed_,SIGNAL(currentIndexChanged(int)),this,SLOT(changeSpeed(int)));
-    connect(slider_timeline_,SIGNAL(sliderMoved(int)),this,SLOT(changeTimeline(int)));
-    connect(&updater_,SIGNAL(timeout()),this,SLOT(updateUi()));
+void GUI::PlayerControlPanel::connectActions() {
+	connect(button_play_,SIGNAL(clicked()),this,SLOT(play()));
+	connect(button_pause_,SIGNAL(clicked()),this,SLOT(pause()));
+	connect(button_stop_,SIGNAL(clicked()),this,SLOT(stop()));
+	connect(button_nextFrame_,SIGNAL(clicked()),this,SLOT(nextFrame()));
+	connect(button_previousFrame_,SIGNAL(clicked()),this,SLOT(previousFrame()));
+	connect(comboBox_speed_,SIGNAL(currentIndexChanged(int)),this,SLOT(changeSpeed(int)));
+	connect(slider_timeline_,SIGNAL(sliderMoved(int)),this,SLOT(changeTimeline(int)));
+	connect(&updater_,SIGNAL(timeout()),this,SLOT(updateUi()));
 }
 
 void GUI::PlayerControlPanel::play() {

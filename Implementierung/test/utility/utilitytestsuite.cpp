@@ -25,52 +25,52 @@ UtilityTestSuite::UtilityTestSuite(int argc, char *argv[]):argc_(argc),argv_(arg
 }
 
 void UtilityTestSuite::testUtility() {
-    TestFilterConfiguration testFilterConfiguration;
-    QTest::qExec(&testFilterConfiguration);
+	TestFilterConfiguration testFilterConfiguration;
+	QTest::qExec(&testFilterConfiguration);
 
-    TestVideoConverter testVideoConverter;
-    QTest::qExec(&testVideoConverter);
+	TestVideoConverter testVideoConverter;
+	QTest::qExec(&testVideoConverter);
 
-    TestVideoLoader testVideoLoader;
-    QTest::qExec(&testVideoLoader);
+	TestVideoLoader testVideoLoader;
+	QTest::qExec(&testVideoLoader);
 
-    TestYuv444FileReader testYuv444FileReader;
-    QTest::qExec(&testYuv444FileReader);
+	TestYuv444FileReader testYuv444FileReader;
+	QTest::qExec(&testYuv444FileReader);
 
-    TestYuv422FileReader testYuv422FileReader;
-    QTest::qExec(&testYuv422FileReader);
+	TestYuv422FileReader testYuv422FileReader;
+	QTest::qExec(&testYuv422FileReader);
 
-    TestYuv411FileReader testYuv411FileReader;
-    QTest::qExec(&testYuv411FileReader);
+	TestYuv411FileReader testYuv411FileReader;
+	QTest::qExec(&testYuv411FileReader);
 
-    TestYuvFileReader testYuvFileReader;
-    QTest::qExec(&testYuvFileReader);
+	TestYuvFileReader testYuvFileReader;
+	QTest::qExec(&testYuvFileReader);
 
-    TestYuv444Vector testYuv444Vector;
-    QTest::qExec(&testYuv444Vector);
+	TestYuv444Vector testYuv444Vector;
+	QTest::qExec(&testYuv444Vector);
 
-    TestYuv422Vector testYuv422Vector;
-    QTest::qExec(&testYuv422Vector);
+	TestYuv422Vector testYuv422Vector;
+	QTest::qExec(&testYuv422Vector);
 
-    TestYuv411Vector testYuv411Vector;
-    QTest::qExec(&testYuv411Vector);
+	TestYuv411Vector testYuv411Vector;
+	QTest::qExec(&testYuv411Vector);
 
-    TestBitrateCalculator testBitrateCalculator;
-    QTest::qExec(&testBitrateCalculator);
+	TestBitrateCalculator testBitrateCalculator;
+	QTest::qExec(&testBitrateCalculator);
 
-    TestRGBHistogramCalculator testRGBHistogramCalculator;
-    QTest::qExec(&testRGBHistogramCalculator);
+	TestRGBHistogramCalculator testRGBHistogramCalculator;
+	QTest::qExec(&testRGBHistogramCalculator);
 
-    TestYuvFileSaver testYuvFileSaver;
-    QTest::qExec(&testYuvFileSaver);
+	TestYuvFileSaver testYuvFileSaver;
+	QTest::qExec(&testYuvFileSaver);
 
-    TestYuv444FileSaver testYuv444FileSaver;
-    QTest::qExec(&testYuv444FileSaver);
+	TestYuv444FileSaver testYuv444FileSaver;
+	QTest::qExec(&testYuv444FileSaver);
 
-    TestYuv422FileSaver testYuv422FileSaver;
-    QTest::qExec(&testYuv422FileSaver);
+	TestYuv422FileSaver testYuv422FileSaver;
+	QTest::qExec(&testYuv422FileSaver);
 
-    TestYuv411FileSaver testYuv411FileSaver;
-    QTest::qExec(&testYuv411FileSaver);
+	TestYuv411FileSaver testYuv411FileSaver;
+	QTest::qExec(&testYuv411FileSaver);
 
 }

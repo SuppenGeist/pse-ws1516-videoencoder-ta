@@ -7,25 +7,25 @@
 #include "../../src/utility/Yuv411Vector.h"
 
 class TestYuv411Vector : public QObject {
-    Q_OBJECT
+	Q_OBJECT
 
   private slots:
-    void init();
+	void init();
 
-    void testSetU();
+	void testSetU();
 
-    void testSetY1();
+	void testSetY1();
 
-    void testSetY2();
+	void testSetY2();
 
-    void testSetV();
+	void testSetV();
 
-    void testSetY3();
+	void testSetY3();
 
-    void testSetY4();
+	void testSetY4();
 
   private:
-    Utility::Yuv411Vector vector_;
+	Utility::Yuv411Vector vector_;
 
 };
 

@@ -19,7 +19,7 @@
 
 GUI::YuvInfoDialog::YuvInfoDialog(QWidget* parent):QDialog(parent) {
 	createUi();
-    connectActions();
+	connectActions();
 }
 
 int GUI::YuvInfoDialog::getFps() {
@@ -87,19 +87,19 @@ void GUI::YuvInfoDialog::createUi() {
 	label_x_=new QLabel(tr("x"));
 
 	lineEdit_fps_=new QLineEdit;
-    lineEdit_fps_->setObjectName("lineEdit_fps_");
+	lineEdit_fps_->setObjectName("lineEdit_fps_");
 	lineEdit_height_=new QLineEdit;
-    lineEdit_height_->setObjectName("lineEdit_height_");
+	lineEdit_height_->setObjectName("lineEdit_height_");
 	lineEdit_width_=new QLineEdit;
-    lineEdit_width_->setObjectName("lineEdit_width_");
+	lineEdit_width_->setObjectName("lineEdit_width_");
 
 	comboBox_compression_=new QComboBox;
-    comboBox_compression_->setObjectName("comboBox_compression_");
+	comboBox_compression_->setObjectName("comboBox_compression_");
 	comboBox_pixelSheme_=new QComboBox;
-    comboBox_pixelSheme_->setObjectName("comboBox_pixelSheme_");
+	comboBox_pixelSheme_->setObjectName("comboBox_pixelSheme_");
 
-    compressionList_<<tr("Packed")<<tr("Planar");
-    comboBox_compression_->addItems(compressionList_);
+	compressionList_<<tr("Packed")<<tr("Planar");
+	comboBox_compression_->addItems(compressionList_);
 	pixelShemeList_<<tr("420")<<tr("411")<<("422")<<tr("444");
 	comboBox_pixelSheme_->addItems(pixelShemeList_);
 
@@ -159,19 +159,18 @@ void GUI::YuvInfoDialog::createUi() {
 
 	setWindowTitle(tr("Fileinfo for the YUV video"));
 	setFixedWidth(250);
-    setFixedHeight(220);
+	setFixedHeight(220);
 }
 
-void GUI::YuvInfoDialog::connectActions()
-{
-    connect(button_cancel_,SIGNAL(clicked()),this,SLOT(reject()));
-    connect(button_ok_,SIGNAL(clicked()),this,SLOT(accept()));
-    connect(comboBox_pixelSheme_,SIGNAL(currentIndexChanged(int)),this,
-            SLOT(pixelShemeSelectionChanged(int)));
+void GUI::YuvInfoDialog::connectActions() {
+	connect(button_cancel_,SIGNAL(clicked()),this,SLOT(reject()));
+	connect(button_ok_,SIGNAL(clicked()),this,SLOT(accept()));
+	connect(comboBox_pixelSheme_,SIGNAL(currentIndexChanged(int)),this,
+	        SLOT(pixelShemeSelectionChanged(int)));
 }
 
 void GUI::YuvInfoDialog::pixelShemeSelectionChanged(int selection) {
-    if(pixelShemeList_.at(selection)=="420") {
+	if(pixelShemeList_.at(selection)=="420") {
 		comboBox_compression_->setEnabled(false);
 		comboBox_compression_->setCurrentIndex(1);
 	} else {

@@ -6,15 +6,15 @@
 #include <QColor>
 
 class TestYuv444FileSaver : public QObject {
-    Q_OBJECT
+	Q_OBJECT
 
   private slots:
-    void init();
+	void init();
 
-    void testRgb888ToYuv444();
+	void testRgb888ToYuv444();
 
   private:
-    QRgb pixel;
+	QRgb pixel;
 
 };
 

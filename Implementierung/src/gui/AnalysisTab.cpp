@@ -130,7 +130,7 @@ void GUI::AnalysisTab::restore(Memento::AnalysisTabMemento *memento) {
 void GUI::AnalysisTab::setRawVideo(Model::YuvVideo *rawVideo) {
 	timer_labelUpdater_.stop();
 
-    globalControlPanel_->stop();
+	globalControlPanel_->stop();
 
 	analysisBoxContainer_->clear();
 
@@ -393,7 +393,7 @@ void GUI::AnalysisTab::saveResults() {
 	button_saveResults_->setEnabled(false);
 
 	connect(resultsSaver_.get(),SIGNAL(finished()),this,SLOT(resultSavingFinished()));
-    resultsSaver_->start();
+	resultsSaver_->start();
 
 }
 
@@ -742,7 +742,7 @@ void GUI::AnalysisTab::connectActions() {
 	connect(button_psnr_,SIGNAL(clicked(bool)),this,SLOT(showPsnr()));
 	connect(button_attributes_,SIGNAL(clicked(bool)),this,SLOT(showAttributes()));
 	connect(button_loadnewvideo_,SIGNAL(clicked(bool)),this,SLOT(loadRawVideo()));
-    connect(&timer_labelUpdater_,SIGNAL(timeout()),this,SLOT(updateLabels()));
+	connect(&timer_labelUpdater_,SIGNAL(timeout()),this,SLOT(updateLabels()));
 	connect(button_saveResults_,SIGNAL(clicked(bool)),this,SLOT(saveResults()));
 }
 

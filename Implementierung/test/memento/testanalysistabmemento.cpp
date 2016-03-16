@@ -41,8 +41,9 @@ void TestAnalysisTabMemento::testSetPlayerPosition() {
 }
 
 void TestAnalysisTabMemento::testSetRawVideo() {
-    auto ptr=std::make_unique<Model::YuvVideo>("haha",Utility::YuvType::YUV411,Utility::Compression::PACKED,10,10,1);
-    Model::YuvVideo* vid=ptr.get();
+	auto ptr=std::make_unique<Model::YuvVideo>("haha",Utility::YuvType::YUV411,
+	         Utility::Compression::PACKED,10,10,1);
+	Model::YuvVideo* vid=ptr.get();
 	memento_.setRawVideo(vid);
 	QVERIFY(memento_.getRawVideo() != nullptr);
 

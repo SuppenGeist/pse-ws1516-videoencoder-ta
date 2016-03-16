@@ -71,7 +71,7 @@ class AnalysisBoxMemento {
 
 	void setBlueHistogram(Model::GraphVideo* video);
 
-    Model::GraphVideo* getBlueHistogram();
+	Model::GraphVideo* getBlueHistogram();
 
   private:
 	QString path_;
@@ -83,7 +83,7 @@ class AnalysisBoxMemento {
 	QString encoder_;
 	QString avergaeBitrate_;
 	QString filename_;
-    QString filesize_;
+	QString filesize_;
 	Model::GraphVideo* redHistogram_;
 	Model::GraphVideo* greenHistogram_;
 	Model::GraphVideo* blueHistogram_;

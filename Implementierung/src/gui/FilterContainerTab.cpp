@@ -18,7 +18,7 @@ GUI::FilterContainerTab::FilterContainerTab(QWidget* parent):QFrame(parent) {
 void GUI::FilterContainerTab::addFilter(QString filtername) {
 	FilterView *view = new FilterView;
 	view->setFilter(filtername);
-    view->setFilterTab(parentTab_);
+	view->setFilterTab(parentTab_);
 	filterContainer_->addWidget(view);
 	filterViews_.push_back(view);
 }

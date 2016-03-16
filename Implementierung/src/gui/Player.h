@@ -85,7 +85,7 @@ class Player {
 	 * @brief getNumberOfFrames Returns the maximum number of frames.
 	 * @return The number of frames.
 	 */
-    virtual std::size_t getNumberOfFrames() const = 0;
+	virtual std::size_t getNumberOfFrames() const = 0;
 };
 }
 

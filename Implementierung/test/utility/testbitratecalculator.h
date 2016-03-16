@@ -15,18 +15,17 @@ extern "C" {
 #include "../../src/utility/BitrateCalculator.h"
 
 
-class TestBitrateCalculator : public QObject
-{
-    Q_OBJECT
-private slots:
-    void init();
-    void testCalculate();
-private:
-        AVFrame* frame_;
-        Model::Graph* graph_;
-        std::unique_ptr<Model::Graph>      bitrate_;
-        Model::AVVideo* avVideo_;
-        std::unique_ptr<Utility::BitrateCalculator> bitrateCalculator_;
+class TestBitrateCalculator : public QObject {
+	Q_OBJECT
+  private slots:
+	void init();
+	void testCalculate();
+  private:
+	AVFrame* frame_;
+	Model::Graph* graph_;
+	std::unique_ptr<Model::Graph>      bitrate_;
+	Model::AVVideo* avVideo_;
+	std::unique_ptr<Utility::BitrateCalculator> bitrateCalculator_;
 };
 
 #endif // TESTBITRATECALCULATOR_H

@@ -48,7 +48,7 @@ class FilterTab: public QFrame {
 
 	void setRawVideo(Model::YuvVideo* rawVideo);
 
-    Model::YuvVideo* getRawVideo();
+	Model::YuvVideo* getRawVideo();
 
 	void showRawVideo();
 

@@ -11,19 +11,18 @@ extern "C" {
 #include "../../src/model/AVVideo.h"
 #include "../../src/model/Video.h"
 
-class TestVideoConverter : public QObject
-{
-    Q_OBJECT
-private slots:
-    void init();
-    void testConvertAVFrameToQImage();
-    void testConvertQImageToAVFrame();
-    void testConvertGraphToImage();
-private:
-        AVFrame* frame_;
-        Model::AVVideo* avVideo_;
-        Model::Video video_;
-        QImage* image_;
+class TestVideoConverter : public QObject {
+	Q_OBJECT
+  private slots:
+	void init();
+	void testConvertAVFrameToQImage();
+	void testConvertQImageToAVFrame();
+	void testConvertGraphToImage();
+  private:
+	AVFrame* frame_;
+	Model::AVVideo* avVideo_;
+	Model::Video video_;
+	QImage* image_;
 };
 
 #endif // TESTVIDEOCONVERTER_H

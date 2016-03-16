@@ -12,7 +12,7 @@ class TestFilterTabMemento : public QObject {
   private slots:
 	void init();
 
-    void testSetRawVideo();
+	void testSetRawVideo();
 
 	void testSetFilterList();
 

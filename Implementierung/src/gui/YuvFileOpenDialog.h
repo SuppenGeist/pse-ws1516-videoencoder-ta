@@ -108,7 +108,7 @@ class YuvFileOpenDialog: public QDialog {
 	 * @brief createUi Creates the ui.
 	 */
 	void createUi();
-    void connectActions();
+	void connectActions();
 
 	bool parseAttributes(QString attributes);
 

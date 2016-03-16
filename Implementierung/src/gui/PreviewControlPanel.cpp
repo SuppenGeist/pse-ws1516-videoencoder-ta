@@ -12,8 +12,8 @@
 
 GUI::PreviewControlPanel::PreviewControlPanel(QWidget* parent):QFrame(parent) {
 	createUi();
-    connectActions();
-    updater_.start(500);
+	connectActions();
+	updater_.start(500);
 }
 
 void GUI::PreviewControlPanel::updateUi() {
@@ -26,7 +26,7 @@ void GUI::PreviewControlPanel::updateUi() {
 			player=players_[0];
 		else
 			return;
-    }
+	}
 	if(player->getNumberOfFrames()==0) {
 		label_position->setText("0/0");
 	} else {
@@ -71,14 +71,13 @@ void GUI::PreviewControlPanel::createUi() {
 	              "border-style:outset;"
 	              "background: rgb(200, 200, 200);"
 	              "}"
-                  "");
+	              "");
 }
 
-void GUI::PreviewControlPanel::connectActions()
-{
-    connect(button_nextFrame,SIGNAL(clicked()),this,SLOT(nextFrame()));
-    connect(button_previousFrame,SIGNAL(clicked()),this,SLOT(previousFrame()));
-    connect(&updater_,SIGNAL(timeout()),this,SLOT(updateUi()));
+void GUI::PreviewControlPanel::connectActions() {
+	connect(button_nextFrame,SIGNAL(clicked()),this,SLOT(nextFrame()));
+	connect(button_previousFrame,SIGNAL(clicked()),this,SLOT(previousFrame()));
+	connect(&updater_,SIGNAL(timeout()),this,SLOT(updateUi()));
 }
 
 void GUI::PreviewControlPanel::nextFrame() {

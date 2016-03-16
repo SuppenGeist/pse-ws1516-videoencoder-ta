@@ -6,12 +6,12 @@
 
 
 class TestYuvFileReader : public QObject {
-    Q_OBJECT
+	Q_OBJECT
 
   private slots:
-    void init();
+	void init();
 
-    void testClamp();
+	void testClamp();
 
   private:
 

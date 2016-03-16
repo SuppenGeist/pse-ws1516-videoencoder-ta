@@ -50,19 +50,19 @@ void TestAVVideo::testGetFrame() {
 }
 
 void TestAVVideo::testRemoveFrame() {
-    avvideo_.removeFrame(1);
-    QVERIFY(0 == avvideo_.getHeight());
+	avvideo_.removeFrame(1);
+	QVERIFY(0 == avvideo_.getHeight());
 
-    AVFrame* frame = new AVFrame();
-    avvideo_.insertFrame(frame, 0);
+	AVFrame* frame = new AVFrame();
+	avvideo_.insertFrame(frame, 0);
 
-    AVFrame* frame2 = new AVFrame();
-    avvideo_.insertFrame(frame2, 1);
+	AVFrame* frame2 = new AVFrame();
+	avvideo_.insertFrame(frame2, 1);
 
-    avvideo_.removeFrame(1);
-    QVERIFY(frame2 != avvideo_.getFrame(1));
+	avvideo_.removeFrame(1);
+	QVERIFY(frame2 != avvideo_.getFrame(1));
 
-    QVERIFY(nullptr == avvideo_.getFrame(2));
+	QVERIFY(nullptr == avvideo_.getFrame(2));
 
 
 }

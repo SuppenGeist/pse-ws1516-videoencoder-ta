@@ -45,7 +45,7 @@ class FilterApplier:public QObject {
 
 	void applyToVideo(Model::Video& target,Model::AVVideo& source);
 
-    /**
+	/**
 	 * @brief applyToFrame
 	 * CAUTION: An owning pointer is returned.
 	 * @param source

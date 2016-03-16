@@ -11,13 +11,13 @@ class TestYuvVideo : public QObject {
 
   private slots:
 	void init();
-    void testgetCompression();
-    void testgetYuvType();
-    void testgetWidth();
-    void testgetHeight();
-    void tesgetFps();
-private:
-    Model::YuvVideo* yuvVideo_;
+	void testgetCompression();
+	void testgetYuvType();
+	void testgetWidth();
+	void testgetHeight();
+	void tesgetFps();
+  private:
+	Model::YuvVideo* yuvVideo_;
 };
 
 #endif // TESTYUVVIDEO_H

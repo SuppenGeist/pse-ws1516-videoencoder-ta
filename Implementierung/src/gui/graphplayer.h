@@ -86,7 +86,7 @@ class GraphPlayer:public Player {
 	 * @brief getNumberOfFrames Returns the maximum number of frames.
 	 * @return The number of frames.
 	 */
-    std::size_t getNumberOfFrames() const;
+	std::size_t getNumberOfFrames() const;
 
 	void setGraphVideo(Model::GraphVideo* video);
 

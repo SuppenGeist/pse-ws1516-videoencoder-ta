@@ -35,13 +35,13 @@ void ModelTestSuite::testModel() {
 	TestFilterList testFilterList;
 	QTest::qExec(&testFilterList);
 
-    TestEncodedVideo testEncodedVideo;
-    QTest::qExec(&testEncodedVideo);
+	TestEncodedVideo testEncodedVideo;
+	QTest::qExec(&testEncodedVideo);
 
-    TestYuvVideo testYuvVideo;
-    QTest::qExec(&testYuvVideo);
+	TestYuvVideo testYuvVideo;
+	QTest::qExec(&testYuvVideo);
 
-    TestGraph testGraph;
-    QTest::qExec(&testGraph);
+	TestGraph testGraph;
+	QTest::qExec(&testGraph);
 }
 

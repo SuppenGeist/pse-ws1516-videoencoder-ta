@@ -40,7 +40,7 @@ class GraphWidget:public QGraphicsView {
 	 */
 	void drawGraph(Model::Graph *graph);
 
-    Model::Graph* getGraph();
+	Model::Graph* getGraph();
 
 	void setGraphCalculator(GraphCalculator* calculator);
 

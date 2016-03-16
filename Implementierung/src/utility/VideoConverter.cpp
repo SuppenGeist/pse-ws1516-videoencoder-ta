@@ -30,7 +30,7 @@ void Utility::VideoConverter::convertAVVideoToVideo(Model::Video *target) {
 	if(!target||!avvideo_)
 		return;
 
-    videoTarget_=target;
+	videoTarget_=target;
 
 	converter_=std::thread(&VideoConverter::convertAVVideoP,this);
 }
@@ -124,7 +124,7 @@ void Utility::VideoConverter::convertVideoToAVVideo(Model::AVVideo *target) {
 	if(!target||!video_)
 		return;
 
-    avvideoTarget_=target;
+	avvideoTarget_=target;
 
 	converter_=std::thread(&VideoConverter::convertVideoP,this);
 }
@@ -136,10 +136,11 @@ void Utility::VideoConverter::convertVideoP() {
 	do {
 		for(; i < video_->getNumberOfFrames()&&isRunning_; i++) {
 			avvideoTarget_->appendFrame(convertQImageToAVFrame(*video_->getFrame(i)));
-            avvideoTarget_->setFps(video_->getFps());
+			avvideoTarget_->setFps(video_->getFps());
 		}
-    } while(isRunning_&&(!video_->isComplete()||video_->getNumberOfFrames()!=avvideoTarget_->getNumberOfFrames()));
-    avvideoTarget_->setIsComplete(true);
+	} while(isRunning_&&(!video_->isComplete()
+	                     ||video_->getNumberOfFrames()!=avvideoTarget_->getNumberOfFrames()));
+	avvideoTarget_->setIsComplete(true);
 	isRunning_=false;
 }
 
@@ -150,9 +151,10 @@ void Utility::VideoConverter::convertAVVideoP() {
 	do {
 		for(; i < avvideo_->getNumberOfFrames()&&isRunning_; i++) {
 			videoTarget_->appendFrame(convertAVFrameToQImage(*avvideo_->getFrame(i)));
-            videoTarget_->setFps(avvideo_->getFps());
+			videoTarget_->setFps(avvideo_->getFps());
 		}
-    } while(isRunning_&&(!avvideo_->isComplete()||avvideo_->getNumberOfFrames()!=videoTarget_->getNumberOfFrames()));
-    videoTarget_->setIsComplete(true);
-    isRunning_=false;
+	} while(isRunning_&&(!avvideo_->isComplete()
+	                     ||avvideo_->getNumberOfFrames()!=videoTarget_->getNumberOfFrames()));
+	videoTarget_->setIsComplete(true);
+	isRunning_=false;
 }

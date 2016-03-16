@@ -68,5 +68,5 @@ void TestColorbalanceFilter::testGetFilterDescription() {
 	filter_.setDarkPixels(true);
 	filter_.setMediumPixels(false);
 	filter_.setColor(Model::BasicColor::GREEN);
-    QVERIFY(filter_.getFilterDescription()=="colorbalance=gs='1,000000':");
+	QVERIFY(filter_.getFilterDescription()=="colorbalance=gs='1,000000':");
 }

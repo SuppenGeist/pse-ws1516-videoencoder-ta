@@ -111,7 +111,7 @@ class ForwardPlayer: public Player {
 	 * Dont call this method.
 	 * On a call a std::logic_error exception is thrown.
 	 */
-    std::size_t getNumberOfFrames() const override;
+	std::size_t getNumberOfFrames() const override;
 
   private:
 	GlobalControlPanel* forwardPanel_;

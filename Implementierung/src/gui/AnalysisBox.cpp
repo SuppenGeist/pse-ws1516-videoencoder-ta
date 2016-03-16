@@ -144,7 +144,7 @@ void GUI::AnalysisBox::setControlPanel(std::shared_ptr<GlobalControlPanel> contr
 
 void GUI::AnalysisBox::showGraph(GUI::AnalysisGraph graph) {
 	if(!origVideo_.get())
-        return;
+		return;
 
 	switch(graph) {
 	case AnalysisGraph::BITRATE: {
@@ -296,14 +296,14 @@ void GUI::AnalysisBox::updateLabels() {
 		origVideo_->getRgbDiffVideo(&parentContainer_->getParentTab()->getRawVideo()->getVideo());
 		origVideo_->getPsnr(&parentContainer_->getParentTab()->getRawVideo()->getVideo());
 	}
-    if(origVideo_->getAvVideo().isComplete()) {
+	if(origVideo_->getAvVideo().isComplete()) {
 		timer_updateLabels_.stop();
-        if(origVideo_->getAvVideo().getNumberOfFrames()==0) {
-            QMessageBox::warning(this,"Error while loading video","Video could not be loaded!");
-            auto& stack=UndoRedo::UndoStack::getUndoStack();
-            stack.setIndex(stack.index()-1);
-        }
-    }
+		if(origVideo_->getAvVideo().getNumberOfFrames()==0) {
+			QMessageBox::warning(this,"Error while loading video","Video could not be loaded!");
+			auto& stack=UndoRedo::UndoStack::getUndoStack();
+			stack.setIndex(stack.index()-1);
+		}
+	}
 }
 
 void GUI::AnalysisBox::commentChanged() {

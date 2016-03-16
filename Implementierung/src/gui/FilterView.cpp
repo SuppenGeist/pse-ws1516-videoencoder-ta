@@ -33,7 +33,7 @@ GUI::FilterView::FilterView(QWidget* parent):QFrame(parent) {
 	setFixedHeight(210);
 
 	createUi();
-    connectActions();
+	connectActions();
 }
 
 GUI::FilterView::~FilterView() {
@@ -44,17 +44,17 @@ GUI::FilterView::~FilterView() {
 void GUI::FilterView::buttonPressed() {
 	if(!filterTab_)
 		return;
-    if(!filterTab_->getRawVideo())
-        return;
+	if(!filterTab_->getRawVideo())
+		return;
 	UndoRedo::UndoStack::getUndoStack().push(new UndoRedo::AddFilter(*filterTab_,filter_->getName()));
 }
 
 void GUI::FilterView::setFilter(QString filtername) {
-    filter_=Model::Filter::CreateFilter(filtername);
+	filter_=Model::Filter::CreateFilter(filtername);
 	button_addFilter_->setText("Add "+filter_->getName()+" filter");
 
 	Model::FilterList filterList;
-    filterList.appendFilter(filtername);
+	filterList.appendFilter(filtername);
 
 	auto avframe=Utility::VideoConverter::convertQImageToAVFrame(getDefaultImage());
 
@@ -117,15 +117,14 @@ void GUI::FilterView::createUi() {
 	              "border-width:2px;"
 	              "border-color:rgb(0,0,0);"
 	              "border-style: outset;"
-                  "}");
+	              "}");
 }
 
-void GUI::FilterView::connectActions()
-{
-    connect(button_addFilter_,SIGNAL(clicked()),this,SLOT(buttonPressed()));
+void GUI::FilterView::connectActions() {
+	connect(button_addFilter_,SIGNAL(clicked()),this,SLOT(buttonPressed()));
 }
 
 void GUI::FilterView::setFilterTab(FilterTab *filtertab) {
-    filterTab_=filtertab;
+	filterTab_=filtertab;
 }
 

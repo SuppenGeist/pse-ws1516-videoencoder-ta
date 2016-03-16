@@ -7,18 +7,17 @@
 #include "../../src/model/EncodedVideo.h"
 #include "../../src/model/AVVideo.h"
 
-class TestVideoLoader : public QObject
-{
-    Q_OBJECT
+class TestVideoLoader : public QObject {
+	Q_OBJECT
 
-private slots:
-  void init();
-  void testgetCodec();
-  void testgetAverageBitrate();
-  void testloadVideo();
+  private slots:
+	void init();
+	void testgetCodec();
+	void testgetAverageBitrate();
+	void testloadVideo();
 
-private:
- Utility::VideoLoader* videoLoader_;
+  private:
+	Utility::VideoLoader* videoLoader_;
 };
 
 #endif // TESTVIDEOLOADER_H

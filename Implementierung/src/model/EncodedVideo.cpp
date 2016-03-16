@@ -131,7 +131,7 @@ Model::Video& Model::EncodedVideo::getVideo() {
 	}
 	if(!video_.get()) {
 		video_=std::make_unique<Video>();
-        videoConverter_=std::make_unique<Utility::VideoConverter>(avVideo_.get());
+		videoConverter_=std::make_unique<Utility::VideoConverter>(avVideo_.get());
 		videoConverter_->convertAVVideoToVideo(video_.get());
 	}
 
