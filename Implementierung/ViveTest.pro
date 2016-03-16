@@ -158,7 +158,6 @@ HEADERS += \
     test/gui/guitestsuite.h \
     test/memento/mementotestsuite.h \
     test/utility/utilitytestsuite.h \
-    test/undo_framework/undo_frameworktestsuite.h \
     test/model/testavvideo.h \
     test/model/testvideo.h \
     test/model/testgraphvideo.h \
@@ -334,7 +333,6 @@ SOURCES += \
     test/gui/guitestsuite.cpp \
     test/memento/mementotestsuite.cpp \
     test/utility/utilitytestsuite.cpp \
-    test/undo_framework/undo_frameworktestsuite.cpp \
     test/model/testavvideo.cpp \
     test/model/testvideo.cpp \
     test/model/testgraphvideo.cpp \
