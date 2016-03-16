@@ -11,7 +11,7 @@ Model::EdgeFilter::EdgeFilter() {
 }
 
 std::string Model::EdgeFilter::getFilterDescription() {
-	return "edgedetect";
+    return "edgedetect";
 }
 
 QString Model::EdgeFilter::getName() const {
