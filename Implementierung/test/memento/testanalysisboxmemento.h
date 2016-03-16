@@ -14,7 +14,30 @@ class TestAnalysisBoxMemento : public QObject {
 
 	void testSetPath();
 
-	void testSetComment();
+    void testSetComment();
+
+    void testSetMacroBlockVideo();
+
+    void testSetRGBDiffVideo();
+
+    void testSetPsnrGraph();
+
+    void testSetBitrateGraph();
+
+    void testSetEncoder();
+
+    void testSetAverageBitrate();
+
+    void testSetFilename();
+
+    void testSetFilesize();
+
+    void testSetRedHistogram();
+
+    void testSetGreenHistogram();
+
+    void testSetBlueHistogram();
+
 
 
   private:
