@@ -1,0 +1,87 @@
+\documentclass{scrartcl}
+
+\usepackage[german]{babel}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[pdfborderstyle={/S/U/W 1}]{hyperref}
+\usepackage[scaled]{helvet}
+\usepackage{geometry}
+
+\geometry{a4paper,left=30mm,right=30mm, top=3cm, bottom=3cm}
+
+{
+\titlehead{\centering\includegraphics[width=10cm]{Logo.png}}
+\title{\fontsize{40}{48} \selectfont \textsc{Qualitätssicherung}\\
+{\fontsize{18}{18} \selectfont Multimediatool zum Testen von Videoencodern}}}
+\author {Johannes Werner, Noel Schuhmacher, Sascha Rapp,\\ Simon Grafenhorst,
+Carina Weber, Jan Benedikt Schwarz}
+ 
+\begin{document} {
+\maketitle
+\thispagestyle{empty}
+\pagestyle{empty}
+\newpage
+\setcounter{page}{0}
+\pdfbookmark{\contentsname}{toc}
+\tableofcontents
+\clearpage
+\pagestyle{plain}
+\newpage
+\section{Einleitung}
+In der Qualitätssicherungsphase geht es darum die Qualität des Projectes  durch intensives testen zu prüfen. Dazu werden sowohl Unit-Tests als auch Manuelles Testen verschiedener Szenarien sowie Testen durch dritte Pesrsonen hinzugezogen.
+\paragraph{2 Bugs} In diesem Kapitel werden gefundene Bugs und deren Reparatur dokumentiert.
+\paragraph{3 Testüberdeckung} Dieses Kapitel gibt einen kurzen Einblick in die Testüberdeckung des Codes.
+\newpage
+\section{Bugs}
+\subsection{PSNRDifferenceCalculator bug}
+\textbf{Symptome:}\\
+\textbf{Ursache:} Fehlende if Bedingung ob es sich um ähnliche Videos handelt.\\
+\textbf{Behebung:} Hinzufügen einer Überprüfung ob die Videos die selbe Auflösung haben.
+\subsection{move Filter bug}
+\textbf{Symptome:} Error beim verschieben der Filter in der Filterliste.\\
+\textbf{Ursache:} Falsche newposition in den if cases der moveFilter Methode.\\
+\textbf{Behebung:} Ändere filters\_size() zu filters\_size()-1.
+\subsection{VideoLoader bug}
+\textbf{Symptome:}\\
+\textbf{Ursache:}\\
+\textbf{Behebung:}
+\subsection{VideoSaver bug}
+\textbf{Symptome:}\\
+\textbf{Ursache:}\\
+\textbf{Behebung:}
+\subsection{Bug in mementos}
+\textbf{Symptome:} Comment wird nicht mit abgespeichert.\\
+\textbf{Ursache:} Comment wird nicht in den String, der zum Speichern benutzt wird geschrieben.\\
+\textbf{Behebung:}Comment wird mit memento->getComment() an den String angehängt.
+\subsection{Loading bug}
+\textbf{Symptome:}\\
+\textbf{Ursache:}\\
+\textbf{Behebung:}
+\subsection{FPS bug}
+\textbf{Symptome:}\\
+\textbf{Ursache:}\\
+\textbf{Behebung:}
+\subsection{Filter bug}
+\textbf{Symptome:}\\
+\textbf{Ursache:}\\
+\textbf{Behebung:}
+\subsection{Broken video file bug}
+\textbf{Symptome:} Unzulässige Dateien können als Videos geladen werden.\\
+\textbf{Ursache:} Fehlende Überprüfung ob es sic bei der Datei um ein Video handelt.\\
+\textbf{Behebeung:} Hinzufügen einer Überprüfung ob die Datei Frames enthält.
+\subsection{Project loading bug}
+\textbf{Symptome:} Nach Laden des Projects undo und redo nicht ausführbar\\
+\textbf{Ursache:} Der UndoStack wird an der Falschen Stelle gelehrt.\\
+\textbf{Behebung:} Verschiebung von UndoRedo::UndoStack::getUndoStack().clear(); vom Anfang der restore Methode im MainWindow an das Ende der Methode.
+\subsection{Video saving bug}
+\textbf{Symptome:}\\
+\textbf{Ursache:}\\
+\textbf{Behebung:}
+\subsection{Project loading bug 2}
+\textbf{Symptome:}\\
+\textbf{Ursache:}\\
+\textbf{Behebung:}\\
+\newpage
+\section{Testüberdeckung}
+\end{document}
