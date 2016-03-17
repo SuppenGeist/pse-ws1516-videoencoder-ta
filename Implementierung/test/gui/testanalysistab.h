@@ -18,6 +18,7 @@ class TestAnalysisTab : public QObject {
 	void init();
 	void testAddVideo();
 	void testGraphs();
+    void testCommentBox();
   private:
 	GUI::MainWindow* mw;
 };

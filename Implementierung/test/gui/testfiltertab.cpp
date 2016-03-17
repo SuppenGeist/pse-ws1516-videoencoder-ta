@@ -52,8 +52,7 @@ void TestFilterTab::loadVideo(QString path, int width, int height, int fps,
 	         "Wrong video path");
 }
 void TestFilterTab::testLoadVideo() {
-	//this video is already tested in other tests
-	//loadVideo(QFINDTESTDATA("akiyo_qcif.yuv"));
+    loadVideo(QFINDTESTDATA("akiyo_qcif.yuv"));
 	loadVideo(QFINDTESTDATA("blumeYuv444_packed_176x144.yuv"),176,144,30,Utility::Compression::PACKED,
 	          Utility::YuvType::YUV444);
 }
@@ -72,6 +71,7 @@ void TestFilterTab::testAddFilterWithoutVid() {
 	         oldMemo->getFilterTabMemento()->isPreviewShow(),"shows preview");
 }
 void TestFilterTab::testAddRemoveFilters() {
+    QVERIFY2(false,"Known bug in ffmpeg when using specific filters or combinations of filers");
 	loadVideo(QFINDTESTDATA("akiyo_qcif.yuv"));
 
 	TestMainWindow::clickButton("Add Blur filter");
@@ -111,6 +111,7 @@ void TestFilterTab::testAddRemoveFilters() {
 	QVERIFY2(lastRgb != mw->grab().toImage().pixel(630,300), "Failed applying negative filter twice");
 }
 void TestFilterTab::testFilterList() {
+    QVERIFY2(false,"Known bug in ffmpeg when using specific filters or combinations of filers");
 	loadVideo(QFINDTESTDATA("akiyo_qcif.yuv"));
 
 	//make a white grid filter
@@ -193,7 +194,4 @@ void TestFilterTab::testFilterList() {
 	TestMainWindow::waitForWindow();
 	QVERIFY2(mw->getMemento()->getFilterTabMemento()->getFilterList()->getSize() == 0,
 	         "Failed redoing click \"Reset\" button");
-
-
-
 }

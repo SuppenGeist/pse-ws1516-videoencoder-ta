@@ -71,7 +71,9 @@ void TestMainWindow::testSwitchTab() {
 }
 GUI::MainWindow* TestMainWindow::getMainWindow() {
 	if(mainWindow) {
-		mainWindow->restore(&*originMemento);
+        triggerAction("New");
+        QTabWidget* tabWidget = mainWindow->findChildren<QTabWidget*>().first();
+        tabWidget->setCurrentIndex(0);
 		qApp->processEvents();
 	} else {
 		mainWindow = new GUI::MainWindow();
@@ -79,7 +81,7 @@ GUI::MainWindow* TestMainWindow::getMainWindow() {
 		mainWindow->show();
 		QTest::qWaitForWindowActive(mainWindow);
 	}
-
+    waitForWindow(300);
 	return mainWindow;
 }
 
