@@ -20,10 +20,10 @@ class TestFilterTab : public QObject {
   private slots:
 	void init();
 	void testAddFilterWithoutVid();
-	void testLoadVideo();
+    void testLoadVideo();
 	void testAddRemoveFilters();
-    void testAddFilters();
 	void testFilterList();
+    void testAddFilters();
   private:
 	GUI::MainWindow* mw;
 };

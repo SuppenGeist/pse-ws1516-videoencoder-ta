@@ -17,11 +17,11 @@ class TestVideoConverter : public QObject {
 	void init();
 	void testConvertAVFrameToQImage();
 	void testConvertQImageToAVFrame();
-	void testConvertGraphToImage();
+    void testConvertGraphToImage();
   private:
 	AVFrame* frame_;
 	Model::AVVideo* avVideo_;
-	Model::Video video_;
+    Model::Video video_;
 	QImage* image_;
 };
 

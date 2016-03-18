@@ -8,7 +8,7 @@
 void TestVideoConverter::init() {
 	int width = 32;
 	int height = 32;
-	image_ = new QImage(height,width,QImage::Format_RGB888);
+    image_ = new QImage(height,width,QImage::Format_RGB888);
 	frame_ = av_frame_alloc();
 	frame_->width=width;
 	frame_->height=height;
@@ -19,7 +19,7 @@ void TestVideoConverter::init() {
 
 	for(int y=0; y<height; y++) {
 		for(int x=0; x<width; x++) {
-			image_->setPixel(x,y, qRgb(x*x % 256,y*y % 256, x*y % 256));
+            image_->setPixel(x,y, qRgb(x*x % 256,y*y % 256, x*y % 256));
 			auto pixel=image_->pixel(x,y);
 			data[y*3*width+3*x]=qRed(pixel);
 			data[y*3*width+3*x+1]=qGreen(pixel);
@@ -29,7 +29,7 @@ void TestVideoConverter::init() {
 	avpicture_fill((AVPicture*)frame_,data,AV_PIX_FMT_RGB24,width,height);
 
 	avVideo_= new Model::AVVideo();
-	avVideo_->appendFrame(frame_);
+    avVideo_->appendFrame(frame_);
 }
 void TestVideoConverter::testConvertAVFrameToQImage() {
 	std::unique_ptr<QImage> tmpImage = Utility::VideoConverter::convertAVFrameToQImage(*frame_);

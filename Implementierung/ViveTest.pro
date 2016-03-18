@@ -164,7 +164,6 @@ HEADERS += \
     test/model/testgraphvideo.h \
     test/utility/testyuv411filereader.h \
     test/utility/testyuv422filereader.h \
-    test/utility/testyuv420filereader.h \
     test/utility/testyuv444filereader.h \
     test/memento/testanalysisboxcontainermemento.h \
     test/memento/testanalysisboxmemento.h \
@@ -339,7 +338,6 @@ SOURCES += \
     test/model/testgraphvideo.cpp \
     test/utility/testyuv411filereader.cpp \
     test/utility/testyuv422filereader.cpp \
-    test/utility/testyuv420filereader.cpp \
     test/utility/testyuv444filereader.cpp \
     test/memento/testanalysisboxcontainermemento.cpp \
     test/memento/testanalysisboxmemento.cpp \
