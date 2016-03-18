@@ -4,8 +4,9 @@ QT+= core gui widgets testlib
 
 CONFIG += testcase
 
-QMAKE_CXXFLAGS += -std=c++14 -pthread
-LIBS += -pthread
+QMAKE_CXXFLAGS += -std=c++14 -pthread -fprofile-arcs -ftest-coverage -O0
+QMAKE_LFLAGS += -fprofile-arcs -ftest-coverage -O0
+LIBS += -pthread -lgcov
 
 unix: CONFIG += link_pkgconfig
 unix: PKGCONFIG += libavcodec

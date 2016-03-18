@@ -6,10 +6,6 @@ void TestEncodedVideo::init() {
 }
 
 void TestEncodedVideo::testgetCodec() {
-	//QVERIFY(encodedVideo_->getCodec().compare("H.264"));
+    QVERIFY(encodedVideo_->getCodec().compare("H.264"));
 }
 
-
-void TestEncodedVideo::testgetAverageBitrate() {
-	//QVERIFY(encodedVideo_->getAverageBitrate()==306);
-}

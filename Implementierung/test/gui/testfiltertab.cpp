@@ -195,3 +195,24 @@ void TestFilterTab::testFilterList() {
 	QVERIFY2(mw->getMemento()->getFilterTabMemento()->getFilterList()->getSize() == 0,
 	         "Failed redoing click \"Reset\" button");
 }
+void TestFilterTab::testAddFilters(){
+loadVideo(QFINDTESTDATA("akiyo_qcif.yuv"));
+TestMainWindow::clickButton("Add Blur filter");
+TestMainWindow::clickButton("Add Border filter");
+TestMainWindow::clickButton("Add Brightness filter");
+TestMainWindow::clickButton("Add Colorbalance filter");
+TestMainWindow::clickButton("Add Contrast filter");
+TestMainWindow::clickButton("Add Grid filter");
+TestMainWindow::clickButton("Add Mirror filter");
+TestMainWindow::clickButton("Add Noise filter");
+TestMainWindow::clickButton("Add Negative filter");
+TestMainWindow::clickButton("Add Poster filter");
+TestMainWindow::clickButton("Add RGB filter");
+TestMainWindow::clickButton("Add Rectangle filter");
+TestMainWindow::clickButton("Add Rotation filter");
+TestMainWindow::clickButton("Add Saturation filter");
+TestMainWindow::clickButton("Add Scale filter");
+TestMainWindow::clickButton("Add Sharpness filter");
+QVERIFY2(mw->getMemento()->getFilterTabMemento()->getFilterList()->getSize() == 16,
+         "error adding filters");
+}

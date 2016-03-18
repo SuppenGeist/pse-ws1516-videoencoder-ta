@@ -22,6 +22,7 @@ class TestFilterTab : public QObject {
 	void testAddFilterWithoutVid();
 	void testLoadVideo();
 	void testAddRemoveFilters();
+    void testAddFilters();
 	void testFilterList();
   private:
 	GUI::MainWindow* mw;
