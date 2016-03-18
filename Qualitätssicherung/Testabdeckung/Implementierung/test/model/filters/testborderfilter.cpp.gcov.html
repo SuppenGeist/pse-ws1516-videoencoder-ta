@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - i3.info - Implementierung/test/model/filters/testborderfilter.cpp</title>
+  <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../index.html">top level</a> - <a href="index.html">Implementierung/test/model/filters</a> - testborderfilter.cpp<span style="font-size: 80%;"> (source / <a href="testborderfilter.cpp.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">i3.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">48</td>
+            <td class="headerCovTableEntry">48</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2016-03-18 19:49:03</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : #include &quot;testborderfilter.h&quot;</a>
+<span class="lineNum">       2 </span>            : 
+<span class="lineNum">       3 </span><span class="lineCov">          4 : void TestBorderFilter::init() {</span>
+<span class="lineNum">       4 </span><span class="lineCov">         12 :         filter_=Model::BorderFilter();</span>
+<a name="5"><span class="lineNum">       5 </span><span class="lineCov">          4 : }</span></a>
+<span class="lineNum">       6 </span>            : 
+<span class="lineNum">       7 </span><span class="lineCov">          1 : void TestBorderFilter::testSetThickness() {</span>
+<span class="lineNum">       8 </span><span class="lineCov">          1 :         const int testValue1=0;</span>
+<span class="lineNum">       9 </span><span class="lineCov">          1 :         filter_.setThickness(testValue1);</span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 :         QVERIFY(filter_.getThickness()==testValue1);</span>
+<span class="lineNum">      11 </span>            : 
+<span class="lineNum">      12 </span><span class="lineCov">          1 :         const int testValue2=-1;</span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 :         filter_.setThickness(testValue2);</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 :         QVERIFY(filter_.getThickness()!=testValue2);</span>
+<span class="lineNum">      15 </span>            : 
+<span class="lineNum">      16 </span><span class="lineCov">          1 :         const int testValue3=101;</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 :         filter_.setThickness(testValue3);</span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 :         QVERIFY(filter_.getThickness()==testValue3);</span>
+<a name="19"><span class="lineNum">      19 </span>            : }</a>
+<span class="lineNum">      20 </span>            : 
+<span class="lineNum">      21 </span><span class="lineCov">          1 : void TestBorderFilter::testRestore() {</span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 :         filter_.restore(&quot;0;1;0;1;10;#00FF00&quot;);</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 :         QVERIFY(filter_.getTop()==false);</span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 :         QVERIFY(filter_.getBottom()==true);</span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 :         QVERIFY(filter_.getLeft()==true);</span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 :         QVERIFY(filter_.getRight()==false);</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 :         QVERIFY(filter_.getThickness()==10);</span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 :         QVERIFY(filter_.getColor().red()==0);</span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 :         QVERIFY(filter_.getColor().green()==255);</span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 :         QVERIFY(filter_.getColor().blue()==0);</span>
+<a name="31"><span class="lineNum">      31 </span>            : }</a>
+<span class="lineNum">      32 </span>            : 
+<span class="lineNum">      33 </span><span class="lineCov">          1 : void TestBorderFilter::testGetSaveString() {</span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 :         filter_.setTop(false);</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 :         filter_.setBottom(false);</span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 :         filter_.setRight(false);</span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 :         filter_.setLeft(false);</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 :         filter_.setThickness(2);</span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 :         filter_.setColor(QColor(0,255,0));</span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 :         QVERIFY(filter_.getSaveString().compare(&quot;0;0;0;0;2;#00ff0&quot;,Qt::CaseInsensitive));</span>
+<a name="41"><span class="lineNum">      41 </span>            : }</a>
+<span class="lineNum">      42 </span>            : 
+<span class="lineNum">      43 </span><span class="lineCov">          1 : void TestBorderFilter::testFilterCopy() {</span>
+<span class="lineNum">      44 </span><span class="lineCov">          2 :         Model::BorderFilter filter2;</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 :         filter2.setTop(true);</span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 :         filter2.setBottom(true);</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 :         filter2.setRight(false);</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 :         filter2.setLeft(false);</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 :         filter2.setThickness(17);</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 :         filter2.setColor(QColor(255,0,0));</span>
+<span class="lineNum">      51 </span>            : 
+<span class="lineNum">      52 </span><span class="lineCov">          1 :         filter_.restore(filter2.getSaveString());</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 :         QVERIFY(filter_.getTop()==true);</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 :         QVERIFY(filter_.getBottom()==true);</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 :         QVERIFY(filter_.getLeft()==false);</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 :         QVERIFY(filter_.getRight()==false);</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 :         QVERIFY(filter_.getThickness()==17);</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 :         QVERIFY(filter_.getColor().red()==255);</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 :         QVERIFY(filter_.getColor().green()==0);</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 :         QVERIFY(filter_.getColor().blue()==0);</span>
+<span class="lineNum">      61 </span>            : }
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.11</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

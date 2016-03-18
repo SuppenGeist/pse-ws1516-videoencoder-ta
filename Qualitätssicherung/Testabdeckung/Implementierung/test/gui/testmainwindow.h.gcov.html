@@ -1,0 +1,247 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - i3.info - Implementierung/test/gui/testmainwindow.h</title>
+  <link rel="stylesheet" type="text/css" href="../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">Implementierung/test/gui</a> - testmainwindow.h<span style="font-size: 80%;"> (source / <a href="testmainwindow.h.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">i3.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">71</td>
+            <td class="headerCovTableEntry">71</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2016-03-18 19:49:03</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntry">9</td>
+            <td class="headerCovTableEntryLo">55.6 %</td>
+          </tr>
+          <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : #ifndef TESTMAINWINDOW_H</a>
+<span class="lineNum">       2 </span>            : #define TESTMAINWINDOW_H
+<span class="lineNum">       3 </span>            : 
+<span class="lineNum">       4 </span>            : #include &lt;QObject&gt;
+<span class="lineNum">       5 </span>            : #include &lt;QtTest/QtTest&gt;
+<span class="lineNum">       6 </span>            : #include &lt;memory&gt;
+<span class="lineNum">       7 </span>            : #include &lt;QDebug&gt;
+<span class="lineNum">       8 </span>            : #include &lt;QThread&gt;
+<span class="lineNum">       9 </span>            : #include &lt;QLineEdit&gt;
+<span class="lineNum">      10 </span>            : #include &lt;QKeyEvent&gt;
+<span class="lineNum">      11 </span>            : #include &lt;QApplication&gt;
+<span class="lineNum">      12 </span>            : 
+<span class="lineNum">      13 </span>            : #include &quot;../../src/gui/MainWindow.h&quot;
+<span class="lineNum">      14 </span>            : #include &quot;../../src/memento/MainWindowMemento.h&quot;
+<span class="lineNum">      15 </span>            : #include &quot;../../src/utility/Compression.h&quot;
+<span class="lineNum">      16 </span>            : #include &quot;../../src/gui/YuvFileOpenDialog.h&quot;
+<a name="17"><span class="lineNum">      17 </span>            : #include &quot;../../src/gui/YuvInfoDialog.h&quot;</a>
+<span class="lineNum">      18 </span>            : #include &quot;../../src/utility/YuvType.h&quot;
+<span class="lineNum">      19 </span><span class="lineCov">          2 : class TestMainWindow : public QObject {</span>
+<span class="lineNum">      20 </span>            :         Q_OBJECT
+<span class="lineNum">      21 </span>            :   public:
+<span class="lineNum">      22 </span>            :         /**
+<span class="lineNum">      23 </span>            :          * @brief getMainWindow returns the m
+<span class="lineNum">      24 </span>            :          * @return
+<span class="lineNum">      25 </span>            :          */
+<span class="lineNum">      26 </span>            :         static GUI::MainWindow* getMainWindow();
+<span class="lineNum">      27 </span>            :         /**
+<span class="lineNum">      28 </span>            :          * @brief waitForWindow waits the given time in ms and calls qApp-&gt;processEvents() after two third of the time;
+<span class="lineNum">      29 </span>            :          * @param time the total waiting time in ms
+<span class="lineNum">      30 </span>            :          */
+<span class="lineNum">      31 </span>            :         static void waitForWindow(int time = 1500);
+<span class="lineNum">      32 </span>            : 
+<span class="lineNum">      33 </span>            :         /**
+<span class="lineNum">      34 </span>            :          * @brief clickButton clicks a button
+<span class="lineNum">      35 </span>            :          * @param text the button with this text
+<span class="lineNum">      36 </span>            :          * @param parent and is a child (direct or not) of this parent
+<span class="lineNum">      37 </span>            :          */
+<span class="lineNum">      38 </span>            :         static void clickButton(QString text,QObject* parent = mainWindow);
+<span class="lineNum">      39 </span>            :         /**
+<span class="lineNum">      40 </span>            :          * @brief triggerAction triggers a action
+<span class="lineNum">      41 </span>            :          * @param text the action with this text
+<span class="lineNum">      42 </span>            :          * @param parent and is a child (direct or not) of this parent
+<span class="lineNum">      43 </span>            :          */
+<span class="lineNum">      44 </span>            :         static void triggerAction(QString text,QObject* parent = mainWindow);
+<span class="lineNum">      45 </span>            : 
+<span class="lineNum">      46 </span>            :         /**
+<span class="lineNum">      47 </span>            :          * @brief getCurrentMainWindow returns the MainWindow without restting it
+<span class="lineNum">      48 </span>            :          * @return the MainWindow
+<span class="lineNum">      49 </span>            :          */
+<span class="lineNum">      50 </span>            :         static GUI::MainWindow* getCurrentMainWindow();
+<span class="lineNum">      51 </span>            :   private slots:
+<span class="lineNum">      52 </span>            :         void init();
+<span class="lineNum">      53 </span>            :         void testSwitchTab();
+<span class="lineNum">      54 </span>            :   private:
+<span class="lineNum">      55 </span>            :         GUI::MainWindow* mw;
+<span class="lineNum">      56 </span>            :         static std::unique_ptr&lt;Memento::MainWindowMemento&gt; originMemento;
+<a name="57"><span class="lineNum">      57 </span>            :         static GUI::MainWindow* mainWindow;</a>
+<span class="lineNum">      58 </span>            : };
+<span class="lineNum">      59 </span><span class="lineCov">         16 : class WriteYuvFilePath : public QThread {</span>
+<span class="lineNum">      60 </span>            :         Q_OBJECT
+<span class="lineNum">      61 </span>            :   public:
+<span class="lineNum">      62 </span>            :         void setPath(QString path) {
+<span class="lineNum">      63 </span><span class="lineCov">          8 :                 path_ = path;</span>
+<span class="lineNum">      64 </span>            :         }
+<span class="lineNum">      65 </span>            :         void setThread(QThread* thread) {
+<a name="66"><span class="lineNum">      66 </span><span class="lineCov">          8 :                 mainThread_ = thread;</span></a>
+<span class="lineNum">      67 </span>            :         }
+<span class="lineNum">      68 </span><span class="lineCov">          8 :         void setHeight(int height) {</span>
+<a name="69"><span class="lineNum">      69 </span><span class="lineCov">         16 :                 height_ = QString::number(height);</span></a>
+<span class="lineNum">      70 </span><span class="lineCov">          8 :         }</span>
+<span class="lineNum">      71 </span><span class="lineCov">          8 :         void setWidth(int width) {</span>
+<span class="lineNum">      72 </span><span class="lineCov">         16 :                 width_ = QString::number(width);</span>
+<span class="lineNum">      73 </span><span class="lineCov">          8 :         }</span>
+<span class="lineNum">      74 </span>            :         void setCompression(Utility::Compression compression) {
+<span class="lineNum">      75 </span><span class="lineCov">          8 :                 compression_ = compression;</span>
+<span class="lineNum">      76 </span>            :         }
+<span class="lineNum">      77 </span>            :         void setYuvType(Utility::YuvType type) {
+<a name="78"><span class="lineNum">      78 </span><span class="lineCov">          8 :                 type_ = type;</span></a>
+<span class="lineNum">      79 </span>            :         }
+<span class="lineNum">      80 </span><span class="lineCov">          8 :         void setFps(int fps) {</span>
+<span class="lineNum">      81 </span><span class="lineCov">         16 :                 fps_=QString::number(fps);</span>
+<a name="82"><span class="lineNum">      82 </span><span class="lineCov">          8 :         }</span></a>
+<span class="lineNum">      83 </span>            :   private:
+<span class="lineNum">      84 </span><span class="lineCov">          8 :         void run() {</span>
+<span class="lineNum">      85 </span><span class="lineCov">          8 :                 QTest::qSleep(500);</span>
+<span class="lineNum">      86 </span><span class="lineCov">         24 :                 QList&lt;QWidget*&gt; list = qApp-&gt;allWidgets();</span>
+<span class="lineNum">      87 </span>            :                 GUI::YuvFileOpenDialog* fileDialog;
+<span class="lineNum">      88 </span><span class="lineCov">          8 :                 fileDialog = (GUI::YuvFileOpenDialog*) qApp-&gt;activeWindow();</span>
+<span class="lineNum">      89 </span><span class="lineCov">         24 :                 QList&lt;QLineEdit*&gt; lineEditList = fileDialog-&gt;findChildren&lt;QLineEdit*&gt;();</span>
+<span class="lineNum">      90 </span><span class="lineCov">          8 :                 QLineEdit* lineEdit = lineEditList.first();</span>
+<span class="lineNum">      91 </span>            : 
+<span class="lineNum">      92 </span><span class="lineCov">          8 :                 QApplication::postEvent(lineEdit,new QKeyEvent(QEvent::KeyPress,Qt::Key_A,Qt::NoModifier,path_));</span>
+<span class="lineNum">      93 </span>            : 
+<span class="lineNum">      94 </span><span class="lineCov">         24 :                 QList&lt;QPushButton*&gt; buttonList = fileDialog-&gt;findChildren&lt;QPushButton*&gt;();</span>
+<span class="lineNum">      95 </span>            :                 QPushButton* okButton;
+<span class="lineNum">      96 </span><span class="lineCov">         64 :                 for(int i = 0; i &lt; buttonList.length() ; i++) {</span>
+<span class="lineNum">      97 </span><span class="lineCov">         24 :                         if(buttonList.at(i)-&gt;text() == &quot;OK&quot;) {</span>
+<span class="lineNum">      98 </span><span class="lineCov">          8 :                                 okButton = buttonList.at(i);</span>
+<span class="lineNum">      99 </span>            :                         }
+<span class="lineNum">     100 </span>            :                 }
+<span class="lineNum">     101 </span><span class="lineCov">          8 :                 QTest::qSleep(500);</span>
+<span class="lineNum">     102 </span><span class="lineCov">         40 :                 QApplication::postEvent(okButton, new QMouseEvent(QEvent::MouseButtonPress,QPoint(1,1),</span>
+<span class="lineNum">     103 </span><span class="lineCov">          8 :                                         Qt::LeftButton,Qt::LeftButton,Qt::KeyboardModifier::NoModifier));</span>
+<span class="lineNum">     104 </span><span class="lineCov">         40 :                 QApplication::postEvent(okButton, new QMouseEvent(QEvent::MouseButtonRelease,QPoint(1,1),</span>
+<span class="lineNum">     105 </span><span class="lineCov">          8 :                                         Qt::LeftButton,Qt::LeftButton,Qt::KeyboardModifier::NoModifier));</span>
+<span class="lineNum">     106 </span>            : 
+<span class="lineNum">     107 </span><span class="lineCov">          8 :                 QTest::qSleep(1000);</span>
+<span class="lineNum">     108 </span>            :                 GUI::YuvInfoDialog* infoDialog;
+<span class="lineNum">     109 </span><span class="lineCov">          8 :                 infoDialog = (GUI::YuvInfoDialog*) qApp-&gt;activeWindow();</span>
+<span class="lineNum">     110 </span><span class="lineCov">         24 :                 lineEditList = infoDialog-&gt;findChildren&lt;QLineEdit*&gt;();</span>
+<span class="lineNum">     111 </span><span class="lineCov">         64 :                 for(int i = 0; i &lt; lineEditList.length(); i++) {</span>
+<span class="lineNum">     112 </span><span class="lineCov">         24 :                         QTest::qSleep(500);</span>
+<span class="lineNum">     113 </span><span class="lineCov">         48 :                         if(lineEditList.at(i)-&gt;objectName() == QString(&quot;lineEdit_width_&quot;) ) {</span>
+<span class="lineNum">     114 </span><span class="lineCov">         24 :                                 QApplication::postEvent(lineEditList.at(i),new QKeyEvent(QEvent::KeyPress,Qt::Key_A,Qt::NoModifier,</span>
+<span class="lineNum">     115 </span><span class="lineCov">         16 :                                                         width_));</span>
+<span class="lineNum">     116 </span><span class="lineCov">         32 :                         } else if(lineEditList.at(i)-&gt;objectName()== QString(&quot;lineEdit_height_&quot;)) {</span>
+<span class="lineNum">     117 </span><span class="lineCov">         24 :                                 QApplication::postEvent(lineEditList.at(i),new QKeyEvent(QEvent::KeyPress,Qt::Key_A,Qt::NoModifier,</span>
+<span class="lineNum">     118 </span><span class="lineCov">         16 :                                                         height_));</span>
+<span class="lineNum">     119 </span><span class="lineCov">         16 :                         } else  if(lineEditList.at(i)-&gt;objectName()==QString(&quot;lineEdit_fps_&quot;)) {</span>
+<span class="lineNum">     120 </span><span class="lineCov">         48 :                                 QApplication::postEvent(lineEditList.at(i),new QMouseEvent(QEvent::MouseButtonDblClick,QPoint(5,5),</span>
+<span class="lineNum">     121 </span><span class="lineCov">         16 :                                                         Qt::LeftButton,Qt::LeftButton,Qt::NoModifier));</span>
+<span class="lineNum">     122 </span><span class="lineCov">         24 :                                 QApplication::postEvent(lineEditList.at(i),new QKeyEvent(QEvent::KeyPress,Qt::Key_A,Qt::NoModifier,</span>
+<span class="lineNum">     123 </span><span class="lineCov">         16 :                                                         fps_));</span>
+<span class="lineNum">     124 </span>            :                         }
+<span class="lineNum">     125 </span>            :                 }
+<span class="lineNum">     126 </span><span class="lineCov">          8 :                 QTest::qSleep(500);</span>
+<span class="lineNum">     127 </span><span class="lineCov">         16 :                 QComboBox* comboBox= infoDialog-&gt;findChild&lt;QComboBox*&gt;(&quot;comboBox_pixelSheme_&quot;);</span>
+<span class="lineNum">     128 </span><span class="lineCov">          8 :                 QVERIFY2(comboBox != NULL, &quot;Error: pixelSheme comboBox not found&quot;);</span>
+<span class="lineNum">     129 </span><span class="lineCov">          8 :                 QApplication::postEvent(comboBox,new QFocusEvent(QEvent::FocusIn));</span>
+<span class="lineNum">     130 </span><span class="lineCov">          8 :                 switch (type_) {</span>
+<span class="lineNum">     131 </span>            :                 case Utility::YuvType::YUV444 :
+<span class="lineNum">     132 </span><span class="lineCov">          2 :                         QApplication::postEvent(comboBox,new QKeyEvent(QEvent::KeyPress,Qt::Key_Down,Qt::NoModifier));</span>
+<span class="lineNum">     133 </span>            :                 case Utility::YuvType::YUV422 :
+<span class="lineNum">     134 </span><span class="lineCov">          2 :                         QApplication::postEvent(comboBox,new QKeyEvent(QEvent::KeyPress,Qt::Key_Down,Qt::NoModifier));</span>
+<span class="lineNum">     135 </span>            :                 case Utility::YuvType::YUV411 :
+<span class="lineNum">     136 </span><span class="lineCov">          2 :                         QApplication::postEvent(comboBox,new QKeyEvent(QEvent::KeyPress,Qt::Key_Down,Qt::NoModifier));</span>
+<span class="lineNum">     137 </span><span class="lineCov">          1 :                         break;</span>
+<span class="lineNum">     138 </span>            :                 default:
+<span class="lineNum">     139 </span>            :                         break;
+<span class="lineNum">     140 </span>            :                 }
+<span class="lineNum">     141 </span><span class="lineCov">          8 :                 QTest::qSleep(500);</span>
+<span class="lineNum">     142 </span><span class="lineCov">         16 :                 comboBox = infoDialog-&gt;findChild&lt;QComboBox*&gt;(&quot;comboBox_compression_&quot;);</span>
+<span class="lineNum">     143 </span><span class="lineCov">          8 :                 QVERIFY2(comboBox != NULL, &quot;Error: compression comboBox not found&quot;);</span>
+<span class="lineNum">     144 </span><span class="lineCov">          8 :                 if(type_ != Utility::YuvType::YUV420 &amp;&amp; compression_ == Utility::Compression::PACKED) {</span>
+<span class="lineNum">     145 </span><span class="lineCov">          2 :                         QApplication::postEvent(comboBox,new QKeyEvent(QEvent::KeyPress,Qt::Key_Up,Qt::NoModifier));</span>
+<span class="lineNum">     146 </span><span class="lineCov">          1 :                         QTest::qSleep(500);</span>
+<span class="lineNum">     147 </span>            :                 }
+<span class="lineNum">     148 </span>            : 
+<span class="lineNum">     149 </span><span class="lineCov">          8 :                 QTest::qSleep(500);</span>
+<span class="lineNum">     150 </span><span class="lineCov">         24 :                 buttonList = infoDialog-&gt;findChildren&lt;QPushButton*&gt;();</span>
+<span class="lineNum">     151 </span><span class="lineCov">         48 :                 for(int i = 0; i &lt; buttonList.length() ; i++) {</span>
+<span class="lineNum">     152 </span><span class="lineCov">         16 :                         if(buttonList.at(i)-&gt;text() == &quot;OK&quot;) {</span>
+<span class="lineNum">     153 </span><span class="lineCov">          8 :                                 okButton = buttonList.at(i);</span>
+<span class="lineNum">     154 </span>            :                         }
+<span class="lineNum">     155 </span>            :                 }
+<span class="lineNum">     156 </span><span class="lineCov">         40 :                 QApplication::postEvent(okButton, new QMouseEvent(QEvent::MouseButtonPress,QPoint(1,1),</span>
+<span class="lineNum">     157 </span><span class="lineCov">          8 :                                         Qt::LeftButton,Qt::LeftButton,Qt::KeyboardModifier::NoModifier));</span>
+<span class="lineNum">     158 </span><span class="lineCov">         40 :                 QApplication::postEvent(okButton, new QMouseEvent(QEvent::MouseButtonRelease,QPoint(1,1),</span>
+<span class="lineNum">     159 </span><span class="lineCov">          8 :                                         Qt::LeftButton,Qt::LeftButton,Qt::KeyboardModifier::NoModifier));</span>
+<span class="lineNum">     160 </span>            : 
+<span class="lineNum">     161 </span>            :         }
+<span class="lineNum">     162 </span>            :         QThread* mainThread_;
+<span class="lineNum">     163 </span>            :         QString path_;
+<span class="lineNum">     164 </span>            :         QString width_ = &quot;176&quot;;
+<span class="lineNum">     165 </span>            :         QString height_ = &quot;144&quot;;
+<span class="lineNum">     166 </span>            :         QString fps_ = &quot;30&quot;;
+<span class="lineNum">     167 </span>            :         Utility::YuvType type_ = Utility::YuvType::YUV420;
+<span class="lineNum">     168 </span>            :         Utility::Compression compression_ = Utility::Compression::PLANAR;
+<span class="lineNum">     169 </span>            : 
+<span class="lineNum">     170 </span>            : };
+<span class="lineNum">     171 </span>            : #endif // TESTMAINWINDOW_H
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.11</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

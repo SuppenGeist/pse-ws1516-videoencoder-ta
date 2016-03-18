@@ -1,0 +1,185 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - i3.info - src/model/filters/GridFilter.cpp</title>
+  <link rel="stylesheet" type="text/css" href="../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">src/model/filters</a> - GridFilter.cpp<span style="font-size: 80%;"> (source / <a href="GridFilter.cpp.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">i3.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">74</td>
+            <td class="headerCovTableEntry">75</td>
+            <td class="headerCovTableEntryHi">98.7 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2016-03-18 19:19:22</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">16</td>
+            <td class="headerCovTableEntry">16</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : #include &quot;GridFilter.h&quot;</a>
+<span class="lineNum">       2 </span>            : 
+<span class="lineNum">       3 </span>            : #include &lt;QString&gt;
+<span class="lineNum">       4 </span>            : #include &lt;QStringList&gt;
+<span class="lineNum">       5 </span>            : #include &lt;QColor&gt;
+<span class="lineNum">       6 </span>            : #include &lt;iomanip&gt;
+<span class="lineNum">       7 </span>            : 
+<span class="lineNum">       8 </span>            : #include &quot;Filter.h&quot;
+<span class="lineNum">       9 </span>            : 
+<a name="10"><span class="lineNum">      10 </span><span class="lineCov">          1 : const QString Model::GridFilter::FILTERNAME=&quot;Grid&quot;;</span></a>
+<span class="lineNum">      11 </span>            : 
+<span class="lineNum">      12 </span><span class="lineCov">         73 : Model::GridFilter::GridFilter():horizontalCells_(3),verticalCells_(5),thickness_(10),</span>
+<span class="lineNum">      13 </span><span class="lineCov">        146 :         color_(QColor(0,0,0)),opacity_(255) {</span>
+<a name="14"><span class="lineNum">      14 </span><span class="lineCov">         73 : }</span></a>
+<span class="lineNum">      15 </span>            : 
+<span class="lineNum">      16 </span><span class="lineCov">         42 : std::string Model::GridFilter::getFilterDescription() {</span>
+<span class="lineNum">      17 </span><span class="lineCov">         84 :         std::stringstream stream;</span>
+<span class="lineNum">      18 </span><span class="lineCov">         84 :         stream &lt;&lt; std::hex &lt;&lt; opacity_;</span>
+<span class="lineNum">      19 </span><span class="lineCov">        126 :         std::string str = std::string(&quot;drawgrid&quot;);</span>
+<span class="lineNum">      20 </span><span class="lineCov">         42 :         str+=&quot;=&quot;;</span>
+<span class="lineNum">      21 </span><span class="lineCov">         42 :         str+=&quot;w&quot;;</span>
+<span class="lineNum">      22 </span><span class="lineCov">         42 :         str+=&quot;=&quot;;</span>
+<span class="lineNum">      23 </span><span class="lineCov">        210 :         str+=&quot;iw/&quot;+ std::to_string(horizontalCells_);</span>
+<span class="lineNum">      24 </span><span class="lineCov">         42 :         str+=&quot;:&quot;;</span>
+<span class="lineNum">      25 </span><span class="lineCov">         42 :         str+=&quot;h&quot;;</span>
+<span class="lineNum">      26 </span><span class="lineCov">         42 :         str+=&quot;=&quot;;</span>
+<span class="lineNum">      27 </span><span class="lineCov">        210 :         str+=&quot;ih/&quot;+std::to_string(verticalCells_);</span>
+<span class="lineNum">      28 </span><span class="lineCov">         42 :         str+=&quot;:&quot;;</span>
+<span class="lineNum">      29 </span><span class="lineCov">         42 :         str+=&quot;t&quot;;</span>
+<span class="lineNum">      30 </span><span class="lineCov">         42 :         str+=&quot;=&quot;;</span>
+<span class="lineNum">      31 </span><span class="lineCov">        168 :         str+=std::to_string(thickness_);</span>
+<span class="lineNum">      32 </span><span class="lineCov">         42 :         str+=&quot;:&quot;;</span>
+<span class="lineNum">      33 </span><span class="lineCov">         42 :         str+=&quot;c&quot;;</span>
+<span class="lineNum">      34 </span><span class="lineCov">         42 :         str+=&quot;=&quot;;</span>
+<span class="lineNum">      35 </span><span class="lineCov">        168 :         str+=color_.name().toUtf8().constData();</span>
+<span class="lineNum">      36 </span><span class="lineCov">         42 :         str+=&quot;@0x&quot;;</span>
+<span class="lineNum">      37 </span><span class="lineCov">        126 :         str+=stream.str();</span>
+<span class="lineNum">      38 </span><span class="lineCov">         42 :         return str;</span>
+<a name="39"><span class="lineNum">      39 </span>            : }</a>
+<span class="lineNum">      40 </span>            : 
+<span class="lineNum">      41 </span><span class="lineCov">          7 : int Model::GridFilter::getHorizontalCells() {</span>
+<span class="lineNum">      42 </span><span class="lineCov">          7 :         return horizontalCells_;</span>
+<a name="43"><span class="lineNum">      43 </span>            : }</a>
+<span class="lineNum">      44 </span>            : 
+<span class="lineNum">      45 </span><span class="lineCov">         71 : void Model::GridFilter::setHorizontalCells(int horizontalCells) {</span>
+<span class="lineNum">      46 </span><span class="lineCov">         71 :         horizontalCells_ = horizontalCells;</span>
+<a name="47"><span class="lineNum">      47 </span><span class="lineCov">         71 : }</span></a>
+<span class="lineNum">      48 </span>            : 
+<span class="lineNum">      49 </span><span class="lineCov">          7 : int Model::GridFilter::getVerticalCells() {</span>
+<span class="lineNum">      50 </span><span class="lineCov">          7 :         return verticalCells_;</span>
+<a name="51"><span class="lineNum">      51 </span>            : }</a>
+<span class="lineNum">      52 </span>            : 
+<span class="lineNum">      53 </span><span class="lineCov">         71 : void Model::GridFilter::setVerticalCells(int verticalCells) {</span>
+<span class="lineNum">      54 </span><span class="lineCov">         71 :         verticalCells_ = verticalCells;</span>
+<a name="55"><span class="lineNum">      55 </span><span class="lineCov">         71 : }</span></a>
+<span class="lineNum">      56 </span>            : 
+<span class="lineNum">      57 </span><span class="lineCov">          7 : QColor Model::GridFilter::getColor() {</span>
+<span class="lineNum">      58 </span><span class="lineCov">         14 :         return color_;</span>
+<a name="59"><span class="lineNum">      59 </span>            : }</a>
+<span class="lineNum">      60 </span>            : 
+<span class="lineNum">      61 </span><span class="lineCov">         66 : void Model::GridFilter::setColor(QColor color) {</span>
+<span class="lineNum">      62 </span><span class="lineCov">         66 :         color_ = color;</span>
+<a name="63"><span class="lineNum">      63 </span><span class="lineCov">         66 : }</span></a>
+<span class="lineNum">      64 </span>            : 
+<span class="lineNum">      65 </span><span class="lineCov">          7 : int Model::GridFilter::getThickness() {</span>
+<span class="lineNum">      66 </span><span class="lineCov">          7 :         return thickness_;</span>
+<a name="67"><span class="lineNum">      67 </span>            : }</a>
+<span class="lineNum">      68 </span>            : 
+<span class="lineNum">      69 </span><span class="lineCov">         71 : void Model::GridFilter::setThickness(int thickness) {</span>
+<span class="lineNum">      70 </span><span class="lineCov">         71 :         thickness_ = thickness;</span>
+<a name="71"><span class="lineNum">      71 </span><span class="lineCov">         71 : }</span></a>
+<span class="lineNum">      72 </span>            : 
+<span class="lineNum">      73 </span><span class="lineCov">         11 : int Model::GridFilter::getOpacity() {</span>
+<span class="lineNum">      74 </span><span class="lineCov">         11 :         return opacity_;</span>
+<a name="75"><span class="lineNum">      75 </span>            : }</a>
+<span class="lineNum">      76 </span>            : 
+<span class="lineNum">      77 </span><span class="lineCov">         80 : void Model::GridFilter::setOpacity(int opacity) {</span>
+<span class="lineNum">      78 </span><span class="lineCov">         80 :         if(opacity&lt;0||opacity&gt;255)</span>
+<span class="lineNum">      79 </span>            :                 return;
+<span class="lineNum">      80 </span><span class="lineCov">         78 :         opacity_ = opacity;</span>
+<a name="81"><span class="lineNum">      81 </span>            : }</a>
+<span class="lineNum">      82 </span>            : 
+<span class="lineNum">      83 </span><span class="lineCov">        113 : QString Model::GridFilter::getName() const {</span>
+<span class="lineNum">      84 </span><span class="lineCov">        113 :         return FILTERNAME;</span>
+<a name="85"><span class="lineNum">      85 </span>            : }</a>
+<span class="lineNum">      86 </span>            : 
+<span class="lineNum">      87 </span><span class="lineCov">         64 : void Model::GridFilter::restore(QString description) {</span>
+<span class="lineNum">      88 </span><span class="lineCov">        128 :         QStringList list  = description.split(&quot;;&quot;);</span>
+<span class="lineNum">      89 </span><span class="lineCov">         64 :         if(list.size()!=5)</span>
+<span class="lineNum">      90 </span><span class="lineNoCov">          0 :                 return;</span>
+<span class="lineNum">      91 </span><span class="lineCov">         64 :         setHorizontalCells(list[0].QString::toInt());</span>
+<span class="lineNum">      92 </span><span class="lineCov">         64 :         setVerticalCells(list[1].QString::toInt());</span>
+<span class="lineNum">      93 </span><span class="lineCov">         64 :         setThickness(list[2].QString::toInt());</span>
+<span class="lineNum">      94 </span><span class="lineCov">         64 :         setOpacity(list[3].QString::toInt());</span>
+<span class="lineNum">      95 </span><span class="lineCov">        128 :         setColor(QColor(list[4]));</span>
+<a name="96"><span class="lineNum">      96 </span>            : }</a>
+<span class="lineNum">      97 </span>            : 
+<span class="lineNum">      98 </span><span class="lineCov">         63 : QString Model::GridFilter::getSaveString() const {</span>
+<span class="lineNum">      99 </span><span class="lineCov">         63 :         QString str = QString::number(horizontalCells_);</span>
+<span class="lineNum">     100 </span><span class="lineCov">         63 :         str+=&quot;;&quot;;</span>
+<span class="lineNum">     101 </span><span class="lineCov">        126 :         str+=QString::number(verticalCells_);</span>
+<span class="lineNum">     102 </span><span class="lineCov">         63 :         str+=&quot;;&quot;;</span>
+<span class="lineNum">     103 </span><span class="lineCov">        126 :         str+=QString::number(thickness_);</span>
+<span class="lineNum">     104 </span><span class="lineCov">         63 :         str+=&quot;;&quot;;</span>
+<span class="lineNum">     105 </span><span class="lineCov">        126 :         str+=QString::number(opacity_);</span>
+<span class="lineNum">     106 </span><span class="lineCov">         63 :         str+=&quot;;&quot;;</span>
+<a name="107"><span class="lineNum">     107 </span><span class="lineCov">        126 :         str+=color_.QColor::name();</span></a>
+<span class="lineNum">     108 </span><span class="lineCov">         63 :         return str;</span>
+<span class="lineNum">     109 </span><span class="lineCov">          2 : }</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.11</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

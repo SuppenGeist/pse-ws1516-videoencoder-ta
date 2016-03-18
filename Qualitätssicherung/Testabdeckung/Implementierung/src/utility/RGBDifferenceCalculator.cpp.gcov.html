@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - i3.info - Implementierung/src/utility/RGBDifferenceCalculator.cpp</title>
+  <link rel="stylesheet" type="text/css" href="../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">Implementierung/src/utility</a> - RGBDifferenceCalculator.cpp<span style="font-size: 80%;"> (source / <a href="RGBDifferenceCalculator.cpp.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">i3.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">39</td>
+            <td class="headerCovTableEntry">40</td>
+            <td class="headerCovTableEntryHi">97.5 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2016-03-18 19:49:03</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : #include &quot;RGBDifferenceCalculator.h&quot;</a>
+<span class="lineNum">       2 </span>            : 
+<span class="lineNum">       3 </span>            : #include &lt;memory&gt;
+<span class="lineNum">       4 </span>            : 
+<span class="lineNum">       5 </span>            : #include &quot;../model/Video.h&quot;
+<span class="lineNum">       6 </span>            : 
+<span class="lineNum">       7 </span>            : #include &lt;QColor&gt;
+<span class="lineNum">       8 </span>            : #include &lt;QDebug&gt;
+<a name="9"><span class="lineNum">       9 </span>            : </a>
+<span class="lineNum">      10 </span>            : 
+<span class="lineNum">      11 </span><span class="lineCov">          5 : Utility::RGBDifferenceCalculator::RGBDifferenceCalculator(Model::Video&amp; referenceVideo,</span>
+<span class="lineNum">      12 </span><span class="lineCov">         10 :         Model::Video&amp; video):referenceVideo_(&amp;referenceVideo),video_(&amp;video),isRunning_(false) {</span>
+<span class="lineNum">      13 </span><span class="lineCov">          5 :         if(referenceVideo.getWidth()!=video.getWidth()||referenceVideo.getHeight()!=video.getHeight())</span>
+<span class="lineNum">      14 </span><span class="lineNoCov">          0 :                 throw std::invalid_argument(&quot;Cant calculate psnr of two completly different videos!&quot;);</span>
+<a name="15"><span class="lineNum">      15 </span><span class="lineCov">          5 : }</span></a>
+<span class="lineNum">      16 </span>            : 
+<span class="lineNum">      17 </span><span class="lineCov">          9 : Utility::RGBDifferenceCalculator::~RGBDifferenceCalculator() {</span>
+<span class="lineNum">      18 </span><span class="lineCov">          3 :         isRunning_=false;</span>
+<span class="lineNum">      19 </span><span class="lineCov">          6 :         if(calculator_.joinable())</span>
+<span class="lineNum">      20 </span><span class="lineCov">          3 :                 calculator_.join();</span>
+<a name="21"><span class="lineNum">      21 </span><span class="lineCov">          3 : }</span></a>
+<span class="lineNum">      22 </span>            : 
+<span class="lineNum">      23 </span><span class="lineCov">          5 : void Utility::RGBDifferenceCalculator::calculateVideo(Model::Video* target) {</span>
+<span class="lineNum">      24 </span><span class="lineCov">          5 :         if(!target)</span>
+<span class="lineNum">      25 </span>            :                 return;
+<span class="lineNum">      26 </span><span class="lineCov">          5 :         target_=target;</span>
+<span class="lineNum">      27 </span>            : 
+<span class="lineNum">      28 </span><span class="lineCov">         15 :         calculator_=std::thread(&amp;RGBDifferenceCalculator::calculateP,this);</span>
+<a name="29"><span class="lineNum">      29 </span>            : }</a>
+<span class="lineNum">      30 </span>            : 
+<span class="lineNum">      31 </span><span class="lineCov">          5 : void Utility::RGBDifferenceCalculator::calculateP() {</span>
+<span class="lineNum">      32 </span><span class="lineCov">          5 :         isRunning_ = true;</span>
+<span class="lineNum">      33 </span><span class="lineCov">          5 :         std::size_t i=0;</span>
+<span class="lineNum">      34 </span><span class="lineCov">          5 :         do {</span>
+<span class="lineNum">      35 </span><span class="lineCov">        119 :                 for(; i&lt;(video_-&gt;getNumberOfFrames()&gt;referenceVideo_-&gt;getNumberOfFrames()</span>
+<span class="lineNum">      36 </span><span class="lineCov">         62 :                          ?referenceVideo_-&gt;getNumberOfFrames():video_-&gt;getNumberOfFrames())&amp;&amp;isRunning_; i++) {</span>
+<span class="lineNum">      37 </span><span class="lineCov">         26 :                         QImage *currentFrame = video_-&gt;getFrame(i);</span>
+<span class="lineNum">      38 </span><span class="lineCov">         26 :                         QImage *refCurrentFrame = referenceVideo_-&gt;getFrame(i);</span>
+<span class="lineNum">      39 </span><span class="lineCov">         52 :                         auto outFrame = std::make_unique&lt;QImage&gt;(currentFrame-&gt;width(), currentFrame-&gt;height(),</span>
+<span class="lineNum">      40 </span><span class="lineCov">        104 :                                         currentFrame-&gt;format());</span>
+<span class="lineNum">      41 </span><span class="lineCov">       3770 :                         for(int j = 0; j &lt; currentFrame-&gt;height(); j++) {</span>
+<span class="lineNum">      42 </span><span class="lineCov">    1321632 :                                 for(int k = 0; k &lt; currentFrame-&gt;width(); k++) {</span>
+<span class="lineNum">      43 </span><span class="lineCov">     658944 :                                         auto pixel=currentFrame-&gt;pixel(k,j);</span>
+<span class="lineNum">      44 </span><span class="lineCov">     658944 :                                         auto refPixel=refCurrentFrame-&gt;pixel(k,j);</span>
+<span class="lineNum">      45 </span><span class="lineCov">    1317888 :                                         int blue =  255-std::abs (qBlue(pixel)-qBlue(refPixel));</span>
+<span class="lineNum">      46 </span><span class="lineCov">    1317888 :                                         int red =  255-std::abs (qRed(pixel)-qRed(refPixel));</span>
+<span class="lineNum">      47 </span><span class="lineCov">    1317888 :                                         int green =  255-std::abs (qGreen(pixel)-qGreen(refPixel));</span>
+<span class="lineNum">      48 </span><span class="lineCov">    1317888 :                                         outFrame-&gt;setPixel(k,j, qRgb(red, green, blue));</span>
+<span class="lineNum">      49 </span>            :                                 }
+<span class="lineNum">      50 </span>            :                         }
+<span class="lineNum">      51 </span><span class="lineCov">         78 :                         target_-&gt;appendFrame(std::move(outFrame));</span>
+<span class="lineNum">      52 </span><span class="lineCov">         26 :                         target_-&gt;setFps(video_-&gt;getFps());</span>
+<span class="lineNum">      53 </span>            :                 }
+<span class="lineNum">      54 </span><span class="lineCov">          5 :         } while (isRunning_&amp;&amp;(!video_-&gt;isComplete()||!referenceVideo_-&gt;isComplete()</span>
+<span class="lineNum">      55 </span><span class="lineCov">          8 :                               ||i!=(video_-&gt;getNumberOfFrames()&gt;referenceVideo_-&gt;getNumberOfFrames()</span>
+<span class="lineNum">      56 </span><span class="lineCov">          4 :                                     ?referenceVideo_-&gt;getNumberOfFrames():video_-&gt;getNumberOfFrames())));</span>
+<span class="lineNum">      57 </span><span class="lineCov">          5 :         target_-&gt;setIsComplete(true);</span>
+<span class="lineNum">      58 </span><span class="lineCov">          5 :         isRunning_ = false;</span>
+<span class="lineNum">      59 </span><span class="lineCov">          5 : }</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.11</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

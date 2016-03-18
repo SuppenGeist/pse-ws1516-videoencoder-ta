@@ -1,0 +1,336 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - i3.info - /home/gravitynx/Qt/5.5/gcc_64/include/QtCore/qitemselectionmodel.h</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../../../index.html">top level</a> - <a href="index.html">home/gravitynx/Qt/5.5/gcc_64/include/QtCore</a> - qitemselectionmodel.h<span style="font-size: 80%;"> (source / <a href="qitemselectionmodel.h.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">i3.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntryLo">16.7 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2016-03-18 19:49:03</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : /****************************************************************************</a>
+<span class="lineNum">       2 </span>            : **
+<span class="lineNum">       3 </span>            : ** Copyright (C) 2015 The Qt Company Ltd.
+<span class="lineNum">       4 </span>            : ** Contact: http://www.qt.io/licensing/
+<span class="lineNum">       5 </span>            : **
+<span class="lineNum">       6 </span>            : ** This file is part of the QtGui module of the Qt Toolkit.
+<span class="lineNum">       7 </span>            : **
+<span class="lineNum">       8 </span>            : ** $QT_BEGIN_LICENSE:LGPL21$
+<span class="lineNum">       9 </span>            : ** Commercial License Usage
+<span class="lineNum">      10 </span>            : ** Licensees holding valid commercial Qt licenses may use this file in
+<span class="lineNum">      11 </span>            : ** accordance with the commercial license agreement provided with the
+<span class="lineNum">      12 </span>            : ** Software or, alternatively, in accordance with the terms contained in
+<span class="lineNum">      13 </span>            : ** a written agreement between you and The Qt Company. For licensing terms
+<span class="lineNum">      14 </span>            : ** and conditions see http://www.qt.io/terms-conditions. For further
+<span class="lineNum">      15 </span>            : ** information use the contact form at http://www.qt.io/contact-us.
+<span class="lineNum">      16 </span>            : **
+<span class="lineNum">      17 </span>            : ** GNU Lesser General Public License Usage
+<span class="lineNum">      18 </span>            : ** Alternatively, this file may be used under the terms of the GNU Lesser
+<span class="lineNum">      19 </span>            : ** General Public License version 2.1 or version 3 as published by the Free
+<span class="lineNum">      20 </span>            : ** Software Foundation and appearing in the file LICENSE.LGPLv21 and
+<span class="lineNum">      21 </span>            : ** LICENSE.LGPLv3 included in the packaging of this file. Please review the
+<span class="lineNum">      22 </span>            : ** following information to ensure the GNU Lesser General Public License
+<span class="lineNum">      23 </span>            : ** requirements will be met: https://www.gnu.org/licenses/lgpl.html and
+<span class="lineNum">      24 </span>            : ** http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
+<span class="lineNum">      25 </span>            : **
+<span class="lineNum">      26 </span>            : ** As a special exception, The Qt Company gives you certain additional
+<span class="lineNum">      27 </span>            : ** rights. These rights are described in The Qt Company LGPL Exception
+<span class="lineNum">      28 </span>            : ** version 1.1, included in the file LGPL_EXCEPTION.txt in this package.
+<span class="lineNum">      29 </span>            : **
+<span class="lineNum">      30 </span>            : ** $QT_END_LICENSE$
+<span class="lineNum">      31 </span>            : **
+<span class="lineNum">      32 </span>            : ****************************************************************************/
+<span class="lineNum">      33 </span>            : 
+<span class="lineNum">      34 </span>            : #ifndef QITEMSELECTIONMODEL_H
+<span class="lineNum">      35 </span>            : #define QITEMSELECTIONMODEL_H
+<span class="lineNum">      36 </span>            : 
+<span class="lineNum">      37 </span>            : #include &lt;QtCore/qset.h&gt;
+<span class="lineNum">      38 </span>            : #include &lt;QtCore/qvector.h&gt;
+<span class="lineNum">      39 </span>            : #include &lt;QtCore/qlist.h&gt;
+<span class="lineNum">      40 </span>            : #include &lt;QtCore/qabstractitemmodel.h&gt;
+<span class="lineNum">      41 </span>            : 
+<span class="lineNum">      42 </span>            : QT_BEGIN_NAMESPACE
+<span class="lineNum">      43 </span>            : 
+<span class="lineNum">      44 </span>            : 
+<span class="lineNum">      45 </span>            : #ifndef QT_NO_ITEMVIEWS
+<span class="lineNum">      46 </span>            : 
+<span class="lineNum">      47 </span><span class="lineNoCov">          0 : class Q_CORE_EXPORT QItemSelectionRange</span>
+<span class="lineNum">      48 </span>            : {
+<span class="lineNum">      49 </span>            : 
+<a name="50"><span class="lineNum">      50 </span>            : public:</a>
+<span class="lineNum">      51 </span>            :     inline QItemSelectionRange() {}
+<span class="lineNum">      52 </span><span class="lineNoCov">          0 :     inline QItemSelectionRange(const QItemSelectionRange &amp;other)</span>
+<span class="lineNum">      53 </span><span class="lineNoCov">          0 :         : tl(other.tl), br(other.br) {}</span>
+<span class="lineNum">      54 </span>            :     inline QItemSelectionRange(const QModelIndex &amp;topLeft, const QModelIndex &amp;bottomRight);
+<span class="lineNum">      55 </span>            :     explicit inline QItemSelectionRange(const QModelIndex &amp;index)
+<span class="lineNum">      56 </span>            :         { tl = index; br = tl; }
+<span class="lineNum">      57 </span>            : 
+<span class="lineNum">      58 </span>            :     inline int top() const { return tl.row(); }
+<span class="lineNum">      59 </span>            :     inline int left() const { return tl.column(); }
+<span class="lineNum">      60 </span>            :     inline int bottom() const { return br.row(); }
+<span class="lineNum">      61 </span>            :     inline int right() const { return br.column(); }
+<span class="lineNum">      62 </span>            :     inline int width() const { return br.column() - tl.column() + 1; }
+<span class="lineNum">      63 </span>            :     inline int height() const { return br.row() - tl.row() + 1; }
+<span class="lineNum">      64 </span>            : 
+<span class="lineNum">      65 </span>            :     inline const QPersistentModelIndex &amp;topLeft() const { return tl; }
+<span class="lineNum">      66 </span>            :     inline const QPersistentModelIndex &amp;bottomRight() const { return br; }
+<span class="lineNum">      67 </span>            :     inline QModelIndex parent() const { return tl.parent(); }
+<span class="lineNum">      68 </span>            :     inline const QAbstractItemModel *model() const { return tl.model(); }
+<span class="lineNum">      69 </span>            : 
+<span class="lineNum">      70 </span>            :     inline bool contains(const QModelIndex &amp;index) const
+<span class="lineNum">      71 </span>            :     {
+<span class="lineNum">      72 </span>            :         return (parent() == index.parent()
+<span class="lineNum">      73 </span>            :                 &amp;&amp; tl.row() &lt;= index.row() &amp;&amp; tl.column() &lt;= index.column()
+<span class="lineNum">      74 </span>            :                 &amp;&amp; br.row() &gt;= index.row() &amp;&amp; br.column() &gt;= index.column());
+<span class="lineNum">      75 </span>            :     }
+<span class="lineNum">      76 </span>            : 
+<span class="lineNum">      77 </span>            :     inline bool contains(int row, int column, const QModelIndex &amp;parentIndex) const
+<span class="lineNum">      78 </span>            :     {
+<span class="lineNum">      79 </span>            :         return (parent() == parentIndex
+<span class="lineNum">      80 </span>            :                 &amp;&amp; tl.row() &lt;= row &amp;&amp; tl.column() &lt;= column
+<span class="lineNum">      81 </span>            :                 &amp;&amp; br.row() &gt;= row &amp;&amp; br.column() &gt;= column);
+<span class="lineNum">      82 </span>            :     }
+<span class="lineNum">      83 </span>            : 
+<span class="lineNum">      84 </span>            :     bool intersects(const QItemSelectionRange &amp;other) const;
+<span class="lineNum">      85 </span>            : #if QT_DEPRECATED_SINCE(5, 0)
+<span class="lineNum">      86 </span>            :     inline QItemSelectionRange intersect(const QItemSelectionRange &amp;other) const
+<span class="lineNum">      87 </span>            :         { return intersected(other); }
+<span class="lineNum">      88 </span>            : #endif
+<span class="lineNum">      89 </span>            :     QItemSelectionRange intersected(const QItemSelectionRange &amp;other) const;
+<span class="lineNum">      90 </span>            : 
+<span class="lineNum">      91 </span>            : 
+<span class="lineNum">      92 </span>            :     inline bool operator==(const QItemSelectionRange &amp;other) const
+<span class="lineNum">      93 </span>            :         { return (tl == other.tl &amp;&amp; br == other.br); }
+<span class="lineNum">      94 </span>            :     inline bool operator!=(const QItemSelectionRange &amp;other) const
+<span class="lineNum">      95 </span>            :         { return !operator==(other); }
+<span class="lineNum">      96 </span>            :     inline bool operator&lt;(const QItemSelectionRange &amp;other) const
+<span class="lineNum">      97 </span>            :         {
+<span class="lineNum">      98 </span>            :             // Comparing parents will compare the models, but if two equivalent ranges
+<span class="lineNum">      99 </span>            :             // in two different models have invalid parents, they would appear the same
+<span class="lineNum">     100 </span>            :             if (other.tl.model() == tl.model()) {
+<span class="lineNum">     101 </span>            :                 // parent has to be calculated, so we only do so once.
+<span class="lineNum">     102 </span>            :                 const QModelIndex topLeftParent = tl.parent();
+<span class="lineNum">     103 </span>            :                 const QModelIndex otherTopLeftParent = other.tl.parent();
+<span class="lineNum">     104 </span>            :                 if (topLeftParent == otherTopLeftParent) {
+<span class="lineNum">     105 </span>            :                     if (other.tl.row() == tl.row()) {
+<span class="lineNum">     106 </span>            :                         if (other.tl.column() == tl.column()) {
+<span class="lineNum">     107 </span>            :                             if (other.br.row() == br.row()) {
+<span class="lineNum">     108 </span>            :                                 return br.column() &lt; other.br.column();
+<span class="lineNum">     109 </span>            :                             }
+<span class="lineNum">     110 </span>            :                             return br.row() &lt; other.br.row();
+<span class="lineNum">     111 </span>            :                         }
+<span class="lineNum">     112 </span>            :                         return tl.column() &lt; other.tl.column();
+<span class="lineNum">     113 </span>            :                     }
+<span class="lineNum">     114 </span>            :                     return tl.row() &lt; other.tl.row();
+<span class="lineNum">     115 </span>            :                 }
+<span class="lineNum">     116 </span>            :                 return topLeftParent &lt; otherTopLeftParent;
+<span class="lineNum">     117 </span>            :             }
+<span class="lineNum">     118 </span>            :             return tl.model() &lt; other.tl.model();
+<span class="lineNum">     119 </span>            :         }
+<span class="lineNum">     120 </span>            : 
+<span class="lineNum">     121 </span>            :     inline bool isValid() const
+<span class="lineNum">     122 </span>            :     {
+<span class="lineNum">     123 </span>            :         return (tl.isValid() &amp;&amp; br.isValid() &amp;&amp; tl.parent() == br.parent()
+<span class="lineNum">     124 </span>            :                 &amp;&amp; top() &lt;= bottom() &amp;&amp; left() &lt;= right());
+<span class="lineNum">     125 </span>            :     }
+<span class="lineNum">     126 </span>            : 
+<span class="lineNum">     127 </span>            :     bool isEmpty() const;
+<span class="lineNum">     128 </span>            : 
+<span class="lineNum">     129 </span>            :     QModelIndexList indexes() const;
+<span class="lineNum">     130 </span>            : 
+<span class="lineNum">     131 </span>            : private:
+<span class="lineNum">     132 </span>            :     QPersistentModelIndex tl, br;
+<span class="lineNum">     133 </span>            : };
+<span class="lineNum">     134 </span>            : Q_DECLARE_TYPEINFO(QItemSelectionRange, Q_MOVABLE_TYPE);
+<span class="lineNum">     135 </span>            : 
+<span class="lineNum">     136 </span>            : inline QItemSelectionRange::QItemSelectionRange(const QModelIndex &amp;atopLeft,
+<span class="lineNum">     137 </span>            :                                                 const QModelIndex &amp;abottomRight)
+<span class="lineNum">     138 </span>            : { tl = atopLeft; br = abottomRight; }
+<span class="lineNum">     139 </span>            : 
+<span class="lineNum">     140 </span>            : class QItemSelection;
+<span class="lineNum">     141 </span>            : class QItemSelectionModelPrivate;
+<span class="lineNum">     142 </span>            : 
+<span class="lineNum">     143 </span>            : class Q_CORE_EXPORT QItemSelectionModel : public QObject
+<span class="lineNum">     144 </span>            : {
+<span class="lineNum">     145 </span>            :     Q_OBJECT
+<span class="lineNum">     146 </span>            :     Q_PROPERTY(QAbstractItemModel *model READ model WRITE setModel NOTIFY modelChanged)
+<span class="lineNum">     147 </span>            :     Q_PROPERTY(bool hasSelection READ hasSelection NOTIFY selectionChanged STORED false DESIGNABLE false)
+<span class="lineNum">     148 </span>            :     Q_PROPERTY(QModelIndex currentIndex READ currentIndex NOTIFY currentChanged STORED false DESIGNABLE false)
+<span class="lineNum">     149 </span>            :     Q_PROPERTY(QItemSelection selection READ selection NOTIFY selectionChanged STORED false DESIGNABLE false)
+<span class="lineNum">     150 </span>            :     Q_PROPERTY(QModelIndexList selectedIndexes READ selectedIndexes NOTIFY selectionChanged STORED false DESIGNABLE false)
+<span class="lineNum">     151 </span>            : 
+<span class="lineNum">     152 </span>            :     Q_DECLARE_PRIVATE(QItemSelectionModel)
+<span class="lineNum">     153 </span>            : 
+<span class="lineNum">     154 </span>            : public:
+<span class="lineNum">     155 </span>            : 
+<span class="lineNum">     156 </span>            :     enum SelectionFlag {
+<span class="lineNum">     157 </span>            :         NoUpdate       = 0x0000,
+<span class="lineNum">     158 </span>            :         Clear          = 0x0001,
+<span class="lineNum">     159 </span>            :         Select         = 0x0002,
+<span class="lineNum">     160 </span>            :         Deselect       = 0x0004,
+<span class="lineNum">     161 </span>            :         Toggle         = 0x0008,
+<span class="lineNum">     162 </span>            :         Current        = 0x0010,
+<span class="lineNum">     163 </span>            :         Rows           = 0x0020,
+<span class="lineNum">     164 </span>            :         Columns        = 0x0040,
+<span class="lineNum">     165 </span>            :         SelectCurrent  = Select | Current,
+<span class="lineNum">     166 </span>            :         ToggleCurrent  = Toggle | Current,
+<span class="lineNum">     167 </span>            :         ClearAndSelect = Clear | Select
+<span class="lineNum">     168 </span>            :     };
+<span class="lineNum">     169 </span>            : 
+<span class="lineNum">     170 </span>            :     Q_DECLARE_FLAGS(SelectionFlags, SelectionFlag)
+<span class="lineNum">     171 </span>            :     Q_FLAG(SelectionFlags)
+<span class="lineNum">     172 </span>            : 
+<span class="lineNum">     173 </span>            :     explicit QItemSelectionModel(QAbstractItemModel *model = 0);
+<span class="lineNum">     174 </span>            :     explicit QItemSelectionModel(QAbstractItemModel *model, QObject *parent);
+<span class="lineNum">     175 </span>            :     virtual ~QItemSelectionModel();
+<span class="lineNum">     176 </span>            : 
+<span class="lineNum">     177 </span>            :     QModelIndex currentIndex() const;
+<span class="lineNum">     178 </span>            : 
+<span class="lineNum">     179 </span>            :     Q_INVOKABLE bool isSelected(const QModelIndex &amp;index) const;
+<span class="lineNum">     180 </span>            :     Q_INVOKABLE bool isRowSelected(int row, const QModelIndex &amp;parent) const;
+<span class="lineNum">     181 </span>            :     Q_INVOKABLE bool isColumnSelected(int column, const QModelIndex &amp;parent) const;
+<span class="lineNum">     182 </span>            : 
+<span class="lineNum">     183 </span>            :     Q_INVOKABLE bool rowIntersectsSelection(int row, const QModelIndex &amp;parent) const;
+<span class="lineNum">     184 </span>            :     Q_INVOKABLE bool columnIntersectsSelection(int column, const QModelIndex &amp;parent) const;
+<span class="lineNum">     185 </span>            : 
+<span class="lineNum">     186 </span>            :     bool hasSelection() const;
+<span class="lineNum">     187 </span>            : 
+<span class="lineNum">     188 </span>            :     QModelIndexList selectedIndexes() const;
+<span class="lineNum">     189 </span>            :     Q_INVOKABLE QModelIndexList selectedRows(int column = 0) const;
+<span class="lineNum">     190 </span>            :     Q_INVOKABLE QModelIndexList selectedColumns(int row = 0) const;
+<span class="lineNum">     191 </span>            :     const QItemSelection selection() const;
+<span class="lineNum">     192 </span>            : 
+<span class="lineNum">     193 </span>            :     // ### Qt 6: Merge these two as &quot;QAbstractItemModel *model() const&quot;
+<span class="lineNum">     194 </span>            :     const QAbstractItemModel *model() const;
+<span class="lineNum">     195 </span>            :     QAbstractItemModel *model();
+<span class="lineNum">     196 </span>            : 
+<span class="lineNum">     197 </span>            :     void setModel(QAbstractItemModel *model);
+<span class="lineNum">     198 </span>            : 
+<span class="lineNum">     199 </span>            : public Q_SLOTS:
+<span class="lineNum">     200 </span>            :     virtual void setCurrentIndex(const QModelIndex &amp;index, QItemSelectionModel::SelectionFlags command);
+<span class="lineNum">     201 </span>            :     virtual void select(const QModelIndex &amp;index, QItemSelectionModel::SelectionFlags command);
+<span class="lineNum">     202 </span>            :     virtual void select(const QItemSelection &amp;selection, QItemSelectionModel::SelectionFlags command);
+<span class="lineNum">     203 </span>            :     virtual void clear();
+<span class="lineNum">     204 </span>            :     virtual void reset();
+<span class="lineNum">     205 </span>            : 
+<span class="lineNum">     206 </span>            :     void clearSelection();
+<span class="lineNum">     207 </span>            :     virtual void clearCurrentIndex();
+<span class="lineNum">     208 </span>            : 
+<span class="lineNum">     209 </span>            : Q_SIGNALS:
+<span class="lineNum">     210 </span>            :     void selectionChanged(const QItemSelection &amp;selected, const QItemSelection &amp;deselected);
+<span class="lineNum">     211 </span>            :     void currentChanged(const QModelIndex &amp;current, const QModelIndex &amp;previous);
+<span class="lineNum">     212 </span>            :     void currentRowChanged(const QModelIndex &amp;current, const QModelIndex &amp;previous);
+<span class="lineNum">     213 </span>            :     void currentColumnChanged(const QModelIndex &amp;current, const QModelIndex &amp;previous);
+<span class="lineNum">     214 </span>            :     void modelChanged(QAbstractItemModel *model);
+<span class="lineNum">     215 </span>            : 
+<span class="lineNum">     216 </span>            : protected:
+<span class="lineNum">     217 </span>            :     QItemSelectionModel(QItemSelectionModelPrivate &amp;dd, QAbstractItemModel *model);
+<span class="lineNum">     218 </span>            :     void emitSelectionChanged(const QItemSelection &amp;newSelection, const QItemSelection &amp;oldSelection);
+<span class="lineNum">     219 </span>            : 
+<span class="lineNum">     220 </span>            : private:
+<span class="lineNum">     221 </span>            :     Q_DISABLE_COPY(QItemSelectionModel)
+<span class="lineNum">     222 </span>            :     Q_PRIVATE_SLOT(d_func(), void _q_columnsAboutToBeRemoved(const QModelIndex&amp;, int, int))
+<span class="lineNum">     223 </span>            :     Q_PRIVATE_SLOT(d_func(), void _q_rowsAboutToBeRemoved(const QModelIndex&amp;, int, int))
+<span class="lineNum">     224 </span>            :     Q_PRIVATE_SLOT(d_func(), void _q_columnsAboutToBeInserted(const QModelIndex&amp;, int, int))
+<span class="lineNum">     225 </span>            :     Q_PRIVATE_SLOT(d_func(), void _q_rowsAboutToBeInserted(const QModelIndex&amp;, int, int))
+<span class="lineNum">     226 </span>            :     Q_PRIVATE_SLOT(d_func(), void _q_layoutAboutToBeChanged(const QList&lt;QPersistentModelIndex&gt; &amp;parents = QList&lt;QPersistentModelIndex&gt;(), QAbstractItemModel::LayoutChangeHint hint = QAbstractItemModel::NoHint))
+<span class="lineNum">     227 </span>            :     Q_PRIVATE_SLOT(d_func(), void _q_layoutChanged(const QList&lt;QPersistentModelIndex&gt; &amp;parents = QList&lt;QPersistentModelIndex&gt;(), QAbstractItemModel::LayoutChangeHint hint = QAbstractItemModel::NoHint))
+<span class="lineNum">     228 </span>            : };
+<span class="lineNum">     229 </span>            : 
+<span class="lineNum">     230 </span>            : Q_DECLARE_OPERATORS_FOR_FLAGS(QItemSelectionModel::SelectionFlags)
+<span class="lineNum">     231 </span>            : 
+<span class="lineNum">     232 </span>            : // dummy implentation of qHash() necessary for instantiating QList&lt;QItemSelectionRange&gt;::toSet() with MSVC
+<span class="lineNum">     233 </span>            : inline uint qHash(const QItemSelectionRange &amp;) { return 0; }
+<span class="lineNum">     234 </span>            : 
+<span class="lineNum">     235 </span><span class="lineCov">         68 : class Q_CORE_EXPORT QItemSelection : public QList&lt;QItemSelectionRange&gt;</span>
+<span class="lineNum">     236 </span>            : {
+<span class="lineNum">     237 </span>            : public:
+<span class="lineNum">     238 </span><span class="lineNoCov">          0 :     QItemSelection() {}</span>
+<span class="lineNum">     239 </span>            :     QItemSelection(const QModelIndex &amp;topLeft, const QModelIndex &amp;bottomRight);
+<span class="lineNum">     240 </span>            :     void select(const QModelIndex &amp;topLeft, const QModelIndex &amp;bottomRight);
+<span class="lineNum">     241 </span>            :     bool contains(const QModelIndex &amp;index) const;
+<span class="lineNum">     242 </span>            :     QModelIndexList indexes() const;
+<span class="lineNum">     243 </span>            :     void merge(const QItemSelection &amp;other, QItemSelectionModel::SelectionFlags command);
+<span class="lineNum">     244 </span>            :     static void split(const QItemSelectionRange &amp;range,
+<span class="lineNum">     245 </span>            :                       const QItemSelectionRange &amp;other,
+<span class="lineNum">     246 </span>            :                       QItemSelection *result);
+<span class="lineNum">     247 </span>            : };
+<span class="lineNum">     248 </span>            : 
+<span class="lineNum">     249 </span>            : #ifndef QT_NO_DEBUG_STREAM
+<span class="lineNum">     250 </span>            : Q_CORE_EXPORT QDebug operator&lt;&lt;(QDebug, const QItemSelectionRange &amp;);
+<span class="lineNum">     251 </span>            : #endif
+<span class="lineNum">     252 </span>            : 
+<span class="lineNum">     253 </span>            : #endif // QT_NO_ITEMVIEWS
+<span class="lineNum">     254 </span>            : 
+<span class="lineNum">     255 </span>            : QT_END_NAMESPACE
+<a name="256"><span class="lineNum">     256 </span>            : </a>
+<span class="lineNum">     257 </span>            : Q_DECLARE_METATYPE(QItemSelectionRange)
+<span class="lineNum">     258 </span><span class="lineNoCov">          0 : Q_DECLARE_METATYPE(QItemSelection)</span>
+<span class="lineNum">     259 </span>            : 
+<span class="lineNum">     260 </span>            : #endif // QITEMSELECTIONMODEL_H
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.11</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

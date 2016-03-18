@@ -1,0 +1,330 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - i3.info - src/gui/filter_boxes/FilterConfigurationBox.cpp</title>
+  <link rel="stylesheet" type="text/css" href="../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">src/gui/filter_boxes</a> - FilterConfigurationBox.cpp<span style="font-size: 80%;"> (source / <a href="FilterConfigurationBox.cpp.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">i3.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">121</td>
+            <td class="headerCovTableEntry">132</td>
+            <td class="headerCovTableEntryHi">91.7 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2016-03-18 19:19:22</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">11</td>
+            <td class="headerCovTableEntry">15</td>
+            <td class="headerCovTableEntryLo">73.3 %</td>
+          </tr>
+          <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : #include &quot;FilterConfigurationBox.h&quot;</a>
+<span class="lineNum">       2 </span>            : 
+<span class="lineNum">       3 </span>            : #include &lt;memory&gt;
+<span class="lineNum">       4 </span>            : 
+<span class="lineNum">       5 </span>            : #include &lt;QWidget&gt;
+<span class="lineNum">       6 </span>            : #include &lt;QFrame&gt;
+<span class="lineNum">       7 </span>            : #include &lt;QImage&gt;
+<span class="lineNum">       8 </span>            : #include &lt;QHBoxLayout&gt;
+<span class="lineNum">       9 </span>            : #include &lt;QVBoxLayout&gt;
+<span class="lineNum">      10 </span>            : #include &lt;QFont&gt;
+<span class="lineNum">      11 </span>            : #include &lt;QPushButton&gt;
+<span class="lineNum">      12 </span>            : #include &lt;QScrollArea&gt;
+<span class="lineNum">      13 </span>            : #include &lt;QLabel&gt;
+<span class="lineNum">      14 </span>            : #include &lt;QDebug&gt;
+<span class="lineNum">      15 </span>            : 
+<span class="lineNum">      16 </span>            : #include &quot;../../model/filters/Filter.h&quot;
+<span class="lineNum">      17 </span>            : #include &quot;../FrameView.h&quot;
+<span class="lineNum">      18 </span>            : #include &quot;../../utility/FilterApplier.h&quot;
+<span class="lineNum">      19 </span>            : #include &quot;../../model/FilterList.h&quot;
+<span class="lineNum">      20 </span>            : #include &quot;../../utility/VideoConverter.h&quot;
+<span class="lineNum">      21 </span>            : #include &quot;../FilterTab.h&quot;
+<span class="lineNum">      22 </span>            : #include &quot;../../undo_framework/changefilter.h&quot;
+<span class="lineNum">      23 </span>            : #include &quot;../../undo_framework/UndoStack.h&quot;
+<span class="lineNum">      24 </span>            : 
+<span class="lineNum">      25 </span>            : #include &quot;BlurFilterBox.h&quot;
+<span class="lineNum">      26 </span>            : #include &quot;BorderFilterBox.h&quot;
+<span class="lineNum">      27 </span>            : #include &quot;BrightnessFilterBox.h&quot;
+<span class="lineNum">      28 </span>            : #include &quot;ColorbalanceFilterBox.h&quot;
+<span class="lineNum">      29 </span>            : #include &quot;ContrastFilterBox.h&quot;
+<span class="lineNum">      30 </span>            : #include &quot;GridFilterBox.h&quot;
+<span class="lineNum">      31 </span>            : #include &quot;MirrorFilterBox.h&quot;
+<span class="lineNum">      32 </span>            : #include &quot;NoiseFilterBox.h&quot;
+<span class="lineNum">      33 </span>            : #include &quot;PlainFilterBox.h&quot;
+<span class="lineNum">      34 </span>            : #include &quot;PosterFilterBox.h&quot;
+<span class="lineNum">      35 </span>            : #include &quot;RectangleFilterBox.h&quot;
+<span class="lineNum">      36 </span>            : #include &quot;RGBFilterBox.h&quot;
+<span class="lineNum">      37 </span>            : #include &quot;RotationFilterBox.h&quot;
+<span class="lineNum">      38 </span>            : #include &quot;SaturationFilterBox.h&quot;
+<span class="lineNum">      39 </span>            : #include &quot;ScaleFilterBox.h&quot;
+<span class="lineNum">      40 </span>            : #include &quot;SharpnessFilterBox.h&quot;
+<span class="lineNum">      41 </span>            : 
+<span class="lineNum">      42 </span>            : #include &quot;../../model/filters/BlurFilter.h&quot;
+<span class="lineNum">      43 </span>            : #include &quot;../../model/filters/BorderFilter.h&quot;
+<span class="lineNum">      44 </span>            : #include &quot;../../model/filters/BrightnessFilter.h&quot;
+<span class="lineNum">      45 </span>            : #include &quot;../../model/filters/ColorbalanceFilter.h&quot;
+<span class="lineNum">      46 </span>            : #include &quot;../../model/filters/ContrastFilter.h&quot;
+<span class="lineNum">      47 </span>            : #include &quot;../../model/filters/GridFilter.h&quot;
+<span class="lineNum">      48 </span>            : #include &quot;../../model/filters/MirrorFilter.h&quot;
+<span class="lineNum">      49 </span>            : #include &quot;../../model/filters/NoiseFilter.h&quot;
+<span class="lineNum">      50 </span>            : #include &quot;../../model/filters/PosterFilter.h&quot;
+<span class="lineNum">      51 </span>            : #include &quot;../../model/filters/RectangleFilter.h&quot;
+<span class="lineNum">      52 </span>            : #include &quot;../../model/filters/RGBFilter.h&quot;
+<span class="lineNum">      53 </span>            : #include &quot;../../model/filters/RotationFilter.h&quot;
+<span class="lineNum">      54 </span>            : #include &quot;../../model/filters/SaturationFilter.h&quot;
+<span class="lineNum">      55 </span>            : #include &quot;../../model/filters/ScaleFilter.h&quot;
+<span class="lineNum">      56 </span>            : #include &quot;../../model/filters/SharpnessFilter.h&quot;
+<span class="lineNum">      57 </span>            : 
+<a name="58"><span class="lineNum">      58 </span><span class="lineCov">          1 : std::unique_ptr&lt;QImage&gt; GUI::FilterConfigurationBox::defaultImage_;</span></a>
+<span class="lineNum">      59 </span>            : 
+<span class="lineNum">      60 </span><span class="lineCov">        128 : GUI::FilterConfigurationBox::FilterConfigurationBox(QWidget* parent):QFrame(parent) {</span>
+<span class="lineNum">      61 </span><span class="lineCov">         32 :         setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Minimum);</span>
+<span class="lineNum">      62 </span><span class="lineCov">         32 :         createUi();</span>
+<span class="lineNum">      63 </span>            : 
+<span class="lineNum">      64 </span><span class="lineCov">         32 :         connect(button_apply_,SIGNAL(clicked()),this,SLOT(applyFilter()));</span>
+<span class="lineNum">      65 </span><span class="lineCov">         32 :         connect(button_reset_,SIGNAL(clicked()),this,SLOT(resetFilter()));</span>
+<a name="66"><span class="lineNum">      66 </span><span class="lineCov">         32 : }</span></a>
+<span class="lineNum">      67 </span>            : 
+<span class="lineNum">      68 </span><span class="lineCov">         93 : GUI::FilterConfigurationBox::~FilterConfigurationBox() {</span>
+<span class="lineNum">      69 </span>            : 
+<a name="70"><span class="lineNum">      70 </span><span class="lineCov">         31 : }</span></a>
+<span class="lineNum">      71 </span>            : 
+<span class="lineNum">      72 </span><span class="lineCov">         31 : std::unique_ptr&lt;GUI::FilterConfigurationBox&gt; GUI::FilterConfigurationBox::CreateConfigurationBox(</span>
+<span class="lineNum">      73 </span>            :     FilterTab &amp;filterTab, Model::Filter &amp;filter) {
+<span class="lineNum">      74 </span><span class="lineCov">         62 :         std::unique_ptr&lt;FilterConfigurationBox&gt; box;</span>
+<span class="lineNum">      75 </span>            : 
+<span class="lineNum">      76 </span><span class="lineCov">         31 :         if(filter.getName()==Model::BlurFilter::FILTERNAME) {</span>
+<span class="lineNum">      77 </span><span class="lineCov">          6 :                 box=std::make_unique&lt;BlurFilterBox&gt;();</span>
+<span class="lineNum">      78 </span><span class="lineCov">         29 :         } else if(filter.getName()==Model::BrightnessFilter::FILTERNAME) {</span>
+<span class="lineNum">      79 </span><span class="lineCov">          3 :                 box=std::make_unique&lt;BrightnessFilterBox&gt;();</span>
+<span class="lineNum">      80 </span><span class="lineCov">         28 :         } else if(filter.getName()==Model::ContrastFilter::FILTERNAME) {</span>
+<span class="lineNum">      81 </span><span class="lineCov">          3 :                 box=std::make_unique&lt;ContrastFilterBox&gt;();</span>
+<span class="lineNum">      82 </span><span class="lineCov">         27 :         } else if(filter.getName()==Model::SaturationFilter::FILTERNAME) {</span>
+<span class="lineNum">      83 </span><span class="lineCov">          3 :                 box=std::make_unique&lt;SaturationFilterBox&gt;();</span>
+<span class="lineNum">      84 </span><span class="lineCov">         26 :         } else if(filter.getName()==Model::RotationFilter::FILTERNAME) {</span>
+<span class="lineNum">      85 </span><span class="lineCov">          3 :                 box=std::make_unique&lt;RotationFilterBox&gt;();</span>
+<span class="lineNum">      86 </span><span class="lineCov">         25 :         } else if(filter.getName()==Model::SharpnessFilter::FILTERNAME) {</span>
+<span class="lineNum">      87 </span><span class="lineCov">          3 :                 box=std::make_unique&lt;SharpnessFilterBox&gt;();</span>
+<span class="lineNum">      88 </span><span class="lineCov">         24 :         } else if(filter.getName()==Model::PosterFilter::FILTERNAME) {</span>
+<span class="lineNum">      89 </span><span class="lineCov">          3 :                 box=std::make_unique&lt;PosterFilterBox&gt;();</span>
+<span class="lineNum">      90 </span><span class="lineCov">         23 :         } else if(filter.getName()==Model::BorderFilter::FILTERNAME) {</span>
+<span class="lineNum">      91 </span><span class="lineCov">          9 :                 box=std::make_unique&lt;BorderFilterBox&gt;();</span>
+<span class="lineNum">      92 </span><span class="lineCov">         20 :         } else if(filter.getName()==Model::GridFilter::FILTERNAME) {</span>
+<span class="lineNum">      93 </span><span class="lineCov">         15 :                 box=std::make_unique&lt;GridFilterBox&gt;();</span>
+<span class="lineNum">      94 </span><span class="lineCov">         15 :         } else if(filter.getName()==Model::MirrorFilter::FILTERNAME) {</span>
+<span class="lineNum">      95 </span><span class="lineCov">          3 :                 box=std::make_unique&lt;MirrorFilterBox&gt;();</span>
+<span class="lineNum">      96 </span><span class="lineCov">         14 :         } else if(filter.getName()==Model::ScaleFilter::FILTERNAME) {</span>
+<span class="lineNum">      97 </span><span class="lineCov">          3 :                 box=std::make_unique&lt;ScaleFilterBox&gt;();</span>
+<span class="lineNum">      98 </span><span class="lineCov">         13 :         } else if(filter.getName()==Model::NoiseFilter::FILTERNAME) {</span>
+<span class="lineNum">      99 </span><span class="lineCov">          3 :                 box=std::make_unique&lt;NoiseFilterBox&gt;();</span>
+<span class="lineNum">     100 </span><span class="lineCov">         12 :         } else if(filter.getName()==Model::RGBFilter::FILTERNAME) {</span>
+<span class="lineNum">     101 </span><span class="lineCov">          3 :                 box=std::make_unique&lt;RGBFilterBox&gt;();</span>
+<span class="lineNum">     102 </span><span class="lineCov">         11 :         } else if(filter.getName()==Model::ColorbalanceFilter::FILTERNAME) {</span>
+<span class="lineNum">     103 </span><span class="lineCov">          9 :                 box=std::make_unique&lt;ColorbalanceFilterBox&gt;();</span>
+<span class="lineNum">     104 </span><span class="lineCov">          8 :         } else if(filter.getName()==Model::RectangleFilter::FILTERNAME) {</span>
+<span class="lineNum">     105 </span><span class="lineCov">          3 :                 box=std::make_unique&lt;RectangleFilterBox&gt;();</span>
+<span class="lineNum">     106 </span>            :         } else {
+<span class="lineNum">     107 </span><span class="lineCov">         21 :                 return std::make_unique&lt;PlainFilterBox&gt;();</span>
+<span class="lineNum">     108 </span>            :         }
+<span class="lineNum">     109 </span>            : 
+<span class="lineNum">     110 </span><span class="lineCov">         24 :         box-&gt;setFilter(filter);</span>
+<span class="lineNum">     111 </span><span class="lineCov">         24 :         box-&gt;setFilterTab(filterTab);</span>
+<span class="lineNum">     112 </span>            : 
+<span class="lineNum">     113 </span><span class="lineCov">         24 :         return std::move(box);</span>
+<a name="114"><span class="lineNum">     114 </span>            : }</a>
+<span class="lineNum">     115 </span>            : 
+<span class="lineNum">     116 </span><span class="lineCov">         24 : void GUI::FilterConfigurationBox::setFilter(Model::Filter&amp; filter) {</span>
+<span class="lineNum">     117 </span><span class="lineCov">         24 :         filter_=&amp;filter;</span>
+<span class="lineNum">     118 </span><span class="lineCov">         24 :         label_filter_-&gt;setText(filter_-&gt;getName()+&quot; filter&quot;);</span>
+<span class="lineNum">     119 </span><span class="lineCov">         24 :         updateUi();</span>
+<a name="120"><span class="lineNum">     120 </span><span class="lineCov">         24 : }</span></a>
+<span class="lineNum">     121 </span>            : 
+<span class="lineNum">     122 </span><span class="lineNoCov">          0 : Model::Filter* GUI::FilterConfigurationBox::getFilter() {</span>
+<span class="lineNum">     123 </span><span class="lineNoCov">          0 :         return filter_;</span>
+<a name="124"><span class="lineNum">     124 </span>            : }</a>
+<span class="lineNum">     125 </span>            : 
+<span class="lineNum">     126 </span><span class="lineCov">         24 : void GUI::FilterConfigurationBox::setFilterTab(GUI::FilterTab &amp;filterTab) {</span>
+<span class="lineNum">     127 </span><span class="lineCov">         24 :         filterTab_=&amp;filterTab;</span>
+<a name="128"><span class="lineNum">     128 </span><span class="lineCov">         24 : }</span></a>
+<span class="lineNum">     129 </span>            : 
+<span class="lineNum">     130 </span><span class="lineCov">         31 : void GUI::FilterConfigurationBox::setFilterIndex(std::size_t index) {</span>
+<span class="lineNum">     131 </span><span class="lineCov">         31 :         index_=index;</span>
+<a name="132"><span class="lineNum">     132 </span><span class="lineCov">         31 : }</span></a>
+<span class="lineNum">     133 </span>            : 
+<span class="lineNum">     134 </span><span class="lineCov">         88 : void GUI::FilterConfigurationBox::updatePreview() {</span>
+<span class="lineNum">     135 </span><span class="lineCov">        176 :         Model::FilterList filterList;</span>
+<span class="lineNum">     136 </span><span class="lineCov">        264 :         filterList.appendFilter(tempFilter_-&gt;getName())-&gt;restore(tempFilter_-&gt;getSaveString());</span>
+<span class="lineNum">     137 </span>            : 
+<span class="lineNum">     138 </span><span class="lineCov">         88 :         auto avframe=Utility::VideoConverter::convertQImageToAVFrame(getDefaultImage());</span>
+<span class="lineNum">     139 </span>            : 
+<span class="lineNum">     140 </span><span class="lineCov">        176 :         Utility::FilterApplier applier(filterList,avframe-&gt;width,avframe-&gt;height,avframe-&gt;format);</span>
+<span class="lineNum">     141 </span>            : 
+<span class="lineNum">     142 </span><span class="lineCov">         88 :         auto filteredFrame=applier.applyToFrame(*avframe);</span>
+<span class="lineNum">     143 </span>            : 
+<span class="lineNum">     144 </span><span class="lineCov">        264 :         filteredImage_=Utility::VideoConverter::convertAVFrameToQImage(*filteredFrame);</span>
+<span class="lineNum">     145 </span><span class="lineCov">        176 :         filterPreview_-&gt;setFrame(*filteredImage_);</span>
+<span class="lineNum">     146 </span>            : 
+<span class="lineNum">     147 </span><span class="lineCov">         88 :         av_frame_unref(avframe);</span>
+<span class="lineNum">     148 </span><span class="lineCov">         88 :         av_frame_unref(filteredFrame);</span>
+<span class="lineNum">     149 </span><span class="lineCov">         88 :         av_frame_free(&amp;avframe);</span>
+<span class="lineNum">     150 </span><span class="lineCov">         88 :         av_frame_free(&amp;filteredFrame);</span>
+<a name="151"><span class="lineNum">     151 </span><span class="lineCov">         88 : }</span></a>
+<span class="lineNum">     152 </span>            : 
+<span class="lineNum">     153 </span><span class="lineCov">         24 : void GUI::FilterConfigurationBox::updateTempFilter() {</span>
+<span class="lineNum">     154 </span><span class="lineCov">         24 :         if(!filter_)</span>
+<span class="lineNum">     155 </span>            :                 return;
+<span class="lineNum">     156 </span>            : 
+<span class="lineNum">     157 </span><span class="lineCov">         48 :         tempFilter_-&gt;restore(filter_-&gt;getSaveString());</span>
+<a name="158"><span class="lineNum">     158 </span>            : }</a>
+<span class="lineNum">     159 </span>            : 
+<span class="lineNum">     160 </span><span class="lineNoCov">          0 : void GUI::FilterConfigurationBox::applyFilter() {</span>
+<span class="lineNum">     161 </span><span class="lineNoCov">          0 :         auto command=new UndoRedo::ChangeFilter(*filterTab_,index_,filter_-&gt;getSaveString(),</span>
+<span class="lineNum">     162 </span><span class="lineNoCov">          0 :                                                 tempFilter_-&gt;getSaveString());</span>
+<span class="lineNum">     163 </span>            : 
+<span class="lineNum">     164 </span><span class="lineNoCov">          0 :         UndoRedo::UndoStack::getUndoStack().push(command);</span>
+<a name="165"><span class="lineNum">     165 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     166 </span>            : 
+<span class="lineNum">     167 </span><span class="lineNoCov">          0 : void GUI::FilterConfigurationBox::resetFilter() {</span>
+<span class="lineNum">     168 </span><span class="lineNoCov">          0 :         updateTempFilter();</span>
+<span class="lineNum">     169 </span><span class="lineNoCov">          0 :         updateUi();</span>
+<a name="170"><span class="lineNum">     170 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     171 </span>            : 
+<span class="lineNum">     172 </span><span class="lineCov">         32 : void GUI::FilterConfigurationBox::createUi() {</span>
+<span class="lineNum">     173 </span><span class="lineCov">         32 :         filterPreview_=new FrameView;</span>
+<span class="lineNum">     174 </span><span class="lineCov">         32 :         filterPreview_-&gt;setFixedSize(200,200);</span>
+<span class="lineNum">     175 </span><span class="lineCov">         32 :         filterPreview_-&gt;setFrame(getDefaultImage());</span>
+<span class="lineNum">     176 </span>            : 
+<span class="lineNum">     177 </span><span class="lineCov">         32 :         button_apply_=new QPushButton(&quot;Apply&quot;);</span>
+<span class="lineNum">     178 </span>            :         QString stylesheet(&quot;QPushButton {&quot;
+<span class="lineNum">     179 </span>            :                            &quot;color: rgb(0, 0, 0);&quot;
+<span class="lineNum">     180 </span>            :                            &quot;background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #88d, stop: 0.1 #99e, stop: 0.49 #77c);&quot;
+<span class="lineNum">     181 </span>            :                            &quot;background: rgb(220, 220, 220);&quot;
+<span class="lineNum">     182 </span>            :                            &quot;border-width: 1px;&quot;
+<span class="lineNum">     183 </span>            :                            &quot;border-color:rgb(0, 0, 0);&quot;
+<span class="lineNum">     184 </span>            :                            &quot;border-style: outset;&quot;
+<span class="lineNum">     185 </span>            :                            &quot;border-radius: 7px;&quot;
+<span class="lineNum">     186 </span>            :                            &quot;font-size: 14px;&quot;
+<span class="lineNum">     187 </span>            :                            &quot;}&quot;
+<span class="lineNum">     188 </span>            :                            &quot;QPushButton:pressed {&quot;
+<span class="lineNum">     189 </span>            :                            &quot;background-color: rgb(200, 200, 200);&quot;
+<span class="lineNum">     190 </span>            :                            &quot;border-style: inset;&quot;
+<span class="lineNum">     191 </span>            :                            &quot;}&quot;
+<span class="lineNum">     192 </span><span class="lineCov">         64 :                           );</span>
+<span class="lineNum">     193 </span><span class="lineCov">         32 :         button_apply_-&gt;setStyleSheet(stylesheet);</span>
+<span class="lineNum">     194 </span><span class="lineCov">         32 :         button_apply_-&gt;setFixedSize(70,25);</span>
+<span class="lineNum">     195 </span>            : 
+<span class="lineNum">     196 </span><span class="lineCov">         32 :         button_reset_=new QPushButton(&quot;Reset&quot;);</span>
+<span class="lineNum">     197 </span><span class="lineCov">         32 :         button_reset_-&gt;setStyleSheet(stylesheet);</span>
+<span class="lineNum">     198 </span><span class="lineCov">         32 :         button_reset_-&gt;setFixedSize(70,25);</span>
+<span class="lineNum">     199 </span>            : 
+<span class="lineNum">     200 </span><span class="lineCov">         64 :         label_filter_=new QLabel(tr(&quot;Filter options:&quot;));</span>
+<span class="lineNum">     201 </span><span class="lineCov">         64 :         QFont font(&quot;Arial&quot;,12,QFont::Bold);</span>
+<span class="lineNum">     202 </span><span class="lineCov">         32 :         label_filter_-&gt;setFont(font);</span>
+<span class="lineNum">     203 </span>            : 
+<span class="lineNum">     204 </span>            : 
+<span class="lineNum">     205 </span><span class="lineCov">         32 :         filterOptionsArea_=new QScrollArea;</span>
+<span class="lineNum">     206 </span><span class="lineCov">         32 :         filterOptionsArea_-&gt;setFixedSize(330,160);</span>
+<span class="lineNum">     207 </span><span class="lineCov">         32 :         filterOptionsArea_-&gt;setHorizontalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAlwaysOff);</span>
+<span class="lineNum">     208 </span><span class="lineCov">         32 :         filterOptionsArea_-&gt;setObjectName(&quot;OptArea&quot;);</span>
+<span class="lineNum">     209 </span><span class="lineCov">         64 :         filterOptionsArea_-&gt;setStyleSheet(&quot;QScrollArea#OptArea {&quot;</span>
+<span class="lineNum">     210 </span>            :                                           &quot;background-color:white;&quot;
+<span class="lineNum">     211 </span><span class="lineCov">         32 :                                           &quot;}&quot;);</span>
+<span class="lineNum">     212 </span>            : 
+<span class="lineNum">     213 </span><span class="lineCov">         32 :         QHBoxLayout* h_content=new QHBoxLayout;</span>
+<span class="lineNum">     214 </span>            : 
+<span class="lineNum">     215 </span><span class="lineCov">         64 :         h_content-&gt;addWidget(filterPreview_);</span>
+<span class="lineNum">     216 </span><span class="lineCov">         32 :         h_content-&gt;addSpacing(20);</span>
+<span class="lineNum">     217 </span>            : 
+<span class="lineNum">     218 </span><span class="lineCov">         32 :         QVBoxLayout* v_caption_options=new QVBoxLayout;</span>
+<span class="lineNum">     219 </span><span class="lineCov">         32 :         QHBoxLayout* h_label_butt=new QHBoxLayout;</span>
+<span class="lineNum">     220 </span><span class="lineCov">         64 :         h_label_butt-&gt;addWidget(label_filter_);</span>
+<span class="lineNum">     221 </span><span class="lineCov">         32 :         QSpacerItem* sp1=new QSpacerItem(0,0,QSizePolicy::Expanding,QSizePolicy::Minimum);</span>
+<span class="lineNum">     222 </span><span class="lineCov">         32 :         h_label_butt-&gt;addSpacerItem(sp1);</span>
+<span class="lineNum">     223 </span><span class="lineCov">         64 :         h_label_butt-&gt;addWidget(button_reset_);</span>
+<span class="lineNum">     224 </span><span class="lineCov">         64 :         h_label_butt-&gt;addWidget(button_apply_);</span>
+<span class="lineNum">     225 </span><span class="lineCov">         32 :         v_caption_options-&gt;addLayout(h_label_butt);</span>
+<span class="lineNum">     226 </span><span class="lineCov">         64 :         QFrame* separator=new QFrame;</span>
+<span class="lineNum">     227 </span><span class="lineCov">         32 :         separator-&gt;setFrameShape(QFrame::HLine);</span>
+<span class="lineNum">     228 </span><span class="lineCov">         32 :         separator-&gt;setFrameShadow(QFrame::Sunken);</span>
+<span class="lineNum">     229 </span><span class="lineCov">         64 :         v_caption_options-&gt;addWidget(separator);</span>
+<span class="lineNum">     230 </span><span class="lineCov">         64 :         v_caption_options-&gt;addWidget(filterOptionsArea_);</span>
+<span class="lineNum">     231 </span>            : 
+<span class="lineNum">     232 </span><span class="lineCov">         32 :         h_content-&gt;addLayout(v_caption_options);</span>
+<span class="lineNum">     233 </span><span class="lineCov">         32 :         h_content-&gt;addSpacing(20);</span>
+<span class="lineNum">     234 </span>            : 
+<span class="lineNum">     235 </span><span class="lineCov">         32 :         setLayout(h_content);</span>
+<span class="lineNum">     236 </span><span class="lineCov">         32 :         setFixedWidth(600);</span>
+<span class="lineNum">     237 </span><span class="lineCov">         32 :         setObjectName(&quot;BaseBox&quot;);</span>
+<span class="lineNum">     238 </span><span class="lineCov">         64 :         setStyleSheet(&quot;QFrame#BaseBox {&quot;</span>
+<span class="lineNum">     239 </span>            :                       &quot;border-width: 2px;&quot;
+<span class="lineNum">     240 </span>            :                       &quot;border-color:rgb(0, 0, 0);&quot;
+<span class="lineNum">     241 </span>            :                       &quot;border-style: outset;&quot;
+<span class="lineNum">     242 </span>            :                       &quot;border-radius:5px;&quot;
+<span class="lineNum">     243 </span>            :                       &quot;background-color:rgb(245,245,245);&quot;
+<span class="lineNum">     244 </span><span class="lineCov">         32 :                       &quot;}&quot;);</span>
+<a name="245"><span class="lineNum">     245 </span><span class="lineCov">         32 : }</span></a>
+<span class="lineNum">     246 </span>            : 
+<span class="lineNum">     247 </span><span class="lineCov">        120 : QImage&amp; GUI::FilterConfigurationBox::getDefaultImage() {</span>
+<span class="lineNum">     248 </span><span class="lineCov">        120 :         if(defaultImage_.get()) {</span>
+<span class="lineNum">     249 </span>            :                 return *defaultImage_;
+<span class="lineNum">     250 </span>            :         }
+<span class="lineNum">     251 </span><span class="lineCov">          3 :         defaultImage_=std::make_unique&lt;QImage&gt;(&quot;:/pictures/resources/flower_example.png&quot;);</span>
+<a name="252"><span class="lineNum">     252 </span>            : </a>
+<span class="lineNum">     253 </span><span class="lineCov">          1 :         return *defaultImage_;</span>
+<span class="lineNum">     254 </span><span class="lineCov">          2 : }</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.11</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

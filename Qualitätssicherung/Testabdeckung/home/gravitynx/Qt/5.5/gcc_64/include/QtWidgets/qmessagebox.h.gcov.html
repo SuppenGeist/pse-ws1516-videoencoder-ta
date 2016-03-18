@@ -1,0 +1,402 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - i3.info - /home/gravitynx/Qt/5.5/gcc_64/include/QtWidgets/qmessagebox.h</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../../../index.html">top level</a> - <a href="index.html">home/gravitynx/Qt/5.5/gcc_64/include/QtWidgets</a> - qmessagebox.h<span style="font-size: 80%;"> (source / <a href="qmessagebox.h.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">i3.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2016-03-18 19:49:03</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntryHi">-</td>
+          </tr>
+          <tr><td><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : /****************************************************************************</a>
+<span class="lineNum">       2 </span>            : **
+<span class="lineNum">       3 </span>            : ** Copyright (C) 2015 The Qt Company Ltd.
+<span class="lineNum">       4 </span>            : ** Contact: http://www.qt.io/licensing/
+<span class="lineNum">       5 </span>            : **
+<span class="lineNum">       6 </span>            : ** This file is part of the QtWidgets module of the Qt Toolkit.
+<span class="lineNum">       7 </span>            : **
+<span class="lineNum">       8 </span>            : ** $QT_BEGIN_LICENSE:LGPL21$
+<span class="lineNum">       9 </span>            : ** Commercial License Usage
+<span class="lineNum">      10 </span>            : ** Licensees holding valid commercial Qt licenses may use this file in
+<span class="lineNum">      11 </span>            : ** accordance with the commercial license agreement provided with the
+<span class="lineNum">      12 </span>            : ** Software or, alternatively, in accordance with the terms contained in
+<span class="lineNum">      13 </span>            : ** a written agreement between you and The Qt Company. For licensing terms
+<span class="lineNum">      14 </span>            : ** and conditions see http://www.qt.io/terms-conditions. For further
+<span class="lineNum">      15 </span>            : ** information use the contact form at http://www.qt.io/contact-us.
+<span class="lineNum">      16 </span>            : **
+<span class="lineNum">      17 </span>            : ** GNU Lesser General Public License Usage
+<span class="lineNum">      18 </span>            : ** Alternatively, this file may be used under the terms of the GNU Lesser
+<span class="lineNum">      19 </span>            : ** General Public License version 2.1 or version 3 as published by the Free
+<span class="lineNum">      20 </span>            : ** Software Foundation and appearing in the file LICENSE.LGPLv21 and
+<span class="lineNum">      21 </span>            : ** LICENSE.LGPLv3 included in the packaging of this file. Please review the
+<span class="lineNum">      22 </span>            : ** following information to ensure the GNU Lesser General Public License
+<span class="lineNum">      23 </span>            : ** requirements will be met: https://www.gnu.org/licenses/lgpl.html and
+<span class="lineNum">      24 </span>            : ** http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
+<span class="lineNum">      25 </span>            : **
+<span class="lineNum">      26 </span>            : ** As a special exception, The Qt Company gives you certain additional
+<span class="lineNum">      27 </span>            : ** rights. These rights are described in The Qt Company LGPL Exception
+<span class="lineNum">      28 </span>            : ** version 1.1, included in the file LGPL_EXCEPTION.txt in this package.
+<span class="lineNum">      29 </span>            : **
+<span class="lineNum">      30 </span>            : ** $QT_END_LICENSE$
+<span class="lineNum">      31 </span>            : **
+<span class="lineNum">      32 </span>            : ****************************************************************************/
+<span class="lineNum">      33 </span>            : 
+<span class="lineNum">      34 </span>            : #ifndef QMESSAGEBOX_H
+<span class="lineNum">      35 </span>            : #define QMESSAGEBOX_H
+<span class="lineNum">      36 </span>            : 
+<span class="lineNum">      37 </span>            : #include &lt;QtWidgets/qdialog.h&gt;
+<span class="lineNum">      38 </span>            : 
+<span class="lineNum">      39 </span>            : QT_BEGIN_NAMESPACE
+<span class="lineNum">      40 </span>            : 
+<span class="lineNum">      41 </span>            : 
+<span class="lineNum">      42 </span>            : #ifndef QT_NO_MESSAGEBOX
+<span class="lineNum">      43 </span>            : 
+<span class="lineNum">      44 </span>            : class QLabel;
+<span class="lineNum">      45 </span>            : class QMessageBoxPrivate;
+<span class="lineNum">      46 </span>            : class QAbstractButton;
+<span class="lineNum">      47 </span>            : class QCheckBox;
+<span class="lineNum">      48 </span>            : 
+<span class="lineNum">      49 </span>            : class Q_WIDGETS_EXPORT QMessageBox : public QDialog
+<span class="lineNum">      50 </span>            : {
+<span class="lineNum">      51 </span>            :     Q_OBJECT
+<span class="lineNum">      52 </span>            :     Q_FLAGS(StandardButtons)
+<span class="lineNum">      53 </span>            :     Q_PROPERTY(QString text READ text WRITE setText)
+<span class="lineNum">      54 </span>            :     Q_PROPERTY(Icon icon READ icon WRITE setIcon)
+<span class="lineNum">      55 </span>            :     Q_PROPERTY(QPixmap iconPixmap READ iconPixmap WRITE setIconPixmap)
+<span class="lineNum">      56 </span>            :     Q_PROPERTY(Qt::TextFormat textFormat READ textFormat WRITE setTextFormat)
+<span class="lineNum">      57 </span>            :     Q_PROPERTY(StandardButtons standardButtons READ standardButtons WRITE setStandardButtons)
+<span class="lineNum">      58 </span>            : #ifndef QT_NO_TEXTEDIT
+<span class="lineNum">      59 </span>            :     Q_PROPERTY(QString detailedText READ detailedText WRITE setDetailedText)
+<span class="lineNum">      60 </span>            : #endif
+<span class="lineNum">      61 </span>            :     Q_PROPERTY(QString informativeText READ informativeText WRITE setInformativeText)
+<span class="lineNum">      62 </span>            :     Q_PROPERTY(Qt::TextInteractionFlags textInteractionFlags READ textInteractionFlags WRITE setTextInteractionFlags)
+<span class="lineNum">      63 </span>            : 
+<span class="lineNum">      64 </span>            : public:
+<span class="lineNum">      65 </span>            :     enum Icon {
+<span class="lineNum">      66 </span>            :         // keep this in sync with QMessageDialogOptions::Icon
+<span class="lineNum">      67 </span>            :         NoIcon = 0,
+<span class="lineNum">      68 </span>            :         Information = 1,
+<span class="lineNum">      69 </span>            :         Warning = 2,
+<span class="lineNum">      70 </span>            :         Critical = 3,
+<span class="lineNum">      71 </span>            :         Question = 4
+<span class="lineNum">      72 </span>            :     };
+<span class="lineNum">      73 </span>            :     Q_ENUM(Icon)
+<span class="lineNum">      74 </span>            : 
+<span class="lineNum">      75 </span>            :     enum ButtonRole {
+<span class="lineNum">      76 </span>            :         // keep this in sync with QDialogButtonBox::ButtonRole and QPlatformDialogHelper::ButtonRole
+<span class="lineNum">      77 </span>            :         InvalidRole = -1,
+<span class="lineNum">      78 </span>            :         AcceptRole,
+<span class="lineNum">      79 </span>            :         RejectRole,
+<span class="lineNum">      80 </span>            :         DestructiveRole,
+<span class="lineNum">      81 </span>            :         ActionRole,
+<span class="lineNum">      82 </span>            :         HelpRole,
+<span class="lineNum">      83 </span>            :         YesRole,
+<span class="lineNum">      84 </span>            :         NoRole,
+<span class="lineNum">      85 </span>            :         ResetRole,
+<span class="lineNum">      86 </span>            :         ApplyRole,
+<span class="lineNum">      87 </span>            : 
+<span class="lineNum">      88 </span>            :         NRoles
+<span class="lineNum">      89 </span>            :     };
+<span class="lineNum">      90 </span>            : 
+<span class="lineNum">      91 </span>            :     enum StandardButton {
+<span class="lineNum">      92 </span>            :         // keep this in sync with QDialogButtonBox::StandardButton and QPlatformDialogHelper::StandardButton
+<span class="lineNum">      93 </span>            :         NoButton           = 0x00000000,
+<span class="lineNum">      94 </span>            :         Ok                 = 0x00000400,
+<span class="lineNum">      95 </span>            :         Save               = 0x00000800,
+<span class="lineNum">      96 </span>            :         SaveAll            = 0x00001000,
+<span class="lineNum">      97 </span>            :         Open               = 0x00002000,
+<span class="lineNum">      98 </span>            :         Yes                = 0x00004000,
+<span class="lineNum">      99 </span>            :         YesToAll           = 0x00008000,
+<span class="lineNum">     100 </span>            :         No                 = 0x00010000,
+<span class="lineNum">     101 </span>            :         NoToAll            = 0x00020000,
+<span class="lineNum">     102 </span>            :         Abort              = 0x00040000,
+<span class="lineNum">     103 </span>            :         Retry              = 0x00080000,
+<span class="lineNum">     104 </span>            :         Ignore             = 0x00100000,
+<span class="lineNum">     105 </span>            :         Close              = 0x00200000,
+<span class="lineNum">     106 </span>            :         Cancel             = 0x00400000,
+<span class="lineNum">     107 </span>            :         Discard            = 0x00800000,
+<span class="lineNum">     108 </span>            :         Help               = 0x01000000,
+<span class="lineNum">     109 </span>            :         Apply              = 0x02000000,
+<span class="lineNum">     110 </span>            :         Reset              = 0x04000000,
+<span class="lineNum">     111 </span>            :         RestoreDefaults    = 0x08000000,
+<span class="lineNum">     112 </span>            : 
+<span class="lineNum">     113 </span>            :         FirstButton        = Ok,                // internal
+<span class="lineNum">     114 </span>            :         LastButton         = RestoreDefaults,   // internal
+<span class="lineNum">     115 </span>            : 
+<span class="lineNum">     116 </span>            :         YesAll             = YesToAll,          // obsolete
+<span class="lineNum">     117 </span>            :         NoAll              = NoToAll,           // obsolete
+<span class="lineNum">     118 </span>            : 
+<span class="lineNum">     119 </span>            :         Default            = 0x00000100,        // obsolete
+<span class="lineNum">     120 </span>            :         Escape             = 0x00000200,        // obsolete
+<span class="lineNum">     121 </span>            :         FlagMask           = 0x00000300,        // obsolete
+<span class="lineNum">     122 </span>            :         ButtonMask         = ~FlagMask          // obsolete
+<span class="lineNum">     123 </span>            :     };
+<span class="lineNum">     124 </span>            :     typedef StandardButton Button;  // obsolete
+<span class="lineNum">     125 </span>            : 
+<span class="lineNum">     126 </span>            :     Q_DECLARE_FLAGS(StandardButtons, StandardButton)
+<span class="lineNum">     127 </span>            : 
+<span class="lineNum">     128 </span>            :     explicit QMessageBox(QWidget *parent = 0);
+<span class="lineNum">     129 </span>            :     QMessageBox(Icon icon, const QString &amp;title, const QString &amp;text,
+<span class="lineNum">     130 </span>            :                 StandardButtons buttons = NoButton, QWidget *parent = 0,
+<span class="lineNum">     131 </span>            :                 Qt::WindowFlags flags = Qt::Dialog | Qt::MSWindowsFixedSizeDialogHint);
+<span class="lineNum">     132 </span>            :     ~QMessageBox();
+<span class="lineNum">     133 </span>            : 
+<span class="lineNum">     134 </span>            :     void addButton(QAbstractButton *button, ButtonRole role);
+<span class="lineNum">     135 </span>            :     QPushButton *addButton(const QString &amp;text, ButtonRole role);
+<span class="lineNum">     136 </span>            :     QPushButton *addButton(StandardButton button);
+<span class="lineNum">     137 </span>            :     void removeButton(QAbstractButton *button);
+<span class="lineNum">     138 </span>            : 
+<span class="lineNum">     139 </span>            : #ifdef Q_OS_WINCE
+<span class="lineNum">     140 </span>            :     void setVisible(bool visible);
+<span class="lineNum">     141 </span>            : #endif
+<span class="lineNum">     142 </span>            : 
+<span class="lineNum">     143 </span>            :     using QDialog::open;
+<span class="lineNum">     144 </span>            :     void open(QObject *receiver, const char *member);
+<span class="lineNum">     145 </span>            : 
+<span class="lineNum">     146 </span>            :     QList&lt;QAbstractButton *&gt; buttons() const;
+<span class="lineNum">     147 </span>            :     ButtonRole buttonRole(QAbstractButton *button) const;
+<span class="lineNum">     148 </span>            : 
+<span class="lineNum">     149 </span>            :     void setStandardButtons(StandardButtons buttons);
+<span class="lineNum">     150 </span>            :     StandardButtons standardButtons() const;
+<span class="lineNum">     151 </span>            :     StandardButton standardButton(QAbstractButton *button) const;
+<span class="lineNum">     152 </span>            :     QAbstractButton *button(StandardButton which) const;
+<span class="lineNum">     153 </span>            : 
+<span class="lineNum">     154 </span>            :     QPushButton *defaultButton() const;
+<span class="lineNum">     155 </span>            :     void setDefaultButton(QPushButton *button);
+<span class="lineNum">     156 </span>            :     void setDefaultButton(StandardButton button);
+<span class="lineNum">     157 </span>            : 
+<span class="lineNum">     158 </span>            :     QAbstractButton *escapeButton() const;
+<span class="lineNum">     159 </span>            :     void setEscapeButton(QAbstractButton *button);
+<span class="lineNum">     160 </span>            :     void setEscapeButton(StandardButton button);
+<span class="lineNum">     161 </span>            : 
+<span class="lineNum">     162 </span>            :     QAbstractButton *clickedButton() const;
+<span class="lineNum">     163 </span>            : 
+<span class="lineNum">     164 </span>            :     QString text() const;
+<span class="lineNum">     165 </span>            :     void setText(const QString &amp;text);
+<span class="lineNum">     166 </span>            : 
+<span class="lineNum">     167 </span>            :     Icon icon() const;
+<span class="lineNum">     168 </span>            :     void setIcon(Icon);
+<span class="lineNum">     169 </span>            : 
+<span class="lineNum">     170 </span>            :     QPixmap iconPixmap() const;
+<span class="lineNum">     171 </span>            :     void setIconPixmap(const QPixmap &amp;pixmap);
+<span class="lineNum">     172 </span>            : 
+<span class="lineNum">     173 </span>            :     Qt::TextFormat textFormat() const;
+<span class="lineNum">     174 </span>            :     void setTextFormat(Qt::TextFormat format);
+<span class="lineNum">     175 </span>            : 
+<span class="lineNum">     176 </span>            :     void setTextInteractionFlags(Qt::TextInteractionFlags flags);
+<span class="lineNum">     177 </span>            :     Qt::TextInteractionFlags textInteractionFlags() const;
+<span class="lineNum">     178 </span>            : 
+<span class="lineNum">     179 </span>            :     void setCheckBox(QCheckBox *cb);
+<span class="lineNum">     180 </span>            :     QCheckBox* checkBox() const;
+<span class="lineNum">     181 </span>            : 
+<span class="lineNum">     182 </span>            :     static StandardButton information(QWidget *parent, const QString &amp;title,
+<span class="lineNum">     183 </span>            :          const QString &amp;text, StandardButtons buttons = Ok,
+<span class="lineNum">     184 </span>            :          StandardButton defaultButton = NoButton);
+<span class="lineNum">     185 </span>            :     static StandardButton question(QWidget *parent, const QString &amp;title,
+<span class="lineNum">     186 </span>            :          const QString &amp;text, StandardButtons buttons = StandardButtons(Yes | No),
+<span class="lineNum">     187 </span>            :          StandardButton defaultButton = NoButton);
+<span class="lineNum">     188 </span>            :     static StandardButton warning(QWidget *parent, const QString &amp;title,
+<span class="lineNum">     189 </span>            :          const QString &amp;text, StandardButtons buttons = Ok,
+<span class="lineNum">     190 </span>            :          StandardButton defaultButton = NoButton);
+<span class="lineNum">     191 </span>            :     static StandardButton critical(QWidget *parent, const QString &amp;title,
+<span class="lineNum">     192 </span>            :          const QString &amp;text, StandardButtons buttons = Ok,
+<span class="lineNum">     193 </span>            :          StandardButton defaultButton = NoButton);
+<span class="lineNum">     194 </span>            :     static void about(QWidget *parent, const QString &amp;title, const QString &amp;text);
+<span class="lineNum">     195 </span>            :     static void aboutQt(QWidget *parent, const QString &amp;title = QString());
+<span class="lineNum">     196 </span>            : 
+<span class="lineNum">     197 </span>            :     // the following functions are obsolete:
+<span class="lineNum">     198 </span>            : 
+<span class="lineNum">     199 </span>            :     QMessageBox(const QString &amp;title, const QString &amp;text, Icon icon,
+<span class="lineNum">     200 </span>            :                   int button0, int button1, int button2,
+<span class="lineNum">     201 </span>            :                   QWidget *parent = 0,
+<span class="lineNum">     202 </span>            :                   Qt::WindowFlags f = Qt::Dialog | Qt::MSWindowsFixedSizeDialogHint);
+<span class="lineNum">     203 </span>            : 
+<span class="lineNum">     204 </span>            :     static int information(QWidget *parent, const QString &amp;title,
+<span class="lineNum">     205 </span>            :                            const QString&amp; text,
+<span class="lineNum">     206 </span>            :                            int button0, int button1 = 0, int button2 = 0);
+<span class="lineNum">     207 </span>            :     static int information(QWidget *parent, const QString &amp;title,
+<span class="lineNum">     208 </span>            :                            const QString&amp; text,
+<span class="lineNum">     209 </span>            :                            const QString&amp; button0Text,
+<span class="lineNum">     210 </span>            :                            const QString&amp; button1Text = QString(),
+<span class="lineNum">     211 </span>            :                            const QString&amp; button2Text = QString(),
+<span class="lineNum">     212 </span>            :                            int defaultButtonNumber = 0,
+<span class="lineNum">     213 </span>            :                            int escapeButtonNumber = -1);
+<span class="lineNum">     214 </span>            :     inline static StandardButton information(QWidget *parent, const QString &amp;title,
+<span class="lineNum">     215 </span>            :                                   const QString&amp; text,
+<span class="lineNum">     216 </span>            :                                   StandardButton button0, StandardButton button1 = NoButton)
+<span class="lineNum">     217 </span><span class="lineNoCov">          0 :     { return information(parent, title, text, StandardButtons(button0), button1); }</span>
+<span class="lineNum">     218 </span>            : 
+<span class="lineNum">     219 </span>            :     static int question(QWidget *parent, const QString &amp;title,
+<span class="lineNum">     220 </span>            :                         const QString&amp; text,
+<span class="lineNum">     221 </span>            :                         int button0, int button1 = 0, int button2 = 0);
+<span class="lineNum">     222 </span>            :     static int question(QWidget *parent, const QString &amp;title,
+<span class="lineNum">     223 </span>            :                         const QString&amp; text,
+<span class="lineNum">     224 </span>            :                         const QString&amp; button0Text,
+<span class="lineNum">     225 </span>            :                         const QString&amp; button1Text = QString(),
+<span class="lineNum">     226 </span>            :                         const QString&amp; button2Text = QString(),
+<span class="lineNum">     227 </span>            :                         int defaultButtonNumber = 0,
+<span class="lineNum">     228 </span>            :                         int escapeButtonNumber = -1);
+<span class="lineNum">     229 </span>            :     inline static int question(QWidget *parent, const QString &amp;title,
+<span class="lineNum">     230 </span>            :                                const QString&amp; text,
+<span class="lineNum">     231 </span>            :                                StandardButton button0, StandardButton button1)
+<span class="lineNum">     232 </span>            :     { return question(parent, title, text, StandardButtons(button0), button1); }
+<span class="lineNum">     233 </span>            : 
+<span class="lineNum">     234 </span>            :     static int warning(QWidget *parent, const QString &amp;title,
+<span class="lineNum">     235 </span>            :                        const QString&amp; text,
+<span class="lineNum">     236 </span>            :                        int button0, int button1, int button2 = 0);
+<span class="lineNum">     237 </span>            :     static int warning(QWidget *parent, const QString &amp;title,
+<span class="lineNum">     238 </span>            :                        const QString&amp; text,
+<span class="lineNum">     239 </span>            :                        const QString&amp; button0Text,
+<span class="lineNum">     240 </span>            :                        const QString&amp; button1Text = QString(),
+<span class="lineNum">     241 </span>            :                        const QString&amp; button2Text = QString(),
+<span class="lineNum">     242 </span>            :                        int defaultButtonNumber = 0,
+<span class="lineNum">     243 </span>            :                        int escapeButtonNumber = -1);
+<span class="lineNum">     244 </span>            :     inline static int warning(QWidget *parent, const QString &amp;title,
+<span class="lineNum">     245 </span>            :                               const QString&amp; text,
+<span class="lineNum">     246 </span>            :                               StandardButton button0, StandardButton button1)
+<span class="lineNum">     247 </span>            :     { return warning(parent, title, text, StandardButtons(button0), button1); }
+<span class="lineNum">     248 </span>            : 
+<span class="lineNum">     249 </span>            :     static int critical(QWidget *parent, const QString &amp;title,
+<span class="lineNum">     250 </span>            :                         const QString&amp; text,
+<span class="lineNum">     251 </span>            :                         int button0, int button1, int button2 = 0);
+<span class="lineNum">     252 </span>            :     static int critical(QWidget *parent, const QString &amp;title,
+<span class="lineNum">     253 </span>            :                         const QString&amp; text,
+<span class="lineNum">     254 </span>            :                         const QString&amp; button0Text,
+<span class="lineNum">     255 </span>            :                         const QString&amp; button1Text = QString(),
+<span class="lineNum">     256 </span>            :                         const QString&amp; button2Text = QString(),
+<span class="lineNum">     257 </span>            :                         int defaultButtonNumber = 0,
+<span class="lineNum">     258 </span>            :                         int escapeButtonNumber = -1);
+<span class="lineNum">     259 </span>            :     inline static int critical(QWidget *parent, const QString &amp;title,
+<span class="lineNum">     260 </span>            :                                const QString&amp; text,
+<span class="lineNum">     261 </span>            :                                StandardButton button0, StandardButton button1)
+<span class="lineNum">     262 </span>            :     { return critical(parent, title, text, StandardButtons(button0), button1); }
+<span class="lineNum">     263 </span>            : 
+<span class="lineNum">     264 </span>            :     QString buttonText(int button) const;
+<span class="lineNum">     265 </span>            :     void setButtonText(int button, const QString &amp;text);
+<span class="lineNum">     266 </span>            : 
+<span class="lineNum">     267 </span>            :     QString informativeText() const;
+<span class="lineNum">     268 </span>            :     void setInformativeText(const QString &amp;text);
+<span class="lineNum">     269 </span>            : 
+<span class="lineNum">     270 </span>            : #ifndef QT_NO_TEXTEDIT
+<span class="lineNum">     271 </span>            :     QString detailedText() const;
+<span class="lineNum">     272 </span>            :     void setDetailedText(const QString &amp;text);
+<span class="lineNum">     273 </span>            : #endif
+<span class="lineNum">     274 </span>            : 
+<span class="lineNum">     275 </span>            :     void setWindowTitle(const QString &amp;title);
+<span class="lineNum">     276 </span>            :     void setWindowModality(Qt::WindowModality windowModality);
+<span class="lineNum">     277 </span>            : 
+<span class="lineNum">     278 </span>            : 
+<span class="lineNum">     279 </span>            :     static QPixmap standardIcon(Icon icon);
+<span class="lineNum">     280 </span>            : 
+<span class="lineNum">     281 </span>            : Q_SIGNALS:
+<span class="lineNum">     282 </span>            :     void buttonClicked(QAbstractButton *button);
+<span class="lineNum">     283 </span>            : 
+<span class="lineNum">     284 </span>            : #ifdef Q_QDOC
+<span class="lineNum">     285 </span>            : public Q_SLOTS:
+<span class="lineNum">     286 </span>            :     int exec();
+<span class="lineNum">     287 </span>            : #endif
+<span class="lineNum">     288 </span>            : 
+<span class="lineNum">     289 </span>            : protected:
+<span class="lineNum">     290 </span>            :     bool event(QEvent *e) Q_DECL_OVERRIDE;
+<span class="lineNum">     291 </span>            :     void resizeEvent(QResizeEvent *event) Q_DECL_OVERRIDE;
+<span class="lineNum">     292 </span>            :     void showEvent(QShowEvent *event) Q_DECL_OVERRIDE;
+<span class="lineNum">     293 </span>            :     void closeEvent(QCloseEvent *event) Q_DECL_OVERRIDE;
+<span class="lineNum">     294 </span>            :     void keyPressEvent(QKeyEvent *event) Q_DECL_OVERRIDE;
+<span class="lineNum">     295 </span>            :     void changeEvent(QEvent *event) Q_DECL_OVERRIDE;
+<span class="lineNum">     296 </span>            : 
+<span class="lineNum">     297 </span>            : private:
+<span class="lineNum">     298 </span>            :     Q_PRIVATE_SLOT(d_func(), void _q_buttonClicked(QAbstractButton *))
+<span class="lineNum">     299 </span>            :     Q_PRIVATE_SLOT(d_func(), void _q_clicked(QPlatformDialogHelper::StandardButton, QPlatformDialogHelper::ButtonRole))
+<span class="lineNum">     300 </span>            : 
+<span class="lineNum">     301 </span>            :     Q_DISABLE_COPY(QMessageBox)
+<span class="lineNum">     302 </span>            :     Q_DECLARE_PRIVATE(QMessageBox)
+<span class="lineNum">     303 </span>            : };
+<span class="lineNum">     304 </span>            : 
+<span class="lineNum">     305 </span>            : Q_DECLARE_OPERATORS_FOR_FLAGS(QMessageBox::StandardButtons)
+<span class="lineNum">     306 </span>            : 
+<span class="lineNum">     307 </span>            : #define QT_REQUIRE_VERSION(argc, argv, str) { QString s = QString::fromLatin1(str);\
+<span class="lineNum">     308 </span>            : QString sq = QString::fromLatin1(qVersion()); \
+<span class="lineNum">     309 </span>            : if ((sq.section(QChar::fromLatin1('.'),0,0).toInt()&lt;&lt;16)+\
+<span class="lineNum">     310 </span>            : (sq.section(QChar::fromLatin1('.'),1,1).toInt()&lt;&lt;8)+\
+<span class="lineNum">     311 </span>            : sq.section(QChar::fromLatin1('.'),2,2).toInt()&lt;(s.section(QChar::fromLatin1('.'),0,0).toInt()&lt;&lt;16)+\
+<span class="lineNum">     312 </span>            : (s.section(QChar::fromLatin1('.'),1,1).toInt()&lt;&lt;8)+\
+<span class="lineNum">     313 </span>            : s.section(QChar::fromLatin1('.'),2,2).toInt()) { \
+<span class="lineNum">     314 </span>            : if (!qApp){ \
+<span class="lineNum">     315 </span>            :     new QApplication(argc,argv); \
+<span class="lineNum">     316 </span>            : } \
+<span class="lineNum">     317 </span>            : QString s = QApplication::tr(&quot;Executable '%1' requires Qt &quot;\
+<span class="lineNum">     318 </span>            :  &quot;%2, found Qt %3.&quot;).arg(qAppName()).arg(QString::fromLatin1(\
+<span class="lineNum">     319 </span>            : str)).arg(QString::fromLatin1(qVersion())); QMessageBox::critical(0, QApplication::tr(\
+<span class="lineNum">     320 </span>            : &quot;Incompatible Qt Library Error&quot;), s, QMessageBox::Abort, 0); qFatal(&quot;%s&quot;, s.toLatin1().data()); }}
+<span class="lineNum">     321 </span>            : 
+<span class="lineNum">     322 </span>            : #endif // QT_NO_MESSAGEBOX
+<span class="lineNum">     323 </span>            : 
+<span class="lineNum">     324 </span>            : QT_END_NAMESPACE
+<span class="lineNum">     325 </span>            : 
+<span class="lineNum">     326 </span>            : #endif // QMESSAGEBOX_H
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.11</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

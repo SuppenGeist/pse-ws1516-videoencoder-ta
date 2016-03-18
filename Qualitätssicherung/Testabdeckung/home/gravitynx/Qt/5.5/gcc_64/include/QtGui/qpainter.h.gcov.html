@@ -1,0 +1,1001 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - i3.info - /home/gravitynx/Qt/5.5/gcc_64/include/QtGui/qpainter.h</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../../../index.html">top level</a> - <a href="index.html">home/gravitynx/Qt/5.5/gcc_64/include/QtGui</a> - qpainter.h<span style="font-size: 80%;"> (source / <a href="qpainter.h.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">i3.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2016-03-18 19:49:03</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : /****************************************************************************</a>
+<span class="lineNum">       2 </span>            : **
+<span class="lineNum">       3 </span>            : ** Copyright (C) 2015 The Qt Company Ltd.
+<span class="lineNum">       4 </span>            : ** Contact: http://www.qt.io/licensing/
+<span class="lineNum">       5 </span>            : **
+<span class="lineNum">       6 </span>            : ** This file is part of the QtGui module of the Qt Toolkit.
+<span class="lineNum">       7 </span>            : **
+<span class="lineNum">       8 </span>            : ** $QT_BEGIN_LICENSE:LGPL21$
+<span class="lineNum">       9 </span>            : ** Commercial License Usage
+<span class="lineNum">      10 </span>            : ** Licensees holding valid commercial Qt licenses may use this file in
+<span class="lineNum">      11 </span>            : ** accordance with the commercial license agreement provided with the
+<span class="lineNum">      12 </span>            : ** Software or, alternatively, in accordance with the terms contained in
+<span class="lineNum">      13 </span>            : ** a written agreement between you and The Qt Company. For licensing terms
+<span class="lineNum">      14 </span>            : ** and conditions see http://www.qt.io/terms-conditions. For further
+<span class="lineNum">      15 </span>            : ** information use the contact form at http://www.qt.io/contact-us.
+<span class="lineNum">      16 </span>            : **
+<span class="lineNum">      17 </span>            : ** GNU Lesser General Public License Usage
+<span class="lineNum">      18 </span>            : ** Alternatively, this file may be used under the terms of the GNU Lesser
+<span class="lineNum">      19 </span>            : ** General Public License version 2.1 or version 3 as published by the Free
+<span class="lineNum">      20 </span>            : ** Software Foundation and appearing in the file LICENSE.LGPLv21 and
+<span class="lineNum">      21 </span>            : ** LICENSE.LGPLv3 included in the packaging of this file. Please review the
+<span class="lineNum">      22 </span>            : ** following information to ensure the GNU Lesser General Public License
+<span class="lineNum">      23 </span>            : ** requirements will be met: https://www.gnu.org/licenses/lgpl.html and
+<span class="lineNum">      24 </span>            : ** http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
+<span class="lineNum">      25 </span>            : **
+<span class="lineNum">      26 </span>            : ** As a special exception, The Qt Company gives you certain additional
+<span class="lineNum">      27 </span>            : ** rights. These rights are described in The Qt Company LGPL Exception
+<span class="lineNum">      28 </span>            : ** version 1.1, included in the file LGPL_EXCEPTION.txt in this package.
+<span class="lineNum">      29 </span>            : **
+<span class="lineNum">      30 </span>            : ** $QT_END_LICENSE$
+<span class="lineNum">      31 </span>            : **
+<span class="lineNum">      32 </span>            : ****************************************************************************/
+<span class="lineNum">      33 </span>            : 
+<span class="lineNum">      34 </span>            : #ifndef QPAINTER_H
+<span class="lineNum">      35 </span>            : #define QPAINTER_H
+<span class="lineNum">      36 </span>            : 
+<span class="lineNum">      37 </span>            : #include &lt;QtCore/qnamespace.h&gt;
+<span class="lineNum">      38 </span>            : #include &lt;QtCore/qrect.h&gt;
+<span class="lineNum">      39 </span>            : #include &lt;QtCore/qpoint.h&gt;
+<span class="lineNum">      40 </span>            : #include &lt;QtCore/qscopedpointer.h&gt;
+<span class="lineNum">      41 </span>            : #include &lt;QtGui/qpixmap.h&gt;
+<span class="lineNum">      42 </span>            : #include &lt;QtGui/qimage.h&gt;
+<span class="lineNum">      43 </span>            : #include &lt;QtGui/qtextoption.h&gt;
+<span class="lineNum">      44 </span>            : 
+<span class="lineNum">      45 </span>            : #ifndef QT_INCLUDE_COMPAT
+<span class="lineNum">      46 </span>            : #include &lt;QtGui/qpolygon.h&gt;
+<span class="lineNum">      47 </span>            : #include &lt;QtGui/qpen.h&gt;
+<span class="lineNum">      48 </span>            : #include &lt;QtGui/qbrush.h&gt;
+<span class="lineNum">      49 </span>            : #include &lt;QtGui/qmatrix.h&gt;
+<span class="lineNum">      50 </span>            : #include &lt;QtGui/qtransform.h&gt;
+<span class="lineNum">      51 </span>            : #include &lt;QtGui/qfontinfo.h&gt;
+<span class="lineNum">      52 </span>            : #include &lt;QtGui/qfontmetrics.h&gt;
+<span class="lineNum">      53 </span>            : #endif
+<span class="lineNum">      54 </span>            : 
+<span class="lineNum">      55 </span>            : QT_BEGIN_NAMESPACE
+<span class="lineNum">      56 </span>            : 
+<span class="lineNum">      57 </span>            : 
+<span class="lineNum">      58 </span>            : class QBrush;
+<span class="lineNum">      59 </span>            : class QFontInfo;
+<span class="lineNum">      60 </span>            : class QFontMetrics;
+<span class="lineNum">      61 </span>            : class QPaintDevice;
+<span class="lineNum">      62 </span>            : class QPainterPath;
+<span class="lineNum">      63 </span>            : class QPainterPrivate;
+<span class="lineNum">      64 </span>            : class QPen;
+<span class="lineNum">      65 </span>            : class QPolygon;
+<span class="lineNum">      66 </span>            : class QTextItem;
+<span class="lineNum">      67 </span>            : class QTextEngine;
+<span class="lineNum">      68 </span>            : class QMatrix;
+<span class="lineNum">      69 </span>            : class QTransform;
+<span class="lineNum">      70 </span>            : class QStaticText;
+<span class="lineNum">      71 </span>            : class QGlyphRun;
+<span class="lineNum">      72 </span>            : 
+<span class="lineNum">      73 </span>            : class QPainterPrivateDeleter;
+<span class="lineNum">      74 </span>            : 
+<span class="lineNum">      75 </span>            : class Q_GUI_EXPORT QPainter
+<span class="lineNum">      76 </span>            : {
+<span class="lineNum">      77 </span>            :     Q_DECLARE_PRIVATE(QPainter)
+<span class="lineNum">      78 </span>            :     Q_GADGET
+<span class="lineNum">      79 </span>            :     Q_FLAGS(RenderHint RenderHints)
+<span class="lineNum">      80 </span>            : 
+<span class="lineNum">      81 </span>            : public:
+<span class="lineNum">      82 </span>            :     enum RenderHint {
+<span class="lineNum">      83 </span>            :         Antialiasing = 0x01,
+<span class="lineNum">      84 </span>            :         TextAntialiasing = 0x02,
+<span class="lineNum">      85 </span>            :         SmoothPixmapTransform = 0x04,
+<span class="lineNum">      86 </span>            :         HighQualityAntialiasing = 0x08,
+<span class="lineNum">      87 </span>            :         NonCosmeticDefaultPen = 0x10,
+<span class="lineNum">      88 </span>            :         Qt4CompatiblePainting = 0x20
+<span class="lineNum">      89 </span>            :     };
+<span class="lineNum">      90 </span>            : 
+<span class="lineNum">      91 </span>            :     Q_DECLARE_FLAGS(RenderHints, RenderHint)
+<span class="lineNum">      92 </span>            : 
+<span class="lineNum">      93 </span>            :     class PixmapFragment {
+<span class="lineNum">      94 </span>            :     public:
+<span class="lineNum">      95 </span>            :         qreal x;
+<span class="lineNum">      96 </span>            :         qreal y;
+<span class="lineNum">      97 </span>            :         qreal sourceLeft;
+<span class="lineNum">      98 </span>            :         qreal sourceTop;
+<span class="lineNum">      99 </span>            :         qreal width;
+<span class="lineNum">     100 </span>            :         qreal height;
+<span class="lineNum">     101 </span>            :         qreal scaleX;
+<span class="lineNum">     102 </span>            :         qreal scaleY;
+<span class="lineNum">     103 </span>            :         qreal rotation;
+<span class="lineNum">     104 </span>            :         qreal opacity;
+<span class="lineNum">     105 </span>            :         static PixmapFragment Q_GUI_EXPORT create(const QPointF &amp;pos, const QRectF &amp;sourceRect,
+<span class="lineNum">     106 </span>            :                                             qreal scaleX = 1, qreal scaleY = 1,
+<span class="lineNum">     107 </span>            :                                             qreal rotation = 0, qreal opacity = 1);
+<span class="lineNum">     108 </span>            :     };
+<span class="lineNum">     109 </span>            : 
+<span class="lineNum">     110 </span>            :     enum PixmapFragmentHint {
+<span class="lineNum">     111 </span>            :         OpaqueHint = 0x01
+<span class="lineNum">     112 </span>            :     };
+<span class="lineNum">     113 </span>            : 
+<span class="lineNum">     114 </span>            :     Q_DECLARE_FLAGS(PixmapFragmentHints, PixmapFragmentHint)
+<span class="lineNum">     115 </span>            : 
+<span class="lineNum">     116 </span>            :     QPainter();
+<span class="lineNum">     117 </span>            :     explicit QPainter(QPaintDevice *);
+<span class="lineNum">     118 </span>            :     ~QPainter();
+<span class="lineNum">     119 </span>            : 
+<span class="lineNum">     120 </span>            :     QPaintDevice *device() const;
+<span class="lineNum">     121 </span>            : 
+<span class="lineNum">     122 </span>            :     bool begin(QPaintDevice *);
+<span class="lineNum">     123 </span>            :     bool end();
+<span class="lineNum">     124 </span>            :     bool isActive() const;
+<span class="lineNum">     125 </span>            : 
+<span class="lineNum">     126 </span>            :     void initFrom(const QPaintDevice *device);
+<span class="lineNum">     127 </span>            : 
+<span class="lineNum">     128 </span>            :     enum CompositionMode {
+<span class="lineNum">     129 </span>            :         CompositionMode_SourceOver,
+<span class="lineNum">     130 </span>            :         CompositionMode_DestinationOver,
+<span class="lineNum">     131 </span>            :         CompositionMode_Clear,
+<span class="lineNum">     132 </span>            :         CompositionMode_Source,
+<span class="lineNum">     133 </span>            :         CompositionMode_Destination,
+<span class="lineNum">     134 </span>            :         CompositionMode_SourceIn,
+<span class="lineNum">     135 </span>            :         CompositionMode_DestinationIn,
+<span class="lineNum">     136 </span>            :         CompositionMode_SourceOut,
+<span class="lineNum">     137 </span>            :         CompositionMode_DestinationOut,
+<span class="lineNum">     138 </span>            :         CompositionMode_SourceAtop,
+<span class="lineNum">     139 </span>            :         CompositionMode_DestinationAtop,
+<span class="lineNum">     140 </span>            :         CompositionMode_Xor,
+<span class="lineNum">     141 </span>            : 
+<span class="lineNum">     142 </span>            :         //svg 1.2 blend modes
+<span class="lineNum">     143 </span>            :         CompositionMode_Plus,
+<span class="lineNum">     144 </span>            :         CompositionMode_Multiply,
+<span class="lineNum">     145 </span>            :         CompositionMode_Screen,
+<span class="lineNum">     146 </span>            :         CompositionMode_Overlay,
+<span class="lineNum">     147 </span>            :         CompositionMode_Darken,
+<span class="lineNum">     148 </span>            :         CompositionMode_Lighten,
+<span class="lineNum">     149 </span>            :         CompositionMode_ColorDodge,
+<span class="lineNum">     150 </span>            :         CompositionMode_ColorBurn,
+<span class="lineNum">     151 </span>            :         CompositionMode_HardLight,
+<span class="lineNum">     152 </span>            :         CompositionMode_SoftLight,
+<span class="lineNum">     153 </span>            :         CompositionMode_Difference,
+<span class="lineNum">     154 </span>            :         CompositionMode_Exclusion,
+<span class="lineNum">     155 </span>            : 
+<span class="lineNum">     156 </span>            :         // ROPs
+<span class="lineNum">     157 </span>            :         RasterOp_SourceOrDestination,
+<span class="lineNum">     158 </span>            :         RasterOp_SourceAndDestination,
+<span class="lineNum">     159 </span>            :         RasterOp_SourceXorDestination,
+<span class="lineNum">     160 </span>            :         RasterOp_NotSourceAndNotDestination,
+<span class="lineNum">     161 </span>            :         RasterOp_NotSourceOrNotDestination,
+<span class="lineNum">     162 </span>            :         RasterOp_NotSourceXorDestination,
+<span class="lineNum">     163 </span>            :         RasterOp_NotSource,
+<span class="lineNum">     164 </span>            :         RasterOp_NotSourceAndDestination,
+<span class="lineNum">     165 </span>            :         RasterOp_SourceAndNotDestination,
+<span class="lineNum">     166 </span>            :         RasterOp_NotSourceOrDestination,
+<span class="lineNum">     167 </span>            :         RasterOp_SourceOrNotDestination,
+<span class="lineNum">     168 </span>            :         RasterOp_ClearDestination,
+<span class="lineNum">     169 </span>            :         RasterOp_SetDestination,
+<span class="lineNum">     170 </span>            :         RasterOp_NotDestination
+<span class="lineNum">     171 </span>            :     };
+<span class="lineNum">     172 </span>            :     void setCompositionMode(CompositionMode mode);
+<span class="lineNum">     173 </span>            :     CompositionMode compositionMode() const;
+<span class="lineNum">     174 </span>            : 
+<span class="lineNum">     175 </span>            :     const QFont &amp;font() const;
+<span class="lineNum">     176 </span>            :     void setFont(const QFont &amp;f);
+<span class="lineNum">     177 </span>            : 
+<span class="lineNum">     178 </span>            :     QFontMetrics fontMetrics() const;
+<span class="lineNum">     179 </span>            :     QFontInfo fontInfo() const;
+<span class="lineNum">     180 </span>            : 
+<span class="lineNum">     181 </span>            :     void setPen(const QColor &amp;color);
+<span class="lineNum">     182 </span>            :     void setPen(const QPen &amp;pen);
+<span class="lineNum">     183 </span>            :     void setPen(Qt::PenStyle style);
+<span class="lineNum">     184 </span>            :     const QPen &amp;pen() const;
+<span class="lineNum">     185 </span>            : 
+<span class="lineNum">     186 </span>            :     void setBrush(const QBrush &amp;brush);
+<span class="lineNum">     187 </span>            :     void setBrush(Qt::BrushStyle style);
+<span class="lineNum">     188 </span>            :     const QBrush &amp;brush() const;
+<span class="lineNum">     189 </span>            : 
+<span class="lineNum">     190 </span>            :     // attributes/modes
+<span class="lineNum">     191 </span>            :     void setBackgroundMode(Qt::BGMode mode);
+<span class="lineNum">     192 </span>            :     Qt::BGMode backgroundMode() const;
+<span class="lineNum">     193 </span>            : 
+<span class="lineNum">     194 </span>            :     QPoint brushOrigin() const;
+<span class="lineNum">     195 </span>            :     inline void setBrushOrigin(int x, int y);
+<span class="lineNum">     196 </span>            :     inline void setBrushOrigin(const QPoint &amp;);
+<span class="lineNum">     197 </span>            :     void setBrushOrigin(const QPointF &amp;);
+<span class="lineNum">     198 </span>            : 
+<span class="lineNum">     199 </span>            :     void setBackground(const QBrush &amp;bg);
+<span class="lineNum">     200 </span>            :     const QBrush &amp;background() const;
+<span class="lineNum">     201 </span>            : 
+<span class="lineNum">     202 </span>            :     qreal opacity() const;
+<span class="lineNum">     203 </span>            :     void setOpacity(qreal opacity);
+<span class="lineNum">     204 </span>            : 
+<span class="lineNum">     205 </span>            :     // Clip functions
+<span class="lineNum">     206 </span>            :     QRegion clipRegion() const;
+<span class="lineNum">     207 </span>            :     QPainterPath clipPath() const;
+<span class="lineNum">     208 </span>            : 
+<span class="lineNum">     209 </span>            :     void setClipRect(const QRectF &amp;, Qt::ClipOperation op = Qt::ReplaceClip);
+<span class="lineNum">     210 </span>            :     void setClipRect(const QRect &amp;, Qt::ClipOperation op = Qt::ReplaceClip);
+<span class="lineNum">     211 </span>            :     inline void setClipRect(int x, int y, int w, int h, Qt::ClipOperation op = Qt::ReplaceClip);
+<span class="lineNum">     212 </span>            : 
+<span class="lineNum">     213 </span>            :     void setClipRegion(const QRegion &amp;, Qt::ClipOperation op = Qt::ReplaceClip);
+<span class="lineNum">     214 </span>            : 
+<span class="lineNum">     215 </span>            :     void setClipPath(const QPainterPath &amp;path, Qt::ClipOperation op = Qt::ReplaceClip);
+<span class="lineNum">     216 </span>            : 
+<span class="lineNum">     217 </span>            :     void setClipping(bool enable);
+<span class="lineNum">     218 </span>            :     bool hasClipping() const;
+<span class="lineNum">     219 </span>            : 
+<span class="lineNum">     220 </span>            :     QRectF clipBoundingRect() const;
+<span class="lineNum">     221 </span>            : 
+<span class="lineNum">     222 </span>            :     void save();
+<span class="lineNum">     223 </span>            :     void restore();
+<span class="lineNum">     224 </span>            : 
+<span class="lineNum">     225 </span>            :     // XForm functions
+<span class="lineNum">     226 </span>            :     void setMatrix(const QMatrix &amp;matrix, bool combine = false);
+<span class="lineNum">     227 </span>            :     const QMatrix &amp;matrix() const;
+<span class="lineNum">     228 </span>            :     const QMatrix &amp;deviceMatrix() const;
+<span class="lineNum">     229 </span>            :     void resetMatrix();
+<span class="lineNum">     230 </span>            : 
+<span class="lineNum">     231 </span>            :     void setTransform(const QTransform &amp;transform, bool combine = false);
+<span class="lineNum">     232 </span>            :     const QTransform &amp;transform() const;
+<span class="lineNum">     233 </span>            :     const QTransform &amp;deviceTransform() const;
+<span class="lineNum">     234 </span>            :     void resetTransform();
+<span class="lineNum">     235 </span>            : 
+<span class="lineNum">     236 </span>            :     void setWorldMatrix(const QMatrix &amp;matrix, bool combine = false);
+<span class="lineNum">     237 </span>            :     const QMatrix &amp;worldMatrix() const;
+<span class="lineNum">     238 </span>            : 
+<span class="lineNum">     239 </span>            :     void setWorldTransform(const QTransform &amp;matrix, bool combine = false);
+<span class="lineNum">     240 </span>            :     const QTransform &amp;worldTransform() const;
+<span class="lineNum">     241 </span>            : 
+<span class="lineNum">     242 </span>            :     QMatrix combinedMatrix() const;
+<span class="lineNum">     243 </span>            :     QTransform combinedTransform() const;
+<span class="lineNum">     244 </span>            : 
+<span class="lineNum">     245 </span>            :     void setMatrixEnabled(bool enabled);
+<span class="lineNum">     246 </span>            :     bool matrixEnabled() const;
+<span class="lineNum">     247 </span>            : 
+<span class="lineNum">     248 </span>            :     void setWorldMatrixEnabled(bool enabled);
+<span class="lineNum">     249 </span>            :     bool worldMatrixEnabled() const;
+<span class="lineNum">     250 </span>            : 
+<span class="lineNum">     251 </span>            :     void scale(qreal sx, qreal sy);
+<span class="lineNum">     252 </span>            :     void shear(qreal sh, qreal sv);
+<span class="lineNum">     253 </span>            :     void rotate(qreal a);
+<span class="lineNum">     254 </span>            : 
+<span class="lineNum">     255 </span>            :     void translate(const QPointF &amp;offset);
+<span class="lineNum">     256 </span>            :     inline void translate(const QPoint &amp;offset);
+<span class="lineNum">     257 </span>            :     inline void translate(qreal dx, qreal dy);
+<span class="lineNum">     258 </span>            : 
+<span class="lineNum">     259 </span>            :     QRect window() const;
+<span class="lineNum">     260 </span>            :     void setWindow(const QRect &amp;window);
+<span class="lineNum">     261 </span>            :     inline void setWindow(int x, int y, int w, int h);
+<span class="lineNum">     262 </span>            : 
+<span class="lineNum">     263 </span>            :     QRect viewport() const;
+<span class="lineNum">     264 </span>            :     void setViewport(const QRect &amp;viewport);
+<span class="lineNum">     265 </span>            :     inline void setViewport(int x, int y, int w, int h);
+<span class="lineNum">     266 </span>            : 
+<span class="lineNum">     267 </span>            :     void setViewTransformEnabled(bool enable);
+<span class="lineNum">     268 </span>            :     bool viewTransformEnabled() const;
+<span class="lineNum">     269 </span>            : 
+<span class="lineNum">     270 </span>            :     // drawing functions
+<span class="lineNum">     271 </span>            :     void strokePath(const QPainterPath &amp;path, const QPen &amp;pen);
+<span class="lineNum">     272 </span>            :     void fillPath(const QPainterPath &amp;path, const QBrush &amp;brush);
+<span class="lineNum">     273 </span>            :     void drawPath(const QPainterPath &amp;path);
+<span class="lineNum">     274 </span>            : 
+<span class="lineNum">     275 </span>            :     inline void drawPoint(const QPointF &amp;pt);
+<span class="lineNum">     276 </span>            :     inline void drawPoint(const QPoint &amp;p);
+<span class="lineNum">     277 </span>            :     inline void drawPoint(int x, int y);
+<span class="lineNum">     278 </span>            : 
+<span class="lineNum">     279 </span>            :     void drawPoints(const QPointF *points, int pointCount);
+<span class="lineNum">     280 </span>            :     inline void drawPoints(const QPolygonF &amp;points);
+<span class="lineNum">     281 </span>            :     void drawPoints(const QPoint *points, int pointCount);
+<span class="lineNum">     282 </span>            :     inline void drawPoints(const QPolygon &amp;points);
+<span class="lineNum">     283 </span>            : 
+<span class="lineNum">     284 </span>            :     inline void drawLine(const QLineF &amp;line);
+<span class="lineNum">     285 </span>            :     inline void drawLine(const QLine &amp;line);
+<span class="lineNum">     286 </span>            :     inline void drawLine(int x1, int y1, int x2, int y2);
+<span class="lineNum">     287 </span>            :     inline void drawLine(const QPoint &amp;p1, const QPoint &amp;p2);
+<span class="lineNum">     288 </span>            :     inline void drawLine(const QPointF &amp;p1, const QPointF &amp;p2);
+<span class="lineNum">     289 </span>            : 
+<span class="lineNum">     290 </span>            :     void drawLines(const QLineF *lines, int lineCount);
+<span class="lineNum">     291 </span>            :     inline void drawLines(const QVector&lt;QLineF&gt; &amp;lines);
+<span class="lineNum">     292 </span>            :     void drawLines(const QPointF *pointPairs, int lineCount);
+<span class="lineNum">     293 </span>            :     inline void drawLines(const QVector&lt;QPointF&gt; &amp;pointPairs);
+<span class="lineNum">     294 </span>            :     void drawLines(const QLine *lines, int lineCount);
+<span class="lineNum">     295 </span>            :     inline void drawLines(const QVector&lt;QLine&gt; &amp;lines);
+<span class="lineNum">     296 </span>            :     void drawLines(const QPoint *pointPairs, int lineCount);
+<span class="lineNum">     297 </span>            :     inline void drawLines(const QVector&lt;QPoint&gt; &amp;pointPairs);
+<span class="lineNum">     298 </span>            : 
+<span class="lineNum">     299 </span>            :     inline void drawRect(const QRectF &amp;rect);
+<span class="lineNum">     300 </span>            :     inline void drawRect(int x1, int y1, int w, int h);
+<span class="lineNum">     301 </span>            :     inline void drawRect(const QRect &amp;rect);
+<span class="lineNum">     302 </span>            : 
+<span class="lineNum">     303 </span>            :     void drawRects(const QRectF *rects, int rectCount);
+<span class="lineNum">     304 </span>            :     inline void drawRects(const QVector&lt;QRectF&gt; &amp;rectangles);
+<span class="lineNum">     305 </span>            :     void drawRects(const QRect *rects, int rectCount);
+<span class="lineNum">     306 </span>            :     inline void drawRects(const QVector&lt;QRect&gt; &amp;rectangles);
+<span class="lineNum">     307 </span>            : 
+<span class="lineNum">     308 </span>            :     void drawEllipse(const QRectF &amp;r);
+<span class="lineNum">     309 </span>            :     void drawEllipse(const QRect &amp;r);
+<span class="lineNum">     310 </span>            :     inline void drawEllipse(int x, int y, int w, int h);
+<span class="lineNum">     311 </span>            : 
+<span class="lineNum">     312 </span>            :     inline void drawEllipse(const QPointF &amp;center, qreal rx, qreal ry);
+<span class="lineNum">     313 </span>            :     inline void drawEllipse(const QPoint &amp;center, int rx, int ry);
+<span class="lineNum">     314 </span>            : 
+<span class="lineNum">     315 </span>            :     void drawPolyline(const QPointF *points, int pointCount);
+<span class="lineNum">     316 </span>            :     inline void drawPolyline(const QPolygonF &amp;polyline);
+<span class="lineNum">     317 </span>            :     void drawPolyline(const QPoint *points, int pointCount);
+<span class="lineNum">     318 </span>            :     inline void drawPolyline(const QPolygon &amp;polygon);
+<span class="lineNum">     319 </span>            : 
+<span class="lineNum">     320 </span>            :     void drawPolygon(const QPointF *points, int pointCount, Qt::FillRule fillRule = Qt::OddEvenFill);
+<span class="lineNum">     321 </span>            :     inline void drawPolygon(const QPolygonF &amp;polygon, Qt::FillRule fillRule = Qt::OddEvenFill);
+<span class="lineNum">     322 </span>            :     void drawPolygon(const QPoint *points, int pointCount, Qt::FillRule fillRule = Qt::OddEvenFill);
+<span class="lineNum">     323 </span>            :     inline void drawPolygon(const QPolygon &amp;polygon, Qt::FillRule fillRule = Qt::OddEvenFill);
+<span class="lineNum">     324 </span>            : 
+<span class="lineNum">     325 </span>            :     void drawConvexPolygon(const QPointF *points, int pointCount);
+<span class="lineNum">     326 </span>            :     inline void drawConvexPolygon(const QPolygonF &amp;polygon);
+<span class="lineNum">     327 </span>            :     void drawConvexPolygon(const QPoint *points, int pointCount);
+<span class="lineNum">     328 </span>            :     inline void drawConvexPolygon(const QPolygon &amp;polygon);
+<span class="lineNum">     329 </span>            : 
+<span class="lineNum">     330 </span>            :     void drawArc(const QRectF &amp;rect, int a, int alen);
+<span class="lineNum">     331 </span>            :     inline void drawArc(const QRect &amp;, int a, int alen);
+<span class="lineNum">     332 </span>            :     inline void drawArc(int x, int y, int w, int h, int a, int alen);
+<span class="lineNum">     333 </span>            : 
+<span class="lineNum">     334 </span>            :     void drawPie(const QRectF &amp;rect, int a, int alen);
+<span class="lineNum">     335 </span>            :     inline void drawPie(int x, int y, int w, int h, int a, int alen);
+<span class="lineNum">     336 </span>            :     inline void drawPie(const QRect &amp;, int a, int alen);
+<span class="lineNum">     337 </span>            : 
+<span class="lineNum">     338 </span>            :     void drawChord(const QRectF &amp;rect, int a, int alen);
+<span class="lineNum">     339 </span>            :     inline void drawChord(int x, int y, int w, int h, int a, int alen);
+<span class="lineNum">     340 </span>            :     inline void drawChord(const QRect &amp;, int a, int alen);
+<span class="lineNum">     341 </span>            : 
+<span class="lineNum">     342 </span>            :     void drawRoundedRect(const QRectF &amp;rect, qreal xRadius, qreal yRadius,
+<span class="lineNum">     343 </span>            :                          Qt::SizeMode mode = Qt::AbsoluteSize);
+<span class="lineNum">     344 </span>            :     inline void drawRoundedRect(int x, int y, int w, int h, qreal xRadius, qreal yRadius,
+<span class="lineNum">     345 </span>            :                                 Qt::SizeMode mode = Qt::AbsoluteSize);
+<span class="lineNum">     346 </span>            :     inline void drawRoundedRect(const QRect &amp;rect, qreal xRadius, qreal yRadius,
+<span class="lineNum">     347 </span>            :                                 Qt::SizeMode mode = Qt::AbsoluteSize);
+<span class="lineNum">     348 </span>            : 
+<span class="lineNum">     349 </span>            :     void drawRoundRect(const QRectF &amp;r, int xround = 25, int yround = 25);
+<span class="lineNum">     350 </span>            :     inline void drawRoundRect(int x, int y, int w, int h, int = 25, int = 25);
+<span class="lineNum">     351 </span>            :     inline void drawRoundRect(const QRect &amp;r, int xround = 25, int yround = 25);
+<span class="lineNum">     352 </span>            : 
+<span class="lineNum">     353 </span>            :     void drawTiledPixmap(const QRectF &amp;rect, const QPixmap &amp;pm, const QPointF &amp;offset = QPointF());
+<span class="lineNum">     354 </span>            :     inline void drawTiledPixmap(int x, int y, int w, int h, const QPixmap &amp;, int sx=0, int sy=0);
+<span class="lineNum">     355 </span>            :     inline void drawTiledPixmap(const QRect &amp;, const QPixmap &amp;, const QPoint &amp; = QPoint());
+<span class="lineNum">     356 </span>            : #ifndef QT_NO_PICTURE
+<span class="lineNum">     357 </span>            :     void drawPicture(const QPointF &amp;p, const QPicture &amp;picture);
+<span class="lineNum">     358 </span>            :     inline void drawPicture(int x, int y, const QPicture &amp;picture);
+<span class="lineNum">     359 </span>            :     inline void drawPicture(const QPoint &amp;p, const QPicture &amp;picture);
+<span class="lineNum">     360 </span>            : #endif
+<span class="lineNum">     361 </span>            : 
+<span class="lineNum">     362 </span>            :     void drawPixmap(const QRectF &amp;targetRect, const QPixmap &amp;pixmap, const QRectF &amp;sourceRect);
+<span class="lineNum">     363 </span>            :     inline void drawPixmap(const QRect &amp;targetRect, const QPixmap &amp;pixmap, const QRect &amp;sourceRect);
+<span class="lineNum">     364 </span>            :     inline void drawPixmap(int x, int y, int w, int h, const QPixmap &amp;pm,
+<span class="lineNum">     365 </span>            :                            int sx, int sy, int sw, int sh);
+<span class="lineNum">     366 </span>            :     inline void drawPixmap(int x, int y, const QPixmap &amp;pm,
+<span class="lineNum">     367 </span>            :                            int sx, int sy, int sw, int sh);
+<span class="lineNum">     368 </span>            :     inline void drawPixmap(const QPointF &amp;p, const QPixmap &amp;pm, const QRectF &amp;sr);
+<span class="lineNum">     369 </span>            :     inline void drawPixmap(const QPoint &amp;p, const QPixmap &amp;pm, const QRect &amp;sr);
+<span class="lineNum">     370 </span>            :     void drawPixmap(const QPointF &amp;p, const QPixmap &amp;pm);
+<span class="lineNum">     371 </span>            :     inline void drawPixmap(const QPoint &amp;p, const QPixmap &amp;pm);
+<span class="lineNum">     372 </span>            :     inline void drawPixmap(int x, int y, const QPixmap &amp;pm);
+<span class="lineNum">     373 </span>            :     inline void drawPixmap(const QRect &amp;r, const QPixmap &amp;pm);
+<span class="lineNum">     374 </span>            :     inline void drawPixmap(int x, int y, int w, int h, const QPixmap &amp;pm);
+<span class="lineNum">     375 </span>            : 
+<span class="lineNum">     376 </span>            :     void drawPixmapFragments(const PixmapFragment *fragments, int fragmentCount,
+<span class="lineNum">     377 </span>            :                              const QPixmap &amp;pixmap, PixmapFragmentHints hints = 0);
+<span class="lineNum">     378 </span>            : 
+<span class="lineNum">     379 </span>            :     void drawImage(const QRectF &amp;targetRect, const QImage &amp;image, const QRectF &amp;sourceRect,
+<span class="lineNum">     380 </span>            :                    Qt::ImageConversionFlags flags = Qt::AutoColor);
+<span class="lineNum">     381 </span>            :     inline void drawImage(const QRect &amp;targetRect, const QImage &amp;image, const QRect &amp;sourceRect,
+<span class="lineNum">     382 </span>            :                           Qt::ImageConversionFlags flags = Qt::AutoColor);
+<span class="lineNum">     383 </span>            :     inline void drawImage(const QPointF &amp;p, const QImage &amp;image, const QRectF &amp;sr,
+<span class="lineNum">     384 </span>            :                           Qt::ImageConversionFlags flags = Qt::AutoColor);
+<span class="lineNum">     385 </span>            :     inline void drawImage(const QPoint &amp;p, const QImage &amp;image, const QRect &amp;sr,
+<span class="lineNum">     386 </span>            :                           Qt::ImageConversionFlags flags = Qt::AutoColor);
+<span class="lineNum">     387 </span>            :     inline void drawImage(const QRectF &amp;r, const QImage &amp;image);
+<span class="lineNum">     388 </span>            :     inline void drawImage(const QRect &amp;r, const QImage &amp;image);
+<span class="lineNum">     389 </span>            :     void drawImage(const QPointF &amp;p, const QImage &amp;image);
+<span class="lineNum">     390 </span>            :     inline void drawImage(const QPoint &amp;p, const QImage &amp;image);
+<span class="lineNum">     391 </span>            :     inline void drawImage(int x, int y, const QImage &amp;image, int sx = 0, int sy = 0,
+<span class="lineNum">     392 </span>            :                           int sw = -1, int sh = -1, Qt::ImageConversionFlags flags = Qt::AutoColor);
+<span class="lineNum">     393 </span>            : 
+<span class="lineNum">     394 </span>            :     void setLayoutDirection(Qt::LayoutDirection direction);
+<span class="lineNum">     395 </span>            :     Qt::LayoutDirection layoutDirection() const;
+<span class="lineNum">     396 </span>            : 
+<span class="lineNum">     397 </span>            : #if !defined(QT_NO_RAWFONT)
+<span class="lineNum">     398 </span>            :     void drawGlyphRun(const QPointF &amp;position, const QGlyphRun &amp;glyphRun);
+<span class="lineNum">     399 </span>            : #endif
+<span class="lineNum">     400 </span>            : 
+<span class="lineNum">     401 </span>            :     void drawStaticText(const QPointF &amp;topLeftPosition, const QStaticText &amp;staticText);
+<span class="lineNum">     402 </span>            :     inline void drawStaticText(const QPoint &amp;topLeftPosition, const QStaticText &amp;staticText);
+<span class="lineNum">     403 </span>            :     inline void drawStaticText(int left, int top, const QStaticText &amp;staticText);
+<span class="lineNum">     404 </span>            : 
+<span class="lineNum">     405 </span>            :     void drawText(const QPointF &amp;p, const QString &amp;s);
+<span class="lineNum">     406 </span>            :     inline void drawText(const QPoint &amp;p, const QString &amp;s);
+<span class="lineNum">     407 </span>            :     inline void drawText(int x, int y, const QString &amp;s);
+<span class="lineNum">     408 </span>            : 
+<span class="lineNum">     409 </span>            :     void drawText(const QPointF &amp;p, const QString &amp;str, int tf, int justificationPadding);
+<span class="lineNum">     410 </span>            : 
+<span class="lineNum">     411 </span>            :     void drawText(const QRectF &amp;r, int flags, const QString &amp;text, QRectF *br=0);
+<span class="lineNum">     412 </span>            :     void drawText(const QRect &amp;r, int flags, const QString &amp;text, QRect *br=0);
+<span class="lineNum">     413 </span>            :     inline void drawText(int x, int y, int w, int h, int flags, const QString &amp;text, QRect *br=0);
+<span class="lineNum">     414 </span>            : 
+<span class="lineNum">     415 </span>            :     void drawText(const QRectF &amp;r, const QString &amp;text, const QTextOption &amp;o = QTextOption());
+<span class="lineNum">     416 </span>            : 
+<span class="lineNum">     417 </span>            :     QRectF boundingRect(const QRectF &amp;rect, int flags, const QString &amp;text);
+<span class="lineNum">     418 </span>            :     QRect boundingRect(const QRect &amp;rect, int flags, const QString &amp;text);
+<span class="lineNum">     419 </span>            :     inline QRect boundingRect(int x, int y, int w, int h, int flags, const QString &amp;text);
+<span class="lineNum">     420 </span>            : 
+<span class="lineNum">     421 </span>            :     QRectF boundingRect(const QRectF &amp;rect, const QString &amp;text, const QTextOption &amp;o = QTextOption());
+<span class="lineNum">     422 </span>            : 
+<span class="lineNum">     423 </span>            :     void drawTextItem(const QPointF &amp;p, const QTextItem &amp;ti);
+<span class="lineNum">     424 </span>            :     inline void drawTextItem(int x, int y, const QTextItem &amp;ti);
+<span class="lineNum">     425 </span>            :     inline void drawTextItem(const QPoint &amp;p, const QTextItem &amp;ti);
+<span class="lineNum">     426 </span>            : 
+<span class="lineNum">     427 </span>            :     void fillRect(const QRectF &amp;, const QBrush &amp;);
+<span class="lineNum">     428 </span>            :     inline void fillRect(int x, int y, int w, int h, const QBrush &amp;);
+<span class="lineNum">     429 </span>            :     void fillRect(const QRect &amp;, const QBrush &amp;);
+<span class="lineNum">     430 </span>            : 
+<span class="lineNum">     431 </span>            :     void fillRect(const QRectF &amp;, const QColor &amp;color);
+<span class="lineNum">     432 </span>            :     inline void fillRect(int x, int y, int w, int h, const QColor &amp;color);
+<span class="lineNum">     433 </span>            :     void fillRect(const QRect &amp;, const QColor &amp;color);
+<span class="lineNum">     434 </span>            : 
+<span class="lineNum">     435 </span>            :     inline void fillRect(int x, int y, int w, int h, Qt::GlobalColor c);
+<span class="lineNum">     436 </span>            :     inline void fillRect(const QRect &amp;r, Qt::GlobalColor c);
+<span class="lineNum">     437 </span>            :     inline void fillRect(const QRectF &amp;r, Qt::GlobalColor c);
+<span class="lineNum">     438 </span>            : 
+<span class="lineNum">     439 </span>            :     inline void fillRect(int x, int y, int w, int h, Qt::BrushStyle style);
+<span class="lineNum">     440 </span>            :     inline void fillRect(const QRect &amp;r, Qt::BrushStyle style);
+<span class="lineNum">     441 </span>            :     inline void fillRect(const QRectF &amp;r, Qt::BrushStyle style);
+<span class="lineNum">     442 </span>            : 
+<span class="lineNum">     443 </span>            :     void eraseRect(const QRectF &amp;);
+<span class="lineNum">     444 </span>            :     inline void eraseRect(int x, int y, int w, int h);
+<span class="lineNum">     445 </span>            :     inline void eraseRect(const QRect &amp;);
+<span class="lineNum">     446 </span>            : 
+<span class="lineNum">     447 </span>            :     void setRenderHint(RenderHint hint, bool on = true);
+<span class="lineNum">     448 </span>            :     void setRenderHints(RenderHints hints, bool on = true);
+<span class="lineNum">     449 </span>            :     RenderHints renderHints() const;
+<span class="lineNum">     450 </span>            :     inline bool testRenderHint(RenderHint hint) const { return renderHints() &amp; hint; }
+<span class="lineNum">     451 </span>            : 
+<span class="lineNum">     452 </span>            :     QPaintEngine *paintEngine() const;
+<span class="lineNum">     453 </span>            : 
+<span class="lineNum">     454 </span>            :     static void setRedirected(const QPaintDevice *device, QPaintDevice *replacement,
+<span class="lineNum">     455 </span>            :                               const QPoint&amp; offset = QPoint());
+<span class="lineNum">     456 </span>            :     static QPaintDevice *redirected(const QPaintDevice *device, QPoint *offset = 0);
+<span class="lineNum">     457 </span>            :     static void restoreRedirected(const QPaintDevice *device);
+<span class="lineNum">     458 </span>            : 
+<span class="lineNum">     459 </span>            :     void beginNativePainting();
+<span class="lineNum">     460 </span>            :     void endNativePainting();
+<span class="lineNum">     461 </span>            : 
+<span class="lineNum">     462 </span>            : private:
+<span class="lineNum">     463 </span>            :     Q_DISABLE_COPY(QPainter)
+<span class="lineNum">     464 </span>            : 
+<span class="lineNum">     465 </span>            :     QScopedPointer&lt;QPainterPrivate&gt; d_ptr;
+<span class="lineNum">     466 </span>            : 
+<span class="lineNum">     467 </span>            :     friend class QWidget;
+<span class="lineNum">     468 </span>            :     friend class QFontEngine;
+<span class="lineNum">     469 </span>            :     friend class QFontEngineBox;
+<span class="lineNum">     470 </span>            :     friend class QFontEngineFT;
+<span class="lineNum">     471 </span>            :     friend class QFontEngineMac;
+<span class="lineNum">     472 </span>            :     friend class QFontEngineWin;
+<span class="lineNum">     473 </span>            :     friend class QPaintEngine;
+<span class="lineNum">     474 </span>            :     friend class QPaintEngineExPrivate;
+<span class="lineNum">     475 </span>            :     friend class QOpenGLPaintEngine;
+<span class="lineNum">     476 </span>            :     friend class QWin32PaintEngine;
+<span class="lineNum">     477 </span>            :     friend class QWin32PaintEnginePrivate;
+<span class="lineNum">     478 </span>            :     friend class QRasterPaintEngine;
+<span class="lineNum">     479 </span>            :     friend class QAlphaPaintEngine;
+<span class="lineNum">     480 </span>            :     friend class QPreviewPaintEngine;
+<span class="lineNum">     481 </span>            :     friend class QTextEngine;
+<span class="lineNum">     482 </span>            : };
+<span class="lineNum">     483 </span>            : 
+<span class="lineNum">     484 </span>            : Q_DECLARE_OPERATORS_FOR_FLAGS(QPainter::RenderHints)
+<span class="lineNum">     485 </span>            : 
+<span class="lineNum">     486 </span>            : //
+<span class="lineNum">     487 </span>            : // functions
+<span class="lineNum">     488 </span>            : //
+<span class="lineNum">     489 </span>            : inline void QPainter::drawLine(const QLineF &amp;l)
+<span class="lineNum">     490 </span>            : {
+<span class="lineNum">     491 </span>            :     drawLines(&amp;l, 1);
+<span class="lineNum">     492 </span>            : }
+<span class="lineNum">     493 </span>            : 
+<span class="lineNum">     494 </span>            : inline void QPainter::drawLine(const QLine &amp;line)
+<span class="lineNum">     495 </span>            : {
+<span class="lineNum">     496 </span>            :     drawLines(&amp;line, 1);
+<span class="lineNum">     497 </span>            : }
+<span class="lineNum">     498 </span>            : 
+<span class="lineNum">     499 </span>            : inline void QPainter::drawLine(int x1, int y1, int x2, int y2)
+<span class="lineNum">     500 </span>            : {
+<span class="lineNum">     501 </span>            :     QLine l(x1, y1, x2, y2);
+<span class="lineNum">     502 </span>            :     drawLines(&amp;l, 1);
+<span class="lineNum">     503 </span>            : }
+<span class="lineNum">     504 </span>            : 
+<span class="lineNum">     505 </span>            : inline void QPainter::drawLine(const QPoint &amp;p1, const QPoint &amp;p2)
+<span class="lineNum">     506 </span>            : {
+<span class="lineNum">     507 </span>            :     QLine l(p1, p2);
+<span class="lineNum">     508 </span>            :     drawLines(&amp;l, 1);
+<span class="lineNum">     509 </span>            : }
+<span class="lineNum">     510 </span>            : 
+<span class="lineNum">     511 </span>            : inline void QPainter::drawLine(const QPointF &amp;p1, const QPointF &amp;p2)
+<span class="lineNum">     512 </span>            : {
+<span class="lineNum">     513 </span>            :     drawLine(QLineF(p1, p2));
+<span class="lineNum">     514 </span>            : }
+<span class="lineNum">     515 </span>            : 
+<span class="lineNum">     516 </span>            : inline void QPainter::drawLines(const QVector&lt;QLineF&gt; &amp;lines)
+<span class="lineNum">     517 </span>            : {
+<span class="lineNum">     518 </span>            :     drawLines(lines.constData(), lines.size());
+<span class="lineNum">     519 </span>            : }
+<span class="lineNum">     520 </span>            : 
+<span class="lineNum">     521 </span>            : inline void QPainter::drawLines(const QVector&lt;QLine&gt; &amp;lines)
+<span class="lineNum">     522 </span>            : {
+<span class="lineNum">     523 </span>            :     drawLines(lines.constData(), lines.size());
+<span class="lineNum">     524 </span>            : }
+<span class="lineNum">     525 </span>            : 
+<span class="lineNum">     526 </span>            : inline void QPainter::drawLines(const QVector&lt;QPointF&gt; &amp;pointPairs)
+<span class="lineNum">     527 </span>            : {
+<span class="lineNum">     528 </span>            :     drawLines(pointPairs.constData(), pointPairs.size() / 2);
+<span class="lineNum">     529 </span>            : }
+<span class="lineNum">     530 </span>            : 
+<span class="lineNum">     531 </span>            : inline void QPainter::drawLines(const QVector&lt;QPoint&gt; &amp;pointPairs)
+<span class="lineNum">     532 </span>            : {
+<span class="lineNum">     533 </span>            :     drawLines(pointPairs.constData(), pointPairs.size() / 2);
+<span class="lineNum">     534 </span>            : }
+<span class="lineNum">     535 </span>            : 
+<span class="lineNum">     536 </span>            : inline void QPainter::drawPolyline(const QPolygonF &amp;polyline)
+<span class="lineNum">     537 </span>            : {
+<span class="lineNum">     538 </span>            :     drawPolyline(polyline.constData(), polyline.size());
+<span class="lineNum">     539 </span>            : }
+<span class="lineNum">     540 </span>            : 
+<span class="lineNum">     541 </span>            : inline void QPainter::drawPolyline(const QPolygon &amp;polyline)
+<span class="lineNum">     542 </span>            : {
+<span class="lineNum">     543 </span>            :     drawPolyline(polyline.constData(), polyline.size());
+<span class="lineNum">     544 </span>            : }
+<span class="lineNum">     545 </span>            : 
+<span class="lineNum">     546 </span>            : inline void QPainter::drawPolygon(const QPolygonF &amp;polygon, Qt::FillRule fillRule)
+<span class="lineNum">     547 </span>            : {
+<span class="lineNum">     548 </span>            :     drawPolygon(polygon.constData(), polygon.size(), fillRule);
+<span class="lineNum">     549 </span>            : }
+<span class="lineNum">     550 </span>            : 
+<span class="lineNum">     551 </span>            : inline void QPainter::drawPolygon(const QPolygon &amp;polygon, Qt::FillRule fillRule)
+<span class="lineNum">     552 </span>            : {
+<span class="lineNum">     553 </span>            :     drawPolygon(polygon.constData(), polygon.size(), fillRule);
+<span class="lineNum">     554 </span>            : }
+<span class="lineNum">     555 </span>            : 
+<span class="lineNum">     556 </span>            : inline void QPainter::drawConvexPolygon(const QPolygonF &amp;poly)
+<span class="lineNum">     557 </span>            : {
+<span class="lineNum">     558 </span>            :     drawConvexPolygon(poly.constData(), poly.size());
+<span class="lineNum">     559 </span>            : }
+<span class="lineNum">     560 </span>            : 
+<span class="lineNum">     561 </span>            : inline void QPainter::drawConvexPolygon(const QPolygon &amp;poly)
+<span class="lineNum">     562 </span>            : {
+<span class="lineNum">     563 </span>            :     drawConvexPolygon(poly.constData(), poly.size());
+<span class="lineNum">     564 </span>            : }
+<span class="lineNum">     565 </span>            : 
+<span class="lineNum">     566 </span>            : inline void QPainter::drawRect(const QRectF &amp;rect)
+<span class="lineNum">     567 </span>            : {
+<span class="lineNum">     568 </span>            :     drawRects(&amp;rect, 1);
+<span class="lineNum">     569 </span>            : }
+<span class="lineNum">     570 </span>            : 
+<span class="lineNum">     571 </span>            : inline void QPainter::drawRect(int x, int y, int w, int h)
+<span class="lineNum">     572 </span>            : {
+<span class="lineNum">     573 </span>            :     QRect r(x, y, w, h);
+<span class="lineNum">     574 </span>            :     drawRects(&amp;r, 1);
+<span class="lineNum">     575 </span>            : }
+<span class="lineNum">     576 </span>            : 
+<span class="lineNum">     577 </span>            : inline void QPainter::drawRect(const QRect &amp;r)
+<span class="lineNum">     578 </span>            : {
+<span class="lineNum">     579 </span>            :     drawRects(&amp;r, 1);
+<span class="lineNum">     580 </span>            : }
+<span class="lineNum">     581 </span>            : 
+<span class="lineNum">     582 </span>            : inline void QPainter::drawRects(const QVector&lt;QRectF&gt; &amp;rects)
+<span class="lineNum">     583 </span>            : {
+<span class="lineNum">     584 </span>            :     drawRects(rects.constData(), rects.size());
+<span class="lineNum">     585 </span>            : }
+<span class="lineNum">     586 </span>            : 
+<span class="lineNum">     587 </span>            : inline void QPainter::drawRects(const QVector&lt;QRect&gt; &amp;rects)
+<span class="lineNum">     588 </span>            : {
+<span class="lineNum">     589 </span>            :     drawRects(rects.constData(), rects.size());
+<span class="lineNum">     590 </span>            : }
+<span class="lineNum">     591 </span>            : 
+<span class="lineNum">     592 </span>            : inline void QPainter::drawPoint(const QPointF &amp;p)
+<span class="lineNum">     593 </span>            : {
+<span class="lineNum">     594 </span>            :     drawPoints(&amp;p, 1);
+<span class="lineNum">     595 </span>            : }
+<span class="lineNum">     596 </span>            : 
+<span class="lineNum">     597 </span>            : inline void QPainter::drawPoint(int x, int y)
+<span class="lineNum">     598 </span>            : {
+<span class="lineNum">     599 </span>            :     QPoint p(x, y);
+<span class="lineNum">     600 </span>            :     drawPoints(&amp;p, 1);
+<span class="lineNum">     601 </span>            : }
+<span class="lineNum">     602 </span>            : 
+<span class="lineNum">     603 </span>            : inline void QPainter::drawPoint(const QPoint &amp;p)
+<span class="lineNum">     604 </span>            : {
+<span class="lineNum">     605 </span>            :     drawPoints(&amp;p, 1);
+<span class="lineNum">     606 </span>            : }
+<span class="lineNum">     607 </span>            : 
+<span class="lineNum">     608 </span>            : inline void QPainter::drawPoints(const QPolygonF &amp;points)
+<span class="lineNum">     609 </span>            : {
+<span class="lineNum">     610 </span>            :     drawPoints(points.constData(), points.size());
+<span class="lineNum">     611 </span>            : }
+<span class="lineNum">     612 </span>            : 
+<span class="lineNum">     613 </span>            : inline void QPainter::drawPoints(const QPolygon &amp;points)
+<span class="lineNum">     614 </span>            : {
+<span class="lineNum">     615 </span>            :     drawPoints(points.constData(), points.size());
+<span class="lineNum">     616 </span>            : }
+<span class="lineNum">     617 </span>            : 
+<span class="lineNum">     618 </span>            : inline void QPainter::drawRoundRect(int x, int y, int w, int h, int xRnd, int yRnd)
+<span class="lineNum">     619 </span>            : {
+<span class="lineNum">     620 </span>            :     drawRoundRect(QRectF(x, y, w, h), xRnd, yRnd);
+<span class="lineNum">     621 </span>            : }
+<span class="lineNum">     622 </span>            : 
+<span class="lineNum">     623 </span>            : inline void QPainter::drawRoundRect(const QRect &amp;rect, int xRnd, int yRnd)
+<span class="lineNum">     624 </span>            : {
+<span class="lineNum">     625 </span>            :     drawRoundRect(QRectF(rect), xRnd, yRnd);
+<span class="lineNum">     626 </span>            : }
+<span class="lineNum">     627 </span>            : 
+<span class="lineNum">     628 </span>            : inline void QPainter::drawRoundedRect(int x, int y, int w, int h, qreal xRadius, qreal yRadius,
+<span class="lineNum">     629 </span>            :                             Qt::SizeMode mode)
+<span class="lineNum">     630 </span>            : {
+<span class="lineNum">     631 </span>            :     drawRoundedRect(QRectF(x, y, w, h), xRadius, yRadius, mode);
+<a name="632"><span class="lineNum">     632 </span>            : }</a>
+<span class="lineNum">     633 </span>            : 
+<span class="lineNum">     634 </span><span class="lineCov">        471 : inline void QPainter::drawRoundedRect(const QRect &amp;rect, qreal xRadius, qreal yRadius,</span>
+<span class="lineNum">     635 </span>            :                             Qt::SizeMode mode)
+<span class="lineNum">     636 </span>            : {
+<span class="lineNum">     637 </span><span class="lineCov">        471 :     drawRoundedRect(QRectF(rect), xRadius, yRadius, mode);</span>
+<span class="lineNum">     638 </span><span class="lineCov">        471 : }</span>
+<span class="lineNum">     639 </span>            : 
+<span class="lineNum">     640 </span>            : inline void QPainter::drawEllipse(int x, int y, int w, int h)
+<span class="lineNum">     641 </span>            : {
+<span class="lineNum">     642 </span>            :     drawEllipse(QRect(x, y, w, h));
+<span class="lineNum">     643 </span>            : }
+<span class="lineNum">     644 </span>            : 
+<span class="lineNum">     645 </span>            : inline void QPainter::drawEllipse(const QPointF &amp;center, qreal rx, qreal ry)
+<span class="lineNum">     646 </span>            : {
+<span class="lineNum">     647 </span>            :     drawEllipse(QRectF(center.x() - rx, center.y() - ry, 2 * rx, 2 * ry));
+<span class="lineNum">     648 </span>            : }
+<span class="lineNum">     649 </span>            : 
+<span class="lineNum">     650 </span>            : inline void QPainter::drawEllipse(const QPoint &amp;center, int rx, int ry)
+<span class="lineNum">     651 </span>            : {
+<span class="lineNum">     652 </span>            :     drawEllipse(QRect(center.x() - rx, center.y() - ry, 2 * rx, 2 * ry));
+<span class="lineNum">     653 </span>            : }
+<span class="lineNum">     654 </span>            : 
+<span class="lineNum">     655 </span>            : inline void QPainter::drawArc(const QRect &amp;r, int a, int alen)
+<span class="lineNum">     656 </span>            : {
+<span class="lineNum">     657 </span>            :     drawArc(QRectF(r), a, alen);
+<span class="lineNum">     658 </span>            : }
+<span class="lineNum">     659 </span>            : 
+<span class="lineNum">     660 </span>            : inline void QPainter::drawArc(int x, int y, int w, int h, int a, int alen)
+<span class="lineNum">     661 </span>            : {
+<span class="lineNum">     662 </span>            :     drawArc(QRectF(x, y, w, h), a, alen);
+<span class="lineNum">     663 </span>            : }
+<span class="lineNum">     664 </span>            : 
+<span class="lineNum">     665 </span>            : inline void QPainter::drawPie(const QRect &amp;rect, int a, int alen)
+<span class="lineNum">     666 </span>            : {
+<span class="lineNum">     667 </span>            :     drawPie(QRectF(rect), a, alen);
+<span class="lineNum">     668 </span>            : }
+<span class="lineNum">     669 </span>            : 
+<span class="lineNum">     670 </span>            : inline void QPainter::drawPie(int x, int y, int w, int h, int a, int alen)
+<span class="lineNum">     671 </span>            : {
+<span class="lineNum">     672 </span>            :     drawPie(QRectF(x, y, w, h), a, alen);
+<span class="lineNum">     673 </span>            : }
+<span class="lineNum">     674 </span>            : 
+<span class="lineNum">     675 </span>            : inline void QPainter::drawChord(const QRect &amp;rect, int a, int alen)
+<span class="lineNum">     676 </span>            : {
+<span class="lineNum">     677 </span>            :     drawChord(QRectF(rect), a, alen);
+<span class="lineNum">     678 </span>            : }
+<span class="lineNum">     679 </span>            : 
+<span class="lineNum">     680 </span>            : inline void QPainter::drawChord(int x, int y, int w, int h, int a, int alen)
+<span class="lineNum">     681 </span>            : {
+<span class="lineNum">     682 </span>            :     drawChord(QRectF(x, y, w, h), a, alen);
+<span class="lineNum">     683 </span>            : }
+<span class="lineNum">     684 </span>            : 
+<span class="lineNum">     685 </span>            : inline void QPainter::setClipRect(int x, int y, int w, int h, Qt::ClipOperation op)
+<span class="lineNum">     686 </span>            : {
+<span class="lineNum">     687 </span>            :     setClipRect(QRect(x, y, w, h), op);
+<span class="lineNum">     688 </span>            : }
+<span class="lineNum">     689 </span>            : 
+<span class="lineNum">     690 </span>            : inline void QPainter::eraseRect(const QRect &amp;rect)
+<span class="lineNum">     691 </span>            : {
+<span class="lineNum">     692 </span>            :     eraseRect(QRectF(rect));
+<span class="lineNum">     693 </span>            : }
+<span class="lineNum">     694 </span>            : 
+<span class="lineNum">     695 </span>            : inline void QPainter::eraseRect(int x, int y, int w, int h)
+<span class="lineNum">     696 </span>            : {
+<span class="lineNum">     697 </span>            :     eraseRect(QRectF(x, y, w, h));
+<span class="lineNum">     698 </span>            : }
+<span class="lineNum">     699 </span>            : 
+<span class="lineNum">     700 </span>            : inline void QPainter::fillRect(int x, int y, int w, int h, const QBrush &amp;b)
+<span class="lineNum">     701 </span>            : {
+<span class="lineNum">     702 </span>            :     fillRect(QRect(x, y, w, h), b);
+<span class="lineNum">     703 </span>            : }
+<span class="lineNum">     704 </span>            : 
+<span class="lineNum">     705 </span>            : inline void QPainter::fillRect(int x, int y, int w, int h, const QColor &amp;b)
+<span class="lineNum">     706 </span>            : {
+<span class="lineNum">     707 </span>            :     fillRect(QRect(x, y, w, h), b);
+<span class="lineNum">     708 </span>            : }
+<span class="lineNum">     709 </span>            : 
+<span class="lineNum">     710 </span>            : inline void QPainter::fillRect(int x, int y, int w, int h, Qt::GlobalColor c)
+<span class="lineNum">     711 </span>            : {
+<span class="lineNum">     712 </span>            :     fillRect(QRect(x, y, w, h), QColor(c));
+<span class="lineNum">     713 </span>            : }
+<span class="lineNum">     714 </span>            : 
+<span class="lineNum">     715 </span>            : inline void QPainter::fillRect(const QRect &amp;r, Qt::GlobalColor c)
+<span class="lineNum">     716 </span>            : {
+<span class="lineNum">     717 </span>            :     fillRect(r, QColor(c));
+<span class="lineNum">     718 </span>            : }
+<span class="lineNum">     719 </span>            : 
+<span class="lineNum">     720 </span>            : inline void QPainter::fillRect(const QRectF &amp;r, Qt::GlobalColor c)
+<span class="lineNum">     721 </span>            : {
+<span class="lineNum">     722 </span>            :     fillRect(r, QColor(c));
+<span class="lineNum">     723 </span>            : }
+<span class="lineNum">     724 </span>            : 
+<span class="lineNum">     725 </span>            : inline void QPainter::fillRect(int x, int y, int w, int h, Qt::BrushStyle style)
+<span class="lineNum">     726 </span>            : {
+<span class="lineNum">     727 </span>            :     fillRect(QRectF(x, y, w, h), QBrush(style));
+<span class="lineNum">     728 </span>            : }
+<span class="lineNum">     729 </span>            : 
+<span class="lineNum">     730 </span>            : inline void QPainter::fillRect(const QRect &amp;r, Qt::BrushStyle style)
+<span class="lineNum">     731 </span>            : {
+<span class="lineNum">     732 </span>            :     fillRect(QRectF(r), QBrush(style));
+<span class="lineNum">     733 </span>            : }
+<span class="lineNum">     734 </span>            : 
+<span class="lineNum">     735 </span>            : inline void QPainter::fillRect(const QRectF &amp;r, Qt::BrushStyle style)
+<span class="lineNum">     736 </span>            : {
+<span class="lineNum">     737 </span>            :     fillRect(r, QBrush(style));
+<span class="lineNum">     738 </span>            : }
+<span class="lineNum">     739 </span>            : 
+<span class="lineNum">     740 </span>            : 
+<span class="lineNum">     741 </span>            : inline void QPainter::setBrushOrigin(int x, int y)
+<span class="lineNum">     742 </span>            : {
+<span class="lineNum">     743 </span>            :     setBrushOrigin(QPoint(x, y));
+<span class="lineNum">     744 </span>            : }
+<span class="lineNum">     745 </span>            : 
+<span class="lineNum">     746 </span>            : inline void QPainter::setBrushOrigin(const QPoint &amp;p)
+<span class="lineNum">     747 </span>            : {
+<span class="lineNum">     748 </span>            :     setBrushOrigin(QPointF(p));
+<span class="lineNum">     749 </span>            : }
+<span class="lineNum">     750 </span>            : 
+<span class="lineNum">     751 </span>            : inline void QPainter::drawTiledPixmap(const QRect &amp;rect, const QPixmap &amp;pm, const QPoint &amp;offset)
+<span class="lineNum">     752 </span>            : {
+<span class="lineNum">     753 </span>            :     drawTiledPixmap(QRectF(rect), pm, QPointF(offset));
+<span class="lineNum">     754 </span>            : }
+<span class="lineNum">     755 </span>            : 
+<span class="lineNum">     756 </span>            : inline void QPainter::drawTiledPixmap(int x, int y, int w, int h, const QPixmap &amp;pm, int sx, int sy)
+<span class="lineNum">     757 </span>            : {
+<span class="lineNum">     758 </span>            :     drawTiledPixmap(QRectF(x, y, w, h), pm, QPointF(sx, sy));
+<span class="lineNum">     759 </span>            : }
+<span class="lineNum">     760 </span>            : 
+<span class="lineNum">     761 </span>            : inline void QPainter::drawPixmap(const QRect &amp;targetRect, const QPixmap &amp;pixmap, const QRect &amp;sourceRect)
+<span class="lineNum">     762 </span>            : {
+<span class="lineNum">     763 </span>            :     drawPixmap(QRectF(targetRect), pixmap, QRectF(sourceRect));
+<span class="lineNum">     764 </span>            : }
+<span class="lineNum">     765 </span>            : 
+<span class="lineNum">     766 </span>            : inline void QPainter::drawPixmap(const QPoint &amp;p, const QPixmap &amp;pm)
+<span class="lineNum">     767 </span>            : {
+<span class="lineNum">     768 </span>            :     drawPixmap(QPointF(p), pm);
+<span class="lineNum">     769 </span>            : }
+<span class="lineNum">     770 </span>            : 
+<span class="lineNum">     771 </span>            : inline void QPainter::drawPixmap(const QRect &amp;r, const QPixmap &amp;pm)
+<span class="lineNum">     772 </span>            : {
+<span class="lineNum">     773 </span>            :     drawPixmap(QRectF(r), pm, QRectF());
+<span class="lineNum">     774 </span>            : }
+<span class="lineNum">     775 </span>            : 
+<span class="lineNum">     776 </span>            : inline void QPainter::drawPixmap(int x, int y, const QPixmap &amp;pm)
+<span class="lineNum">     777 </span>            : {
+<span class="lineNum">     778 </span>            :     drawPixmap(QPointF(x, y), pm);
+<a name="779"><span class="lineNum">     779 </span>            : }</a>
+<span class="lineNum">     780 </span>            : 
+<span class="lineNum">     781 </span><span class="lineCov">        348 : inline void QPainter::drawPixmap(int x, int y, int w, int h, const QPixmap &amp;pm)</span>
+<span class="lineNum">     782 </span>            : {
+<span class="lineNum">     783 </span><span class="lineCov">        696 :     drawPixmap(QRectF(x, y, w, h), pm, QRectF());</span>
+<span class="lineNum">     784 </span><span class="lineCov">        348 : }</span>
+<span class="lineNum">     785 </span>            : 
+<span class="lineNum">     786 </span>            : inline void QPainter::drawPixmap(int x, int y, int w, int h, const QPixmap &amp;pm,
+<span class="lineNum">     787 </span>            :                                  int sx, int sy, int sw, int sh)
+<span class="lineNum">     788 </span>            : {
+<span class="lineNum">     789 </span>            :     drawPixmap(QRectF(x, y, w, h), pm, QRectF(sx, sy, sw, sh));
+<span class="lineNum">     790 </span>            : }
+<span class="lineNum">     791 </span>            : 
+<span class="lineNum">     792 </span>            : inline void QPainter::drawPixmap(int x, int y, const QPixmap &amp;pm,
+<span class="lineNum">     793 </span>            :                                  int sx, int sy, int sw, int sh)
+<span class="lineNum">     794 </span>            : {
+<span class="lineNum">     795 </span>            :     drawPixmap(QRectF(x, y, -1, -1), pm, QRectF(sx, sy, sw, sh));
+<span class="lineNum">     796 </span>            : }
+<span class="lineNum">     797 </span>            : 
+<span class="lineNum">     798 </span>            : inline void QPainter::drawPixmap(const QPointF &amp;p, const QPixmap &amp;pm, const QRectF &amp;sr)
+<span class="lineNum">     799 </span>            : {
+<span class="lineNum">     800 </span>            :     drawPixmap(QRectF(p.x(), p.y(), -1, -1), pm, sr);
+<span class="lineNum">     801 </span>            : }
+<span class="lineNum">     802 </span>            : 
+<span class="lineNum">     803 </span>            : inline void QPainter::drawPixmap(const QPoint &amp;p, const QPixmap &amp;pm, const QRect &amp;sr)
+<span class="lineNum">     804 </span>            : {
+<span class="lineNum">     805 </span>            :     drawPixmap(QRectF(p.x(), p.y(), -1, -1), pm, sr);
+<span class="lineNum">     806 </span>            : }
+<span class="lineNum">     807 </span>            : 
+<span class="lineNum">     808 </span>            : inline void QPainter::drawTextItem(int x, int y, const QTextItem &amp;ti)
+<span class="lineNum">     809 </span>            : {
+<span class="lineNum">     810 </span>            :     drawTextItem(QPointF(x, y), ti);
+<span class="lineNum">     811 </span>            : }
+<span class="lineNum">     812 </span>            : 
+<span class="lineNum">     813 </span>            : inline void QPainter::drawImage(const QRect &amp;targetRect, const QImage &amp;image, const QRect &amp;sourceRect,
+<span class="lineNum">     814 </span>            :                                 Qt::ImageConversionFlags flags)
+<span class="lineNum">     815 </span>            : {
+<span class="lineNum">     816 </span>            :     drawImage(QRectF(targetRect), image, QRectF(sourceRect), flags);
+<span class="lineNum">     817 </span>            : }
+<span class="lineNum">     818 </span>            : 
+<span class="lineNum">     819 </span>            : inline void QPainter::drawImage(const QPointF &amp;p, const QImage &amp;image, const QRectF &amp;sr,
+<span class="lineNum">     820 </span>            :                                 Qt::ImageConversionFlags flags)
+<span class="lineNum">     821 </span>            : {
+<span class="lineNum">     822 </span>            :     drawImage(QRectF(p.x(), p.y(), -1, -1), image, sr, flags);
+<span class="lineNum">     823 </span>            : }
+<span class="lineNum">     824 </span>            : 
+<span class="lineNum">     825 </span>            : inline void QPainter::drawImage(const QPoint &amp;p, const QImage &amp;image, const QRect &amp;sr,
+<span class="lineNum">     826 </span>            :                                 Qt::ImageConversionFlags flags)
+<span class="lineNum">     827 </span>            : {
+<span class="lineNum">     828 </span>            :     drawImage(QRect(p.x(), p.y(), -1, -1), image, sr, flags);
+<span class="lineNum">     829 </span>            : }
+<span class="lineNum">     830 </span>            : 
+<span class="lineNum">     831 </span>            : 
+<span class="lineNum">     832 </span>            : inline void QPainter::drawImage(const QRectF &amp;r, const QImage &amp;image)
+<span class="lineNum">     833 </span>            : {
+<span class="lineNum">     834 </span>            :     drawImage(r, image, QRect(0, 0, image.width(), image.height()));
+<span class="lineNum">     835 </span>            : }
+<span class="lineNum">     836 </span>            : 
+<span class="lineNum">     837 </span>            : inline void QPainter::drawImage(const QRect &amp;r, const QImage &amp;image)
+<span class="lineNum">     838 </span>            : {
+<span class="lineNum">     839 </span>            :     drawImage(r, image, QRectF(0, 0, image.width(), image.height()));
+<span class="lineNum">     840 </span>            : }
+<span class="lineNum">     841 </span>            : 
+<span class="lineNum">     842 </span>            : inline void QPainter::drawImage(const QPoint &amp;p, const QImage &amp;image)
+<span class="lineNum">     843 </span>            : {
+<span class="lineNum">     844 </span>            :     drawImage(QPointF(p), image);
+<span class="lineNum">     845 </span>            : }
+<span class="lineNum">     846 </span>            : 
+<span class="lineNum">     847 </span>            : inline void QPainter::drawImage(int x, int y, const QImage &amp;image, int sx, int sy, int sw, int sh,
+<span class="lineNum">     848 </span>            :                                 Qt::ImageConversionFlags flags)
+<span class="lineNum">     849 </span>            : {
+<span class="lineNum">     850 </span>            :     if (sx == 0 &amp;&amp; sy == 0 &amp;&amp; sw == -1 &amp;&amp; sh == -1 &amp;&amp; flags == Qt::AutoColor)
+<span class="lineNum">     851 </span>            :         drawImage(QPointF(x, y), image);
+<span class="lineNum">     852 </span>            :     else
+<span class="lineNum">     853 </span>            :         drawImage(QRectF(x, y, -1, -1), image, QRectF(sx, sy, sw, sh), flags);
+<span class="lineNum">     854 </span>            : }
+<span class="lineNum">     855 </span>            : 
+<span class="lineNum">     856 </span>            : inline void QPainter::drawStaticText(const QPoint &amp;p, const QStaticText &amp;staticText)
+<span class="lineNum">     857 </span>            : {
+<span class="lineNum">     858 </span>            :     drawStaticText(QPointF(p), staticText);
+<span class="lineNum">     859 </span>            : }
+<span class="lineNum">     860 </span>            : 
+<span class="lineNum">     861 </span>            : inline void QPainter::drawStaticText(int x, int y, const QStaticText &amp;staticText)
+<span class="lineNum">     862 </span>            : {
+<span class="lineNum">     863 </span>            :     drawStaticText(QPointF(x, y), staticText);
+<span class="lineNum">     864 </span>            : }
+<span class="lineNum">     865 </span>            : 
+<span class="lineNum">     866 </span>            : inline void QPainter::drawTextItem(const QPoint &amp;p, const QTextItem &amp;ti)
+<span class="lineNum">     867 </span>            : {
+<span class="lineNum">     868 </span>            :     drawTextItem(QPointF(p), ti);
+<span class="lineNum">     869 </span>            : }
+<span class="lineNum">     870 </span>            : 
+<span class="lineNum">     871 </span>            : inline void QPainter::drawText(const QPoint &amp;p, const QString &amp;s)
+<span class="lineNum">     872 </span>            : {
+<span class="lineNum">     873 </span>            :     drawText(QPointF(p), s);
+<span class="lineNum">     874 </span>            : }
+<span class="lineNum">     875 </span>            : 
+<span class="lineNum">     876 </span>            : inline void QPainter::drawText(int x, int y, int w, int h, int flags, const QString &amp;str, QRect *br)
+<span class="lineNum">     877 </span>            : {
+<span class="lineNum">     878 </span>            :     drawText(QRect(x, y, w, h), flags, str, br);
+<span class="lineNum">     879 </span>            : }
+<span class="lineNum">     880 </span>            : 
+<span class="lineNum">     881 </span>            : inline void QPainter::drawText(int x, int y, const QString &amp;s)
+<span class="lineNum">     882 </span>            : {
+<span class="lineNum">     883 </span>            :     drawText(QPointF(x, y), s);
+<span class="lineNum">     884 </span>            : }
+<span class="lineNum">     885 </span>            : 
+<span class="lineNum">     886 </span>            : inline QRect QPainter::boundingRect(int x, int y, int w, int h, int flags, const QString &amp;text)
+<span class="lineNum">     887 </span>            : {
+<span class="lineNum">     888 </span>            :     return boundingRect(QRect(x, y, w, h), flags, text);
+<span class="lineNum">     889 </span>            : }
+<span class="lineNum">     890 </span>            : 
+<span class="lineNum">     891 </span>            : inline void QPainter::translate(qreal dx, qreal dy)
+<span class="lineNum">     892 </span>            : {
+<span class="lineNum">     893 </span>            :     translate(QPointF(dx, dy));
+<span class="lineNum">     894 </span>            : }
+<span class="lineNum">     895 </span>            : 
+<span class="lineNum">     896 </span>            : inline void QPainter::translate(const QPoint &amp;offset)
+<span class="lineNum">     897 </span>            : {
+<span class="lineNum">     898 </span>            :     translate(offset.x(), offset.y());
+<span class="lineNum">     899 </span>            : }
+<span class="lineNum">     900 </span>            : 
+<span class="lineNum">     901 </span>            : inline void QPainter::setViewport(int x, int y, int w, int h)
+<span class="lineNum">     902 </span>            : {
+<span class="lineNum">     903 </span>            :     setViewport(QRect(x, y, w, h));
+<span class="lineNum">     904 </span>            : }
+<span class="lineNum">     905 </span>            : 
+<span class="lineNum">     906 </span>            : inline void QPainter::setWindow(int x, int y, int w, int h)
+<span class="lineNum">     907 </span>            : {
+<span class="lineNum">     908 </span>            :     setWindow(QRect(x, y, w, h));
+<span class="lineNum">     909 </span>            : }
+<span class="lineNum">     910 </span>            : 
+<span class="lineNum">     911 </span>            : #ifndef QT_NO_PICTURE
+<span class="lineNum">     912 </span>            : inline void QPainter::drawPicture(int x, int y, const QPicture &amp;p)
+<span class="lineNum">     913 </span>            : {
+<span class="lineNum">     914 </span>            :     drawPicture(QPoint(x, y), p);
+<span class="lineNum">     915 </span>            : }
+<span class="lineNum">     916 </span>            : 
+<span class="lineNum">     917 </span>            : inline void QPainter::drawPicture(const QPoint &amp;pt, const QPicture &amp;p)
+<span class="lineNum">     918 </span>            : {
+<span class="lineNum">     919 </span>            :     drawPicture(QPointF(pt), p);
+<span class="lineNum">     920 </span>            : }
+<span class="lineNum">     921 </span>            : #endif
+<span class="lineNum">     922 </span>            : 
+<span class="lineNum">     923 </span>            : QT_END_NAMESPACE
+<span class="lineNum">     924 </span>            : 
+<span class="lineNum">     925 </span>            : #endif // QPAINTER_H
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.11</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

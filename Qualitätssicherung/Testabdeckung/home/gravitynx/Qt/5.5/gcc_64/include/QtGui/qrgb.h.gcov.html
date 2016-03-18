@@ -1,0 +1,182 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - i3.info - /home/gravitynx/Qt/5.5/gcc_64/include/QtGui/qrgb.h</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../../../index.html">top level</a> - <a href="index.html">home/gravitynx/Qt/5.5/gcc_64/include/QtGui</a> - qrgb.h<span style="font-size: 80%;"> (source / <a href="qrgb.h.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">i3.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2016-03-18 19:49:03</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntryHi">-</td>
+          </tr>
+          <tr><td><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : /****************************************************************************</a>
+<span class="lineNum">       2 </span>            : **
+<span class="lineNum">       3 </span>            : ** Copyright (C) 2015 The Qt Company Ltd.
+<span class="lineNum">       4 </span>            : ** Contact: http://www.qt.io/licensing/
+<span class="lineNum">       5 </span>            : **
+<span class="lineNum">       6 </span>            : ** This file is part of the QtGui module of the Qt Toolkit.
+<span class="lineNum">       7 </span>            : **
+<span class="lineNum">       8 </span>            : ** $QT_BEGIN_LICENSE:LGPL21$
+<span class="lineNum">       9 </span>            : ** Commercial License Usage
+<span class="lineNum">      10 </span>            : ** Licensees holding valid commercial Qt licenses may use this file in
+<span class="lineNum">      11 </span>            : ** accordance with the commercial license agreement provided with the
+<span class="lineNum">      12 </span>            : ** Software or, alternatively, in accordance with the terms contained in
+<span class="lineNum">      13 </span>            : ** a written agreement between you and The Qt Company. For licensing terms
+<span class="lineNum">      14 </span>            : ** and conditions see http://www.qt.io/terms-conditions. For further
+<span class="lineNum">      15 </span>            : ** information use the contact form at http://www.qt.io/contact-us.
+<span class="lineNum">      16 </span>            : **
+<span class="lineNum">      17 </span>            : ** GNU Lesser General Public License Usage
+<span class="lineNum">      18 </span>            : ** Alternatively, this file may be used under the terms of the GNU Lesser
+<span class="lineNum">      19 </span>            : ** General Public License version 2.1 or version 3 as published by the Free
+<span class="lineNum">      20 </span>            : ** Software Foundation and appearing in the file LICENSE.LGPLv21 and
+<span class="lineNum">      21 </span>            : ** LICENSE.LGPLv3 included in the packaging of this file. Please review the
+<span class="lineNum">      22 </span>            : ** following information to ensure the GNU Lesser General Public License
+<span class="lineNum">      23 </span>            : ** requirements will be met: https://www.gnu.org/licenses/lgpl.html and
+<span class="lineNum">      24 </span>            : ** http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
+<span class="lineNum">      25 </span>            : **
+<span class="lineNum">      26 </span>            : ** As a special exception, The Qt Company gives you certain additional
+<span class="lineNum">      27 </span>            : ** rights. These rights are described in The Qt Company LGPL Exception
+<span class="lineNum">      28 </span>            : ** version 1.1, included in the file LGPL_EXCEPTION.txt in this package.
+<span class="lineNum">      29 </span>            : **
+<span class="lineNum">      30 </span>            : ** $QT_END_LICENSE$
+<span class="lineNum">      31 </span>            : **
+<span class="lineNum">      32 </span>            : ****************************************************************************/
+<span class="lineNum">      33 </span>            : 
+<span class="lineNum">      34 </span>            : #ifndef QRGB_H
+<span class="lineNum">      35 </span>            : #define QRGB_H
+<span class="lineNum">      36 </span>            : 
+<span class="lineNum">      37 </span>            : #include &lt;QtCore/qglobal.h&gt;
+<span class="lineNum">      38 </span>            : #include &lt;QtCore/qprocessordetection.h&gt;
+<span class="lineNum">      39 </span>            : 
+<span class="lineNum">      40 </span>            : QT_BEGIN_NAMESPACE
+<span class="lineNum">      41 </span>            : 
+<span class="lineNum">      42 </span>            : 
+<span class="lineNum">      43 </span>            : typedef unsigned int QRgb;                        // RGB triplet
+<span class="lineNum">      44 </span>            : 
+<span class="lineNum">      45 </span>            : // non-namespaced Qt global variable
+<span class="lineNum">      46 </span>            : const Q_DECL_UNUSED QRgb  RGB_MASK    = 0x00ffffff;     // masks RGB values
+<span class="lineNum">      47 </span>            : 
+<span class="lineNum">      48 </span>            : inline Q_DECL_CONSTEXPR int qRed(QRgb rgb)                // get red part of RGB
+<span class="lineNum">      49 </span><span class="lineCov">   13655144 : { return ((rgb &gt;&gt; 16) &amp; 0xff); }</span>
+<span class="lineNum">      50 </span>            : 
+<span class="lineNum">      51 </span>            : inline Q_DECL_CONSTEXPR int qGreen(QRgb rgb)                // get green part of RGB
+<span class="lineNum">      52 </span><span class="lineCov">   13655144 : { return ((rgb &gt;&gt; 8) &amp; 0xff); }</span>
+<span class="lineNum">      53 </span>            : 
+<span class="lineNum">      54 </span>            : inline Q_DECL_CONSTEXPR int qBlue(QRgb rgb)                // get blue part of RGB
+<span class="lineNum">      55 </span><span class="lineCov">    3903024 : { return (rgb &amp; 0xff); }</span>
+<span class="lineNum">      56 </span>            : 
+<span class="lineNum">      57 </span>            : inline Q_DECL_CONSTEXPR int qAlpha(QRgb rgb)                // get alpha part of RGBA
+<span class="lineNum">      58 </span>            : { return rgb &gt;&gt; 24; }
+<span class="lineNum">      59 </span>            : 
+<span class="lineNum">      60 </span>            : inline Q_DECL_CONSTEXPR QRgb qRgb(int r, int g, int b)// set RGB value
+<span class="lineNum">      61 </span><span class="lineCov">   31685127 : { return (0xffu &lt;&lt; 24) | ((r &amp; 0xff) &lt;&lt; 16) | ((g &amp; 0xff) &lt;&lt; 8) | (b &amp; 0xff); }</span>
+<span class="lineNum">      62 </span>            : 
+<span class="lineNum">      63 </span>            : inline Q_DECL_CONSTEXPR QRgb qRgba(int r, int g, int b, int a)// set RGBA value
+<span class="lineNum">      64 </span>            : { return ((a &amp; 0xff) &lt;&lt; 24) | ((r &amp; 0xff) &lt;&lt; 16) | ((g &amp; 0xff) &lt;&lt; 8) | (b &amp; 0xff); }
+<span class="lineNum">      65 </span>            : 
+<span class="lineNum">      66 </span>            : inline Q_DECL_CONSTEXPR int qGray(int r, int g, int b)// convert R,G,B to gray 0..255
+<span class="lineNum">      67 </span><span class="lineCov">         25 : { return (r*11+g*16+b*5)/32; }</span>
+<span class="lineNum">      68 </span>            : 
+<span class="lineNum">      69 </span>            : inline Q_DECL_CONSTEXPR int qGray(QRgb rgb)                // convert RGB to gray 0..255
+<span class="lineNum">      70 </span><span class="lineCov">        100 : { return qGray(qRed(rgb), qGreen(rgb), qBlue(rgb)); }</span>
+<span class="lineNum">      71 </span>            : 
+<span class="lineNum">      72 </span>            : inline Q_DECL_CONSTEXPR bool qIsGray(QRgb rgb)
+<span class="lineNum">      73 </span>            : { return qRed(rgb) == qGreen(rgb) &amp;&amp; qRed(rgb) == qBlue(rgb); }
+<span class="lineNum">      74 </span>            : 
+<span class="lineNum">      75 </span>            : inline Q_DECL_RELAXED_CONSTEXPR QRgb qPremultiply(QRgb x)
+<span class="lineNum">      76 </span>            : {
+<span class="lineNum">      77 </span>            :     const uint a = qAlpha(x);
+<span class="lineNum">      78 </span>            :     uint t = (x &amp; 0xff00ff) * a;
+<span class="lineNum">      79 </span>            :     t = (t + ((t &gt;&gt; 8) &amp; 0xff00ff) + 0x800080) &gt;&gt; 8;
+<span class="lineNum">      80 </span>            :     t &amp;= 0xff00ff;
+<span class="lineNum">      81 </span>            : 
+<span class="lineNum">      82 </span>            :     x = ((x &gt;&gt; 8) &amp; 0xff) * a;
+<span class="lineNum">      83 </span>            :     x = (x + ((x &gt;&gt; 8) &amp; 0xff) + 0x80);
+<span class="lineNum">      84 </span>            :     x &amp;= 0xff00;
+<span class="lineNum">      85 </span>            :     return x | t | (a &lt;&lt; 24);
+<span class="lineNum">      86 </span>            : }
+<span class="lineNum">      87 </span>            : 
+<span class="lineNum">      88 </span>            : Q_GUI_EXPORT extern const uint qt_inv_premul_factor[];
+<span class="lineNum">      89 </span>            : 
+<span class="lineNum">      90 </span>            : inline QRgb qUnpremultiply(QRgb p)
+<span class="lineNum">      91 </span>            : {
+<span class="lineNum">      92 </span>            :     const uint alpha = qAlpha(p);
+<span class="lineNum">      93 </span>            :     // Alpha 255 and 0 are the two most common values, which makes them beneficial to short-cut.
+<span class="lineNum">      94 </span>            :     if (alpha == 255)
+<span class="lineNum">      95 </span>            :         return p;
+<span class="lineNum">      96 </span>            :     if (alpha == 0)
+<span class="lineNum">      97 </span>            :         return 0;
+<span class="lineNum">      98 </span>            :     // (p*(0x00ff00ff/alpha)) &gt;&gt; 16 == (p*255)/alpha for all p and alpha &lt;= 256.
+<span class="lineNum">      99 </span>            :     const uint invAlpha = qt_inv_premul_factor[alpha];
+<span class="lineNum">     100 </span>            :     // We add 0x8000 to get even rounding. The rounding also ensures that qPremultiply(qUnpremultiply(p)) == p for all p.
+<span class="lineNum">     101 </span>            :     return qRgba((qRed(p)*invAlpha + 0x8000)&gt;&gt;16, (qGreen(p)*invAlpha + 0x8000)&gt;&gt;16, (qBlue(p)*invAlpha + 0x8000)&gt;&gt;16, alpha);
+<span class="lineNum">     102 </span>            : }
+<span class="lineNum">     103 </span>            : 
+<span class="lineNum">     104 </span>            : QT_END_NAMESPACE
+<span class="lineNum">     105 </span>            : 
+<span class="lineNum">     106 </span>            : #endif // QRGB_H
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.11</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

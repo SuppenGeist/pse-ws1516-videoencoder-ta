@@ -1,0 +1,233 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - i3.info - Implementierung/src/utility/resultsaver.cpp</title>
+  <link rel="stylesheet" type="text/css" href="../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">Implementierung/src/utility</a> - resultsaver.cpp<span style="font-size: 80%;"> (source / <a href="resultsaver.cpp.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">i3.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">95</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2016-03-18 19:49:03</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : #include &quot;resultsaver.h&quot;</a>
+<span class="lineNum">       2 </span>            : 
+<span class="lineNum">       3 </span>            : #include &lt;QFile&gt;
+<span class="lineNum">       4 </span>            : #include &lt;QFileInfo&gt;
+<span class="lineNum">       5 </span>            : #include &lt;QDebug&gt;
+<span class="lineNum">       6 </span>            : 
+<span class="lineNum">       7 </span>            : #include &quot;../gui/AnalysisTab.h&quot;
+<span class="lineNum">       8 </span>            : #include &quot;../gui/GraphWidget.h&quot;
+<span class="lineNum">       9 </span>            : #include &quot;../gui/graphcalculator.h&quot;
+<span class="lineNum">      10 </span>            : 
+<span class="lineNum">      11 </span>            : #include &quot;../model/Graph.h&quot;
+<span class="lineNum">      12 </span>            : #include &quot;../model/graphvideo.h&quot;
+<span class="lineNum">      13 </span>            : 
+<span class="lineNum">      14 </span>            : #include &quot;VideoConverter.h&quot;
+<span class="lineNum">      15 </span>            : 
+<span class="lineNum">      16 </span><span class="lineNoCov">          0 : Utility::ResultSaver::ResultSaver(std::unique_ptr&lt;Memento::AnalysisBoxContainerMemento&gt; memento,</span>
+<span class="lineNum">      17 </span><span class="lineNoCov">          0 :                                   QString folder):memento_(std::move(memento)),path_(folder) {</span>
+<span class="lineNum">      18 </span>            : 
+<a name="19"><span class="lineNum">      19 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">      20 </span>            : 
+<span class="lineNum">      21 </span><span class="lineNoCov">          0 : Utility::ResultSaver::~ResultSaver() {</span>
+<span class="lineNum">      22 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      23 </span>            : 
+<span class="lineNum">      24 </span>            : 
+<span class="lineNum">      25 </span><span class="lineNoCov">          0 : void Utility::ResultSaver::run() {</span>
+<span class="lineNum">      26 </span><span class="lineNoCov">          0 :         if(!memento_.get())</span>
+<span class="lineNum">      27 </span>            :                 return;
+<span class="lineNum">      28 </span>            : 
+<span class="lineNum">      29 </span><span class="lineNoCov">          0 :         std::size_t size=memento_-&gt;getAnalysisBoxList().size();</span>
+<span class="lineNum">      30 </span>            : 
+<span class="lineNum">      31 </span><span class="lineNoCov">          0 :         for(std::size_t i=0; i&lt;size; i++) {</span>
+<span class="lineNum">      32 </span><span class="lineNoCov">          0 :                 auto&amp; memento=memento_-&gt;getAnalysisBoxList()[i];</span>
+<span class="lineNum">      33 </span>            : 
+<span class="lineNum">      34 </span><span class="lineNoCov">          0 :                 QFile f(memento-&gt;getPath());</span>
+<span class="lineNum">      35 </span><span class="lineNoCov">          0 :                 QFileInfo info(f);</span>
+<span class="lineNum">      36 </span>            : 
+<span class="lineNum">      37 </span><span class="lineNoCov">          0 :                 auto prefix=path_+&quot;/&quot;+info.fileName().section(&quot;.&quot;,0,0);</span>
+<span class="lineNum">      38 </span>            : 
+<span class="lineNum">      39 </span><span class="lineNoCov">          0 :                 auto macroPath=prefix+&quot;_macroblocks.mp4&quot;;</span>
+<span class="lineNum">      40 </span>            : 
+<span class="lineNum">      41 </span><span class="lineNoCov">          0 :                 QFile macroFile(macroPath);</span>
+<span class="lineNum">      42 </span><span class="lineNoCov">          0 :                 if(!macroFile.exists()) {</span>
+<span class="lineNum">      43 </span>            : 
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 :                         auto macroBSaver=std::make_unique&lt;VideoSaver&gt;(memento-&gt;getMacroBlockVideo(),macroPath);</span>
+<span class="lineNum">      45 </span><span class="lineNoCov">          0 :                         macroBSaver-&gt;save();</span>
+<span class="lineNum">      46 </span>            : 
+<span class="lineNum">      47 </span><span class="lineNoCov">          0 :                         videoSavers_.push_back(std::move(macroBSaver));</span>
+<span class="lineNum">      48 </span>            :                 }
+<span class="lineNum">      49 </span>            : 
+<span class="lineNum">      50 </span><span class="lineNoCov">          0 :                 auto diffPath=prefix+&quot;_rgbDiff.mp4&quot;;</span>
+<span class="lineNum">      51 </span>            : 
+<span class="lineNum">      52 </span><span class="lineNoCov">          0 :                 QFile diffFile(diffPath);</span>
+<span class="lineNum">      53 </span><span class="lineNoCov">          0 :                 if(!diffFile.exists()) {</span>
+<span class="lineNum">      54 </span><span class="lineNoCov">          0 :                         auto diffSaver=std::make_unique&lt;VideoSaver&gt;(memento-&gt;getRgbDiffVideo(),diffPath);</span>
+<span class="lineNum">      55 </span><span class="lineNoCov">          0 :                         diffSaver-&gt;save();</span>
+<span class="lineNum">      56 </span>            : 
+<span class="lineNum">      57 </span><span class="lineNoCov">          0 :                         videoSavers_.push_back(std::move(diffSaver));</span>
+<span class="lineNum">      58 </span>            :                 }
+<span class="lineNum">      59 </span>            : 
+<span class="lineNum">      60 </span><span class="lineNoCov">          0 :                 GUI::GraphCalculator calculator;</span>
+<span class="lineNum">      61 </span>            : 
+<span class="lineNum">      62 </span><span class="lineNoCov">          0 :                 auto psnrPath=prefix+&quot;_psnr.png&quot;;</span>
+<span class="lineNum">      63 </span>            : 
+<span class="lineNum">      64 </span><span class="lineNoCov">          0 :                 QFile psnrFile(psnrPath);</span>
+<span class="lineNum">      65 </span><span class="lineNoCov">          0 :                 if(!psnrFile.exists()&amp;&amp;memento-&gt;getPsnrGraph()&amp;&amp;memento-&gt;getPsnrGraph()-&gt;getSize()!=0) {</span>
+<span class="lineNum">      66 </span><span class="lineNoCov">          0 :                         calculator.setAxisLabels(&quot;frame&quot;,&quot;dB&quot;);</span>
+<span class="lineNum">      67 </span><span class="lineNoCov">          0 :                         VideoConverter::convertGraphToImage(memento-&gt;getPsnrGraph(),1500,500,&amp;calculator)-&gt;save(psnrPath);</span>
+<span class="lineNum">      68 </span>            :                 }
+<span class="lineNum">      69 </span>            : 
+<span class="lineNum">      70 </span><span class="lineNoCov">          0 :                 auto bitratePath=prefix+&quot;_bitrate.png&quot;;</span>
+<span class="lineNum">      71 </span>            : 
+<span class="lineNum">      72 </span><span class="lineNoCov">          0 :                 QFile bitrateFile(bitratePath);</span>
+<span class="lineNum">      73 </span><span class="lineNoCov">          0 :                 if(!bitrateFile.exists()) {</span>
+<span class="lineNum">      74 </span><span class="lineNoCov">          0 :                         calculator.setAxisLabels(&quot;frame&quot;,&quot;kb&quot;);</span>
+<span class="lineNum">      75 </span><span class="lineNoCov">          0 :                         VideoConverter::convertGraphToImage(memento-&gt;getBitrateGraph(),1500,500,</span>
+<span class="lineNum">      76 </span><span class="lineNoCov">          0 :                                                             &amp;calculator)-&gt;save(bitratePath);</span>
+<span class="lineNum">      77 </span>            :                 }
+<span class="lineNum">      78 </span>            : 
+<span class="lineNum">      79 </span><span class="lineNoCov">          0 :                 auto redhpath=prefix+&quot;_redHistogram.mp4&quot;;</span>
+<span class="lineNum">      80 </span>            : 
+<span class="lineNum">      81 </span><span class="lineNoCov">          0 :                 QFile redhFile(redhpath);</span>
+<span class="lineNum">      82 </span><span class="lineNoCov">          0 :                 if(!redhFile.exists()) {</span>
+<span class="lineNum">      83 </span><span class="lineNoCov">          0 :                         calculator.setShowLabels(false);</span>
+<span class="lineNum">      84 </span><span class="lineNoCov">          0 :                         calculator.setIsFilled(true);</span>
+<span class="lineNum">      85 </span><span class="lineNoCov">          0 :                         QBrush filler(QColor(255,0,0));</span>
+<span class="lineNum">      86 </span><span class="lineNoCov">          0 :                         calculator.setFillBrush(filler);</span>
+<span class="lineNum">      87 </span><span class="lineNoCov">          0 :                         QPen filpen(QColor(255,0,0));</span>
+<span class="lineNum">      88 </span><span class="lineNoCov">          0 :                         calculator.setFillPen(filpen);</span>
+<span class="lineNum">      89 </span><span class="lineNoCov">          0 :                         calculator.setLinePen(filpen);</span>
+<span class="lineNum">      90 </span><span class="lineNoCov">          0 :                         redHistogram_=VideoConverter::convertGraphVideoToVideo(memento-&gt;getRedHistogram(),1500,500,</span>
+<span class="lineNum">      91 </span><span class="lineNoCov">          0 :                                       &amp;calculator);</span>
+<span class="lineNum">      92 </span><span class="lineNoCov">          0 :                         auto redhSaver=std::make_unique&lt;VideoSaver&gt;(redHistogram_.get(),redhpath);</span>
+<span class="lineNum">      93 </span><span class="lineNoCov">          0 :                         redhSaver-&gt;save();</span>
+<span class="lineNum">      94 </span>            : 
+<span class="lineNum">      95 </span><span class="lineNoCov">          0 :                         videoSavers_.push_back(std::move(redhSaver));</span>
+<span class="lineNum">      96 </span>            :                 }
+<span class="lineNum">      97 </span>            : 
+<span class="lineNum">      98 </span><span class="lineNoCov">          0 :                 auto greenhpath=prefix+&quot;_greenHistogram.mp4&quot;;</span>
+<span class="lineNum">      99 </span>            : 
+<span class="lineNum">     100 </span><span class="lineNoCov">          0 :                 QFile greenhFile(greenhpath);</span>
+<span class="lineNum">     101 </span><span class="lineNoCov">          0 :                 if(!greenhFile.exists()) {</span>
+<span class="lineNum">     102 </span><span class="lineNoCov">          0 :                         calculator.setShowLabels(false);</span>
+<span class="lineNum">     103 </span><span class="lineNoCov">          0 :                         calculator.setIsFilled(true);</span>
+<span class="lineNum">     104 </span><span class="lineNoCov">          0 :                         QBrush filler(QColor(0,255,0));</span>
+<span class="lineNum">     105 </span><span class="lineNoCov">          0 :                         calculator.setFillBrush(filler);</span>
+<span class="lineNum">     106 </span><span class="lineNoCov">          0 :                         QPen filpen(QColor(0,255,0));</span>
+<span class="lineNum">     107 </span><span class="lineNoCov">          0 :                         calculator.setFillPen(filpen);</span>
+<span class="lineNum">     108 </span><span class="lineNoCov">          0 :                         calculator.setLinePen(filpen);</span>
+<span class="lineNum">     109 </span><span class="lineNoCov">          0 :                         greenHistogram_=VideoConverter::convertGraphVideoToVideo(memento-&gt;getGreenHistogram(),1500,500,</span>
+<span class="lineNum">     110 </span><span class="lineNoCov">          0 :                                         &amp;calculator);</span>
+<span class="lineNum">     111 </span><span class="lineNoCov">          0 :                         auto greenhSaver=std::make_unique&lt;VideoSaver&gt;(greenHistogram_.get(),greenhpath);</span>
+<span class="lineNum">     112 </span><span class="lineNoCov">          0 :                         greenhSaver-&gt;save();</span>
+<span class="lineNum">     113 </span>            : 
+<span class="lineNum">     114 </span><span class="lineNoCov">          0 :                         videoSavers_.push_back(std::move(greenhSaver));</span>
+<span class="lineNum">     115 </span>            :                 }
+<span class="lineNum">     116 </span>            : 
+<span class="lineNum">     117 </span><span class="lineNoCov">          0 :                 auto bluehpath=prefix+&quot;_blueHistogram.mp4&quot;;</span>
+<span class="lineNum">     118 </span>            : 
+<span class="lineNum">     119 </span><span class="lineNoCov">          0 :                 QFile bluehFile(bluehpath);</span>
+<span class="lineNum">     120 </span><span class="lineNoCov">          0 :                 if(!bluehFile.exists()) {</span>
+<span class="lineNum">     121 </span><span class="lineNoCov">          0 :                         calculator.setShowLabels(false);</span>
+<span class="lineNum">     122 </span><span class="lineNoCov">          0 :                         calculator.setIsFilled(true);</span>
+<span class="lineNum">     123 </span><span class="lineNoCov">          0 :                         QBrush filler(QColor(0,0,255));</span>
+<span class="lineNum">     124 </span><span class="lineNoCov">          0 :                         calculator.setFillBrush(filler);</span>
+<span class="lineNum">     125 </span><span class="lineNoCov">          0 :                         QPen filpen(QColor(0,0,255));</span>
+<span class="lineNum">     126 </span><span class="lineNoCov">          0 :                         calculator.setFillPen(filpen);</span>
+<span class="lineNum">     127 </span><span class="lineNoCov">          0 :                         calculator.setLinePen(filpen);</span>
+<span class="lineNum">     128 </span><span class="lineNoCov">          0 :                         blueHistogram_=VideoConverter::convertGraphVideoToVideo(memento-&gt;getBlueHistogram(),1500,500,</span>
+<span class="lineNum">     129 </span><span class="lineNoCov">          0 :                                        &amp;calculator);</span>
+<span class="lineNum">     130 </span><span class="lineNoCov">          0 :                         auto bluehSaver=std::make_unique&lt;VideoSaver&gt;(blueHistogram_.get(),bluehpath);</span>
+<span class="lineNum">     131 </span><span class="lineNoCov">          0 :                         bluehSaver-&gt;save();</span>
+<span class="lineNum">     132 </span>            : 
+<span class="lineNum">     133 </span><span class="lineNoCov">          0 :                         videoSavers_.push_back(std::move(bluehSaver));</span>
+<span class="lineNum">     134 </span>            :                 }
+<span class="lineNum">     135 </span>            : 
+<span class="lineNum">     136 </span><span class="lineNoCov">          0 :                 auto attributesPath=prefix+&quot;_attributes&quot;;</span>
+<span class="lineNum">     137 </span>            : 
+<span class="lineNum">     138 </span><span class="lineNoCov">          0 :                 QFile attributesFile(attributesPath);</span>
+<span class="lineNum">     139 </span><span class="lineNoCov">          0 :                 if(!attributesFile.exists()) {</span>
+<span class="lineNum">     140 </span><span class="lineNoCov">          0 :                         if(attributesFile.open(QIODevice::ReadWrite)) {</span>
+<span class="lineNum">     141 </span><span class="lineNoCov">          0 :                                 QTextStream str(&amp;attributesFile);</span>
+<span class="lineNum">     142 </span><span class="lineNoCov">          0 :                                 str&lt;&lt;&quot;Filename: &quot;&lt;&lt;memento-&gt;getFilename()&lt;&lt;&quot;\n&quot;;</span>
+<span class="lineNum">     143 </span><span class="lineNoCov">          0 :                                 str&lt;&lt;&quot;Filesize: &quot;&lt;&lt;memento-&gt;getFilesize()&lt;&lt;&quot;\n&quot;;</span>
+<span class="lineNum">     144 </span><span class="lineNoCov">          0 :                                 str&lt;&lt;&quot;Codec: &quot;&lt;&lt;memento-&gt;getEncoder()&lt;&lt;&quot;\n&quot;;</span>
+<span class="lineNum">     145 </span><span class="lineNoCov">          0 :                                 str&lt;&lt;&quot;Average bitrate: &quot;&lt;&lt;memento-&gt;getAverageBitrate()&lt;&lt;&quot;\n&quot;;</span>
+<span class="lineNum">     146 </span><span class="lineNoCov">          0 :                                 str&lt;&lt;&quot;Note: &quot;&lt;&lt;memento-&gt;getComment();</span>
+<span class="lineNum">     147 </span>            : 
+<span class="lineNum">     148 </span><span class="lineNoCov">          0 :                                 attributesFile.close();</span>
+<span class="lineNum">     149 </span>            :                         }
+<span class="lineNum">     150 </span>            :                 }
+<span class="lineNum">     151 </span>            :         }
+<span class="lineNum">     152 </span>            : 
+<span class="lineNum">     153 </span><span class="lineNoCov">          0 :         for(auto&amp; saver:videoSavers_) {</span>
+<span class="lineNum">     154 </span><span class="lineNoCov">          0 :                 saver-&gt;join();</span>
+<span class="lineNum">     155 </span>            :         }
+<span class="lineNum">     156 </span>            : }
+<span class="lineNum">     157 </span>            : 
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.11</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

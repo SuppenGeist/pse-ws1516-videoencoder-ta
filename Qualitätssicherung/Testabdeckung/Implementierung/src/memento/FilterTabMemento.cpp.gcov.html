@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - i3.info - Implementierung/src/memento/FilterTabMemento.cpp</title>
+  <link rel="stylesheet" type="text/css" href="../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">Implementierung/src/memento</a> - FilterTabMemento.cpp<span style="font-size: 80%;"> (source / <a href="FilterTabMemento.cpp.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">i3.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">35</td>
+            <td class="headerCovTableEntry">41</td>
+            <td class="headerCovTableEntryMed">85.4 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2016-03-18 19:49:03</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">13</td>
+            <td class="headerCovTableEntry">15</td>
+            <td class="headerCovTableEntryMed">86.7 %</td>
+          </tr>
+          <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : #include &quot;FilterTabMemento.h&quot;</a>
+<span class="lineNum">       2 </span>            : 
+<span class="lineNum">       3 </span>            : #include &lt;memory&gt;
+<span class="lineNum">       4 </span>            : #include &lt;stdexcept&gt;
+<span class="lineNum">       5 </span>            : 
+<span class="lineNum">       6 </span>            : #include &quot;../model/YuvVideo.h&quot;
+<span class="lineNum">       7 </span>            : #include &quot;../model/FilterList.h&quot;
+<a name="8"><span class="lineNum">       8 </span>            : #include &quot;../model/filters/Filter.h&quot;</a>
+<span class="lineNum">       9 </span>            : 
+<span class="lineNum">      10 </span><span class="lineCov">         70 : Memento::FilterTabMemento::FilterTabMemento():rawVideo_(nullptr),isPreviewShown_(false),</span>
+<span class="lineNum">      11 </span><span class="lineCov">        210 :         currentFrame_(0),currentlySelectedFilter_(-1),isFilteredVideoShown_(false) {</span>
+<span class="lineNum">      12 </span><span class="lineCov">        210 :         filterlist_=std::make_unique&lt;Model::FilterList&gt;();</span>
+<a name="13"><span class="lineNum">      13 </span><span class="lineCov">         70 : }</span></a>
+<span class="lineNum">      14 </span>            : 
+<span class="lineNum">      15 </span><span class="lineCov">         63 : void Memento::FilterTabMemento::setRawVideo(Model::YuvVideo *rawVideo) {</span>
+<span class="lineNum">      16 </span><span class="lineCov">         63 :         rawVideo_=rawVideo;</span>
+<a name="17"><span class="lineNum">      17 </span><span class="lineCov">         63 : }</span></a>
+<span class="lineNum">      18 </span>            : 
+<span class="lineNum">      19 </span><span class="lineNoCov">          0 : void Memento::FilterTabMemento::setRawVideo(std::unique_ptr&lt;Model::YuvVideo&gt; video) {</span>
+<span class="lineNum">      20 </span><span class="lineNoCov">          0 :         ownedRawVideo_=std::move(video);</span>
+<a name="21"><span class="lineNum">      21 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">      22 </span>            : 
+<span class="lineNum">      23 </span><span class="lineNoCov">          0 : std::unique_ptr&lt;Model::YuvVideo&gt; Memento::FilterTabMemento::releaseVideo() {</span>
+<span class="lineNum">      24 </span><span class="lineNoCov">          0 :         return std::move(ownedRawVideo_);</span>
+<a name="25"><span class="lineNum">      25 </span>            : }</a>
+<span class="lineNum">      26 </span>            : 
+<span class="lineNum">      27 </span><span class="lineCov">          6 : Model::YuvVideo *Memento::FilterTabMemento::getRawVideo() {</span>
+<span class="lineNum">      28 </span><span class="lineCov">          6 :         return rawVideo_;</span>
+<a name="29"><span class="lineNum">      29 </span>            : }</a>
+<span class="lineNum">      30 </span>            : 
+<span class="lineNum">      31 </span><span class="lineCov">         62 : void Memento::FilterTabMemento::setFilterList( std::unique_ptr&lt;Model::FilterList&gt; filterlist) {</span>
+<span class="lineNum">      32 </span><span class="lineCov">        124 :         filterlist_=std::move(filterlist);</span>
+<a name="33"><span class="lineNum">      33 </span><span class="lineCov">         62 : }</span></a>
+<span class="lineNum">      34 </span>            : 
+<span class="lineNum">      35 </span><span class="lineCov">         17 : std::unique_ptr&lt;Model::FilterList&gt; Memento::FilterTabMemento::getFilterList() {</span>
+<span class="lineNum">      36 </span><span class="lineCov">         34 :         if(!filterlist_.get())</span>
+<span class="lineNum">      37 </span><span class="lineNoCov">          0 :                 throw std::logic_error(&quot;First set the filterlist&quot;);</span>
+<span class="lineNum">      38 </span><span class="lineCov">         34 :         return std::make_unique&lt;Model::FilterList&gt;(*filterlist_);</span>
+<a name="39"><span class="lineNum">      39 </span>            : }</a>
+<span class="lineNum">      40 </span>            : 
+<span class="lineNum">      41 </span><span class="lineCov">         63 : void Memento::FilterTabMemento::setIsPreviewShown(bool isShown) {</span>
+<span class="lineNum">      42 </span><span class="lineCov">         63 :         isPreviewShown_=isShown;</span>
+<a name="43"><span class="lineNum">      43 </span><span class="lineCov">         63 : }</span></a>
+<span class="lineNum">      44 </span>            : 
+<span class="lineNum">      45 </span><span class="lineCov">          3 : bool Memento::FilterTabMemento::isPreviewShow() {</span>
+<span class="lineNum">      46 </span><span class="lineCov">          3 :         return isPreviewShown_;</span>
+<a name="47"><span class="lineNum">      47 </span>            : }</a>
+<span class="lineNum">      48 </span>            : 
+<span class="lineNum">      49 </span><span class="lineCov">         63 : void Memento::FilterTabMemento::setIsFilteredVideoShown(bool isShown) {</span>
+<span class="lineNum">      50 </span><span class="lineCov">         63 :         isFilteredVideoShown_=isShown;</span>
+<a name="51"><span class="lineNum">      51 </span><span class="lineCov">         63 : }</span></a>
+<span class="lineNum">      52 </span>            : 
+<span class="lineNum">      53 </span><span class="lineCov">          1 : bool Memento::FilterTabMemento::isFilteredVideoShown() {</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 :         return isFilteredVideoShown_;</span>
+<a name="55"><span class="lineNum">      55 </span>            : }</a>
+<span class="lineNum">      56 </span>            : 
+<span class="lineNum">      57 </span><span class="lineCov">         63 : void Memento::FilterTabMemento::setCurrentFrame(int currentFrame) {</span>
+<span class="lineNum">      58 </span><span class="lineCov">         63 :         currentFrame_=currentFrame;</span>
+<a name="59"><span class="lineNum">      59 </span><span class="lineCov">         63 : }</span></a>
+<span class="lineNum">      60 </span>            : 
+<span class="lineNum">      61 </span><span class="lineCov">          1 : int Memento::FilterTabMemento::getCurrentFrame() {</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 :         return currentFrame_;</span>
+<a name="63"><span class="lineNum">      63 </span>            : }</a>
+<span class="lineNum">      64 </span>            : 
+<span class="lineNum">      65 </span><span class="lineCov">         63 : void Memento::FilterTabMemento::setCurrentlySelectedFilter(int filter) {</span>
+<span class="lineNum">      66 </span><span class="lineCov">         63 :         currentlySelectedFilter_=filter;</span>
+<a name="67"><span class="lineNum">      67 </span><span class="lineCov">         63 : }</span></a>
+<span class="lineNum">      68 </span>            : 
+<span class="lineNum">      69 </span><span class="lineCov">          1 : int Memento::FilterTabMemento::getCurrentlySelectedFilter() {</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 :         return currentlySelectedFilter_;</span>
+<span class="lineNum">      71 </span>            : }
+<span class="lineNum">      72 </span>            : 
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.11</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

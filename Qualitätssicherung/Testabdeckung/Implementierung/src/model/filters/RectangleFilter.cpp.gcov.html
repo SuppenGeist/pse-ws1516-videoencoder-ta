@@ -1,0 +1,202 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - i3.info - Implementierung/src/model/filters/RectangleFilter.cpp</title>
+  <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../index.html">top level</a> - <a href="index.html">Implementierung/src/model/filters</a> - RectangleFilter.cpp<span style="font-size: 80%;"> (source / <a href="RectangleFilter.cpp.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">i3.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">87</td>
+            <td class="headerCovTableEntry">88</td>
+            <td class="headerCovTableEntryHi">98.9 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2016-03-18 19:49:03</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">18</td>
+            <td class="headerCovTableEntry">18</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : #include &quot;RectangleFilter.h&quot;</a>
+<span class="lineNum">       2 </span>            : 
+<span class="lineNum">       3 </span>            : #include &lt;QString&gt;
+<span class="lineNum">       4 </span>            : #include &lt;QStringList&gt;
+<span class="lineNum">       5 </span>            : #include &lt;QColor&gt;
+<span class="lineNum">       6 </span>            : #include &lt;iomanip&gt;
+<span class="lineNum">       7 </span>            : 
+<span class="lineNum">       8 </span>            : #include &quot;Filter.h&quot;
+<span class="lineNum">       9 </span>            : 
+<a name="10"><span class="lineNum">      10 </span><span class="lineCov">          1 : const QString Model::RectangleFilter::FILTERNAME=&quot;Rectangle&quot;;</span></a>
+<span class="lineNum">      11 </span>            : 
+<span class="lineNum">      12 </span><span class="lineCov">         22 : Model::RectangleFilter::RectangleFilter():x_(10),y_(20),width_(100),height_(60),color_(QColor(0,0,</span>
+<span class="lineNum">      13 </span><span class="lineCov">         44 :                 0)),opacity_(255) {</span>
+<a name="14"><span class="lineNum">      14 </span><span class="lineCov">         22 : }</span></a>
+<span class="lineNum">      15 </span>            : 
+<span class="lineNum">      16 </span><span class="lineCov">         13 : std::string Model::RectangleFilter::getFilterDescription() {</span>
+<span class="lineNum">      17 </span><span class="lineCov">         26 :         std::stringstream stream;</span>
+<span class="lineNum">      18 </span><span class="lineCov">         26 :         stream &lt;&lt; std::hex &lt;&lt; opacity_;</span>
+<span class="lineNum">      19 </span><span class="lineCov">         39 :         std::string str = std::string(&quot;drawbox&quot;);</span>
+<span class="lineNum">      20 </span><span class="lineCov">         13 :         str+=&quot;=&quot;;</span>
+<span class="lineNum">      21 </span><span class="lineCov">         13 :         str+=&quot;x&quot;;</span>
+<span class="lineNum">      22 </span><span class="lineCov">         13 :         str+=&quot;=&quot;;</span>
+<span class="lineNum">      23 </span><span class="lineCov">         52 :         str+=std::to_string(x_);</span>
+<span class="lineNum">      24 </span><span class="lineCov">         13 :         str+=&quot;:&quot;;</span>
+<span class="lineNum">      25 </span><span class="lineCov">         13 :         str+=&quot;y&quot;;</span>
+<span class="lineNum">      26 </span><span class="lineCov">         13 :         str+=&quot;=&quot;;</span>
+<span class="lineNum">      27 </span><span class="lineCov">         52 :         str+=std::to_string(y_);</span>
+<span class="lineNum">      28 </span><span class="lineCov">         13 :         str+=&quot;:&quot;;</span>
+<span class="lineNum">      29 </span><span class="lineCov">         13 :         str+=&quot;w&quot;;</span>
+<span class="lineNum">      30 </span><span class="lineCov">         13 :         str+=&quot;=&quot;;</span>
+<span class="lineNum">      31 </span><span class="lineCov">         52 :         str+=std::to_string(width_);</span>
+<span class="lineNum">      32 </span><span class="lineCov">         13 :         str+=&quot;:&quot;;</span>
+<span class="lineNum">      33 </span><span class="lineCov">         13 :         str+=&quot;h&quot;;</span>
+<span class="lineNum">      34 </span><span class="lineCov">         13 :         str+=&quot;=&quot;;</span>
+<span class="lineNum">      35 </span><span class="lineCov">         52 :         str+=std::to_string(height_);</span>
+<span class="lineNum">      36 </span><span class="lineCov">         13 :         str+=&quot;:&quot;;</span>
+<span class="lineNum">      37 </span><span class="lineCov">         13 :         str+=&quot;color&quot;;</span>
+<span class="lineNum">      38 </span><span class="lineCov">         13 :         str+=&quot;=&quot;;</span>
+<span class="lineNum">      39 </span><span class="lineCov">         52 :         str+=color_.name().toUtf8().constData();</span>
+<span class="lineNum">      40 </span><span class="lineCov">         13 :         str+=&quot;@0x&quot;;</span>
+<span class="lineNum">      41 </span><span class="lineCov">         39 :         str+=stream.str();</span>
+<span class="lineNum">      42 </span><span class="lineCov">         13 :         str+=&quot;:t=max&quot;;</span>
+<span class="lineNum">      43 </span><span class="lineCov">         13 :         return str;</span>
+<a name="44"><span class="lineNum">      44 </span>            : }</a>
+<span class="lineNum">      45 </span>            : 
+<span class="lineNum">      46 </span><span class="lineCov">          3 : QColor Model::RectangleFilter::getColor() {</span>
+<span class="lineNum">      47 </span><span class="lineCov">          6 :         return color_;</span>
+<a name="48"><span class="lineNum">      48 </span>            : }</a>
+<span class="lineNum">      49 </span>            : 
+<span class="lineNum">      50 </span><span class="lineCov">         17 : void Model::RectangleFilter::setColor(QColor color) {</span>
+<span class="lineNum">      51 </span><span class="lineCov">         17 :         color_ = color;</span>
+<a name="52"><span class="lineNum">      52 </span><span class="lineCov">         17 : }</span></a>
+<span class="lineNum">      53 </span>            : 
+<span class="lineNum">      54 </span><span class="lineCov">          3 : int Model::RectangleFilter::getWidth() {</span>
+<span class="lineNum">      55 </span><span class="lineCov">          3 :         return width_;</span>
+<a name="56"><span class="lineNum">      56 </span>            : }</a>
+<span class="lineNum">      57 </span>            : 
+<span class="lineNum">      58 </span><span class="lineCov">         18 : void Model::RectangleFilter::setWidth(int width) {</span>
+<span class="lineNum">      59 </span><span class="lineCov">         18 :         width_ = width;</span>
+<a name="60"><span class="lineNum">      60 </span><span class="lineCov">         18 : }</span></a>
+<span class="lineNum">      61 </span>            : 
+<span class="lineNum">      62 </span><span class="lineCov">          3 : int Model::RectangleFilter::getHeight() {</span>
+<span class="lineNum">      63 </span><span class="lineCov">          3 :         return height_;</span>
+<a name="64"><span class="lineNum">      64 </span>            : }</a>
+<span class="lineNum">      65 </span>            : 
+<span class="lineNum">      66 </span><span class="lineCov">         18 : void Model::RectangleFilter::setHeight(int height) {</span>
+<span class="lineNum">      67 </span><span class="lineCov">         18 :         height_ = height;</span>
+<a name="68"><span class="lineNum">      68 </span><span class="lineCov">         18 : }</span></a>
+<span class="lineNum">      69 </span>            : 
+<span class="lineNum">      70 </span><span class="lineCov">          3 : int Model::RectangleFilter::getX() {</span>
+<span class="lineNum">      71 </span><span class="lineCov">          3 :         return x_;</span>
+<a name="72"><span class="lineNum">      72 </span>            : }</a>
+<span class="lineNum">      73 </span>            : 
+<span class="lineNum">      74 </span><span class="lineCov">         30 : QString Model::RectangleFilter::getName() const {</span>
+<span class="lineNum">      75 </span><span class="lineCov">         30 :         return FILTERNAME;</span>
+<a name="76"><span class="lineNum">      76 </span>            : }</a>
+<span class="lineNum">      77 </span>            : 
+<span class="lineNum">      78 </span><span class="lineCov">         18 : void Model::RectangleFilter::setX(int x) {</span>
+<span class="lineNum">      79 </span><span class="lineCov">         18 :         x_ = x;</span>
+<a name="80"><span class="lineNum">      80 </span><span class="lineCov">         18 : }</span></a>
+<span class="lineNum">      81 </span>            : 
+<span class="lineNum">      82 </span><span class="lineCov">          3 : int Model::RectangleFilter::getY() {</span>
+<span class="lineNum">      83 </span><span class="lineCov">          3 :         return y_;</span>
+<a name="84"><span class="lineNum">      84 </span>            : }</a>
+<span class="lineNum">      85 </span>            : 
+<span class="lineNum">      86 </span><span class="lineCov">         18 : void Model::RectangleFilter::setY(int y) {</span>
+<span class="lineNum">      87 </span><span class="lineCov">         18 :         y_ = y;</span>
+<a name="88"><span class="lineNum">      88 </span><span class="lineCov">         18 : }</span></a>
+<span class="lineNum">      89 </span>            : 
+<span class="lineNum">      90 </span><span class="lineCov">          7 : int Model::RectangleFilter::getOpacity() {</span>
+<span class="lineNum">      91 </span><span class="lineCov">          7 :         return opacity_;</span>
+<a name="92"><span class="lineNum">      92 </span>            : }</a>
+<span class="lineNum">      93 </span>            : 
+<span class="lineNum">      94 </span><span class="lineCov">         23 : void Model::RectangleFilter::setOpacity(int opacity) {</span>
+<span class="lineNum">      95 </span><span class="lineCov">         23 :         if(opacity&lt;0||opacity&gt;255)</span>
+<span class="lineNum">      96 </span>            :                 return;
+<span class="lineNum">      97 </span><span class="lineCov">         21 :         opacity_ = opacity;</span>
+<a name="98"><span class="lineNum">      98 </span>            : }</a>
+<span class="lineNum">      99 </span>            : 
+<span class="lineNum">     100 </span><span class="lineCov">         15 : void Model::RectangleFilter::restore(QString description) {</span>
+<span class="lineNum">     101 </span><span class="lineCov">         30 :         QStringList list  = description.split(&quot;;&quot;);</span>
+<span class="lineNum">     102 </span><span class="lineCov">         15 :         if(list.size() != 6) {</span>
+<span class="lineNum">     103 </span><span class="lineNoCov">          0 :                 return;</span>
+<span class="lineNum">     104 </span>            :         }
+<span class="lineNum">     105 </span><span class="lineCov">         15 :         setWidth(list[0].QString::toInt());</span>
+<span class="lineNum">     106 </span><span class="lineCov">         15 :         setHeight(list[1].QString::toInt());</span>
+<span class="lineNum">     107 </span><span class="lineCov">         15 :         setX(list[2].QString::toInt());</span>
+<span class="lineNum">     108 </span><span class="lineCov">         15 :         setY(list[3].QString::toInt());</span>
+<span class="lineNum">     109 </span><span class="lineCov">         15 :         setOpacity(list[4].QString::toInt());</span>
+<span class="lineNum">     110 </span><span class="lineCov">         30 :         setColor(QColor(list[5]));</span>
+<a name="111"><span class="lineNum">     111 </span>            : }</a>
+<span class="lineNum">     112 </span>            : 
+<span class="lineNum">     113 </span><span class="lineCov">         14 : QString Model::RectangleFilter::getSaveString() const {</span>
+<span class="lineNum">     114 </span><span class="lineCov">         14 :         QString str =QString::number(width_);</span>
+<span class="lineNum">     115 </span><span class="lineCov">         14 :         str+=&quot;;&quot;;</span>
+<span class="lineNum">     116 </span><span class="lineCov">         28 :         str+=QString::number(height_);</span>
+<span class="lineNum">     117 </span><span class="lineCov">         14 :         str+=&quot;;&quot;;</span>
+<span class="lineNum">     118 </span><span class="lineCov">         28 :         str+=QString::number(x_);</span>
+<span class="lineNum">     119 </span><span class="lineCov">         14 :         str+=&quot;;&quot;;</span>
+<span class="lineNum">     120 </span><span class="lineCov">         28 :         str+=QString::number(y_);</span>
+<span class="lineNum">     121 </span><span class="lineCov">         14 :         str+=&quot;;&quot;;</span>
+<span class="lineNum">     122 </span><span class="lineCov">         28 :         str+=QString::number(opacity_);</span>
+<span class="lineNum">     123 </span><span class="lineCov">         14 :         str+=&quot;;&quot;;</span>
+<a name="124"><span class="lineNum">     124 </span><span class="lineCov">         28 :         str+=color_.QColor::name();</span></a>
+<span class="lineNum">     125 </span><span class="lineCov">         14 :         return str;</span>
+<span class="lineNum">     126 </span><span class="lineCov">          2 : }</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.11</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

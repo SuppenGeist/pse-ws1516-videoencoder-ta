@@ -1,0 +1,255 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - i3.info - /home/gravitynx/Qt/5.5/gcc_64/include/QtWidgets/qsizepolicy.h</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../../../index.html">top level</a> - <a href="index.html">home/gravitynx/Qt/5.5/gcc_64/include/QtWidgets</a> - qsizepolicy.h<span style="font-size: 80%;"> (source / <a href="qsizepolicy.h.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">i3.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">8</td>
+            <td class="headerCovTableEntry">8</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2016-03-18 19:49:03</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntryHi">-</td>
+          </tr>
+          <tr><td><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : /****************************************************************************</a>
+<span class="lineNum">       2 </span>            : **
+<span class="lineNum">       3 </span>            : ** Copyright (C) 2015 The Qt Company Ltd.
+<span class="lineNum">       4 </span>            : ** Contact: http://www.qt.io/licensing/
+<span class="lineNum">       5 </span>            : **
+<span class="lineNum">       6 </span>            : ** This file is part of the QtWidgets module of the Qt Toolkit.
+<span class="lineNum">       7 </span>            : **
+<span class="lineNum">       8 </span>            : ** $QT_BEGIN_LICENSE:LGPL21$
+<span class="lineNum">       9 </span>            : ** Commercial License Usage
+<span class="lineNum">      10 </span>            : ** Licensees holding valid commercial Qt licenses may use this file in
+<span class="lineNum">      11 </span>            : ** accordance with the commercial license agreement provided with the
+<span class="lineNum">      12 </span>            : ** Software or, alternatively, in accordance with the terms contained in
+<span class="lineNum">      13 </span>            : ** a written agreement between you and The Qt Company. For licensing terms
+<span class="lineNum">      14 </span>            : ** and conditions see http://www.qt.io/terms-conditions. For further
+<span class="lineNum">      15 </span>            : ** information use the contact form at http://www.qt.io/contact-us.
+<span class="lineNum">      16 </span>            : **
+<span class="lineNum">      17 </span>            : ** GNU Lesser General Public License Usage
+<span class="lineNum">      18 </span>            : ** Alternatively, this file may be used under the terms of the GNU Lesser
+<span class="lineNum">      19 </span>            : ** General Public License version 2.1 or version 3 as published by the Free
+<span class="lineNum">      20 </span>            : ** Software Foundation and appearing in the file LICENSE.LGPLv21 and
+<span class="lineNum">      21 </span>            : ** LICENSE.LGPLv3 included in the packaging of this file. Please review the
+<span class="lineNum">      22 </span>            : ** following information to ensure the GNU Lesser General Public License
+<span class="lineNum">      23 </span>            : ** requirements will be met: https://www.gnu.org/licenses/lgpl.html and
+<span class="lineNum">      24 </span>            : ** http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
+<span class="lineNum">      25 </span>            : **
+<span class="lineNum">      26 </span>            : ** As a special exception, The Qt Company gives you certain additional
+<span class="lineNum">      27 </span>            : ** rights. These rights are described in The Qt Company LGPL Exception
+<span class="lineNum">      28 </span>            : ** version 1.1, included in the file LGPL_EXCEPTION.txt in this package.
+<span class="lineNum">      29 </span>            : **
+<span class="lineNum">      30 </span>            : ** $QT_END_LICENSE$
+<span class="lineNum">      31 </span>            : **
+<span class="lineNum">      32 </span>            : ****************************************************************************/
+<span class="lineNum">      33 </span>            : 
+<span class="lineNum">      34 </span>            : #ifndef QSIZEPOLICY_H
+<span class="lineNum">      35 </span>            : #define QSIZEPOLICY_H
+<span class="lineNum">      36 </span>            : 
+<span class="lineNum">      37 </span>            : #include &lt;QtCore/qobject.h&gt;
+<span class="lineNum">      38 </span>            : 
+<span class="lineNum">      39 </span>            : QT_BEGIN_NAMESPACE
+<span class="lineNum">      40 </span>            : 
+<span class="lineNum">      41 </span>            : 
+<span class="lineNum">      42 </span>            : class QVariant;
+<span class="lineNum">      43 </span>            : 
+<span class="lineNum">      44 </span>            : class Q_WIDGETS_EXPORT QSizePolicy
+<span class="lineNum">      45 </span>            : {
+<span class="lineNum">      46 </span>            :     Q_GADGET
+<span class="lineNum">      47 </span>            :     Q_FLAGS(ControlTypes)
+<span class="lineNum">      48 </span>            : 
+<span class="lineNum">      49 </span>            : public:
+<span class="lineNum">      50 </span>            :     enum PolicyFlag {
+<span class="lineNum">      51 </span>            :         GrowFlag = 1,
+<span class="lineNum">      52 </span>            :         ExpandFlag = 2,
+<span class="lineNum">      53 </span>            :         ShrinkFlag = 4,
+<span class="lineNum">      54 </span>            :         IgnoreFlag = 8
+<span class="lineNum">      55 </span>            :     };
+<span class="lineNum">      56 </span>            : 
+<span class="lineNum">      57 </span>            :     enum Policy {
+<span class="lineNum">      58 </span>            :         Fixed = 0,
+<span class="lineNum">      59 </span>            :         Minimum = GrowFlag,
+<span class="lineNum">      60 </span>            :         Maximum = ShrinkFlag,
+<span class="lineNum">      61 </span>            :         Preferred = GrowFlag | ShrinkFlag,
+<span class="lineNum">      62 </span>            :         MinimumExpanding = GrowFlag | ExpandFlag,
+<span class="lineNum">      63 </span>            :         Expanding = GrowFlag | ShrinkFlag | ExpandFlag,
+<span class="lineNum">      64 </span>            :         Ignored = ShrinkFlag | GrowFlag | IgnoreFlag
+<span class="lineNum">      65 </span>            :     };
+<span class="lineNum">      66 </span>            :     Q_ENUM(Policy)
+<span class="lineNum">      67 </span>            : 
+<span class="lineNum">      68 </span>            :     enum ControlType {
+<span class="lineNum">      69 </span>            :         DefaultType      = 0x00000001,
+<span class="lineNum">      70 </span>            :         ButtonBox        = 0x00000002,
+<span class="lineNum">      71 </span>            :         CheckBox         = 0x00000004,
+<span class="lineNum">      72 </span>            :         ComboBox         = 0x00000008,
+<span class="lineNum">      73 </span>            :         Frame            = 0x00000010,
+<span class="lineNum">      74 </span>            :         GroupBox         = 0x00000020,
+<span class="lineNum">      75 </span>            :         Label            = 0x00000040,
+<span class="lineNum">      76 </span>            :         Line             = 0x00000080,
+<span class="lineNum">      77 </span>            :         LineEdit         = 0x00000100,
+<span class="lineNum">      78 </span>            :         PushButton       = 0x00000200,
+<span class="lineNum">      79 </span>            :         RadioButton      = 0x00000400,
+<span class="lineNum">      80 </span>            :         Slider           = 0x00000800,
+<span class="lineNum">      81 </span>            :         SpinBox          = 0x00001000,
+<span class="lineNum">      82 </span>            :         TabWidget        = 0x00002000,
+<span class="lineNum">      83 </span>            :         ToolButton       = 0x00004000
+<span class="lineNum">      84 </span>            :     };
+<span class="lineNum">      85 </span>            :     Q_DECLARE_FLAGS(ControlTypes, ControlType)
+<span class="lineNum">      86 </span>            : 
+<span class="lineNum">      87 </span>            :     QSizePolicy() : data(0) { }
+<span class="lineNum">      88 </span>            : 
+<span class="lineNum">      89 </span>            :     QSizePolicy(Policy horizontal, Policy vertical, ControlType type = DefaultType)
+<span class="lineNum">      90 </span><span class="lineCov">        195 :         : data(0) {</span>
+<span class="lineNum">      91 </span><span class="lineCov">        195 :         bits.horPolicy = horizontal;</span>
+<span class="lineNum">      92 </span><span class="lineCov">        195 :         bits.verPolicy = vertical;</span>
+<span class="lineNum">      93 </span><span class="lineCov">        195 :         setControlType(type);</span>
+<span class="lineNum">      94 </span>            :     }
+<span class="lineNum">      95 </span>            :     Policy horizontalPolicy() const { return static_cast&lt;Policy&gt;(bits.horPolicy); }
+<span class="lineNum">      96 </span>            :     Policy verticalPolicy() const { return static_cast&lt;Policy&gt;(bits.verPolicy); }
+<span class="lineNum">      97 </span>            :     ControlType controlType() const;
+<span class="lineNum">      98 </span>            : 
+<span class="lineNum">      99 </span>            :     void setHorizontalPolicy(Policy d) { bits.horPolicy = d; }
+<span class="lineNum">     100 </span>            :     void setVerticalPolicy(Policy d) { bits.verPolicy = d; }
+<span class="lineNum">     101 </span>            :     void setControlType(ControlType type);
+<span class="lineNum">     102 </span>            : 
+<span class="lineNum">     103 </span>            :     Qt::Orientations expandingDirections() const {
+<span class="lineNum">     104 </span>            :         return ( (verticalPolicy()   &amp; ExpandFlag) ? Qt::Vertical   : Qt::Orientations() )
+<span class="lineNum">     105 </span>            :              | ( (horizontalPolicy() &amp; ExpandFlag) ? Qt::Horizontal : Qt::Orientations() ) ;
+<span class="lineNum">     106 </span>            :     }
+<span class="lineNum">     107 </span>            : 
+<span class="lineNum">     108 </span><span class="lineCov">          2 :     void setHeightForWidth(bool b) { bits.hfw = b;  }</span>
+<span class="lineNum">     109 </span><span class="lineCov">          2 :     bool hasHeightForWidth() const { return bits.hfw; }</span>
+<span class="lineNum">     110 </span>            :     void setWidthForHeight(bool b) { bits.wfh = b;  }
+<span class="lineNum">     111 </span>            :     bool hasWidthForHeight() const { return bits.wfh; }
+<span class="lineNum">     112 </span>            : 
+<span class="lineNum">     113 </span>            :     bool operator==(const QSizePolicy&amp; s) const { return data == s.data; }
+<span class="lineNum">     114 </span>            :     bool operator!=(const QSizePolicy&amp; s) const { return data != s.data; }
+<span class="lineNum">     115 </span>            :     operator QVariant() const;
+<span class="lineNum">     116 </span>            : 
+<span class="lineNum">     117 </span>            :     int horizontalStretch() const { return static_cast&lt;int&gt;(bits.horStretch); }
+<span class="lineNum">     118 </span>            :     int verticalStretch() const { return static_cast&lt;int&gt;(bits.verStretch); }
+<span class="lineNum">     119 </span><span class="lineCov">          2 :     void setHorizontalStretch(int stretchFactor) { bits.horStretch = static_cast&lt;quint32&gt;(qBound(0, stretchFactor, 255)); }</span>
+<span class="lineNum">     120 </span><span class="lineCov">          2 :     void setVerticalStretch(int stretchFactor) { bits.verStretch = static_cast&lt;quint32&gt;(qBound(0, stretchFactor, 255)); }</span>
+<span class="lineNum">     121 </span>            : 
+<span class="lineNum">     122 </span>            :     bool retainSizeWhenHidden() const { return bits.retainSizeWhenHidden; }
+<span class="lineNum">     123 </span>            :     void setRetainSizeWhenHidden(bool retainSize) { bits.retainSizeWhenHidden = retainSize; }
+<span class="lineNum">     124 </span>            : 
+<span class="lineNum">     125 </span>            :     void transpose();
+<span class="lineNum">     126 </span>            : 
+<span class="lineNum">     127 </span>            : 
+<span class="lineNum">     128 </span>            : private:
+<span class="lineNum">     129 </span>            : #ifndef QT_NO_DATASTREAM
+<span class="lineNum">     130 </span>            :     friend Q_WIDGETS_EXPORT QDataStream &amp;operator&lt;&lt;(QDataStream &amp;, const QSizePolicy &amp;);
+<span class="lineNum">     131 </span>            :     friend Q_WIDGETS_EXPORT QDataStream &amp;operator&gt;&gt;(QDataStream &amp;, QSizePolicy &amp;);
+<span class="lineNum">     132 </span>            : #endif
+<span class="lineNum">     133 </span>            :     QSizePolicy(int i) : data(i) { }
+<span class="lineNum">     134 </span>            : 
+<span class="lineNum">     135 </span>            :     struct Bits {
+<span class="lineNum">     136 </span>            :         quint32 horStretch : 8;
+<span class="lineNum">     137 </span>            :         quint32 verStretch : 8;
+<span class="lineNum">     138 </span>            :         quint32 horPolicy : 4;
+<span class="lineNum">     139 </span>            :         quint32 verPolicy : 4;
+<span class="lineNum">     140 </span>            :         quint32 ctype : 5;
+<span class="lineNum">     141 </span>            :         quint32 hfw : 1;
+<span class="lineNum">     142 </span>            :         quint32 wfh : 1;
+<span class="lineNum">     143 </span>            :         quint32 retainSizeWhenHidden : 1;
+<span class="lineNum">     144 </span>            :     };
+<span class="lineNum">     145 </span>            :     union {
+<span class="lineNum">     146 </span>            :         Bits bits;
+<span class="lineNum">     147 </span>            :         quint32 data;
+<span class="lineNum">     148 </span>            :     };
+<span class="lineNum">     149 </span>            : };
+<span class="lineNum">     150 </span>            : #if QT_VERSION &gt;= QT_VERSION_CHECK(6,0,0)
+<span class="lineNum">     151 </span>            : // Can't add in Qt 5, as QList&lt;QSizePolicy&gt; would be BiC:
+<span class="lineNum">     152 </span>            : Q_DECLARE_TYPEINFO(QSizePolicy, Q_PRIMITIVE_TYPE);
+<span class="lineNum">     153 </span>            : #endif
+<span class="lineNum">     154 </span>            : 
+<span class="lineNum">     155 </span>            : Q_DECLARE_OPERATORS_FOR_FLAGS(QSizePolicy::ControlTypes)
+<span class="lineNum">     156 </span>            : 
+<span class="lineNum">     157 </span>            : #ifndef QT_NO_DATASTREAM
+<span class="lineNum">     158 </span>            : Q_WIDGETS_EXPORT QDataStream &amp;operator&lt;&lt;(QDataStream &amp;, const QSizePolicy &amp;);
+<span class="lineNum">     159 </span>            : Q_WIDGETS_EXPORT QDataStream &amp;operator&gt;&gt;(QDataStream &amp;, QSizePolicy &amp;);
+<span class="lineNum">     160 </span>            : #endif
+<span class="lineNum">     161 </span>            : 
+<span class="lineNum">     162 </span>            : #ifndef QT_NO_DEBUG_STREAM
+<span class="lineNum">     163 </span>            : Q_WIDGETS_EXPORT QDebug operator&lt;&lt;(QDebug dbg, const QSizePolicy &amp;);
+<span class="lineNum">     164 </span>            : #endif
+<span class="lineNum">     165 </span>            : 
+<span class="lineNum">     166 </span>            : inline void QSizePolicy::transpose() {
+<span class="lineNum">     167 </span>            :     Policy hData = horizontalPolicy();
+<span class="lineNum">     168 </span>            :     Policy vData = verticalPolicy();
+<span class="lineNum">     169 </span>            :     int hStretch = horizontalStretch();
+<span class="lineNum">     170 </span>            :     int vStretch = verticalStretch();
+<span class="lineNum">     171 </span>            :     setHorizontalPolicy(vData);
+<span class="lineNum">     172 </span>            :     setVerticalPolicy(hData);
+<span class="lineNum">     173 </span>            :     setHorizontalStretch(vStretch);
+<span class="lineNum">     174 </span>            :     setVerticalStretch(hStretch);
+<span class="lineNum">     175 </span>            : }
+<span class="lineNum">     176 </span>            : 
+<span class="lineNum">     177 </span>            : QT_END_NAMESPACE
+<span class="lineNum">     178 </span>            : 
+<span class="lineNum">     179 </span>            : #endif // QSIZEPOLICY_H
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.11</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

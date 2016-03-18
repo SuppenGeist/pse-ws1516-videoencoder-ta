@@ -1,0 +1,250 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - i3.info - /home/gravitynx/Qt/5.5/gcc_64/include/QtWidgets/qlayoutitem.h</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../../../index.html">top level</a> - <a href="index.html">home/gravitynx/Qt/5.5/gcc_64/include/QtWidgets</a> - qlayoutitem.h<span style="font-size: 80%;"> (source / <a href="qlayoutitem.h.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">i3.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2016-03-18 19:49:03</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : /****************************************************************************</a>
+<span class="lineNum">       2 </span>            : **
+<span class="lineNum">       3 </span>            : ** Copyright (C) 2015 The Qt Company Ltd.
+<span class="lineNum">       4 </span>            : ** Contact: http://www.qt.io/licensing/
+<span class="lineNum">       5 </span>            : **
+<span class="lineNum">       6 </span>            : ** This file is part of the QtWidgets module of the Qt Toolkit.
+<span class="lineNum">       7 </span>            : **
+<span class="lineNum">       8 </span>            : ** $QT_BEGIN_LICENSE:LGPL21$
+<span class="lineNum">       9 </span>            : ** Commercial License Usage
+<span class="lineNum">      10 </span>            : ** Licensees holding valid commercial Qt licenses may use this file in
+<span class="lineNum">      11 </span>            : ** accordance with the commercial license agreement provided with the
+<span class="lineNum">      12 </span>            : ** Software or, alternatively, in accordance with the terms contained in
+<span class="lineNum">      13 </span>            : ** a written agreement between you and The Qt Company. For licensing terms
+<span class="lineNum">      14 </span>            : ** and conditions see http://www.qt.io/terms-conditions. For further
+<span class="lineNum">      15 </span>            : ** information use the contact form at http://www.qt.io/contact-us.
+<span class="lineNum">      16 </span>            : **
+<span class="lineNum">      17 </span>            : ** GNU Lesser General Public License Usage
+<span class="lineNum">      18 </span>            : ** Alternatively, this file may be used under the terms of the GNU Lesser
+<span class="lineNum">      19 </span>            : ** General Public License version 2.1 or version 3 as published by the Free
+<span class="lineNum">      20 </span>            : ** Software Foundation and appearing in the file LICENSE.LGPLv21 and
+<span class="lineNum">      21 </span>            : ** LICENSE.LGPLv3 included in the packaging of this file. Please review the
+<span class="lineNum">      22 </span>            : ** following information to ensure the GNU Lesser General Public License
+<span class="lineNum">      23 </span>            : ** requirements will be met: https://www.gnu.org/licenses/lgpl.html and
+<span class="lineNum">      24 </span>            : ** http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
+<span class="lineNum">      25 </span>            : **
+<span class="lineNum">      26 </span>            : ** As a special exception, The Qt Company gives you certain additional
+<span class="lineNum">      27 </span>            : ** rights. These rights are described in The Qt Company LGPL Exception
+<span class="lineNum">      28 </span>            : ** version 1.1, included in the file LGPL_EXCEPTION.txt in this package.
+<span class="lineNum">      29 </span>            : **
+<span class="lineNum">      30 </span>            : ** $QT_END_LICENSE$
+<span class="lineNum">      31 </span>            : **
+<span class="lineNum">      32 </span>            : ****************************************************************************/
+<span class="lineNum">      33 </span>            : 
+<span class="lineNum">      34 </span>            : #ifndef QLAYOUTITEM_H
+<span class="lineNum">      35 </span>            : #define QLAYOUTITEM_H
+<span class="lineNum">      36 </span>            : 
+<span class="lineNum">      37 </span>            : #include &lt;QtWidgets/qsizepolicy.h&gt;
+<span class="lineNum">      38 </span>            : #include &lt;QtCore/qrect.h&gt;
+<span class="lineNum">      39 </span>            : 
+<span class="lineNum">      40 </span>            : #include &lt;limits.h&gt;
+<span class="lineNum">      41 </span>            : 
+<span class="lineNum">      42 </span>            : QT_BEGIN_NAMESPACE
+<span class="lineNum">      43 </span>            : 
+<span class="lineNum">      44 </span>            : 
+<span class="lineNum">      45 </span>            : static const Q_DECL_UNUSED int QLAYOUTSIZE_MAX = INT_MAX/256/16;
+<span class="lineNum">      46 </span>            : 
+<span class="lineNum">      47 </span>            : class QLayout;
+<span class="lineNum">      48 </span>            : class QLayoutItem;
+<span class="lineNum">      49 </span>            : class QSpacerItem;
+<span class="lineNum">      50 </span>            : class QWidget;
+<span class="lineNum">      51 </span>            : class QSize;
+<span class="lineNum">      52 </span>            : 
+<span class="lineNum">      53 </span>            : class Q_WIDGETS_EXPORT QLayoutItem
+<span class="lineNum">      54 </span>            : {
+<span class="lineNum">      55 </span>            : public:
+<span class="lineNum">      56 </span>            :     inline explicit QLayoutItem(Qt::Alignment alignment = 0);
+<span class="lineNum">      57 </span>            :     virtual ~QLayoutItem();
+<span class="lineNum">      58 </span>            :     virtual QSize sizeHint() const = 0;
+<span class="lineNum">      59 </span>            :     virtual QSize minimumSize() const = 0;
+<span class="lineNum">      60 </span>            :     virtual QSize maximumSize() const = 0;
+<span class="lineNum">      61 </span>            :     virtual Qt::Orientations expandingDirections() const = 0;
+<span class="lineNum">      62 </span>            :     virtual void setGeometry(const QRect&amp;) = 0;
+<span class="lineNum">      63 </span>            :     virtual QRect geometry() const = 0;
+<span class="lineNum">      64 </span>            :     virtual bool isEmpty() const = 0;
+<span class="lineNum">      65 </span>            :     virtual bool hasHeightForWidth() const;
+<span class="lineNum">      66 </span>            :     virtual int heightForWidth(int) const;
+<span class="lineNum">      67 </span>            :     virtual int minimumHeightForWidth(int) const;
+<span class="lineNum">      68 </span>            :     virtual void invalidate();
+<span class="lineNum">      69 </span>            : 
+<span class="lineNum">      70 </span>            :     virtual QWidget *widget();
+<span class="lineNum">      71 </span>            :     virtual QLayout *layout();
+<span class="lineNum">      72 </span>            :     virtual QSpacerItem *spacerItem();
+<span class="lineNum">      73 </span>            : 
+<span class="lineNum">      74 </span>            :     Qt::Alignment alignment() const { return align; }
+<span class="lineNum">      75 </span>            :     void setAlignment(Qt::Alignment a);
+<span class="lineNum">      76 </span>            :     virtual QSizePolicy::ControlTypes controlTypes() const;
+<span class="lineNum">      77 </span>            : 
+<span class="lineNum">      78 </span>            : protected:
+<span class="lineNum">      79 </span>            :     Qt::Alignment align;
+<span class="lineNum">      80 </span>            : };
+<span class="lineNum">      81 </span>            : 
+<span class="lineNum">      82 </span>            : inline QLayoutItem::QLayoutItem(Qt::Alignment aalignment)
+<span class="lineNum">      83 </span><span class="lineCov">         72 :     : align(aalignment) { }</span>
+<span class="lineNum">      84 </span>            : 
+<span class="lineNum">      85 </span>            : class Q_WIDGETS_EXPORT QSpacerItem : public QLayoutItem
+<a name="86"><span class="lineNum">      86 </span>            : {</a>
+<span class="lineNum">      87 </span>            : public:
+<span class="lineNum">      88 </span><span class="lineCov">         72 :     QSpacerItem(int w, int h,</span>
+<span class="lineNum">      89 </span>            :                  QSizePolicy::Policy hData = QSizePolicy::Minimum,
+<span class="lineNum">      90 </span>            :                  QSizePolicy::Policy vData = QSizePolicy::Minimum)
+<span class="lineNum">      91 </span><span class="lineCov">        288 :         : width(w), height(h), sizeP(hData, vData) { }</span>
+<span class="lineNum">      92 </span>            :     ~QSpacerItem();
+<span class="lineNum">      93 </span>            : 
+<span class="lineNum">      94 </span>            :     void changeSize(int w, int h,
+<span class="lineNum">      95 </span>            :                      QSizePolicy::Policy hData = QSizePolicy::Minimum,
+<span class="lineNum">      96 </span>            :                      QSizePolicy::Policy vData = QSizePolicy::Minimum);
+<span class="lineNum">      97 </span>            :     QSize sizeHint() const;
+<span class="lineNum">      98 </span>            :     QSize minimumSize() const;
+<span class="lineNum">      99 </span>            :     QSize maximumSize() const;
+<span class="lineNum">     100 </span>            :     Qt::Orientations expandingDirections() const;
+<span class="lineNum">     101 </span>            :     bool isEmpty() const;
+<span class="lineNum">     102 </span>            :     void setGeometry(const QRect&amp;);
+<span class="lineNum">     103 </span>            :     QRect geometry() const;
+<span class="lineNum">     104 </span>            :     QSpacerItem *spacerItem();
+<span class="lineNum">     105 </span>            :     QSizePolicy sizePolicy() const { return sizeP; }
+<span class="lineNum">     106 </span>            : 
+<span class="lineNum">     107 </span>            : private:
+<span class="lineNum">     108 </span>            :     int width;
+<span class="lineNum">     109 </span>            :     int height;
+<span class="lineNum">     110 </span>            :     QSizePolicy sizeP;
+<span class="lineNum">     111 </span>            :     QRect rect;
+<span class="lineNum">     112 </span>            : };
+<span class="lineNum">     113 </span>            : 
+<span class="lineNum">     114 </span>            : class Q_WIDGETS_EXPORT QWidgetItem : public QLayoutItem
+<span class="lineNum">     115 </span>            : {
+<span class="lineNum">     116 </span>            :     Q_DISABLE_COPY(QWidgetItem)
+<span class="lineNum">     117 </span>            : 
+<span class="lineNum">     118 </span>            : public:
+<span class="lineNum">     119 </span>            :     explicit QWidgetItem(QWidget *w) : wid(w) { }
+<span class="lineNum">     120 </span>            :     ~QWidgetItem();
+<span class="lineNum">     121 </span>            : 
+<span class="lineNum">     122 </span>            :     QSize sizeHint() const;
+<span class="lineNum">     123 </span>            :     QSize minimumSize() const;
+<span class="lineNum">     124 </span>            :     QSize maximumSize() const;
+<span class="lineNum">     125 </span>            :     Qt::Orientations expandingDirections() const;
+<span class="lineNum">     126 </span>            :     bool isEmpty() const;
+<span class="lineNum">     127 </span>            :     void setGeometry(const QRect&amp;);
+<span class="lineNum">     128 </span>            :     QRect geometry() const;
+<span class="lineNum">     129 </span>            :     virtual QWidget *widget();
+<span class="lineNum">     130 </span>            : 
+<span class="lineNum">     131 </span>            :     bool hasHeightForWidth() const;
+<span class="lineNum">     132 </span>            :     int heightForWidth(int) const;
+<span class="lineNum">     133 </span>            :     QSizePolicy::ControlTypes controlTypes() const;
+<span class="lineNum">     134 </span>            : protected:
+<span class="lineNum">     135 </span>            :     QWidget *wid;
+<span class="lineNum">     136 </span>            : };
+<span class="lineNum">     137 </span>            : 
+<span class="lineNum">     138 </span>            : class Q_WIDGETS_EXPORT QWidgetItemV2 : public QWidgetItem
+<span class="lineNum">     139 </span>            : {
+<span class="lineNum">     140 </span>            : public:
+<span class="lineNum">     141 </span>            :     explicit QWidgetItemV2(QWidget *widget);
+<span class="lineNum">     142 </span>            :     ~QWidgetItemV2();
+<span class="lineNum">     143 </span>            : 
+<span class="lineNum">     144 </span>            :     QSize sizeHint() const;
+<span class="lineNum">     145 </span>            :     QSize minimumSize() const;
+<span class="lineNum">     146 </span>            :     QSize maximumSize() const;
+<span class="lineNum">     147 </span>            :     int heightForWidth(int width) const;
+<span class="lineNum">     148 </span>            : 
+<span class="lineNum">     149 </span>            : private:
+<span class="lineNum">     150 </span>            :     enum { Dirty = -123, HfwCacheMaxSize = 3 };
+<span class="lineNum">     151 </span>            : 
+<span class="lineNum">     152 </span>            :     inline bool useSizeCache() const;
+<span class="lineNum">     153 </span>            :     void updateCacheIfNecessary() const;
+<span class="lineNum">     154 </span>            :     inline void invalidateSizeCache() {
+<span class="lineNum">     155 </span>            :         q_cachedMinimumSize.setWidth(Dirty);
+<span class="lineNum">     156 </span>            :         q_hfwCacheSize = 0;
+<span class="lineNum">     157 </span>            :     }
+<span class="lineNum">     158 </span>            : 
+<span class="lineNum">     159 </span>            :     mutable QSize q_cachedMinimumSize;
+<span class="lineNum">     160 </span>            :     mutable QSize q_cachedSizeHint;
+<span class="lineNum">     161 </span>            :     mutable QSize q_cachedMaximumSize;
+<span class="lineNum">     162 </span>            :     mutable QSize q_cachedHfws[HfwCacheMaxSize];
+<span class="lineNum">     163 </span>            :     mutable short q_firstCachedHfw;
+<span class="lineNum">     164 </span>            :     mutable short q_hfwCacheSize;
+<span class="lineNum">     165 </span>            :     void *d;
+<span class="lineNum">     166 </span>            : 
+<span class="lineNum">     167 </span>            :     friend class QWidgetPrivate;
+<span class="lineNum">     168 </span>            : 
+<span class="lineNum">     169 </span>            :     Q_DISABLE_COPY(QWidgetItemV2)
+<span class="lineNum">     170 </span>            : };
+<span class="lineNum">     171 </span>            : 
+<span class="lineNum">     172 </span>            : QT_END_NAMESPACE
+<span class="lineNum">     173 </span>            : 
+<span class="lineNum">     174 </span>            : #endif // QLAYOUTITEM_H
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.11</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

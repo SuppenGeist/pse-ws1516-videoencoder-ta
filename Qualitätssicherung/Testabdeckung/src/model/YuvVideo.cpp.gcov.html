@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - i3.info - src/model/YuvVideo.cpp</title>
+  <link rel="stylesheet" type="text/css" href="../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">src/model</a> - YuvVideo.cpp<span style="font-size: 80%;"> (source / <a href="YuvVideo.cpp.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">i3.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">50</td>
+            <td class="headerCovTableEntry">58</td>
+            <td class="headerCovTableEntryMed">86.2 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2016-03-18 19:19:22</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">14</td>
+            <td class="headerCovTableEntry">14</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : #include &quot;YuvVideo.h&quot;</a>
+<span class="lineNum">       2 </span>            : 
+<span class="lineNum">       3 </span>            : #include &lt;memory&gt;
+<span class="lineNum">       4 </span>            : #include &lt;stdexcept&gt;
+<span class="lineNum">       5 </span>            : #include &lt;thread&gt;
+<span class="lineNum">       6 </span>            : 
+<span class="lineNum">       7 </span>            : #include &lt;QString&gt;
+<span class="lineNum">       8 </span>            : 
+<span class="lineNum">       9 </span>            : #include &quot;../utility/YuvType.h&quot;
+<span class="lineNum">      10 </span>            : #include &quot;../utility/Compression.h&quot;
+<span class="lineNum">      11 </span>            : #include &quot;Video.h&quot;
+<span class="lineNum">      12 </span>            : #include &quot;AVVideo.h&quot;
+<span class="lineNum">      13 </span>            : #include &quot;../utility/YuvFileReader.h&quot;
+<span class="lineNum">      14 </span>            : #include &quot;../utility/Yuv411FileReader.h&quot;
+<span class="lineNum">      15 </span>            : #include &quot;../utility/Yuv420FileReader.h&quot;
+<span class="lineNum">      16 </span>            : #include &quot;../utility/Yuv422FileReader.h&quot;
+<span class="lineNum">      17 </span>            : #include &quot;../utility/Yuv444FileReader.h&quot;
+<span class="lineNum">      18 </span>            : 
+<span class="lineNum">      19 </span><span class="lineCov">         15 : Model::YuvVideo::YuvVideo(QString path, Utility::YuvType type, Utility::Compression compression,</span>
+<span class="lineNum">      20 </span>            :                           int width, int height, int fps):path_(path),height_(height),width_(width),fps_(fps),
+<span class="lineNum">      21 </span><span class="lineCov">        135 :         compression_(compression),yuvType_(type) {</span>
+<span class="lineNum">      22 </span>            : 
+<span class="lineNum">      23 </span><span class="lineCov">         15 : }</span>
+<span class="lineNum">      24 </span>            : 
+<span class="lineNum">      25 </span><span class="lineCov">         90 : Model::YuvVideo::~YuvVideo() {</span>
+<span class="lineNum">      26 </span><span class="lineCov">         20 :         if(fileReader_.get()) {</span>
+<span class="lineNum">      27 </span><span class="lineCov">         16 :                 fileReader_-&gt;stopReading();</span>
+<span class="lineNum">      28 </span>            :         }
+<a name="29"><span class="lineNum">      29 </span><span class="lineCov">         10 : }</span></a>
+<span class="lineNum">      30 </span>            : 
+<span class="lineNum">      31 </span><span class="lineCov">         11 : QString Model::YuvVideo::getPath() {</span>
+<span class="lineNum">      32 </span><span class="lineCov">         22 :         return path_;</span>
+<a name="33"><span class="lineNum">      33 </span>            : }</a>
+<span class="lineNum">      34 </span>            : 
+<span class="lineNum">      35 </span><span class="lineCov">          1 : Utility::Compression Model::YuvVideo::getCompression() {</span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 :         return compression_;</span>
+<a name="37"><span class="lineNum">      37 </span>            : }</a>
+<span class="lineNum">      38 </span>            : 
+<span class="lineNum">      39 </span><span class="lineCov">          1 : Utility::YuvType Model::YuvVideo::getYuvType() {</span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 :         return yuvType_;</span>
+<a name="41"><span class="lineNum">      41 </span>            : }</a>
+<span class="lineNum">      42 </span>            : 
+<span class="lineNum">      43 </span><span class="lineCov">         43 : int Model::YuvVideo::getWidth() {</span>
+<span class="lineNum">      44 </span><span class="lineCov">         43 :         return width_;</span>
+<a name="45"><span class="lineNum">      45 </span>            : }</a>
+<span class="lineNum">      46 </span>            : 
+<span class="lineNum">      47 </span><span class="lineCov">         43 : int Model::YuvVideo::getHeight() {</span>
+<span class="lineNum">      48 </span><span class="lineCov">         43 :         return height_;</span>
+<a name="49"><span class="lineNum">      49 </span>            : }</a>
+<span class="lineNum">      50 </span>            : 
+<span class="lineNum">      51 </span><span class="lineCov">          1 : int Model::YuvVideo::getFps() {</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 :         return fps_;</span>
+<span class="lineNum">      53 </span>            : }
+<span class="lineNum">      54 </span>            : 
+<span class="lineNum">      55 </span><span class="lineCov">          4 : Model::GraphVideo &amp;Model::YuvVideo::getRedHistogram() {</span>
+<span class="lineNum">      56 </span><span class="lineCov">          8 :         if(!redHisto_.get()) {</span>
+<span class="lineNum">      57 </span><span class="lineCov">          3 :                 calculateHistograms();</span>
+<span class="lineNum">      58 </span>            :         }
+<span class="lineNum">      59 </span>            : 
+<span class="lineNum">      60 </span><span class="lineCov">          8 :         return *redHisto_;</span>
+<span class="lineNum">      61 </span>            : }
+<span class="lineNum">      62 </span>            : 
+<span class="lineNum">      63 </span><span class="lineCov">          1 : Model::GraphVideo &amp;Model::YuvVideo::getGreenHistogram() {</span>
+<span class="lineNum">      64 </span><span class="lineCov">          2 :         if(!greenHisto_.get()) {</span>
+<span class="lineNum">      65 </span><span class="lineNoCov">          0 :                 calculateHistograms();</span>
+<span class="lineNum">      66 </span>            :         }
+<span class="lineNum">      67 </span>            : 
+<span class="lineNum">      68 </span><span class="lineCov">          2 :         return *greenHisto_;</span>
+<span class="lineNum">      69 </span>            : }
+<span class="lineNum">      70 </span>            : 
+<span class="lineNum">      71 </span><span class="lineCov">          2 : Model::GraphVideo &amp;Model::YuvVideo::getBlueHistogram() {</span>
+<span class="lineNum">      72 </span><span class="lineCov">          4 :         if(!blueHisto_.get()) {</span>
+<span class="lineNum">      73 </span><span class="lineNoCov">          0 :                 calculateHistograms();</span>
+<span class="lineNum">      74 </span>            :         }
+<span class="lineNum">      75 </span>            : 
+<span class="lineNum">      76 </span><span class="lineCov">          4 :         return *blueHisto_;</span>
+<span class="lineNum">      77 </span>            : }
+<span class="lineNum">      78 </span>            : 
+<span class="lineNum">      79 </span><span class="lineCov">         78 : Model::Video&amp; Model::YuvVideo::getVideo() {</span>
+<span class="lineNum">      80 </span><span class="lineCov">        156 :         if(!displayVideo_.get())</span>
+<span class="lineNum">      81 </span><span class="lineCov">          8 :                 loadVideo();</span>
+<span class="lineNum">      82 </span><span class="lineCov">        156 :         return *displayVideo_;</span>
+<span class="lineNum">      83 </span>            : }
+<span class="lineNum">      84 </span>            : 
+<span class="lineNum">      85 </span>            : 
+<span class="lineNum">      86 </span><span class="lineCov">          8 : void Model::YuvVideo::loadVideo() {</span>
+<span class="lineNum">      87 </span><span class="lineCov">         16 :         if(fileReader_.get()) {</span>
+<span class="lineNum">      88 </span><span class="lineNoCov">          0 :                 fileReader_-&gt;stopReading();</span>
+<span class="lineNum">      89 </span>            :         }
+<span class="lineNum">      90 </span><span class="lineCov">          8 :         switch(yuvType_) {</span>
+<span class="lineNum">      91 </span>            :         case Utility::YuvType::YUV411:
+<span class="lineNum">      92 </span><span class="lineNoCov">          0 :                 fileReader_=std::make_unique&lt;Utility::Yuv411FileReader&gt;(path_,width_,height_,compression_);</span>
+<span class="lineNum">      93 </span><span class="lineNoCov">          0 :                 break;</span>
+<span class="lineNum">      94 </span>            :         case Utility::YuvType::YUV420:
+<span class="lineNum">      95 </span><span class="lineCov">         21 :                 fileReader_=std::make_unique&lt;Utility::Yuv420FileReader&gt;(path_,width_,height_);</span>
+<span class="lineNum">      96 </span><span class="lineCov">          7 :                 break;</span>
+<span class="lineNum">      97 </span>            :         case Utility::YuvType::YUV422:
+<span class="lineNum">      98 </span><span class="lineNoCov">          0 :                 fileReader_=std::make_unique&lt;Utility::Yuv422FileReader&gt;(path_,width_,height_,compression_);</span>
+<span class="lineNum">      99 </span><span class="lineNoCov">          0 :                 break;</span>
+<span class="lineNum">     100 </span>            :         case Utility::YuvType::YUV444:
+<span class="lineNum">     101 </span><span class="lineCov">          3 :                 fileReader_=std::make_unique&lt;Utility::Yuv444FileReader&gt;(path_,width_,height_,compression_);</span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 :                 break;</span>
+<span class="lineNum">     103 </span>            :         default:
+<span class="lineNum">     104 </span><span class="lineNoCov">          0 :                 throw std::logic_error(&quot;Should not get here&quot;);</span>
+<span class="lineNum">     105 </span>            :         }
+<span class="lineNum">     106 </span><span class="lineCov">         32 :         displayVideo_=std::make_unique&lt;Video&gt;(fps_);</span>
+<span class="lineNum">     107 </span><span class="lineCov">         24 :         fileReader_-&gt;read(displayVideo_.get());</span>
+<span class="lineNum">     108 </span><span class="lineCov">          8 : }</span>
+<span class="lineNum">     109 </span>            : 
+<span class="lineNum">     110 </span><span class="lineCov">          3 : void Model::YuvVideo::calculateHistograms() {</span>
+<span class="lineNum">     111 </span><span class="lineCov">          9 :         redHisto_=std::make_unique&lt;GraphVideo&gt;();</span>
+<span class="lineNum">     112 </span><span class="lineCov">          9 :         greenHisto_=std::make_unique&lt;GraphVideo&gt;();</span>
+<span class="lineNum">     113 </span><span class="lineCov">          9 :         blueHisto_=std::make_unique&lt;GraphVideo&gt;();</span>
+<span class="lineNum">     114 </span>            : 
+<span class="lineNum">     115 </span><span class="lineCov">          9 :         histogramCalculator_=std::make_unique&lt;Utility::RGBHistogramCalculator&gt;(getVideo());</span>
+<span class="lineNum">     116 </span><span class="lineCov">         15 :         histogramCalculator_-&gt;calculate(redHisto_.get(),greenHisto_.get(),blueHisto_.get());</span>
+<span class="lineNum">     117 </span><span class="lineCov">          3 : }</span>
+<span class="lineNum">     118 </span>            : 
+<span class="lineNum">     119 </span>            : 
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.11</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

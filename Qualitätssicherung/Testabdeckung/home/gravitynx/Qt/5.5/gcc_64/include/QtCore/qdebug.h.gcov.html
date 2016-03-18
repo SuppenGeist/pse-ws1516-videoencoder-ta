@@ -1,0 +1,477 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - i3.info - /home/gravitynx/Qt/5.5/gcc_64/include/QtCore/qdebug.h</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../../../index.html">top level</a> - <a href="index.html">home/gravitynx/Qt/5.5/gcc_64/include/QtCore</a> - qdebug.h<span style="font-size: 80%;"> (source / <a href="qdebug.h.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">i3.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2016-03-18 19:49:03</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : /****************************************************************************</a>
+<span class="lineNum">       2 </span>            : **
+<span class="lineNum">       3 </span>            : ** Copyright (C) 2015 The Qt Company Ltd.
+<span class="lineNum">       4 </span>            : ** Contact: http://www.qt.io/licensing/
+<span class="lineNum">       5 </span>            : **
+<span class="lineNum">       6 </span>            : ** This file is part of the QtCore module of the Qt Toolkit.
+<span class="lineNum">       7 </span>            : **
+<span class="lineNum">       8 </span>            : ** $QT_BEGIN_LICENSE:LGPL21$
+<span class="lineNum">       9 </span>            : ** Commercial License Usage
+<span class="lineNum">      10 </span>            : ** Licensees holding valid commercial Qt licenses may use this file in
+<span class="lineNum">      11 </span>            : ** accordance with the commercial license agreement provided with the
+<span class="lineNum">      12 </span>            : ** Software or, alternatively, in accordance with the terms contained in
+<span class="lineNum">      13 </span>            : ** a written agreement between you and The Qt Company. For licensing terms
+<span class="lineNum">      14 </span>            : ** and conditions see http://www.qt.io/terms-conditions. For further
+<span class="lineNum">      15 </span>            : ** information use the contact form at http://www.qt.io/contact-us.
+<span class="lineNum">      16 </span>            : **
+<span class="lineNum">      17 </span>            : ** GNU Lesser General Public License Usage
+<span class="lineNum">      18 </span>            : ** Alternatively, this file may be used under the terms of the GNU Lesser
+<span class="lineNum">      19 </span>            : ** General Public License version 2.1 or version 3 as published by the Free
+<span class="lineNum">      20 </span>            : ** Software Foundation and appearing in the file LICENSE.LGPLv21 and
+<span class="lineNum">      21 </span>            : ** LICENSE.LGPLv3 included in the packaging of this file. Please review the
+<span class="lineNum">      22 </span>            : ** following information to ensure the GNU Lesser General Public License
+<span class="lineNum">      23 </span>            : ** requirements will be met: https://www.gnu.org/licenses/lgpl.html and
+<span class="lineNum">      24 </span>            : ** http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
+<span class="lineNum">      25 </span>            : **
+<span class="lineNum">      26 </span>            : ** As a special exception, The Qt Company gives you certain additional
+<span class="lineNum">      27 </span>            : ** rights. These rights are described in The Qt Company LGPL Exception
+<span class="lineNum">      28 </span>            : ** version 1.1, included in the file LGPL_EXCEPTION.txt in this package.
+<span class="lineNum">      29 </span>            : **
+<span class="lineNum">      30 </span>            : ** $QT_END_LICENSE$
+<span class="lineNum">      31 </span>            : **
+<span class="lineNum">      32 </span>            : ****************************************************************************/
+<span class="lineNum">      33 </span>            : 
+<span class="lineNum">      34 </span>            : #ifndef QDEBUG_H
+<span class="lineNum">      35 </span>            : #define QDEBUG_H
+<span class="lineNum">      36 </span>            : 
+<span class="lineNum">      37 </span>            : #include &lt;QtCore/qalgorithms.h&gt;
+<span class="lineNum">      38 </span>            : #include &lt;QtCore/qhash.h&gt;
+<span class="lineNum">      39 </span>            : #include &lt;QtCore/qlist.h&gt;
+<span class="lineNum">      40 </span>            : #include &lt;QtCore/qmap.h&gt;
+<span class="lineNum">      41 </span>            : #include &lt;QtCore/qpair.h&gt;
+<span class="lineNum">      42 </span>            : #include &lt;QtCore/qtextstream.h&gt;
+<span class="lineNum">      43 </span>            : #include &lt;QtCore/qstring.h&gt;
+<span class="lineNum">      44 </span>            : #include &lt;QtCore/qvector.h&gt;
+<span class="lineNum">      45 </span>            : #include &lt;QtCore/qset.h&gt;
+<span class="lineNum">      46 </span>            : #include &lt;QtCore/qcontiguouscache.h&gt;
+<span class="lineNum">      47 </span>            : 
+<span class="lineNum">      48 </span>            : QT_BEGIN_NAMESPACE
+<span class="lineNum">      49 </span>            : 
+<span class="lineNum">      50 </span>            : 
+<span class="lineNum">      51 </span>            : class Q_CORE_EXPORT QDebug
+<span class="lineNum">      52 </span>            : {
+<span class="lineNum">      53 </span>            :     friend class QMessageLogger;
+<span class="lineNum">      54 </span>            :     friend class QDebugStateSaverPrivate;
+<span class="lineNum">      55 </span>            :     struct Stream {
+<span class="lineNum">      56 </span>            :         Stream(QIODevice *device) : ts(device), ref(1), type(QtDebugMsg), space(true), message_output(false), flags(0) {}
+<span class="lineNum">      57 </span>            :         Stream(QString *string) : ts(string, QIODevice::WriteOnly), ref(1), type(QtDebugMsg), space(true), message_output(false), flags(0) {}
+<span class="lineNum">      58 </span>            :         Stream(QtMsgType t) : ts(&amp;buffer, QIODevice::WriteOnly), ref(1), type(t), space(true), message_output(true), flags(0) {}
+<span class="lineNum">      59 </span>            :         QTextStream ts;
+<span class="lineNum">      60 </span>            :         QString buffer;
+<span class="lineNum">      61 </span>            :         int ref;
+<span class="lineNum">      62 </span>            :         QtMsgType type;
+<span class="lineNum">      63 </span>            :         bool space;
+<span class="lineNum">      64 </span>            :         bool message_output;
+<span class="lineNum">      65 </span>            :         QMessageLogContext context;
+<span class="lineNum">      66 </span>            : 
+<span class="lineNum">      67 </span>            :         enum FormatFlag {
+<span class="lineNum">      68 </span>            :             NoQuotes = 0x1
+<span class="lineNum">      69 </span>            :         };
+<span class="lineNum">      70 </span>            : 
+<span class="lineNum">      71 </span>            :         // ### Qt 6: unify with space, introduce own version member
+<span class="lineNum">      72 </span>            :         bool testFlag(FormatFlag flag) const { return (context.version &gt; 1) ? (flags &amp; flag) : false; }
+<span class="lineNum">      73 </span>            :         void setFlag(FormatFlag flag) { if (context.version &gt; 1) { flags |= flag; } }
+<span class="lineNum">      74 </span>            :         void unsetFlag(FormatFlag flag) { if (context.version &gt; 1) { flags &amp;= ~flag; } }
+<span class="lineNum">      75 </span>            : 
+<span class="lineNum">      76 </span>            :         // added in 5.4
+<span class="lineNum">      77 </span>            :         int flags;
+<span class="lineNum">      78 </span>            :     } *stream;
+<span class="lineNum">      79 </span>            : 
+<span class="lineNum">      80 </span>            :     enum Latin1Content { ContainsBinary = 0, ContainsLatin1 };
+<span class="lineNum">      81 </span>            : 
+<span class="lineNum">      82 </span>            :     void putUcs4(uint ucs4);
+<span class="lineNum">      83 </span>            :     void putString(const QChar *begin, size_t length);
+<span class="lineNum">      84 </span>            :     void putByteArray(const char *begin, size_t length, Latin1Content content);
+<span class="lineNum">      85 </span>            : public:
+<span class="lineNum">      86 </span>            :     inline QDebug(QIODevice *device) : stream(new Stream(device)) {}
+<span class="lineNum">      87 </span>            :     inline QDebug(QString *string) : stream(new Stream(string)) {}
+<span class="lineNum">      88 </span>            :     inline QDebug(QtMsgType t) : stream(new Stream(t)) {}
+<span class="lineNum">      89 </span>            :     inline QDebug(const QDebug &amp;o):stream(o.stream) { ++stream-&gt;ref; }
+<span class="lineNum">      90 </span>            :     inline QDebug &amp;operator=(const QDebug &amp;other);
+<span class="lineNum">      91 </span>            :     ~QDebug();
+<span class="lineNum">      92 </span>            :     inline void swap(QDebug &amp;other) Q_DECL_NOTHROW { qSwap(stream, other.stream); }
+<span class="lineNum">      93 </span>            : 
+<span class="lineNum">      94 </span>            :     QDebug &amp;resetFormat();
+<span class="lineNum">      95 </span>            : 
+<span class="lineNum">      96 </span>            :     inline QDebug &amp;space() { stream-&gt;space = true; stream-&gt;ts &lt;&lt; ' '; return *this; }
+<span class="lineNum">      97 </span>            :     inline QDebug &amp;nospace() { stream-&gt;space = false; return *this; }
+<span class="lineNum">      98 </span><span class="lineNoCov">          0 :     inline QDebug &amp;maybeSpace() { if (stream-&gt;space) stream-&gt;ts &lt;&lt; ' '; return *this; }</span>
+<span class="lineNum">      99 </span>            : 
+<span class="lineNum">     100 </span>            :     bool autoInsertSpaces() const { return stream-&gt;space; }
+<span class="lineNum">     101 </span>            :     void setAutoInsertSpaces(bool b) { stream-&gt;space = b; }
+<span class="lineNum">     102 </span>            : 
+<span class="lineNum">     103 </span>            :     inline QDebug &amp;quote() { stream-&gt;unsetFlag(Stream::NoQuotes); return *this; }
+<span class="lineNum">     104 </span>            :     inline QDebug &amp;noquote() { stream-&gt;setFlag(Stream::NoQuotes); return *this; }
+<span class="lineNum">     105 </span>            :     inline QDebug &amp;maybeQuote(char c = '&quot;') { if (!(stream-&gt;testFlag(Stream::NoQuotes))) stream-&gt;ts &lt;&lt; c; return *this; }
+<span class="lineNum">     106 </span>            : 
+<span class="lineNum">     107 </span>            :     inline QDebug &amp;operator&lt;&lt;(QChar t) { putUcs4(t.unicode()); return maybeSpace(); }
+<span class="lineNum">     108 </span>            :     inline QDebug &amp;operator&lt;&lt;(bool t) { stream-&gt;ts &lt;&lt; (t ? &quot;true&quot; : &quot;false&quot;); return maybeSpace(); }
+<span class="lineNum">     109 </span>            :     inline QDebug &amp;operator&lt;&lt;(char t) { stream-&gt;ts &lt;&lt; t; return maybeSpace(); }
+<span class="lineNum">     110 </span>            :     inline QDebug &amp;operator&lt;&lt;(signed short t) { stream-&gt;ts &lt;&lt; t; return maybeSpace(); }
+<span class="lineNum">     111 </span>            :     inline QDebug &amp;operator&lt;&lt;(unsigned short t) { stream-&gt;ts &lt;&lt; t; return maybeSpace(); }
+<span class="lineNum">     112 </span>            : #ifdef Q_COMPILER_UNICODE_STRINGS
+<span class="lineNum">     113 </span>            :     inline QDebug &amp;operator&lt;&lt;(char16_t t) { return *this &lt;&lt; QChar(t); }
+<span class="lineNum">     114 </span>            :     inline QDebug &amp;operator&lt;&lt;(char32_t t) { putUcs4(t); return maybeSpace(); }
+<span class="lineNum">     115 </span>            : #endif
+<span class="lineNum">     116 </span>            :     inline QDebug &amp;operator&lt;&lt;(signed int t) { stream-&gt;ts &lt;&lt; t; return maybeSpace(); }
+<span class="lineNum">     117 </span>            :     inline QDebug &amp;operator&lt;&lt;(unsigned int t) { stream-&gt;ts &lt;&lt; t; return maybeSpace(); }
+<span class="lineNum">     118 </span>            :     inline QDebug &amp;operator&lt;&lt;(signed long t) { stream-&gt;ts &lt;&lt; t; return maybeSpace(); }
+<span class="lineNum">     119 </span>            :     inline QDebug &amp;operator&lt;&lt;(unsigned long t) { stream-&gt;ts &lt;&lt; t; return maybeSpace(); }
+<span class="lineNum">     120 </span>            :     inline QDebug &amp;operator&lt;&lt;(qint64 t) { stream-&gt;ts &lt;&lt; t; return maybeSpace(); }
+<span class="lineNum">     121 </span>            :     inline QDebug &amp;operator&lt;&lt;(quint64 t) { stream-&gt;ts &lt;&lt; t; return maybeSpace(); }
+<a name="122"><span class="lineNum">     122 </span>            :     inline QDebug &amp;operator&lt;&lt;(float t) { stream-&gt;ts &lt;&lt; t; return maybeSpace(); }</a>
+<span class="lineNum">     123 </span>            :     inline QDebug &amp;operator&lt;&lt;(double t) { stream-&gt;ts &lt;&lt; t; return maybeSpace(); }
+<span class="lineNum">     124 </span><span class="lineNoCov">          0 :     inline QDebug &amp;operator&lt;&lt;(const char* t) { stream-&gt;ts &lt;&lt; QString::fromUtf8(t); return maybeSpace(); }</span>
+<span class="lineNum">     125 </span>            :     inline QDebug &amp;operator&lt;&lt;(const QString &amp; t) { putString(t.constData(), uint(t.length())); return maybeSpace(); }
+<span class="lineNum">     126 </span>            :     inline QDebug &amp;operator&lt;&lt;(const QStringRef &amp; t) { putString(t.constData(), uint(t.length())); return maybeSpace(); }
+<span class="lineNum">     127 </span>            :     inline QDebug &amp;operator&lt;&lt;(QLatin1String t) { putByteArray(t.latin1(), t.size(), ContainsLatin1); return maybeSpace(); }
+<span class="lineNum">     128 </span>            :     inline QDebug &amp;operator&lt;&lt;(const QByteArray &amp; t) { putByteArray(t.constData(), t.size(), ContainsBinary); return maybeSpace(); }
+<span class="lineNum">     129 </span>            :     inline QDebug &amp;operator&lt;&lt;(const void * t) { stream-&gt;ts &lt;&lt; t; return maybeSpace(); }
+<span class="lineNum">     130 </span>            : #ifdef Q_COMPILER_NULLPTR
+<span class="lineNum">     131 </span>            :     inline QDebug &amp;operator&lt;&lt;(std::nullptr_t) { stream-&gt;ts &lt;&lt; &quot;(nullptr)&quot;; return maybeSpace(); }
+<span class="lineNum">     132 </span>            : #endif
+<span class="lineNum">     133 </span>            :     inline QDebug &amp;operator&lt;&lt;(QTextStreamFunction f) {
+<span class="lineNum">     134 </span>            :         stream-&gt;ts &lt;&lt; f;
+<span class="lineNum">     135 </span>            :         return *this;
+<span class="lineNum">     136 </span>            :     }
+<span class="lineNum">     137 </span>            : 
+<span class="lineNum">     138 </span>            :     inline QDebug &amp;operator&lt;&lt;(QTextStreamManipulator m)
+<span class="lineNum">     139 </span>            :     { stream-&gt;ts &lt;&lt; m; return *this; }
+<span class="lineNum">     140 </span>            : };
+<span class="lineNum">     141 </span>            : 
+<span class="lineNum">     142 </span>            : Q_DECLARE_SHARED(QDebug)
+<span class="lineNum">     143 </span>            : 
+<span class="lineNum">     144 </span>            : class QDebugStateSaverPrivate;
+<span class="lineNum">     145 </span>            : class Q_CORE_EXPORT QDebugStateSaver
+<span class="lineNum">     146 </span>            : {
+<span class="lineNum">     147 </span>            : public:
+<span class="lineNum">     148 </span>            :     QDebugStateSaver(QDebug &amp;dbg);
+<span class="lineNum">     149 </span>            :     ~QDebugStateSaver();
+<span class="lineNum">     150 </span>            : private:
+<span class="lineNum">     151 </span>            :     Q_DISABLE_COPY(QDebugStateSaver)
+<span class="lineNum">     152 </span>            :     QScopedPointer&lt;QDebugStateSaverPrivate&gt; d;
+<span class="lineNum">     153 </span>            : };
+<span class="lineNum">     154 </span>            : 
+<span class="lineNum">     155 </span>            : class QNoDebug
+<span class="lineNum">     156 </span>            : {
+<span class="lineNum">     157 </span>            : public:
+<span class="lineNum">     158 </span>            :     inline QNoDebug &amp;operator&lt;&lt;(QTextStreamFunction) { return *this; }
+<span class="lineNum">     159 </span>            :     inline QNoDebug &amp;operator&lt;&lt;(QTextStreamManipulator) { return *this; }
+<span class="lineNum">     160 </span>            :     inline QNoDebug &amp;space() { return *this; }
+<span class="lineNum">     161 </span>            :     inline QNoDebug &amp;nospace() { return *this; }
+<span class="lineNum">     162 </span>            :     inline QNoDebug &amp;maybeSpace() { return *this; }
+<span class="lineNum">     163 </span>            :     inline QNoDebug &amp;quote() { return *this; }
+<span class="lineNum">     164 </span>            :     inline QNoDebug &amp;noquote() { return *this; }
+<span class="lineNum">     165 </span>            :     inline QNoDebug &amp;maybeQuote(const char = '&quot;') { return *this; }
+<span class="lineNum">     166 </span>            : 
+<span class="lineNum">     167 </span>            :     template&lt;typename T&gt;
+<span class="lineNum">     168 </span>            :     inline QNoDebug &amp;operator&lt;&lt;(const T &amp;) { return *this; }
+<span class="lineNum">     169 </span>            : };
+<span class="lineNum">     170 </span>            : 
+<span class="lineNum">     171 </span>            : inline QDebug &amp;QDebug::operator=(const QDebug &amp;other)
+<span class="lineNum">     172 </span>            : {
+<span class="lineNum">     173 </span>            :     if (this != &amp;other) {
+<span class="lineNum">     174 </span>            :         QDebug copy(other);
+<span class="lineNum">     175 </span>            :         qSwap(stream, copy.stream);
+<span class="lineNum">     176 </span>            :     }
+<span class="lineNum">     177 </span>            :     return *this;
+<span class="lineNum">     178 </span>            : }
+<span class="lineNum">     179 </span>            : 
+<span class="lineNum">     180 </span>            : template &lt;class T&gt;
+<span class="lineNum">     181 </span>            : inline QDebug operator&lt;&lt;(QDebug debug, const QList&lt;T&gt; &amp;list)
+<span class="lineNum">     182 </span>            : {
+<span class="lineNum">     183 </span>            :     const bool oldSetting = debug.autoInsertSpaces();
+<span class="lineNum">     184 </span>            :     debug.nospace() &lt;&lt; '(';
+<span class="lineNum">     185 </span>            :     for (typename QList&lt;T&gt;::size_type i = 0; i &lt; list.count(); ++i) {
+<span class="lineNum">     186 </span>            :         if (i)
+<span class="lineNum">     187 </span>            :             debug &lt;&lt; &quot;, &quot;;
+<span class="lineNum">     188 </span>            :         debug &lt;&lt; list.at(i);
+<span class="lineNum">     189 </span>            :     }
+<span class="lineNum">     190 </span>            :     debug &lt;&lt; ')';
+<span class="lineNum">     191 </span>            :     debug.setAutoInsertSpaces(oldSetting);
+<span class="lineNum">     192 </span>            :     return debug.maybeSpace();
+<span class="lineNum">     193 </span>            : }
+<span class="lineNum">     194 </span>            : 
+<span class="lineNum">     195 </span>            : template &lt;typename T&gt;
+<span class="lineNum">     196 </span>            : inline QDebug operator&lt;&lt;(QDebug debug, const QVector&lt;T&gt; &amp;vec)
+<span class="lineNum">     197 </span>            : {
+<span class="lineNum">     198 </span>            :     const bool oldSetting = debug.autoInsertSpaces();
+<span class="lineNum">     199 </span>            :     debug.nospace() &lt;&lt; &quot;QVector&quot;;
+<span class="lineNum">     200 </span>            :     debug.setAutoInsertSpaces(oldSetting);
+<span class="lineNum">     201 </span>            :     return operator&lt;&lt;(debug, vec.toList());
+<span class="lineNum">     202 </span>            : }
+<span class="lineNum">     203 </span>            : 
+<span class="lineNum">     204 </span>            : template &lt;class aKey, class aT&gt;
+<span class="lineNum">     205 </span>            : inline QDebug operator&lt;&lt;(QDebug debug, const QMap&lt;aKey, aT&gt; &amp;map)
+<span class="lineNum">     206 </span>            : {
+<span class="lineNum">     207 </span>            :     const bool oldSetting = debug.autoInsertSpaces();
+<span class="lineNum">     208 </span>            :     debug.nospace() &lt;&lt; &quot;QMap(&quot;;
+<span class="lineNum">     209 </span>            :     for (typename QMap&lt;aKey, aT&gt;::const_iterator it = map.constBegin();
+<span class="lineNum">     210 </span>            :          it != map.constEnd(); ++it) {
+<span class="lineNum">     211 </span>            :         debug &lt;&lt; '(' &lt;&lt; it.key() &lt;&lt; &quot;, &quot; &lt;&lt; it.value() &lt;&lt; ')';
+<span class="lineNum">     212 </span>            :     }
+<span class="lineNum">     213 </span>            :     debug &lt;&lt; ')';
+<span class="lineNum">     214 </span>            :     debug.setAutoInsertSpaces(oldSetting);
+<span class="lineNum">     215 </span>            :     return debug.maybeSpace();
+<span class="lineNum">     216 </span>            : }
+<span class="lineNum">     217 </span>            : 
+<span class="lineNum">     218 </span>            : template &lt;class aKey, class aT&gt;
+<span class="lineNum">     219 </span>            : inline QDebug operator&lt;&lt;(QDebug debug, const QHash&lt;aKey, aT&gt; &amp;hash)
+<span class="lineNum">     220 </span>            : {
+<span class="lineNum">     221 </span>            :     const bool oldSetting = debug.autoInsertSpaces();
+<span class="lineNum">     222 </span>            :     debug.nospace() &lt;&lt; &quot;QHash(&quot;;
+<span class="lineNum">     223 </span>            :     for (typename QHash&lt;aKey, aT&gt;::const_iterator it = hash.constBegin();
+<span class="lineNum">     224 </span>            :             it != hash.constEnd(); ++it)
+<span class="lineNum">     225 </span>            :         debug &lt;&lt; '(' &lt;&lt; it.key() &lt;&lt; &quot;, &quot; &lt;&lt; it.value() &lt;&lt; ')';
+<span class="lineNum">     226 </span>            :     debug &lt;&lt; ')';
+<span class="lineNum">     227 </span>            :     debug.setAutoInsertSpaces(oldSetting);
+<span class="lineNum">     228 </span>            :     return debug.maybeSpace();
+<span class="lineNum">     229 </span>            : }
+<span class="lineNum">     230 </span>            : 
+<span class="lineNum">     231 </span>            : template &lt;class T1, class T2&gt;
+<span class="lineNum">     232 </span>            : inline QDebug operator&lt;&lt;(QDebug debug, const QPair&lt;T1, T2&gt; &amp;pair)
+<span class="lineNum">     233 </span>            : {
+<span class="lineNum">     234 </span>            :     const bool oldSetting = debug.autoInsertSpaces();
+<span class="lineNum">     235 </span>            :     debug.nospace() &lt;&lt; &quot;QPair(&quot; &lt;&lt; pair.first &lt;&lt; ',' &lt;&lt; pair.second &lt;&lt; ')';
+<span class="lineNum">     236 </span>            :     debug.setAutoInsertSpaces(oldSetting);
+<span class="lineNum">     237 </span>            :     return debug.maybeSpace();
+<span class="lineNum">     238 </span>            : }
+<span class="lineNum">     239 </span>            : 
+<span class="lineNum">     240 </span>            : template &lt;typename T&gt;
+<span class="lineNum">     241 </span>            : inline QDebug operator&lt;&lt;(QDebug debug, const QSet&lt;T&gt; &amp;set)
+<span class="lineNum">     242 </span>            : {
+<span class="lineNum">     243 </span>            :     const bool oldSetting = debug.autoInsertSpaces();
+<span class="lineNum">     244 </span>            :     debug.nospace() &lt;&lt; &quot;QSet&quot;;
+<span class="lineNum">     245 </span>            :     debug.setAutoInsertSpaces(oldSetting);
+<span class="lineNum">     246 </span>            :     return operator&lt;&lt;(debug, set.toList());
+<span class="lineNum">     247 </span>            : }
+<span class="lineNum">     248 </span>            : 
+<span class="lineNum">     249 </span>            : template &lt;class T&gt;
+<span class="lineNum">     250 </span>            : inline QDebug operator&lt;&lt;(QDebug debug, const QContiguousCache&lt;T&gt; &amp;cache)
+<span class="lineNum">     251 </span>            : {
+<span class="lineNum">     252 </span>            :     const bool oldSetting = debug.autoInsertSpaces();
+<span class="lineNum">     253 </span>            :     debug.nospace() &lt;&lt; &quot;QContiguousCache(&quot;;
+<span class="lineNum">     254 </span>            :     for (int i = cache.firstIndex(); i &lt;= cache.lastIndex(); ++i) {
+<span class="lineNum">     255 </span>            :         debug &lt;&lt; cache[i];
+<span class="lineNum">     256 </span>            :         if (i != cache.lastIndex())
+<span class="lineNum">     257 </span>            :             debug &lt;&lt; &quot;, &quot;;
+<span class="lineNum">     258 </span>            :     }
+<span class="lineNum">     259 </span>            :     debug &lt;&lt; ')';
+<span class="lineNum">     260 </span>            :     debug.setAutoInsertSpaces(oldSetting);
+<span class="lineNum">     261 </span>            :     return debug.maybeSpace();
+<span class="lineNum">     262 </span>            : }
+<span class="lineNum">     263 </span>            : 
+<span class="lineNum">     264 </span>            : #ifndef QT_NO_QOBJECT
+<span class="lineNum">     265 </span>            : Q_CORE_EXPORT QDebug qt_QMetaEnum_debugOperator(QDebug&amp;, int value, const QMetaObject *meta, const char *name);
+<span class="lineNum">     266 </span>            : Q_CORE_EXPORT QDebug qt_QMetaEnum_flagDebugOperator(QDebug &amp;dbg, quint64 value, const QMetaObject *meta, const char *name);
+<span class="lineNum">     267 </span>            : 
+<span class="lineNum">     268 </span>            : template&lt;typename T&gt;
+<span class="lineNum">     269 </span>            : typename QtPrivate::QEnableIf&lt;QtPrivate::IsQEnumHelper&lt;T&gt;::Value, QDebug&gt;::Type
+<span class="lineNum">     270 </span>            : operator&lt;&lt;(QDebug dbg, T value)
+<span class="lineNum">     271 </span>            : {
+<span class="lineNum">     272 </span>            :     const QMetaObject *obj = qt_getEnumMetaObject(value);
+<span class="lineNum">     273 </span>            :     const char *name = qt_getEnumName(value);
+<span class="lineNum">     274 </span>            :     return qt_QMetaEnum_debugOperator(dbg, typename QFlags&lt;T&gt;::Int(value), obj, name);
+<span class="lineNum">     275 </span>            : }
+<span class="lineNum">     276 </span>            : 
+<span class="lineNum">     277 </span>            : template &lt;class T&gt;
+<span class="lineNum">     278 </span>            : inline typename QtPrivate::QEnableIf&lt;
+<span class="lineNum">     279 </span>            :     QtPrivate::IsQEnumHelper&lt;T&gt;::Value || QtPrivate::IsQEnumHelper&lt;QFlags&lt;T&gt; &gt;::Value,
+<span class="lineNum">     280 </span>            :     QDebug&gt;::Type
+<span class="lineNum">     281 </span>            : qt_QMetaEnum_flagDebugOperator_helper(QDebug debug, const QFlags&lt;T&gt; &amp;flags)
+<span class="lineNum">     282 </span>            : {
+<span class="lineNum">     283 </span>            :     const QMetaObject *obj = qt_getEnumMetaObject(T());
+<span class="lineNum">     284 </span>            :     const char *name = qt_getEnumName(T());
+<span class="lineNum">     285 </span>            :     return qt_QMetaEnum_flagDebugOperator(debug, quint64(flags), obj, name);
+<span class="lineNum">     286 </span>            : }
+<span class="lineNum">     287 </span>            : 
+<span class="lineNum">     288 </span>            : template &lt;class T&gt;
+<span class="lineNum">     289 </span>            : inline typename QtPrivate::QEnableIf&lt;
+<span class="lineNum">     290 </span>            :     !QtPrivate::IsQEnumHelper&lt;T&gt;::Value &amp;&amp; !QtPrivate::IsQEnumHelper&lt;QFlags&lt;T&gt; &gt;::Value,
+<span class="lineNum">     291 </span>            :     QDebug&gt;::Type
+<span class="lineNum">     292 </span>            : qt_QMetaEnum_flagDebugOperator_helper(QDebug debug, const QFlags&lt;T&gt; &amp;flags)
+<span class="lineNum">     293 </span>            : #else // !QT_NO_QOBJECT
+<span class="lineNum">     294 </span>            : template &lt;class T&gt;
+<span class="lineNum">     295 </span>            : inline QDebug qt_QMetaEnum_flagDebugOperator_helper(QDebug debug, const QFlags&lt;T&gt; &amp;flags)
+<span class="lineNum">     296 </span>            : #endif
+<span class="lineNum">     297 </span>            : {
+<span class="lineNum">     298 </span>            :     QDebugStateSaver saver(debug);
+<span class="lineNum">     299 </span>            :     debug.resetFormat();
+<span class="lineNum">     300 </span>            :     debug.nospace() &lt;&lt; &quot;QFlags(&quot; &lt;&lt; hex &lt;&lt; showbase;
+<span class="lineNum">     301 </span>            :     bool needSeparator = false;
+<span class="lineNum">     302 </span>            :     for (uint i = 0; i &lt; sizeof(T) * 8; ++i) {
+<span class="lineNum">     303 </span>            :         if (flags.testFlag(T(1 &lt;&lt; i))) {
+<span class="lineNum">     304 </span>            :             if (needSeparator)
+<span class="lineNum">     305 </span>            :                 debug &lt;&lt; '|';
+<span class="lineNum">     306 </span>            :             else
+<span class="lineNum">     307 </span>            :                 needSeparator = true;
+<span class="lineNum">     308 </span>            :             debug &lt;&lt; (typename QFlags&lt;T&gt;::Int(1) &lt;&lt; i);
+<span class="lineNum">     309 </span>            :         }
+<span class="lineNum">     310 </span>            :     }
+<span class="lineNum">     311 </span>            :     debug &lt;&lt; ')';
+<span class="lineNum">     312 </span>            :     return debug;
+<span class="lineNum">     313 </span>            : }
+<span class="lineNum">     314 </span>            : 
+<span class="lineNum">     315 </span>            : template&lt;typename T&gt;
+<span class="lineNum">     316 </span>            : inline QDebug operator&lt;&lt;(QDebug debug, const QFlags&lt;T&gt; &amp;flags)
+<span class="lineNum">     317 </span>            : {
+<span class="lineNum">     318 </span>            :     // We have to use an indirection otherwise specialisation of some other overload of the
+<span class="lineNum">     319 </span>            :     // operator&lt;&lt; the compiler would try to instantiate QFlags&lt;T&gt; for the QEnableIf
+<span class="lineNum">     320 </span>            :     return qt_QMetaEnum_flagDebugOperator_helper(debug, flags);
+<span class="lineNum">     321 </span>            : }
+<span class="lineNum">     322 </span>            : 
+<span class="lineNum">     323 </span>            : #ifdef Q_OS_MAC
+<span class="lineNum">     324 </span>            : 
+<span class="lineNum">     325 </span>            : // We provide QDebug stream operators for commonly used Core Foundation
+<span class="lineNum">     326 </span>            : // and Core Graphics types, as well as NSObject. Additional CF/CG types
+<span class="lineNum">     327 </span>            : // may be added by the user, using Q_DECLARE_QDEBUG_OPERATOR_FOR_CF_TYPE.
+<span class="lineNum">     328 </span>            : 
+<span class="lineNum">     329 </span>            : #define QT_FOR_EACH_CORE_FOUNDATION_TYPE(F) \
+<span class="lineNum">     330 </span>            :     F(CFArray) \
+<span class="lineNum">     331 </span>            :     F(CFURL) \
+<span class="lineNum">     332 </span>            :     F(CFData) \
+<span class="lineNum">     333 </span>            :     F(CFNumber) \
+<span class="lineNum">     334 </span>            :     F(CFDictionary) \
+<span class="lineNum">     335 </span>            :     F(CFLocale) \
+<span class="lineNum">     336 </span>            :     F(CFDate) \
+<span class="lineNum">     337 </span>            :     F(CFBoolean) \
+<span class="lineNum">     338 </span>            :     F(CFTimeZone) \
+<span class="lineNum">     339 </span>            : 
+<span class="lineNum">     340 </span>            : #define QT_FOR_EACH_MUTABLE_CORE_FOUNDATION_TYPE(F) \
+<span class="lineNum">     341 </span>            :     F(CFError) \
+<span class="lineNum">     342 </span>            :     F(CFBundle) \
+<span class="lineNum">     343 </span>            : 
+<span class="lineNum">     344 </span>            : #define QT_FOR_EACH_CORE_GRAPHICS_TYPE(F) \
+<span class="lineNum">     345 </span>            :     F(CGPath) \
+<span class="lineNum">     346 </span>            : 
+<span class="lineNum">     347 </span>            : #define QT_FOR_EACH_MUTABLE_CORE_GRAPHICS_TYPE(F) \
+<span class="lineNum">     348 </span>            :     F(CGColorSpace) \
+<span class="lineNum">     349 </span>            :     F(CGImage) \
+<span class="lineNum">     350 </span>            :     F(CGFont) \
+<span class="lineNum">     351 </span>            :     F(CGColor) \
+<span class="lineNum">     352 </span>            : 
+<span class="lineNum">     353 </span>            : #define QT_FORWARD_DECLARE_CF_TYPE(type) Q_FORWARD_DECLARE_CF_TYPE(type);
+<span class="lineNum">     354 </span>            : #define QT_FORWARD_DECLARE_MUTABLE_CF_TYPE(type) Q_FORWARD_DECLARE_MUTABLE_CF_TYPE(type);
+<span class="lineNum">     355 </span>            : #define QT_FORWARD_DECLARE_CG_TYPE(type) typedef const struct type *type ## Ref;
+<span class="lineNum">     356 </span>            : #define QT_FORWARD_DECLARE_MUTABLE_CG_TYPE(type) typedef struct type *type ## Ref;
+<span class="lineNum">     357 </span>            : 
+<span class="lineNum">     358 </span>            : QT_END_NAMESPACE
+<span class="lineNum">     359 </span>            : Q_FORWARD_DECLARE_CF_TYPE(CFString);
+<span class="lineNum">     360 </span>            : Q_FORWARD_DECLARE_OBJC_CLASS(NSObject);
+<span class="lineNum">     361 </span>            : QT_FOR_EACH_CORE_FOUNDATION_TYPE(QT_FORWARD_DECLARE_CF_TYPE)
+<span class="lineNum">     362 </span>            : QT_FOR_EACH_MUTABLE_CORE_FOUNDATION_TYPE(QT_FORWARD_DECLARE_MUTABLE_CF_TYPE)
+<span class="lineNum">     363 </span>            : QT_FOR_EACH_CORE_GRAPHICS_TYPE(QT_FORWARD_DECLARE_CG_TYPE)
+<span class="lineNum">     364 </span>            : QT_FOR_EACH_MUTABLE_CORE_GRAPHICS_TYPE(QT_FORWARD_DECLARE_MUTABLE_CG_TYPE)
+<span class="lineNum">     365 </span>            : QT_BEGIN_NAMESPACE
+<span class="lineNum">     366 </span>            : 
+<span class="lineNum">     367 </span>            : #define QT_FORWARD_DECLARE_QDEBUG_OPERATOR_FOR_CF_TYPE(CFType) \
+<span class="lineNum">     368 </span>            :     Q_CORE_EXPORT QDebug operator&lt;&lt;(QDebug, CFType##Ref);
+<span class="lineNum">     369 </span>            : 
+<span class="lineNum">     370 </span>            : #define Q_DECLARE_QDEBUG_OPERATOR_FOR_CF_TYPE(CFType) \
+<span class="lineNum">     371 </span>            :     QDebug operator&lt;&lt;(QDebug debug, CFType##Ref ref) \
+<span class="lineNum">     372 </span>            :     { \
+<span class="lineNum">     373 </span>            :         if (!ref) \
+<span class="lineNum">     374 </span>            :             return debug &lt;&lt; QT_STRINGIFY(CFType) &quot;Ref(0x0)&quot;; \
+<span class="lineNum">     375 </span>            :         if (CFStringRef description = CFCopyDescription(ref)) { \
+<span class="lineNum">     376 </span>            :             QDebugStateSaver saver(debug); \
+<span class="lineNum">     377 </span>            :             debug.noquote() &lt;&lt; description; \
+<span class="lineNum">     378 </span>            :             CFRelease(description); \
+<span class="lineNum">     379 </span>            :         } \
+<span class="lineNum">     380 </span>            :         return debug; \
+<span class="lineNum">     381 </span>            :     }
+<span class="lineNum">     382 </span>            : 
+<span class="lineNum">     383 </span>            : // Defined in qcore_mac_objc.mm
+<span class="lineNum">     384 </span>            : Q_CORE_EXPORT QDebug operator&lt;&lt;(QDebug, const NSObject *);
+<span class="lineNum">     385 </span>            : Q_CORE_EXPORT QDebug operator&lt;&lt;(QDebug, CFStringRef);
+<span class="lineNum">     386 </span>            : 
+<span class="lineNum">     387 </span>            : QT_FOR_EACH_CORE_FOUNDATION_TYPE(QT_FORWARD_DECLARE_QDEBUG_OPERATOR_FOR_CF_TYPE)
+<span class="lineNum">     388 </span>            : QT_FOR_EACH_MUTABLE_CORE_FOUNDATION_TYPE(QT_FORWARD_DECLARE_QDEBUG_OPERATOR_FOR_CF_TYPE)
+<span class="lineNum">     389 </span>            : QT_FOR_EACH_CORE_GRAPHICS_TYPE(QT_FORWARD_DECLARE_QDEBUG_OPERATOR_FOR_CF_TYPE)
+<span class="lineNum">     390 </span>            : QT_FOR_EACH_MUTABLE_CORE_GRAPHICS_TYPE(QT_FORWARD_DECLARE_QDEBUG_OPERATOR_FOR_CF_TYPE)
+<span class="lineNum">     391 </span>            : 
+<span class="lineNum">     392 </span>            : #undef QT_FORWARD_DECLARE_CF_TYPE
+<span class="lineNum">     393 </span>            : #undef QT_FORWARD_DECLARE_MUTABLE_CF_TYPE
+<span class="lineNum">     394 </span>            : #undef QT_FORWARD_DECLARE_CG_TYPE
+<span class="lineNum">     395 </span>            : #undef QT_FORWARD_DECLARE_MUTABLE_CG_TYPE
+<span class="lineNum">     396 </span>            : 
+<span class="lineNum">     397 </span>            : #endif // Q_OS_MAC
+<span class="lineNum">     398 </span>            : 
+<span class="lineNum">     399 </span>            : QT_END_NAMESPACE
+<span class="lineNum">     400 </span>            : 
+<span class="lineNum">     401 </span>            : #endif // QDEBUG_H
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.11</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

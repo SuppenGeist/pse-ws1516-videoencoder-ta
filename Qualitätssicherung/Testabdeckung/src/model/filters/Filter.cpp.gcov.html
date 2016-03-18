@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - i3.info - src/model/filters/Filter.cpp</title>
+  <link rel="stylesheet" type="text/css" href="../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">src/model/filters</a> - Filter.cpp<span style="font-size: 80%;"> (source / <a href="Filter.cpp.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">i3.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">45</td>
+            <td class="headerCovTableEntry">46</td>
+            <td class="headerCovTableEntryHi">97.8 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2016-03-18 19:19:22</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntryMed">75.0 %</td>
+          </tr>
+          <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : #include &quot;Filter.h&quot;</a>
+<span class="lineNum">       2 </span>            : 
+<span class="lineNum">       3 </span>            : #include &lt;QString&gt;
+<span class="lineNum">       4 </span>            : 
+<span class="lineNum">       5 </span>            : #include &lt;string&gt;
+<span class="lineNum">       6 </span>            : #include &lt;memory&gt;
+<span class="lineNum">       7 </span>            : #include &lt;stdexcept&gt;
+<span class="lineNum">       8 </span>            : 
+<span class="lineNum">       9 </span>            : #include &quot;GrayscaleFilter.h&quot;
+<span class="lineNum">      10 </span>            : #include &quot;BlurFilter.h&quot;
+<span class="lineNum">      11 </span>            : #include &quot;BorderFilter.h&quot;
+<span class="lineNum">      12 </span>            : #include &quot;BrightnessFilter.h&quot;
+<span class="lineNum">      13 </span>            : #include &quot;ColorbalanceFilter.h&quot;
+<span class="lineNum">      14 </span>            : #include &quot;ContrastFilter.h&quot;
+<span class="lineNum">      15 </span>            : #include &quot;EdgeFilter.h&quot;
+<span class="lineNum">      16 </span>            : #include &quot;GridFilter.h&quot;
+<span class="lineNum">      17 </span>            : #include &quot;MirrorFilter.h&quot;
+<span class="lineNum">      18 </span>            : #include &quot;NegativeFilter.h&quot;
+<span class="lineNum">      19 </span>            : #include &quot;NoiseFilter.h&quot;
+<span class="lineNum">      20 </span>            : #include &quot;PosterFilter.h&quot;
+<span class="lineNum">      21 </span>            : #include &quot;RectangleFilter.h&quot;
+<span class="lineNum">      22 </span>            : #include &quot;RGBFilter.h&quot;
+<span class="lineNum">      23 </span>            : #include &quot;RotationFilter.h&quot;
+<span class="lineNum">      24 </span>            : #include &quot;SaturationFilter.h&quot;
+<span class="lineNum">      25 </span>            : #include &quot;ScaleFilter.h&quot;
+<span class="lineNum">      26 </span>            : #include &quot;SepiaFilter.h&quot;
+<span class="lineNum">      27 </span>            : #include &quot;SharpnessFilter.h&quot;
+<a name="28"><span class="lineNum">      28 </span>            : #include &quot;VintageFilter.h&quot;</a>
+<span class="lineNum">      29 </span>            : 
+<span class="lineNum">      30 </span><span class="lineCov">        550 : Model::Filter::Filter() {</span>
+<span class="lineNum">      31 </span>            : 
+<a name="32"><span class="lineNum">      32 </span><span class="lineCov">        550 : }</span></a>
+<span class="lineNum">      33 </span>            : 
+<span class="lineNum">      34 </span><span class="lineCov">        506 : Model::Filter::~Filter() {</span>
+<span class="lineNum">      35 </span>            : 
+<a name="36"><span class="lineNum">      36 </span><span class="lineCov">        506 : }</span></a>
+<span class="lineNum">      37 </span>            : 
+<span class="lineNum">      38 </span><span class="lineCov">        416 : std::unique_ptr&lt;Model::Filter&gt; Model::Filter::CreateFilter(QString filtername) {</span>
+<span class="lineNum">      39 </span><span class="lineCov">        416 :         if(filtername==GrayscaleFilter::FILTERNAME) {</span>
+<span class="lineNum">      40 </span><span class="lineCov">          6 :                 return std::make_unique&lt;GrayscaleFilter&gt;();</span>
+<span class="lineNum">      41 </span><span class="lineCov">        414 :         }  else if(filtername==BlurFilter::FILTERNAME) {</span>
+<span class="lineNum">      42 </span><span class="lineCov">        147 :                 return std::make_unique&lt;BlurFilter&gt;();</span>
+<span class="lineNum">      43 </span><span class="lineCov">        365 :         } else if(filtername==BorderFilter::FILTERNAME) {</span>
+<span class="lineNum">      44 </span><span class="lineCov">        141 :                 return std::make_unique&lt;BorderFilter&gt;();</span>
+<span class="lineNum">      45 </span><span class="lineCov">        318 :         } else if(filtername==BrightnessFilter::FILTERNAME) {</span>
+<span class="lineNum">      46 </span><span class="lineCov">         60 :                 return std::make_unique&lt;BrightnessFilter&gt;();</span>
+<span class="lineNum">      47 </span><span class="lineCov">        298 :         } else if(filtername==ColorbalanceFilter::FILTERNAME) {</span>
+<span class="lineNum">      48 </span><span class="lineCov">        111 :                 return std::make_unique&lt;ColorbalanceFilter&gt;();</span>
+<span class="lineNum">      49 </span><span class="lineCov">        261 :         } else if(filtername==ContrastFilter::FILTERNAME) {</span>
+<span class="lineNum">      50 </span><span class="lineCov">         54 :                 return std::make_unique&lt;ContrastFilter&gt;();</span>
+<span class="lineNum">      51 </span><span class="lineCov">        243 :         } else if(filtername==EdgeFilter::FILTERNAME) {</span>
+<span class="lineNum">      52 </span><span class="lineCov">         45 :                 return std::make_unique&lt;EdgeFilter&gt;();</span>
+<span class="lineNum">      53 </span><span class="lineCov">        228 :         } else if(filtername==GridFilter::FILTERNAME) {</span>
+<span class="lineNum">      54 </span><span class="lineCov">        186 :                 return std::make_unique&lt;GridFilter&gt;();</span>
+<span class="lineNum">      55 </span><span class="lineCov">        166 :         } else if(filtername==MirrorFilter::FILTERNAME) {</span>
+<span class="lineNum">      56 </span><span class="lineCov">         45 :                 return std::make_unique&lt;MirrorFilter&gt;();</span>
+<span class="lineNum">      57 </span><span class="lineCov">        151 :         } else if(filtername==NegativeFilter::FILTERNAME) {</span>
+<span class="lineNum">      58 </span><span class="lineCov">        171 :                 return std::make_unique&lt;NegativeFilter&gt;();</span>
+<span class="lineNum">      59 </span><span class="lineCov">         94 :         } else if(filtername==NoiseFilter::FILTERNAME) {</span>
+<span class="lineNum">      60 </span><span class="lineCov">         45 :                 return std::make_unique&lt;NoiseFilter&gt;();</span>
+<span class="lineNum">      61 </span><span class="lineCov">         79 :         } else if(filtername==PosterFilter::FILTERNAME) {</span>
+<span class="lineNum">      62 </span><span class="lineCov">         39 :                 return std::make_unique&lt;PosterFilter&gt;();</span>
+<span class="lineNum">      63 </span><span class="lineCov">         66 :         } else if(filtername==RectangleFilter::FILTERNAME) {</span>
+<span class="lineNum">      64 </span><span class="lineCov">         45 :                 return std::make_unique&lt;RectangleFilter&gt;();</span>
+<span class="lineNum">      65 </span><span class="lineCov">         51 :         } else if(filtername==RGBFilter::FILTERNAME) {</span>
+<span class="lineNum">      66 </span><span class="lineCov">         33 :                 return std::make_unique&lt;RGBFilter&gt;();</span>
+<span class="lineNum">      67 </span><span class="lineCov">         40 :         } else if(filtername==RotationFilter::FILTERNAME) {</span>
+<span class="lineNum">      68 </span><span class="lineCov">         30 :                 return std::make_unique&lt;RotationFilter&gt;();</span>
+<span class="lineNum">      69 </span><span class="lineCov">         30 :         } else if(filtername==SaturationFilter::FILTERNAME) {</span>
+<span class="lineNum">      70 </span><span class="lineCov">         27 :                 return std::make_unique&lt;SaturationFilter&gt;();</span>
+<span class="lineNum">      71 </span><span class="lineCov">         21 :         } else if(filtername==ScaleFilter::FILTERNAME) {</span>
+<span class="lineNum">      72 </span><span class="lineCov">         30 :                 return std::make_unique&lt;ScaleFilter&gt;();</span>
+<span class="lineNum">      73 </span><span class="lineCov">         11 :         } else if(filtername==SepiaFilter::FILTERNAME) {</span>
+<span class="lineNum">      74 </span><span class="lineCov">          6 :                 return std::make_unique&lt;SepiaFilter&gt;();</span>
+<span class="lineNum">      75 </span><span class="lineCov">          9 :         } else if(filtername==SharpnessFilter::FILTERNAME) {</span>
+<span class="lineNum">      76 </span><span class="lineCov">         21 :                 return std::make_unique&lt;SharpnessFilter&gt;();</span>
+<span class="lineNum">      77 </span><span class="lineCov">          2 :         } else if(filtername==VintageFilter::FILTERNAME) {</span>
+<span class="lineNum">      78 </span><span class="lineCov">          6 :                 return std::make_unique&lt;VintageFilter&gt;();</span>
+<span class="lineNum">      79 </span>            :         }
+<span class="lineNum">      80 </span><span class="lineNoCov">          0 :         throw std::invalid_argument(&quot;Filter is not known&quot;);</span>
+<span class="lineNum">      81 </span>            : }
+<span class="lineNum">      82 </span>            : 
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.11</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>
