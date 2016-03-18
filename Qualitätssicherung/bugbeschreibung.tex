@@ -44,45 +44,65 @@ In der Qualitätssicherungsphase geht es darum die Qualität des Projectes  durc
 \textbf{Behebung:} Ändere filters\_size() zu filters\_size()-1.
 \subsection{VideoLoader bug}
 \textbf{Symptome:}\\
+Encodierte Videos werden nicht korrekt geladen
 \textbf{Ursache:}\\
+Geladene Videos wurden nicht zu RGB24 umgewandelt
 \textbf{Behebung:}
+Umwandeln von yuv420 zu rgb24
 \subsection{VideoSaver bug}
 \textbf{Symptome:}\\
+Alle abgespcheierten RGB Histogrammvideos haben diesselbe farbe
 \textbf{Ursache:}\\
+Falsches setzen der farbe, in denen die histogramme gerendert werden.
 \textbf{Behebung:}
+Korrektes setzten der farben
 \subsection{Bug in mementos}
 \textbf{Symptome:} Comment wird nicht mit abgespeichert.\\
 \textbf{Ursache:} Comment wird nicht in den String, der zum Speichern benutzt wird geschrieben.\\
 \textbf{Behebung:}Comment wird mit memento->getComment() an den String angehängt.
 \subsection{Loading bug}
 \textbf{Symptome:}\\
+Im Analysistab werden beim Laden eines Projektes manche Videos nicht geladen (inkonsistent).
 \textbf{Ursache:}\\
+Entscheidung, ob ein Konverter auf das vollständig geladene Video wartet hing vom Timing der threads ab.
 \textbf{Behebung:}
+Timingunabhängiig prüfen, ob gewartet werden muss.
 \subsection{FPS bug}
 \textbf{Symptome:}\\
+Gespeicherte Videos der RGB Histogramme haben nicht die korrekte FPS.
 \textbf{Ursache:}\\
+Fps wurde nicht korrekt gesetzt.
 \textbf{Behebung:}
+Setzen der Fps.
 \subsection{Filter bug}
 \textbf{Symptome:}\\
+Filtertab ist beim Hinuzfügen eines Filters zur Filterpreview gewechselt, obwohl kein Video geladen war.
 \textbf{Ursache:}\\
+Es wurdenihct geprüft, ob ein Video geladn ist.
 \textbf{Behebung:}
+Prüfen, ob ein Video geladen ist.
 \subsection{Broken video file bug}
 \textbf{Symptome:} Unzulässige Dateien können als Videos geladen werden.\\
 \textbf{Ursache:} Fehlende Überprüfung ob es sic bei der Datei um ein Video handelt.\\
 \textbf{Behebeung:} Hinzufügen einer Überprüfung ob die Datei Frames enthält.
 \subsection{Project loading bug}
-\textbf{Symptome:} Nach Laden des Projects undo und redo nicht ausführbar\\
-\textbf{Ursache:} Der UndoStack wird an der Falschen Stelle gelehrt.\\
-\textbf{Behebung:} Verschiebung von UndoRedo::UndoStack::getUndoStack().clear(); vom Anfang der restore Methode im MainWindow an das Ende der Methode.
+\textbf{Symptome:} Beim Laden eines Projektes stürzt das Programm im Analysistab ab.\\
+\textbf{Ursache:} UndoStack wird nach dem Laden des Projektes geleert, somit auch die geladenen Videos.\\
+\textbf{Behebung:} UndoStack wird vorm laden des Video geleert.
 \subsection{Video saving bug}
 \textbf{Symptome:}\\
+Gespeicherte Videos können nicht von einem Player abegspielt werden.
 \textbf{Ursache:}\\
+Metadaten zum Video wurden enihct gespeichert.
 \textbf{Behebung:}
+Speichern von Metadaten
 \subsection{Project loading bug 2}
 \textbf{Symptome:}\\
+Beim Laden eines Projekts, wenn bereits ein Video geladen ist, stürzt das Programm ab.
 \textbf{Ursache:}\\
+Der Undostack wird gelöscht, der Player aber nicht gestoppt. Der Player hat versucht ein geköschtes Video abzuspeielen.
 \textbf{Behebung:}\\
+Stoppen des Players vorm löschen des undosztacks.
 \newpage
 \section{Testüberdeckung}
-Durch das hinzufügen weiterer Unit tests und automatischer GUI tests konnten wir die TestAbdeckung von den 23\% aus der Implementierungsphase auf ca 73\% erweitern.
 \end{document}
