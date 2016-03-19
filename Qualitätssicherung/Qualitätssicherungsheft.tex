@@ -35,7 +35,7 @@ In der Qualitätssicherungsphase geht es darum die Qualität des Projectes  durc
 \newpage
 \section{Bugs}
 \subsection{PSNRDifferenceCalculator bug}
-\textbf{Symptome:}\\
+\textbf{Symptome:}Falsche Anzeigen bei den PSNR Graphen.\\
 \textbf{Ursache:} Fehlende if Bedingung ob es sich um ähnliche Videos handelt.\\
 \textbf{Behebung:} Hinzufügen einer Überprüfung ob die Videos die selbe Auflösung haben.
 \subsection{move Filter bug}
@@ -43,42 +43,42 @@ In der Qualitätssicherungsphase geht es darum die Qualität des Projectes  durc
 \textbf{Ursache:} Falsche newposition in den if cases der moveFilter Methode.\\
 \textbf{Behebung:} Ändere filters\_size() zu filters\_size()-1.
 \subsection{VideoLoader bug}
-\textbf{Symptome:}\\
-Encodierte Videos werden nicht korrekt geladen
-\textbf{Ursache:}\\
-Geladene Videos wurden nicht zu RGB24 umgewandelt
+\textbf{Symptome:}
+Encodierte Videos werden nicht korrekt geladen.\\
+\textbf{Ursache:}
+Geladene Videos wurden nicht zu RGB24 umgewandelt.\\
 \textbf{Behebung:}
-Umwandeln von yuv420 zu rgb24
+Umwandeln von yuv420 zu rgb24.
 \subsection{VideoSaver bug}
-\textbf{Symptome:}\\
-Alle abgespeicherten RGB Histogramvideos haben die selbe Farbe
-\textbf{Ursache:}\\
-Falsches setzen der Farbe, in denen die Histogramme gerendert werden.
+\textbf{Symptome:}
+Alle abgespeicherten RGB Histogramvideos haben die selbe Farbe.\\
+\textbf{Ursache:}
+Falsches setzen der Farbe, in denen die Histogramme gerendert werden.\\
 \textbf{Behebung:}
-Korrektes setzten der Farben
+Korrektes setzten der Farben.
 \subsection{Bug in mementos}
 \textbf{Symptome:} Comment wird nicht mit abgespeichert.\\
 \textbf{Ursache:} Comment wird nicht in den String, der zum Speichern benutzt wird geschrieben.\\
 \textbf{Behebung:}Comment wird mit memento->getComment() an den String angehängt.
 \subsection{Loading bug}
-\textbf{Symptome:}\\
-Im Analysistab werden beim Laden eines Projektes manche Videos nicht geladen (inkonsistent).
-\textbf{Ursache:}\\
-Entscheidung, ob ein Konverter auf das vollständig geladene Video wartet hing vom Timing der threads ab.
+\textbf{Symptome:}
+Im Analysistab werden beim Laden eines Projektes manche Videos nicht geladen (inkonsistent).\\
+\textbf{Ursache:}
+Entscheidung, ob ein Konverter auf das vollständig geladene Video wartet hängt vom Timing der threads ab.\\
 \textbf{Behebung:}
-Timingunabhängiig prüfen, ob gewartet werden muss.
+Timingsunabhängig prüfen, ob gewartet werden muss.
 \subsection{FPS bug}
-\textbf{Symptome:}\\
-Gespeicherte Videos der RGB Histogramme haben nicht die korrekte FPS.
-\textbf{Ursache:}\\
-Fps wurde nicht korrekt gesetzt.
+\textbf{Symptome:}
+Gespeicherte Videos der RGB Histogramme haben nicht die korrekte FPS.\\
+\textbf{Ursache:}
+Fps wird nicht korrekt gesetzt.\\
 \textbf{Behebung:}
 Setzen der Fps.
 \subsection{Filter bug}
-\textbf{Symptome:}\\
-Filtertab ist beim Hinuzfügen eines Filters zur Filterpreview gewechselt, obwohl kein Video geladen war.
-\textbf{Ursache:}\\
-Es wurden nicht geprüft, ob ein Video geladen ist.
+\textbf{Symptome:}
+Filtertab ist beim Hinuzfügen eines Filters zur Filterpreview gewechselt, obwohl kein Video geladen war.\\
+\textbf{Ursache:}
+Es wird nicht geprüft, ob ein Video geladen ist.\\
 \textbf{Behebung:}
 Prüfen, ob ein Video geladen ist.
 \subsection{Broken video file bug}
@@ -90,26 +90,27 @@ Prüfen, ob ein Video geladen ist.
 \textbf{Ursache:} UndoStack wird nach dem Laden des Projektes geleert, somit auch die geladenen Videos.\\
 \textbf{Behebung:} UndoStack wird vor dem Laden des Video geleert.
 \subsection{Video saving bug}
-\textbf{Symptome:}\\
-Gespeicherte Videos können nicht von einem Player abegspielt werden.
-\textbf{Ursache:}\\
-Metadaten zum Video wurden enihct gespeichert.
+\textbf{Symptome:}
+Gespeicherte Videos können nicht von einem Player abegspielt werden.\\
+\textbf{Ursache:}
+Metadaten zum Video werden nicht gespeichert.\\
 \textbf{Behebung:}
-Speichern von Metadaten
+Speichern von Metadaten.
 \subsection{Project loading bug 2}
-\textbf{Symptome:}\\
-Beim Laden eines Projekts, wenn bereits ein Video geladen ist, stürzt das Programm ab.
-\textbf{Ursache:}\\
-Der Undostack wird gelöscht, der Player aber nicht gestoppt. Der Player hat versucht ein gelöschtes Video abzuspielen.
-\textbf{Behebung:}\\
-Stoppen des Players vor dem Löschen des UndoStacks.
+\textbf{Symptome:}
+Beim Laden eines Projekts, wenn bereits ein Video geladen ist, stürzt das Programm ab.\\
+\textbf{Ursache:}
+Der Undostack wird gelöscht, der Player aber nicht gestoppt. Der Player hat versucht ein gelöschtes Video abzuspielen.\\
+\textbf{Behebung:}
+Stoppen des Players vor dem Löschen des UndoStacks.\\
 \subsection{Filterlist undo bug}
-\textbf{Symptome:}\\
-Benutzen von undo nach hinzufügen/enfernen/reseten bei der Filterliste.
-\textbf{Ursache:}\\
-Alter Zustand wird mit restore(memento) wiederhergestellt.
-\textbf{Behebung:}\\
+\textbf{Symptome:}
+Benutzen von undo nach hinzufügen/enfernen/reseten bei der Filterliste.\\
+\textbf{Ursache:}
+Alter Zustand wird mit restore(memento) wiederhergestellt.\\
+\textbf{Behebung:}
 Statt restore(memento) wird eine Handlung simuliert die das Ganze rückgängig macht.
 \newpage
 \section{Testüberdeckung}
+Durch das hinzufügen weiterer Unit tests und automatischer GUI tests konnten wir die TestAbdeckung von den 23\% aus der Implementierungsphase auf ca 74\% erweitern.
 \end{document}

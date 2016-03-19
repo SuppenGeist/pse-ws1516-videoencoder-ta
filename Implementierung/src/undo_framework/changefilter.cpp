@@ -9,7 +9,7 @@ UndoRedo::ChangeFilter::ChangeFilter(GUI::FilterTab& filtertab, int index, QStri
 }
 
 void UndoRedo::ChangeFilter::undo() {
-	filtertab_->restore(memento_.get());
+    filtertab_->changeFilter(index_,oldState_);
 }
 
 void UndoRedo::ChangeFilter::redo() {
