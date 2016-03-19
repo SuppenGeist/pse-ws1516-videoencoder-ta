@@ -39,7 +39,7 @@ In der Qualitätssicherungsphase geht es darum die Qualität des Projectes  durc
 \textbf{Ursache:} Fehlende if Bedingung ob es sich um ähnliche Videos handelt.\\
 \textbf{Behebung:} Hinzufügen einer Überprüfung ob die Videos die selbe Auflösung haben.
 \subsection{move Filter bug}
-\textbf{Symptome:} Error beim verschieben der Filter in der Filterliste.\\
+\textbf{Symptome:} Fehlermeldung beim verschieben der Filter in der Filterliste.\\
 \textbf{Ursache:} Falsche newposition in den if cases der moveFilter Methode.\\
 \textbf{Behebung:} Ändere filters\_size() zu filters\_size()-1.
 \subsection{VideoLoader bug}
@@ -51,11 +51,11 @@ Geladene Videos wurden nicht zu RGB24 umgewandelt
 Umwandeln von yuv420 zu rgb24
 \subsection{VideoSaver bug}
 \textbf{Symptome:}\\
-Alle abgespcheierten RGB Histogrammvideos haben diesselbe farbe
+Alle abgespeicherten RGB Histogramvideos haben die selbe Farbe
 \textbf{Ursache:}\\
-Falsches setzen der farbe, in denen die histogramme gerendert werden.
+Falsches setzen der Farbe, in denen die Histogramme gerendert werden.
 \textbf{Behebung:}
-Korrektes setzten der farben
+Korrektes setzten der Farben
 \subsection{Bug in mementos}
 \textbf{Symptome:} Comment wird nicht mit abgespeichert.\\
 \textbf{Ursache:} Comment wird nicht in den String, der zum Speichern benutzt wird geschrieben.\\
@@ -78,17 +78,17 @@ Setzen der Fps.
 \textbf{Symptome:}\\
 Filtertab ist beim Hinuzfügen eines Filters zur Filterpreview gewechselt, obwohl kein Video geladen war.
 \textbf{Ursache:}\\
-Es wurdenihct geprüft, ob ein Video geladn ist.
+Es wurden nicht geprüft, ob ein Video geladen ist.
 \textbf{Behebung:}
 Prüfen, ob ein Video geladen ist.
 \subsection{Broken video file bug}
 \textbf{Symptome:} Unzulässige Dateien können als Videos geladen werden.\\
-\textbf{Ursache:} Fehlende Überprüfung ob es sic bei der Datei um ein Video handelt.\\
+\textbf{Ursache:} Fehlende Überprüfung ob es sich bei der Datei um ein Video handelt.\\
 \textbf{Behebeung:} Hinzufügen einer Überprüfung ob die Datei Frames enthält.
 \subsection{Project loading bug}
 \textbf{Symptome:} Beim Laden eines Projektes stürzt das Programm im Analysistab ab.\\
 \textbf{Ursache:} UndoStack wird nach dem Laden des Projektes geleert, somit auch die geladenen Videos.\\
-\textbf{Behebung:} UndoStack wird vorm laden des Video geleert.
+\textbf{Behebung:} UndoStack wird vor dem Laden des Video geleert.
 \subsection{Video saving bug}
 \textbf{Symptome:}\\
 Gespeicherte Videos können nicht von einem Player abegspielt werden.
@@ -100,9 +100,9 @@ Speichern von Metadaten
 \textbf{Symptome:}\\
 Beim Laden eines Projekts, wenn bereits ein Video geladen ist, stürzt das Programm ab.
 \textbf{Ursache:}\\
-Der Undostack wird gelöscht, der Player aber nicht gestoppt. Der Player hat versucht ein geköschtes Video abzuspeielen.
+Der Undostack wird gelöscht, der Player aber nicht gestoppt. Der Player hat versucht ein gelöschtes Video abzuspielen.
 \textbf{Behebung:}\\
-Stoppen des Players vorm löschen des undosztacks.
+Stoppen des Players vor dem Löschen des UndoStacks.
 \newpage
 \section{Testüberdeckung}
 \end{document}
