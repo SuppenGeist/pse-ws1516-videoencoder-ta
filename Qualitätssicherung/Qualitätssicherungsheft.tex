@@ -113,4 +113,38 @@ Statt restore(memento) wird eine Handlung simuliert die das Ganze rückgängig m
 \newpage
 \section{Testüberdeckung}
 Durch das hinzufügen weiterer Unit tests und automatischer GUI tests konnten wir die TestAbdeckung von den 23\% aus der Implementierungsphase auf ca 74\% erweitern.
+\subsection{CrazyMonkeyTest}
+\textbf{Ablauf:}
+Button: Apply to video\\
+Button: ''Filter up''\\
+Button: ''Apply to video''\\
+Button: ''Filter down''\\
+Button: ''Save configuration''\\
+Button: ''Add Edge filter''\\
+Wechsle zu Analysistab\\
+Button: ''PSNR''\\
+Button: ''Bitrate''\\
+Button: ''Red histogram''\\
+Lade Video\\
+Button: ''PSNR''\\
+Button: ''Bitrate''\\
+Button: ''Red histogram''\\
+Wechsle zu FilterTab\\
+Button: ''Remove filter''\\
+Button: ''Save configuration''\\
+Button: ''Add Contrast filter''\\
+Lade Video\\
+Button: ''Add Vintage filter''\\
+Button: ''Apply to video''\\
+Button: ''Redo''\\
+Button: ''Redo''\\
+Button: ''Redo''\\
+Button: ''Add Vintage filter''\\
+Button: ''Redo''\\
+Button: ''Undo''\\
+Wechsle Analysistab\\
+Button: ''New''\\
+Button: ''Add video''\\
+
+
 \end{document}
