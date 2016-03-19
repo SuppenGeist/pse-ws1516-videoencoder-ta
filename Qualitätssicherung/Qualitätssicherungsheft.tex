@@ -42,8 +42,8 @@ In diesem Kapitel werden gefundene Bugs und deren Reparatur dokumentiert.
 \textbf{Behebung:} Hinzufügen einer Überprüfung ob die Videos die selbe Auflösung haben.
 \subsection{move Filter bug}
 \textbf{Symptome:} Fehlermeldung beim verschieben der Filter in der Filterliste.\\
-\textbf{Ursache:} Falsche newposition in den if cases der moveFilter Methode.\\
-\textbf{Behebung:} Ändere filters\_size() zu filters\_size()-1.
+\textbf{Ursache:} Falscher newposition Vergleich in den if cases der moveFilter Methode.\\
+\textbf{Behebung:} Ändere newPosition>filters\_size() zu newPosition>filters\_size()-1.
 \subsection{VideoLoader bug}
 \textbf{Symptome:}
 Encodierte Videos werden nicht korrekt geladen.\\
