@@ -10,6 +10,8 @@
 #include <typeinfo>
 #include <QtConcurrent/QtConcurrent>
 #include "../../src/memento/MainWindowMemento.h"
+#include "testanalysistab.h"
+#include "testfiltertab.h"
 
 GUI::MainWindow* TestMainWindow::mainWindow;
 std::unique_ptr<Memento::MainWindowMemento> TestMainWindow::originMemento;
@@ -83,6 +85,43 @@ GUI::MainWindow* TestMainWindow::getMainWindow() {
 	}
     waitForWindow(300);
 	return mainWindow;
+}
+void TestMainWindow::testCrazyMonkeyClicks() {
+    clickButton("Apply to video");
+    clickButton("Filter up");
+    clickButton("Apply to video");
+    clickButton("Filter down");
+    clickButton("Save configuration");
+    clickButton("Add Edge filter");
+    QTabWidget* tabWidget = mw->findChildren<QTabWidget*>().first();
+    tabWidget->setCurrentIndex(1);
+    clickButton("PSNR");
+    clickButton("Bitrate");
+    clickButton("Red histogram");
+    TestAnalysisTab::loadVideo(QFINDTESTDATA("blumeYuv420_planar_176x144.yuv"));
+    clickButton("PSNR");
+    clickButton("Bitrate");
+    clickButton("Red histogram");
+    tabWidget->setCurrentIndex(0);
+    clickButton("Remove filter");
+    clickButton("Save configuration");
+    clickButton("Add Contrast filter");
+    TestFilterTab::loadVideo(QFINDTESTDATA("blumeYuv420_planar_176x144.yuv"));
+    clickButton("Apply to video");
+    triggerAction("Redo");
+    triggerAction("Redo");
+    triggerAction("Redo");
+    clickButton("Add Vintage filter");
+    triggerAction("Redo");
+    triggerAction("Undo");
+    tabWidget->setCurrentIndex(1);
+    triggerAction("New");
+    clickButton("Add video");
+
+
+
+
+
 }
 
 

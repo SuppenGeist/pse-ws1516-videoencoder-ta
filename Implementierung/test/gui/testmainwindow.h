@@ -51,6 +51,10 @@ class TestMainWindow : public QObject {
   private slots:
 	void init();
 	void testSwitchTab();
+    /**
+     * @brief testCrazyMonkeyClicks A monkey clicks randomly on buttons to "check" if programm crashes.
+     */
+    void testCrazyMonkeyClicks();
   private:
 	GUI::MainWindow* mw;
 	static std::unique_ptr<Memento::MainWindowMemento> originMemento;
