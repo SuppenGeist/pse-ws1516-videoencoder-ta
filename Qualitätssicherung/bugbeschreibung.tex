@@ -103,6 +103,13 @@ Beim Laden eines Projekts, wenn bereits ein Video geladen ist, stürzt das Progr
 Der Undostack wird gelöscht, der Player aber nicht gestoppt. Der Player hat versucht ein gelöschtes Video abzuspielen.
 \textbf{Behebung:}\\
 Stoppen des Players vor dem Löschen des UndoStacks.
+\subsection{Filterlist undo bug}
+\textbf{Symptome:}\\
+Benutzen von undo nach hinzufügen/enfernen/reseten bei der Filterliste.
+\textbf{Ursache:}\\
+Alter Zustand wird mit restore(memento) wiederhergestellt.
+\textbf{Behebung:}\\
+Statt restore(memento) wird eine Handlung simuliert die das Ganze rückgängig macht.
 \newpage
 \section{Testüberdeckung}
 \end{document}
