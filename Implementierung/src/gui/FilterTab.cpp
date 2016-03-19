@@ -241,13 +241,15 @@ void GUI::FilterTab::changeFilter(int index, QString newState) {
 	}
 }
 
-void GUI::FilterTab::insertFilter(std::unique_ptr<Model::Filter> filter, std::size_t index) {
+void GUI::FilterTab::insertFilter(std::unique_ptr<Model::Filter> filter, std::size_t index,bool update) {
 	auto model=model_filterlist_->stringList();
 	model.insert(index,filter->getName()+" filter");
 	model_filterlist_->setStringList(model);
 	filterlist_->insertFilter(std::move(filter),index);
-	updateFilterPreview();
-	showFilterPreview();
+    if(update) {
+        updateFilterPreview();
+        showFilterPreview();
+    }
 }
 
 Model::Filter *GUI::FilterTab::appendFilter(QString filtername) {

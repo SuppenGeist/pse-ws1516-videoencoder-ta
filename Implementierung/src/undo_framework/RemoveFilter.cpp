@@ -4,12 +4,11 @@
 #include "../model/filters/Filter.h"
 
 UndoRedo::RemoveFilter::RemoveFilter(GUI::FilterTab& filterTab, int index):filterTab_(&filterTab),
-	index_(index) {
-	memento_=filterTab.getMemento();
+    index_(index) {
 }
 
 void UndoRedo::RemoveFilter::undo() {
-	filterTab_->restore(memento_.get());
+    filterTab_->insertFilter(move(filter_),index_);
 }
 
 void UndoRedo::RemoveFilter::redo() {

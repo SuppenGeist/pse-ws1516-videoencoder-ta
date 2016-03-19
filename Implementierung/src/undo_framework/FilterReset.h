@@ -4,8 +4,7 @@
 #include <QUndoCommand>
 
 #include <memory>
-
-#include "../memento/FilterTabMemento.h"
+#include <QList>
 
 namespace GUI {
 class FilterTab;
@@ -21,27 +20,26 @@ namespace UndoRedo {
  */
 class FilterReset: public QUndoCommand {
   public:
-	/**
-	 * @brief FilterReset Constructor.
-	 * @param filterTab The filtertab to operate on.
-	 * @param filterList The filterlist the action to perform on.
-	 */
-	FilterReset(GUI::FilterTab& filterTab);
+    /**
+     * @brief FilterReset Constructor.
+     * @param filterTab The filtertab to operate on.
+     * @param filterList The filterlist the action to perform on.
+     */
+    FilterReset(GUI::FilterTab& filterTab);
 
-	/**
-	     * @brief undo Loads the filterlist and filter configuration to the state it was before the reset.
-	     */
-	void undo();
+    /**
+         * @brief undo Loads the filterlist and filter configuration to the state it was before the reset.
+         */
+    void undo();
 
-	/**
-	 * @brief redo Clears the filter configurations and the filter list.
-	     */
-	void redo();
+    /**
+     * @brief redo Clears the filter configurations and the filter list.
+         */
+    void redo();
 
   private:
-	GUI::FilterTab*                     filterTab_;
-	std::unique_ptr<Model::FilterList>  filterList_;
-	std::unique_ptr<Memento::FilterTabMemento>  memento_;
+    GUI::FilterTab*                      filterTab_;
+    Model::FilterList*                   filterList_;
 };
 }
 

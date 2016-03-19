@@ -58,7 +58,7 @@ class FilterTab: public QFrame {
 
 	void changeFilter(int index,QString newState);
 
-	void insertFilter(std::unique_ptr<Model::Filter> filter,std::size_t index);
+    void insertFilter(std::unique_ptr<Model::Filter> filter,std::size_t index,bool update = true);
 
 	Model::Filter* appendFilter(QString filtername);
 

@@ -5,8 +5,6 @@
 
 #include <memory>
 
-#include "../memento/FilterTabMemento.h"
-
 namespace GUI {
 class FilterTab;
 }
@@ -41,8 +39,7 @@ class RemoveFilter: public QUndoCommand {
   private:
 	GUI::FilterTab*                 filterTab_;
 	int                             index_;
-	std::unique_ptr<Model::Filter>  filter_;
-	std::unique_ptr<Memento::FilterTabMemento>  memento_;
+    std::unique_ptr<Model::Filter>  filter_;
 };
 }
 

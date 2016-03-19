@@ -9,11 +9,10 @@
 
 UndoRedo::AddFilter::AddFilter(GUI::FilterTab &filterTab,
                                QString filtername):filterTab_(&filterTab),filtername_(filtername) {
-	memento_=filterTab.getMemento();
 }
 
 void UndoRedo::AddFilter::undo() {
-	filterTab_->restore(memento_.get());
+    filterTab_->removeFilter(filterTab_->getFilterList()->getSize()-1);
 }
 
 void UndoRedo::AddFilter::redo() {
