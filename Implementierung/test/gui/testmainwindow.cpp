@@ -107,6 +107,7 @@ void TestMainWindow::testCrazyMonkeyClicks() {
     clickButton("Save configuration");
     clickButton("Add Contrast filter");
     TestFilterTab::loadVideo(QFINDTESTDATA("blumeYuv420_planar_176x144.yuv"));
+    clickButton("Add Vintage filter");
     clickButton("Apply to video");
     triggerAction("Redo");
     triggerAction("Redo");
