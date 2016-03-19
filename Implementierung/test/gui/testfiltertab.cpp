@@ -83,10 +83,14 @@ void TestFilterTab::testAddRemoveFilters() {
 	TestMainWindow::waitForWindow();
 	QVERIFY2(mw->getMemento()->getFilterTabMemento()->getFilterList()->getSize() == 3,
 	         "error adding filters");
-    //TestMainWindow::triggerAction("Undo");
-    //TestMainWindow::waitForWindow();
-    //QVERIFY2(mw->getMemento()->getFilterTabMemento()->getFilterList()->getSize() == 2,
-     //        "error undoing add filter");
+    TestMainWindow::triggerAction("Undo");
+    TestMainWindow::waitForWindow();
+    QVERIFY2(mw->getMemento()->getFilterTabMemento()->getFilterList()->getSize() == 2,
+             "error undoing add filter");
+    TestMainWindow::triggerAction("Redo");
+    TestMainWindow::waitForWindow();
+    QVERIFY2(mw->getMemento()->getFilterTabMemento()->getFilterList()->getSize() == 3,
+             "error undoing add filter");
 	clickItemInFilterList(1);
 	TestMainWindow::clickButton("Remove filter");
 	TestMainWindow::waitForWindow();
@@ -94,14 +98,14 @@ void TestFilterTab::testAddRemoveFilters() {
 	         "error pressing \"Remove filter\"");
 	QVERIFY2(mw->getMemento()->getFilterTabMemento()->getFilterList()->getFilter(
 	             0)->getName() == "Blur", "error pressing \"Remove filter\" : wrong filter removed");
-    //TestMainWindow::triggerAction("Undo");
-    //TestMainWindow::waitForWindow();
-    //QVERIFY2(mw->getMemento()->getFilterTabMemento()->getFilterList()->getSize() == 2,
-    //         "error undoing \"Remove filter\"-Press");
-    //TestMainWindow::triggerAction("Redo");
-    //TestMainWindow::waitForWindow();
-    //QVERIFY2(mw->getMemento()->getFilterTabMemento()->getFilterList()->getSize() == 1,
-    //         "error redoing \"Remove filter\"-Press");
+    TestMainWindow::triggerAction("Undo");
+    TestMainWindow::waitForWindow();
+    QVERIFY2(mw->getMemento()->getFilterTabMemento()->getFilterList()->getSize() == 3,
+             "error undoing \"Remove filter\"-Press");
+    TestMainWindow::triggerAction("Redo");
+    TestMainWindow::waitForWindow();
+    QVERIFY2(mw->getMemento()->getFilterTabMemento()->getFilterList()->getSize() == 2,
+             "error redoing \"Remove filter\"-Press");
 	QTest::qSleep(500);
 	QRgb lastRgb = mw->grab().toImage().pixel(630,300);
 	TestMainWindow::clickButton("Add Negative filter");
@@ -112,8 +116,7 @@ void TestFilterTab::testAddRemoveFilters() {
 	QVERIFY2(lastRgb != mw->grab().toImage().pixel(630,300), "Failed applying negative filter twice");
 }
 void TestFilterTab::testFilterList() {
-    //QVERIFY2(false,"Known bug in ffmpeg when using specific filters or combinations of filers");
-	loadVideo(QFINDTESTDATA("akiyo_qcif.yuv"));
+    loadVideo(QFINDTESTDATA("akiyo_qcif.yuv"));
 
 	//make a white grid filter
 	TestMainWindow::clickButton("Add Negative filter");
@@ -129,12 +132,12 @@ void TestFilterTab::testFilterList() {
 	TestMainWindow::waitForWindow();
 	QVERIFY2(qGray(mw->grab().toImage().pixel(630,300))==0 , "Error when clicking \"Filter up\"");
 	//testing undo and redo
-    //TestMainWindow::triggerAction("Undo");
-    //TestMainWindow::waitForWindow();
-    //QVERIFY2(qGray(mw->grab().toImage().pixel(630,300))==255 , "Error undoing click on \"Filter up\"");
-    //TestMainWindow::triggerAction("Redo");
-    //TestMainWindow::waitForWindow();
-    //QVERIFY2(qGray(mw->grab().toImage().pixel(630,300))==0 , "Error undoing click on \"Filter up\"");
+    TestMainWindow::triggerAction("Undo");
+    TestMainWindow::waitForWindow();
+    QVERIFY2(qGray(mw->grab().toImage().pixel(630,300))==255 , "Error undoing click on \"Filter up\"");
+    TestMainWindow::triggerAction("Redo");
+    TestMainWindow::waitForWindow();
+    QVERIFY2(qGray(mw->grab().toImage().pixel(630,300))==0 , "Error undoing click on \"Filter up\"");
 	//now everything for filter down
 	//we should currently have the filterlist "grid, negative, negative"
 	QVERIFY2(mw->getMemento()->getFilterTabMemento()->getFilterList()->getSize() == 3
@@ -148,13 +151,13 @@ void TestFilterTab::testFilterList() {
 	TestMainWindow::waitForWindow();
 	QVERIFY2(qGray(mw->grab().toImage().pixel(630,300))==255 , "Error when clicking \"Filter down\"");
 	//testing undo and redo
-    //TestMainWindow::triggerAction("Undo");
-    //TestMainWindow::waitForWindow();
-    //QVERIFY2(qGray(mw->grab().toImage().pixel(630,300))==0 , "Error undoing click on \"Filter down\"");
-    //TestMainWindow::triggerAction("Redo");
-    //TestMainWindow::waitForWindow();
-    //QVERIFY2(qGray(mw->grab().toImage().pixel(630,300))==255 ,
-    //        "Error undoing click on \"Filter down\"");
+    TestMainWindow::triggerAction("Undo");
+    TestMainWindow::waitForWindow();
+    QVERIFY2(qGray(mw->grab().toImage().pixel(630,300))==0 , "Error undoing click on \"Filter down\"");
+    TestMainWindow::triggerAction("Redo");
+    TestMainWindow::waitForWindow();
+    QVERIFY2(qGray(mw->grab().toImage().pixel(630,300))==255 ,
+            "Error undoing click on \"Filter down\"");
 
 	//now we try filter up on the first element, where nothing should happen, and the same on the last
 	//we should currently have the filterlist "negative,grid, negative"
@@ -187,14 +190,14 @@ void TestFilterTab::testFilterList() {
 	TestMainWindow::waitForWindow();
 	QVERIFY2(mw->getMemento()->getFilterTabMemento()->getFilterList()->getSize() == 0,
 	         "Failed to click \"Reset\" button");
-    //TestMainWindow::triggerAction("Undo");
-    //TestMainWindow::waitForWindow();
-    //QVERIFY2(mw->getMemento()->getFilterTabMemento()->getFilterList()->getSize() == 3,
-    //         "Failed undoing click \"Reset\" button");
-    //TestMainWindow::triggerAction("Redo");
-    //TestMainWindow::waitForWindow();
-    //QVERIFY2(mw->getMemento()->getFilterTabMemento()->getFilterList()->getSize() == 0,
-    //         "Failed redoing click \"Reset\" button");
+    TestMainWindow::triggerAction("Undo");
+    TestMainWindow::waitForWindow();
+    QVERIFY2(mw->getMemento()->getFilterTabMemento()->getFilterList()->getSize() == 3,
+             "Failed undoing click \"Reset\" button");
+    TestMainWindow::triggerAction("Redo");
+    TestMainWindow::waitForWindow();
+    QVERIFY2(mw->getMemento()->getFilterTabMemento()->getFilterList()->getSize() == 0,
+             "Failed redoing click \"Reset\" button");
 }
 void TestFilterTab::testAddFilters(){
 loadVideo(QFINDTESTDATA("akiyo_qcif.yuv"));
