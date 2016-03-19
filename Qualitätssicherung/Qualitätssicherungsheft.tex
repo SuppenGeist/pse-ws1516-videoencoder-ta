@@ -29,13 +29,13 @@ Carina Weber, Jan Benedikt Schwarz}
 \pagestyle{plain}
 \newpage
 \section{Einleitung}
-In der Qualitätssicherungsphase geht es darum die Qualität des Projectes  durch intensives testen zu prüfen. Dazu werden sowohl Unit-Tests als auch Manuelles Testen verschiedener Szenarien sowie Testen durch dritte Personen hinzugezogen.
-\paragraph{2 Bugs} In diesem Kapitel werden gefundene Bugs und deren Reparatur dokumentiert.
-\paragraph{3 Testüberdeckung} Dieses Kapitel gibt einen kurzen Einblick in die Testüberdeckung des Codes.
-\paragraph{4 Zusätzliche Szenarien und Testfälle}
-In diesem Kapitel werden zusätzliche Szenarien die wir zum testen benutzt haben.
+In der Qualitätssicherungsphase geht es darum die Qualität des Projectes  durch intensives testen zu prüfen. Dazu werden sowohl Unit-Tests als auch Manuelles Testen verschiedener Szenarien sowie Testen durch dritte Personen hinzugezogen.\\
+In diesem Dokument werden die gefundenen Bugs mit ihren Symptomen, Ursachen und Behebungen festgehalten. Des weiteren wird eine Übersicht zur Testabdeckung gegeben und es werden zusätzliche für die Qualitätssicherung erstellte Szenarien beschrieben.
+
+
 \newpage
 \section{Bugs}
+In diesem Kapitel werden gefundene Bugs und deren Reparatur dokumentiert.
 \subsection{PSNRDifferenceCalculator bug}
 \textbf{Symptome:}Falsche Anzeigen bei den PSNR Graphen.\\
 \textbf{Ursache:} Fehlende if Bedingung ob es sich um ähnliche Videos handelt.\\
@@ -98,6 +98,10 @@ Gespeicherte Videos können nicht von einem externen Player abgespielt werden.\\
 Metadaten zum Video werden nicht gespeichert.\\
 \textbf{Behebung:}
 Speichern von Metadaten.
+\subsection{Write comment bug}
+\textbf{Symptome:} nach benutzen von undo, gefolgt von redo wird das letzte Wort in der commentbox abgeschnitten\\
+\textbf{Ursache:} Schlechte if Bedingung für das erstellen eines undo Command.\\
+\textbf{Behebung:} Verwendung von merge im write command und entfernen der if Bedingung.
 \subsection{Project loading bug 2}
 \textbf{Symptome:}
 Beim Laden eines Projekts, wenn bereits ein Video geladen ist, stürzt das Programm ab.\\
@@ -114,7 +118,7 @@ Alter Zustand wird mit restore(memento) wiederhergestellt.\\
 Statt restore(memento) wird eine Handlung simuliert die das Ganze rückgängig macht.
 \newpage
 \section{Testüberdeckung}
-Durch das hinzufügen weiterer Unit tests und automatischer GUI tests konnten wir die Testabdeckung von den 23\% aus der Implementierungsphase auf ca. 74\% erweitern.\\
+Die Testabdeckung von den 23\% aus der Implementierungsphase konnten wir durch das hinzufügen weiterer Unit tests und automatischer GUI tests auf ca. 74\% erweitern.\\
 Durch Manuelle Tests konnten wir die Abdeckung nochmal auf bis zu 80\% erweitern. Zu diesen gehören das durchgehen der Szenarien die im Pflichtenheft beschrieben sind. Des weiteren haben wir auch noch das speichern und laden des Projektes, der Results und Filterconfigurationen sowie diverser Videos in verschiedenen Formaten manuell getestet.
 \section{Zusätzliche Szenarien und Testfälle}
 Zum testen der GUI haben wir zusätzliche zu den aus Szenarien aus dem Pflichtenheft folgende automatisch ausgeführte Mini-Szenarien erstellt.
