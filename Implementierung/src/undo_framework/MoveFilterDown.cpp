@@ -3,12 +3,11 @@
 #include "../gui/FilterTab.h"
 
 UndoRedo::MoveFilterDown::MoveFilterDown(GUI::FilterTab& filterTab, int index):index_(index),
-	filterTab_(&filterTab) {
-	memento_=filterTab.getMemento();
+    filterTab_(&filterTab) {
 }
 
 void UndoRedo::MoveFilterDown::undo() {
-	filterTab_->restore(memento_.get());
+    filterTab_->moveFilter(index_+1,index_);
 }
 
 void UndoRedo::MoveFilterDown::redo() {
