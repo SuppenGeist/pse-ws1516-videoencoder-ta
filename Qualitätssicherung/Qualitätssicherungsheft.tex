@@ -42,8 +42,8 @@ In diesem Kapitel werden gefundene Bugs und deren Reparatur dokumentiert.
 \textbf{Behebung:} Hinzufügen einer Überprüfung ob die Videos die selbe Auflösung haben.
 \subsection{move Filter bug}
 \textbf{Symptome:} Fehlermeldung beim verschieben der Filter in der Filterliste.\\
-\textbf{Ursache:} Falsche newposition in den if cases der moveFilter Methode.\\
-\textbf{Behebung:} Ändere filters\_size() zu filters\_size()-1.
+\textbf{Ursache:} Falscher newposition Vergleich in den if cases der moveFilter Methode.\\
+\textbf{Behebung:} Ändere newPosition>filters\_size() zu newPosition>filters\_size()-1.
 \subsection{VideoLoader bug}
 \textbf{Symptome:}
 Encodierte Videos werden nicht korrekt geladen.\\
@@ -123,21 +123,36 @@ Durch Manuelle Tests konnten wir die Abdeckung nochmal auf bis zu 84\% erweitern
 \subsection{Testabdeckung der einzelnen Szenarien}
 \subsubsection{Szenario 1}
 \textit{Szenario 1 aus dem Pflichtenheft.}\\
+Laden eines Videos Rohvideos und eines encodierten Videos im Analysetab.\\
+Abspielen 0.5x, 1.0x, 1.5x facher Geschwindigkeit und frame by frame.\\
+Betrachten der Graphen schreiben eines Kommentars und Ergebnis speichern.\\
+\\
 Dieses Szenario ergab eine Testabdeckung von 49\%.
 \subsubsection{Szenario 2}
 \textit{Szenario 2 aus dem Pflichtenheft.}\\
+Starten eines neuen Projektes.\\
+Laden eines Videos im Filtertab.\\
+Hinzufügen, verschieben und anwenden diverser Filter/Artefakte.\\
+Video speichern und extern encodieren.\\
+Abgespeichertes und encodiertes Video im Analysetab hinzufügen.\\
+Analyse Auswertungen betrachten und das Ergebnis mit einem Kommentar abspeichern.\\
+\\
 Dieses Szenario ergab eine Testabdeckung von 62\%.
 \subsubsection{Szenario 3}
 \textit{Szenario 3 aus dem Pflichtenheft.}\\
+Laden eines Projektes.\\
+Betrachten der Videos deren Analyse Auswertung und der zuletzt benutzten Filterkonfiguration.\\
+\\
 Dieses Szenario ergab eine Testabdeckung von 48\%.
 \subsubsection{Szenario 4}
-\textit{CrazyMonkeyTest siehe Zusätzliche Szenarien und Testfälle.}\\
+\textit{CrazyMonkeyTest (siehe Zusätzliche Szenarien und Testfälle).}\\
+\\
 Dieses Szenario ergab eine Testabdeckung von 31\%.
 \newpage
 \section{Zusätzliche Szenarien und Testfälle}
 Zum testen der GUI haben wir zusätzliche zu den aus Szenarien aus dem Pflichtenheft folgende automatisch ausgeführte Mini-Szenarien erstellt.
 \subsection{CrazyMonkeyTest}
-Hintereinanderausführung 'zufälliger' Aktionen.\\
+Hintereinanderausführung 'zufälliger' Aktionen um 'sinnlose' Aktionen (verschieben von Filtern wenn keine Filter in der Liste sind, etc.) zu testen.\\
 \\
 \textbf{Ablauf:}\\
 \\
